@@ -40,16 +40,11 @@ function DandDStart() {
         snap: true,
         snapMode: "both"
     });
-
+    paintingInDiadramma();
     setHeightDandDEl();
     setWidthDandDEl();
 }
 function setHeightDandDEl() {
-    // var id = $( '.BAFFLE_SEKECTOR_CLASS' ).val()
-    // var h = $('#tab-profil-vyisota').val();
-    // $('*[data-id="' + id + '"]').css('height', h/10 );
-    // console.log('setHeightDandDEl', id);
-
     var p = parseInt( $('#TOTAL_PAINTING_ID').val() );
     for ( i=0; i<=p; i++){
         var wi = parseFloat( $('*[data-id="' + i + '"]').attr( 'data-height' ) );

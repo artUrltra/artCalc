@@ -209,7 +209,7 @@ function PAINTING() {
 
         }
         DandDStart();
-        paintingInDiadramma();
+        // paintingInDiadramma();
     }
     SET_BAFFLE_SEKECTOR();
 }
@@ -2866,7 +2866,7 @@ function calcNow() {
 
 var calcNowTimer = setInterval(function () {
     calcNow();
-}, 1000);
+}, 4000);
 
 
 ////////////////// Переменные конструкции
@@ -4015,7 +4015,7 @@ var myEfficientFn = debounce(function () {
     TableForInfo();
     setHeightDandDEl();
     setWidthDandDEl();
-}, 250);
+}, 2500);
 
 window.addEventListener('input', myEfficientFn);
 
