@@ -40,7 +40,7 @@ function PAINTING() {
             }
             var left = 50;
             var top = 20;
-            $('#PAINTING-DIAGRAMMA').append('<div  class="drag PAINTING-DIAGRAMMA-EL" style="left:' + left*i + 'px;top:' + top*j + 'px;"' +
+            $('#PAINTING-DIAGRAMMA').append('<div  class="drag PAINTING-DIAGRAMMA-EL" style="left:' + left*i + 'px;top:' + top*i + 'px;"' +
                 'data-id="' + i + '"' +
                 'data-type="' + type + '"' +
                 'data-height=""' +
@@ -516,11 +516,11 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
             break;
         case "Euroshop":
             var thickness = {
-                1: {4: 500, 5: 625},
+                1: {4: 500, 5: 625, 6: 720},
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0},
+                5: {0: 0, 6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -560,11 +560,11 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
             break;
         case "Standart":
             var thickness = {
-                1: {4: 500, 5: 625},
+                1: {4: 500, 5: 625, 6: 720},
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0},
+                5: {0: 0, 6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -582,11 +582,12 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
             break;
         case "MobyLight":
             var thickness = {
-                1: {4: 500, 5: 625},
+                1: {4: 500, 5: 625, 6: 720},
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0},
+                5: {0: 0, 6: 1400},
+
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -604,11 +605,11 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
             break;
         case "Optima":
             var thickness = {
-                1: {4: 500, 5: 625},
+                1: {4: 500, 5: 625, 6: 720},
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0},
+                5: {0: 0, 6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -757,7 +758,6 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
             };
             break;
     }
-
     switch (napolnenieType) {
         case "stekloObyichnoe":
             var value = 1;
