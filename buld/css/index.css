@@ -343,6 +343,9 @@ body .next-line {
 
 #PAINTING-DIAGRAMMA {
   height: 400px;
+  box-shadow: inset -1px -2px 107px 52px rgba(0, 0, 0, 0.41);
+  border: 1px solid #eeeeee;
+  border-radius: 20px;
 }
 
 #profil-tab {

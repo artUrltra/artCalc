@@ -59,3 +59,8 @@ function setWidthDandDEl() {
         $('*[data-id="' + i + '"]').css('width', wi/10 );
     }
 }
+
+$( '#PAINTING-DIAGRAMMA-BLOCK-HS' ).click(function () {
+    $( "#PAINTING-DIAGRAMMA-BLOCK" ).slideToggle( "slow" );
+});
+$( "#PAINTING-DIAGRAMMA-BLOCK" ).slideToggle( 0 );

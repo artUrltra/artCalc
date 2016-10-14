@@ -38,18 +38,8 @@ function PAINTING() {
             } else {
                 type = "S";
             }
-
             var left = 50;
             var top = 20;
-            // var top = -70;
-            // if (i == 1) { top = 20 }
-
-            // var j = i;
-            // if (j > 1){ j = j-1 }
-            // if (j > 2){ j = j-2 }
-
-
-
             $('#PAINTING-DIAGRAMMA').append('<div  class="drag PAINTING-DIAGRAMMA-EL" style="left:' + left*i + 'px;top:' + top*j + 'px;"' +
                 'data-id="' + i + '"' +
                 'data-type="' + type + '"' +
