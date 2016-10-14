@@ -1,0 +1,2952 @@
+<script type="text/html" id="html-stvorka">
+    <div class="abc js-block%number% js-%number%block%i%">
+        <div class='box box-primary box-solid box-bordered' style='border: 1px solid #999999;border-radius:0px;'>
+            <div class='box-header with-border'
+                 style='background-color: #d2d6de;color: black;'>
+                <h3 class='box-title'>%i%-е %polotnoName% полотно.</h3>
+                <div style="top: 10px;display: -webkit-inline-box;">
+                    <h3 class='box-title'> Количество:</h3>
+                    <input id='js-%number%-Count-%i%' name='js-%number%Count[%i%]' type='text' value="1"
+                           class='js-count input-new form-control' style="display: initial;width:100px;">
+                    <h3 class='box-title'> Площадь полотна:</h3>
+                    <input id='%number%-area-%i%' name='%number%-area[%i%]' type='text' value=""
+                           class='input-new form-control' style="display: initial;width:100px;" disabled>
+                    <input type="button" class="btn btn-danger" onclick="DeletePolotno('%number%','%i%');"
+                           value="Удалить" style="margin-bottom: 4px;">
+                </div>
+                <div class="box-tools pull-right" style="top: 10px;">
+                    <p style="display: -webkit-inline-box;font-size: 25px;color: red;" id='js-%number%Total%i%'>
+                        0</p>
+                    <input type="hidden" name="TotalPolotno[%number%][%i%]">
+                    <p style="display: -webkit-inline-box;font-size: 20px;color: red;"> руб.</p>
+                </div>
+            </div>
+            <div class='box-body'>
+                <table class='table'>
+                    <tbody>
+                    <tr>
+                        <th style="text-align: center;">Схема</th>
+                        <th style="text-align: center;">Каркас</th>
+                        <th style="text-align: center;">Горизонтальные перемычки <input id='%number%-jumperH-%i%'
+                                                                                        name='%number%-jumperH[%i%]'
+                                                                                        type='text' value='0'
+                                                                                        class='js-H js-per input-new form-control'
+                                                                                        style='width: 50px;display: initial;'>
+                        </th>
+                        <th style="text-align: center;">Вертикальные перемычки <input id='%number%-jumperV-%i%'
+                                                                                      name='%number%-jumperV[%i%]'
+                                                                                      type='text' value='0'
+                                                                                      class='js-V js-per input-new form-control'
+                                                                                      style='width: 50px;display: initial;'>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-2">
+                            <div style="width: 350px;">
+                                <div style="width: 258px;margin-left: 129px;">
+                                    <div id="%number%-iacheikaW-%i%"><p
+                                            id="%number%-sizeW-%i%" class="js-EditWidth">%Allwidth%</p></div>
+                                </div>
+                                <img src="/strelki/top.png"
+                                     style="width: 258px;padding-bottom: 15px;float: left;">
+                                <div id="%number%-Shema-Block-%i%"
+                                     style="background-color: white;min-width: 250px;width: 258;min-height: 400px;border: 4px solid #999999;float: left;display: inline-block;vertical-align: top;">
+                                    <table id="%number%-tableForShema-%i%"
+                                           style="min-width: 250px;min-height: 400px;">
+                                    </table>
+                                </div>
+                                <img src="/strelki/right.png"
+                                     style="height: 400px;display: -webkit-inline-box;padding-left: 10px;float: left;">
+                                <div id="%number%-iacheikaH-%i%">
+                                    <p id="%number%-sizeH-%i%" class="js-EditHeight"
+                                       style="margin-top: 190px;display: inline-block;vertical-align: middle;float: left;transform: rotate(90deg)">
+                                        %Allheight%</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col-sm-2">
+                            <center>
+                                <input type="button" class="btn btn-default"
+                                       onclick="imageKarkas('%number%','%i%');"
+                                       value="Выбрать" data-toggle="modal"
+                                       data-target="#js-karkas%number%Picker%i%">
+                            </center>
+                            <center>
+                                <p id='%number%-karkasname-%i%'></p>
+                            </center>
+                            <center>
+                                <img id='js-%number%karkasimg%i%' style='height:130px;'>
+                            </center>
+                            <center>
+                                <p id='js-%number%karkastext%i%'></p>
+                            </center>
+                            <center>
+                                <p><b>Стоимость</b></p>
+                                <input id="js-%number%karkasPrice%i%" value="" type="hidden">
+                                <input id='js-%number%karkasprice%i%' name='js-%number%KarkasSum[%i%]' type='text'
+                                       value='0' class='input-new form-control' disabled>
+                                <p> руб.</p>
+                            </center>
+                        </td>
+                        <td class="col-sm-3">
+                            <center>
+                                <input type="button" class="btn btn-default"
+                                       onclick="imagePer('%number%','%i%','H');"
+                                       value="Выбрать" data-toggle="modal"
+                                       data-target="#js-karkas%number%Picker%i%">
+                            </center>
+                            <center>
+                                <p id='%number%-perHname-%i%'></p>
+                            </center>
+                            <center>
+                                <img id='js-%number%perHimg%i%' style='height:130px;'>
+                            </center>
+                            <center>
+                                <p id='js-%number%perHtext%i%'></p>
+                            </center>
+                            <center>
+                                <p><b>Стоимость</b></p>
+                                <input id="js-%number%perPriceH%i%" value="" type="hidden">
+                                <input id='js-%number%perHprice%i%' name='js-%number%perHprice[%i%]' type='text'
+                                       value='0' class='input-new form-control' disabled>
+                                <p> руб.</p>
+                            </center>
+                        </td>
+                        <td class="col-sm-3">
+                            <center>
+                                <input type="button" class="btn btn-default"
+                                       onclick="imagePer('%number%','%i%','V');"
+                                       value="Выбрать" data-toggle="modal"
+                                       data-target="#js-karkas%number%Picker%i%">
+                            </center>
+                            <center>
+                                <p id='%number%-perVname-%i%'></p>
+                            </center>
+                            <center>
+                                <img id='js-%number%perVimg%i%' style='height:130px;'>
+                            </center>
+                            <center>
+                                <p id='js-%number%perVtext%i%'></p>
+                            </center>
+                            <center>
+                                <p><b>Стоимость</b></p>
+                                <input id="js-%number%perPriceV%i%" value="" type="hidden">
+                                <input id='js-%number%perVprice%i%' name='js-%number%perVprice[%i%]' type='text'
+                                       value='0' class='input-new form-control' disabled>
+                                <p> руб.</p>
+                            </center>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class='box box-primary box-solid box-bordered' style='border: 1px solid #999999;border-radius:0px;'>
+            <div class='box-header with-border'
+                 style='background-color: #d2d6de;color: black;'>
+                <h3 class='box-title'>Материал: </h3>
+                <input type="hidden" id="%number%-material-%i%-1" value="1" disabled>
+                <input type="button" class="btn btn-primary"
+                       onclick="imageMaterial('%number%','%i%','1');"
+                       value="Выбрать" data-toggle="modal"
+                       data-target="#%number%MaterialPicker%i%-1" style="margin-bottom: 3px;">
+                <input id='js-%number%MAT-sizeW-%i%-1' name='' value="%Allwidth%" type='text'
+                       class='js-EditMatSize input-new form-control' style="display: initial;width:100px;">
+                X
+                <input id='js-%number%MAT-sizeH-%i%-1' name='' value="%Allheight%" type='text'
+                       class='js-EditMatSize input-new form-control' style="display: initial;width:100px;">
+                мм.
+                <div class="box-tools pull-right" style="top: 10px;">
+                    <p style="display: -webkit-inline-box;font-size: 25px;color: red;"
+                       id='%number%-AddonTotal-%i%-1'>
+                        0</p>
+                    <input type="hidden" name="AddonTotal[%number%][%i%][1]">
+                    <p style="display: -webkit-inline-box;font-size: 20px;color: red;"> руб.</p>
+                </div>
+            </div>
+            <div class='js-%number%-body-%i%-1 box-body' style="display: block;">
+                <div class="col-lg-4">
+                    <h3>Толщина</h3>
+                    <select id="js-%number%-thickness-%i%-1" class="js-thickness-select select-new form-control"
+                            style="width: 150px;display: -webkit-inline-box;">
+                        <option value="500" selected="selected">4 мм</option>
+                    </select>
+                    <h3>Цвет</h3>
+                    <div style="display: -webkit-inline-box;">
+                        <div class="input-group my-colorpicker2">
+                            <input type="text" class="form-control js-colorPickerColor"
+                                   id="%number%-colorPikerColor-%i%-1"
+                                   style="width: 90px;">
+                            <div class="input-group-addon" style="width: 20px;">
+                                <i></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="js-checkboxDouble checkbox" id="div-%number%-bilateral-%i%-1"
+                         style="display: none;">
+                        <label>
+                            <input id="%number%-bilateral-%i%-1" class="js-material-checkbox" type="checkbox">
+                            <p style="font-size: 20px;">Двустороннее</p>
+                        </label>
+                    </div>
+                    <div class="js-checkboxToAddon checkbox" id="div-%number%-Zakalka-%i%-1" style="display: none;">
+                        <label>
+                            <input id="%number%-Zakalka-%i%-1" class="js-material-checkbox" type="checkbox">
+                            <p style="font-size: 20px;">Закалка стекла</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <center><h3 id="%number%-materialtext-%i%-1">Бесцветное флоат стекло марки m1</h3>
+                        <img id="js-%number%materialimg%i%-1" src="material/1.png"
+                             style="height: 200px;border: 1px solid black;">
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div id="%number%-materialBlock-%i%">
+        </div>
+        <div>
+            <input id="%number%-CountMat-%i%" type="hidden" value="1" disabled>
+        </div>
+        <div>
+            <input id="%number%-AddMatButton-%i%" type="button" class="js-AddMat btn btn-default"
+                   value="Добавить материал">
+        </div>
+        <br>
+    </div>
+</script>
+<!--///////////////////////////////////////////////////////////////Выбор типа конструкции (картинки)/////////////////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////Выбор типа конструкции 2 (картинки)/////////////////////////////////////////-->
+<div class="display-none">
+    <!--loadImgBlock-->
+    <div class="loadImgBlockT">
+        <input type="file" multiple="multiple" data-img-name="" accept="image/*">
+    </div>
+    <!--loadImgBlock-->
+    <!--DesignScheme1-->
+    <div id="DesignScheme1">
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(1,1,1);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/1.png" data-dismiss="modal">
+            </center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(2,2,1);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/2.png" data-dismiss="modal">
+            </center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(4,2,2);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/4.png" data-dismiss="modal">
+            </center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(6,4,2);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/6.png" data-dismiss="modal">
+            </center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(8,3,1);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/8.png" data-dismiss="modal">
+            </center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(9,3,1);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/9.png" data-dismiss="modal">
+            </center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(10,3,2);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/10.png" data-dismiss="modal">
+            </center>
+        </div>
+    </div>
+    <!--DesignScheme2-->
+    <div id="DesignScheme2">
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(11,2,2);" style="max-width: 100%;" src="http://fasts-like.com/SchemeOfDoors/11.png" data-dismiss="modal">
+            </center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(13,4,4);" style="max-width: 100%;" src="http://fasts-like.com/SchemeOfDoors/13.png" data-dismiss="modal">
+            </center>
+        </div>
+    </div>
+    <!--DesignScheme3-->
+    <div id="DesignScheme3">
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(12,4.4);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/12.png" data-dismiss="modal">
+            </center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(14,5,5);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/14.png" data-dismiss="modal">
+            </center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <img onclick="setImg(15,6,6);" style="max-width: 100%;"
+                     src="http://fasts-like.com/SchemeOfDoors/15.png" data-dismiss="modal">
+            </center>
+        </div>
+    </div>
+    <!--DesignScheme3-->
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!--Каркасы-->
+    <div id="DesignSchemeKarkasTUR">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>TUR (40х16)</h4>
+                <img onclick="SelectKarkasEnd(94,'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм','Tur', 'http://pavel.artultra.ru/karkas/Tur.png',13,20,22,0);"
+                     src="http://pavel.artultra.ru/karkas/Tur.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 2.2 м</p>
+                    <p>Паз: 5.5 мм</p>
+                    <p>Cтекло: 4 мм</p>
+                </div>
+                <h4><b>Цена: %priceTUR%</h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasEuroshop">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>Euroshop (20х33)</h4><img
+                    onclick="SelectKarkasEnd(111,'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм','Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png',14.5,6,36,30);"
+                    src="http://pavel.artultra.ru/karkas/Euroshop.png" data-dismiss="modal" class="selectKarkasImg">
+                <div style="height: 120px;">
+                    <p>Высота: до 2.6 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>Цена: %priceEuroshop%</b></h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasOptimax2">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>Optima x2 (45х45)</h4><img
+                    onclick="SelectKarkasEnd(415,'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм','Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png',17,6,53,30);"
+                    src="http://pavel.artultra.ru/karkas/Optimax2.png" data-dismiss="modal" class="selectKarkasImg">
+                <div style="height: 120px;">
+                    <p>Высота: до 5 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>Цена: %priceOptimax2%</b></h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasStandart">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>Standart (50х25)</h4><img
+                    onclick="SelectKarkasEnd(266,'Высота: до 2.8 м, Паз: 8.5 мм, Cтекло: 4,5 мм','Standart', 'http://pavel.artultra.ru/karkas/Standart.png',14.5,6.5,35,30);"
+                    src="http://pavel.artultra.ru/karkas/Standart.png" data-dismiss="modal" class="selectKarkasImg">
+                <div style="height: 120px;">
+                    <p>Высота: до 2.8 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>Цена: %priceStandart%</b></h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasMobyLight">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>M. Light (32х32</h4><img
+                    onclick="SelectKarkasEnd(183,'Высота: до 3 м, Паз: 8.5 мм, Cтекло: 4,5 мм','MobyLight', 'http://pavel.artultra.ru/karkas/MobyLight.png',14.5,7.2,24,30);"
+                    src="http://pavel.artultra.ru/karkas/MobyLight.png" data-dismiss="modal" class="selectKarkasImg">
+                <div style="height: 120px;">
+                    <p>Высота: до 3 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>Цена: %priceMobyLight%</b></h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasOptima">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>Optima (45х45)</h4><img
+                    onclick="SelectKarkasEnd(272,'Высота: до 5 м, Паз: 8.5 мм, Cекло: 4,5 мм, Глухие панели: до 16 мм','Optima', 'http://pavel.artultra.ru/karkas/Optima.png',14.5,6,53,30);"
+                    src="http://pavel.artultra.ru/karkas/Optima.png" data-dismiss="modal" class="selectKarkasImg">
+                <div style="height: 120px;">
+                    <p>Высота: до 5 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                    <p>Глухие панели: до 16 мм</p>
+                </div>
+                <h4><b>Цена: %priceOptima%</b></h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasBase">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>Base (36х75)</h4><img
+                    onclick="SelectKarkasEnd(427,'Высота: до 4 м, Cтекло – 5-8 мм, Глухие панели: до 12,5 мм','Base', 'http://pavel.artultra.ru/karkas/Base.png',15,0,33);"
+                    src="http://pavel.artultra.ru/karkas/Base.png" data-dismiss="modal" class="selectKarkasImg">
+                <div style="height: 120px;">
+                    <p>Высота: до 4 м</p>
+                    <p>Cтекло – 5-8 мм</p>
+                    <p>Глухие панели: до 12,5 мм</p>
+                </div>
+                <h4><b>Цена: %priceBase%</b></h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasStatusx1">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>Status x1 (35х93)</h4><img
+                    onclick="SelectKarkasEnd(415,'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 13 мм','Statusx1', 'http://pavel.artultra.ru/karkas/Statusx1.png',14,2.5,27);"
+                    src="http://pavel.artultra.ru/karkas/Statusx1.png" data-dismiss="modal" class="selectKarkasImg">
+                <div style="height: 120px;">
+                    <p>Высота: до 6 м</p>
+                    <p>Паз: 13 мм</p>
+                    <p>Cтекло: 5-10 мм</p>
+                    <p>Глухие панели: до 13 мм</p>
+                </div>
+                <h4><b>Цена: %priceStatusx1%</b></h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasStatusx2">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>Status x2 (35х92)</h4><img
+                    onclick="SelectKarkasEnd(525,'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 12,5 мм','Statusx2', 'http://pavel.artultra.ru/karkas/Statusx2.png',14,2.5,27);"
+                    src="http://pavel.artultra.ru/karkas/Statusx2.png" data-dismiss="modal" class="selectKarkasImg">
+                <div style="height: 120px;">
+                    <p>Высота: до 6 м</p>
+                    <p>Паз: 13 мм</p>
+                    <p>Cтекло: 5-10 мм</p>
+                    <p>Глухие панели: до 12,5 мм</p>
+                </div>
+                <h4><b>Цена: %priceStatusx2%</b></h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasOptimaLite">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>Optima Lite</h4><img
+                    onclick="SelectKarkasEnd(187,'Высота: до 2,8 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм','OptimaLite', 'http://pavel.artultra.ru/karkas/OptimaLite.png',14.5,9,53,30);"
+                    src="http://pavel.artultra.ru/karkas/OptimaLite.png" data-dismiss="modal" class="selectKarkasImg">
+                <div style="height: 120px;">
+                    <p>Высота: до 2,8 м</p>
+                    <p>Паз: 8,5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                    <p>Глухие панели: до 16 мм</p>
+                </div>
+                <h4><b>Цена: %priceOptimaLite%</b></h4>
+            </center>
+        </div>
+    </div>
+    <div id="DesignSchemeKarkasStandartStoika">
+        <div class="col-md-2" style="display: inline-block;vertical-align: top;">
+            <center>
+                <h4>StandartStoika</h4><img
+                    onclick="SelectKarkasEnd(216,'Высота: до 3 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 8,5 мм','StandartStoika', 'http://pavel.artultra.ru/karkas/StandartStoika.png',14.5,8,35,30);"
+                    src="http://pavel.artultra.ru/karkas/StandartStoika.png" data-dismiss="modal" class="selectKarkasImg">
+                <!--uplotnitel 14.5, zaglushka 8, kreplenie 35, zaglushkavpaz 30-->
+                <div style="height: 120px;">
+                    <p>Высота: до 3 м</p>
+                    <p>Паз: 8,5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                    <p>Глухие панели: до 8,5 мм</p>
+                </div>
+                <h4><b>Цена: %priceStandartStoika%</b></h4>
+            </center>
+        </div>
+    </div>
+<!------------------------------------------------------------------------------------------------------------------------------------>
+    <div class="napolnenie-el-set">
+        <hr>
+        <div class="material">
+            <div class="form-group label-floating is-empty">
+                <select class="form-control napolnenie-el-material">
+                    <option value=""></option>
+                    <option value="stekloObyichnoe" selected>Стекло обычное</option>
+                    <option value="stekloMatovoe">Стекло матовое</option>
+                    <option value="zerkaloSerebro">Зеркало серебро</option>
+                    <option value="zerkaloBronza">Зеркало бронза</option>
+                    <option value="tripleks">Триплекс</option>
+                    <option value="tripleksMatovyiy">Триплекс матовый</option>
+                    <option value="polikarbonatSotovyiy">Поликарбонат сотовый</option>
+                    <option value="PVHvspenennyiy">ПВХ вспененный</option>
+                    <option value="polikarbonatMonolit">Поликарбонат монолит</option>
+                    <option value="orgstekloEkstruz">Оргстекло экструз.</option>
+                    <option value="LDSP">ЛДСП</option>
+                    <option value="MDFshlifovannyiy">МДФ шлифованный</option>
+                    <option value="DSPshlifovannyiy">ДСП шлифованный</option>
+                    <option value="fanera">Фанера</option>
+                    <option value="sendvichPaneliPVH">Сендвич панели ПВХ</option>
+                    <option value="stekloTonirovannoeSeroe">Стекло тонированное серое</option>
+                    <option value="stekloTonirovannoeBronza">Стекло тонированное бронза</option>
+                    <option value="stekloTonirovannoeGoluboe">Стекло тонированное голубое</option>
+                    <option value="faneraTrudnogoryuchaya">Фанера трудногорючая</option>
+                    <option value="orgstekloEkstruz">Оргстекло экструз. матовое/молочное</option>
+                    <option value="dekorativnyiyBumazhno">Декоративный бумажно-слоистый пластик</option>
+                    <option value="gipsovinil12">Гипсовинил (12.5 мм)</option>
+                    <option value="gipsodekor12">Гипсодекор (12.5 мм)</option>
+                    <option value="gipsokarton12">Гипсокартон (12.5 мм)</option>
+                    <option value="stekloBronzaSeroe">Стекло бронза, серое</option>
+                    <option value="stekloProtivopozharnoe">Стекло противопожарное</option>
+                </select>
+            </div>
+            <div class="napolnenie-el-img">
+                <img src="http://pavel.artultra.ru/material/1.png" alt="">
+            </div>
+        </div>
+        <div class="wh">
+            <div class="form-group label-floating is-empty input-custom-block-mini">
+                <select class="form-control napolnenie-el-tolschina"></select>
+            </div>
+            <div class="form-group label-floating is-empty input-custom-block-mini">
+                <h5>Цвет</h5>
+            </div>
+        </div>
+        <div class="wh">
+            <div class="form-group label-floating is-empty input-custom-block-mini">
+                <input type="text" placeholder="Ширина" class="form-control tab-napolnenie-shirina">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-fab btn-fab-mini btn-plaus">
+                            <i class="material-icons">add</i>
+                        </button>
+                        <button type="button" class="btn btn-fab btn-fab-mini btn-minus">
+                            <i class="material-icons">remove</i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group label-floating is-empty input-custom-block-mini dvoinoeZapolnenieCheckbox">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkbox-material">
+                            <span class="check"></span>
+                        </span>
+                        Двойное заполнение</label>
+                </div>
+            </div>
+        </div>
+        <div class="wh">
+            <div class="form-group label-floating is-empty input-custom-block-mini">
+                <input type="text" placeholder="Высота" class="form-control tab-napolnenie-vyisota">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-fab btn-fab-mini btn-plaus">
+                            <i class="material-icons">add</i>
+                        </button>
+                        <button type="button" class="btn btn-fab btn-fab-mini btn-minus">
+                            <i class="material-icons">remove</i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group label-floating is-empty input-custom-block-mini zakalkaStekla">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkbox-material">
+                            <span class="check"></span>
+                        </span>
+                        Закалка стекла</label>
+                </div>
+            </div>
+        </div>
+        <div class="count">
+            <div class="form-group label-floating is-empty input-custom-block-mini">
+                <input type="text" placeholder="Кол-во" class="form-control tab-napolnenie-kollichestvo">
+                <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-fab btn-fab-mini btn-plaus">
+                                <i class="material-icons">add</i>
+                            </button>
+                            <button type="button" class="btn btn-fab btn-fab-mini btn-minus">
+                                <i class="material-icons">remove</i>
+                            </button>
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="price text-right">
+            <div class="row">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-fab btn-fab-mini">
+                        <i class="material-icons">content_copy</i>
+                    </button>
+                    <button type="button" class="btn btn-fab btn-fab-mini" onclick="removeElNapolnenie(this)">
+                        <i class="material-icons">clear</i>
+                    </button>
+                </span>
+            </div>
+            <h3>
+                <small>Площадь:
+                    <span class="tab-napolnenie-ploschad"></span>
+                    кв.м
+                </small>
+                <br>
+                <small>Стоимость: <span class="tab-napolnenie-price"></span> руб.</small>
+            </h3>
+        </div>
+    </div>
+<!------------------------------------------------------------------------------------------------------------------------------------>
+    <div class="furnitura-net">
+        <div class="container">
+            <div class="row text-center">
+                <h1>Нет фурниртуры</h1>
+            </div>
+        </div>
+    </div>
+    <div class="furnitura-razdvizhnyie">
+        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center razdvizhnyie-mehanizmyi">
+                <h3>Раздвижные механизмы</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                    <select class="form-control" onchange="loadRazdvizhnyieMehanizmyiPrice(this)">
+                        <option value="0">Нет</option>
+                        <option value="1">Standart до 40 кг (Россия)</option>
+                        <option value="2">Standart до 100 кг (Россия)</option>
+                        <option value="3">B-103 до 100 кг (Degon, Польша)</option>
+                        <option value="4">B-104 до 100 кг (Degon, Польша)</option>
+                        <option value="5">R3 до 60 кг (Китай)</option>
+                        <option value="6">D 80 (Ducasse, Испания)</option>
+                    </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center mehanizm-sinhronizatsii">
+                <h3>Механизм синхронизации</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                    <select class="form-control" onchange="setMehanizmSinhronizatsii(this)"></select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center napravlyayuschie">
+                    <h3>Направляющие</h3>
+                    <hr>
+                    <img src="img/furnityra/0.jpg">
+                    <div class="form-group label-floating is-empty">
+                        <select class="form-control" onchange="setNapravlyayuschie(this)"></select>
+                    </div>
+                    <div class="form-group label-floating is-empty input-custom-block-mini">
+                        <input type="text" placeholder="Колличество" class="form-control" value="1" oninput="setNapravlyayuschie()">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-fab btn-fab-mini btn-plaus">
+                                    <i class="material-icons">add</i>
+                                </button>
+                                <button type="button" class="btn btn-fab btn-fab-mini btn-minus">
+                                    <i class="material-icons">remove</i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <h4>Цена:<span class="price">0</span></h4>
+                </div>
+        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center vidKrepleniyaNapravlyayuschey">
+                    <h3>Вид крепления направляющей</h3>
+                    <hr>
+                    <img src="img/furnityra/0.jpg">
+                    <div class="form-group label-floating is-empty">
+                        <select class="form-control" onchange="setVidKrepleniyaNapravlyayuschie(this)"></select>
+                    </div>
+                    <h4>Цена:<span class="price">0</span></h4>
+            </div>
+        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center povodok">
+                    <h3>Поводок</h3>
+                    <hr>
+                    <img src="img/furnityra/0.jpg">
+                    <div class="form-group label-floating is-empty">
+                        <select class="form-control" onchange="setPovodok(this)"></select>
+                    </div>
+                    <h4>Цена:<span class="price">0</span></h4>
+            </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="checkbox aksessuaryi-block-swith">
+                <label>
+                    <input type="checkbox" checked="checked" onchange="aksessuaryiBlockSwith()">
+                    <span class="checkbox-material">
+                    <span class="check"></span>
+                </span>
+                    Аксессуары
+                </label>
+            </div>
+        </div>
+        <span class="aksessuaryi-block-hs">
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center dovodchik">
+                <h3>Доводчик</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                    <select class="form-control" onchange="setDovodchik()">
+                        <option value="0">Нет</option>
+                        <option value="1">Standart до 25 кг, Россия</option>
+                        <option value="2">Standart до 50 кг, Россия</option>
+                        <option value="3">Standart до 100 кг, Россия</option>
+                        <option value="4">Soft, Ducasse Испания</option>
+                    </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center dekorativnayaPlankaDlyaProfilya">
+                <h3>Декоративная планка для профиля</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                    <select class="form-control" onchange="setDekorativnayaPlankaDlyaProfilya()"></select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center schetochnyiyUplotnitel">
+                <h3>Щеточный уплотнитель</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                    <select class="form-control" onchange="setSchetochnyiyUplotnitel()">
+                        <option value="0"></option>
+                        <option value="1">6 мм (Серый, бронза, золото)</option>
+                        <option value="2">12 мм (Серый, бронза, золото)</option>
+                    </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center rakovina">
+                <h3>Ручка</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                    <select class="form-control" onchange="setRakovina()">
+                    </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center zamok">
+                <h3>Замок дверной</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                    <select class="form-control" onchange="setZamok()">
+                        <option value="0"></option>
+                        <option value="1">Поворотный</option>
+                        <option value="2">Замок врезной цилиндровый узкопроф.201 (20 mm) (никель) 3 кл.</option>
+                        <option value="3">Замок врезной крестообразный узкопроф.201F (20 mm) (никель) 3 кл.</option>
+                    </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+        </span>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 furnitura-price text-right">
+            <h3>Сумма: <span class="price"></span></h3>
+        </div>
+    </div>
+    <div class="skladnaya-peregorodka">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center setSkladnyieMehanizmyi">
+            <h3>Складные механизмы</h3>
+            <hr>
+            <img src="img/furnityra/0.jpg">
+            <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setSkladnyieMehanizmyi()">
+                    <option value="0"></option>
+                    <option value="1">Stanfold до 40 кг (Россия)</option>
+                    <option value="2">B-100 до 80 кг (Degon, Польша)</option>
+                </select>
+            </div>
+            <h4>Цена:<span class="price">0</span></h4>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center petli">
+            <h3>Петли</h3>
+            <hr>
+            <img src="img/furnityra/0.jpg">
+            <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setPetli()"></select>
+            </div>
+            <h4>Цена:<span class="price">0</span></h4>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center napravlyayuschie">
+            <h3>Направляющие</h3>
+            <hr>
+            <img src="img/furnityra/0.jpg">
+            <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setNapravlyayuschie()"></select>
+            </div>
+            <h4>Цена:<span class="price">0</span></h4>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center vidKrepleniya">
+            <h3>Вид крепления направляющей</h3>
+            <hr>
+            <img src="img/furnityra/0.jpg">
+            <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setVidKrepleniya()"></select>
+            </div>
+            <h4>Цена:<span class="price">0</span></h4>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="checkbox aksessuaryi-block-swith">
+                <label>
+                    <input type="checkbox" checked="checked" onchange="aksessuaryiBlockSwith()">
+                    <span class="checkbox-material">
+                    <span class="check"></span>
+                </span>
+                    Аксессуары
+                </label>
+            </div>
+        </div>
+        <span class="aksessuaryi-block-hs">
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center dekorativnayaPlankaDlyaProfilya">
+                <h3>Декоративная планка для профиля</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setDekorativnayaPlankaDlyaProfilya()">
+                <option value="0"></option>
+                <option value="1">Цвет: серебро, Россия</option>
+                </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center schetochnyiyUplotnitel">
+                <h3>Щеточный уплотнитель</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setSchetochnyiyUplotnitel()">
+                    <option value="0"></option>
+                    <option value="1">6 мм (Серый, бронза, золото)</option>
+                    <option value="2">12 мм (Серый, бронза, золото)</option>
+                </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center rakovina">
+                <h3>Ручка</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setRakovina()">
+                    <option value="0"></option>
+                    <option value="1">Раковина</option>
+                </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center kreplenieRuchki">
+                <h3>Крепление ручки</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setKreplenieRuchki()">
+                    <option value="0"></option>
+                    <option value="1">К двери-гармошке</option>
+                </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center zamokSkladnyie">
+                <h3>Замок дверной</h3>
+                <hr>
+                <img src="img/furnityra/0.jpg">
+                <div class="form-group label-floating is-empty">
+                    <select class="form-control" onchange="setZamokSkladnyie()">
+                        <option value="0"></option>
+                        <option value="1">Поворотный</option>
+                    </select>
+                </div>
+                <h4>Цена:<span class="price">0</span></h4>
+            </div>
+        </span>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 furnitura-price text-right">
+            <h3>Сумма: <span class="price"></span></h3>
+        </div>
+    </div>
+    <div class="mobilnyie-peregorodki">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center nozhki">
+            <h3>Ножки</h3>
+            <hr>
+            <img src="img/furnityra/0.jpg">
+            <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setNozhki()">
+                    <option value="0"></option>
+                    <option value="1">Euroshop/Standart - круглая регулируемая</option>
+                    <option value="2">Optima - круглая регулируемая</option>
+                    <option value="3">Optima - Широкая двухсторонняя</option>
+                    <option value="4">M. Light - круглая регулируемая</option>
+                    <option value="5">M. Light - Широкая двухсторонняя</option>
+                </select>
+            </div>
+            <h4>Цена:<span class="price">0</span></h4>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center stoyki">
+            <h3>Стойки</h3>
+            <hr>
+            <img src="img/furnityra/0.jpg">
+            <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setStoyki()"></select>
+            </div>
+            <h4>Цена:<span class="price">0</span></h4>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center tipSoedineniyaPoloten">
+            <h3>Тип соединения полотен</h3>
+            <hr>
+            <img src="img/furnityra/0.jpg">
+            <div class="form-group label-floating is-empty">
+                <select class="form-control" onchange="setTipSoedineniyaPoloten()">
+                    <option value="0"></option>
+                    <option value="1">Петли</option>
+                </select>
+            </div>
+            <h4>Цена:<span class="price">0</span></h4>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 furnitura-price text-right">
+            <h3>Сумма: <span class="price"></span></h3>
+        </div>
+    </div>
+<!------------------------------------------------------------------------------------------------------------------------------------>
+    <!--DesignSchemeTur-->
+    <div id="DesignSchemeTur">
+        <div class="col-md-2">
+            <center>
+                <h4>TUR (40х16)</h4>
+                <img style="max-width: 100%;" onclick="SelectPeremyichkaVERTIKALNUE('TUR','http://pavel.artultra.ru/karkas/Tur.png','Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм', '810');" src="http://pavel.artultra.ru/karkas/Tur.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 2.2 м</p>
+                    <p>Паз: 5.5 мм</p>
+                    <p>Cтекло: 4 мм</p>
+                </div>
+                <h4><b>%priceTUR%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeTur-->
+    <!--DesignSchemeEuroshop-->
+    <div id="DesignSchemeEuroshop">
+        <div class="col-md-2">
+            <center>
+                <h4>Euroshop (20х33)</h4><img onclick="SelectPeremyichkaVERTIKALNUE('Euroshop','http://pavel.artultra.ru/karkas/Euroshop.png','Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');" src="http://pavel.artultra.ru/karkas/Euroshop.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 2.6 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>%priceEuroshop%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeEuroshop-->
+    <!--DesignSchemeOptimax2-->
+    <div id="DesignSchemeOptimax2">
+        <div class="col-md-2">
+            <center>
+                <h4>Optima x2 (45х45)</h4>
+                <img onclick="SelectPeremyichkaVERTIKALNUE('Optimax2','http://pavel.artultra.ru/karkas/Optimax2.png','Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '3110');" src="http://pavel.artultra.ru/karkas/Optimax2.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 5 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>%priceOptimax2%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeOptimax2-->
+    <!--DesignSchemeStandart-->
+    <div id="DesignSchemeStandart">
+        <div class="col-md-2">
+            <center>
+                <h4>Standart (50х25)</h4><img onclick="SelectPeremyichkaVERTIKALNUE('Standart','http://pavel.artultra.ru/karkas/Standart.png','Высота: до 2.8 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '2029');" src="http://pavel.artultra.ru/karkas/Standart.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 2.8 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>%priceStandart%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeStandart-->
+    <!--DesignSchemeMobyLight-->
+    <div id="DesignSchemeMobyLight">
+        <div class="col-md-2">
+            <center>
+                <h4>M. Light (32х32</h4><img onclick="SelectPeremyichkaVERTIKALNUE('MobyLight','http://pavel.artultra.ru/karkas/MobyLight.png','Высота: до 3 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1669');" src="http://pavel.artultra.ru/karkas/MobyLight.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 3 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>%priceMobyLight%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeMobyLight-->
+    <!--DesignSchemeOptima-->
+    <div id="DesignSchemeOptima">
+        <div class="col-md-2">
+            <center>
+                <h4>Optima (45х45)</h4><img onclick="SelectPeremyichkaVERTIKALNUE('Optima','http://pavel.artultra.ru/karkas/Optima.png','Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм','2135');" src="http://pavel.artultra.ru/karkas/Optima.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 5 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                    <p>Глухие панели: до 16 мм</p>
+                </div>
+                <h4><b>%priceOptima%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeStandart-->
+    <!--DesignSchemeBase-->
+    <div id="DesignSchemeBase">
+        <div class="col-md-2">
+            <center>
+                <h4>Base (36х75)</h4><img onclick="SelectPeremyichkaVERTIKALNUE('Base','http://pavel.artultra.ru/karkas/Base.png','Высота: до 4 м, Cтекло – 5-8 мм, Глухие панели: до 12,5 мм', '2874');" src="http://pavel.artultra.ru/karkas/Base.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 4 м</p>
+                    <p>Cтекло – 5-8 мм</p>
+                    <p>Глухие панели: до 12,5 мм</p>
+                </div>
+                <h4><b>%priceBase%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeBase-->
+    <!--DesignSchemeStatusx1-->
+    <div id="DesignSchemeStatusx1">
+        <div class="col-md-2">
+            <center>
+                <h4>Status x1 (35х93)</h4><img onclick="SelectPeremyichkaVERTIKALNUE('Statusx1','http://pavel.artultra.ru/karkas/Statusx1.png','Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 13 мм', '2702');" src="http://pavel.artultra.ru/karkas/Statusx1.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 6 м</p>
+                    <p>Паз: 13 мм</p>
+                    <p>Cтекло: 5-10 мм</p>
+                    <p>Глухие панели: до 13 мм</p>
+                </div>
+                <h4><b>%priceStatusx1%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeStatusx1-->
+    <!--DesignSchemeStatusx2-->
+    <div id="DesignSchemeStatusx2">
+        <div class="col-md-2">
+            <center>
+                <h4>Status x2 (35х92)</h4><img onclick="SelectPeremyichkaVERTIKALNUE('Statusx2','http://pavel.artultra.ru/karkas/Statusx2.png','Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 12,5 мм', '3446');" src="http://pavel.artultra.ru/karkas/Statusx2.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 6 м</p>
+                    <p>Паз: 13 мм</p>
+                    <p>Cтекло: 5-10 мм</p>
+                    <p>Глухие панели: до 12,5 мм</p>
+                </div>
+                <h4><b>%priceStatusx2%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeStatusx2-->
+    <!--DesignSchemeOptimaLite-->
+    <div id="DesignSchemeOptimaLite">
+        <div class="col-md-2">
+            <center>
+                <h4>Optima Lite</h4><img onclick="SelectPeremyichkaVERTIKALNUE('OptimaLite','http://pavel.artultra.ru/karkas/OptimaLite.png','Высота: до 2,8 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм', 1637);" src="http://pavel.artultra.ru/karkas/OptimaLite.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 2,8 м</p>
+                    <p>Паз: 8,5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                    <p>Глухие панели: до 16 мм</p>
+                </div>
+                <h4><b>%priceOptimaLite%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeOptimaLite-->
+    <!--DesignSchemeStandartStoika-->
+    <div id="DesignSchemeStandartStoika">
+        <div class="col-md-2">
+            <center>
+                <h4>StandartStoika</h4><img onclick="SelectPeremyichkaVERTIKALNUE('StandartStoika','http://pavel.artultra.ru/karkas/StandartStoika.png','Высота: до 3 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 8,5 мм', '1915');" src="http://pavel.artultra.ru/karkas/StandartStoika.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 3 м</p>
+                    <p>Паз: 8,5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                    <p>Глухие панели: до 8,5 мм</p>
+                </div>
+                <h4><b>%priceStandartStoika%</h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeStandartStoika-->
+<!------------------------------------------------------------------------------------------------------------------------------------>
+    <!--DesignSchemeHorizontalPeremochkiTur-->
+    <div id="DesignSchemeHorizontalPeremochkiTur">
+        <div class="col-md-2">
+            <center>
+                <h4>TUR (40х16)</h4>
+                <img style="max-width: 100%;" onclick="SelectHorizontalPeremochki('TUR','http://pavel.artultra.ru/karkas/Tur.png','Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм', '810');" src="http://pavel.artultra.ru/karkas/Tur.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 2.2 м</p>
+                    <p>Паз: 5.5 мм</p>
+                    <p>Cтекло: 4 мм</p>
+                </div>
+                <h4><b>Цена: 810</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiTur-->
+    <!--DesignSchemeHorizontalPeremochkiEuroshop-->
+    <div id="DesignSchemeHorizontalPeremochkiEuroshop">
+        <div class="col-md-2">
+            <center>
+                <h4>Euroshop (20х33)</h4><img onclick="SelectHorizontalPeremochki('Euroshop','http://pavel.artultra.ru/karkas/Euroshop.png','Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');" src="http://pavel.artultra.ru/karkas/Euroshop.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 2.6 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>Цена: 1101</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiEuroshop-->
+    <!--DesignSchemeHorizontalPeremochkiOptimax2-->
+    <div id="DesignSchemeHorizontalPeremochkiOptimax2">
+        <div class="col-md-2">
+            <center>
+                <h4>Optima x2 (45х45)</h4>
+                <img onclick="SelectHorizontalPeremochki('Optimax2','http://pavel.artultra.ru/karkas/Optimax2.png','Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '3110');" src="http://pavel.artultra.ru/karkas/Optimax2.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 5 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>Цена: 3110</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiOptimax2-->
+    <!--DesignSchemeHorizontalPeremochkiStandart-->
+    <div id="DesignSchemeHorizontalPeremochkiStandart">
+        <div class="col-md-2">
+            <center>
+                <h4>Standart (50х25)</h4><img onclick="SelectHorizontalPeremochki('Standart','http://pavel.artultra.ru/karkas/Standart.png','Высота: до 2.8 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '2029');" src="http://pavel.artultra.ru/karkas/Standart.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 2.8 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>Цена: 2029</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiStandart-->
+    <!--DesignSchemeHorizontalPeremochkiMobyLight-->
+    <div id="DesignSchemeHorizontalPeremochkiMobyLight">
+        <div class="col-md-2">
+            <center>
+                <h4>M. Light (32х32</h4><img onclick="SelectHorizontalPeremochki('MobyLight','http://pavel.artultra.ru/karkas/MobyLight.png','Высота: до 3 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1669');" src="http://pavel.artultra.ru/karkas/MobyLight.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 3 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                </div>
+                <h4><b>Цена: 1669</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiMobyLight-->
+    <!--DesignSchemeHorizontalPeremochkiOptima-->
+    <div id="DesignSchemeHorizontalPeremochkiOptima">
+        <div class="col-md-2">
+            <center>
+                <h4>Optima (45х45)</h4><img onclick="SelectHorizontalPeremochki('Optima','http://pavel.artultra.ru/karkas/Optima.png','Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм','2135');" src="http://pavel.artultra.ru/karkas/Optima.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 5 м</p>
+                    <p>Паз: 8.5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                    <p>Глухие панели: до 16 мм</p>
+                </div>
+                <h4><b>Цена: 2135</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiStandart-->
+    <!--DesignSchemeHorizontalPeremochkiBase-->
+    <div id="DesignSchemeHorizontalPeremochkiBase">
+        <div class="col-md-2">
+            <center>
+                <h4>Base (36х75)</h4><img onclick="SelectHorizontalPeremochki('Base','http://pavel.artultra.ru/karkas/Base.png','Высота: до 4 м, Cтекло – 5-8 мм, Глухие панели: до 12,5 мм', '2874');" src="http://pavel.artultra.ru/karkas/Base.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 4 м</p>
+                    <p>Cтекло – 5-8 мм</p>
+                    <p>Глухие панели: до 12,5 мм</p>
+                </div>
+                <h4><b>Цена: 2874</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiBase-->
+    <!--DesignSchemeHorizontalPeremochkiStatusx1-->
+    <div id="DesignSchemeHorizontalPeremochkiStatusx1">
+        <div class="col-md-2">
+            <center>
+                <h4>Status x1 (35х93)</h4><img onclick="SelectHorizontalPeremochki('Statusx1','http://pavel.artultra.ru/karkas/Statusx1.png','Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 13 мм', '2702');" src="http://pavel.artultra.ru/karkas/Statusx1.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 6 м</p>
+                    <p>Паз: 13 мм</p>
+                    <p>Cтекло: 5-10 мм</p>
+                    <p>Глухие панели: до 13 мм</p>
+                </div>
+                <h4><b>Цена: 2702</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiStatusx1-->
+    <!--DesignSchemeHorizontalPeremochkiStatusx2-->
+    <div id="DesignSchemeHorizontalPeremochkiStatusx2">
+        <div class="col-md-2">
+            <center>
+                <h4>Status x2 (35х92)</h4><img onclick="SelectHorizontalPeremochki('Statusx2','http://pavel.artultra.ru/karkas/Statusx2.png','Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 12,5 мм', '3446');" src="http://pavel.artultra.ru/karkas/Statusx2.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 6 м</p>
+                    <p>Паз: 13 мм</p>
+                    <p>Cтекло: 5-10 мм</p>
+                    <p>Глухие панели: до 12,5 мм</p>
+                </div>
+                <h4><b>Цена: 3446</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiStatusx2-->
+    <!--DesignSchemeHorizontalPeremochkiOptimaLite-->
+    <div id="DesignSchemeHorizontalPeremochkiOptimaLite">
+        <div class="col-md-2">
+            <center>
+                <h4>Optima Lite</h4><img onclick="SelectHorizontalPeremochki('OptimaLite','http://pavel.artultra.ru/karkas/OptimaLite.png','Высота: до 2,8 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм', 1637);" src="http://pavel.artultra.ru/karkas/OptimaLite.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 2,8 м</p>
+                    <p>Паз: 8,5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                    <p>Глухие панели: до 16 мм</p>
+                </div>
+                <h4><b>Цена: 1637</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiOptimaLite-->
+    <!--DesignSchemeHorizontalPeremochkiStandartStoika-->
+    <div id="DesignSchemeHorizontalPeremochkiStandartStoika">
+        <div class="col-md-2">
+            <center>
+                <h4>StandartStoika</h4><img onclick="SelectHorizontalPeremochki('StandartStoika','http://pavel.artultra.ru/karkas/StandartStoika.png','Высота: до 3 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 8,5 мм', '1915');" src="http://pavel.artultra.ru/karkas/StandartStoika.png" data-dismiss="modal">
+                <div style="height: 120px;">
+                    <p>Высота: до 3 м</p>
+                    <p>Паз: 8,5 мм</p>
+                    <p>Cтекло: 4,5 мм</p>
+                    <p>Глухие панели: до 8,5 мм</p>
+                </div>
+                <h4><b>Цена: 1915</b></h4>
+            </center>
+        </div>
+    </div>
+    <!--DesignSchemeHorizontalPeremochkiStandartStoika-->
+<!------------------------------------------------------------------------------------------------------------------------------------>
+    <!--RAI-->
+    <div class="rai">
+        <div class="col-md-12">
+            <center><h3>Стандартные цвета</h3>
+                <div class="col-md-2" style="width: 20%;">
+                    <h4>RAL 9003</h4><img onclick="SelectDekorEnd('color','RAL9003');" src="img/dekorRal/RAL9003.png" data-dismiss="modal" style="max-width: 100%;">
+                </div>
+                <div class="col-md-2" style="width: 20%;">
+                    <h4>RAL 9006</h4><img onclick="SelectDekorEnd('color','RAL9006');" src="img/dekorRal/RAL9006.png" data-dismiss="modal" style="max-width: 100%;">
+                </div>
+                <div class="col-md-2" style="width: 20%;">
+                    <h4>RAL 9016</h4><img onclick="SelectDekorEnd('color','RAL9016');" src="img/dekorRal/RAL9016.png" data-dismiss="modal" style="max-width: 100%;">
+                </div>
+            </center>
+        </div>
+        <center><h3>Другие цвета</h3></center>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1000</h4><img onclick="SelectDekorEnd('color','RAL1000');" src="img/dekorRal/RAL1000.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1001</h4><img onclick="SelectDekorEnd('color','RAL1001');" src="img/dekorRal/RAL1001.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1002</h4><img onclick="SelectDekorEnd('color','RAL1002');" src="img/dekorRal/RAL1002.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1003</h4><img onclick="SelectDekorEnd('color','RAL1003');" src="img/dekorRal/RAL1003.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1004</h4><img onclick="SelectDekorEnd('color','RAL1004');" src="img/dekorRal/RAL1004.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1005</h4><img onclick="SelectDekorEnd('color','RAL1005');" src="img/dekorRal/RAL1005.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1006</h4><img onclick="SelectDekorEnd('color','RAL1006');" src="img/dekorRal/RAL1006.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1007</h4><img onclick="SelectDekorEnd('color','RAL1007');" src="img/dekorRal/RAL1007.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1011</h4><img onclick="SelectDekorEnd('color','RAL1011');" src="img/dekorRal/RAL1011.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1012</h4><img onclick="SelectDekorEnd('color','RAL1012');" src="img/dekorRal/RAL1012.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1013</h4><img onclick="SelectDekorEnd('color','RAL1013');" src="img/dekorRal/RAL1013.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1014</h4><img onclick="SelectDekorEnd('color','RAL1014');" src="img/dekorRal/RAL1014.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1015</h4><img onclick="SelectDekorEnd('color','RAL1015');" src="img/dekorRal/RAL1015.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1016</h4><img onclick="SelectDekorEnd('color','RAL1016');" src="img/dekorRal/RAL1016.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1017</h4><img onclick="SelectDekorEnd('color','RAL1017');" src="img/dekorRal/RAL1017.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1018</h4><img onclick="SelectDekorEnd('color','RAL1018');" src="img/dekorRal/RAL1018.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1019</h4><img onclick="SelectDekorEnd('color','RAL1019');" src="img/dekorRal/RAL1019.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1020</h4><img onclick="SelectDekorEnd('color','RAL1020');" src="img/dekorRal/RAL1020.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1021</h4><img onclick="SelectDekorEnd('color','RAL1021');" src="img/dekorRal/RAL1021.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1023</h4><img onclick="SelectDekorEnd('color','RAL1023');" src="img/dekorRal/RAL1023.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1024</h4><img onclick="SelectDekorEnd('color','RAL1024');" src="img/dekorRal/RAL1024.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1026</h4><img onclick="SelectDekorEnd('color','RAL1026');" src="img/dekorRal/RAL1026.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1027</h4><img onclick="SelectDekorEnd('color','RAL1027');" src="img/dekorRal/RAL1027.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1028</h4><img onclick="SelectDekorEnd('color','RAL1028');" src="img/dekorRal/RAL1028.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1032</h4><img onclick="SelectDekorEnd('color','RAL1032');" src="img/dekorRal/RAL1032.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1033</h4><img onclick="SelectDekorEnd('color','RAL1033');" src="img/dekorRal/RAL1033.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1034</h4><img onclick="SelectDekorEnd('color','RAL1034');" src="img/dekorRal/RAL1034.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1035</h4><img onclick="SelectDekorEnd('color','RAL1035');" src="img/dekorRal/RAL1035.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1036</h4><img onclick="SelectDekorEnd('color','RAL1036');" src="img/dekorRal/RAL1036.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 1037</h4><img onclick="SelectDekorEnd('color','RAL1037');" src="img/dekorRal/RAL1037.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2000</h4><img onclick="SelectDekorEnd('color','RAL2000');" src="img/dekorRal/RAL2000.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2001</h4><img onclick="SelectDekorEnd('color','RAL2001');" src="img/dekorRal/RAL2001.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2002</h4><img onclick="SelectDekorEnd('color','RAL2002');" src="img/dekorRal/RAL2002.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2003</h4><img onclick="SelectDekorEnd('color','RAL2003');" src="img/dekorRal/RAL2003.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2004</h4><img onclick="SelectDekorEnd('color','RAL2004');" src="img/dekorRal/RAL2004.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2005</h4><img onclick="SelectDekorEnd('color','RAL2005');" src="img/dekorRal/RAL2005.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2007</h4><img onclick="SelectDekorEnd('color','RAL2007');" src="img/dekorRal/RAL2007.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2008</h4><img onclick="SelectDekorEnd('color','RAL2008');" src="img/dekorRal/RAL2008.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2009</h4><img onclick="SelectDekorEnd('color','RAL2009');" src="img/dekorRal/RAL2009.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2010</h4><img onclick="SelectDekorEnd('color','RAL2010');" src="img/dekorRal/RAL2010.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2011</h4><img onclick="SelectDekorEnd('color','RAL2011');" src="img/dekorRal/RAL2011.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2012</h4><img onclick="SelectDekorEnd('color','RAL2012');" src="img/dekorRal/RAL2012.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 2013</h4><img onclick="SelectDekorEnd('color','RAL2013');" src="img/dekorRal/RAL2013.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3000</h4><img onclick="SelectDekorEnd('color','RAL3000');" src="img/dekorRal/RAL3000.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3001</h4><img onclick="SelectDekorEnd('color','RAL3001');" src="img/dekorRal/RAL3001.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3002</h4><img onclick="SelectDekorEnd('color','RAL3002');" src="img/dekorRal/RAL3002.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3003</h4><img onclick="SelectDekorEnd('color','RAL3003');" src="img/dekorRal/RAL3003.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3004</h4><img onclick="SelectDekorEnd('color','RAL3004');" src="img/dekorRal/RAL3004.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3005</h4><img onclick="SelectDekorEnd('color','RAL3005');" src="img/dekorRal/RAL3005.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3007</h4><img onclick="SelectDekorEnd('color','RAL3007');" src="img/dekorRal/RAL3007.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3009</h4><img onclick="SelectDekorEnd('color','RAL3009');" src="img/dekorRal/RAL3009.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3011</h4><img onclick="SelectDekorEnd('color','RAL3011');" src="img/dekorRal/RAL3011.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3012</h4><img onclick="SelectDekorEnd('color','RAL3012');" src="img/dekorRal/RAL3012.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3013</h4><img onclick="SelectDekorEnd('color','RAL3013');" src="img/dekorRal/RAL3013.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3014</h4><img onclick="SelectDekorEnd('color','RAL3014');" src="img/dekorRal/RAL3014.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3015</h4><img onclick="SelectDekorEnd('color','RAL3015');" src="img/dekorRal/RAL3015.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL3016</h4><img onclick="SelectDekorEnd('color','RAL3016');" src="img/dekorRal/RAL3016.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3017</h4><img onclick="SelectDekorEnd('color','RAL3017');" src="img/dekorRal/RAL3017.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3018</h4><img onclick="SelectDekorEnd('color','RAL3018');" src="img/dekorRal/RAL3018.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3020</h4><img onclick="SelectDekorEnd('color','RAL3020');" src="img/dekorRal/RAL3020.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3022</h4><img onclick="SelectDekorEnd('color','RAL3022');" src="img/dekorRal/RAL3022.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3024</h4><img onclick="SelectDekorEnd('color','RAL3024');" src="img/dekorRal/RAL3024.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3026</h4><img onclick="SelectDekorEnd('color','RAL3026');" src="img/dekorRal/RAL3026.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3027</h4><img onclick="SelectDekorEnd('color','RAL3027');" src="img/dekorRal/RAL3027.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3028</h4><img onclick="SelectDekorEnd('color','RAL3028');" src="img/dekorRal/RAL3028.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3031</h4><img onclick="SelectDekorEnd('color','RAL3031');" src="img/dekorRal/RAL3031.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3032</h4><img onclick="SelectDekorEnd('color','RAL3032');" src="img/dekorRal/RAL3032.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 3033</h4><img onclick="SelectDekorEnd('color','RAL3033');" src="img/dekorRal/RAL3033.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4001</h4><img onclick="SelectDekorEnd('color','RAL4001');" src="img/dekorRal/RAL4001.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4002</h4><img onclick="SelectDekorEnd('color','RAL4002');" src="img/dekorRal/RAL4002.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4003</h4><img onclick="SelectDekorEnd('color','RAL4003');" src="img/dekorRal/RAL4003.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4004</h4><img onclick="SelectDekorEnd('color','RAL4004');" src="img/dekorRal/RAL4004.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4005</h4><img onclick="SelectDekorEnd('color','RAL4005');" src="img/dekorRal/RAL4005.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4006</h4><img onclick="SelectDekorEnd('color','RAL4006');" src="img/dekorRal/RAL4006.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4007</h4><img onclick="SelectDekorEnd('color','RAL4007');" src="img/dekorRal/RAL4007.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4008</h4><img onclick="SelectDekorEnd('color','RAL4008');" src="img/dekorRal/RAL4008.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4009</h4><img onclick="SelectDekorEnd('color','RAL4009');" src="img/dekorRal/RAL4009.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4010</h4><img onclick="SelectDekorEnd('color','RAL4010');" src="img/dekorRal/RAL4010.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4011</h4><img onclick="SelectDekorEnd('color','RAL4011');" src="img/dekorRal/RAL4011.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 4012</h4><img onclick="SelectDekorEnd('color','RAL4012');" src="img/dekorRal/RAL4012.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5000</h4><img onclick="SelectDekorEnd('color','RAL5000');" src="img/dekorRal/RAL5000.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5001</h4><img onclick="SelectDekorEnd('color','RAL5001');" src="img/dekorRal/RAL5001.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5002</h4><img onclick="SelectDekorEnd('color','RAL5002');" src="img/dekorRal/RAL5002.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5003</h4><img onclick="SelectDekorEnd('color','RAL5003');" src="img/dekorRal/RAL5003.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5004</h4><img onclick="SelectDekorEnd('color','RAL5004');" src="img/dekorRal/RAL5004.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5005</h4><img onclick="SelectDekorEnd('color','RAL5005');" src="img/dekorRal/RAL5005.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5007</h4><img onclick="SelectDekorEnd('color','RAL5007');" src="img/dekorRal/RAL5007.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5008</h4><img onclick="SelectDekorEnd('color','RAL5008');" src="img/dekorRal/RAL5008.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5009</h4><img onclick="SelectDekorEnd('color','RAL5009');" src="img/dekorRal/RAL5009.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5010</h4><img onclick="SelectDekorEnd('color','RAL5010');" src="img/dekorRal/RAL5010.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5011</h4><img onclick="SelectDekorEnd('color','RAL5011');" src="img/dekorRal/RAL5011.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5012</h4><img onclick="SelectDekorEnd('color','RAL5012');" src="img/dekorRal/RAL5012.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5013</h4><img onclick="SelectDekorEnd('color','RAL5013');" src="img/dekorRal/RAL5013.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5014</h4><img onclick="SelectDekorEnd('color','RAL5014');" src="img/dekorRal/RAL5014.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5015</h4><img onclick="SelectDekorEnd('color','RAL5015');" src="img/dekorRal/RAL5015.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5017</h4><img onclick="SelectDekorEnd('color','RAL5017');" src="img/dekorRal/RAL5017.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5018</h4><img onclick="SelectDekorEnd('color','RAL5018');" src="img/dekorRal/RAL5018.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5019</h4><img onclick="SelectDekorEnd('color','RAL5019');" src="img/dekorRal/RAL5019.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5020</h4><img onclick="SelectDekorEnd('color','RAL5020');" src="img/dekorRal/RAL5020.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5021</h4><img onclick="SelectDekorEnd('color','RAL5021');" src="img/dekorRal/RAL5021.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5022</h4><img onclick="SelectDekorEnd('color','RAL5022');" src="img/dekorRal/RAL5022.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5023</h4><img onclick="SelectDekorEnd('color','RAL5023');" src="img/dekorRal/RAL5023.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5024</h4><img onclick="SelectDekorEnd('color','RAL5024');" src="img/dekorRal/RAL5024.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5025</h4><img onclick="SelectDekorEnd('color','RAL5025');" src="img/dekorRal/RAL5025.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 5026</h4><img onclick="SelectDekorEnd('color','RAL5026');" src="img/dekorRal/RAL5026.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6000</h4><img onclick="SelectDekorEnd('color','RAL6000');" src="img/dekorRal/RAL6000.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6001</h4><img onclick="SelectDekorEnd('color','RAL6001');" src="img/dekorRal/RAL6001.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6002</h4><img onclick="SelectDekorEnd('color','RAL6002');" src="img/dekorRal/RAL6002.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6003</h4><img onclick="SelectDekorEnd('color','RAL6003');" src="img/dekorRal/RAL6003.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6004</h4><img onclick="SelectDekorEnd('color','RAL6004');" src="img/dekorRal/RAL6004.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6005</h4><img onclick="SelectDekorEnd('color','RAL6005');" src="img/dekorRal/RAL6005.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6006</h4><img onclick="SelectDekorEnd('color','RAL6006');" src="img/dekorRal/RAL6006.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6007</h4><img onclick="SelectDekorEnd('color','RAL6007');" src="img/dekorRal/RAL6007.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6008</h4><img onclick="SelectDekorEnd('color','RAL6008');" src="img/dekorRal/RAL6008.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6009</h4><img onclick="SelectDekorEnd('color','RAL6009');" src="img/dekorRal/RAL6009.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6010</h4><img onclick="SelectDekorEnd('color','RAL6010');" src="img/dekorRal/RAL6010.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6011</h4><img onclick="SelectDekorEnd('color','RAL6011');" src="img/dekorRal/RAL6011.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6012</h4><img onclick="SelectDekorEnd('color','RAL6012');" src="img/dekorRal/RAL6012.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6013</h4><img onclick="SelectDekorEnd('color','RAL6013');" src="img/dekorRal/RAL6013.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6014</h4><img onclick="SelectDekorEnd('color','RAL6014');" src="img/dekorRal/RAL6014.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6015</h4><img onclick="SelectDekorEnd('color','RAL6015');" src="img/dekorRal/RAL6015.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6016</h4><img onclick="SelectDekorEnd('color','RAL6016');" src="img/dekorRal/RAL6016.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6017</h4><img onclick="SelectDekorEnd('color','RAL6017');" src="img/dekorRal/RAL6017.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6018</h4><img onclick="SelectDekorEnd('color','RAL6018');" src="img/dekorRal/RAL6018.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6019</h4><img onclick="SelectDekorEnd('color','RAL6019');" src="img/dekorRal/RAL6019.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6020</h4><img onclick="SelectDekorEnd('color','RAL6020');" src="img/dekorRal/RAL6020.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6021</h4><img onclick="SelectDekorEnd('color','RAL6021');" src="img/dekorRal/RAL6021.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6022</h4><img onclick="SelectDekorEnd('color','RAL6022');" src="img/dekorRal/RAL6022.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6024</h4><img onclick="SelectDekorEnd('color','RAL6024');" src="img/dekorRal/RAL6024.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6025</h4><img onclick="SelectDekorEnd('color','RAL6025');" src="img/dekorRal/RAL6025.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6026</h4><img onclick="SelectDekorEnd('color','RAL6026');" src="img/dekorRal/RAL6026.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6027</h4><img onclick="SelectDekorEnd('color','RAL6027');" src="img/dekorRal/RAL6027.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6028</h4><img onclick="SelectDekorEnd('color','RAL6028');" src="img/dekorRal/RAL6028.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6029</h4><img onclick="SelectDekorEnd('color','RAL6029');" src="img/dekorRal/RAL6029.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6032</h4><img onclick="SelectDekorEnd('color','RAL6032');" src="img/dekorRal/RAL6032.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6033</h4><img onclick="SelectDekorEnd('color','RAL6033');" src="img/dekorRal/RAL6033.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6034</h4><img onclick="SelectDekorEnd('color','RAL6034');" src="img/dekorRal/RAL6034.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6035</h4><img onclick="SelectDekorEnd('color','RAL6035');" src="img/dekorRal/RAL6035.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6036</h4><img onclick="SelectDekorEnd('color','RAL6036');" src="img/dekorRal/RAL6036.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6037</h4><img onclick="SelectDekorEnd('color','RAL6037');" src="img/dekorRal/RAL6037.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 6038</h4><img onclick="SelectDekorEnd('color','RAL6038');" src="img/dekorRal/RAL6038.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7000</h4><img onclick="SelectDekorEnd('color','RAL7000');" src="img/dekorRal/RAL7000.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7001</h4><img onclick="SelectDekorEnd('color','RAL7001');" src="img/dekorRal/RAL7001.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7002</h4><img onclick="SelectDekorEnd('color','RAL7002');" src="img/dekorRal/RAL7002.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7003</h4><img onclick="SelectDekorEnd('color','RAL7003');" src="img/dekorRal/RAL7003.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7004</h4><img onclick="SelectDekorEnd('color','RAL7004');" src="img/dekorRal/RAL7004.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7005</h4><img onclick="SelectDekorEnd('color','RAL7005');" src="img/dekorRal/RAL7005.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7006</h4><img onclick="SelectDekorEnd('color','RAL7006');" src="img/dekorRal/RAL7006.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7008</h4><img onclick="SelectDekorEnd('color','RAL7008');" src="img/dekorRal/RAL7008.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7009</h4><img onclick="SelectDekorEnd('color','RAL7009');" src="img/dekorRal/RAL7009.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7010</h4><img onclick="SelectDekorEnd('color','RAL7010');" src="img/dekorRal/RAL7010.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7011</h4><img onclick="SelectDekorEnd('color','RAL7011');" src="img/dekorRal/RAL7011.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7012</h4><img onclick="SelectDekorEnd('color','RAL7012');" src="img/dekorRal/RAL7012.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7013</h4><img onclick="SelectDekorEnd('color','RAL7013');" src="img/dekorRal/RAL7013.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7015</h4><img onclick="SelectDekorEnd('color','RAL7015');" src="img/dekorRal/RAL7015.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7016</h4><img onclick="SelectDekorEnd('color','RAL7016');" src="img/dekorRal/RAL7016.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7021</h4><img onclick="SelectDekorEnd('color','RAL7021');" src="img/dekorRal/RAL7021.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7022</h4><img onclick="SelectDekorEnd('color','RAL7022');" src="img/dekorRal/RAL7022.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7023</h4><img onclick="SelectDekorEnd('color','RAL7023');" src="img/dekorRal/RAL7023.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7024</h4><img onclick="SelectDekorEnd('color','RAL7024');" src="img/dekorRal/RAL7024.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7026</h4><img onclick="SelectDekorEnd('color','RAL7026');" src="img/dekorRal/RAL7026.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7030</h4><img onclick="SelectDekorEnd('color','RAL7030');" src="img/dekorRal/RAL7030.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7031</h4><img onclick="SelectDekorEnd('color','RAL7031');" src="img/dekorRal/RAL7031.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7032</h4><img onclick="SelectDekorEnd('color','RAL7032');" src="img/dekorRal/RAL7032.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7033</h4><img onclick="SelectDekorEnd('color','RAL7033');" src="img/dekorRal/RAL7033.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7034</h4><img onclick="SelectDekorEnd('color','RAL7034');" src="img/dekorRal/RAL7034.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7035</h4><img onclick="SelectDekorEnd('color','RAL7035');" src="img/dekorRal/RAL7035.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7036</h4><img onclick="SelectDekorEnd('color','RAL7036');" src="img/dekorRal/RAL7036.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7037</h4><img onclick="SelectDekorEnd('color','RAL7037');" src="img/dekorRal/RAL7037.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7038</h4><img onclick="SelectDekorEnd('color','RAL7038');" src="img/dekorRal/RAL7038.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7039</h4><img onclick="SelectDekorEnd('color','RAL7039');" src="img/dekorRal/RAL7039.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7040</h4><img onclick="SelectDekorEnd('color','RAL7040');" src="img/dekorRal/RAL7040.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7042</h4><img onclick="SelectDekorEnd('color','RAL4042');" src="img/dekorRal/RAL7042.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7043</h4><img onclick="SelectDekorEnd('color','RAL7043');" src="img/dekorRal/RAL7043.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7044</h4><img onclick="SelectDekorEnd('color','RAL7044');" src="img/dekorRal/RAL7044.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7045</h4><img onclick="SelectDekorEnd('color','RAL7045');" src="img/dekorRal/RAL7045.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7046</h4><img onclick="SelectDekorEnd('color','RAL7046');" src="img/dekorRal/RAL7046.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7047</h4><img onclick="SelectDekorEnd('color','RAL7047');" src="img/dekorRal/RAL7047.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 7048</h4><img onclick="SelectDekorEnd('color','RAL7048');" src="img/dekorRal/RAL7048.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8000</h4><img onclick="SelectDekorEnd('color','RAL8000');" src="img/dekorRal/RAL8000.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8001</h4><img onclick="SelectDekorEnd('color','RAL8001');" src="img/dekorRal/RAL8001.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8002</h4><img onclick="SelectDekorEnd('color','RAL8002');" src="img/dekorRal/RAL8002.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8003</h4><img onclick="SelectDekorEnd('color','RAL8003');" src="img/dekorRal/RAL8003.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8004</h4><img onclick="SelectDekorEnd('color','RAL8004');" src="img/dekorRal/RAL8004.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8007</h4><img onclick="SelectDekorEnd('color','RAL8007');" src="img/dekorRal/RAL8007.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8008</h4><img onclick="SelectDekorEnd('color','RAL8008');" src="img/dekorRal/RAL8008.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8011</h4><img onclick="SelectDekorEnd('color','RAL8011');" src="img/dekorRal/RAL8011.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8012</h4><img onclick="SelectDekorEnd('color','RAL8012');" src="img/dekorRal/RAL8012.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8014</h4><img onclick="SelectDekorEnd('color','RAL8014');" src="img/dekorRal/RAL8014.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8015</h4><img onclick="SelectDekorEnd('color','RAL8015');" src="img/dekorRal/RAL8015.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8016</h4><img onclick="SelectDekorEnd('color','RAL8016');" src="img/dekorRal/RAL8016.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8017</h4><img onclick="SelectDekorEnd('color','RAL8017');" src="img/dekorRal/RAL8017.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8019</h4><img onclick="SelectDekorEnd('color','RAL8019');" src="img/dekorRal/RAL8019.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8022</h4><img onclick="SelectDekorEnd('color','RAL8022');" src="img/dekorRal/RAL8022.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8023</h4><img onclick="SelectDekorEnd('color','RAL8023');" src="img/dekorRal/RAL8023.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8024</h4><img onclick="SelectDekorEnd('color','RAL8024');" src="img/dekorRal/RAL8024.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8025</h4><img onclick="SelectDekorEnd('color','RAL8025');" src="img/dekorRal/RAL8025.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8028</h4><img onclick="SelectDekorEnd('color','RAL8028');" src="img/dekorRal/RAL8028.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 8029</h4><img onclick="SelectDekorEnd('color','RAL8029');" src="img/dekorRal/RAL8029.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9001</h4><img onclick="SelectDekorEnd('color','RAL9001');" src="img/dekorRal/RAL9001.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9002</h4><img onclick="SelectDekorEnd('color','RAL9002');" src="img/dekorRal/RAL9002.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9004</h4><img onclick="SelectDekorEnd('color','RAL9004');" src="img/dekorRal/RAL9004.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9005</h4><img onclick="SelectDekorEnd('color','RAL9005');" src="img/dekorRal/RAL9005.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9007</h4><img onclick="SelectDekorEnd('color','RAL9007');" src="img/dekorRal/RAL9007.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9010</h4><img onclick="SelectDekorEnd('color','RAL9010');" src="img/dekorRal/RAL9010.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9011</h4><img onclick="SelectDekorEnd('color','RAL9011');" src="img/dekorRal/RAL9011.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9017</h4><img onclick="SelectDekorEnd('color','RAL9017');" src="img/dekorRal/RAL9017.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9018</h4><img onclick="SelectDekorEnd('color','RAL9018');" src="img/dekorRal/RAL9018.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9022</h4><img onclick="SelectDekorEnd('color','RAL9022');" src="img/dekorRal/RAL9022.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>RAL 9023</h4><img onclick="SelectDekorEnd('color','RAL9023');" src="img/dekorRal/RAL9023.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+
+    </div>
+    <!--DECOR-->
+    <div class="decor">
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>1</h4>
+                    <img onclick="SelectDekorEnd('image','1');" src="img/dekor/1.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>2</h4>
+                    <img onclick="SelectDekorEnd('image','2');" src="img/dekor/2.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>3</h4>
+                    <img onclick="SelectDekorEnd('image','3');" src="img/dekor/3.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>4</h4>
+                    <img onclick="SelectDekorEnd('image','4');" src="img/dekor/4.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>5</h4>
+                    <img onclick="SelectDekorEnd('image','5');" src="img/dekor/5.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>6</h4>
+                    <img onclick="SelectDekorEnd('image','6');" src="img/dekor/6.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>7</h4>
+                    <img onclick="SelectDekorEnd('image','7');" src="img/dekor/7.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>8</h4>
+                    <img onclick="SelectDekorEnd('image','8');" src="img/dekor/8.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>9</h4>
+                    <img onclick="SelectDekorEnd('image','9');" src="img/dekor/9.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>10</h4>
+                    <img onclick="SelectDekorEnd('image','10');" src="img/dekor/10.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>11</h4>
+                    <img onclick="SelectDekorEnd('image','11');" src="img/dekor/11.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>12</h4>
+                    <img onclick="SelectDekorEnd('image','12');" src="img/dekor/12.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>13</h4>
+                    <img onclick="SelectDekorEnd('image','13');" src="img/dekor/13.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>14</h4>
+                    <img onclick="SelectDekorEnd('image','14');" src="img/dekor/14.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>15</h4>
+                    <img onclick="SelectDekorEnd('image','15');" src="img/dekor/15.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>16</h4>
+                    <img onclick="SelectDekorEnd('image','16');" src="img/dekor/16.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>17</h4>
+                    <img onclick="SelectDekorEnd('image','17');" src="img/dekor/17.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>18</h4>
+                    <img onclick="SelectDekorEnd('image','18');" src="img/dekor/18.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>19</h4>
+                    <img onclick="SelectDekorEnd('image','19');" src="img/dekor/19.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>20</h4>
+                    <img onclick="SelectDekorEnd('image','20');" src="img/dekor/20.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>21</h4>
+                    <img onclick="SelectDekorEnd('image','21');" src="img/dekor/21.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>22</h4>
+                    <img onclick="SelectDekorEnd('image','22');" src="img/dekor/22.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>23</h4>
+                    <img onclick="SelectDekorEnd('image','23');" src="img/dekor/23.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>24</h4>
+                    <img onclick="SelectDekorEnd('image','24');" src="img/dekor/24.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>25</h4>
+                    <img onclick="SelectDekorEnd('image','25');" src="img/dekor/25.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>26</h4>
+                    <img onclick="SelectDekorEnd('image','26');" src="img/dekor/26.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>27</h4>
+                    <img onclick="SelectDekorEnd('image','27');" src="img/dekor/27.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>28</h4>
+                    <img onclick="SelectDekorEnd('image','28');" src="img/dekor/28.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>29</h4>
+                    <img onclick="SelectDekorEnd('image','29');" src="img/dekor/29.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>33</h4>
+                    <img onclick="SelectDekorEnd('image','33');" src="img/dekor/33.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>43</h4>
+                    <img onclick="SelectDekorEnd('image','43');" src="img/dekor/43.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>44</h4>
+                    <img onclick="SelectDekorEnd('image','44');" src="img/dekor/44.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>45</h4>
+                    <img onclick="SelectDekorEnd('image','45');" src="img/dekor/45.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>46</h4>
+                    <img onclick="SelectDekorEnd('image','46');" src="img/dekor/46.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>47</h4>
+                    <img onclick="SelectDekorEnd('image','47');" src="img/dekor/47.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>48</h4>
+                    <img onclick="SelectDekorEnd('image','48');" src="img/dekor/48.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>49</h4>
+                    <img onclick="SelectDekorEnd('image','49');" src="img/dekor/49.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>50</h4>
+                    <img onclick="SelectDekorEnd('image','50');" src="img/dekor/50.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>51</h4>
+                    <img onclick="SelectDekorEnd('image','51');" src="img/dekor/51.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>52</h4>
+                    <img onclick="SelectDekorEnd('image','52');" src="img/dekor/52.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>53</h4>
+                    <img onclick="SelectDekorEnd('image','53');" src="img/dekor/53.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>54</h4>
+                    <img onclick="SelectDekorEnd('image','54');" src="img/dekor/54.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>55</h4>
+                    <img onclick="SelectDekorEnd('image','55');" src="img/dekor/55.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>56</h4>
+                    <img onclick="SelectDekorEnd('image','56');" src="img/dekor/56.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>57</h4>
+                    <img onclick="SelectDekorEnd('image','57');" src="img/dekor/57.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>58</h4>
+                    <img onclick="SelectDekorEnd('image','58');" src="img/dekor/58.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>59</h4>
+                    <img onclick="SelectDekorEnd('image','59');" src="img/dekor/59.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>60</h4>
+                    <img onclick="SelectDekorEnd('image','60');" src="img/dekor/60.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>61</h4>
+                    <img onclick="SelectDekorEnd('image','61');" src="img/dekor/61.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>62</h4>
+                    <img onclick="SelectDekorEnd('image','62');" src="img/dekor/62.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>63</h4>
+                    <img onclick="SelectDekorEnd('image','63');" src="img/dekor/63.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>64</h4>
+                    <img onclick="SelectDekorEnd('image','64');" src="img/dekor/64.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>65</h4>
+                    <img onclick="SelectDekorEnd('image','65');" src="img/dekor/65.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>66</h4>
+                    <img onclick="SelectDekorEnd('image','66');" src="img/dekor/66.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>67</h4>
+                    <img onclick="SelectDekorEnd('image','67');" src="img/dekor/67.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>68</h4>
+                    <img onclick="SelectDekorEnd('image','68');" src="img/dekor/68.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>69</h4>
+                    <img onclick="SelectDekorEnd('image','69');" src="img/dekor/69.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>70</h4>
+                    <img onclick="SelectDekorEnd('image','70');" src="img/dekor/70.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>71</h4>
+                    <img onclick="SelectDekorEnd('image','71');" src="img/dekor/71.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>77</h4>
+                    <img onclick="SelectDekorEnd('image','77');" src="img/dekor/77.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>88</h4>
+                    <img onclick="SelectDekorEnd('image','88');" src="img/dekor/88.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>98</h4>
+                    <img onclick="SelectDekorEnd('image','98');" src="img/dekor/98.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>99</h4>
+                    <img onclick="SelectDekorEnd('image','99');" src="img/dekor/99.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>100</h4>
+                    <img onclick="SelectDekorEnd('image','100');" src="img/dekor/100.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>111</h4>
+                    <img onclick="SelectDekorEnd('image','111');" src="img/dekor/111.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>112</h4>
+                    <img onclick="SelectDekorEnd('image','112');" src="img/dekor/112.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>121</h4>
+                    <img onclick="SelectDekorEnd('image','121');" src="img/dekor/121.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>125</h4>
+                    <img onclick="SelectDekorEnd('image','125');" src="img/dekor/125.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>130</h4>
+                    <img onclick="SelectDekorEnd('image','130');" src="img/dekor/130.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>131</h4>
+                    <img onclick="SelectDekorEnd('image','131');" src="img/dekor/131.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>132</h4>
+                    <img onclick="SelectDekorEnd('image','132');" src="img/dekor/132.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>133</h4>
+                    <img onclick="SelectDekorEnd('image','133');" src="img/dekor/133.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>134</h4>
+                    <img onclick="SelectDekorEnd('image','134');" src="img/dekor/134.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>135</h4>
+                    <img onclick="SelectDekorEnd('image','135');" src="img/dekor/135.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>136</h4>
+                    <img onclick="SelectDekorEnd('image','136');" src="img/dekor/136.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>137</h4>
+                    <img onclick="SelectDekorEnd('image','137');" src="img/dekor/137.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>138</h4>
+                    <img onclick="SelectDekorEnd('image','138');" src="img/dekor/138.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+            <div class="col-md-2" style="width: 20%;">
+                <center>
+                    <h4>139</h4>
+                    <img onclick="SelectDekorEnd('image','139');" src="img/dekor/139.png" data-dismiss="modal" style="max-width: 100%;">
+                </center>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------------------------------------------------------------------------------------------>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="DIAGRAMMA-DIALOG-WINDOW" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width: 80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Выберете из списка</h4>
+            </div>
+            <div class="modal-body row">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
