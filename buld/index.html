@@ -72,7 +72,7 @@
               <option value="0">Стационарная</option>
               <option value="1">Раздвижная перегородка</option>
               <option value="2">Складная перегородка</option>
-              <option value="3">Складная перегородка с половинчатой створкой</option>
+              <!--option(value='3') Складная перегородка с половинчатой створкой-->
               <option value="4">Мобильная перегородка</option>
             </select>
           </div>
@@ -138,8 +138,16 @@
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
           <div class="checkbox POLOVINCHATAYA">
             <label>
-              <input type="checkbox"><span class="checkbox-material"><span class="check"></span></span>половинчатая
+              <input type="checkbox" id="POLOVINCHATAYA_CHECKBOX"><span class="checkbox-material"><span class="check"></span></span>Половинчатая створка
             </label>
+                <label for="POLOVINCHATAYA_KOL" class="control-label">Кол.
+                  <input id="POLOVINCHATAYA_KOL" maxlength="1" type="text" class="form-control">
+                  <!--.input-group-->
+                  <!--    span.input-group-btn-->
+                  <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
+                  <!--            i.material-icons add-->
+                  <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
+                  <!--            i.material-icons remove--></label>
           </div>
               <label for="HIGHT_SETS_ID" class="control-label">Высота
                 <input id="HIGHT_SETS_ID" maxlength="4" type="text" class="form-control">

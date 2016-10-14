@@ -216,6 +216,63 @@ function PAINTING() {
 }
 //  ============================= //
 
+// Отрисовка половинчатых створок //
+$( '#POLOVINCHATAYA_KOL' ).bind('input', function () {
+    if( $( '#POLOVINCHATAYA_CHECKBOX' ).prop( 'checked' ) == false ){
+        $.snackbar({ content: "Для использования половинчатой створки поставьте галочку!!!" });
+        $( '#POLOVINCHATAYA_KOL' ).val( '' );
+    } else {
+        var p = $( '#TOTAL_PAINTING_ID' ).val();
+        var mp = $( '#MOVABLE_PAINTING_ID' ).val();
+        var h = $( '#HIGHT_SETS_ID' ).val();
+        var w = $( '#WIDTH_SETS_ID' ).val();
+        if ( p == '' || mp == '' || h == '' || w == '' ) {
+            $.snackbar({ content: "Для использования половинчатой створки заполните поля: Всего полотен, Подвижные полотна, Высота, Ширина!!!!" });
+            $( '#POLOVINCHATAYA_KOL' ).val( '' );
+        } else {
+            p = checkTheErrorNumber( p );
+            mp = checkTheErrorNumber( mp );
+            var ps = checkTheErrorNumber( $( '#POLOVINCHATAYA_KOL' ).val() );
+            if ( ( p - mp ) <= ps ){
+                $.snackbar({ content: "Для использования половинчатой створки должно быть: полотен - подвижных полотен > половинчатых створок!!!!" });
+                $( '#POLOVINCHATAYA_KOL' ).val( '' );
+            } else {
+                PAINTING();
+                w = checkTheErrorNumber( w );
+                h = checkTheErrorNumber( h );
+                var widthForOnePS = ( w / p ) / 2;
+                var widthForOneOtherP = ( w - ( widthForOnePS * ps ) ) / ( p - ps );
+                for( i = 1; i <= p; i++ ){
+                    if( i == 1 ){
+                        $('#tab-profil-shirina').val( widthForOnePS );
+                        $( "#NUMBER_OF_DUPLICATOR_ID" ).val( 0 );
+                    }
+                    if( i < ( p - ps ) ){
+                        $('*[data-id="' + i + '"]').attr('data-width', widthForOneOtherP);
+                        $('*[data-id="' + i + '"]').find('.width').text( widthForOneOtherP );
+                        $('*[data-id="' + i + '"]').find(".group").text( 0 );
+                        $('*[data-id="' + i + '"]').attr("data-group", 0 );
+                    } else {
+                        $('*[data-id="' + i + '"]').attr('data-width', widthForOnePS);
+                        $('*[data-id="' + i + '"]').find('.width').text( widthForOnePS );
+                        $('*[data-id="' + i + '"]').find(".group").text( 1 );
+                        $('*[data-id="' + i + '"]').attr("data-group", 1 );
+                    }
+                    $('*[data-id="' + i + '"]').attr('data-height', h );
+                    $('*[data-id="' + i + '"]').find(".height").text( h );
+                    $( '#tab-profil-vyisota' ).val( h )
+                }
+
+            }
+        }
+    }
+
+    loadFurnitura();
+
+    $( '#furnitura-tab .price' ).text( 0 );
+});
+//  ============================= //
+
 // Выбор изображения после диалога //
 function setImg(number, total_painting, movable_painting) {
     TOTAL_PAINTING = total_painting;
@@ -913,7 +970,10 @@ function addWElNapolnenieToFive() {
 
 // ТАБ ФУРНИТУРА загрузка по типу плотна //
 function loadFurnitura() {
+    $('#furnitura-tab').html("")
     var type = $('#TYPE_BAFFLE_ID').val();
+
+    // $( '#POLOVINCHATAYA_KOL' ).val('');
     if (type == 0) {
         $('#furnitura-tab').html($('.furnitura-net').html());
     } else if (type == 1) {
@@ -1163,16 +1223,45 @@ function setPovodok() {
 // ТАБ ФУРНИТУРА - Складная перегородка - Складные механизмы //
 function setSkladnyieMehanizmyi() {
     var id = $('.setSkladnyieMehanizmyi select').val();
-    if (id == 0) {
-        $('.setSkladnyieMehanizmyi .price').text(0);
-        $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.setSkladnyieMehanizmyi .price').text(950 * $('#TOTAL_PAINTING_ID').val());
-        $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/10.jpg');
-    } else if (id == 2) {
-        $('.setSkladnyieMehanizmyi .price').text(490 * $('#TOTAL_PAINTING_ID').val());
-        $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
-    }
+    var ps = checkTheErrorNumber( $( '#POLOVINCHATAYA_KOL' ).val() );
+    var p = checkTheErrorNumber( $('#TOTAL_PAINTING_ID').val() );
+
+        if (id == 0) {
+            $('.setSkladnyieMehanizmyi .price').text(0);
+            $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/0.jpg');
+        } else if (id == 1) {
+            $('.setSkladnyieMehanizmyi .price').text(950 * ( p - ps ) );
+            $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/10.jpg');
+        } else if (id == 2) {
+            $('.setSkladnyieMehanizmyi .price').text(490 * ( p - ps ) );
+            $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
+        }
+
+
+
+    // if( $( '#POLOVINCHATAYA_CHECKBOX' ).prop( 'checked' ) == false ) {
+    //     if (id == 0) {
+    //         $('.setSkladnyieMehanizmyi .price').text(0);
+    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/0.jpg');
+    //     } else if (id == 1) {
+    //         $('.setSkladnyieMehanizmyi .price').text(950 * $('#TOTAL_PAINTING_ID').val());
+    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/10.jpg');
+    //     } else if (id == 2) {
+    //         $('.setSkladnyieMehanizmyi .price').text(490 * $('#TOTAL_PAINTING_ID').val());
+    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
+    //     }
+    // } else {
+    //     if (id == 0) {
+    //         $('.setSkladnyieMehanizmyi .price').text(0);
+    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/0.jpg');
+    //     } else if (id == 1) {
+    //         $('.setSkladnyieMehanizmyi .price').text(950 * ( checkTheErrorNumber( $('#TOTAL_PAINTING_ID').val() ) - checkTheErrorNumber( $( '#POLOVINCHATAYA_KOL' ).val() ) ) );
+    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/10.jpg');
+    //     } else if (id == 2) {
+    //         $('.setSkladnyieMehanizmyi .price').text(490 * checkTheErrorNumber( ( $('#TOTAL_PAINTING_ID').val() ) - checkTheErrorNumber( $( '#POLOVINCHATAYA_KOL' ).val() ) ) );
+    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
+    //     }
+    // }
     loadPetli(id);
     loadNapravlyayuschie(id);
     loadVidKrepleniya(id);
@@ -3284,11 +3373,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlTur);
 
     } else {
-
-        $.snackbar({
-            content: "Каркасов с такой высотой нет!!! Проверь высоту и полотна."
-        });
-
+        $.snackbar({ content: "Каркасов с такой высотой нет!!! Проверь высоту и полотна." });
     }
 
 });
