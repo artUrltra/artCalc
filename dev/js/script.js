@@ -209,8 +209,7 @@ function PAINTING() {
 
         }
         DandDStart();
-
-
+        paintingInDiadramma();
     }
     SET_BAFFLE_SEKECTOR();
 }
