@@ -40,7 +40,7 @@ function PAINTING() {
             }
             var left = 50;
             var top = 20;
-            $('#PAINTING-DIAGRAMMA').append('<div  class="drag PAINTING-DIAGRAMMA-EL" style="left:' + left*i + 'px;top:' + top*i + 'px;"' +
+            $('#PAINTING-DIAGRAMMA').append('<div  class="drag PAINTING-DIAGRAMMA-EL" style="left:' + left*i + 'px;top:' + top + 'px;"' +
                 'data-id="' + i + '"' +
                 'data-type="' + type + '"' +
                 'data-height=""' +
