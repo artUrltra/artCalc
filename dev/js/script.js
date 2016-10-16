@@ -217,7 +217,8 @@ function PAINTING() {
 //  ============================= //
 
 // Отрисовка половинчатых створок //
-$('#POLOVINCHATAYA_KOL').bind('input', function () {
+$('#POLOVINCHATAYA_KOL').on('input change', function () {
+    console.log( '-------------------' )
     if ($('#POLOVINCHATAYA_CHECKBOX').prop('checked') == false) {
         $.snackbar({content: "Для использования половинчатой створки поставьте галочку!!!"});
         $('#POLOVINCHATAYA_KOL').val('');
@@ -233,7 +234,8 @@ $('#POLOVINCHATAYA_KOL').bind('input', function () {
             p = checkTheErrorNumber(p);
             mp = checkTheErrorNumber(mp);
             var ps = checkTheErrorNumber($('#POLOVINCHATAYA_KOL').val());
-            if (( p - mp ) <= ps) {
+            // if (( p - mp ) <= ps) {
+            if (( p ) <= ps) {
                 $.snackbar({content: "Для использования половинчатой створки должно быть: полотен - подвижных полотен > половинчатых створок!!!!"});
                 $('#POLOVINCHATAYA_KOL').val('');
             } else {
@@ -247,7 +249,8 @@ $('#POLOVINCHATAYA_KOL').bind('input', function () {
                         $('#tab-profil-shirina').val(widthForOnePS);
                         $("#NUMBER_OF_DUPLICATOR_ID").val(0);
                     }
-                    if (i < ( p - ps )) {
+                    if (i <= ( p - ps )) {
+                    // if (i < ( p )) {
                         $('*[data-id="' + i + '"]').attr('data-width', widthForOneOtherP);
                         $('*[data-id="' + i + '"]').find('.width').text(widthForOneOtherP);
                         $('*[data-id="' + i + '"]').find(".group").text(0);
@@ -258,6 +261,7 @@ $('#POLOVINCHATAYA_KOL').bind('input', function () {
                         $('*[data-id="' + i + '"]').find(".group").text(1);
                         $('*[data-id="' + i + '"]').attr("data-group", 1);
                     }
+
                     $('*[data-id="' + i + '"]').attr('data-height', h);
                     $('*[data-id="' + i + '"]').find(".height").text(h);
                     $('#tab-profil-vyisota').val(h)
@@ -274,12 +278,25 @@ $('#POLOVINCHATAYA_KOL').bind('input', function () {
 //  ============================= //
 
 // Выбор изображения после диалога //
-function setImg(number, total_painting, movable_painting) {
+function setImg(number, total_painting, movable_painting,  polovinchataya_stvorka) {
+
+
+
     TOTAL_PAINTING = total_painting;
     MOVABLE_PAINTING = movable_painting;
     setAllSaveParameters();
     $(".drawing img").attr("src", "http://fasts-like.com//SchemeOfDoors/" + number + ".png");
     PAINTING();
+    if( polovinchataya_stvorka != undefined ) {
+        console.log( polovinchataya_stvorka )
+        $( '#POLOVINCHATAYA_KOL' ).val( polovinchataya_stvorka );
+        $( '#POLOVINCHATAYA_KOL' ).trigger('change');
+        $( '#POLOVINCHATAYA_KOL' ).trigger('change');
+        // $( '#POLOVINCHATAYA_KOL' ).trigger('change');
+        // $( '#POLOVINCHATAYA_KOL' ).trigger('change');
+        // $( '#POLOVINCHATAYA_KOL' ).trigger('change');
+        // $( '#POLOVINCHATAYA_KOL' ).trigger('change');
+    }
 }
 //  ============================= //
 
@@ -306,7 +323,7 @@ function SET_BAFFLE_SEKECTOR() {
 
 // Событие смены селектов полотен
 $(".BAFFLE_SEKECTOR_CLASS").change(function () {
-    console.log('change');
+
     $(".BAFFLE_SEKECTOR_CLASS").val($(this).val());
 
     $('*').removeClass('used');
@@ -1092,7 +1109,7 @@ function loadFurnitura() {
         $('.POLOVINCHATAYA').show();
     } else {
         $('.POLOVINCHATAYA').hide();
-        $(".POLOVINCHATAYA input").prop("checked", false);
+        $(".POLOVINCHATAYA input").prop("checked", true);
     }
     // =
 }
