@@ -288,7 +288,7 @@ function setImg(number, total_painting, movable_painting,  polovinchataya_stvork
     $(".drawing img").attr("src", "http://fasts-like.com//SchemeOfDoors/" + number + ".png");
     PAINTING();
     if( polovinchataya_stvorka != undefined ) {
-        console.log( polovinchataya_stvorka )
+        // console.log( polovinchataya_stvorka )
         $( '#POLOVINCHATAYA_KOL' ).val( polovinchataya_stvorka );
         $( '#POLOVINCHATAYA_KOL' ).trigger('change');
         $( '#POLOVINCHATAYA_KOL' ).trigger('change');
@@ -3938,84 +3938,84 @@ function SelectHorizontalPeremochki(name, url, text, price) {
     if (name == 'TUR') {
         var res = parseInt((getFromData('width') / 1000 * (94 + 13 * 2) + 22 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*22*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Euroshop') {
         var res = parseInt((getFromData('width') / 1000 * (111 + 14.5 * 2) + 36 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*36*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'EuroshopLite') {
         var res = parseInt((getFromData('width') / 1000 * (89 + 14.5 * 2) + 36 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*36*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Standart') {
         var res = parseInt((getFromData('width') / 1000 * (266 + 14.5 * 2) + 35 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*35*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'MobyLight') {
         var res = parseInt((getFromData('width') / 1000 * (176 + 14.5 * 2 + 30 * 2) + 24 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*24*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Optima') {
         var res = parseInt((getFromData('width') / 1000 * (272 + 14.5 * 2) + 53 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*53*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'OptimaLite') {
         var res = parseInt((getFromData('width') / 1000 * (187 + 14.5 * 2) + 53 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*53*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'StandartStoika') {
         var res = parseInt((getFromData('width') / 1000 * (216 + 14.5 * 2) + 35 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*35*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Optimax2') {
         var res = parseInt((getFromData('width') / 1000 * (555 + 17 * 4) + 53 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*53*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Base') {
         var res = parseInt((getFromData('width') / 1000 * (540 + 15 * 4) + 33 * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*33*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Statusx1') {
         var res = parseInt((getFromData('width') / 1000 * (395 + 14 * 2) + (27 + 2.5 * 2) * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*27*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Statusx2') {
         var res = parseInt((getFromData('width') / 1000 * (490 + 14 * 4) + (27 + 2.5 * 2) * 2) * horizontal_pereochki_count);
         if (res > 0) {
-            res = res + 176;
+            res = res + (2*2*27*2);
         }
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
