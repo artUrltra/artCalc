@@ -1208,35 +1208,31 @@ function loadNapravlyayuschie(id) {
 function setNapravlyayuschie() {
     var kol = $('.napravlyayuschie input').val();
     var id = $(".napravlyayuschie select").val();
+    var allWidth = parseInt($("#WIDTH_SETS_ID").val());
+
+
     if (id == 0) {
-        $('.napravlyayuschie .price').text(0);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/0.jpg');
+        var res = 0;
+        var img = 0;
     } else if (id == 1) {
-        var res = 245 * $('#WIDTH_SETS_ID').val() * 2 / 1000;
-        var resT = (res / 100) * 5;
-        $('.napravlyayuschie .price').text((res + resT) * kol);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/4.jpg');
+        var res = (245 * allWidth * 2 / 1000) * 1.05;
+        var img = 4;
     } else if (id == 2) {
-        var res = 315 * $('#WIDTH_SETS_ID').val() * 2 / 1000;
-        var resT = (res / 100) * 5;
-        $('.napravlyayuschie .price').text((res + resT) * kol);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/5.jpg');
+        var res = (315 * allWidth * 2 / 1000) * 1.05;
+        var img = 5;
     } else if (id == 3) {
-        var res = 245 * $('#WIDTH_SETS_ID').val() * 2 / 1000;
-        var resT = (res / 100) * 5;
-        $('.napravlyayuschie .price').text((res + resT) * kol);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/25.jpg');
+        var res = (245 * allWidth * 2 / 1000) * 1.05;
+        var img = 25;
     } else if (id == 4) {
-        var res = 400 * $('#WIDTH_SETS_ID').val() * 2 / 1000;
-        var resT = (res / 100) * 5;
-        $('.napravlyayuschie .price').text((res + resT) * kol);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/26.jpg');
+        var res = (400 * allWidth * 2 / 1000) * 1.05;
+        var img = 26;
     } else if (id == 5) {
-        var res = 275 * $('#WIDTH_SETS_ID').val() * 2 / 1000;
-        var resT = (res / 100) * 5;
-        $('.napravlyayuschie .price').text((res + resT) * kol);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/26.jpg');
+        var res = (275 * allWidth * 2 / 1000) * 1.05;
+        var img = 26;
     }
+    console.log(245 * allWidth * 2 / 1000);
+    $('.napravlyayuschie img').attr('src', 'img/furnityra/' + img + '.jpg');
+    $('.napravlyayuschie .price').text(parseInt(res * kol));
 
 }
 //  ============================= //
@@ -1418,25 +1414,7 @@ function loadNapravlyayuschie(id) {
     }
 }
 
-function setNapravlyayuschie() {
-    var kol = $('.napravlyayuschie input').val();
-    var id = $('.napravlyayuschie select').val();
-    var width = $('#WIDTH_SETS_ID').val();
-    var fiveP = (width / 100) * 5;
-    if (id == 0) {
-        $('.napravlyayuschie .price').text(0);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.napravlyayuschie .price').text((245 * fiveP) * kol);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/4.jpg');
-    } else if (id == 2) {
-        $('.napravlyayuschie .price').text((315 * fiveP) * kol);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/5.jpg');
-    } else if (id == 3) {
-        $('.napravlyayuschie .price').text((245 * fiveP) * kol);
-        $('.napravlyayuschie img').attr('src', 'img/furnityra/25.jpg');
-    }
-}
+
 //  ============================= //
 
 // ТАБ ФУРНИТУРА - Складная перегородка - Вид крепления // vidKrepleniya
@@ -1825,18 +1803,7 @@ function loadRuchkaDlyaProfilya() {
 }
 
 function setDekorativnayaPlankaDlyaProfilya() {
-    // Декоративная планка – нужна для закрытия направляющей; Стоимость – ((«Ширина подвижн. полотен»*2/1000»+10%)*«Цена*1,05 +«Коннектор угловой»*2 +«Крепление планки»*2.
-    // коннектор угловой - 120
-    // крепление планки - 55
-    var kolMP = $('#MOVABLE_PAINTING_ID').val();
-    if (kolMP == '') {
-        kolMP == 0;
-    }
-
-    var width = getFromData('width');
-    var smp = (width * kolMP) * 2 / 1000;
-    var smpOnePToT = (smp / 100) * 10;
-    var smpPsmpOnePToT = smp + smpOnePToT;
+    var allWidth = parseInt($("#WIDTH_SETS_ID").val());
     var price = 0;
     var kornevoiiY = 120 * 2;
     var kreplenieP = 55 * 2;
@@ -1845,12 +1812,12 @@ function setDekorativnayaPlankaDlyaProfilya() {
         $('.dekorativnayaPlankaDlyaProfilya .price').text(0);
         $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/0.jpg');
     } else if (id == 1) {
-        price = 320 * 1.05;
-        $('.dekorativnayaPlankaDlyaProfilya .price').text(smpPsmpOnePToT * price + kornevoiiY + kreplenieP);
+        price = 320;
+        $('.dekorativnayaPlankaDlyaProfilya .price').text(((allWidth * 2 / 1000) * 1.1) * price * 1.05 + kornevoiiY + kreplenieP);
         $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/13.jpg');
     } else if (id == 2) {
-        price = 1500 * 1.05;
-        $('.dekorativnayaPlankaDlyaProfilya .price').text(smpPsmpOnePToT * price + kornevoiiY + kreplenieP);
+        price = 1500;
+        $('.dekorativnayaPlankaDlyaProfilya .price').text(((allWidth * 2 / 1000) * 1.1) * price * 1.05 + kornevoiiY + kreplenieP);
         $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/32.jpg');
     }
 }
@@ -1859,14 +1826,15 @@ function setDekorativnayaPlankaDlyaProfilya() {
 // ТАБ ФУРНИТУРА - Раздвижная перегородка - Аксессуары - Щеточный уплотнитель
 function setSchetochnyiyUplotnitel() {
     var id = $('.schetochnyiyUplotnitel select').val();
+    var allWidth = parseInt($('#WIDTH_SETS_ID').val());
     if (id == 0) {
         $('.schetochnyiyUplotnitel .price').text(0);
         $('.schetochnyiyUplotnitel img').attr('src', 'img/furnityra/0.jpg');
     } else if (id == 1) {
-        $('.schetochnyiyUplotnitel .price').text($('#WIDTH_SETS_ID').val() * 12);
+        $('.schetochnyiyUplotnitel .price').text(allWidth/1000 * 12);
         $('.schetochnyiyUplotnitel img').attr('src', 'img/furnityra/14.jpg');
     } else if (id == 2) {
-        $('.schetochnyiyUplotnitel .price').text($('#WIDTH_SETS_ID').val() * 25);
+        $('.schetochnyiyUplotnitel .price').text(allWidth/1000 * 25);
         $('.schetochnyiyUplotnitel img').attr('src', 'img/furnityra/15.jpg');
     }
 }
@@ -1933,12 +1901,15 @@ function setZamok() {
 // ТАБ ФУРНИТУРА - Складная перегородка - Аксессуары - Декоративная планка для профиля - Стоимость – ((«Ширина/1000»+10%)*«Цена*1,05 +«Коннектор угловой»*2 +«Крепление планки»*2.
 function setDekorativnayaPlankaDlyaProfilya() {
     var id = $('.dekorativnayaPlankaDlyaProfilya select').val();
+    var kornevoiiY = 120 * 2;
+    var kreplenieP = 55 * 2;
+    var allWidth = parseInt($("#WIDTH_SETS_ID").val());
     if (id == 0) {
         $('.dekorativnayaPlankaDlyaProfilya .price').text(0);
         $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/0.jpg');
     } else if (id == 1) {
-        var proc = (($('#WIDTH_SETS_ID').val() / 1000) / 100) * 10;
-        $('.dekorativnayaPlankaDlyaProfilya .price').text(proc * 320 * 1.05 * 120 * 2 + 55 * 2);
+        var price = 320;
+        $('.dekorativnayaPlankaDlyaProfilya .price').text(((allWidth * 2 / 1000) * 1.1) * price * 1.05 + kornevoiiY + kreplenieP);
         $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/13.jpg');
     }
 }
