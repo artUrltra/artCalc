@@ -14,8 +14,8 @@ function getFromData(name) {
 
 // Проверка числа на 0 и прочее. Результат 0 или число. //
 function checkTheErrorNumber(e) {
-    e = parseInt( e )
-    if (e == NaN || e == 'NaN' || e == 0 || e == '' || e == '0' || e == null || isNaN(e)){
+    e = parseInt(e)
+    if (e == NaN || e == 'NaN' || e == 0 || e == '' || e == '0' || e == null || isNaN(e)) {
         return 0;
     } else {
         return e;
@@ -40,7 +40,7 @@ function PAINTING() {
             }
             var left = 50;
             var top = 20;
-            $('#PAINTING-DIAGRAMMA').append('<div  class="drag PAINTING-DIAGRAMMA-EL" style="left:' + left*i + 'px;top:' + top + 'px;"' +
+            $('#PAINTING-DIAGRAMMA').append('<div  class="drag PAINTING-DIAGRAMMA-EL" style="left:' + left * i + 'px;top:' + top * i + 'px;"' +
                 'data-id="' + i + '"' +
                 'data-type="' + type + '"' +
                 'data-height=""' +
@@ -217,50 +217,50 @@ function PAINTING() {
 //  ============================= //
 
 // Отрисовка половинчатых створок //
-$( '#POLOVINCHATAYA_KOL' ).bind('input', function () {
-    if( $( '#POLOVINCHATAYA_CHECKBOX' ).prop( 'checked' ) == false ){
-        $.snackbar({ content: "Для использования половинчатой створки поставьте галочку!!!" });
-        $( '#POLOVINCHATAYA_KOL' ).val( '' );
+$('#POLOVINCHATAYA_KOL').bind('input', function () {
+    if ($('#POLOVINCHATAYA_CHECKBOX').prop('checked') == false) {
+        $.snackbar({content: "Для использования половинчатой створки поставьте галочку!!!"});
+        $('#POLOVINCHATAYA_KOL').val('');
     } else {
-        var p = $( '#TOTAL_PAINTING_ID' ).val();
-        var mp = $( '#MOVABLE_PAINTING_ID' ).val();
-        var h = $( '#HIGHT_SETS_ID' ).val();
-        var w = $( '#WIDTH_SETS_ID' ).val();
-        if ( p == '' || mp == '' || h == '' || w == '' ) {
-            $.snackbar({ content: "Для использования половинчатой створки заполните поля: Всего полотен, Подвижные полотна, Высота, Ширина!!!!" });
-            $( '#POLOVINCHATAYA_KOL' ).val( '' );
+        var p = $('#TOTAL_PAINTING_ID').val();
+        var mp = $('#MOVABLE_PAINTING_ID').val();
+        var h = $('#HIGHT_SETS_ID').val();
+        var w = $('#WIDTH_SETS_ID').val();
+        if (p == '' || mp == '' || h == '' || w == '') {
+            $.snackbar({content: "Для использования половинчатой створки заполните поля: Всего полотен, Подвижные полотна, Высота, Ширина!!!!"});
+            $('#POLOVINCHATAYA_KOL').val('');
         } else {
-            p = checkTheErrorNumber( p );
-            mp = checkTheErrorNumber( mp );
-            var ps = checkTheErrorNumber( $( '#POLOVINCHATAYA_KOL' ).val() );
-            if ( ( p - mp ) <= ps ){
-                $.snackbar({ content: "Для использования половинчатой створки должно быть: полотен - подвижных полотен > половинчатых створок!!!!" });
-                $( '#POLOVINCHATAYA_KOL' ).val( '' );
+            p = checkTheErrorNumber(p);
+            mp = checkTheErrorNumber(mp);
+            var ps = checkTheErrorNumber($('#POLOVINCHATAYA_KOL').val());
+            if (( p - mp ) <= ps) {
+                $.snackbar({content: "Для использования половинчатой створки должно быть: полотен - подвижных полотен > половинчатых створок!!!!"});
+                $('#POLOVINCHATAYA_KOL').val('');
             } else {
                 PAINTING();
-                w = checkTheErrorNumber( w );
-                h = checkTheErrorNumber( h );
+                w = checkTheErrorNumber(w);
+                h = checkTheErrorNumber(h);
                 var widthForOnePS = ( w / p ) / 2;
                 var widthForOneOtherP = ( w - ( widthForOnePS * ps ) ) / ( p - ps );
-                for( i = 1; i <= p; i++ ){
-                    if( i == 1 ){
-                        $('#tab-profil-shirina').val( widthForOnePS );
-                        $( "#NUMBER_OF_DUPLICATOR_ID" ).val( 0 );
+                for (i = 1; i <= p; i++) {
+                    if (i == 1) {
+                        $('#tab-profil-shirina').val(widthForOnePS);
+                        $("#NUMBER_OF_DUPLICATOR_ID").val(0);
                     }
-                    if( i < ( p - ps ) ){
+                    if (i < ( p - ps )) {
                         $('*[data-id="' + i + '"]').attr('data-width', widthForOneOtherP);
-                        $('*[data-id="' + i + '"]').find('.width').text( widthForOneOtherP );
-                        $('*[data-id="' + i + '"]').find(".group").text( 0 );
-                        $('*[data-id="' + i + '"]').attr("data-group", 0 );
+                        $('*[data-id="' + i + '"]').find('.width').text(widthForOneOtherP);
+                        $('*[data-id="' + i + '"]').find(".group").text(0);
+                        $('*[data-id="' + i + '"]').attr("data-group", 0);
                     } else {
                         $('*[data-id="' + i + '"]').attr('data-width', widthForOnePS);
-                        $('*[data-id="' + i + '"]').find('.width').text( widthForOnePS );
-                        $('*[data-id="' + i + '"]').find(".group").text( 1 );
-                        $('*[data-id="' + i + '"]').attr("data-group", 1 );
+                        $('*[data-id="' + i + '"]').find('.width').text(widthForOnePS);
+                        $('*[data-id="' + i + '"]').find(".group").text(1);
+                        $('*[data-id="' + i + '"]').attr("data-group", 1);
                     }
-                    $('*[data-id="' + i + '"]').attr('data-height', h );
-                    $('*[data-id="' + i + '"]').find(".height").text( h );
-                    $( '#tab-profil-vyisota' ).val( h )
+                    $('*[data-id="' + i + '"]').attr('data-height', h);
+                    $('*[data-id="' + i + '"]').find(".height").text(h);
+                    $('#tab-profil-vyisota').val(h)
                 }
 
             }
@@ -269,7 +269,7 @@ $( '#POLOVINCHATAYA_KOL' ).bind('input', function () {
 
     loadFurnitura();
 
-    $( '#furnitura-tab .price' ).text( 0 );
+    $('#furnitura-tab .price').text(0);
 });
 //  ============================= //
 
@@ -309,10 +309,10 @@ $(".BAFFLE_SEKECTOR_CLASS").change(function () {
     console.log('change');
     $(".BAFFLE_SEKECTOR_CLASS").val($(this).val());
 
-    $( '*' ).removeClass( 'used' );
-    $('*[data-id="' + $(this).val() + '"]').addClass( 'used' );
-    $('.PAINTING-DIAGRAMMA-EL').css({'z-index':'0'});
-    $('*[data-id="' + $(this).val() + '"]').css({'z-index':'1000'});
+    $('*').removeClass('used');
+    $('*[data-id="' + $(this).val() + '"]').addClass('used');
+    $('.PAINTING-DIAGRAMMA-EL').css({'z-index': '0'});
+    $('*[data-id="' + $(this).val() + '"]').css({'z-index': '1000'});
 
     $('#tab-profil-vyisota').val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').find(".height").text());
     $('#tab-profil-shirina').val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').find(".width").text());
@@ -396,15 +396,32 @@ $('#btn-decor').click(function () {
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append($('.decor').html());
 });
+
 $('#btn-ral').click(function () {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append($('.rai').html());
+    var html = $('.rai').html();
+    var templateData = {
+        type: "color"
+    };
+    var resultHtml = makeHTMLFromTemplate(html, templateData);
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+});
+
+$('#btn-anod').click(function () {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+    var html = $('.rai').html();
+    var templateData = {
+        type: "anod"
+    };
+    var resultHtml = makeHTMLFromTemplate(html, templateData);
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
 });
 
 function SelectDekorEnd(type, img) {
     $("#DekorType").val(type);
-    if (type == "color") {
+    if (type == "color" || type == "anod") {
         $(".vyiborDekoraDlyaProfilya img").attr("src", "img/dekorRal/" + img + ".png");
     }
     if (type == "image") {
@@ -423,122 +440,186 @@ function DekorRePrice(img, type) {
 
     var TotalPrice = 0;
 
-    if (type == "color") {
-
-        var price = {
-
-            "Tur": 40,
-
-            "Euroshop": 34,
-
-            "Optimax2": 92,
-
-            "Standart": 47,
-
-            "MobyLight": 41,
-
-            "Optima": 57,
-
-            "Base": 94,
-
-            "Statusx1": 124,
-
-            "Statusx2": 101,
-
-            "OptimaLite": 41,
-
-            "StandartStoika": 38
-
-        };
-
-    }
-
-    if (type == "image") {
-
-        var price = {
-
-            "Tur": 89,
-
-            "Euroshop": 76,
-
-            "Optimax2": 205,
-
-            "Standart": 105,
-
-            "MobyLight": 92,
-
-            "Optima": 127,
-
-            "Base": 209,
-
-            "Statusx1": 276,
-
-            "Statusx2": 225,
-
-            "OptimaLite": 92,
-
-            "StandartStoika": 85
-
-        };
-
-    }
-
-    if (count > 0) {
-
-        for (var i = 0; i < count; i++) {
-
-            var num = i + 1;
-
-            var karkasname = $('*[data-id=' + num + ']').find('.karkas-name').text();
-
-            var sizeW = parseInt($('*[data-id=' + num + ']').find('.width').text());
-
-            var sizeH = parseInt($('*[data-id=' + num + ']').find('.height').text());
-
-            var countPerH = parseInt($('*[data-id=' + num + ']').find('.horizontal-pereochki-count').text());
-
-            var countPerV = parseInt($('*[data-id=' + num + ']').find('.vertikalnue-pereochki-count').text());
-
-            var countProfil = 1;
-
-            if (karkasname in price) {
-
-                var price2 = price[karkasname];
-
+    if (type == "anod") {
+        if (count > 0) {
+            for (var i = 0; i < count; i++) {
+                var num = i + 1;
+                var karkasname = $('*[data-id=' + num + ']').find('.karkas-name').text();
+                switch (karkasname) {
+                    case "Tur":
+                        var priceKarkas = 94;
+                        break;
+                    case "Euroshop":
+                        var priceKarkas = 111;
+                        break;
+                    case "Base":
+                        var priceKarkas = 427;
+                        break;
+                    case "Standart":
+                        var priceKarkas = 266;
+                        break;
+                    case "MobyLight":
+                        var priceKarkas = 183;
+                        break;
+                    case "Optima":
+                        var priceKarkas = 272;
+                        break;
+                    case "Optimax2":
+                        var priceKarkas = 415;
+                        break;
+                    case "Statusx2":
+                        var priceKarkas = 525;
+                        break;
+                    case "Statusx1":
+                        var priceKarkas = 415;
+                        break;
+                    case "OptimaLite":
+                        var priceKarkas = 187;
+                        break;
+                    case "StandartStoika":
+                        var priceKarkas = 216;
+                        break;
+                    case "EuroshopLite":
+                        var priceKarkas = 89;
+                        break;
+                }
+                var sizeW = parseInt($('*[data-id=' + num + ']').find('.width').text());
+                var sizeH = parseInt($('*[data-id=' + num + ']').find('.height').text());
+                var countPerH = parseInt($('*[data-id=' + num + ']').find('.horizontal-pereochki-count').text());
+                var countPerV = parseInt($('*[data-id=' + num + ']').find('.vertikalnue-pereochki-count').text());
+                if(countPerH == "0" || isNaN(countPerH) || countPerH == null || countPerH < 1){
+                    countPerH = 1;
+                }
+                if(countPerV == "0" || isNaN(countPerV) || countPerV == null || countPerV < 1){
+                    countPerV = 1;
+                }
+                TotalPrice = TotalPrice + ((((sizeW + sizeH) * 0.002) * priceKarkas) + (sizeW * 0.001 * priceKarkas * countPerH) + (sizeH * 0.001 * priceKarkas * countPerV));
             }
 
-            if (countPerH > 0) {
-
-                var sizePerH = sizeW * 0.002 * countPerH;
-
-            } else {
-
-                var sizePerH = 0;
-
-            }
-
-            if (sizePerV > 0) {
-
-                var sizePerV = sizeW * 0.002 * countPerV;
-
-            } else {
-
-                var sizePerV = 0;
-
-            }
-
-            TotalPrice = TotalPrice + ((((sizeW + sizeH) * 0.002) + (sizePerH + sizePerV)) * price2) * countProfil;
         }
-
-    }
-
-    if (img == "RAL9006" || img == "RAL9016" || img == "RAL9003") {
     } else {
-        if (TotalPrice < 3650) {
-            TotalPrice = 3650;
+        if (type == "color") {
+
+            var price = {
+
+                "Tur": 40,
+
+                "Euroshop": 34,
+
+                "EuroshopLite": 34,
+
+                "Optimax2": 92,
+
+                "Standart": 47,
+
+                "MobyLight": 41,
+
+                "Optima": 57,
+
+                "Base": 94,
+
+                "Statusx1": 124,
+
+                "Statusx2": 101,
+
+                "OptimaLite": 41,
+
+                "StandartStoika": 38
+
+            };
+
+        }
+
+        if (type == "image") {
+
+            var price = {
+
+                "Tur": 89,
+
+                "Euroshop": 76,
+
+                "EuroshopLite": 76,
+
+                "Optimax2": 205,
+
+                "Standart": 105,
+
+                "MobyLight": 92,
+
+                "Optima": 127,
+
+                "Base": 209,
+
+                "Statusx1": 276,
+
+                "Statusx2": 225,
+
+                "OptimaLite": 92,
+
+                "StandartStoika": 85
+
+            };
+
+        }
+
+        if (count > 0) {
+
+            for (var i = 0; i < count; i++) {
+
+                var num = i + 1;
+
+                var karkasname = $('*[data-id=' + num + ']').find('.karkas-name').text();
+
+                var sizeW = parseInt($('*[data-id=' + num + ']').find('.width').text());
+
+                var sizeH = parseInt($('*[data-id=' + num + ']').find('.height').text());
+
+                var countPerH = parseInt($('*[data-id=' + num + ']').find('.horizontal-pereochki-count').text());
+
+                var countPerV = parseInt($('*[data-id=' + num + ']').find('.vertikalnue-pereochki-count').text());
+
+                var countProfil = 1;
+
+                if (karkasname in price) {
+
+                    var price2 = price[karkasname];
+
+                }
+
+                if (countPerH > 0) {
+
+                    var sizePerH = sizeW * 0.002 * countPerH;
+
+                } else {
+
+                    var sizePerH = 0;
+
+                }
+
+                if (sizePerV > 0) {
+
+                    var sizePerV = sizeW * 0.002 * countPerV;
+
+                } else {
+
+                    var sizePerV = 0;
+
+                }
+
+                TotalPrice = TotalPrice + ((((sizeW + sizeH) * 0.002) + (sizePerH + sizePerV)) * price2) * countProfil;
+            }
+
+        }
+
+        if (img == "RAL9006" || img == "RAL9016" || img == "RAL9003") {
+        } else {
+            if (TotalPrice < 3650) {
+                TotalPrice = 3650;
+            }
         }
     }
 
+    $(".TAB-POKRASKA-PRICE").text(parseInt(TotalPrice));
     setDataAndText('decor-price', parseInt(TotalPrice));
 
 }
@@ -572,6 +653,28 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
             };
             break;
         case "Euroshop":
+            var thickness = {
+                1: {4: 500, 5: 625, 6: 720},
+                2: {4: 900, 5: 1100},
+                3: {4: 1050, 5: 1350},
+                4: {4: 1300},
+                5: {0: 0, 6: 1400},
+                6: {0: 0},
+
+                7: {4: 160, 6: 260, 8: 345, 16: 660},
+                8: {4: 560, 5: 665, 6: 820, 8: 1200},
+                9: {4: 1600, 5: 2000, 6: 2400, 8: 3200},
+
+                10: {4: 1480, 5: 1850},
+
+                11: {8: 300, 16: 350},
+                12: {4: 93, 6: 120, 8: 150, 16: 325},
+                13: {16: 165},
+                14: {4: 285, 6: 380, 8: 480, 16: 800},
+                15: {8: 225, 16: 340}
+            };
+            break;
+        case "EuroshopLite":
             var thickness = {
                 1: {4: 500, 5: 625, 6: 720},
                 2: {4: 900, 5: 1100},
@@ -985,11 +1088,11 @@ function loadFurnitura() {
         loadStoyki();
     }
     // - показать/скрыть четбокс
-    if(type == 2){
-        $( '.POLOVINCHATAYA' ).show();
+    if (type == 2) {
+        $('.POLOVINCHATAYA').show();
     } else {
-        $( '.POLOVINCHATAYA' ).hide();
-        $( ".POLOVINCHATAYA input" ).prop( "checked", false );
+        $('.POLOVINCHATAYA').hide();
+        $(".POLOVINCHATAYA input").prop("checked", false);
     }
     // =
 }
@@ -1223,20 +1326,19 @@ function setPovodok() {
 // ТАБ ФУРНИТУРА - Складная перегородка - Складные механизмы //
 function setSkladnyieMehanizmyi() {
     var id = $('.setSkladnyieMehanizmyi select').val();
-    var ps = checkTheErrorNumber( $( '#POLOVINCHATAYA_KOL' ).val() );
-    var p = checkTheErrorNumber( $('#TOTAL_PAINTING_ID').val() );
+    var ps = checkTheErrorNumber($('#POLOVINCHATAYA_KOL').val());
+    var p = checkTheErrorNumber($('#TOTAL_PAINTING_ID').val());
 
-        if (id == 0) {
-            $('.setSkladnyieMehanizmyi .price').text(0);
-            $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/0.jpg');
-        } else if (id == 1) {
-            $('.setSkladnyieMehanizmyi .price').text(950 * ( p - ps ) );
-            $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/10.jpg');
-        } else if (id == 2) {
-            $('.setSkladnyieMehanizmyi .price').text(490 * ( p - ps ) );
-            $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
-        }
-
+    if (id == 0) {
+        $('.setSkladnyieMehanizmyi .price').text(0);
+        $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/0.jpg');
+    } else if (id == 1) {
+        $('.setSkladnyieMehanizmyi .price').text(950 * ( p - ps ));
+        $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/10.jpg');
+    } else if (id == 2) {
+        $('.setSkladnyieMehanizmyi .price').text(490 * ( p - ps ));
+        $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
+    }
 
 
     // if( $( '#POLOVINCHATAYA_CHECKBOX' ).prop( 'checked' ) == false ) {
@@ -1407,6 +1509,23 @@ function loadStoyki() {
     $(".stoyki select").html('');
 
     if (name == 'Euroshop') {
+
+        $(".stoyki select").prepend($('' +
+
+            '<option value="0">Нет</option>' +
+
+            '<option value="1">Стойка скругленная 90 °</option>' +
+
+            '<option value="2">Стойка 135 °</option>' +
+
+            '<option value="3">Стойка угловая 90 °</option>' +
+
+            '<option value="4">Стойка Т-образная</option>' +
+
+            '<option value="5">Стойка Т-образная скругленная</option>'
+        ));
+
+    } else if (name == 'EuroshopLite') {
 
         $(".stoyki select").prepend($('' +
 
@@ -1656,7 +1775,7 @@ function loadDekorativnayaPlankaDlyaProfilya() {
 function loadRuchkaDlyaProfilya() {
     var karkasname = getFromData('karkas-name');
     var typeFurnitura = parseInt($("#TYPE_BAFFLE_ID").val());
-    if(typeFurnitura == 1) {
+    if (typeFurnitura == 1) {
         if (karkasname == "Standart" || karkasname == "Optima" || karkasname == "Optimax2") {
             if (karkasname == "Standart") {
                 $(".rakovina select").empty();
@@ -1694,7 +1813,7 @@ function loadRuchkaDlyaProfilya() {
                 $(".rakovina select").append($("<option value=" + value + " >" + ruchki[value] + "</option>"));
             }
         }
-    }else{
+    } else {
         $(".rakovina select").empty();
         var ruchki = {
             0: "Нет"
@@ -1787,8 +1906,8 @@ function setRakovina() {
             var src = 0;
             break;
     }
-        $('.rakovina .price').text(price * count1);
-        $('.rakovina img').attr('src', 'img/furnityra/' + src + '.jpg');
+    $('.rakovina .price').text(price * count1);
+    $('.rakovina img').attr('src', 'img/furnityra/' + src + '.jpg');
 }
 //  ============================= //
 
@@ -1908,30 +2027,30 @@ function setFurnituraPrice() {
 // БЛОК ЦЕНА //
 function globalPrice() {
 
-    var p = checkTheErrorNumber( $('#TOTAL_PAINTING_ID').val() );
+    var p = checkTheErrorNumber($('#TOTAL_PAINTING_ID').val());
 
 
     var globalPrice = 0;
     var globalMaterialPrice = 0;
     var globalProfilPrice = 0;
-    var globalFurnityraPrice = checkTheErrorNumber( $('.furnitura-price .price').text() );
-    var countIzdelie = checkTheErrorNumber( $("#NUMBER_SETS_ID").val() );
+    var globalFurnityraPrice = checkTheErrorNumber($('.furnitura-price .price').text());
+    var countIzdelie = checkTheErrorNumber($("#NUMBER_SETS_ID").val());
 
     // 1 сумма все профилей data-price-in-profil
     // 2 сумма всех материалов data-data-price-in-napolnenii
     // 3 фурнитура .furnitura-price .price
 
-    for ( j=1; j<=p; j++ ) {
-        globalProfilPrice = globalProfilPrice + checkTheErrorNumber( $('*[data-id="' + j + '"]').attr('data-data-price-in-profil') );
-        globalMaterialPrice = globalMaterialPrice + checkTheErrorNumber( $('*[data-id="' + j + '"]').attr('data-data-price-in-napolnenii') );
+    for (j = 1; j <= p; j++) {
+        globalProfilPrice = globalProfilPrice + checkTheErrorNumber($('*[data-id="' + j + '"]').attr('data-data-price-in-profil'));
+        globalMaterialPrice = globalMaterialPrice + checkTheErrorNumber($('*[data-id="' + j + '"]').attr('data-data-price-in-napolnenii'));
     }
     globalPrice = ( globalProfilPrice + globalMaterialPrice + globalFurnityraPrice );
-    if ( countIzdelie > 0 ) {
+    if (countIzdelie > 0) {
         globalPrice = globalPrice * countIzdelie;
     }
-    $('.summaBezParametrov .price').text( globalPrice );
+    $('.summaBezParametrov .price').text(globalPrice);
 
-    procPrice( globalPrice );
+    procPrice(globalPrice);
 }
 
 function procPrice(summ) {
@@ -2091,19 +2210,19 @@ function calcNow() {
             if (isNaN(widhtPlusPlus)) {
                 widhtPlusPlus = 0;
             }
-            var g = $('*[data-id=' + i + ']').attr( 'data-group' );
+            var g = $('*[data-id=' + i + ']').attr('data-group');
             var find = oneGroupFTArray.indexOf(g);
-            if ( find == -1 ){
+            if (find == -1) {
                 oneGroupFTArray.push(g);
             }
         }
-        if ( parseInt( tab_profil_vyisota) > parseInt( height ) || tab_profil_vyisota == '' || oneGroupFTArray.length <= 1) {
-        // if ( tab_profil_vyisota == '' || oneGroupFTArray.length <= 1) {
+        if (parseInt(tab_profil_vyisota) > parseInt(height) || tab_profil_vyisota == '' || oneGroupFTArray.length <= 1) {
+            // if ( tab_profil_vyisota == '' || oneGroupFTArray.length <= 1) {
             $('#tab-profil-vyisota').val(height);
             $("#tab-profil-vyisota").trigger('change');
         }
 
-        if (parseInt( tab_profil_vyisota ) == parseInt(height)) {
+        if (parseInt(tab_profil_vyisota) == parseInt(height)) {
             $('#tab-profil-vyisota').val(height);
         }
 
@@ -2192,6 +2311,8 @@ function calcNow() {
                 SelectPeremyichkaVERTIKALNUE('TUR', 'http://pavel.artultra.ru/karkas/Tur.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
             } else if (getFromData('karkas-name') == 'Euroshop') {
                 SelectPeremyichkaVERTIKALNUE('Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+            } else if (getFromData('karkas-name') == 'EuroshopLite') {
+                SelectPeremyichkaVERTIKALNUE('EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
             } else if (getFromData('karkas-name') == 'Optimax2') {
                 SelectPeremyichkaVERTIKALNUE('Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '3110');
             } else if (getFromData('karkas-name') == 'Standart') {
@@ -2215,6 +2336,8 @@ function calcNow() {
                 SelectHorizontalPeremochki('TUR', 'http://pavel.artultra.ru/karkas/Tur.png', 'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм', '810');
             } else if (getFromData('karkas-name') == 'Euroshop') {
                 SelectHorizontalPeremochki('Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+            } else if (getFromData('karkas-name') == 'EuroshopLite') {
+                SelectHorizontalPeremochki('EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
             } else if (getFromData('karkas-name') == 'Optimax2') {
                 SelectHorizontalPeremochki('Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '3110');
             } else if (getFromData('karkas-name') == 'Standart') {
@@ -2244,6 +2367,8 @@ function calcNow() {
             SelectKarkasEnd(94, 'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм', 'Tur', 'http://pavel.artultra.ru/karkas/Tur.png', 13, 20, 22, 0);
         } else if (getFromData('karkas-name') == 'Euroshop') {
             SelectKarkasEnd(111, 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', 'Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 14.5, 6, 36, 30);
+        } else if (getFromData('karkas-name') == 'EuroshopLite') {
+            SelectKarkasEnd(89, 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', 'EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 14.5, 6, 36, 30);
         } else if (getFromData('karkas-name') == 'Optimax2') {
             SelectKarkasEnd(415, 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', 'Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png', 17, 6, 53, 30);
         } else if (getFromData('karkas-name') == 'Standart') {
@@ -2284,7 +2409,7 @@ function calcNow() {
                 $("#karkas-tsvet-uplotnitelya").prepend($('' +
                     '<option value=""></option>' +
                     '<option value="Cерый">Cерый</option>'));
-            } else if (karkas_name == 'StandartStoika' || karkas_name == 'OptimaLite' || karkas_name == 'Standart' || karkas_name == 'Euroshop' || karkas_name == 'MobyLight' || karkas_name == 'Optima') {
+            } else if (karkas_name == 'StandartStoika' || karkas_name == 'OptimaLite' || karkas_name == 'Standart' || karkas_name == 'Euroshop' || karkas_name == 'EuroshopLite' || karkas_name == 'MobyLight' || karkas_name == 'Optima') {
                 $("#karkas-tsvet-uplotnitelya").prepend($('' +
                     '<option value=""></option>' +
                     '<option value="Белый">Белый</option>' +
@@ -2313,7 +2438,7 @@ function calcNow() {
         if (getFromData('karkas-tsvet-zaglushki') == '') {
             $("#karkas-tsvet-zaglushki").empty();
             var karkas_name = getFromData('karkas-name');
-            if (karkas_name == 'Euroshop') {
+            if (karkas_name == 'Euroshop' || karkas_name == 'EuroshopLite') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
                     '<option value=""></option>' +
                     '<option value="Серый">Серый</option>' +
@@ -2378,7 +2503,7 @@ function calcNow() {
         if (getFromData('karkas-tsvet-zaglushki-tortsevoy') == '') {
             $("#karkas-tsvet-zaglushki-tortsevoy").empty();
             var karkas_name = getFromData('karkas-name');
-            if (karkas_name == 'Euroshop') {
+            if (karkas_name == 'Euroshop' || karkas_name == 'EuroshopLite') {
                 $("#karkas-tsvet-zaglushki-tortsevoy").prepend($('' +
                     '<option value=""></option>' +
                     '<option value="Серый">Серый</option>' +
@@ -2450,7 +2575,7 @@ function calcNow() {
         if (getFromData('karkas-vid-krepleniya') == '') {
             $("#karkas-vid-krepleniya").empty();
             var karkas_name = getFromData('karkas-name');
-            if (karkas_name == 'Euroshop') {
+            if (karkas_name == 'Euroshop' || karkas_name == 'EuroshopLite') {
                 $("#karkas-vid-krepleniya").prepend($('' +
                     '<option value=""></option>' +
                     '<option value="НЕТ">НЕТ</option>' +
@@ -2617,7 +2742,7 @@ function calcNow() {
 
     // ТАБ ПРОФИЛЬ площ //
     var area = $("#tab-profil-vyisota").val() * $("#tab-profil-shirina").val() / 1000000;
-    $('.TAB-PROFIL-AREA').text(area);
+    $('.TAB-PROFIL-AREA').text(area.toFixed(1));
     setDataAndText('area', area.toFixed(1));
     //  ============================= //
 
@@ -2632,7 +2757,7 @@ function calcNow() {
             var H = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-shirina').val();
             var W = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-vyisota').val();
             var res = H * W / 1000000;
-            $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-ploschad').text(H * W / 1000000);
+            $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-ploschad').text((H * W / 1000000).toFixed(1));
             setDataAndText('material-' + i + '-ploschad', res.toFixed(1));
         }
     }
@@ -2930,7 +3055,7 @@ function calcNow() {
             var ploschad = getFromData('material-' + i + '-ploschad');
             var kol = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-kollichestvo').val();
             var res = ((priceStekla + priceZakalka) * ploschad) * kol;
-            $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-price').text(res);
+            $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-price').text(parseInt(res));
             setDataAndText('material-' + i + '-price', parseInt(res));
             if (isNaN(parseInt(res)) == false) {
                 data_price_in_napolnenii = parseInt(data_price_in_napolnenii) + parseInt(res);
@@ -2998,10 +3123,10 @@ $("#DIAGRAMMA-DIALOG-WINDOW-BTN").click(function (e) {
 // -  вывод цены профиля
 function setPriceInProfil() {
 
-    var karkasPrice = checkTheErrorNumber( getFromData('karkas-price') );
-    var decorPrice = checkTheErrorNumber( getFromData('decor-price') );
-    var vertikalnuePereochkiPrice = checkTheErrorNumber( getFromData('vertikalnue-pereochki-price') );
-    var horizontalPereochkiPrice = checkTheErrorNumber( getFromData('horizontal-pereochki-price') );
+    var karkasPrice = checkTheErrorNumber(getFromData('karkas-price'));
+    var decorPrice = checkTheErrorNumber(getFromData('decor-price'));
+    var vertikalnuePereochkiPrice = checkTheErrorNumber(getFromData('vertikalnue-pereochki-price'));
+    var horizontalPereochkiPrice = checkTheErrorNumber(getFromData('horizontal-pereochki-price'));
 
     var karkasVidKrepleniya = 0;
     if (getFromData('karkas-vid-krepleniya') == 'ДА') {
@@ -3009,7 +3134,7 @@ function setPriceInProfil() {
     }
 
     var res = karkasPrice + decorPrice + vertikalnuePereochkiPrice + horizontalPereochkiPrice + karkasVidKrepleniya;
-    $('.TAB-PROFIL-PRICE').text(res);
+    $('.TAB-PROFIL-PRICE').text(parseInt(res));
     setDataAndText('data-price-in-profil', parseInt(res));
 }
 // =
@@ -3024,6 +3149,10 @@ function SelectKarkasEnd(price, text, name, url, uplotnitel, zaglushka, krepleni
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) + parseFloat(zaglushkavpaz)) + (kreplenie + zaglushka) * 4);
         SelectHorizontalPeremochki('Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
         SelectPeremyichkaVERTIKALNUE('Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+    } else if (name == 'EuroshopLite') {
+        price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) + parseFloat(zaglushkavpaz)) + (kreplenie + zaglushka) * 4);
+        SelectHorizontalPeremochki('EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+        SelectPeremyichkaVERTIKALNUE('EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
     } else if (name == 'Optimax2') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) * 2 + parseFloat(zaglushkavpaz)) + (kreplenie + zaglushka) * 4);
         SelectHorizontalPeremochki('Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '3110');
@@ -3076,14 +3205,14 @@ function SelectKarkasEnd(price, text, name, url, uplotnitel, zaglushka, krepleni
     setPriceInProfil();
 }
 
-$( ".modal-body" ).on( "click", ".selectKarkasImg", function() {
+$(".modal-body").on("click", ".selectKarkasImg", function () {
     // - удаляем наполение профиля
     var g = getFromData('group');
-    var p = parseInt( $( '#TOTAL_PAINTING_ID' ).val() );
-    console.log('g', g );
-    for( i=1; i<=p; i++ ){
-        if( $('*[data-id="' + i + '"]').attr('data-group') == g ) {
-            for ( j=1; j<=5; j++ ){
+    var p = parseInt($('#TOTAL_PAINTING_ID').val());
+    console.log('g', g);
+    for (i = 1; i <= p; i++) {
+        if ($('*[data-id="' + i + '"]').attr('data-group') == g) {
+            for (j = 1; j <= 5; j++) {
                 $('*[data-id="' + i + '"]').attr('data-material-' + j + '-type', '');
                 $('*[data-id="' + i + '"]').attr('data-material-' + j + '-color', '');
                 $('*[data-id="' + i + '"]').attr('data-material-' + j + '-width', '');
@@ -3106,7 +3235,7 @@ $( ".modal-body" ).on( "click", ".selectKarkasImg", function() {
                 $('*[data-id="' + i + '"]').find('.material-' + j + '-ploschad').text('');
                 $('*[data-id="' + i + '"]').find('.material-' + j + '-price').text('');
 
-                $( '.add-material-block-past div' ).remove();
+                $('.add-material-block-past div').remove();
             }
         }
     }
@@ -3149,6 +3278,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
 
     var priceTur = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (94 + 13) + (22 + 20) * 4);
     var priceEuroshop = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (111 + 14.5 + 30) + (36 + 6) * 4);
+    var priceEuroshopLite = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (89 + 14.5 + 30) + (36 + 6) * 4);
     var priceOptimax2 = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (415 + 17 * 2 + 30) + (53 + 6) * 4);
     var priceOptima = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (272 + 14.5 + 30 + 55) + (53 + 6) * 4);
     var priceStandart = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (266 + 14.5 + 30) + (35 + 6.5) * 4);
@@ -3164,6 +3294,9 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
     }
     if (isNaN(priceEuroshop)) {
         priceEuroshop = 0;
+    }
+    if (isNaN(priceEuroshopLite)) {
+        priceEuroshopLite = 0;
     }
     if (isNaN(priceOptimax2)) {
         priceOptimax2 = 0;
@@ -3197,6 +3330,9 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
     var templateDataToEuroshop = {
         priceEuroshop: parseInt(priceEuroshop)
     };
+    var templateDataToEuroshopLite = {
+        priceEuroshopLite: parseInt(priceEuroshopLite)
+    };
     var templateDataToOptimax2 = {
         priceOptimax2: parseInt(priceOptimax2)
     };
@@ -3226,6 +3362,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
     };
     var Tur = $('#DesignSchemeKarkasTUR').html();
     var Euroshop = $('#DesignSchemeKarkasEuroshop').html();
+    var EuroshopLite = $('#DesignSchemeKarkasEuroshopLite').html();
     var Optimax2 = $('#DesignSchemeKarkasOptimax2').html();
     var Optima = $('#DesignSchemeKarkasOptima').html();
     var Standart = $('#DesignSchemeKarkasStandart').html();
@@ -3238,6 +3375,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
 
     var resultHtmlTur = makeHTMLFromTemplate(Tur, templateDataToTur);
     var resultHtmlEuroshop = makeHTMLFromTemplate(Euroshop, templateDataToEuroshop);
+    var resultHtmlEuroshopLite = makeHTMLFromTemplate(EuroshopLite, templateDataToEuroshopLite);
     var resultHtmlOptimax2 = makeHTMLFromTemplate(Optimax2, templateDataToOptimax2);
     var resultHtmlOptima = makeHTMLFromTemplate(Optima, templateDataToOptima);
     var resultHtmlStandart = makeHTMLFromTemplate(Standart, templateDataToStandart);
@@ -3370,10 +3508,12 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
 
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlEuroshop);
 
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlEuroshopLite);
+
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlTur);
 
     } else {
-        $.snackbar({ content: "Каркасов с такой высотой нет!!! Проверь высоту и полотна." });
+        $.snackbar({content: "Каркасов с такой высотой нет!!! Проверь высоту и полотна."});
     }
 
 });
@@ -3385,23 +3525,27 @@ $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(function () {
     var height = parseInt(getFromData('height'));
     var countPer = parseInt(getFromData('vertikalnue-pereochki-count'));
 
-    var priceTur = (height/1000*(94+13*2)+22*2)*countPer;
-    var priceEuroshop = (height/1000*(111+14.5*2)+36*2)*countPer;
-    var priceOptimax2 = (height/1000*(555+17*4)+53*2)*countPer;
-    var priceOptima = (height/1000*(272+14.5*2)+53*2)*countPer;
-    var priceStandart = (height/1000*(266+14.5*2)+35*2)*countPer;
-    var priceMobyLight = (height/1000*(176+14.5*2+7.2*2)+24*2)*countPer;
-    var priceOptimaLite = (height/1000*(187+14.5*2)+53*2)*countPer;
-    var priceBase = (height/1000*(540+15*4)+33*2)*countPer;
-    var priceStatusx1 = (height/1000*(395+14*2)+27+2.5*2)*countPer;
-    var priceStatusx2 = (height/1000*(490+14*4)+27+2.5*2)*countPer;
-    var priceStandartStoika = (height/1000*(216+14.5*2)+35*2)*countPer;
+    var priceTur = (height / 1000 * (94 + 13 * 2) + 22 * 2) * countPer;
+    var priceEuroshop = (height / 1000 * (111 + 14.5 * 2) + 36 * 2) * countPer;
+    var priceEuroshopLite = (height / 1000 * (89 + 14.5 * 2) + 36 * 2) * countPer;
+    var priceOptimax2 = (height / 1000 * (555 + 17 * 4) + 53 * 2) * countPer;
+    var priceOptima = (height / 1000 * (272 + 14.5 * 2) + 53 * 2) * countPer;
+    var priceStandart = (height / 1000 * (266 + 14.5 * 2) + 35 * 2) * countPer;
+    var priceMobyLight = (height / 1000 * (176 + 14.5 * 2 + 7.2 * 2) + 24 * 2) * countPer;
+    var priceOptimaLite = (height / 1000 * (187 + 14.5 * 2) + 53 * 2) * countPer;
+    var priceBase = (height / 1000 * (540 + 15 * 4) + 33 * 2) * countPer;
+    var priceStatusx1 = (height / 1000 * (395 + 14 * 2) + 27 + 2.5 * 2) * countPer;
+    var priceStatusx2 = (height / 1000 * (490 + 14 * 4) + 27 + 2.5 * 2) * countPer;
+    var priceStandartStoika = (height / 1000 * (216 + 14.5 * 2) + 35 * 2) * countPer;
 
     if (isNaN(priceTur)) {
         priceTur = 0;
     }
     if (isNaN(priceEuroshop)) {
         priceEuroshop = 0;
+    }
+    if (isNaN(priceEuroshopLite)) {
+        priceEuroshopLite = 0;
     }
     if (isNaN(priceOptimax2)) {
         priceOptimax2 = 0;
@@ -3435,6 +3579,9 @@ $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(function () {
     var templateDataToEuroshop = {
         priceEuroshop: parseInt(priceEuroshop)
     };
+    var templateDataToEuroshopLite = {
+        priceEuroshopLite: parseInt(priceEuroshopLite)
+    };
     var templateDataToOptimax2 = {
         priceOptimax2: parseInt(priceOptimax2)
     };
@@ -3464,6 +3611,7 @@ $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(function () {
     };
     var Tur = $('#DesignSchemeKarkasTUR').html();
     var Euroshop = $('#DesignSchemeKarkasEuroshop').html();
+    var EuroshopLite = $('#DesignSchemeKarkasEuroshopLite').html();
     var Optimax2 = $('#DesignSchemeKarkasOptimax2').html();
     var Optima = $('#DesignSchemeKarkasOptima').html();
     var Standart = $('#DesignSchemeKarkasStandart').html();
@@ -3476,6 +3624,7 @@ $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(function () {
 
     var resultHtmlTur = makeHTMLFromTemplate(Tur, templateDataToTur);
     var resultHtmlEuroshop = makeHTMLFromTemplate(Euroshop, templateDataToEuroshop);
+    var resultHtmlEuroshopLite = makeHTMLFromTemplate(EuroshopLite, templateDataToEuroshopLite);
     var resultHtmlOptimax2 = makeHTMLFromTemplate(Optimax2, templateDataToOptimax2);
     var resultHtmlOptima = makeHTMLFromTemplate(Optima, templateDataToOptima);
     var resultHtmlStandart = makeHTMLFromTemplate(Standart, templateDataToStandart);
@@ -3486,7 +3635,7 @@ $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(function () {
     var resultHtmlStatusx2 = makeHTMLFromTemplate(Statusx2, templateDataToStatusx2);
     var resultHtmlStandartStoika = makeHTMLFromTemplate(StandartStoika, templateDataToStandartStoika);
 
-    if (text == "Euroshop" || text == "Standart" || text == "MobyLight" || text == "Optima" || text == "OptimaLite" || text == "StandartStoika") {
+    if (text == "Euroshop" || text == "EuroshopLite" || text == "Standart" || text == "MobyLight" || text == "Optima" || text == "OptimaLite" || text == "StandartStoika") {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStandart);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlMobyLight);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlTur);
@@ -3494,6 +3643,7 @@ $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(function () {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlOptimaLite);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStandartStoika);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlEuroshop);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlEuroshopLite);
     }
     if (text == "Tur") {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlTur);
@@ -3542,89 +3692,97 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
 
         var res = parseInt((getFromData('height') / 1000 * (94 + 13 * 2) + 22 * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'Euroshop') {
 
         var res = parseInt((getFromData('height') / 1000 * (111 + 14.5 * 2) + 36 * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
+
+    } else if (name == 'EuroshopLite') {
+
+        var res = parseInt((getFromData('height') / 1000 * (89 + 14.5 * 2) + 36 * 2) * getFromData('vertikalnue-pereochki-count'));
+
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
+
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'Standart') {
 
         var res = parseInt((getFromData('height') / 1000 * (266 + 14.5 * 2) + 35 * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'MobyLight') {
 
         var res = parseInt((getFromData('height') / 1000 * (176 + 14.5 * 2 + 30 * 2) + 30 * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'Optima') {
 
         var res = parseInt((getFromData('height') / 1000 * (272 + 14.5 * 2) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'OptimaLite') {
 
         var res = parseInt((getFromData('height') / 1000 * (187 + 14.5 * 2) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'StandartStoika') {
 
         var res = parseInt((getFromData('height') / 1000 * (216 + 14.5 * 2) + 35 * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'Optimax2') {
 
         var res = parseInt((getFromData('height') / 1000 * (555 + 17 * 4) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'Base') {
 
         var res = parseInt((getFromData('height') / 1000 * (540 + 15 * 4) + 33 * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'Statusx1') {
 
         var res = parseInt((getFromData('height') / 1000 * (395 + 14 * 2) + (27 + 2.5 * 2) * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     } else if (name == 'Statusx2') {
 
         var res = parseInt((getFromData('height') / 1000 * (490 + 14 * 4) + (27 + 2.5 * 2) * 2) * getFromData('vertikalnue-pereochki-count'));
 
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(res);
+        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(res));
 
-        setDataAndText('vertikalnue-pereochki-price', res);
+        setDataAndText('vertikalnue-pereochki-price', parseInt(res));
 
     }
 
@@ -3640,23 +3798,27 @@ $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR').click(function () {
     var width = parseInt(getFromData('width'));
     var countPer = parseInt(getFromData('horizontal-pereochki-count'));
 
-    var priceTur = (width/1000*(94+13*2)+22*2)*countPer;
-    var priceEuroshop = (width/1000*(111+14.5*2)+36*2)*countPer;
-    var priceOptimax2 = (width/1000*(555+17*4)+53*2)*countPer;
-    var priceOptima = (width/1000*(272+14.5*2)+53*2)*countPer;
-    var priceStandart = (width/1000*(266+14.5*2)+35*2)*countPer;
-    var priceMobyLight = (width/1000*(176+14.5*2+7.2*2)+24*2)*countPer;
-    var priceOptimaLite = (width/1000*(187+14.5*2)+53*2)*countPer;
-    var priceBase = (width/1000*(540+15*4)+33*2)*countPer;
-    var priceStatusx1 = (width/1000*(395+14*2)+27+2.5*2)*countPer;
-    var priceStatusx2 = (width/1000*(490+14*4)+27+2.5*2)*countPer;
-    var priceStandartStoika = (width/1000*(216+14.5*2)+35*2)*countPer;
+    var priceTur = (width / 1000 * (94 + 13 * 2) + 22 * 2) * countPer;
+    var priceEuroshop = (width / 1000 * (111 + 14.5 * 2) + 36 * 2) * countPer;
+    var priceEuroshopLite = (width / 1000 * (89 + 14.5 * 2) + 36 * 2) * countPer;
+    var priceOptimax2 = (width / 1000 * (555 + 17 * 4) + 53 * 2) * countPer;
+    var priceOptima = (width / 1000 * (272 + 14.5 * 2) + 53 * 2) * countPer;
+    var priceStandart = (width / 1000 * (266 + 14.5 * 2) + 35 * 2) * countPer;
+    var priceMobyLight = (width / 1000 * (176 + 14.5 * 2 + 7.2 * 2) + 24 * 2) * countPer;
+    var priceOptimaLite = (width / 1000 * (187 + 14.5 * 2) + 53 * 2) * countPer;
+    var priceBase = (width / 1000 * (540 + 15 * 4) + 33 * 2) * countPer;
+    var priceStatusx1 = (width / 1000 * (395 + 14 * 2) + 27 + 2.5 * 2) * countPer;
+    var priceStatusx2 = (width / 1000 * (490 + 14 * 4) + 27 + 2.5 * 2) * countPer;
+    var priceStandartStoika = (width / 1000 * (216 + 14.5 * 2) + 35 * 2) * countPer;
 
     if (isNaN(priceTur)) {
         priceTur = 0;
     }
     if (isNaN(priceEuroshop)) {
         priceEuroshop = 0;
+    }
+    if (isNaN(priceEuroshopLite)) {
+        priceEuroshopLite = 0;
     }
     if (isNaN(priceOptimax2)) {
         priceOptimax2 = 0;
@@ -3690,6 +3852,9 @@ $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR').click(function () {
     var templateDataToEuroshop = {
         priceEuroshop: parseInt(priceEuroshop)
     };
+    var templateDataToEuroshopLite = {
+        priceEuroshopLite: parseInt(priceEuroshopLite)
+    };
     var templateDataToOptimax2 = {
         priceOptimax2: parseInt(priceOptimax2)
     };
@@ -3719,6 +3884,7 @@ $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR').click(function () {
     };
     var Tur = $('#DesignSchemeKarkasTUR').html();
     var Euroshop = $('#DesignSchemeKarkasEuroshop').html();
+    var EuroshopLite = $('#DesignSchemeKarkasEuroshopLite').html();
     var Optimax2 = $('#DesignSchemeKarkasOptimax2').html();
     var Optima = $('#DesignSchemeKarkasOptima').html();
     var Standart = $('#DesignSchemeKarkasStandart').html();
@@ -3731,6 +3897,7 @@ $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR').click(function () {
 
     var resultHtmlTur = makeHTMLFromTemplate(Tur, templateDataToTur);
     var resultHtmlEuroshop = makeHTMLFromTemplate(Euroshop, templateDataToEuroshop);
+    var resultHtmlEuroshopLite = makeHTMLFromTemplate(EuroshopLite, templateDataToEuroshopLite);
     var resultHtmlOptimax2 = makeHTMLFromTemplate(Optimax2, templateDataToOptimax2);
     var resultHtmlOptima = makeHTMLFromTemplate(Optima, templateDataToOptima);
     var resultHtmlStandart = makeHTMLFromTemplate(Standart, templateDataToStandart);
@@ -3741,7 +3908,7 @@ $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR').click(function () {
     var resultHtmlStatusx2 = makeHTMLFromTemplate(Statusx2, templateDataToStatusx2);
     var resultHtmlStandartStoika = makeHTMLFromTemplate(StandartStoika, templateDataToStandartStoika);
 
-    if (text == "Euroshop" || text == "Standart" || text == "MobyLight" || text == "Optima" || text == "OptimaLite" || text == "StandartStoika") {
+    if (text == "Euroshop" || text == "EuroshopLite" || text == "Standart" || text == "MobyLight" || text == "Optima" || text == "OptimaLite" || text == "StandartStoika") {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStandart);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlMobyLight);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlTur);
@@ -3785,78 +3952,85 @@ function SelectHorizontalPeremochki(name, url, text, price) {
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Euroshop') {
         var res = parseInt((getFromData('width') / 1000 * (111 + 14.5 * 2) + 36 * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
+    } else if (name == 'EuroshopLite') {
+        var res = parseInt((getFromData('width') / 1000 * (89 + 14.5 * 2) + 36 * 2) * horizontal_pereochki_count);
+        if (res > 0) {
+            res = res + 176;
+        }
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Standart') {
         var res = parseInt((getFromData('width') / 1000 * (266 + 14.5 * 2) + 35 * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'MobyLight') {
         var res = parseInt((getFromData('width') / 1000 * (176 + 14.5 * 2 + 30 * 2) + 24 * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Optima') {
         var res = parseInt((getFromData('width') / 1000 * (272 + 14.5 * 2) + 53 * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'OptimaLite') {
         var res = parseInt((getFromData('width') / 1000 * (187 + 14.5 * 2) + 53 * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'StandartStoika') {
         var res = parseInt((getFromData('width') / 1000 * (216 + 14.5 * 2) + 35 * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Optimax2') {
         var res = parseInt((getFromData('width') / 1000 * (555 + 17 * 4) + 53 * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Base') {
         var res = parseInt((getFromData('width') / 1000 * (540 + 15 * 4) + 33 * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Statusx1') {
         var res = parseInt((getFromData('width') / 1000 * (395 + 14 * 2) + (27 + 2.5 * 2) * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Statusx2') {
         var res = parseInt((getFromData('width') / 1000 * (490 + 14 * 4) + (27 + 2.5 * 2) * 2) * horizontal_pereochki_count);
         if (res > 0) {
             res = res + 176;
         }
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(res);
-        setDataAndText('horizontal-pereochki-price', res);
+        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
+        setDataAndText('horizontal-pereochki-price', parseInt(res));
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////
