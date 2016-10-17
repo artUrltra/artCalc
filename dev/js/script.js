@@ -217,8 +217,7 @@ function PAINTING() {
 //  ============================= //
 
 // Отрисовка половинчатых створок //
-$('#POLOVINCHATAYA_KOL').on('input change', function () {
-    console.log( '-------------------' )
+$('#POLOVINCHATAYA_KOL').bind('input', function () {
     if ($('#POLOVINCHATAYA_CHECKBOX').prop('checked') == false) {
         $.snackbar({content: "Для использования половинчатой створки поставьте галочку!!!"});
         $('#POLOVINCHATAYA_KOL').val('');
@@ -234,8 +233,7 @@ $('#POLOVINCHATAYA_KOL').on('input change', function () {
             p = checkTheErrorNumber(p);
             mp = checkTheErrorNumber(mp);
             var ps = checkTheErrorNumber($('#POLOVINCHATAYA_KOL').val());
-            // if (( p - mp ) <= ps) {
-            if (( p ) <= ps) {
+            if (( p - mp ) <= ps) {
                 $.snackbar({content: "Для использования половинчатой створки должно быть: полотен - подвижных полотен > половинчатых створок!!!!"});
                 $('#POLOVINCHATAYA_KOL').val('');
             } else {
@@ -249,8 +247,7 @@ $('#POLOVINCHATAYA_KOL').on('input change', function () {
                         $('#tab-profil-shirina').val(widthForOnePS);
                         $("#NUMBER_OF_DUPLICATOR_ID").val(0);
                     }
-                    if (i <= ( p - ps )) {
-                    // if (i < ( p )) {
+                    if (i < ( p - ps )) {
                         $('*[data-id="' + i + '"]').attr('data-width', widthForOneOtherP);
                         $('*[data-id="' + i + '"]').find('.width').text(widthForOneOtherP);
                         $('*[data-id="' + i + '"]').find(".group").text(0);
@@ -261,7 +258,6 @@ $('#POLOVINCHATAYA_KOL').on('input change', function () {
                         $('*[data-id="' + i + '"]').find(".group").text(1);
                         $('*[data-id="' + i + '"]').attr("data-group", 1);
                     }
-
                     $('*[data-id="' + i + '"]').attr('data-height', h);
                     $('*[data-id="' + i + '"]').find(".height").text(h);
                     $('#tab-profil-vyisota').val(h)
@@ -278,25 +274,12 @@ $('#POLOVINCHATAYA_KOL').on('input change', function () {
 //  ============================= //
 
 // Выбор изображения после диалога //
-function setImg(number, total_painting, movable_painting,  polovinchataya_stvorka) {
-
-
-
+function setImg(number, total_painting, movable_painting) {
     TOTAL_PAINTING = total_painting;
     MOVABLE_PAINTING = movable_painting;
     setAllSaveParameters();
     $(".drawing img").attr("src", "http://fasts-like.com//SchemeOfDoors/" + number + ".png");
     PAINTING();
-    if( polovinchataya_stvorka != undefined ) {
-        // console.log( polovinchataya_stvorka )
-        $( '#POLOVINCHATAYA_KOL' ).val( polovinchataya_stvorka );
-        $( '#POLOVINCHATAYA_KOL' ).trigger('change');
-        $( '#POLOVINCHATAYA_KOL' ).trigger('change');
-        // $( '#POLOVINCHATAYA_KOL' ).trigger('change');
-        // $( '#POLOVINCHATAYA_KOL' ).trigger('change');
-        // $( '#POLOVINCHATAYA_KOL' ).trigger('change');
-        // $( '#POLOVINCHATAYA_KOL' ).trigger('change');
-    }
 }
 //  ============================= //
 
@@ -323,7 +306,7 @@ function SET_BAFFLE_SEKECTOR() {
 
 // Событие смены селектов полотен
 $(".BAFFLE_SEKECTOR_CLASS").change(function () {
-
+    console.log('change');
     $(".BAFFLE_SEKECTOR_CLASS").val($(this).val());
 
     $('*').removeClass('used');
@@ -435,6 +418,13 @@ $('#btn-anod').click(function () {
     };
     var resultHtml = makeHTMLFromTemplate(html, templateData);
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+});
+
+$('.btn.btn-raised.btn-primary.open-material-btn').click(function () {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+    var html = $('.napolnenie-block').html();
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html);
 });
 
 $('body').on("change",function () {
@@ -1475,7 +1465,7 @@ function loadFurnitura() {
         $('.POLOVINCHATAYA').show();
     } else {
         $('.POLOVINCHATAYA').hide();
-        $(".POLOVINCHATAYA input").prop("checked", true);
+        $(".POLOVINCHATAYA input").prop("checked", false);
     }
     // =
 }
@@ -4265,122 +4255,50 @@ function SelectHorizontalPeremochki(name, url, text, price) {
     // }
     if (name == 'TUR') {
         var res = parseInt((getFromData('width') / 1000 * (94 + 13 * 2) + 22 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*22*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Euroshop') {
         var res = parseInt((getFromData('width') / 1000 * (111 + 14.5 * 2) + 36 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*36*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'EuroshopLite') {
         var res = parseInt((getFromData('width') / 1000 * (89 + 14.5 * 2) + 36 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*36*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Standart') {
         var res = parseInt((getFromData('width') / 1000 * (266 + 14.5 * 2) + 35 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*35*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'MobyLight') {
         var res = parseInt((getFromData('width') / 1000 * (176 + 14.5 * 2 + 30 * 2) + 24 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*24*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Optima') {
         var res = parseInt((getFromData('width') / 1000 * (272 + 14.5 * 2) + 53 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*53*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'OptimaLite') {
         var res = parseInt((getFromData('width') / 1000 * (187 + 14.5 * 2) + 53 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*53*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'StandartStoika') {
         var res = parseInt((getFromData('width') / 1000 * (216 + 14.5 * 2) + 35 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*35*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Optimax2') {
         var res = parseInt((getFromData('width') / 1000 * (555 + 17 * 4) + 53 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*53*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Base') {
         var res = parseInt((getFromData('width') / 1000 * (540 + 15 * 4) + 33 * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*33*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Statusx1') {
         var res = parseInt((getFromData('width') / 1000 * (395 + 14 * 2) + (27 + 2.5 * 2) * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*27*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     } else if (name == 'Statusx2') {
         var res = parseInt((getFromData('width') / 1000 * (490 + 14 * 4) + (27 + 2.5 * 2) * 2) * horizontal_pereochki_count);
-<<<<<<< HEAD
-=======
-        if (res > 0) {
-            res = res + (2*2*27*2);
-        }
->>>>>>> 55af9cc325ca2a7e2305906a81117913653ba8d6
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(res));
         setDataAndText('horizontal-pereochki-price', parseInt(res));
     }

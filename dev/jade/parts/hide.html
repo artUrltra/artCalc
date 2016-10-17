@@ -286,24 +286,6 @@
                      data-dismiss="modal">
             </center>
         </div>
-        <div class="col-md-12">
-            <center>
-                <img onclick="setImg(12,4,4, 1);" style="max-width: 100%;"
-                     src="http://fasts-like.com/SchemeOfDoors/12.png" data-dismiss="modal">
-            </center>
-        </div>
-        <div class="col-md-12">
-            <center>
-                <img onclick="setImg(14,5,5,1);" style="max-width: 100%;"
-                     src="http://fasts-like.com/SchemeOfDoors/14.png" data-dismiss="modal">
-            </center>
-        </div>
-        <div class="col-md-12">
-            <center>
-                <img onclick="setImg(15,6,6,2);" style="max-width: 100%;"
-                     src="http://fasts-like.com/SchemeOfDoors/15.png" data-dismiss="modal">
-            </center>
-        </div>
     </div>
     <!--DesignScheme3-->
     <div id="DesignScheme3">
@@ -521,6 +503,7 @@
         <hr>
         <div class="material">
             <div class="form-group label-floating is-empty" style="height: 70px;">
+                <input class="btn btn-raised btn-primary open-material-btn" type="button" value="Выбрать материал">
                 <label>Материал
                     <select class="form-control napolnenie-el-material">
                         <option value=""></option>
@@ -628,7 +611,134 @@
     </div>
     <!------------------------------------------------------------------------------------------------------------------------------------>
 
-    
+    <div class="napolnenie-block">
+        <div class="col-md-12">
+            <div class="col-md-2" style="">
+                <center>
+                    <h4 style="height: 70px;">Стекло обычное</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','1','%plusOne%');"
+                        src="/material/1.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price1%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 70px;">Стекло матовое</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','2','%plusOne%');"
+                        src="/material/2.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price2%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 70px;">Зеркало серебро</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','3','%plusOne%');"
+                        src="/material/3.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price3%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 70px;">Зеркало бронза</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','4','%plusOne%');"
+                        src="/material/4.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price4%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 70px;">Триплекс</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','5','%plusOne%');"
+                        src="/material/5.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price5%</h4>
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">Триплекс матовый</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','6','%plusOne%');"
+                        src="/material/6.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price6%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">Поликарбонат сотовый</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','7','%plusOne%');"
+                        src="/material/7.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price7%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">ПВХ вспененный</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','8','%plusOne%');"
+                        src="/material/8.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price8%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">Поликарбонат монолит</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','9','%plusOne%');"
+                        src="/material/9.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price9%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">Оргстекло экструз.</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','10','%plusOne%');"
+                        src="/material/10.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price10%</h4>
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">ЛДСП</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','11','%plusOne%');"
+                        src="/material/11.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price11%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">МДФ шлифованный</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','12','%plusOne%');"
+                        src="/material/12.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price12%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">ДСП шлифованный</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','13','%plusOne%');"
+                        src="/material/13.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price13%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">Фанера</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','14','%plusOne%');"
+                        src="/material/14.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price14%</h4>
+                </center>
+            </div>
+            <div class="col-md-2">
+                <center>
+                    <h4 style="height: 50px;">Сендвич панели ПВХ</h4><img
+                        onclick="SelectMaterialEnd('%number%','%i%','15','%plusOne%');"
+                        src="/material/15.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %Price15%</h4>
+                </center>
+            </div>
+        </div>
+    </div>
 
     <!------------------------------------------------------------------------------------------------------------------------------------>
     <div class="furnitura-net">

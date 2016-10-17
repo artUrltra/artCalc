@@ -48,60 +48,60 @@
 
 //
 
- // function newArr() {
- //     // - Получили полотна
- //     var m = [];
- //     var m2 = [];
- //     var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID').val());
- //     if (isNaN(TOTAL_PAINTING)){
- //         TOTAL_PAINTING = 0;
- //     }
- //     // =
- //     // - Создали внутренние массивы
- //     if (TOTAL_PAINTING > 1){
- //         for (i = 0; i <= TOTAL_PAINTING-1; i++) {
- //             m[i] = new Array(3);
- //         }
- //     }
- //     // =
- //     // - Массив со всеми данными
- //     for (var i = 0; i < TOTAL_PAINTING; i++) {
- //         m[i][0] = $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-name');
- //         m[i][1] = checkTheErrorNumber( $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-price') );
- //         m[i][2] = checkTheErrorNumber(  $('*[data-id="' + (i + 1 ) + '"]').attr('data-width') ) + checkTheErrorNumber( $('*[data-id="' + (i + 1 ) + '"]').attr('data-height') );
- //     }
- //     for (var i = 0; i < TOTAL_PAINTING; i++) {
- //         if (m2.length == 0){
- //             m2.push(m[i][0]);
- //             m2.push(m[i][1]);
- //             m2.push(m[i][2]);
- //         }
- //         else {
- //             var status = true;
- //             var price = 0;
- //             for (var j = 0; j < m2.length; j++) {
- //                 if (m2[j] == m[i][0]) {
- //                     for (var g = m2.length; g >= 0; g--) {
- //                         if (m2[g] == m[i][0]){
- //                             m2[j+1] = m2[j+1] + m[i][1]
- //                             m2[j+2] = m2[j+2] + m[i][2]
- //                         }
- //                     }
- //                     status = false;
- //                 }
- //             }
- //             if (status == true){
- //                 m2.push(m[i][0]);
- //                 m2.push(m[i][1]);
- //                 m2.push(m[i][2]);
- //             }
- //         }
- //     }
- //     for(var i = 0; i<= m2.length; i=i+3){
- //         console.log( '--------------------' )
- //         console.log( i, m2[i] )
- //         console.log( i, m2[i+1] )
- //         console.log( i, m2[i+2] )
- //         console.log( '--------------------' )
- //     }
- // }
+ function newArr() {
+     // - Получили полотна
+     var m = [];
+     var m2 = [];
+     var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID').val());
+     if (isNaN(TOTAL_PAINTING)){
+         TOTAL_PAINTING = 0;
+     }
+     // =
+     // - Создали внутренние массивы
+     if (TOTAL_PAINTING > 1){
+         for (i = 0; i <= TOTAL_PAINTING-1; i++) {
+             m[i] = new Array(3);
+         }
+     }
+     // =
+     // - Массив со всеми данными
+     for (var i = 0; i < TOTAL_PAINTING; i++) {
+         m[i][0] = $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-name');
+         m[i][1] = checkTheErrorNumber( $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-price') );
+         m[i][2] = checkTheErrorNumber(  $('*[data-id="' + (i + 1 ) + '"]').attr('data-width') ) + checkTheErrorNumber( $('*[data-id="' + (i + 1 ) + '"]').attr('data-height') );
+     }
+     for (var i = 0; i < TOTAL_PAINTING; i++) {
+         if (m2.length == 0){
+             m2.push(m[i][0]);
+             m2.push(m[i][1]);
+             m2.push(m[i][2]);
+         }
+         else {
+             var status = true;
+             var price = 0;
+             for (var j = 0; j < m2.length; j++) {
+                 if (m2[j] == m[i][0]) {
+                     for (var g = m2.length; g >= 0; g--) {
+                         if (m2[g] == m[i][0]){
+                             m2[j+1] = m2[j+1] + m[i][1]
+                             m2[j+2] = m2[j+2] + m[i][2]
+                         }
+                     }
+                     status = false;
+                 }
+             }
+             if (status == true){
+                 m2.push(m[i][0]);
+                 m2.push(m[i][1]);
+                 m2.push(m[i][2]);
+             }
+         }
+     }
+     for(var i = 0; i<= m2.length; i=i+3){
+         console.log( '--------------------' )
+         console.log( i, m2[i] )
+         console.log( i, m2[i+1] )
+         console.log( i, m2[i+2] )
+         console.log( '--------------------' )
+     }
+ }
