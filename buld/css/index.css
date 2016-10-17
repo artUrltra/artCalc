@@ -14,6 +14,10 @@
   width: 100% !important;
 }
 
+.vyiborDekoraDlyaProfilya img {
+  border: solid 1px black;
+}
+
 .btn {
   padding: 8px 10px;
 }
