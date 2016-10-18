@@ -214,13 +214,13 @@ $('.sendGet').click(function () {
         }
 
         m[i][0] = selectedKarkas;
-        m[i][1] = parseInt($('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-price') );
-        m[i][2] = parseInt($('*[data-id="' + (i + 1 ) + '"]').attr('data-width') ) + parseInt(( $('*[data-id="' + (i + 1 ) + '"]').attr('data-height'))) ;
+        m[i][1] = parseInt($('*[data-id="' + (i+1) + '"]').attr('data-karkas-price') );
+        m[i][2] = parseInt($('*[data-id="' + (i+1) + '"]').attr('data-width') ) + parseInt(( $('*[data-id="' + (i + 1 ) + '"]').attr('data-height'))) ;
         m[i][3] =
-            $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-tsvet-uplotnitelya') + ',' +
-            $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-tsvet-zaglushki') + ',' +
-            $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-tsvet-zaglushki-tortsevoy') + ',' +
-            $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-vid-krepleniya');
+            '1' + $('*[data-id="' + (i+1) + '"]').attr('data-karkas-tsvet-uplotnitelya') + '$' +
+            '2' + $('*[data-id="' + (i+1) + '"]').attr('data-karkas-tsvet-zaglushki') + '$' +
+            '3' + $('*[data-id="' + (i+1) + '"]').attr('data-karkas-tsvet-zaglushki-tortsevoy') + '$' +
+            '4' + $('*[data-id="' + (i+1) + '"]').attr('data-karkas-vid-krepleniya');
     }
     for (var i = 0; i < TOTAL_PAINTING; i++) {
         if (m2.length == 0){
