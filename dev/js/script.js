@@ -4002,6 +4002,15 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
     //     $('#tab-profil-v-peremyichki-shtuk').val('0');
     //
     // }
+    var uplotnitelPrice = 0;
+    var karkasName = getFromData('karkas-name');
+    for(var i = 0; i < 5; i++){
+        if(karkasName == "Euroshop" || karkasName == "EuroshopLite" || karkasName == "Standart" || karkasName == "MobyLight" || karkasName == "Optima" || karkasName == "OptimaLite" || karkasName == "StandartStoika") {
+            if (getFromData('material-' + (i + 1) + '-type') == "LDSP" && getFromData('material-' + (i + 1) + '-tolschina') == "16") {
+                uplotnitelPrice = 55;
+            }
+        }
+    }
 
     if (name == 'TUR') {
         var res = parseInt((getFromData('height') / 1000 * (94 + 13 * 2) + 22 * 2) * getFromData('vertikalnue-pereochki-count'));
@@ -4012,7 +4021,10 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
         }
         var result = res + addKreplenie;
     } else if (name == 'Euroshop') {
-        var res = parseInt((getFromData('height') / 1000 * (111 + 14.5 * 2) + 36 * 2) * getFromData('vertikalnue-pereochki-count'));
+        if(uplotnitelPrice == 0){
+            uplotnitelPrice = 14.5;
+        }
+        var res = parseInt((getFromData('height') / 1000 * (111 + uplotnitelPrice * 2) + 36 * 2) * getFromData('vertikalnue-pereochki-count'));
         if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 36 * 2);
         }else{
@@ -4020,7 +4032,10 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
         }
         var result = res + addKreplenie;
     } else if (name == 'EuroshopLite') {
-        var res = parseInt((getFromData('height') / 1000 * (89 + 14.5 * 2) + 36 * 2) * getFromData('vertikalnue-pereochki-count'));
+        if(uplotnitelPrice == 0){
+            uplotnitelPrice = 14.5;
+        }
+        var res = parseInt((getFromData('height') / 1000 * (89 + uplotnitelPrice * 2) + 36 * 2) * getFromData('vertikalnue-pereochki-count'));
         if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 36 * 2);
         }else{
@@ -4028,7 +4043,10 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
         }
         var result = res + addKreplenie;
     } else if (name == 'Standart') {
-        var res = parseInt((getFromData('height') / 1000 * (266 + 14.5 * 2) + 35 * 2) * getFromData('vertikalnue-pereochki-count'));
+        if(uplotnitelPrice == 0){
+            uplotnitelPrice = 14.5;
+        }
+        var res = parseInt((getFromData('height') / 1000 * (266 + uplotnitelPrice * 2) + 35 * 2) * getFromData('vertikalnue-pereochki-count'));
         if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 35 * 2);
         }else{
@@ -4036,7 +4054,10 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
         }
         var result = res + addKreplenie;
     } else if (name == 'MobyLight') {
-        var res = parseInt((getFromData('height') / 1000 * (176 + 14.5 * 2 + 30 * 2) + 30 * 2) * getFromData('vertikalnue-pereochki-count'));
+        if(uplotnitelPrice == 0){
+            uplotnitelPrice = 14.5;
+        }
+        var res = parseInt((getFromData('height') / 1000 * (176 + uplotnitelPrice * 2 + 30 * 2) + 30 * 2) * getFromData('vertikalnue-pereochki-count'));
         if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 30 * 2);
         }else{
@@ -4044,7 +4065,10 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
         }
         var result = res + addKreplenie;
     } else if (name == 'Optima') {
-        var res = parseInt((getFromData('height') / 1000 * (272 + 14.5 * 2) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
+        if(uplotnitelPrice == 0){
+            uplotnitelPrice = 14.5;
+        }
+        var res = parseInt((getFromData('height') / 1000 * (272 + uplotnitelPrice * 2) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
         if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 53 * 2);
         }else{
@@ -4052,7 +4076,10 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
         }
         var result = res + addKreplenie;
     } else if (name == 'OptimaLite') {
-        var res = parseInt((getFromData('height') / 1000 * (187 + 14.5 * 2) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
+        if(uplotnitelPrice == 0){
+            uplotnitelPrice = 14.5;
+        }
+        var res = parseInt((getFromData('height') / 1000 * (187 + uplotnitelPrice * 2) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
         if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 53 * 2);
         }else{
@@ -4060,7 +4087,10 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
         }
         var result = res + addKreplenie;
     } else if (name == 'StandartStoika') {
-        var res = parseInt((getFromData('height') / 1000 * (216 + 14.5 * 2) + 35 * 2) * getFromData('vertikalnue-pereochki-count'));
+        if(uplotnitelPrice == 0){
+            uplotnitelPrice = 14.5;
+        }
+        var res = parseInt((getFromData('height') / 1000 * (216 + uplotnitelPrice * 2) + 35 * 2) * getFromData('vertikalnue-pereochki-count'));
         if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 35 * 2);
         }else{

@@ -195,7 +195,7 @@ $('.sendGet').click(function () {
     // - Создали внутренние массивы
     if (TOTAL_PAINTING > 0){
         for (i = 0; i <= TOTAL_PAINTING-1; i++) {
-            m[i] = new Array(3);
+            m[i] = new Array(4);
         }
     }
     // =
@@ -216,12 +216,18 @@ $('.sendGet').click(function () {
         m[i][0] = selectedKarkas;
         m[i][1] = parseInt($('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-price') );
         m[i][2] = parseInt($('*[data-id="' + (i + 1 ) + '"]').attr('data-width') ) + parseInt(( $('*[data-id="' + (i + 1 ) + '"]').attr('data-height'))) ;
+        m[i][3] =
+            $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-tsvet-uplotnitelya') + ',' +
+            $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-tsvet-zaglushki') + ',' +
+            $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-tsvet-zaglushki-tortsevoy') + ',' +
+            $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-vid-krepleniya');
     }
     for (var i = 0; i < TOTAL_PAINTING; i++) {
         if (m2.length == 0){
             m2.push(m[i][0]);
             m2.push(m[i][1]);
             m2.push(m[i][2]);
+            m2.push(m[i][3]);
         }
         else {
             var status = true;
@@ -241,6 +247,7 @@ $('.sendGet').click(function () {
                 m2.push(m[i][0]);
                 m2.push(m[i][1]);
                 m2.push(m[i][2]);
+                m2.push(m[i][3]);
             }
         }
     }

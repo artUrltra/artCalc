@@ -47,34 +47,51 @@
 
 
 //
-
+var m = [];
+var m2 = [];
  function newArr() {
-     // - Получили полотна
-     var m = [];
-     var m2 = [];
+
      var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID').val());
      if (isNaN(TOTAL_PAINTING)){
          TOTAL_PAINTING = 0;
      }
      // =
      // - Создали внутренние массивы
-     if (TOTAL_PAINTING > 1){
+     if (TOTAL_PAINTING > 0){
          for (i = 0; i <= TOTAL_PAINTING-1; i++) {
-             m[i] = new Array(3);
+             m[i] = new Array(4);
          }
      }
      // =
      // - Массив со всеми данными
      for (var i = 0; i < TOTAL_PAINTING; i++) {
-         m[i][0] = $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-name');
-         m[i][1] = checkTheErrorNumber( $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-price') );
-         m[i][2] = checkTheErrorNumber(  $('*[data-id="' + (i + 1 ) + '"]').attr('data-width') ) + checkTheErrorNumber( $('*[data-id="' + (i + 1 ) + '"]').attr('data-height') );
+
+         var karkasName = $('*[data-id=' + (i + 1) + ']').find('.karkas-name').text();
+         if (karkasName == 'Optimax2') {
+             selectedKarkas = 'OptimaхTwo';
+         } else if (karkasName == 'Statusx1') {
+             selectedKarkas = 'StatusхOne';
+         } else if (karkasName == 'Statusx2') {
+             selectedKarkas = 'StatusхTwo';
+         } else {
+             selectedKarkas = karkasName;
+         }
+
+         m[i][0] = selectedKarkas;
+         m[i][1] = parseInt($('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-price') );
+         m[i][2] = parseInt($('*[data-id="' + (i + 1 ) + '"]').attr('data-width') ) + parseInt(( $('*[data-id="' + (i + 1 ) + '"]').attr('data-height'))) ;
+         m[i][3] =
+             $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-tsvet-uplotnitelya') + ',' +
+             $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-tsvet-zaglushki') + ',' +
+             $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-tsvet-zaglushki-tortsevoy') + ',' +
+             $('*[data-id="' + (i + 1 ) + '"]').attr('data-karkas-vid-krepleniya');
      }
      for (var i = 0; i < TOTAL_PAINTING; i++) {
          if (m2.length == 0){
              m2.push(m[i][0]);
              m2.push(m[i][1]);
              m2.push(m[i][2]);
+             m2.push(m[i][3]);
          }
          else {
              var status = true;
@@ -83,8 +100,8 @@
                  if (m2[j] == m[i][0]) {
                      for (var g = m2.length; g >= 0; g--) {
                          if (m2[g] == m[i][0]){
-                             m2[j+1] = m2[j+1] + m[i][1]
-                             m2[j+2] = m2[j+2] + m[i][2]
+                             m2[j+1] = parseInt(m2[j+1]) + parseInt(m[i][1]);
+                             m2[j+2] = parseInt(m2[j+2]) + parseInt(m[i][2]);
                          }
                      }
                      status = false;
@@ -94,6 +111,7 @@
                  m2.push(m[i][0]);
                  m2.push(m[i][1]);
                  m2.push(m[i][2]);
+                 m2.push(m[i][3]);
              }
          }
      }
