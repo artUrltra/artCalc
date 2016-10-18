@@ -22,6 +22,11 @@
   padding: 8px 10px;
 }
 
+.new-design {
+  border: solid 3px black;
+  border-radius: 0px;
+}
+
 .area-block .form-group {
   width: 50px;
 }
