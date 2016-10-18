@@ -107,90 +107,68 @@ $('.sendGet').click(function () {
     // Названия елементов фурнитуры
     var furnituraNameStr = '';
     if (furnituraSelect == 1) {
-        // var slidingMechanisms = '&slidingMechanisms=' + $( '.razdvizhnyie-mehanizmyi select' ).val();
-        var slidingMechanisms = '&slidingMechanisms=' + $(".razdvizhnyie-mehanizmyi option:selected").html();
-        // var synchronizationMechanism = '&synchronizationMechanism=' + $( '.mehanizm-sinhronizatsii select' ).val();
-        var synchronizationMechanism = '&synchronizationMechanism=' + $(".mehanizm-sinhronizatsii option:selected").html();
-        // var runners = '&runners=' + $( '.napravlyayuschie select' ).val();
-        var runners = '&runners=' + $(".napravlyayuschie option:selected").html();
-        // var runnersCount = '&runnersCount=' + $( '.napravlyayuschie input' ).val();
-        var runnersCount = '&runnersCount=' + $(".napravlyayuschie option:selected").html();
-        // var typeOfMountingRunners = '&typeOfMountingRunners=' + $( '.vidKrepleniyaNapravlyayuschey select' ).val();
-        var typeOfMountingRunners = '&typeOfMountingRunners=' + $(".vidKrepleniyaNapravlyayuschey option:selected").html();
-        // var lead = '&lead=' + $( '.povodok select' ).val();
-        var lead = '&lead=' + $(".povodok option:selected").html();
-        // var closers = '&closers=' + $( '.dovodchik select' ).val();
-        var closers = '&closers=' + $(".dovodchik option:selected").html();
-        // var coverStripForProfile = '&coverStripForProfile=' + $( '.dekorativnayaPlankaDlyaProfilya select' ).val();
-        var coverStripForProfile = '&coverStripForProfile=' + $(".dekorativnayaPlankaDlyaProfilya option:selected").html();
-        // var brushSeal = '&brushSeal=' + $( '.schetochnyiyUplotnitel select' ).val();
-        var brushSeal = '&brushSeal=' + $(".schetochnyiyUplotnitel option:selected").html();
-        // var pen = '&pen=' + $( '.rakovina select' ).val();
-        var pen = '&pen=' + $('.rakovina option:selected').html();
-        // var doorLock = '&doorLock=' + $( '.zamok select' ).val();
-        var doorLock = '&doorLock=' + $('.zamok option:selected').html();
-        furnituraNameStr = slidingMechanisms + synchronizationMechanism + runners + runnersCount + typeOfMountingRunners + lead + closers + coverStripForProfile + brushSeal + pen + doorLock;
+        var slidingMechanisms = $(".razdvizhnyie-mehanizmyi option:selected").html();
+        var synchronizationMechanism = $(".mehanizm-sinhronizatsii option:selected").html();
+        var runners = $(".napravlyayuschie option:selected").html();
+        var typeOfMountingRunners = $(".vidKrepleniyaNapravlyayuschey option:selected").html();
+        var lead = $(".povodok option:selected").html();
+        var closers = $(".dovodchik option:selected").html();
+        var coverStripForProfile = $(".dekorativnayaPlankaDlyaProfilya option:selected").html();
+        var brushSeal = $(".schetochnyiyUplotnitel option:selected").html();
+        var pen = $('.rakovina option:selected').html();
+        var doorLock = $('.zamok option:selected').html();
+        furnituraNameStr = slidingMechanisms + "$" + synchronizationMechanism + "$" + runners + "$" + typeOfMountingRunners + "$" + lead + "$" + closers + "$" + coverStripForProfile + "$" + brushSeal + "$" + pen + "$" + doorLock;
     } else if (furnituraSelect == 2 || furnituraSelect == 3) {
-        // var foldingMechanisms = '&foldingMechanisms=' + $( '.setSkladnyieMehanizmyi select' ).val();
-        var foldingMechanisms = '&foldingMechanisms=' + $('.setSkladnyieMehanizmyi option:selected').html();
-        // var loops = '&loops=' + $( '.petli select' ).val();
-        var loops = '&loops=' + $('.petli option:selected').html();
-        // var runners = '&runners=' + $( '.napravlyayuschie select' ).val();
-        var runners = '&runners=' + $('.napravlyayuschie option:selected').html();
-        // var typeOfMountingRunners = '&typeOfMountingRunners=' + $( '.vidKrepleniya select' ).val();
-        var typeOfMountingRunners = '&typeOfMountingRunners=' + $('.vidKrepleniya option:selected').html();
-        // var coverStripForProfile = '&coverStripForProfile=' + $( '.dekorativnayaPlankaDlyaProfilya select' ).val();
-        var coverStripForProfile = '&coverStripForProfile=' + $('.dekorativnayaPlankaDlyaProfilya option:selected').html();
-        // var brushSeal = '&brushSeal=' + $( '.schetochnyiyUplotnitel select' ).val();
-        var brushSeal = '&brushSeal=' + $('.schetochnyiyUplotnitel option:selected').html();
-        // var pen = '&pen=' + $( '.rakovina select' ).val();
-        var pen = '&pen=' + $('.rakovina option:selected').html();
-        // var mountingPen = '&mountingPen=' + $( '.kreplenieRuchki select' ).val();
-        var mountingPen = '&mountingPen=' + $('.kreplenieRuchki option:selected').html();
-        // var doorLock = '&doorLock=' + $( '.zamokSkladnyie select' ).val();
-        var doorLock = '&doorLock=' + $('.zamokSkladnyie option:selected').html();
-        furnituraNameStr = foldingMechanisms + loops + runners + typeOfMountingRunners + coverStripForProfile + brushSeal + pen + mountingPen + doorLock;
+        var foldingMechanisms = $('.setSkladnyieMehanizmyi option:selected').html();
+        var loops = $('.petli option:selected').html();
+        var runners = $('.napravlyayuschie option:selected').html();
+        var typeOfMountingRunners = $('.vidKrepleniya option:selected').html();
+        var coverStripForProfile = $('.dekorativnayaPlankaDlyaProfilya option:selected').html();
+        var brushSeal = $('.schetochnyiyUplotnitel option:selected').html();
+        var pen = $('.rakovina option:selected').html();
+        var mountingPen = $('.kreplenieRuchki option:selected').html();
+        var doorLock = $('.zamokSkladnyie option:selected').html();
+        furnituraNameStr = foldingMechanisms + "$" + loops + "$" + runners + "$" + typeOfMountingRunners + "$" + coverStripForProfile + "$" + brushSeal + "$" + pen + "$" + mountingPen + "$" + doorLock;
     } else if (furnituraSelect == 4) {
-        // var legs = '&legs=' + $( '.nozhki select' ).val();
-        var legs = '&legs=' + $('.nozhki option:selected').html();
-        // var stands = '&stands=' + $( '.stoyki select' ).val();
-        var stands = '&stands=' + $('.stoyki option:selected').html();
-        // var typeOfConnectionPaintings = '&typeOfConnectionPaintings=' + $( '.tipSoedineniyaPoloten select' ).val();
-        var typeOfConnectionPaintings = '&typeOfConnectionPaintings=' + $('.tipSoedineniyaPoloten option:selected').html();
-        furnituraNameStr = legs + stands + typeOfConnectionPaintings;
+        var legs = $('.nozhki option:selected').html();
+        var stands = $('.stoyki option:selected').html();
+        var typeOfConnectionPaintings = $('.tipSoedineniyaPoloten option:selected').html();
+        furnituraNameStr = legs + "$" + stands + "$" + typeOfConnectionPaintings;
     }
     ////////////////////////////////////////////////////////////////////////////
 
     // Цена елементов фурнитуры
     var furnituraElPrice = '';
     if (furnituraSelect == 1) {
-        var slidingMechanisms = '&slidingMechanismsPrice=' + $('.tab-content .razdvizhnyie-mehanizmyi .price').text();
-        var synchronizationMechanism = '&synchronizationMechanismPrice=' + $('.tab-content .mehanizm-sinhronizatsii .price').text();
-        var runners = '&runnersPrice=' + $('.tab-content .napravlyayuschie .price').text();
-        var typeOfMountingRunners = '&typeOfMountingRunnersPrice=' + $('.tab-content .vidKrepleniyaNapravlyayuschey .price').text();
-        var lead = '&leadPrice=' + $('.tab-content .povodok .price').text();
-        var closers = '&closersPrice=' + $('.tab-content .dovodchik .price').text();
-        var coverStripForProfile = '&coverStripForProfilePrice=' + $('.tab-content .dekorativnayaPlankaDlyaProfilya .price').text();
-        var brushSeal = '&brushSealPrice=' + $('.tab-content .schetochnyiyUplotnitel .price').text();
-        var pen = '&penPrice=' + $('.tab-content .rakovina .price').text();
-        var doorLock = '&doorLockPrice=' + $('.tab-content .zamok .price').text();
-        furnituraElPrice = slidingMechanisms + synchronizationMechanism + runners + runnersCount + typeOfMountingRunners + lead + closers + coverStripForProfile + brushSeal + pen + doorLock;
+        var slidingMechanisms = parseInt($('.tab-content .razdvizhnyie-mehanizmyi .price').text());
+        var synchronizationMechanism = parseInt($('.tab-content .mehanizm-sinhronizatsii .price').text());
+        var runners = parseInt($('.tab-content .napravlyayuschie .price').text());
+        var typeOfMountingRunners = parseInt($('.tab-content .vidKrepleniyaNapravlyayuschey .price').text());
+        var lead = parseInt($('.tab-content .povodok .price').text());
+
+        var closers = parseInt($('.tab-content .dovodchik .price').text());
+        var coverStripForProfile = parseInt($('.tab-content .dekorativnayaPlankaDlyaProfilya .price').text());
+        var brushSeal = parseInt($('.tab-content .schetochnyiyUplotnitel .price').text());
+        var pen = parseInt($('.tab-content .rakovina .price').text());
+        var doorLock = parseInt($('.tab-content .zamok .price').text());
+        furnituraElPrice = slidingMechanisms + "$" + synchronizationMechanism + "$" + runners + "$" + typeOfMountingRunners + "$" + lead + "$" + closers + "$" + coverStripForProfile + "$" + brushSeal + "$" + pen + "$" + doorLock;
     } else if (furnituraSelect == 2 || furnituraSelect == 3) {
-        var foldingMechanisms = '&foldingMechanismsPrice=' + $('.tab-content .setSkladnyieMehanizmyi .price').text();
-        var loops = '&loopsPrice=' + $('.tab-content .petli .price').text();
-        var runners = '&runnersPrice=' + $('.tab-content .napravlyayuschie .price').text();
-        var typeOfMountingRunners = '&typeOfMountingRunnersPrice=' + $('.tab-content .vidKrepleniya .price').text();
-        var coverStripForProfile = '&coverStripForProfilePrice=' + $('.tab-content .dekorativnayaPlankaDlyaProfilya .price').text();
-        var brushSeal = '&brushSealPrice=' + $('.tab-content .schetochnyiyUplotnitel .price').text();
-        var pen = '&penPrice=' + $('.tab-content .rakovina .price').text();
-        var mountingPen = '&mountingPenPrice=' + $('.tab-content .kreplenieRuchki .price').text();
-        var doorLock = '&doorLockPrice=' + $('.tab-content .zamokSkladnyie .price').text();
-        furnituraElPrice = foldingMechanisms + loops + runners + typeOfMountingRunners + coverStripForProfile + brushSeal + pen + mountingPen + doorLock;
+        var foldingMechanisms = parseInt($('.tab-content .setSkladnyieMehanizmyi .price').text());
+        var loops = parseInt($('.tab-content .petli .price').text());
+        var runners = parseInt($('.tab-content .napravlyayuschie .price').text());
+        var typeOfMountingRunners = parseInt($('.tab-content .vidKrepleniya .price').text());
+
+        var coverStripForProfile = parseInt($('.tab-content .dekorativnayaPlankaDlyaProfilya .price').text());
+        var brushSeal = parseInt($('.tab-content .schetochnyiyUplotnitel .price').text());
+        var pen = parseInt($('.tab-content .rakovina .price').text());
+        var mountingPen = parseInt($('.tab-content .kreplenieRuchki .price').text());
+        var doorLock = parseInt($('.tab-content .zamokSkladnyie .price').text());
+        furnituraElPrice = foldingMechanisms + "$" + loops + "$" + runners + "$" + typeOfMountingRunners + "$" + coverStripForProfile + "$" + brushSeal + "$" + pen + "$" + mountingPen + "$" + doorLock;
     } else if (furnituraSelect == 4) {
-        var legs = '&legsPrice=' + $('.tab-content .nozhki .price').text();
-        var stands = '&standsPrice=' + $('.tab-content .stoyki .price').text();
-        var typeOfConnectionPaintingsPrice = '&typeOfConnectionPaintings=' + $('.tab-content .tipSoedineniyaPoloten .price').text();
-        furnituraElPrice = legs + stands + typeOfConnectionPaintings;
+        var legs = parseInt($('.tab-content .nozhki .price').text());
+        var stands = parseInt($('.tab-content .stoyki .price').text());
+        var typeOfConnectionPaintingsPrice = parseInt($('.tab-content .tipSoedineniyaPoloten .price').text());
+        furnituraElPrice = legs + "$" + stands + "$" + typeOfConnectionPaintingsPrice;
     }
     ////////////////////////////////////////////////////////////////////////////
 
@@ -215,7 +193,7 @@ $('.sendGet').click(function () {
     }
     // =
     // - Создали внутренние массивы
-    if (TOTAL_PAINTING > 1){
+    if (TOTAL_PAINTING > 0){
         for (i = 0; i <= TOTAL_PAINTING-1; i++) {
             m[i] = new Array(3);
         }
@@ -296,13 +274,13 @@ $('.sendGet').click(function () {
         '&priceAdditions=' + priceAdditions +
         '&quantityAdditions=' + quantityAdditions +
         justCarcassPriceStr +
-        furnituraNameStr +
-        furnituraElPrice +
+        '&furnituraelementsnames=' + furnituraNameStr +
+        '&furnituraelementsprice=' + furnituraElPrice +
         priceProfilePaintingStr +
         nameProfilePicturePainting +
         '&selectedKarkas=' + m2;
-    url = urlLit(url, 0)
-    url = url.replace(/[%C2%]/g, "");
+    url = url.replace(/°/g, "");
+    url = urlLit(url, 0);
     window.open('http://fasts-like.com/html2pdf.php' + url, '_blank');
 });
 
