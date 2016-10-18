@@ -123,9 +123,9 @@
 //         console.log( '--------------------' )
 //     }
 // }
-function loadMoadP(){
-    var text = $('.ss').html();
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(text);
-    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-}
+// function loadMoadP(){
+//     var text = $('.napolnenie-left-tab').html();
+//     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+//     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(text);
+//     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+// }

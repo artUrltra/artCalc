@@ -73,3 +73,28 @@ html(lang='en')
         script(src='js/paintingInDiadramma.js')
         script(src='js/DandD.js')
         script(src='js/history.js')
+        .napolnenie-left-tab.display-none
+            .tabbable.tabs-left
+                ul.nav.nav-tabs
+                    li
+                        a(href='#a', data-toggle='tab') One
+                        .triangle
+                        .triangle-w
+                    li.active
+                        a(href='#b', data-toggle='tab') Two
+                        .triangle
+                        .triangle-w
+                    li
+                        a(href='#c', data-toggle='tab') Twee
+                        .triangle
+                        .triangle-w
+                .tab-content
+                    #a.tab-pane.active
+                        | Lorem ipsum dolor sit amet, charetra varius quam sit amet vulputate.
+                        | Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero.
+                    #b.tab-pane
+                        | Secondo sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+                        | Aliquam in felis sit amet augue.
+                    #c.tab-pane
+                        | Thirdamuno, ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
+                        | Quisque mauris augue, molestie tincidunt condimentum vitae.

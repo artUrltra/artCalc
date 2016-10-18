@@ -421,9 +421,13 @@ $('#btn-anod').click(function () {
 });
 
 $(".add-material-block-past").on('click', '#open-material-btn', function () {
+    // $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    // var html = $('.napolnenie-block').html();
+    // $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(html);
+    // $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+    var text = $('.napolnenie-left-tab').html();
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    var html = $('.napolnenie-block').html();
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(html);
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(text);
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 });
 
