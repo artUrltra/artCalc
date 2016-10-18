@@ -36,6 +36,10 @@
   display: inline-flex;
 }
 
+.col-md-2:hover {
+  background-color: #80ffff;
+}
+
 .display-none {
   display: none;
 }
@@ -558,6 +562,8 @@ body .next-line {
 
 .tabs-left .nav-tabs .active {
   position: relative;
+  border-top: 1px solid #7a7a7a;
+  border-bottom: 1px solid #7a7a7a;
 }
 
 .tabs-left .nav-tabs .active .triangle {

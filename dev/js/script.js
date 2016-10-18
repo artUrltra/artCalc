@@ -366,7 +366,7 @@ $(".BAFFLE_SEKECTOR_CLASS").change(function () {
 
     $('.add-material-block-past div').remove();
 
-    for (i = 1; i <= 5; i++) {
+    for (var i = 1; i <= 5; i++) {
         var el = getFromData('material-' + i + '-type');
         if (el != '' && el != 0) {
             $(".add-material-block-past").append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el" data-material-el-id="' + i + '">' + $(".napolnenie-el-set").html() + '</div>');
@@ -1390,7 +1390,7 @@ function napolnenieImg(napolnenieType, id) {
     } else if (napolnenieType == 'sendvichPaneliPVH') {
         $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10784715.png');
     } else if (napolnenieType == 'stekloTonirovannoeSeroe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11657586.jpg');
+        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11657586.jpg');/////
     } else if (napolnenieType == 'stekloTonirovannoeBronza') {
         $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11611506.jpg');
     } else if (napolnenieType == 'stekloTonirovannoeGoluboe') {
@@ -1398,7 +1398,7 @@ function napolnenieImg(napolnenieType, id) {
     } else if (napolnenieType == 'faneraTrudnogoryuchaya') {
         $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10785736.png');
     } else if (napolnenieType == 'orgstekloEkstruz') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', '"http://savepic.ru/10757064.png');
+        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10757064.png');
     } else if (napolnenieType == 'dekorativnyiyBumazhno') {
         $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11655542.jpg');
     } else if (napolnenieType == 'gipsovinil12') {
@@ -3041,7 +3041,7 @@ function calcNow() {
 
     // ТАБ НАПОЛНЕНИЕ измение наполнения //
     function napolnenieCange() {
-        for (i = 1; i <= 5; i++) {
+        for (var i = 1; i <= 5; i++) {
             var obj = $('*[data-material-el-id="' + i + '"]').find('.napolnenie-el-material').val();
             var el = getFromData('material-' + i + '-type');
             if (obj == '') {
