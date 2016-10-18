@@ -1517,16 +1517,16 @@ function loadMehanizmSinhronizatsii(id) {
         $('.mehanizm-sinhronizatsii .price').text(0);
     } else if (id == 1 || id == 2 || id == 3 || id == 4 || id == 5) {
         $(".mehanizm-sinhronizatsii select").prepend($('' +
-            '<option value="2">Синхронный</option>' +
-            '<option value="1">Нет</option>'
+            '<option value="1">Нет</option>' +
+            '<option value="2">Синхронный</option>'
         ));
         $('.mehanizm-sinhronizatsii .price').text(0);
     } else if (id == 6) {
         $(".mehanizm-sinhronizatsii select").prepend($('' +
+            '<option value="1">Нет</option>' +
             '<option value="2" >Синхронный</option>' +
             '<option value="3">D-80 Synchro, Ducasse</option>' +
-            '<option value="4">D-80 Telescopic, Ducasse</option>' +
-            '<option value="1">Нет</option>'
+            '<option value="4">D-80 Telescopic, Ducasse</option>'
         ));
         $('.mehanizm-sinhronizatsii .price').text(0);
     }
@@ -1555,25 +1555,25 @@ function loadNapravlyayuschie(id) {
     $(".napravlyayuschie select").html('');
     if (id == 1 || id == 2) {
         $(".napravlyayuschie select").prepend($('' +
-            '<option value="1"  >Неокрашенная, Россия</option>' +
-            '<option value="2">Цвет: серебро, Россия</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="1">Неокрашенная, Россия</option>' +
+            '<option value="2">Цвет: серебро, Россия</option>'
         ));
         // $('.mehanizm-sinhronizatsii .price').text(0);
     } else if (id == 3 || id == 4) {
         $(".napravlyayuschie select").prepend($('' +
-            '<option value="3" >Неокрашенная, Degon Польша</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="3">Неокрашенная, Degon Польша</option>'
         ));
     } else if (id == 5) {
         $(".napravlyayuschie select").prepend($('' +
-            '<option value="4" >Неокрашенная, Китай</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="4">Неокрашенная, Китай</option>'
         ));
     } else if (id == 6) {
         $(".napravlyayuschie select").prepend($('' +
-            '<option value="5" >Направляющия U-21, Ducasse Испания</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="5">Направляющия U-21, Ducasse Испания</option>'
         ));
     }
 }
@@ -1615,20 +1615,20 @@ function loadVidKrepleniyaNapravlyayuschie(id) {
     $(".vidKrepleniyaNapravlyayuschey select").html('');
     if (id == 1 || id == 2) {
         $(".vidKrepleniyaNapravlyayuschey select").prepend($('' +
+            '<option value="0">Нет</option>' +
             '<option value="1" >К стене, Россия</option>' +
-            '<option value="2">К потолку, Россия</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="2">К потолку, Россия</option>'
         ));
     } else if (id == 3 || id == 4 || id == 5) {
         $(".vidKrepleniyaNapravlyayuschey select").prepend($('' +
-            '<option value="3" >Уголок крепежный, Degon Польша и Китайя</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="3" >Уголок крепежный, Degon Польша и Китайя</option>'
         ));
     } else if (id == 6) {
         $(".vidKrepleniyaNapravlyayuschey select").prepend($('' +
+            '<option value="0">Нет</option>' +
             '<option value="4" >Кронштейн, Ducasse Испания</option>' +
-            '<option value="5">Кронштейн широкий, Ducasse Испания</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="5">Кронштейн широкий, Ducasse Испания</option>'
         ));
     }
 }
@@ -1662,14 +1662,14 @@ function loadPovodok(id) {
     $(".povodok select").html('');
     if (id == 1 || id == 2 || id == 3 || id == 4 || id == 5) {
         $(".povodok select").prepend($('' +
+            '<option value="0">Нет</option>' +
             '<option value="1" >Белый</option>' +
-            '<option value="2">Коричневый</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="2">Коричневый</option>'
         ));
     } else if (id == 6) {
         $(".povodok select").prepend($('' +
-            '<option value="3" >Поводок, Ducasse Испания</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="3" >Поводок, Ducasse Испания</option>'
         ));
     }
 }
@@ -1744,13 +1744,13 @@ function loadPetli(id) {
     $(".petli select").html('');
     if (id == 1) {
         $(".petli select").prepend($('' +
-            '<option value="1" >Комплектные, Россия</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="1" >Комплектные, Россия</option>'
         ));
     } else if (id == 2) {
         $(".petli select").prepend($('' +
-            '<option value="2" >Комплектные, Degon Польша</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="2" >Комплектные, Degon Польша</option>'
         ));
     }
 }
@@ -1775,14 +1775,14 @@ function loadNapravlyayuschie(id) {
     $(".napravlyayuschie select").html('');
     if (id == 1) {
         $(".napravlyayuschie select").prepend($('' +
+            '<option value="0">Нет</option>' +
             '<option value="1" >Неокрашенная, Россия</option>' +
-            '<option value="2">Цвет: серебро, Россия</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="2">Цвет: серебро, Россия</option>'
         ));
     } else if (id == 2) {
         $(".napravlyayuschie select").prepend($('' +
-            '<option value="3" >Неокрашенная, Degon Польша</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="3" >Неокрашенная, Degon Польша</option>'
         ));
     }
 }
@@ -1795,16 +1795,16 @@ function loadVidKrepleniya(id) {
     $(".vidKrepleniya select").html('');
     if (id == 1) {
         $(".vidKrepleniya select").prepend($('' +
+            '<option value="0">Нет</option>' +
             '<option value="1" >К стене</option>' +
-            '<option value="2">К потолку</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="2">К потолку</option>'
         ));
     } else if (id == 2) {
         $(".vidKrepleniya select").prepend($('' +
+            '<option value="0">Нет</option>' +
             '<option value="1" >К стене</option>' +
             '<option value="2">К потолку</option>' +
-            '<option value="3">Уголок крепежный, Degon Польша</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="3">Уголок крепежный, Degon Польша</option>'
         ));
     }
 }
@@ -1862,6 +1862,7 @@ function loadStoyki() {
     if (name == 'Euroshop') {
 
         $(".stoyki select").prepend($('' +
+            '<option value="0">Нет</option>' +
 
             '<option value="1" >Стойка скругленная 90 °</option>' +
 
@@ -1871,13 +1872,13 @@ function loadStoyki() {
 
             '<option value="4">Стойка Т-образная</option>' +
 
-            '<option value="5">Стойка Т-образная скругленная</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="5">Стойка Т-образная скругленная</option>'
         ));
 
     } else if (name == 'EuroshopLite') {
 
         $(".stoyki select").prepend($('' +
+            '<option value="0">Нет</option>' +
 
             '<option value="1" >Стойка скругленная 90 °</option>' +
 
@@ -1887,13 +1888,13 @@ function loadStoyki() {
 
             '<option value="4">Стойка Т-образная</option>' +
 
-            '<option value="5">Стойка Т-образная скругленная</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="5">Стойка Т-образная скругленная</option>'
         ));
 
     } else if (name == 'Standart' || name == 'StandartStoika') {
 
         $(".stoyki select").prepend($('' +
+            '<option value="0">Нет</option>' +
 
             '<option value="6" >Стойка четырёхгранная</option>' +
 
@@ -1901,13 +1902,13 @@ function loadStoyki() {
 
             '<option value="8">Стойка Т-образная</option>' +
 
-            '<option value="9">Стойка три паза</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="9">Стойка три паза</option>'
         ));
 
     } else if (name == 'Tur') {
 
         $(".stoyki select").prepend($('' +
+            '<option value="0">Нет</option>' +
 
             '<option value="10" >Стойка угловая трехгранная</option>' +
 
@@ -1915,46 +1916,45 @@ function loadStoyki() {
 
             '<option value="12">Стойка восьмигранная</option>' +
 
-            '<option value="13">Угловая пятигранная</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="13">Угловая пятигранная</option>'
         ));
 
     } else if (name == 'Optima' || name == 'OptimaLite' || name == 'Optimax2') {
 
         $(".stoyki select").prepend($('' +
+            '<option value="0">Нет</option>' +
 
-            '<option value="14" >Стойка угловая 90 °</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="14" >Стойка угловая 90 °</option>'
         ));
 
     } else if (name == 'Statusx1' || name == 'Statusx2') {
 
         $(".stoyki select").prepend($('' +
+            '<option value="0">Нет</option>' +
 
             '<option value="15" >Стойка поворотная односторонняя 90 °</option>' +
 
-            '<option value="16">Стойка поворотная двухсторонняя 90 °</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="16">Стойка поворотная двухсторонняя 90 °</option>'
         ));
 
     } else if (name == 'MobyLight') {
 
         $(".stoyki select").prepend($('' +
+            '<option value="0">Нет</option>' +
 
-            '<option value="17" >Мобилайт стойка</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="17" >Мобилайт стойка</option>'
         ));
 
     } else if (name == 'Base') {
 
         $(".stoyki select").prepend($('' +
+            '<option value="0">Нет</option>' +
 
             '<option value="18" >Столб три грани</option>' +
 
             '<option value="19">Угловой столб дуга</option>' +
 
-            '<option value="20">Столб универсальный</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="20">Столб универсальный</option>'
         ));
 
     }
@@ -2109,13 +2109,13 @@ function loadDekorativnayaPlankaDlyaProfilya() {
     $(".dekorativnayaPlankaDlyaProfilya select").html('');
     if (id == 1 || id == 2 || id == 3) {
         $(".dekorativnayaPlankaDlyaProfilya select").prepend($('' +
-            '<option value="1" >Цвет: серебро, Россия</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="1" >Цвет: серебро, Россия</option>'
         ));
     } else if (id == 4) {
         $(".dekorativnayaPlankaDlyaProfilya select").prepend($('' +
-            '<option value="2" >Алюм. карниз, Ducasse Испания</option>' +
-            '<option value="0">Нет</option>'
+            '<option value="0">Нет</option>' +
+            '<option value="2" >Алюм. карниз, Ducasse Испания</option>'
         ));
     }
 }
@@ -2748,26 +2748,26 @@ function calcNow() {
             var karkas_name = getFromData('karkas-name');
             if (karkas_name == 'Tur') {
                 $("#karkas-tsvet-uplotnitelya").prepend($('' +
-                    '<option value="Прозрачный">Прозрачный</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="">Нет</option>' +
+                    '<option value="Прозрачный">Прозрачный</option>'));
             } else if (karkas_name == 'Statusx1' || karkas_name == 'Statusx2' || karkas_name == 'Optimax2') {
                 $("#karkas-tsvet-uplotnitelya").prepend($('' +
-                    '<option value="Cерый">Cерый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="">Нет</option>' +
+                    '<option value="Cерый">Cерый</option>'));
             } else if (karkas_name == 'StandartStoika' || karkas_name == 'OptimaLite' || karkas_name == 'Standart' || karkas_name == 'Euroshop' || karkas_name == 'EuroshopLite' || karkas_name == 'MobyLight' || karkas_name == 'Optima') {
                 $("#karkas-tsvet-uplotnitelya").prepend($('' +
-                    '<option value="Белый">Белый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Черный">Черный</option>' +
                     '<option value="Серый">Серый</option>' +
                     '<option value="Прозрачный">Прозрачный</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Белый">Белый</option>'));
             } else if (karkas_name == 'Base') {
                 $("#karkas-tsvet-uplotnitelya").prepend($('' +
-                    '<option value="Серый">Серый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Белый">Белый</option>' +
                     '<option value="Темно-серый">Темно-серый</option>' +
                     '<option value="Черный">Черный</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Серый">Серый</option>'));
             }
 
         }
@@ -2783,50 +2783,49 @@ function calcNow() {
             var karkas_name = getFromData('karkas-name');
             if (karkas_name == 'Euroshop' || karkas_name == 'EuroshopLite') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
+                    '<option value="">Нет</option>' +
                     '<option value="Серый" >Серый</option>' +
                     '<option value="Белый">Белый</option>' +
-                    '<option value="Черный">Черный</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Черный">Черный</option>'));
             } else if (karkas_name == 'Optimax2') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
-                    '<option value="Cерый" >Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="">Нет</option>' +
+                    '<option value="Cерый" >Серый</option>'));
             } else if (karkas_name == 'Standart') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
-                    '<option value="Белый" >Белый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Черный">Черный</option>' +
                     '<option value="Серый">Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Белый" >Белый</option>'));
             } else if (karkas_name == 'MobyLight') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
-                    '<option value="Серый" >Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="">Нет</option>' +
+                    '<option value="Серый" >Серый</option>'));
             } else if (karkas_name == 'Optima') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
-                    '<option value="Серый" >Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="">Нет</option>' +
+                    '<option value="Серый" >Серый</option>'));
             } else if (karkas_name == 'Base') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
-                    '<option value="НЕТ" >Нет</option>' +
-                    ''));
+                    '<option value="НЕТ" >Нет</option>'));
             } else if (karkas_name == 'Statusx1') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
-                    '<option value="Серый" >Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="">Нет</option>' +
+                    '<option value="Серый" >Серый</option>'));
             } else if (karkas_name == 'Statusx2') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
-                    '<option value="Серый" >Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="">Нет</option>' +
+                    '<option value="Серый" >Серый</option>'));
             } else if (karkas_name == 'StandartStoika') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
-                    '<option value="Белый" >Белый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Черный">Черный</option>' +
                     '<option value="Серый">Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Белый" >Белый</option>'));
             } else if (karkas_name == 'OptimaLite') {
                 $("#karkas-tsvet-zaglushki").prepend($('' +
-                    '<option value="Серый" >Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="">Нет</option>' +
+                    '<option value="Серый" >Серый</option>'));
             }
         }
     }
@@ -2841,34 +2840,34 @@ function calcNow() {
             var karkas_name = getFromData('karkas-name');
             if (karkas_name == 'Euroshop' || karkas_name == 'EuroshopLite') {
                 $("#karkas-tsvet-zaglushki-tortsevoy").prepend($('' +
-                    '<option value="Серый" >Серый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Белый">Белый</option>' +
                     '<option value="Черный">Черный</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Серый" >Серый</option>'));
             } else if (karkas_name == 'Optimax2') {
                 $("#karkas-tsvet-zaglushki-tortsevoy").prepend($('' +
-                    '<option value="Cерый" >Серый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Белый">Белый</option>' +
                     '<option value="Черный">Черный</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Cерый" >Серый</option>'));
             } else if (karkas_name == 'Standart') {
                 $("#karkas-tsvet-zaglushki-tortsevoy").prepend($('' +
-                    '<option value="Белый" >Белый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Черный">Черный</option>' +
                     '<option value="Серый">Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Белый" >Белый</option>'));
             } else if (karkas_name == 'MobyLight') {
                 $("#karkas-tsvet-zaglushki-tortsevoy").prepend($('' +
-                    '<option value="Белый" >Белый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Черный">Черный</option>' +
                     '<option value="Серый">Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Белый" >Белый</option>'));
             } else if (karkas_name == 'Optima') {
                 $("#karkas-tsvet-zaglushki-tortsevoy").prepend($('' +
-                    '<option value="Белый" >Белый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Черный">Черный</option>' +
                     '<option value="Серый">Серый</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Белый" >Белый</option>'));
             } else if (karkas_name == 'Base') {
                 $("#karkas-tsvet-zaglushki-tortsevoy").prepend($('' +
                     '<option value="НЕТ" >Нет</option>' +
@@ -2883,13 +2882,12 @@ function calcNow() {
                     ''));
             } else if (karkas_name == 'StandartStoika') {
                 $("#karkas-tsvet-zaglushki-tortsevoy").prepend($('' +
-                    '<option value="Белый" >Белый</option>' +
+                    '<option value="">Нет</option>' +
                     '<option value="Черный">Черный</option>' +
-                    '<option value="">Нет</option>'));
+                    '<option value="Белый" >Белый</option>'));
             } else if (karkas_name == 'OptimaLite') {
                 $("#karkas-tsvet-zaglushki-tortsevoy").prepend($('' +
-                    '<option value="НЕТ" >Нет</option>' +
-                    ''));
+                    '<option value="НЕТ" >Нет</option>'));
             }
         }
     }
@@ -2904,8 +2902,8 @@ function calcNow() {
             var karkas_name = getFromData('karkas-name');
             if (karkas_name == 'Euroshop' || karkas_name == 'EuroshopLite') {
                 $("#karkas-vid-krepleniya").prepend($('' +
-                    '<option value="ДА">ДА + 186 руб.</option>' +
-                    '<option value="НЕТ">Нет</option>'));
+                    '<option value="НЕТ">Нет</option>' +
+                    '<option value="ДА">ДА + 186 руб.</option>'));
             } else if (karkas_name == 'Optimax2') {
                 $("#karkas-vid-krepleniya").prepend($('' +
                     '<option value="НЕТ">Нет</option>'));
@@ -2915,32 +2913,32 @@ function calcNow() {
                     ''));
             } else if (karkas_name == 'MobyLight') {
                 $("#karkas-vid-krepleniya").prepend($('' +
-                    '<option value="ДА">ДА</option>' +
-                    '<option value="НЕТ">Нет</option>'));
+                    '<option value="НЕТ">Нет</option>' +
+                    '<option value="ДА">ДА</option>'));
             } else if (karkas_name == 'Optima') {
                 $("#karkas-vid-krepleniya").prepend($('' +
-                    '<option value="ДА">ДА</option>' +
-                    '<option value="НЕТ">Нет</option>'));
+                    '<option value="НЕТ">Нет</option>' +
+                    '<option value="ДА">ДА</option>'));
             } else if (karkas_name == 'Base') {
                 $("#karkas-vid-krepleniya").prepend($('' +
-                    '<option value="ДА">ДА</option>' +
-                    '<option value="НЕТ">Нет</option>'));
+                    '<option value="НЕТ">Нет</option>' +
+                    '<option value="ДА">ДА</option>'));
             } else if (karkas_name == 'Statusx1') {
                 $("#karkas-vid-krepleniya").prepend($('' +
-                    '<option value="ДА">ДА</option>' +
-                    '<option value="НЕТ">Нет</option>'));
+                    '<option value="НЕТ">Нет</option>' +
+                    '<option value="ДА">ДА</option>'));
             } else if (karkas_name == 'Statusx2') {
                 $("#karkas-vid-krepleniya").prepend($('' +
-                    '<option value="ДА">ДА</option>' +
-                    '<option value="НЕТ">Нет</option>'));
+                    '<option value="НЕТ">Нет</option>' +
+                    '<option value="ДА">ДА</option>'));
             } else if (karkas_name == 'StandartStoika') {
                 $("#karkas-vid-krepleniya").prepend($('' +
                     '<option value="НЕТ">Нет</option>' +
                     ''));
             } else if (karkas_name == 'OptimaLite') {
                 $("#karkas-vid-krepleniya").prepend($('' +
-                    '<option value="ДА">ДА</option>' +
-                    '<option value="НЕТ">Нет</option>'));
+                    '<option value="НЕТ">Нет</option>' +
+                    '<option value="ДА">ДА</option>'));
             }
         }
     }
