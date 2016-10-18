@@ -36,8 +36,8 @@
   display: inline-flex;
 }
 
-.col-md-2:hover {
-  background-color: #80ffff;
+.col-md-3.profil-select:hover {
+  background-color: #e0efef;
 }
 
 .display-none {
@@ -562,8 +562,8 @@ body .next-line {
 
 .tabs-left .nav-tabs .active {
   position: relative;
-  border-top: 1px solid #7a7a7a;
-  border-bottom: 1px solid #7a7a7a;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .tabs-left .nav-tabs .active .triangle {
