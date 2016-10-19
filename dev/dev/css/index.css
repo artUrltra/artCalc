@@ -1,0 +1,444 @@
+* {
+  outline: none !important;
+}
+
+.checkbox label, .radio label, label {
+  width: 100%;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+.polotno-el .well .top .form-group:last-child {
+  width: 100% !important;
+}
+
+.vyiborDekoraDlyaProfilya img {
+  border: solid 1px black;
+}
+
+.btn {
+  padding: 8px 10px;
+}
+
+.new-design {
+  border: solid 3px black;
+  border-radius: 0px;
+}
+
+.area-block .form-group {
+  width: 50px;
+}
+
+.area-block .form-group small, .area-block .form-group input {
+  margin-right: 10px;
+  display: inline-flex;
+}
+
+.display-none {
+  display: none;
+}
+
+.input-group .input-group-btn {
+  padding: 0;
+}
+
+.alert-default {
+  background-color: #e5e5e5 !important;
+}
+
+.input-custom-block-mini {
+  display: flex;
+}
+
+.input-custom-block-mini input {
+  min-width: calc(100% - 20px);
+}
+
+.input-group button {
+  margin-top: 15px !important;
+  height: 10px !important;
+  min-width: 10px !important;
+  width: 10px !important;
+}
+
+.input-group button i {
+  font-size: 10px;
+}
+
+.color-select .input-group {
+  display: inline-table;
+}
+
+.input-group {
+  display: block;
+}
+
+.input-group .input-group-btn {
+  transform: rotate(90deg);
+  padding-left: 10px;
+}
+
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.col-xs-15 {
+  width: 20%;
+  float: left;
+}
+
+@media (min-width: 768px) {
+  .col-sm-15 {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-15 {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-15 {
+    width: 20%;
+    float: left;
+  }
+}
+
+body {
+  background: white;
+}
+
+body .wrapper-white {
+  min-height: 50px;
+  margin: 15px !important;
+  background: white;
+}
+
+body .wrapper-tabs {
+  width: calc(100% - 30px);
+  min-height: 50px;
+  margin: 15px !important;
+  background: #e5e5e5;
+  padding-bottom: 30px;
+}
+
+body .wrapper {
+  width: calc(100% - 30px);
+  min-height: 50px;
+  margin: 15px !important;
+  background: #e5e5e5;
+}
+
+body .form-group {
+  white-space: nowrap;
+}
+
+body .drawing {
+  max-width: 100%;
+  min-width: 80%;
+  min-height: 120px;
+  background: white;
+  text-align: center;
+}
+
+body .drawing img {
+  margin-top: 0px;
+  height: 120px;
+  max-width: 100%;
+}
+
+body .new-line {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+body .next-line {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding-bottom: 30px;
+}
+
+.maket-block {
+  width: 100%;
+  text-align: center;
+}
+
+.nav-tabs i {
+  margin-left: 25px;
+}
+
+.polotno-el img {
+  width: 100%;
+  max-width: 200px;
+  margin: auto;
+  display: block;
+}
+
+.polotno-el .well {
+  min-height: 290px;
+}
+
+.polotno-el .well .top {
+  display: flex;
+}
+
+.polotno-el .well .top .form-group:first-child {
+  min-width: 70%;
+}
+
+.polotno-el .well .top .form-group:last-child {
+  width: 25%;
+  margin-left: 5%;
+}
+
+.polotno-el .left, .polotno-el .right {
+  width: 49%;
+  display: inline-block;
+}
+
+.polotno-el .left img {
+  width: 100%;
+  max-width: 120px;
+}
+
+.polotno-el .right {
+  float: right;
+}
+
+.polotno-el .right h3, .polotno-el .right h5 {
+  margin-bottom: 20px;
+}
+
+.polotno-el .form-group {
+  margin: 0;
+}
+
+.POLOVINCHATAYA {
+  display: none;
+}
+
+.POLOVINCHATAYA .check {
+  margin-right: 10px;
+}
+
+#napolnenie-tab .top {
+  display: inline-flex;
+}
+
+#napolnenie-tab .form-group {
+  margin: 0;
+}
+
+#napolnenie-tab small {
+  margin-right: 5px;
+}
+
+#napolnenie-tab .napolnenie-el {
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 15px;
+}
+
+#napolnenie-tab .napolnenie-el > div {
+  padding: 0 10px;
+  width: calc(100%/6);
+  display: initial;
+  float: left;
+}
+
+#napolnenie-tab .napolnenie-el img {
+  width: 100%;
+}
+
+#napolnenie-tab .napolnenie-el:last-child {
+  margin-bottom: 0px;
+}
+
+#furnitura-tab h3 {
+  height: 50px;
+}
+
+.price-block {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.price-block .red {
+  color: red;
+}
+
+.price-block .red h4 {
+  font-weight: bold;
+}
+
+.price-block .bs-component {
+  margin-top: 30px;
+}
+
+.price-block .bs-component .alert-default {
+  height: 70px;
+}
+
+.price-block .bs-component h4 {
+  color: black;
+  margin-top: 10px;
+}
+
+.price-block .bs-component .left {
+  float: left;
+  display: flex;
+}
+
+.price-block .bs-component .right {
+  float: right;
+  display: flex;
+}
+
+.price-block .bs-component .red {
+  color: red;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.price-block .table .form-group {
+  margin: 0;
+  padding: 0;
+}
+
+.dopolnitelno h3 {
+  height: 50px;
+}
+
+.dopolnitelno .form-group {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK {
+  text-align: center;
+  overflow: hidden;
+  height: 450px;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK .PAINTING-DIAGRAMMA-EL {
+  display: flex;
+  width: 50px;
+  height: 70px;
+  background: white;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.46);
+  font-size: 10px;
+  text-align: left;
+  background-color: #777;
+  position: absolute;
+  margin: -1px;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK .used {
+  box-shadow: 0 0px 30px black, -23px 0 20px -5px rgba(0, 0, 0, 0.3), 23px 0 30px -5px rgba(0, 0, 0, 0.3), 50px 150px 40px rgba(0, 0, 0, 0.5) inset;
+}
+
+#PAINTING-DIAGRAMMA {
+  height: 100%;
+  box-shadow: inset -1px -2px 107px 52px rgba(0, 0, 0, 0.41);
+  border: 1px solid #eeeeee;
+  border-radius: 20px;
+}
+
+#profil-tab {
+  padding: 0 2%;
+}
+
+.TAB-PROFIL-AREA, .TAB-PROFIL-PRICE, .TAB-POKRASKA-PRICE {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.vyiborDekoraDlyaProfilya img {
+  margin-left: 10px;
+}
+
+#KARKAS-BLOCK span, #KARKAS-BLOCK #KARKAS-PRICE, #KARKAS-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE, #KARKAS-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK span, #HORIZONTAL-PEREMOCHKI-BLOCK #KARKAS-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK span, #VERTIKALNUE-PEREMOCHKI-BLOCK #KARKAS-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE {
+  display: inline-block;
+}
+
+#KARKAS-BLOCK span, #HORIZONTAL-PEREMOCHKI-BLOCK span, #VERTIKALNUE-PEREMOCHKI-BLOCK span {
+  margin-left: 5px;
+}
+
+.loadImgBlock input {
+  margin: auto;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group label.input-custom-block-super-mini {
+  position: absolute;
+  top: -15px;
+  right: -45px;
+}
+
+.form-group input.input-custom-block-super-mini {
+  width: 30px;
+  margin-top: 10px;
+  float: right;
+}
+
+.form-group label.input-custom-block-super-mini, .form-group input.input-custom-block-super-mini {
+  margin-left: 20px;
+}
+
+.paintingInDiadrammaPereochki {
+  background: yellow;
+  border: 1px solid #777;
+}
+
+.paintingInDiadrammaPereochki > .paintingInDiadrammaPereochki {
+  display: block;
+}
+
+.contakts-block .form-group.form-group-lg {
+  margin: 5px 0 5px 0;
+}
+
+.line-S, .line-M {
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  top: -20px;
+  z-index: 999;
+}
+
+.line-S {
+  background-color: #777777;
+}
+
+.line-M {
+  background-color: #fec080;
+}
+
+.drag {
+  cursor: pointer;
+  position: relative;
+}
+
+.hideBlock {
+  display: none;
+}
+
+* {
+  display: none;
+}

@@ -1,0 +1,102 @@
+#profil-tab.tab-pane.fade.in.active.row
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+        .form-group.label-floating.is-empty
+            select.form-control.BAFFLE_SEKECTOR_CLASS
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+        +input-custom-block-mini("Группа", "NUMBER_OF_DUPLICATOR_ID")
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+        +input-custom-block-mini("Высота", "tab-profil-vyisota")
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+        +input-custom-block-mini("Ширина", "tab-profil-shirina")
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+        hr
+    .col-xs-4.col-sm-4.col-md-4.col-lg-4.polotno-el#KARKAS-BLOCK
+        .well
+            .top
+                .form-group.label-floating.is-empty.text-center
+                    button.btn.btn-raised.btn-default#BTN-KARKAS-SELECTOR(type="button") Каркас
+            .left
+                img(src="img/maket2.jpg")
+            .right
+                h3#KARKAS-NAME Euroshop
+                h5#KARKAS-INFO Высота до 2,8м; Паз: 8,5 мм; стекло - 4.5 мм; Глухие панели - до 12,4 мм;
+                h4#KARKAS-PRICE 0
+                span руб.
+    .col-xs-4.col-sm-4.col-md-4.col-lg-4.polotno-el#HORIZONTAL-PEREMOCHKI-BLOCK
+        .well
+            .top
+                .form-group.label-floating.is-empty.text-center
+                    button.btn.btn-raised.btn-default#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR(type="button") Горизонтальные перемычки
+                +input-custom-block-super-mini("шт.", "tab-profil-peremyichki-horizontal-shtuk")
+            .left
+                img(src="img/maket2.jpg")
+            .right
+                h3#HORIZONTAL-PEREMOCHKI-NAME Euroshop
+                h5#HORIZONTAL-PEREMOCHKI-INFO Высота до 2,8м; Паз: 8,5 мм; стекло - 4.5 мм; Глухие панели - до 12,4 мм;
+                h4#HORIZONTAL-PEREMOCHKI-PRICE 0
+                span руб.
+    .col-xs-4.col-sm-4.col-md-4.col-lg-4.polotno-el#VERTIKALNUE-PEREMOCHKI-BLOCK
+        .well
+            .top
+                .form-group.label-floating.is-empty.text-center
+                    button.btn.btn-raised.btn-default#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR(type="button") Вертикальные перемычки
+                +input-custom-block-super-mini("шт.", "tab-profil-v-peremyichki-shtuk")
+            .left
+                img(src="img/maket2.jpg")
+            .right
+                h3#VERTIKALNUE-PEREMOCHKI-NAME Euroshop
+                h5#VERTIKALNUE-PEREMOCHKI-INFO Высота до 2,8м; Паз: 8,5 мм; стекло - 4.5 мм; Глухие панели - до 12,4 мм;
+                h4#VERTIKALNUE-PEREMOCHKI-PRICE 0
+                span руб.
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+        h3 Дополнения
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
+        h4 Цвет уплотнителя
+        .form-group.label-floating.is-empty
+            select.form-control#karkas-tsvet-uplotnitelya
+                option(value='none')
+                option(value='1')
+                option(value='2')
+                option(value='3')
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
+        h4 Цвет декоративной заглушки в паз
+        .form-group.label-floating.is-empty
+            select.form-control#karkas-tsvet-zaglushki
+                option(value='none')
+                option(value='1')
+                option(value='2')
+                option(value='3')
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
+        h4 Цвет декоративной заглушки торцевой
+        .form-group.label-floating.is-empty
+            select.form-control#karkas-tsvet-zaglushki-tortsevoy
+                option(value='none')
+                option(value='1')
+                option(value='2')
+                option(value='3')
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
+        h4 Вид крепления
+        .form-group.label-floating.is-empty
+            select.form-control#karkas-vid-krepleniya
+                option(value='none')
+                option(value='1')
+                option(value='2')
+                option(value='3')
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+        h3 Выбор декора для профиля
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12.vyiborDekoraDlyaProfilya
+        button.btn.btn-raised.btn-default(type="button")#btn-ral Выбрать из RAL
+        button.btn.btn-raised.btn-default(type="button")#btn-decor Выбрать из декора
+        button.btn.btn-raised.btn-default(type="button")#btn-anod Анодирование
+        input#pokraskaTypeAndName(type="hidden",value="color.RAL9003")
+        img(src='img/dekorRal/RAL9003.png')
+    .col-xs-12.col-sm-12.col-md-4.col-lg-12.polotno-el.text-right
+        h4 Площадь
+            span.TAB-PROFIL-AREA 0
+            | кв/м
+        h4 Цена покраски
+            span.TAB-POKRASKA-PRICE 0
+            | руб.
+        h3 Цена
+            span.TAB-PROFIL-PRICE 0
+            | руб.
