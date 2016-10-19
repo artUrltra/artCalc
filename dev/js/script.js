@@ -420,6 +420,13 @@ $('#btn-anod').click(function () {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
 });
 
+$('#btn-dekor-profil').click(function () {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    var html = $('.dekor-profil').html();
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html);
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+});
+
 $(".add-material-block-past").on('click', '#open-material-btn', function () {
     var polotnoId = getFromData('id');
     var materialId = $( this ).parent().parent().parent().attr('data-material-el-id');

@@ -49,7 +49,7 @@
 }
 
 .alert-default {
-  background-color: #e5e5e5 !important;
+  background-color: white !important;
 }
 
 .input-custom-block-mini {
@@ -134,7 +134,7 @@ body .wrapper-tabs {
   width: calc(100% - 30px);
   min-height: 50px;
   margin: 15px !important;
-  background: #e5e5e5;
+  background: white;
   padding-bottom: 30px;
 }
 
@@ -142,7 +142,7 @@ body .wrapper {
   width: calc(100% - 30px);
   min-height: 50px;
   margin: 15px !important;
-  background: #e5e5e5;
+  background: white;
 }
 
 body .form-group {
