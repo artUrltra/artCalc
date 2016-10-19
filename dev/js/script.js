@@ -31,7 +31,7 @@ function checkTheErrorNumber(e) {
 function PAINTING() {
     $('#PAINTING-DIAGRAMMA').html("");
     if ($('#TOTAL_PAINTING_ID').val() >= $('#MOVABLE_PAINTING_ID').val()) {
-        for (var i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
+        for (i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
             var type = "";
             if (i <= $('#MOVABLE_PAINTING_ID').val()) {
                 type = "M";
@@ -242,7 +242,7 @@ $('#POLOVINCHATAYA_KOL').bind('input', function () {
                 h = checkTheErrorNumber(h);
                 var widthForOnePS = ( w / p ) / 2;
                 var widthForOneOtherP = ( w - ( widthForOnePS * ps ) ) / ( p - ps );
-                for (var i = 1; i <= p; i++) {
+                for (i = 1; i <= p; i++) {
                     if (i == 1) {
                         $('#tab-profil-shirina').val(widthForOnePS);
                         $("#NUMBER_OF_DUPLICATOR_ID").val(0);
@@ -286,7 +286,7 @@ function setImg(number, total_painting, movable_painting) {
 // Установка селектов полотен //
 function SET_BAFFLE_SEKECTOR() {
     $(".BAFFLE_SEKECTOR_CLASS").empty();
-    for (var i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
+    for (i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
         if (i <= $('#MOVABLE_PAINTING_ID').val()) {
             $(".BAFFLE_SEKECTOR_CLASS").prepend($('<option value="' +
                 i + '">' +
@@ -419,6 +419,81 @@ $('#btn-anod').click(function () {
     var resultHtml = makeHTMLFromTemplate(html, templateData);
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
 });
+
+$(".add-material-block-past").on('click', '#open-material-btn', function () {
+    var polotnoId = getFromData('id');
+    var materialId = $( this ).parent().parent().parent().attr('data-material-el-id');
+    var html = $('.napolnenie-left-tab').html();
+
+    var LDSP = "пока что отсутствует";
+    var fanera = "пока что отсутствует";
+    var faneraTrudnogoryuchaya = "пока что отсутствует";
+    var MDFshlifovannyiy = "пока что отсутствует";
+    var DSPshlifovannyiy = "пока что отсутствует";
+    var stekloObyichnoe = "пока что отсутствует";
+    var stekloMatovoe = "пока что отсутствует";
+    var stekloBronzaSeroe = "пока что отсутствует";
+    var stekloTonirovannoeSeroe = "пока что отсутствует";
+    var stekloTonirovannoeBronza = "пока что отсутствует";
+    var stekloTonirovannoeGoluboe = "пока что отсутствует";
+    var tripleks = "пока что отсутствует";
+    var tripleksMatovyiy = "пока что отсутствует";
+    var orgstekloEkstruz = "пока что отсутствует";
+    var orgstekloEkstruzMatovoe = "пока что отсутствует";
+    var stekloProtivopozharnoe = "пока что отсутствует";
+    var zerkaloSerebro = "пока что отсутствует";
+    var zerkaloBronza = "пока что отсутствует";
+    var polikarbonatMonolit = "пока что отсутствует";
+    var polikarbonatSotovyiy = "пока что отсутствует";
+    var PVHvspenennyiy = "пока что отсутствует";
+    var sendvichPaneliPVH = "пока что отсутствует";
+    var gipsovinil12 = "пока что отсутствует";
+    var gipsodekor12 = "пока что отсутствует";
+    var gipsokarton12 = "пока что отсутствует";
+    var dekorativnyiyBumazhno = "пока что отсутствует";
+
+    var templateData = {
+        LDSP: LDSP,
+        fanera: fanera,
+        faneraTrudnogoryuchaya: faneraTrudnogoryuchaya,
+        MDFshlifovannyiy: MDFshlifovannyiy,
+        DSPshlifovannyiy: DSPshlifovannyiy,
+        stekloObyichnoe: stekloObyichnoe,
+        stekloMatovoe: stekloMatovoe,
+        stekloBronzaSeroe: stekloBronzaSeroe,
+        stekloTonirovannoeSeroe: stekloTonirovannoeSeroe,
+        stekloTonirovannoeBronza: stekloTonirovannoeBronza,
+        stekloTonirovannoeGoluboe: stekloTonirovannoeGoluboe,
+        tripleks: tripleks,
+        tripleksMatovyiy: tripleksMatovyiy,
+        orgstekloEkstruz: orgstekloEkstruz,
+        orgstekloEkstruzMatovoe: orgstekloEkstruzMatovoe,
+        stekloProtivopozharnoe: stekloProtivopozharnoe,
+        zerkaloSerebro: zerkaloSerebro,
+        zerkaloBronza: zerkaloBronza,
+        polikarbonatMonolit: polikarbonatMonolit,
+        polikarbonatSotovyiy: polikarbonatSotovyiy,
+        PVHvspenennyiy: PVHvspenennyiy,
+        sendvichPaneliPVH: sendvichPaneliPVH,
+        gipsovinil12: gipsovinil12,
+        gipsodekor12: gipsodekor12,
+        gipsokarton12: gipsokarton12,
+        dekorativnyiyBumazhno: dekorativnyiyBumazhno,
+        number: materialId
+    };
+    var resultHtml = makeHTMLFromTemplate(html, templateData);
+
+
+
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtml);
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+});
+
+function SelectMaterialEnd(name,number){
+    setDataAndText('material-' + number + '-type', name);
+    napolnenieImg(name, number);
+}
 
 $('body').on("change",function () {
     DekorRePrice2();
@@ -876,7 +951,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -910,7 +985,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -942,7 +1017,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
             var thickness = {
                 1: {5: 625, 6: 720, 8: 1050},
                 2: {5: 1100, 6: 1300, 8: 1600},
-                3: {5: 1350, 6: 1600},
+                3: {6: 1600},
                 4: {0: 0},
                 5: {6: 1400, 8: 1600},
                 6: {6: 2200, 8: 2400},
@@ -978,7 +1053,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -1012,7 +1087,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
 
                 6: {0: 0},
 
@@ -1047,7 +1122,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -1245,11 +1320,6 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 26: {4: 4000, 5: 5000}
             };
             break;
-        default:
-            var thickness = {
-                1: {0: 0}
-            };
-            break;
     }
     switch (napolnenieType) {
         case "stekloObyichnoe":
@@ -1309,7 +1379,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
         case "faneraTrudnogoryuchaya":
             var value = 19;
             break;
-        case "orgstekloEkstruz":
+        case "orgstekloEkstruzMatovoe":
             var value = 20;
             break;
         case "dekorativnyiyBumazhno":
@@ -1347,62 +1417,94 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
 //  ============================= //
 
 // ТАБ НАПОЛНЕНИЕ картинка //
-function napolnenieImg(napolnenieType, id) {
-    if (napolnenieType == 'stekloObyichnoe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10790837.png');
-    } else if (napolnenieType == 'stekloMatovoe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10787765.png');
-    } else if (napolnenieType == 'zerkaloSerebro') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10797000.png');
-    } else if (napolnenieType == 'zerkaloBronza') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10784712.png');
-    } else if (napolnenieType == 'tripleks') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10785736.png');
-    } else if (napolnenieType == 'tripleksMatovyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10775496.png');
-    } else if (napolnenieType == 'polikarbonatSotovyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10777544.png');
-    } else if (napolnenieType == 'PVHvspenennyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10772424.png');
-    } else if (napolnenieType == 'polikarbonatMonolit') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10760136.png');
-    } else if (napolnenieType == 'orgstekloEkstruz') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10757064.png');
-    } else if (napolnenieType == 'LDSP') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10763208.png');
-    } else if (napolnenieType == 'MDFshlifovannyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10750920.png');
-    } else if (napolnenieType == 'DSPshlifovannyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10756040.png');
-    } else if (napolnenieType == 'fanera') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10790859.png');
-    } else if (napolnenieType == 'sendvichPaneliPVH') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10784715.png');
-    } else if (napolnenieType == 'stekloTonirovannoeSeroe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11657586.jpg');/////
-    } else if (napolnenieType == 'stekloTonirovannoeBronza') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11611506.jpg');
-    } else if (napolnenieType == 'stekloTonirovannoeGoluboe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11600245.jpg');
-    } else if (napolnenieType == 'faneraTrudnogoryuchaya') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10785736.png');
-    } else if (napolnenieType == 'orgstekloEkstruz') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10757064.png');
-    } else if (napolnenieType == 'dekorativnyiyBumazhno') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11655542.jpg');
-    } else if (napolnenieType == 'gipsovinil12') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11619702.jpg');
-    } else if (napolnenieType == 'gipsodekor12') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11619702.jpg');
-    } else if (napolnenieType == 'gipsokarton12') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11619702.jpg');
-    } else if (napolnenieType == 'stekloBronzaSeroe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11663497.jpg');
-    } else if (napolnenieType == 'stekloProtivopozharnoe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11609225.jpg');
+function napolnenieImg(name, id) {
+    switch (name){
+        case "LDSP":
+            var img = 11;
+            break;
+        case "fanera":
+            var img = 14;
+            break;
+        case "faneraTrudnogoryuchaya":
+            var img = 14;
+            break;
+        case "MDFshlifovannyiy":
+            var img = 12;
+            break;
+        case "DSPshlifovannyiy":
+            var img = 13;
+            break;
+
+        case "stekloObyichnoe":
+            var img = 1;
+            break;
+        case "stekloMatovoe":
+            var img = 2;
+            break;
+        case "stekloBronzaSeroe":
+            var img = 2;
+            break;
+        case "stekloTonirovannoeSeroe":
+            var img = 16;
+            break;
+        case "stekloTonirovannoeBronza":
+            var img = 17;
+            break;
+        case "stekloTonirovannoeGoluboe":
+            var img = 18;
+            break;
+        case "tripleks":
+            var img = 5;
+            break;
+        case "tripleksMatovyiy":
+            var img = 6;
+            break;
+        case "orgstekloEkstruz":
+            var img = 10;
+            break;
+        case "orgstekloEkstruzMatovoe":
+            var img = 20;
+            break;
+        case "stekloProtivopozharnoe":
+            var img = 26;
+            break;
+
+        case "zerkaloSerebro":
+            var img = 3;
+            break;
+        case "zerkaloBronza":
+            var img = 4;
+            break;
+
+        case "polikarbonatMonolit":
+            var img = 9;
+            break;
+        case "polikarbonatSotovyiy":
+            var img = 7;
+            break;
+        case "PVHvspenennyiy":
+            var img = 8;
+            break;
+
+        case "sendvichPaneliPVH":
+            var img = 15;
+            break;
+        case "gipsovinil12":
+            var img = 22;
+            break;
+        case "gipsodekor12":
+            var img = 23;
+            break;
+        case "gipsokarton12":
+            var img = 24;
+            break;
+        case "dekorativnyiyBumazhno":
+            var img = 21;
+            break;
     }
 
-    setNapolnenieElTolschinaShow(napolnenieType, id)
+    $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'img/material/' + img + '.png');
+    setNapolnenieElTolschinaShow(name, id)
 }
 //  ============================= //
 
@@ -1422,7 +1524,7 @@ function removeElNapolnenie(t) {
 
 // ТАБ НАПОЛНЕНИЕ установка высоты //
 function addWHElNapolnenie() {
-    for (var i = 1; i <= 5; i++) {
+    for (i = 1; i <= 5; i++) {
         $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-vyisota').val(getFromData('height'));
     }
 }
@@ -1431,7 +1533,7 @@ function addWHElNapolnenie() {
 // ТАБ НАПОЛНЕНИЕ  выставленеи ширины одинаковой у всех //
 function addWElNapolnenieToFive() {
     var allElInC = $('.add-material-block-past > div').length;
-    for (var i = 1; i <= 5; i++) {
+    for (i = 1; i <= 5; i++) {
         $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-shirina').val(getFromData('width') / allElInC);
     }
 }
@@ -2477,7 +2579,7 @@ function TableForInfo() {
     $(".TableForInfo").html('');
     var groupArr = []
     var html = '<table class="table table-striped table-hover">'
-    for (var i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
+    for (i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
         var group = $('*[data-id=' + i + ']').find('.group').text();
         if (group == '') {
             group = 0;
@@ -2540,7 +2642,7 @@ function calcNow() {
         var widhtPlusPlus = 0;
         var oneGroupFTArray = [];
         var oneGroupFT;
-        for (var i = 1; i <= painting; i++) {
+        for (i = 1; i <= painting; i++) {
             if (getFromData('group') == $('*[data-id=' + i + ']').find('.group').text()) {
                 paintingThisGroupCount++;
             }
@@ -2574,13 +2676,13 @@ function calcNow() {
             } else {
                 var minSizeToOther = widhtPlusPlus - widht;
                 var elNotInThisGruap = 0;
-                for (var i = 1; i <= painting; i++) {
+                for (i = 1; i <= painting; i++) {
                     if (getFromData('group') != $('*[data-id=' + i + ']').find('.group').text()) {
                         elNotInThisGruap = elNotInThisGruap + 1;
                     }
                 }
                 var minSizeToOther = minSizeToOther / elNotInThisGruap;
-                for (var i = 1; i <= painting; i++) {
+                for (i = 1; i <= painting; i++) {
                     if (getFromData('group') != $('*[data-id=' + i + ']').find('.group').text()) {
                         var w = parseInt($('*[data-id="' + i + '"]').attr('data-width'));
                         $('*[data-id="' + i + '"]').attr('data-width', w - minSizeToOther);
@@ -2595,13 +2697,13 @@ function calcNow() {
             } else {
                 var addSizeToOther = widht - widhtPlusPlus;
                 var elNotInThisGruap = 0;
-                for (var i = 1; i <= painting; i++) {
+                for (i = 1; i <= painting; i++) {
                     if (getFromData('group') != $('*[data-id=' + i + ']').find('.group').text()) {
                         elNotInThisGruap = elNotInThisGruap + 1;
                     }
                 }
                 var addSizeToOtherToOne = addSizeToOther / elNotInThisGruap;
-                for (var i = 1; i <= painting; i++) {
+                for (i = 1; i <= painting; i++) {
                     if (getFromData('group') != $('*[data-id=' + i + ']').find('.group').text()) {
                         var w = parseInt($('*[data-id="' + i + '"]').attr('data-width'));
                         $('*[data-id="' + i + '"]').attr('data-width', w + addSizeToOtherToOne);
@@ -2942,7 +3044,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ запись колличества //
     function addNapolnenieEl() {
         var allElInC = $('.add-material-block-past > div').length;
-        for (var i = 1; i <= allElInC; i++) {
+        for (i = 1; i <= allElInC; i++) {
             var count = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-kollichestvo').val();
             setDataAndText('material-' + i + '-kol', count)
         }
@@ -2953,7 +3055,7 @@ function calcNow() {
 
     // ТАБ НАПОЛНЕНИЕ сохранение высоты //
     function seveHeightNapolnenie() {
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             var obj = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-vyisota').val();
             setDataAndText('material-' + i + '-height', obj);
 
@@ -2968,7 +3070,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ толщина соxранение //
     function seveTolshina() {
 
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
 
             var obj = $('*[data-material-el-id="' + i + '"]').find('.napolnenie-el-tolschina').val();
 
@@ -2993,7 +3095,7 @@ function calcNow() {
 
     // ТАБ НАПОЛНЕНИЕ заказлка стекла да/нет//zakalkaStekla
     function zakalkaStekla() {
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             var checked = $('*[data-material-el-id="' + i + '"]').find('.zakalkaStekla input').is(':checked');
             if (checked == true) {
                 setDataAndText('material-' + i + '-zakalka-stekla', true);
@@ -3009,7 +3111,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ двойное заполнение доступно/нет//
     function dvoinoeZapolnenieShowHide() {
         var karkas = getFromData('karkas-name');
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             if (karkas == 'Optimax2' || karkas == 'Statusx2' || karkas == 'Base') {
                 $('*[data-material-el-id=' + i + ']').find('.dvoinoeZapolnenieCheckbox').show();
                 var checked = $('*[data-material-el-id="' + i + '"]').find('.dvoinoeZapolnenieCheckbox input').is(':checked');
@@ -3027,48 +3129,6 @@ function calcNow() {
 
     dvoinoeZapolnenieShowHide()
     //  ============================= //
-    $("#furnitura-tab").on('click', '#select-razdvizh-mehaniam-btn', function () {
-        var text = $('.select-razdvizh-mehanizm').html();
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(text);
-        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-    });
-
-    $(".add-material-block-past").on('click', '#open-material-btn', function () {
-        var text = $('.napolnenie-left-tab').html();
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-
-        var templateData = {
-            priceStandartStoika: 1
-        };
-
-        var resultHtml = makeHTMLFromTemplate(text, templateData);
-
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtml);
-        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-    });
-
-    // ТАБ НАПОЛНЕНИЕ измение наполнения //
-    function SelectMaterialEnd(name){
-
-    }
-
-    function napolnenieCange() {
-        for (var i = 1; i <= 5; i++) {
-            var obj = $('*[data-material-el-id="' + i + '"]').find('.napolnenie-el-material').val();
-            var el = getFromData('material-' + i + '-type');
-            if (obj == '') {
-                obj = 0;
-            }
-            if (obj != el && obj != null) {
-                setDataAndText('material-' + i + '-type', obj);
-                napolnenieImg(obj, i);
-            }
-        }
-    }
-
-    napolnenieCange();
-    //  ============================= //
 
     // ТАБ ПРОФИЛЬ площ //
     var area = $("#tab-profil-vyisota").val() * $("#tab-profil-shirina").val() / 1000000;
@@ -3083,7 +3143,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ площ //
     function napolneniePlosh() {
         // var tab_napolnenie_ploschad = 0;
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             var H = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-shirina').val();
             var W = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-vyisota').val();
             var res = H * W / 1000000;
@@ -3098,7 +3158,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ цена //
     function napolneniePrice() {
         var data_price_in_napolnenii = 0;
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             var priceStekla = 0;
             var priceZakalka = 0;
 
@@ -3429,10 +3489,10 @@ function setAllSaveParameters() {
 
     //BAFFLE_SEKECTOR
     $("#BAFFLE_SEKECTOR_ID").empty();
-    for (var i = 1; i <= TOTAL_PAINTING; i++) {
+    for (i = 1; i <= TOTAL_PAINTING; i++) {
         $("#BAFFLE_SEKECTOR_ID").prepend($('<option value="0">Полотно ' + i + '</option>'));
     }
-    for (var i = 1; i <= MOVABLE_PAINTING; i++) {
+    for (i = 1; i <= MOVABLE_PAINTING; i++) {
         $("#BAFFLE_SEKECTOR_ID").prepend($('<option value="0">Подвижное полотно ' + i + '</option>'));
     }
 
@@ -4467,7 +4527,7 @@ $('#tab-profil-vyisota, #tab-profil-shirina').bind('input', function () {
 });
 // Добавление поля
 $('.add-material-btn').click(function () {
-    loop1: for (var i = 1; i <= 5; i++) {
+    loop1: for (i = 1; i <= 5; i++) {
         var type = getFromData('material-' + i + '-type');
         if (type == '') {
             $(".add-material-block-past").append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el" data-material-el-id="' + i + '">' + $(".napolnenie-el-set").html() + '</div>');
