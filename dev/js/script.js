@@ -31,7 +31,7 @@ function checkTheErrorNumber(e) {
 function PAINTING() {
     $('#PAINTING-DIAGRAMMA').html("");
     if ($('#TOTAL_PAINTING_ID').val() >= $('#MOVABLE_PAINTING_ID').val()) {
-        for (var i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
+        for (i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
             var type = "";
             if (i <= $('#MOVABLE_PAINTING_ID').val()) {
                 type = "M";
@@ -242,7 +242,7 @@ $('#POLOVINCHATAYA_KOL').bind('input', function () {
                 h = checkTheErrorNumber(h);
                 var widthForOnePS = ( w / p ) / 2;
                 var widthForOneOtherP = ( w - ( widthForOnePS * ps ) ) / ( p - ps );
-                for (var i = 1; i <= p; i++) {
+                for (i = 1; i <= p; i++) {
                     if (i == 1) {
                         $('#tab-profil-shirina').val(widthForOnePS);
                         $("#NUMBER_OF_DUPLICATOR_ID").val(0);
@@ -286,7 +286,7 @@ function setImg(number, total_painting, movable_painting) {
 // Установка селектов полотен //
 function SET_BAFFLE_SEKECTOR() {
     $(".BAFFLE_SEKECTOR_CLASS").empty();
-    for (var i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
+    for (i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
         if (i <= $('#MOVABLE_PAINTING_ID').val()) {
             $(".BAFFLE_SEKECTOR_CLASS").prepend($('<option value="' +
                 i + '">' +
@@ -320,7 +320,7 @@ $(".BAFFLE_SEKECTOR_CLASS").change(function () {
     $("#tab-profil-v-peremyichki-shtuk").val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').data('vertikalnue-pereochki-count'));
     $('#KARKAS-NAME').text(getFromData('karkas-name'));
     $('#KARKAS-BLOCK img').attr('src', getFromData('karkas-img'));
-    $('#KARKAS-INFO').text(getFromData('karkas-info'));
+    $('#KARKAS-INFO').html(getFromData('karkas-info'));
     $('#KARKAS-PRICE').text(getFromData('karkas-price'));
     $('#HORIZONTAL-PEREMOCHKI-BLOCK img').attr('src', getFromData('horizontal-pereochki-img'));
     $('#HORIZONTAL-PEREMOCHKI-NAME').text(getFromData('horizontal-pereochki-name'));
@@ -419,6 +419,70 @@ $('#btn-anod').click(function () {
     var resultHtml = makeHTMLFromTemplate(html, templateData);
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
 });
+
+$('#btn-dekor-profil').click(function () {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    var html = $('.dekor-profil').html();
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html);
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+});
+
+$('#btn-uplotnitel').click(function () {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    var html = $('.uplotnitel-modal').html();
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html);
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+});
+
+$(".add-material-block-past").on('click', '#open-material-btn', function () {
+    var polotnoId = getFromData('id');
+    var materialId = $( this ).parent().parent().parent().attr('data-material-el-id');
+    var html = $('.napolnenie-left-tab').html();
+    var ploschad = getFromData('material-' + materialId + '-ploschad');
+    var kol = $('*[data-material-el-id="' + materialId + '"]').find('.tab-napolnenie-kollichestvo').val();
+
+    var templateData = {
+        LDSP: parseInt((300 * ploschad) * kol),
+        fanera: parseInt((285 * ploschad) * kol),
+        faneraTrudnogoryuchaya: parseInt((360 * ploschad) * kol),
+        MDFshlifovannyiy: parseInt((93 * ploschad) * kol),
+        DSPshlifovannyiy: parseInt((150 * ploschad) * kol),
+        stekloObyichnoe: parseInt((500 * ploschad) * kol),
+        stekloMatovoe: parseInt((900 * ploschad) * kol),
+        stekloBronzaSeroe: parseInt((950 * ploschad) * kol),
+        stekloTonirovannoeSeroe: parseInt((1000 * ploschad) * kol),
+        stekloTonirovannoeBronza: parseInt((1000 * ploschad) * kol),
+        stekloTonirovannoeGoluboe: parseInt((2100 * ploschad) * kol),
+        tripleks: parseInt((1400 * ploschad) * kol),
+        tripleksMatovyiy: parseInt((2200 * ploschad) * kol),
+        orgstekloEkstruz: parseInt((1480 * ploschad) * kol),
+        orgstekloEkstruzMatovoe: parseInt((1598.4 * ploschad) * kol),
+        stekloProtivopozharnoe: parseInt((4000 * ploschad) * kol),
+        zerkaloSerebro: parseInt((1050 * ploschad) * kol),
+        zerkaloBronza: parseInt((1300 * ploschad) * kol),
+        polikarbonatMonolit: parseInt((1600 * ploschad) * kol),
+        polikarbonatSotovyiy: parseInt((160 * ploschad) * kol),
+        PVHvspenennyiy: parseInt((560 * ploschad) * kol),
+        sendvichPaneliPVH: parseInt((225 * ploschad) * kol),
+        gipsovinil12: parseInt((590 * ploschad) * kol),
+        gipsodekor12: parseInt((348 * ploschad) * kol),
+        gipsokarton12: parseInt((210 * ploschad) * kol),
+        dekorativnyiyBumazhno: parseInt((1465 * ploschad) * kol),
+        number: materialId
+    };
+    var resultHtml = makeHTMLFromTemplate(html, templateData);
+
+
+
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtml);
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+});
+
+function SelectMaterialEnd(name,number){
+    setDataAndText('material-' + number + '-type', name);
+    napolnenieImg(name, number);
+}
 
 $('body').on("change",function () {
     DekorRePrice2();
@@ -876,7 +940,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -910,7 +974,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -942,7 +1006,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
             var thickness = {
                 1: {5: 625, 6: 720, 8: 1050},
                 2: {5: 1100, 6: 1300, 8: 1600},
-                3: {5: 1350, 6: 1600},
+                3: {6: 1600},
                 4: {0: 0},
                 5: {6: 1400, 8: 1600},
                 6: {6: 2200, 8: 2400},
@@ -978,7 +1042,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -1012,7 +1076,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
 
                 6: {0: 0},
 
@@ -1047,7 +1111,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 2: {4: 900, 5: 1100},
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
-                5: {0: 0, 6: 1400},
+                5: {6: 1400},
                 6: {0: 0},
 
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
@@ -1245,11 +1309,6 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 26: {4: 4000, 5: 5000}
             };
             break;
-        default:
-            var thickness = {
-                1: {0: 0}
-            };
-            break;
     }
     switch (napolnenieType) {
         case "stekloObyichnoe":
@@ -1309,7 +1368,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
         case "faneraTrudnogoryuchaya":
             var value = 19;
             break;
-        case "orgstekloEkstruz":
+        case "orgstekloEkstruzMatovoe":
             var value = 20;
             break;
         case "dekorativnyiyBumazhno":
@@ -1347,62 +1406,94 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
 //  ============================= //
 
 // ТАБ НАПОЛНЕНИЕ картинка //
-function napolnenieImg(napolnenieType, id) {
-    if (napolnenieType == 'stekloObyichnoe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10790837.png');
-    } else if (napolnenieType == 'stekloMatovoe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10787765.png');
-    } else if (napolnenieType == 'zerkaloSerebro') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10797000.png');
-    } else if (napolnenieType == 'zerkaloBronza') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10784712.png');
-    } else if (napolnenieType == 'tripleks') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10785736.png');
-    } else if (napolnenieType == 'tripleksMatovyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10775496.png');
-    } else if (napolnenieType == 'polikarbonatSotovyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10777544.png');
-    } else if (napolnenieType == 'PVHvspenennyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10772424.png');
-    } else if (napolnenieType == 'polikarbonatMonolit') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10760136.png');
-    } else if (napolnenieType == 'orgstekloEkstruz') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10757064.png');
-    } else if (napolnenieType == 'LDSP') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10763208.png');
-    } else if (napolnenieType == 'MDFshlifovannyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10750920.png');
-    } else if (napolnenieType == 'DSPshlifovannyiy') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10756040.png');
-    } else if (napolnenieType == 'fanera') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10790859.png');
-    } else if (napolnenieType == 'sendvichPaneliPVH') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10784715.png');
-    } else if (napolnenieType == 'stekloTonirovannoeSeroe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11657586.jpg');/////
-    } else if (napolnenieType == 'stekloTonirovannoeBronza') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11611506.jpg');
-    } else if (napolnenieType == 'stekloTonirovannoeGoluboe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11600245.jpg');
-    } else if (napolnenieType == 'faneraTrudnogoryuchaya') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10785736.png');
-    } else if (napolnenieType == 'orgstekloEkstruz') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/10757064.png');
-    } else if (napolnenieType == 'dekorativnyiyBumazhno') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11655542.jpg');
-    } else if (napolnenieType == 'gipsovinil12') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11619702.jpg');
-    } else if (napolnenieType == 'gipsodekor12') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11619702.jpg');
-    } else if (napolnenieType == 'gipsokarton12') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11619702.jpg');
-    } else if (napolnenieType == 'stekloBronzaSeroe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11663497.jpg');
-    } else if (napolnenieType == 'stekloProtivopozharnoe') {
-        $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'http://savepic.ru/11609225.jpg');
+function napolnenieImg(name, id) {
+    switch (name){
+        case "LDSP":
+            var img = 11;
+            break;
+        case "fanera":
+            var img = 14;
+            break;
+        case "faneraTrudnogoryuchaya":
+            var img = 14;
+            break;
+        case "MDFshlifovannyiy":
+            var img = 12;
+            break;
+        case "DSPshlifovannyiy":
+            var img = 13;
+            break;
+
+        case "stekloObyichnoe":
+            var img = 1;
+            break;
+        case "stekloMatovoe":
+            var img = 2;
+            break;
+        case "stekloBronzaSeroe":
+            var img = 2;
+            break;
+        case "stekloTonirovannoeSeroe":
+            var img = 16;
+            break;
+        case "stekloTonirovannoeBronza":
+            var img = 17;
+            break;
+        case "stekloTonirovannoeGoluboe":
+            var img = 18;
+            break;
+        case "tripleks":
+            var img = 5;
+            break;
+        case "tripleksMatovyiy":
+            var img = 6;
+            break;
+        case "orgstekloEkstruz":
+            var img = 10;
+            break;
+        case "orgstekloEkstruzMatovoe":
+            var img = 20;
+            break;
+        case "stekloProtivopozharnoe":
+            var img = 26;
+            break;
+
+        case "zerkaloSerebro":
+            var img = 3;
+            break;
+        case "zerkaloBronza":
+            var img = 4;
+            break;
+
+        case "polikarbonatMonolit":
+            var img = 9;
+            break;
+        case "polikarbonatSotovyiy":
+            var img = 7;
+            break;
+        case "PVHvspenennyiy":
+            var img = 8;
+            break;
+
+        case "sendvichPaneliPVH":
+            var img = 15;
+            break;
+        case "gipsovinil12":
+            var img = 22;
+            break;
+        case "gipsodekor12":
+            var img = 23;
+            break;
+        case "gipsokarton12":
+            var img = 24;
+            break;
+        case "dekorativnyiyBumazhno":
+            var img = 21;
+            break;
     }
 
-    setNapolnenieElTolschinaShow(napolnenieType, id)
+    $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'img/material/' + img + '.png');
+    setNapolnenieElTolschinaShow(name, id)
 }
 //  ============================= //
 
@@ -1422,7 +1513,7 @@ function removeElNapolnenie(t) {
 
 // ТАБ НАПОЛНЕНИЕ установка высоты //
 function addWHElNapolnenie() {
-    for (var i = 1; i <= 5; i++) {
+    for (i = 1; i <= 5; i++) {
         $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-vyisota').val(getFromData('height'));
     }
 }
@@ -1431,7 +1522,7 @@ function addWHElNapolnenie() {
 // ТАБ НАПОЛНЕНИЕ  выставленеи ширины одинаковой у всех //
 function addWElNapolnenieToFive() {
     var allElInC = $('.add-material-block-past > div').length;
-    for (var i = 1; i <= 5; i++) {
+    for (i = 1; i <= 5; i++) {
         $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-shirina').val(getFromData('width') / allElInC);
     }
 }
@@ -2477,7 +2568,7 @@ function TableForInfo() {
     $(".TableForInfo").html('');
     var groupArr = []
     var html = '<table class="table table-striped table-hover">'
-    for (var i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
+    for (i = 1; i <= parseInt($('#TOTAL_PAINTING_ID').val()); i++) {
         var group = $('*[data-id=' + i + ']').find('.group').text();
         if (group == '') {
             group = 0;
@@ -2540,7 +2631,7 @@ function calcNow() {
         var widhtPlusPlus = 0;
         var oneGroupFTArray = [];
         var oneGroupFT;
-        for (var i = 1; i <= painting; i++) {
+        for (i = 1; i <= painting; i++) {
             if (getFromData('group') == $('*[data-id=' + i + ']').find('.group').text()) {
                 paintingThisGroupCount++;
             }
@@ -2574,13 +2665,13 @@ function calcNow() {
             } else {
                 var minSizeToOther = widhtPlusPlus - widht;
                 var elNotInThisGruap = 0;
-                for (var i = 1; i <= painting; i++) {
+                for (i = 1; i <= painting; i++) {
                     if (getFromData('group') != $('*[data-id=' + i + ']').find('.group').text()) {
                         elNotInThisGruap = elNotInThisGruap + 1;
                     }
                 }
                 var minSizeToOther = minSizeToOther / elNotInThisGruap;
-                for (var i = 1; i <= painting; i++) {
+                for (i = 1; i <= painting; i++) {
                     if (getFromData('group') != $('*[data-id=' + i + ']').find('.group').text()) {
                         var w = parseInt($('*[data-id="' + i + '"]').attr('data-width'));
                         $('*[data-id="' + i + '"]').attr('data-width', w - minSizeToOther);
@@ -2595,13 +2686,13 @@ function calcNow() {
             } else {
                 var addSizeToOther = widht - widhtPlusPlus;
                 var elNotInThisGruap = 0;
-                for (var i = 1; i <= painting; i++) {
+                for (i = 1; i <= painting; i++) {
                     if (getFromData('group') != $('*[data-id=' + i + ']').find('.group').text()) {
                         elNotInThisGruap = elNotInThisGruap + 1;
                     }
                 }
                 var addSizeToOtherToOne = addSizeToOther / elNotInThisGruap;
-                for (var i = 1; i <= painting; i++) {
+                for (i = 1; i <= painting; i++) {
                     if (getFromData('group') != $('*[data-id=' + i + ']').find('.group').text()) {
                         var w = parseInt($('*[data-id="' + i + '"]').attr('data-width'));
                         $('*[data-id="' + i + '"]').attr('data-width', w + addSizeToOtherToOne);
@@ -2635,7 +2726,7 @@ function calcNow() {
     // ТАБ ПРОФИЛЬ если пустой каркас //
     function ifEmptyCarcas() {
         if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-name') == '') {
-            SelectKarkasEnd(111, 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', 'Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 14.5, 6, 36, 30);
+            SelectKarkasEnd(111, '<div class="height-30"><p class="profil-text-left">Высота до</p><p class="profil-text-right">2,8м;</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм;</p></div><div class="height-30"><p class="profil-text-left">Стекло</p><p class="profil-text-right">4.5 мм;</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right">до 12,4 мм;</p></div>', 'Euroshop', 'http://fasts-like.com/karkas/Euroshop.png', 14.5, 6, 36, 30);
         }
     }
 
@@ -2646,52 +2737,52 @@ function calcNow() {
     function ifEmptyPeremuchka() {
         if (getFromData('vertikalnue-pereochki-name') == '') {
             if (getFromData('karkas-name') == 'Tur') {
-                SelectPeremyichkaVERTIKALNUE('TUR', 'http://pavel.artultra.ru/karkas/Tur.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+                SelectPeremyichkaVERTIKALNUE('TUR', 'http://fasts-like.com/karkas/Tur.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '1101');
             } else if (getFromData('karkas-name') == 'Euroshop') {
-                SelectPeremyichkaVERTIKALNUE('Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+                SelectPeremyichkaVERTIKALNUE('Euroshop', 'http://fasts-like.com/karkas/Euroshop.png', '<div class="height-30"><p class="profil-text-left">Высота до</p><p class="profil-text-right">2,8м;</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм;</p></div><div class="height-30"><p class="profil-text-left">Стекло</p><p class="profil-text-right">4.5 мм;</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right">до 12,4 мм;</p></div>', '1101');
             } else if (getFromData('karkas-name') == 'EuroshopLite') {
-                SelectPeremyichkaVERTIKALNUE('EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+                SelectPeremyichkaVERTIKALNUE('EuroshopLite', 'http://fasts-like.com/karkas/EuroshopLite.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '1101');
             } else if (getFromData('karkas-name') == 'Optimax2') {
-                SelectPeremyichkaVERTIKALNUE('Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '3110');
+                SelectPeremyichkaVERTIKALNUE('Optimax2', 'http://fasts-like.com/karkas/Optimax2.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '3110');
             } else if (getFromData('karkas-name') == 'Standart') {
-                SelectPeremyichkaVERTIKALNUE('Standart', 'http://pavel.artultra.ru/karkas/Standart.png', 'Высота: до 2.8 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '2029');
+                SelectPeremyichkaVERTIKALNUE('Standart', 'http://fasts-like.com/karkas/Standart.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.8 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '2029');
             } else if (getFromData('karkas-name') == 'MobyLight') {
-                SelectPeremyichkaVERTIKALNUE('MobyLight', 'http://pavel.artultra.ru/karkas/MobyLight.png', 'Высота: до 3 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1669');
+                SelectPeremyichkaVERTIKALNUE('MobyLight', 'http://fasts-like.com/karkas/MobyLight.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 3 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '1669');
             } else if (getFromData('karkas-name') == 'Optima' || name == 'OptimaLite') {
-                SelectPeremyichkaVERTIKALNUE('Optima', 'http://pavel.artultra.ru/karkas/Optima.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм', '2135');
+                SelectPeremyichkaVERTIKALNUE('Optima', 'http://fasts-like.com/karkas/Optima.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 16 мм</p></div>', '2135');
             } else if (getFromData('karkas-name') == 'Base') {
-                SelectPeremyichkaVERTIKALNUE('Base', 'http://pavel.artultra.ru/karkas/Base.png', 'Высота: до 4 м, Cтекло – 5-8 мм, Глухие панели: до 12,5 мм', '2874');
+                SelectPeremyichkaVERTIKALNUE('Base', 'http://fasts-like.com/karkas/Base.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 4 м</p></div><div class="height-30"><p class="profil-text-left">Cтекло</p><p class="profil-text-right">5-8 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '2874');
             } else if (getFromData('karkas-name') == 'Statusx1') {
-                SelectPeremyichkaVERTIKALNUE('Statusx1', 'http://pavel.artultra.ru/karkas/Statusx1.png', 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 13 мм', '2702');
+                SelectPeremyichkaVERTIKALNUE('Statusx1', 'http://fasts-like.com/karkas/Statusx1.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 13 мм</p></div>', '2702');
             } else if (getFromData('karkas-name') == 'Statusx2') {
-                SelectPeremyichkaVERTIKALNUE('Statusx2', 'http://pavel.artultra.ru/karkas/Statusx2.png', 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 12,5 мм', '3446');
+                SelectPeremyichkaVERTIKALNUE('Statusx2', 'http://fasts-like.com/karkas/Statusx2.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '3446');
             } else if (getFromData('karkas-name') == 'StandartStoika') {
-                SelectPeremyichkaVERTIKALNUE('StandartStoika', 'http://pavel.artultra.ru/karkas/StandartStoika.png', 'Высота: до 3 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 8,5 мм', '1915');
+                SelectPeremyichkaVERTIKALNUE('StandartStoika', 'http://fasts-like.com/karkas/StandartStoika.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 3 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 8,5 мм</p></div>', '1915');
             }
         }
         if (getFromData('horizontal-pereochki-name') == '') {
             if (getFromData('karkas-name') == 'Tur') {
-                SelectHorizontalPeremochki('TUR', 'http://pavel.artultra.ru/karkas/Tur.png', 'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм', '810');
+                SelectHorizontalPeremochki('TUR', 'http://fasts-like.com/karkas/Tur.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '810');
             } else if (getFromData('karkas-name') == 'Euroshop') {
-                SelectHorizontalPeremochki('Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+                SelectHorizontalPeremochki('Euroshop', 'http://fasts-like.com/karkas/Euroshop.png', '<div class="height-30"><p class="profil-text-left">Высота до</p><p class="profil-text-right">2,8м;</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм;</p></div><div class="height-30"><p class="profil-text-left">Стекло</p><p class="profil-text-right">4.5 мм;</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right">до 12,4 мм;</p></div>', '1101');
             } else if (getFromData('karkas-name') == 'EuroshopLite') {
-                SelectHorizontalPeremochki('EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+                SelectHorizontalPeremochki('EuroshopLite', 'http://fasts-like.com/karkas/EuroshopLite.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '1101');
             } else if (getFromData('karkas-name') == 'Optimax2') {
-                SelectHorizontalPeremochki('Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '3110');
+                SelectHorizontalPeremochki('Optimax2', 'http://fasts-like.com/karkas/Optimax2.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '3110');
             } else if (getFromData('karkas-name') == 'Standart') {
-                SelectHorizontalPeremochki('Standart', 'http://pavel.artultra.ru/karkas/Standart.png', 'Высота: до 2.8 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '2029');
+                SelectHorizontalPeremochki('Standart', 'http://fasts-like.com/karkas/Standart.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.8 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '2029');
             } else if (getFromData('karkas-name') == 'MobyLight') {
-                SelectHorizontalPeremochki('MobyLight', 'http://pavel.artultra.ru/karkas/MobyLight.png', 'Высота: до 3 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1669');
+                SelectHorizontalPeremochki('MobyLight', 'http://fasts-like.com/karkas/MobyLight.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 3 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '1669');
             } else if (getFromData('karkas-name') == 'Optima' || name == 'OptimaLite') {
-                SelectHorizontalPeremochki('Optima', 'http://pavel.artultra.ru/karkas/Optima.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм', '2135');
+                SelectHorizontalPeremochki('Optima', 'http://fasts-like.com/karkas/Optima.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 16 мм</p></div>', '2135');
             } else if (getFromData('karkas-name') == 'Base') {
-                SelectHorizontalPeremochki('Base', 'http://pavel.artultra.ru/karkas/Base.png', 'Высота: до 4 м, Cтекло – 5-8 мм, Глухие панели: до 12,5 мм', '2874');
+                SelectHorizontalPeremochki('Base', 'http://fasts-like.com/karkas/Base.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 4 м</p></div><div class="height-30"><p class="profil-text-left">Cтекло</p><p class="profil-text-right">5-8 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '2874');
             } else if (getFromData('karkas-name') == 'Statusx1') {
-                SelectHorizontalPeremochki('Statusx1', 'http://pavel.artultra.ru/karkas/Statusx1.png', 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 13 мм', '2702');
+                SelectHorizontalPeremochki('Statusx1', 'http://fasts-like.com/karkas/Statusx1.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 13 мм</p></div>', '2702');
             } else if (getFromData('karkas-name') == 'Statusx2') {
-                SelectHorizontalPeremochki('Statusx2', 'http://pavel.artultra.ru/karkas/Statusx2.png', 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 12,5 мм', '3446');
+                SelectHorizontalPeremochki('Statusx2', 'http://fasts-like.com/karkas/Statusx2.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '3446');
             } else if (getFromData('karkas-name') == 'StandartStoika') {
-                SelectHorizontalPeremochki('StandartStoika', 'http://pavel.artultra.ru/karkas/StandartStoika.png', 'Высота: до 3 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 8,5 мм', '1915');
+                SelectHorizontalPeremochki('StandartStoika', 'http://fasts-like.com/karkas/StandartStoika.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '1915');
             }
         }
     }
@@ -2702,33 +2793,33 @@ function calcNow() {
     // ТАБ ПРОФИЛЬ каркас подсчет цены //
     function carcasPrice() {
         if (getFromData('karkas-name') == 'Tur') {
-            SelectKarkasEnd(94, 'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм', 'Tur', 'http://pavel.artultra.ru/karkas/Tur.png', 13, 20, 22, 0);
+            SelectKarkasEnd(94, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', 'Tur', 'http://fasts-like.com/karkas/Tur.png', 13, 20, 22, 0);
         } else if (getFromData('karkas-name') == 'Euroshop') {
-            SelectKarkasEnd(111, 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', 'Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 14.5, 6, 36, 30);
+            SelectKarkasEnd(111, '<div class="height-30"><p class="profil-text-left">Высота до</p><p class="profil-text-right">2,8м;</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм;</p></div><div class="height-30"><p class="profil-text-left">Стекло</p><p class="profil-text-right">4.5 мм;</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right">до 12,4 мм;</p></div>', 'Euroshop', 'http://fasts-like.com/karkas/Euroshop.png', 14.5, 6, 36, 30);
         } else if (getFromData('karkas-name') == 'EuroshopLite') {
-            SelectKarkasEnd(89, 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', 'EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 14.5, 6, 36, 30);
+            SelectKarkasEnd(89, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', 'EuroshopLite', 'http://fasts-like.com/karkas/EuroshopLite.png', 14.5, 6, 36, 30);
         } else if (getFromData('karkas-name') == 'Optimax2') {
-            SelectKarkasEnd(415, 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', 'Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png', 17, 6, 53, 30);
+            SelectKarkasEnd(415, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', 'Optimax2', 'http://fasts-like.com/karkas/Optimax2.png', 17, 6, 53, 30);
         } else if (getFromData('karkas-name') == 'Standart') {
-            SelectKarkasEnd(266, 'Высота: до 2.8 м, Паз: 8.5 мм, Cтекло: 4,5 мм', 'Standart', 'http://pavel.artultra.ru/karkas/Standart.png', 14.5, 6.5, 35, 30);
+            SelectKarkasEnd(266, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.8 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', 'Standart', 'http://fasts-like.com/karkas/Standart.png', 14.5, 6.5, 35, 30);
         } else if (getFromData('karkas-name') == 'MobyLight') {
-            SelectKarkasEnd(183, 'Высота: до 3 м, Паз: 8.5 мм, Cтекло: 4,5 мм', 'MobyLight', 'http://pavel.artultra.ru/karkas/MobyLight.png', 14.5, 7.2, 24, 30);
-        } else if (getFromData('karkas-name') == 'Optima' || name == 'OptimaLite') {
-            SelectKarkasEnd(272, 'Высота: до 5 м, Паз: 8.5 мм, Cекло: 4,5 мм, Глухие панели: до 16 мм', 'Optima', 'http://pavel.artultra.ru/karkas/Optima.png', 14.5, 6, 53, 30);
+            SelectKarkasEnd(183, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 3 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', 'MobyLight', 'http://fasts-like.com/karkas/MobyLight.png', 14.5, 7.2, 24, 30);
+        } else if (getFromData('karkas-name') == 'Optima') {
+            SelectKarkasEnd(272, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 16 мм</p></div>', 'Optima', 'http://fasts-like.com/karkas/Optima.png', 14.5, 6, 53, 30);
         } else if (getFromData('karkas-name') == 'Base') {
-            SelectKarkasEnd(427, 'Высота: до 4 м, Cтекло – 5-8 мм, Глухие панели: до 12,5 мм', 'Base', 'http://pavel.artultra.ru/karkas/Base.png', 15, 0, 33);
+            SelectKarkasEnd(427, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 4 м</p></div><div class="height-30"><p class="profil-text-left">Cтекло</p><p class="profil-text-right">5-8 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', 'Base', 'http://fasts-like.com/karkas/Base.png', 15, 0, 33);
         } else if (getFromData('karkas-name') == 'Statusx1') {
-            SelectKarkasEnd(415, 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 13 мм', 'Statusx1', 'http://pavel.artultra.ru/karkas/Statusx1.png', 14, 2.5, 27);
+            SelectKarkasEnd(415, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 13 мм</p></div>', 'Statusx1', 'http://fasts-like.com/karkas/Statusx1.png', 14, 2.5, 27);
         } else if (getFromData('karkas-name') == 'Statusx2') {
-            SelectKarkasEnd(525, 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 12,5 мм', 'Statusx2', 'http://pavel.artultra.ru/karkas/Statusx2.png', 14, 2.5, 27);
+            SelectKarkasEnd(525, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', 'Statusx2', 'http://fasts-like.com/karkas/Statusx2.png', 14, 2.5, 27);
         } else if (getFromData('karkas-name') == 'StandartStoika') {
-            SelectKarkasEnd(216, 'Высота: до 3 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 8,5 мм', 'StandartStoika', 'http://pavel.artultra.ru/karkas/StandartStoika.png', 14.5, 8, 35, 30);
+            SelectKarkasEnd(216, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', 'StandartStoika', 'http://fasts-like.com/karkas/StandartStoika.png', 14.5, 8, 35, 30);
         } else if (('karkas-name') == 'OptimaLite') {
-            SelectKarkasEnd(187, 'Высота: до 2,8 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм', 'OptimaLite', 'http://pavel.artultra.ru/karkas/OptimaLite.png', 14.5, 9, 53, 30);
+            SelectKarkasEnd(187, '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', 'OptimaLite', 'http://fasts-like.com/karkas/OptimaLite.png', 14.5, 9, 53, 30);
         }
         $('#KARKAS-BLOCK img').attr('src', getFromData('karkas-img'));
         $('#KARKAS-NAME').text(getFromData('karkas-name'));
-        $('#KARKAS-INFO').text(getFromData('karkas-info'));
+        $('#KARKAS-INFO').html(getFromData('karkas-info'));
     }
 
     carcasPrice();
@@ -2942,7 +3033,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ запись колличества //
     function addNapolnenieEl() {
         var allElInC = $('.add-material-block-past > div').length;
-        for (var i = 1; i <= allElInC; i++) {
+        for (i = 1; i <= allElInC; i++) {
             var count = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-kollichestvo').val();
             setDataAndText('material-' + i + '-kol', count)
         }
@@ -2953,7 +3044,7 @@ function calcNow() {
 
     // ТАБ НАПОЛНЕНИЕ сохранение высоты //
     function seveHeightNapolnenie() {
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             var obj = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-vyisota').val();
             setDataAndText('material-' + i + '-height', obj);
 
@@ -2968,7 +3059,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ толщина соxранение //
     function seveTolshina() {
 
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
 
             var obj = $('*[data-material-el-id="' + i + '"]').find('.napolnenie-el-tolschina').val();
 
@@ -2993,7 +3084,7 @@ function calcNow() {
 
     // ТАБ НАПОЛНЕНИЕ заказлка стекла да/нет//zakalkaStekla
     function zakalkaStekla() {
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             var checked = $('*[data-material-el-id="' + i + '"]').find('.zakalkaStekla input').is(':checked');
             if (checked == true) {
                 setDataAndText('material-' + i + '-zakalka-stekla', true);
@@ -3009,7 +3100,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ двойное заполнение доступно/нет//
     function dvoinoeZapolnenieShowHide() {
         var karkas = getFromData('karkas-name');
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             if (karkas == 'Optimax2' || karkas == 'Statusx2' || karkas == 'Base') {
                 $('*[data-material-el-id=' + i + ']').find('.dvoinoeZapolnenieCheckbox').show();
                 var checked = $('*[data-material-el-id="' + i + '"]').find('.dvoinoeZapolnenieCheckbox input').is(':checked');
@@ -3027,48 +3118,6 @@ function calcNow() {
 
     dvoinoeZapolnenieShowHide()
     //  ============================= //
-    $("#furnitura-tab").on('click', '#select-razdvizh-mehaniam-btn', function () {
-        var text = $('.select-razdvizh-mehanizm').html();
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(text);
-        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-    });
-
-    $(".add-material-block-past").on('click', '#open-material-btn', function () {
-        var text = $('.napolnenie-left-tab').html();
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-
-        var templateData = {
-            priceStandartStoika: 1
-        };
-
-        var resultHtml = makeHTMLFromTemplate(text, templateData);
-
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtml);
-        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-    });
-
-    // ТАБ НАПОЛНЕНИЕ измение наполнения //
-    function SelectMaterialEnd(name){
-
-    }
-
-    function napolnenieCange() {
-        for (var i = 1; i <= 5; i++) {
-            var obj = $('*[data-material-el-id="' + i + '"]').find('.napolnenie-el-material').val();
-            var el = getFromData('material-' + i + '-type');
-            if (obj == '') {
-                obj = 0;
-            }
-            if (obj != el && obj != null) {
-                setDataAndText('material-' + i + '-type', obj);
-                napolnenieImg(obj, i);
-            }
-        }
-    }
-
-    napolnenieCange();
-    //  ============================= //
 
     // ТАБ ПРОФИЛЬ площ //
     var area = $("#tab-profil-vyisota").val() * $("#tab-profil-shirina").val() / 1000000;
@@ -3083,7 +3132,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ площ //
     function napolneniePlosh() {
         // var tab_napolnenie_ploschad = 0;
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             var H = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-shirina').val();
             var W = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-vyisota').val();
             var res = H * W / 1000000;
@@ -3098,7 +3147,7 @@ function calcNow() {
     // ТАБ НАПОЛНЕНИЕ цена //
     function napolneniePrice() {
         var data_price_in_napolnenii = 0;
-        for (var i = 1; i <= 5; i++) {
+        for (i = 1; i <= 5; i++) {
             var priceStekla = 0;
             var priceZakalka = 0;
 
@@ -3429,10 +3478,10 @@ function setAllSaveParameters() {
 
     //BAFFLE_SEKECTOR
     $("#BAFFLE_SEKECTOR_ID").empty();
-    for (var i = 1; i <= TOTAL_PAINTING; i++) {
+    for (i = 1; i <= TOTAL_PAINTING; i++) {
         $("#BAFFLE_SEKECTOR_ID").prepend($('<option value="0">Полотно ' + i + '</option>'));
     }
-    for (var i = 1; i <= MOVABLE_PAINTING; i++) {
+    for (i = 1; i <= MOVABLE_PAINTING; i++) {
         $("#BAFFLE_SEKECTOR_ID").prepend($('<option value="0">Подвижное полотно ' + i + '</option>'));
     }
 
@@ -3473,48 +3522,52 @@ function setPriceInProfil() {
 function SelectKarkasEnd(price, text, name, url, uplotnitel, zaglushka, kreplenie, zaglushkavpaz) {
     if (name == 'Tur') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel)) + (kreplenie + zaglushka) * 4);
-        SelectHorizontalPeremochki('TUR', 'http://pavel.artultra.ru/karkas/Tur.png', 'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм', '810');
-        SelectPeremyichkaVERTIKALNUE('TUR', 'http://pavel.artultra.ru/karkas/Tur.png', 'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм', '810');
+        SelectHorizontalPeremochki('TUR', 'http://fasts-like.com/karkas/Tur.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '810');
+        SelectPeremyichkaVERTIKALNUE('TUR', 'http://fasts-like.com/karkas/Tur.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '810');
     } else if (name == 'Euroshop') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) + parseFloat(zaglushkavpaz)) + (kreplenie + zaglushka) * 4);
-        SelectHorizontalPeremochki('Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
-        SelectPeremyichkaVERTIKALNUE('Euroshop', 'http://pavel.artultra.ru/karkas/Euroshop.png', 'Высота: до 2.6 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+        SelectHorizontalPeremochki('Euroshop', 'http://fasts-like.com/karkas/Euroshop.png', '<div class="height-30"><p class="profil-text-left">Высота до</p><p class="profil-text-right">2,8м;</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм;</p></div><div class="height-30"><p class="profil-text-left">Стекло</p><p class="profil-text-right">4.5 мм;</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right">до 12,4 мм;</p></div>', '1101');
+        SelectPeremyichkaVERTIKALNUE('Euroshop', 'http://fasts-like.com/karkas/Euroshop.png', '<div class="height-30"><p class="profil-text-left">Высота до</p><p class="profil-text-right">2,8м;</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм;</p></div><div class="height-30"><p class="profil-text-left">Стекло</p><p class="profil-text-right">4.5 мм;</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right">до 12,4 мм;</p></div>', '1101');
     } else if (name == 'EuroshopLite') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) + parseFloat(zaglushkavpaz)) + (kreplenie + zaglushka) * 4);
-        SelectHorizontalPeremochki('EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
-        SelectPeremyichkaVERTIKALNUE('EuroshopLite', 'http://pavel.artultra.ru/karkas/EuroshopLite.png', 'Высота: до 2 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1101');
+        SelectHorizontalPeremochki('EuroshopLite', 'http://fasts-like.com/karkas/EuroshopLite.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '1101');
+        SelectPeremyichkaVERTIKALNUE('EuroshopLite', 'http://fasts-like.com/karkas/EuroshopLite.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '1101');
     } else if (name == 'Optimax2') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) * 2 + parseFloat(zaglushkavpaz)) + (kreplenie + zaglushka) * 4);
-        SelectHorizontalPeremochki('Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '3110');
-        SelectPeremyichkaVERTIKALNUE('Optimax2', 'http://pavel.artultra.ru/karkas/Optimax2.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '3110');
+        SelectHorizontalPeremochki('Optimax2', 'http://fasts-like.com/karkas/Optimax2.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '3110');
+        SelectPeremyichkaVERTIKALNUE('Optimax2', 'http://fasts-like.com/karkas/Optimax2.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '3110');
     } else if (name == 'Standart') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) + parseFloat(zaglushkavpaz)) + (kreplenie + zaglushka) * 4);
-        SelectHorizontalPeremochki('Standart', 'http://pavel.artultra.ru/karkas/Standart.png', 'Высота: до 2.8 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '2029');
-        SelectPeremyichkaVERTIKALNUE('Standart', 'http://pavel.artultra.ru/karkas/Standart.png', 'Высота: до 2.8 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '2029');
+        SelectHorizontalPeremochki('Standart', 'http://fasts-like.com/karkas/Standart.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.8 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '2029');
+        SelectPeremyichkaVERTIKALNUE('Standart', 'http://fasts-like.com/karkas/Standart.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.8 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '2029');
     } else if (name == 'MobyLight') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) + parseFloat(zaglushkavpaz) * 2) + (kreplenie + zaglushka) * 4);
-        SelectHorizontalPeremochki('MobyLight', 'http://pavel.artultra.ru/karkas/MobyLight.png', 'Высота: до 3 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1669');
-        SelectPeremyichkaVERTIKALNUE('MobyLight', 'http://pavel.artultra.ru/karkas/MobyLight.png', 'Высота: до 3 м, Паз: 8.5 мм, Cтекло: 4,5 мм', '1669');
-    } else if (name == 'Optima' || name == 'OptimaLite') {
+        SelectHorizontalPeremochki('MobyLight', 'http://fasts-like.com/karkas/MobyLight.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 3 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '1669');
+        SelectPeremyichkaVERTIKALNUE('MobyLight', 'http://fasts-like.com/karkas/MobyLight.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 3 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>', '1669');
+    } else if (name == 'Optima') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) + parseFloat(zaglushkavpaz) + 55) + (kreplenie + zaglushka) * 4);
-        SelectHorizontalPeremochki('Optima', 'http://pavel.artultra.ru/karkas/Optima.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм', '2135');
-        SelectPeremyichkaVERTIKALNUE('Optima', 'http://pavel.artultra.ru/karkas/Optima.png', 'Высота: до 5 м, Паз: 8.5 мм, Cтекло: 4,5 мм, Глухие панели: до 16 мм', '2135');
+        SelectHorizontalPeremochki('Optima', 'http://fasts-like.com/karkas/Optima.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 16 мм</p></div>', '2135');
+        SelectPeremyichkaVERTIKALNUE('Optima', 'http://fasts-like.com/karkas/Optima.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 5 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 16 мм</p></div>', '2135');
     } else if (name == 'Base') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) * 2) + kreplenie * 4);
-        SelectHorizontalPeremochki('Base', 'http://pavel.artultra.ru/karkas/Base.png', 'Высота: до 4 м, Cтекло – 5-8 мм, Глухие панели: до 12,5 мм', '2874');
-        SelectPeremyichkaVERTIKALNUE('Base', 'http://pavel.artultra.ru/karkas/Base.png', 'Высота: до 4 м, Cтекло – 5-8 мм, Глухие панели: до 12,5 мм', '2874');
+        SelectHorizontalPeremochki('Base', 'http://fasts-like.com/karkas/Base.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 4 м</p></div><div class="height-30"><p class="profil-text-left">Cтекло</p><p class="profil-text-right">5-8 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '2874');
+        SelectPeremyichkaVERTIKALNUE('Base', 'http://fasts-like.com/karkas/Base.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 4 м</p></div><div class="height-30"><p class="profil-text-left">Cтекло</p><p class="profil-text-right">5-8 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '2874');
     } else if (name == 'Statusx1') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) * 1) + (kreplenie + zaglushka * 2) * 4);
-        SelectHorizontalPeremochki('Statusx1', 'http://pavel.artultra.ru/karkas/Statusx1.png', 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 13 мм', '2702');
-        SelectPeremyichkaVERTIKALNUE('Statusx1', 'http://pavel.artultra.ru/karkas/Statusx1.png', 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 13 мм', '2702');
+        SelectHorizontalPeremochki('Statusx1', 'http://fasts-like.com/karkas/Statusx1.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 13 мм</p></div>', '2702');
+        SelectPeremyichkaVERTIKALNUE('Statusx1', 'http://fasts-like.com/karkas/Statusx1.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 13 мм</p></div>', '2702');
     } else if (name == 'Statusx2') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) * 2) + (kreplenie + zaglushka * 2) * 4);
-        SelectHorizontalPeremochki('Statusx2', 'http://pavel.artultra.ru/karkas/Statusx2.png', 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 12,5 мм', '3446');
-        SelectPeremyichkaVERTIKALNUE('Statusx2', 'http://pavel.artultra.ru/karkas/Statusx2.png', 'Высота: до 6 м, Паз: 13 мм, Cтекло: 5-10 мм, Глухие панели: до 12,5 мм', '3446');
+        SelectHorizontalPeremochki('Statusx2', 'http://fasts-like.com/karkas/Statusx2.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '3446');
+        SelectPeremyichkaVERTIKALNUE('Statusx2', 'http://fasts-like.com/karkas/Statusx2.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '3446');
     } else if (name == 'StandartStoika') {
         price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) + (zaglushkavpaz * 2)) + (kreplenie + zaglushka) * 4);
-        SelectHorizontalPeremochki('StandartStoika', 'http://pavel.artultra.ru/karkas/StandartStoika.png', 'Высота: до 3 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 8,5 мм', '1915');
-        SelectPeremyichkaVERTIKALNUE('StandartStoika', 'http://pavel.artultra.ru/karkas/StandartStoika.png', 'Высота: до 3 м, Паз: 8,5 мм, Cтекло: 4,5 мм, Глухие панели: до 8,5 мм', '1915');
+        SelectHorizontalPeremochki('StandartStoika', 'http://fasts-like.com/karkas/StandartStoika.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '1915');
+        SelectPeremyichkaVERTIKALNUE('StandartStoika', 'http://fasts-like.com/karkas/StandartStoika.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '1915');
+    } else if (name == 'OptimaLite') {
+        price = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (price + parseFloat(uplotnitel) + parseFloat(zaglushkavpaz) + 55) + (kreplenie + zaglushka) * 4);
+        SelectHorizontalPeremochki('OptimaLite', 'http://fasts-like.com/karkas/OptimaLite.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '2135');
+        SelectPeremyichkaVERTIKALNUE('OptimaLite', 'http://fasts-like.com/karkas/OptimaLite.png', '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">13 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">5-10 мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели:</p><p class="profil-text-right">до 12,5 мм</p></div>', '2135');
     }
 
     var decorPrice = getFromData('decor-price');
@@ -3524,7 +3577,7 @@ function SelectKarkasEnd(price, text, name, url, uplotnitel, zaglushka, krepleni
 
     $('#KARKAS-BLOCK img').attr('src', url);
     $('#KARKAS-NAME').text(name);
-    $('#KARKAS-INFO').text(text);
+    $('#KARKAS-INFO').html(text);
     $('#KARKAS-PRICE').text(parseInt(price));
     setDataAndText('karkas-img', url);
     setDataAndText('karkas-name', name);
@@ -3998,7 +4051,7 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
 
     $('#VERTIKALNUE-PEREMOCHKI-NAME').text(name);
 
-    $('#VERTIKALNUE-PEREMOCHKI-INFO').text(text);
+    $('#VERTIKALNUE-PEREMOCHKI-INFO').html(text);
 
     setDataAndText('vertikalnue-pereochki-img', url);
 
@@ -4300,7 +4353,7 @@ $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR').click(function () {
 function SelectHorizontalPeremochki(name, url, text, price) {
     $('#HORIZONTAL-PEREMOCHKI-BLOCK img').attr('src', url);
     $('#HORIZONTAL-PEREMOCHKI-NAME').text(name);
-    $('#HORIZONTAL-PEREMOCHKI-INFO').text(text);
+    $('#HORIZONTAL-PEREMOCHKI-INFO').html(text);
     setDataAndText('horizontal-pereochki-img', url);
     setDataAndText('horizontal-pereochki-name', name);
     setDataAndText('horizontal-pereochki-info', text);
@@ -4467,7 +4520,7 @@ $('#tab-profil-vyisota, #tab-profil-shirina').bind('input', function () {
 });
 // Добавление поля
 $('.add-material-btn').click(function () {
-    loop1: for (var i = 1; i <= 5; i++) {
+    loop1: for (i = 1; i <= 5; i++) {
         var type = getFromData('material-' + i + '-type');
         if (type == '') {
             $(".add-material-block-past").append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el" data-material-el-id="' + i + '">' + $(".napolnenie-el-set").html() + '</div>');

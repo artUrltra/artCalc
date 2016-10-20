@@ -12,6 +12,34 @@
 
 //label.control-label
 //  line-height: 0 !important
+.width-50
+  width: 50%
+.top-menu
+  float: inherit
+  display: inline-block
+.top-menu span
+  color: red
+.top-menu h5
+  color: #bdbdbd
+.profil-text-left
+  display: inline-block
+  float: left
+  font-weight: 300
+  margin-bottom: 0px
+
+.profil-text-right
+  display: inline-block
+  float: right
+  font-weight: 300
+  margin-bottom: 0px
+
+.container
+  min-width: 1350px !important
+  width: 100% !important
+
+.height-30
+  height: 20px
+
 .polotno-el .well .top .form-group:last-child
   width: 100% !important
 .vyiborDekoraDlyaProfilya img
@@ -34,7 +62,7 @@
 .input-group .input-group-btn
   padding: 0
 .alert-default
-  background-color: #e5e5e5 !important
+  background-color: white !important
 .input-custom-block-mini
   display: flex
   input
@@ -94,13 +122,13 @@ body
     width: calc(100% - 30px)
     min-height: 50px
     margin: 15px !important
-    background: #e5e5e5
+    background: white
     padding-bottom: 30px
   .wrapper
     width: calc(100% - 30px)
     min-height: 50px
     margin: 15px !important
-    background: #e5e5e5
+    background: white
   .form-group
     white-space: nowrap
   .drawing
@@ -136,7 +164,12 @@ body
     margin: auto
     display: block
   .well
-    min-height: 290px
+    min-height: 210px
+    border: 0px !important
+    border-radius: 0px !important
+    -webkit-box-shadow: none !important
+    box-shadow: none !important
+    padding: 0px !important
     .top
       display: flex
       .form-group:first-child
@@ -144,13 +177,22 @@ body
       .form-group:last-child
         width: 25%
         margin-left: 5%
-  .left, .right
-    width: 49%
+  .left
+    width: 30%
     display: inline-block
+  .right
+    width: 70%
+    display: inline-block
+  .right #KARKAS-PRICE,#HORIZONTAL-PEREMOCHKI-PRICE,#VERTIKALNUE-PEREMOCHKI-PRICE
+    color: red
+  .right span
+    color: red
   .left
     img
       width: 100%
       max-width: 120px
+      padding-right: 5px
+      padding-top: 50%
   .right
     float: right
     h3, h5
@@ -263,6 +305,21 @@ body
   img
     margin-left: 10px
 
+#EDIT-BLOCK.polotno-el
+  border-bottom: solid 2px #ddd
+  border-right: solid 2px #ddd
+
+#KARKAS-BLOCK.polotno-el
+  border-bottom: solid 2px #ddd
+  border-right: solid 2px #ddd
+
+#HORIZONTAL-PEREMOCHKI-BLOCK.polotno-el
+  border-bottom: solid 2px #ddd
+
+#VERTIKALNUE-PEREMOCHKI-BLOCK.polotno-el
+  border-bottom: solid 2px #ddd
+  border-left: solid 2px #ddd
+
 #KARKAS-BLOCK, #HORIZONTAL-PEREMOCHKI-BLOCK, #VERTIKALNUE-PEREMOCHKI-BLOCK
   span, #KARKAS-PRICE, #HORIZONTAL-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-PRICE
     display: inline-block
@@ -329,3 +386,6 @@ body
 
 
 @import "parts/tab.sass"
+@import "parts/mehanizmyiModal.sass"
+@import "parts/podvesyiModal.sass"
+@import "parts/uplotnitelModal.sass"
