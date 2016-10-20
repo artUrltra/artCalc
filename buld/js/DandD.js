@@ -1,10 +1,4 @@
-// $('#PAINTING-DIAGRAMMA').on( "click", ".PAINTING-DIAGRAMMA-EL", function() {
-//     var id = parseInt( $( this ).data()['id'] );
-//     $('.PAINTING-DIAGRAMMA-EL').css({'z-index':'0'});
-//     $('*[data-id="' + id + '"]').css({'z-index':'1000'});
-//     $('.BAFFLE_SEKECTOR_CLASS').val(id)
-//     $(".BAFFLE_SEKECTOR_CLASS option[value=" + id + "]").trigger('change');
-// });
+
 $('#PAINTING-DIAGRAMMA').on( "click resize", ".PAINTING-DIAGRAMMA-EL", function(event,ui) {
     var id = parseInt( $( this ).data()['id'] );
     $('.PAINTING-DIAGRAMMA-EL').css({'z-index':'0'});
@@ -63,4 +57,3 @@ function setWidthDandDEl() {
 $( '#PAINTING-DIAGRAMMA-BLOCK-HS' ).click(function () {
     $( "#PAINTING-DIAGRAMMA-BLOCK" ).slideToggle( "slow" );
 });
-$( "#PAINTING-DIAGRAMMA-BLOCK" ).slideToggle( 0 );
