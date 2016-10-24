@@ -2,7 +2,8 @@
   outline: none !important
 
 //кастом
-
+.form-group.label-static label.control-label, .form-group.label-placeholder label.control-label, .form-group.label-floating label.control-label
+  position: inherit
 .checkbox label, .radio label, label
   width: 100%
 .form-control:focus
@@ -258,6 +259,8 @@ body
 //PAINTING-DIAGRAMMA  //
 #profil-tab
   padding: 0 2%
+  .minheight
+    min-height: 30px
 .TAB-PROFIL-AREA, .TAB-PROFIL-PRICE, .TAB-POKRASKA-PRICE
   margin-left: 10px
   margin-right: 10px
@@ -324,16 +327,6 @@ body
 .hideBlock
   display: none
 
-
-
-
-
-
-
-
 @import "parts/tab.sass"
+// линейка
 @import "parts/ruler.sass"
-
-
-
-

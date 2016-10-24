@@ -1,6 +1,6 @@
 #profil-tab.tab-pane.fade.in.active.row
     .col-xs-3.col-sm-3.col-md-3.col-lg-3
-        .form-group.label-floating.is-empty
+        label.control-label Полотно
             select.form-control.BAFFLE_SEKECTOR_CLASS
     .col-xs-3.col-sm-3.col-md-3.col-lg-3
         +input-custom-block-mini("Группа", "NUMBER_OF_DUPLICATOR_ID")
@@ -50,33 +50,37 @@
                 span руб.
     .col-xs-12.col-sm-12.col-md-12.col-lg-12
         h3 Дополнения
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
-        h4 Цвет уплотнителя
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3
         .form-group.label-floating.is-empty
+            label.control-label.minheight Цвет уплотнителя
+            br
             select.form-control#karkas-tsvet-uplotnitelya
                 option(value='none')
                 option(value='1')
                 option(value='2')
                 option(value='3')
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
-        h4 Цвет декоративной заглушки в паз
         .form-group.label-floating.is-empty
+            label.control-label.minheight Цвет заглушки в паз
+            br
             select.form-control#karkas-tsvet-zaglushki
                 option(value='none')
                 option(value='1')
                 option(value='2')
                 option(value='3')
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
-        h4 Цвет декоративной заглушки торцевой
         .form-group.label-floating.is-empty
+            label.control-label.minheight Цвет заглушки торцевой
+            br
             select.form-control#karkas-tsvet-zaglushki-tortsevoy
                 option(value='none')
                 option(value='1')
                 option(value='2')
                 option(value='3')
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
-        h4 Вид крепления
         .form-group.label-floating.is-empty
+            label.control-label.minheight Вид крепления
+            br
             select.form-control#karkas-vid-krepleniya
                 option(value='none')
                 option(value='1')
