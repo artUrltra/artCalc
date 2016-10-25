@@ -642,3 +642,62 @@ body .next-line {
   left: -231px;
   min-height: 0px !important;
 }
+
+#stateSlider * {
+  transition-duration: .2s;
+}
+
+#stateSlider #minbeds {
+  display: none;
+}
+
+#stateSlider span.ui-slider-handle.ui-corner-all.ui-state-default {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-top: -3px;
+  cursor: pointer;
+}
+
+#stateSlider span.ui-slider-handle.ui-corner-all.ui-state-default.ui-state-hover, #stateSlider span.ui-slider-handle.ui-corner-all.ui-state-default.ui-state-active {
+  margin-top: -8px;
+  margin-left: -15px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background: #9a989a !important;
+  z-index: 999;
+  position: absolute;
+}
+
+#stateSlider .ui-slider-range.ui-corner-all.ui-widget-header.ui-slider-range-min {
+  background: #a8c1c4;
+}
+
+#stateSlider div#slider {
+  background: #4d4b4d !important;
+}
+
+#stateSlider .showStageName {
+  width: 210px;
+  position: absolute;
+  opacity: 1;
+  font-size: 12px;
+  margin-left: -45px;
+  margin-top: 35px;
+  text-align: left;
+  font-style: italic;
+}
+
+#stateSlider .possibleState {
+  margin-top: -8px;
+  margin-left: -9px;
+  position: absolute;
+  z-index: 9;
+  width: 25px;
+  height: 25px;
+  display: block;
+  border-radius: 50%;
+  border: 1.5px dashed black;
+  top: 0;
+}

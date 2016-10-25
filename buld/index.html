@@ -43,7 +43,6 @@
   <body>
     <!--#imagePickerDiv.script-img-->
     <!--    .modal.fade-->
-    <!--top block-->
     <div class="container">
       <div class="row wrapper contakts-block">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -66,165 +65,39 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row wrapper new-line">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <div class="form-group label-floating is-empty">
-            <select id="TYPE_BAFFLE_ID" class="form-control">
-              <option value="0">Стационарная</option>
-              <option value="1">Раздвижная перегородка</option>
-              <option value="2">Складная перегородка</option>
-              <!--option(value='3') Складная перегородка с половинчатой створкой-->
-              <option value="4">Мобильная перегородка</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-          <div class="form-group label-floating is-empty text-center">
-            <button id="DIAGRAMMA-DIALOG-WINDOW-BTN" type="button" class="btn btn-raised btn-default">Схема</button>
-          </div>
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-          <div class="form-group">
-            <h3><small>Всего полотен</small></h3>
-            <div class="bs-component">
-              <div class="progress progress-striped active">
-                <div style="width: 45%" class="progress-bar"></div>
+    <div id="allStates" class="container">
+      <div id="state1">
+        <div class="container">
+          <div class="row wrapper new-line">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <div class="form-group label-floating is-empty">
+                <select id="TYPE_BAFFLE_ID" class="form-control">
+                  <option value="0">Стационарная</option>
+                  <option value="1">Раздвижная перегородка</option>
+                  <option value="2">Складная перегородка</option>
+                  <!--option(value='3') Складная перегородка с половинчатой створкой-->
+                  <option value="4">Мобильная перегородка</option>
+                </select>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-              <label for="TOTAL_PAINTING_ID" class="control-label">шт.
-                <input id="TOTAL_PAINTING_ID" maxlength="1" type="text" class="form-control">
-                <!--.input-group-->
-                <!--    span.input-group-btn-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
-                <!--            i.material-icons add-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
-                <!--            i.material-icons remove--></label>
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-          <div class="form-group">
-            <h3><small>Подвижные полотна</small></h3>
-            <div class="bs-component">
-              <div class="progress progress-striped active">
-                <div style="width: 45%" class="progress-bar"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <div class="form-group label-floating is-empty text-center">
+                <button id="DIAGRAMMA-DIALOG-WINDOW-BTN" type="button" class="btn btn-raised btn-default">Схема</button>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-              <label for="MOVABLE_PAINTING_ID" class="control-label">шт.
-                <input id="MOVABLE_PAINTING_ID" maxlength="1" type="text" class="form-control">
-                <!--.input-group-->
-                <!--    span.input-group-btn-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
-                <!--            i.material-icons add-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
-                <!--            i.material-icons remove--></label>
-        </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-              <label for="NUMBER_SETS_ID" class="control-label">Кол.
-                <input id="NUMBER_SETS_ID" maxlength="1" type="text" class="form-control">
-                <!--.input-group-->
-                <!--    span.input-group-btn-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
-                <!--            i.material-icons add-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
-                <!--            i.material-icons remove--></label>
-        </div>
-        <!--line 2-->
-      </div>
-      <div class="row wrapper next-line">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <div class="checkbox POLOVINCHATAYA">
-            <label>
-              <input type="checkbox" id="POLOVINCHATAYA_CHECKBOX"><span class="checkbox-material"><span class="check"></span></span>Половинчатая створка
-            </label>
-                <label for="POLOVINCHATAYA_KOL" class="control-label">Кол.
-                  <input id="POLOVINCHATAYA_KOL" maxlength="1" type="text" class="form-control">
-                  <!--.input-group-->
-                  <!--    span.input-group-btn-->
-                  <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
-                  <!--            i.material-icons add-->
-                  <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
-                  <!--            i.material-icons remove--></label>
-          </div>
-              <label for="HIGHT_SETS_ID" class="control-label">Высота
-                <input id="HIGHT_SETS_ID" maxlength="4" type="text" class="form-control">
-                <!--.input-group-->
-                <!--    span.input-group-btn-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
-                <!--            i.material-icons add-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
-                <!--            i.material-icons remove--></label>
-              <label for="WIDTH_SETS_ID" class="control-label">Ширина
-                <input id="WIDTH_SETS_ID" maxlength="4" type="text" class="form-control">
-                <!--.input-group-->
-                <!--    span.input-group-btn-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
-                <!--            i.material-icons add-->
-                <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
-                <!--            i.material-icons remove--></label>
-        </div>
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-          <div class="form-group drawing"><img src="img/maket.jpg" id="ShemaKonstr"></div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 area-block">
-          <div class="form-group">
-            <h4><small>Подвижные полотна</small>
-              <input name="area" id="AREA_ID" type="text" maxlength="1" class="input-new form-control"><small>кв/м</small>
-            </h4>
-          </div>
-        </div>
-        <div id="PAINTING-DIAGRAMMA-BLOCK" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="ruler-v">
-            <label>400</label>
-            <label>300</label>
-            <label>200</label>
-            <label>100</label>
-            <label>0</label>
-          </div>
-          <div class="ruler">
-            <label>0</label>
-            <label>100</label>
-            <label>200</label>
-            <label>300</label>
-            <label>400</label>
-            <label>500</label>
-            <label>600</label>
-            <label>700</label>
-            <label>800</label>
-            <label>900</label>
-            <label>1000</label>
-            <label>1100</label>
-          </div>
-          <div id="PAINTING-DIAGRAMMA"></div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-          <button id="PAINTING-DIAGRAMMA-BLOCK-HS" type="button" class="btn btn-default btn-fab"><i aria-hidden="true" class="fa fa-arrows-v"></i></button>
-        </div>
-      </div>
-    </div>
-    <!--step block-->
-    <div class="container">
-      <div class="row step-block wrapper-tabs">
-        <ul id="myTab" class="nav nav-tabs">
-          <li class="active"><a href="#profil-tab">Профиль<i aria-hidden="true" class="fa fa-arrow-right"></i></a></li>
-          <li><a href="#napolnenie-tab">Наполнение<i aria-hidden="true" class="fa fa-arrow-right"></i></a></li>
-          <li id="top-furnitura-tab"><a href="#furnitura-tab">Фуринтура</a></li>
-        </ul>
-        <div class="tab-content">
-          <div id="profil-tab" class="tab-pane fade in active row">
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-              <label class="control-label">Полотно
-                <select class="form-control BAFFLE_SEKECTOR_CLASS"></select>
-              </label>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <div class="form-group">
+                <h3><small>Всего полотен</small></h3>
+                <div class="bs-component">
+                  <div class="progress progress-striped active">
+                    <div style="width: 45%" class="progress-bar"></div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                  <label for="NUMBER_OF_DUPLICATOR_ID" class="control-label">Группа
-                    <input id="NUMBER_OF_DUPLICATOR_ID" type="text" class="form-control">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                  <label for="TOTAL_PAINTING_ID" class="control-label">шт.
+                    <input id="TOTAL_PAINTING_ID" maxlength="1" type="text" class="form-control">
                     <!--.input-group-->
                     <!--    span.input-group-btn-->
                     <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
@@ -232,9 +105,19 @@
                     <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
                     <!--            i.material-icons remove--></label>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                  <label for="tab-profil-vyisota" class="control-label">Высота
-                    <input id="tab-profil-vyisota" type="text" class="form-control">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <div class="form-group">
+                <h3><small>Подвижные полотна</small></h3>
+                <div class="bs-component">
+                  <div class="progress progress-striped active">
+                    <div style="width: 45%" class="progress-bar"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                  <label for="MOVABLE_PAINTING_ID" class="control-label">шт.
+                    <input id="MOVABLE_PAINTING_ID" maxlength="1" type="text" class="form-control">
                     <!--.input-group-->
                     <!--    span.input-group-btn-->
                     <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
@@ -242,9 +125,9 @@
                     <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
                     <!--            i.material-icons remove--></label>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                  <label for="tab-profil-shirina" class="control-label">Ширина
-                    <input id="tab-profil-shirina" type="text" class="form-control">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                  <label for="NUMBER_SETS_ID" class="control-label">Кол.
+                    <input id="NUMBER_SETS_ID" maxlength="1" type="text" class="form-control">
                     <!--.input-group-->
                     <!--    span.input-group-btn-->
                     <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
@@ -252,371 +135,486 @@
                     <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
                     <!--            i.material-icons remove--></label>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <hr>
-            </div>
-            <div id="KARKAS-BLOCK" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 polotno-el">
-              <div class="well">
-                <div class="top">
-                  <div class="form-group label-floating is-empty text-center">
-                    <button id="BTN-KARKAS-SELECTOR" type="button" class="btn btn-raised btn-default">Каркас</button>
-                  </div>
-                </div>
-                <div class="left"><img src="img/maket2.jpg"></div>
-                <div class="right">
-                  <h3 id="KARKAS-NAME">Euroshop</h3>
-                  <h5 id="KARKAS-INFO">Высота до 2,8м; Паз: 8,5 мм; стекло - 4.5 мм; Глухие панели - до 12,4 мм;</h5>
-                  <h4 id="KARKAS-PRICE">0</h4><span>руб.</span>
-                </div>
-              </div>
-            </div>
-            <div id="HORIZONTAL-PEREMOCHKI-BLOCK" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 polotno-el">
-              <div class="well">
-                <div class="top">
-                  <div class="form-group label-floating is-empty text-center">
-                    <button id="BTN-HORIZONTAL-PEREMOCHKI-SELECTOR" type="button" class="btn btn-raised btn-default">Горизонтальные перемычки</button>
-                  </div>
-                      <div class="form-group">
-                        <label for="tab-profil-peremyichki-horizontal-shtuk" class="control-label input-custom-block-super-mini">шт.</label>
-                        <input id="tab-profil-peremyichki-horizontal-shtuk" placeholder="0" type="text" class="form-control input-custom-block-super-mini">
-                      </div>
-                </div>
-                <div class="left"><img src="img/maket2.jpg"></div>
-                <div class="right">
-                  <h3 id="HORIZONTAL-PEREMOCHKI-NAME">Euroshop</h3>
-                  <h5 id="HORIZONTAL-PEREMOCHKI-INFO">Высота до 2,8м; Паз: 8,5 мм; стекло - 4.5 мм; Глухие панели - до 12,4 мм;</h5>
-                  <h4 id="HORIZONTAL-PEREMOCHKI-PRICE">0</h4><span>руб.</span>
-                </div>
-              </div>
-            </div>
-            <div id="VERTIKALNUE-PEREMOCHKI-BLOCK" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 polotno-el">
-              <div class="well">
-                <div class="top">
-                  <div class="form-group label-floating is-empty text-center">
-                    <button id="BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR" type="button" class="btn btn-raised btn-default">Вертикальные перемычки</button>
-                  </div>
-                      <div class="form-group">
-                        <label for="tab-profil-v-peremyichki-shtuk" class="control-label input-custom-block-super-mini">шт.</label>
-                        <input id="tab-profil-v-peremyichki-shtuk" placeholder="0" type="text" class="form-control input-custom-block-super-mini">
-                      </div>
-                </div>
-                <div class="left"><img src="img/maket2.jpg"></div>
-                <div class="right">
-                  <h3 id="VERTIKALNUE-PEREMOCHKI-NAME">Euroshop</h3>
-                  <h5 id="VERTIKALNUE-PEREMOCHKI-INFO">Высота до 2,8м; Паз: 8,5 мм; стекло - 4.5 мм; Глухие панели - до 12,4 мм;</h5>
-                  <h4 id="VERTIKALNUE-PEREMOCHKI-PRICE">0</h4><span>руб.</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <h3>Дополнения</h3>
-            </div>
+            <!--line 2-->
+          </div>
+          <div class="row wrapper next-line">
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-              <div class="form-group label-floating is-empty">
-                <label class="control-label minheight">Цвет уплотнителя</label><br>
-                <select id="karkas-tsvet-uplotnitelya" class="form-control">
-                  <option value="none"></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-                </select>
+              <div class="checkbox POLOVINCHATAYA">
+                <label>
+                  <input type="checkbox" id="POLOVINCHATAYA_CHECKBOX"><span class="checkbox-material"><span class="check"></span></span>Половинчатая створка
+                </label>
+                    <label for="POLOVINCHATAYA_KOL" class="control-label">Кол.
+                      <input id="POLOVINCHATAYA_KOL" maxlength="1" type="text" class="form-control">
+                      <!--.input-group-->
+                      <!--    span.input-group-btn-->
+                      <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
+                      <!--            i.material-icons add-->
+                      <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
+                      <!--            i.material-icons remove--></label>
+              </div>
+                  <label for="HIGHT_SETS_ID" class="control-label">Высота
+                    <input id="HIGHT_SETS_ID" maxlength="4" type="text" class="form-control">
+                    <!--.input-group-->
+                    <!--    span.input-group-btn-->
+                    <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
+                    <!--            i.material-icons add-->
+                    <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
+                    <!--            i.material-icons remove--></label>
+                  <label for="WIDTH_SETS_ID" class="control-label">Ширина
+                    <input id="WIDTH_SETS_ID" maxlength="4" type="text" class="form-control">
+                    <!--.input-group-->
+                    <!--    span.input-group-btn-->
+                    <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
+                    <!--            i.material-icons add-->
+                    <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
+                    <!--            i.material-icons remove--></label>
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+              <div class="form-group drawing"><img src="img/maket.jpg" id="ShemaKonstr"></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 area-block">
+              <div class="form-group">
+                <h4><small>Подвижные полотна</small>
+                  <input name="area" id="AREA_ID" type="text" maxlength="1" class="input-new form-control"><small>кв/м</small>
+                </h4>
               </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
-              <div class="form-group label-floating is-empty">
-                <label class="control-label minheight">Цвет заглушки в паз</label><br>
-                <select id="karkas-tsvet-zaglushki" class="form-control">
-                  <option value="none"></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-                </select>
+            <div id="PAINTING-DIAGRAMMA-BLOCK" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="ruler-v">
+                <label>400</label>
+                <label>300</label>
+                <label>200</label>
+                <label>100</label>
+                <label>0</label>
+              </div>
+              <div class="ruler">
+                <label>0</label>
+                <label>100</label>
+                <label>200</label>
+                <label>300</label>
+                <label>400</label>
+                <label>500</label>
+                <label>600</label>
+                <label>700</label>
+                <label>800</label>
+                <label>900</label>
+                <label>1000</label>
+                <label>1100</label>
+              </div>
+              <div id="PAINTING-DIAGRAMMA"></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              <button id="PAINTING-DIAGRAMMA-BLOCK-HS" type="button" class="btn btn-default btn-fab"><i aria-hidden="true" class="fa fa-arrows-v"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="row step-block wrapper-tabs">
+          <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#profil-tab">Профиль<i aria-hidden="true" class="fa fa-arrow-right"></i></a></li>
+            <li><a href="#napolnenie-tab">Наполнение<i aria-hidden="true" class="fa fa-arrow-right"></i></a></li>
+            <li id="top-furnitura-tab"><a href="#furnitura-tab">Фуринтура</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="profil-tab" class="tab-pane fade in active row">
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <label class="control-label">Полотно
+                  <select class="form-control BAFFLE_SEKECTOR_CLASS"></select>
+                </label>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <label for="NUMBER_OF_DUPLICATOR_ID" class="control-label">Группа
+                      <input id="NUMBER_OF_DUPLICATOR_ID" type="text" class="form-control">
+                      <!--.input-group-->
+                      <!--    span.input-group-btn-->
+                      <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
+                      <!--            i.material-icons add-->
+                      <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
+                      <!--            i.material-icons remove--></label>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <label for="tab-profil-vyisota" class="control-label">Высота
+                      <input id="tab-profil-vyisota" type="text" class="form-control">
+                      <!--.input-group-->
+                      <!--    span.input-group-btn-->
+                      <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
+                      <!--            i.material-icons add-->
+                      <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
+                      <!--            i.material-icons remove--></label>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <label for="tab-profil-shirina" class="control-label">Ширина
+                      <input id="tab-profil-shirina" type="text" class="form-control">
+                      <!--.input-group-->
+                      <!--    span.input-group-btn-->
+                      <!--        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')-->
+                      <!--            i.material-icons add-->
+                      <!--        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')-->
+                      <!--            i.material-icons remove--></label>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <hr>
+              </div>
+              <div id="KARKAS-BLOCK" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 polotno-el">
+                <div class="well">
+                  <div class="top">
+                    <div class="form-group label-floating is-empty text-center">
+                      <button id="BTN-KARKAS-SELECTOR" type="button" class="btn btn-raised btn-default">Каркас</button>
+                    </div>
+                  </div>
+                  <div class="left"><img src="img/maket2.jpg"></div>
+                  <div class="right">
+                    <h3 id="KARKAS-NAME">Euroshop</h3>
+                    <h5 id="KARKAS-INFO">Высота до 2,8м; Паз: 8,5 мм; стекло - 4.5 мм; Глухие панели - до 12,4 мм;</h5>
+                    <h4 id="KARKAS-PRICE">0</h4><span>руб.</span>
+                  </div>
+                </div>
+              </div>
+              <div id="HORIZONTAL-PEREMOCHKI-BLOCK" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 polotno-el">
+                <div class="well">
+                  <div class="top">
+                    <div class="form-group label-floating is-empty text-center">
+                      <button id="BTN-HORIZONTAL-PEREMOCHKI-SELECTOR" type="button" class="btn btn-raised btn-default">Горизонтальные перемычки</button>
+                    </div>
+                        <div class="form-group">
+                          <label for="tab-profil-peremyichki-horizontal-shtuk" class="control-label input-custom-block-super-mini">шт.</label>
+                          <input id="tab-profil-peremyichki-horizontal-shtuk" placeholder="0" type="text" class="form-control input-custom-block-super-mini">
+                        </div>
+                  </div>
+                  <div class="left"><img src="img/maket2.jpg"></div>
+                  <div class="right">
+                    <h3 id="HORIZONTAL-PEREMOCHKI-NAME">Euroshop</h3>
+                    <h5 id="HORIZONTAL-PEREMOCHKI-INFO">Высота до 2,8м; Паз: 8,5 мм; стекло - 4.5 мм; Глухие панели - до 12,4 мм;</h5>
+                    <h4 id="HORIZONTAL-PEREMOCHKI-PRICE">0</h4><span>руб.</span>
+                  </div>
+                </div>
+              </div>
+              <div id="VERTIKALNUE-PEREMOCHKI-BLOCK" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 polotno-el">
+                <div class="well">
+                  <div class="top">
+                    <div class="form-group label-floating is-empty text-center">
+                      <button id="BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR" type="button" class="btn btn-raised btn-default">Вертикальные перемычки</button>
+                    </div>
+                        <div class="form-group">
+                          <label for="tab-profil-v-peremyichki-shtuk" class="control-label input-custom-block-super-mini">шт.</label>
+                          <input id="tab-profil-v-peremyichki-shtuk" placeholder="0" type="text" class="form-control input-custom-block-super-mini">
+                        </div>
+                  </div>
+                  <div class="left"><img src="img/maket2.jpg"></div>
+                  <div class="right">
+                    <h3 id="VERTIKALNUE-PEREMOCHKI-NAME">Euroshop</h3>
+                    <h5 id="VERTIKALNUE-PEREMOCHKI-INFO">Высота до 2,8м; Паз: 8,5 мм; стекло - 4.5 мм; Глухие панели - до 12,4 мм;</h5>
+                    <h4 id="VERTIKALNUE-PEREMOCHKI-PRICE">0</h4><span>руб.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Дополнения</h3>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label minheight">Цвет уплотнителя</label><br>
+                  <select id="karkas-tsvet-uplotnitelya" class="form-control">
+                    <option value="none"></option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label minheight">Цвет заглушки в паз</label><br>
+                  <select id="karkas-tsvet-zaglushki" class="form-control">
+                    <option value="none"></option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label minheight">Цвет заглушки торцевой</label><br>
+                  <select id="karkas-tsvet-zaglushki-tortsevoy" class="form-control">
+                    <option value="none"></option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label minheight">Вид крепления</label><br>
+                  <select id="karkas-vid-krepleniya" class="form-control">
+                    <option value="none"></option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h3>Выбор декора для профиля</h3>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vyiborDekoraDlyaProfilya">
+                <center>
+                  <button type="button" id="btn-dekor-profil" class="btn btn-raised btn-default">Декор профиля</button><br>
+                  <input id="pokraskaTypeAndName" type="hidden" value="color.RAL9003"><img src="img/dekorRal/RAL9003.png">
+                </center>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12 polotno-el text-right">
+                <h4>Площадь<span class="TAB-PROFIL-AREA">0</span>кв/м</h4>
+                <h4>Цена покраски<span class="TAB-POKRASKA-PRICE">0</span>руб.</h4>
+                <h3>Цена<span class="TAB-PROFIL-PRICE">0</span>руб.</h3>
               </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
-              <div class="form-group label-floating is-empty">
-                <label class="control-label minheight">Цвет заглушки торцевой</label><br>
-                <select id="karkas-tsvet-zaglushki-tortsevoy" class="form-control">
-                  <option value="none"></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-                </select>
+            <div id="napolnenie-tab" class="tab-pane fade">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="form-group label-floating is-empty top">
+                  <h2><small>Полотно</small></h2>
+                </div>
+                <div class="form-group label-floating is-empty top">
+                  <select class="BAFFLE_SEKECTOR_CLASS form-control"></select>
+                </div>
               </div>
+              <div class="add-material-block-past"></div>
+              <!--ADD-->
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 add-material-block"><a href="javascript:void(0)" class="btn btn-raised btn-primary add-material-btn">Добавить материал
+                  <div class="ripple-container"></div></a></div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
-              <div class="form-group label-floating is-empty">
-                <label class="control-label minheight">Вид крепления</label><br>
-                <select id="karkas-vid-krepleniya" class="form-control">
-                  <option value="none"></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-                </select>
-              </div>
+            <div id="furnitura-tab" class="tab-pane fade">
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Раздвижные механизмы-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Standart до 40 кг-->
+              <!--            option(value='2') Standart до 40 кг-->
+              <!--            option(value='3') Standart до 40 кг-->
+              <!--            option(value='4') Standart до 40 кг-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-razdvizhnyie-mehanizmyi-kollichestvo")-->
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Механизмы синхронизации-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Нет-->
+              <!--            option(value='2') Нет-->
+              <!--            option(value='3') Нет-->
+              <!--            option(value='4') Нет-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-mehanizmyi-sinhronizatsii-kollichestvo")-->
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Направляющие-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Нет-->
+              <!--            option(value='2') Нет-->
+              <!--            option(value='3') Нет-->
+              <!--            option(value='4') Нет-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-napravlyayuschie-kollichestvo")-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-napravlyayuschie-kollichestvo-two")-->
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Виды креплений направляющей-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Белый-->
+              <!--            option(value='2') Синий-->
+              <!--            option(value='3') Черный-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-vidyi-krepleniy-napravlyayuschey-kollichestvo")-->
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Поводок-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Белый-->
+              <!--            option(value='2') Синий-->
+              <!--            option(value='3') Черный-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
+              <!--//Аксессуары-->
+              <!--.col-xs-12.col-sm-12.col-md-12.col-lg-12-->
+              <!--    h4-->
+              <!--        .checkbox-->
+              <!--            label-->
+              <!--                input(type='checkbox')-->
+              <!--                span.checkbox-material-->
+              <!--                    span.check-->
+              <!--                |  Аксессуары-->
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Доводчик-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Белый-->
+              <!--            option(value='2') Синий-->
+              <!--            option(value='3') Черный-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Декоративная планка для профиля-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Белый-->
+              <!--            option(value='2') Синий-->
+              <!--            option(value='3') Черный-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Щеточный уплотнитель-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Белый-->
+              <!--            option(value='2') Синий-->
+              <!--            option(value='3') Черный-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Ручка-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Белый-->
+              <!--            option(value='2') Синий-->
+              <!--            option(value='3') Черный-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
+              <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
+              <!--    h3 Замок дверной-->
+              <!--    hr-->
+              <!--    img(src='img/rm.jpg')-->
+              <!--    .form-group.label-floating.is-empty-->
+              <!--        select.form-control-->
+              <!--            option(value='1') Белый-->
+              <!--            option(value='2') Синий-->
+              <!--            option(value='3') Черный-->
+              <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
             </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row price-block">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <h3>Выбор декора для профиля</h3>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vyiborDekoraDlyaProfilya">
-              <center>
-                <button type="button" id="btn-dekor-profil" class="btn btn-raised btn-default">Декор профиля</button><br>
-                <input id="pokraskaTypeAndName" type="hidden" value="color.RAL9003"><img src="img/dekorRal/RAL9003.png">
-              </center>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12 polotno-el text-right">
-              <h4>Площадь<span class="TAB-PROFIL-AREA">0</span>кв/м</h4>
-              <h4>Цена покраски<span class="TAB-POKRASKA-PRICE">0</span>руб.</h4>
-              <h3>Цена<span class="TAB-PROFIL-PRICE">0</span>руб.</h3>
-            </div>
-          </div>
-          <div id="napolnenie-tab" class="tab-pane fade">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="form-group label-floating is-empty top">
-                <h2><small>Полотно</small></h2>
-              </div>
-              <div class="form-group label-floating is-empty top">
-                <select class="BAFFLE_SEKECTOR_CLASS form-control"></select>
+              <div class="bs-component">
+                <div class="alert alert-dismissible alert-default">
+                  <div class="left summaBezParametrov">
+                    <h4> Сумма без параметров:</h4>
+                    <h4 class="red"><span class="price">0</span>руб</h4>
+                  </div>
+                  <div class="right summaSParametrami">
+                    <h4> Сумма с параметрами:</h4>
+                    <h4 class="red"><span class="price">0</span>руб</h4>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="add-material-block-past"></div>
-            <!--ADD-->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 add-material-block"><a href="javascript:void(0)" class="btn btn-raised btn-primary add-material-btn">Добавить материал
-                <div class="ripple-container"></div></a></div>
-          </div>
-          <div id="furnitura-tab" class="tab-pane fade">
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Раздвижные механизмы-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Standart до 40 кг-->
-            <!--            option(value='2') Standart до 40 кг-->
-            <!--            option(value='3') Standart до 40 кг-->
-            <!--            option(value='4') Standart до 40 кг-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-razdvizhnyie-mehanizmyi-kollichestvo")-->
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Механизмы синхронизации-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Нет-->
-            <!--            option(value='2') Нет-->
-            <!--            option(value='3') Нет-->
-            <!--            option(value='4') Нет-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-mehanizmyi-sinhronizatsii-kollichestvo")-->
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Направляющие-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Нет-->
-            <!--            option(value='2') Нет-->
-            <!--            option(value='3') Нет-->
-            <!--            option(value='4') Нет-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-napravlyayuschie-kollichestvo")-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-napravlyayuschie-kollichestvo-two")-->
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Виды креплений направляющей-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Белый-->
-            <!--            option(value='2') Синий-->
-            <!--            option(value='3') Черный-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-vidyi-krepleniy-napravlyayuschey-kollichestvo")-->
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Поводок-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Белый-->
-            <!--            option(value='2') Синий-->
-            <!--            option(value='3') Черный-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
-            <!--//Аксессуары-->
-            <!--.col-xs-12.col-sm-12.col-md-12.col-lg-12-->
-            <!--    h4-->
-            <!--        .checkbox-->
-            <!--            label-->
-            <!--                input(type='checkbox')-->
-            <!--                span.checkbox-material-->
-            <!--                    span.check-->
-            <!--                |  Аксессуары-->
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Доводчик-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Белый-->
-            <!--            option(value='2') Синий-->
-            <!--            option(value='3') Черный-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Декоративная планка для профиля-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Белый-->
-            <!--            option(value='2') Синий-->
-            <!--            option(value='3') Черный-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Щеточный уплотнитель-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Белый-->
-            <!--            option(value='2') Синий-->
-            <!--            option(value='3') Черный-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Ручка-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Белый-->
-            <!--            option(value='2') Синий-->
-            <!--            option(value='3') Черный-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
-            <!--.col-xs-15.col-sm-15.col-md-15.col-lg-15.text-center-->
-            <!--    h3 Замок дверной-->
-            <!--    hr-->
-            <!--    img(src='img/rm.jpg')-->
-            <!--    .form-group.label-floating.is-empty-->
-            <!--        select.form-control-->
-            <!--            option(value='1') Белый-->
-            <!--            option(value='2') Синий-->
-            <!--            option(value='3') Черный-->
-            <!--    +input-custom-block-mini("Колличество", "tab-furnitura-povodok-kollichestvo")-->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row price-block">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="bs-component">
-            <div class="alert alert-dismissible alert-default">
-              <div class="left summaBezParametrov">
-                <h4> Сумма без параметров:</h4>
-                <h4 class="red"><span class="price">0</span>руб</h4>
-              </div>
-              <div class="right summaSParametrami">
-                <h4> Сумма с параметрами:</h4>
-                <h4 class="red"><span class="price">0</span>руб</h4>
+            <div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-md-offset-lg3 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="bs-component">
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>
+                        <h4>В процентах</h4>
+                      </th>
+                      <th>
+                        <h4>В рублях</h4>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <h4>Произваодство</h4>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty proizvaodstvoIn">
+                          <input id="l-11" type="text" value="10" class="form-control">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty proizvaodstvoTo">
+                          <input id="focusedInput2" type="text" disabled="" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4>Монтаж</h4>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty montazhIn">
+                          <input id="l-21" type="text" value="30" class="form-control">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty montazhTo">
+                          <input id="l-22" type="text" disabled="" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4>Доставка</h4>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty dostavkaIn">
+                          <input id="l-31" type="text" disabled="" class="form-control">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty dostavkaTo">
+                          <input id="l-32" type="text" value="3000" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4>Срочность</h4>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty srochnostIn">
+                          <input id="l-41" type="text" value="10" class="form-control">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty srochnostTo">
+                          <input id="l-42" type="text" disabled="" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4>Наш процент</h4>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty nashProtsentIn">
+                          <input id="l-51" type="text" value="50" class="form-control">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group label-floating is-empty nashProtsentTo">
+                          <input id="l-52" type="text" disabled="" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-md-offset-lg3 col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <div class="bs-component">
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>
-                    <h4>В процентах</h4>
-                  </th>
-                  <th>
-                    <h4>В рублях</h4>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <h4>Произваодство</h4>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty proizvaodstvoIn">
-                      <input id="l-11" type="text" value="10" class="form-control">
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty proizvaodstvoTo">
-                      <input id="focusedInput2" type="text" disabled="" class="form-control">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h4>Монтаж</h4>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty montazhIn">
-                      <input id="l-21" type="text" value="30" class="form-control">
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty montazhTo">
-                      <input id="l-22" type="text" disabled="" class="form-control">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h4>Доставка</h4>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty dostavkaIn">
-                      <input id="l-31" type="text" disabled="" class="form-control">
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty dostavkaTo">
-                      <input id="l-32" type="text" value="3000" class="form-control">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h4>Срочность</h4>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty srochnostIn">
-                      <input id="l-41" type="text" value="10" class="form-control">
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty srochnostTo">
-                      <input id="l-42" type="text" disabled="" class="form-control">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h4>Наш процент</h4>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty nashProtsentIn">
-                      <input id="l-51" type="text" value="50" class="form-control">
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-group label-floating is-empty nashProtsentTo">
-                      <input id="l-52" type="text" disabled="" class="form-control">
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="row">
+            <div class="TableForInfo col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="TableForInfo col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
-      </div>
-    </div><script type="text/html" id="html-stvorka">
+        </div><script type="text/html" id="html-stvorka">
     <div class="abc js-block%number% js-%number%block%i%">
         <div class='box box-primary box-solid box-bordered' style='border: 1px solid #999999;border-radius:0px;'>
             <div class='box-header with-border'
@@ -4037,211 +4035,224 @@
         </center>
     </div>
 </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center loadImgBlock">
-          <!--input(type='file', multiple='multiple', accept='.txt,image/*')-->
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center loadImgBlock">
+              <!--input(type='file', multiple='multiple', accept='.txt,image/*')-->
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              <button type="button" class="btn btn-raised btn-default addImg">Добавить картинку</button>
+              <button type="button" class="btn btn-raised btn-default sendGet">Скачать PDF</button>
+              <button type="button" class="btn btn-raised btn-default saveHistory">Сохранить историю</button>
+            </div>
+          </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-          <button type="button" class="btn btn-raised btn-default addImg">Добавить картинку</button>
-          <button type="button" class="btn btn-raised btn-default sendGet">Скачать PDF</button>
-          <button type="button" class="btn btn-raised btn-default saveHistory">Сохранить историю</button>
+        <div class="napolnenie-left-tab display-none">
+          <div class="tabbable tabs-left">
+            <ul style="height: 700px;" class="nav nav-tabs">
+              <li><a href="#derevo" data-toggle="tab" style="font-size: 20px;">Дерево</a>
+                <div class="triangle"></div>
+                <div class="triangle-w"></div>
+              </li>
+              <li class="active"><a href="#steklo" data-toggle="tab" style="font-size: 20px;">Стекло</a>
+                <div class="triangle"></div>
+                <div class="triangle-w"></div>
+              </li>
+              <li><a href="#zerkalo" data-toggle="tab" style="font-size: 20px;">Зеркало</a>
+                <div class="triangle"></div>
+                <div class="triangle-w"></div>
+              </li>
+              <li><a href="#polikarbonat" data-toggle="tab" style="font-size: 20px;">Поликарбонат</a>
+                <div class="triangle"></div>
+                <div class="triangle-w"></div>
+              </li>
+              <li><a href="#paneli" data-toggle="tab" style="font-size: 20px;">Панели</a>
+                <div class="triangle"></div>
+                <div class="triangle-w"></div>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div id="derevo" class="tab-pane">
+                <div class="col-md-3">
+                  <center>
+                    <h4>ЛДСП</h4><img onclick="SelectMaterialEnd('LDSP','%number%');" src="img/material/11.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %LDSP%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Фанера</h4><img onclick="SelectMaterialEnd('fanera','%number%');" src="img/material/14.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %fanera%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Фанера трудногорючая</h4><img onclick="SelectMaterialEnd('faneraTrudnogoryuchaya','%number%');" src="img/material/14.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %faneraTrudnogoryuchaya%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>МДФ шлифованный</h4><img onclick="SelectMaterialEnd('MDFshlifovannyiy','%number%');" src="img/material/12.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %MDFshlifovannyiy%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>ДСП шлифованный</h4><img onclick="SelectMaterialEnd('DSPshlifovannyiy','%number%');" src="img/material/13.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %DSPshlifovannyiy%</h4>
+                  </center>
+                </div>
+              </div>
+              <div id="steklo" class="tab-pane active">
+                <div class="col-md-3">
+                  <center>
+                    <h4>Обычное флоат</h4><img onclick="SelectMaterialEnd('stekloObyichnoe','%number%');" src="img/material/1.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %stekloObyichnoe%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Стекло матовое</h4><img onclick="SelectMaterialEnd('stekloMatovoe','%number%');" src="img/material/2.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %stekloMatovoe%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Стекло бронза, серое</h4><img onclick="SelectMaterialEnd('stekloBronzaSeroe','%number%');" src="img/material/2.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %stekloBronzaSeroe%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Стекло тонированное серое</h4><img onclick="SelectMaterialEnd('stekloTonirovannoeSeroe','%number%');" src="img/material/16.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %stekloTonirovannoeSeroe%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Стекло тонированное бронза</h4><img onclick="SelectMaterialEnd('stekloTonirovannoeBronza','%number%');" src="img/material/17.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %stekloTonirovannoeBronza%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Стекло тонированное голубое</h4><img onclick="SelectMaterialEnd('stekloTonirovannoeGoluboe','%number%');" src="img/material/18.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %stekloTonirovannoeGoluboe%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Триплекс</h4><img onclick="SelectMaterialEnd('tripleks','%number%');" src="img/material/5.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %tripleks%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Триплекс матовый</h4><img onclick="SelectMaterialEnd('tripleksMatovyiy','%number%');" src="img/material/6.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %tripleksMatovyiy%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Оргстекло экструз.</h4><img onclick="SelectMaterialEnd('orgstekloEkstruz','%number%');" src="img/material/10.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %orgstekloEkstruz%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Оргстекло экструз. матовое/молочное</h4><img onclick="SelectMaterialEnd('orgstekloEkstruzMatovoe','%number%');" src="img/material/20.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %orgstekloEkstruzMatovoe%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Стекло противопожарное</h4><img onclick="SelectMaterialEnd('stekloProtivopozharnoe','%number%');" src="img/material/26.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %stekloProtivopozharnoe%</h4>
+                  </center>
+                </div>
+              </div>
+              <div id="zerkalo" class="tab-pane">
+                <div class="col-md-3">
+                  <center>
+                    <h4>Серебро</h4><img onclick="SelectMaterialEnd('zerkaloSerebro','%number%');" src="img/material/3.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %zerkaloSerebro%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Бронза</h4><img onclick="SelectMaterialEnd('zerkaloBronza','%number%');" src="img/material/4.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %zerkaloBronza%</h4>
+                  </center>
+                </div>
+              </div>
+              <div id="polikarbonat" class="tab-pane">
+                <div class="col-md-3">
+                  <center>
+                    <h4>Монолитный</h4><img onclick="SelectMaterialEnd('polikarbonatMonolit','%number%');" src="img/material/9.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %polikarbonatMonolit%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Сотовый</h4><img onclick="SelectMaterialEnd('polikarbonatSotovyiy','%number%');" src="img/material/7.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %polikarbonatSotovyiy%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Вспененный</h4><img onclick="SelectMaterialEnd('PVHvspenennyiy','%number%');" src="img/material/8.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %PVHvspenennyiy%</h4>
+                  </center>
+                </div>
+              </div>
+              <div id="paneli" class="tab-pane">
+                <div class="col-md-3">
+                  <center>
+                    <h4>Сендвич-панели</h4><img onclick="SelectMaterialEnd('sendvichPaneliPVH','%number%');" src="img/material/15.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %sendvichPaneliPVH%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Гипсовинил</h4><img onclick="SelectMaterialEnd('gipsovinil12','%number%');" src="img/material/22.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %gipsovinil12%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Гипсодекор</h4><img onclick="SelectMaterialEnd('gipsodekor12','%number%');" src="img/material/23.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %gipsodekor12%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Гипсодекор</h4><img onclick="SelectMaterialEnd('gipsokarton12','%number%');" src="img/material/24.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %gipsokarton12%</h4>
+                  </center>
+                </div>
+                <div class="col-md-3">
+                  <center>
+                    <h4>Декоративный бумажно-слоистый пластик</h4><img onclick="SelectMaterialEnd('dekorativnyiyBumazhno','%number%');" src="img/material/21.png" data-dismiss="modal" style="width: 130px;">
+                    <h4>Цена: %dekorativnyiyBumazhno%</h4>
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="napolnenie-left-tab display-none">
-      <div class="tabbable tabs-left">
-        <ul style="height: 700px;" class="nav nav-tabs">
-          <li><a href="#derevo" data-toggle="tab" style="font-size: 20px;">Дерево</a>
-            <div class="triangle"></div>
-            <div class="triangle-w"></div>
-          </li>
-          <li class="active"><a href="#steklo" data-toggle="tab" style="font-size: 20px;">Стекло</a>
-            <div class="triangle"></div>
-            <div class="triangle-w"></div>
-          </li>
-          <li><a href="#zerkalo" data-toggle="tab" style="font-size: 20px;">Зеркало</a>
-            <div class="triangle"></div>
-            <div class="triangle-w"></div>
-          </li>
-          <li><a href="#polikarbonat" data-toggle="tab" style="font-size: 20px;">Поликарбонат</a>
-            <div class="triangle"></div>
-            <div class="triangle-w"></div>
-          </li>
-          <li><a href="#paneli" data-toggle="tab" style="font-size: 20px;">Панели</a>
-            <div class="triangle"></div>
-            <div class="triangle-w"></div>
-          </li>
-        </ul>
-        <div class="tab-content">
-          <div id="derevo" class="tab-pane">
-            <div class="col-md-3">
-              <center>
-                <h4>ЛДСП</h4><img onclick="SelectMaterialEnd('LDSP','%number%');" src="img/material/11.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %LDSP%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Фанера</h4><img onclick="SelectMaterialEnd('fanera','%number%');" src="img/material/14.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %fanera%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Фанера трудногорючая</h4><img onclick="SelectMaterialEnd('faneraTrudnogoryuchaya','%number%');" src="img/material/14.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %faneraTrudnogoryuchaya%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>МДФ шлифованный</h4><img onclick="SelectMaterialEnd('MDFshlifovannyiy','%number%');" src="img/material/12.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %MDFshlifovannyiy%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>ДСП шлифованный</h4><img onclick="SelectMaterialEnd('DSPshlifovannyiy','%number%');" src="img/material/13.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %DSPshlifovannyiy%</h4>
-              </center>
-            </div>
-          </div>
-          <div id="steklo" class="tab-pane active">
-            <div class="col-md-3">
-              <center>
-                <h4>Обычное флоат</h4><img onclick="SelectMaterialEnd('stekloObyichnoe','%number%');" src="img/material/1.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %stekloObyichnoe%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Стекло матовое</h4><img onclick="SelectMaterialEnd('stekloMatovoe','%number%');" src="img/material/2.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %stekloMatovoe%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Стекло бронза, серое</h4><img onclick="SelectMaterialEnd('stekloBronzaSeroe','%number%');" src="img/material/2.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %stekloBronzaSeroe%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Стекло тонированное серое</h4><img onclick="SelectMaterialEnd('stekloTonirovannoeSeroe','%number%');" src="img/material/16.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %stekloTonirovannoeSeroe%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Стекло тонированное бронза</h4><img onclick="SelectMaterialEnd('stekloTonirovannoeBronza','%number%');" src="img/material/17.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %stekloTonirovannoeBronza%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Стекло тонированное голубое</h4><img onclick="SelectMaterialEnd('stekloTonirovannoeGoluboe','%number%');" src="img/material/18.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %stekloTonirovannoeGoluboe%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Триплекс</h4><img onclick="SelectMaterialEnd('tripleks','%number%');" src="img/material/5.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %tripleks%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Триплекс матовый</h4><img onclick="SelectMaterialEnd('tripleksMatovyiy','%number%');" src="img/material/6.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %tripleksMatovyiy%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Оргстекло экструз.</h4><img onclick="SelectMaterialEnd('orgstekloEkstruz','%number%');" src="img/material/10.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %orgstekloEkstruz%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Оргстекло экструз. матовое/молочное</h4><img onclick="SelectMaterialEnd('orgstekloEkstruzMatovoe','%number%');" src="img/material/20.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %orgstekloEkstruzMatovoe%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Стекло противопожарное</h4><img onclick="SelectMaterialEnd('stekloProtivopozharnoe','%number%');" src="img/material/26.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %stekloProtivopozharnoe%</h4>
-              </center>
-            </div>
-          </div>
-          <div id="zerkalo" class="tab-pane">
-            <div class="col-md-3">
-              <center>
-                <h4>Серебро</h4><img onclick="SelectMaterialEnd('zerkaloSerebro','%number%');" src="img/material/3.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %zerkaloSerebro%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Бронза</h4><img onclick="SelectMaterialEnd('zerkaloBronza','%number%');" src="img/material/4.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %zerkaloBronza%</h4>
-              </center>
-            </div>
-          </div>
-          <div id="polikarbonat" class="tab-pane">
-            <div class="col-md-3">
-              <center>
-                <h4>Монолитный</h4><img onclick="SelectMaterialEnd('polikarbonatMonolit','%number%');" src="img/material/9.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %polikarbonatMonolit%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Сотовый</h4><img onclick="SelectMaterialEnd('polikarbonatSotovyiy','%number%');" src="img/material/7.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %polikarbonatSotovyiy%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Вспененный</h4><img onclick="SelectMaterialEnd('PVHvspenennyiy','%number%');" src="img/material/8.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %PVHvspenennyiy%</h4>
-              </center>
-            </div>
-          </div>
-          <div id="paneli" class="tab-pane">
-            <div class="col-md-3">
-              <center>
-                <h4>Сендвич-панели</h4><img onclick="SelectMaterialEnd('sendvichPaneliPVH','%number%');" src="img/material/15.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %sendvichPaneliPVH%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Гипсовинил</h4><img onclick="SelectMaterialEnd('gipsovinil12','%number%');" src="img/material/22.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %gipsovinil12%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Гипсодекор</h4><img onclick="SelectMaterialEnd('gipsodekor12','%number%');" src="img/material/23.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %gipsodekor12%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Гипсодекор</h4><img onclick="SelectMaterialEnd('gipsokarton12','%number%');" src="img/material/24.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %gipsokarton12%</h4>
-              </center>
-            </div>
-            <div class="col-md-3">
-              <center>
-                <h4>Декоративный бумажно-слоистый пластик</h4><img onclick="SelectMaterialEnd('dekorativnyiyBumazhno','%number%');" src="img/material/21.png" data-dismiss="modal" style="width: 130px;">
-                <h4>Цена: %dekorativnyiyBumazhno%</h4>
-              </center>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div id="stateSlider" class="container text-center">
+      <h3>Ценовые варианты</h3>
+      <form>
+        <!--label(for='minbeds') Minimum number of beds-->
+        <select id="minbeds" name="minbeds">
+          <option value="state1">Текущее состояние</option>
+          <option value="state2">Автомат Маргарита</option>
+          <option value="state3">Автомат Маргарита ингредиенты</option>
+        </select>
+      </form>
     </div>
     <button onclick="loadMoadP()"></button>
     <script src="js/script.js"></script>
@@ -4250,5 +4261,7 @@
     <script src="js/paintingInDiadramma.js"></script>
     <script src="js/DandD.js"></script>
     <script src="js/history.js"></script>
+    <script src="js/stateSlider.js"></script>
+    <script src="js/stateSetParam.js"></script>
   </body>
 </html>
