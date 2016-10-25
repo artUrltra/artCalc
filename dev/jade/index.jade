@@ -44,30 +44,22 @@ html(lang='en')
         //    .modal.fade
 
         include parts/mixin
-        //top block
         include parts/contakts
-        include parts/top-block
-        //step block
 
-        .container
-            .row.step-block.wrapper-tabs
-                ul#myTab.nav.nav-tabs
-                    li.active
-                        a(href='#profil-tab') Профиль
-                            i.fa.fa-arrow-right(aria-hidden='true')
-                    li
-                        a(href='#napolnenie-tab') Наполнение
-                            i.fa.fa-arrow-right(aria-hidden='true')
-                    li#top-furnitura-tab
-                        a(href='#furnitura-tab') Фуринтура
-                .tab-content
-                    include parts/profil-tab
-                    include parts/napolnenie-tab
-                    include parts/furnitura-tab
-        include parts/price-block
-        include parts/hide.html
-        include parts/load-img.jade
-        include parts/napolnenie-block.jade
+        .container#allStates
+            #state1
+                include parts/state1
+            //-#state2 state2
+            //-#state3 state3
+        .container#stateSlider.text-center
+            h3 Ценовые варианты
+            form
+                //label(for='minbeds') Minimum number of beds
+                select#minbeds(name='minbeds')
+                    option(value="state1") Текущее состояние
+                    option(value="state2") Автомат Маргарита
+                    option(value="state3") Автомат Маргарита ингредиенты
+
         button(onclick="loadMoadP()")
         script(src='js/script.js')
         script(src='js/loadImg.js')
@@ -75,3 +67,5 @@ html(lang='en')
         script(src='js/paintingInDiadramma.js')
         script(src='js/DandD.js')
         script(src='js/history.js')
+        script(src='js/stateSlider.js')
+        script(src='js/stateSetParam.js')
