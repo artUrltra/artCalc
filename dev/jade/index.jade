@@ -49,8 +49,10 @@ html(lang='en')
         .container#allStates
             #state1
                 include parts/state1
-            //-#state2 state2
-            //-#state3 state3
+            #state2
+                //-include parts/state2
+            #state3
+                //-include parts/state3
         .container#stateSlider.text-center
             h3 Ценовые варианты
             form
@@ -60,6 +62,8 @@ html(lang='en')
                     option(value="state2") Автомат Маргарита
                     option(value="state3") Автомат Маргарита ингредиенты
 
+        include parts/hide.html
+        include parts/napolnenie-block
         button(onclick="loadMoadP()")
         script(src='js/script.js')
         script(src='js/loadImg.js')
