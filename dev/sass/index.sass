@@ -2,7 +2,8 @@
   outline: none !important
 
 //кастом
-
+.form-group.label-static label.control-label, .form-group.label-placeholder label.control-label, .form-group.label-floating label.control-label
+  position: inherit
 .checkbox label, .radio label, label
   width: 100%
 .form-control:focus
@@ -34,7 +35,7 @@
 .input-group .input-group-btn
   padding: 0
 .alert-default
-  background-color: #e5e5e5 !important
+  background-color: white !important
 .input-custom-block-mini
   display: flex
   input
@@ -94,13 +95,13 @@ body
     width: calc(100% - 30px)
     min-height: 50px
     margin: 15px !important
-    background: #e5e5e5
+    background: white
     padding-bottom: 30px
   .wrapper
     width: calc(100% - 30px)
     min-height: 50px
     margin: 15px !important
-    background: #e5e5e5
+    background: white
   .form-group
     white-space: nowrap
   .drawing
@@ -223,12 +224,15 @@ body
 
 
 //PAINTING-DIAGRAMMA
+#PAINTING-DIAGRAMMA-BLOCK-HS
+  margin-top: 20px
 #PAINTING-DIAGRAMMA-BLOCK
   text-align: center
+  padding: 5px
   //overflow-y: auto
   //overflow-x: auto
-  overflow: hidden
-  height: 450px
+  //overflow: hidden
+  height: 461px
   //height: 0px
   .PAINTING-DIAGRAMMA-EL
     display: flex
@@ -246,15 +250,17 @@ body
     //box-shadow: 0 1px 4px rgba(0, 0, 0, .3), -23px 0 20px -23px rgba(0, 0, 0, .8), 23px 0 20px -23px rgba(0, 0, 0, .8), 0 0 40px rgba(0, 0, 0, .1) inset
     box-shadow: 0 0px 30px rgba(0, 0, 0, 1), -23px 0 20px -5px rgba(0, 0, 0, .3), 23px 0 30px -5px rgba(0, 0, 0, .3), 50px 150px 40px rgba(0, 0, 0, .5) inset
 #PAINTING-DIAGRAMMA
-  //height: 400px
   height: 100%
-  box-shadow: inset -1px -2px 107px 52px rgba(0,0,0,0.41)
-  border: 1px solid #eeeeee
-  border-radius: 20px
+  border-right: 1px solid #d2d2d2
+  border-bottom: 1px solid #d2d2d2
+  background-size: 50px 50px !important
+  background-image: linear-gradient(to right, #d2d2d2 1px, transparent 1px), linear-gradient(to bottom, #d2d2d2 1px, transparent 1px)
 
 //PAINTING-DIAGRAMMA  //
 #profil-tab
   padding: 0 2%
+  .minheight
+    min-height: 30px
 .TAB-PROFIL-AREA, .TAB-PROFIL-PRICE, .TAB-POKRASKA-PRICE
   margin-left: 10px
   margin-right: 10px
@@ -321,11 +327,6 @@ body
 .hideBlock
   display: none
 
-
-
-
-
-
-
-
 @import "parts/tab.sass"
+// линейка
+@import "parts/ruler.sass"

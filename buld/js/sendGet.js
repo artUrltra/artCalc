@@ -1,4 +1,49 @@
+// 1 - клик
 $('.sendGet').click(function () {
+    getScreen()
+});
+// 1 - получение скрина
+function getScreen() {
+        html2canvas($("#PAINTING-DIAGRAMMA"), {
+            background:'#fff',
+            onrendered: function(canvas) {
+                var imgData = canvas.toDataURL('image/jpeg');
+                var url = 'loadImg.php';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: 'text',
+                    async: false,
+                    data: {
+                        screen : imgData
+                    },
+                    success: function(response){
+                        response = "" + response
+                        var ans = response.substr(12);
+                        sendUrl(ans);
+                        console.log("2222")
+                    },
+                    error:function(xhr, ajaxOptions, thrownError){
+                        console.log( xhr.responseText )
+                    }
+                });
+            }
+        });
+}
+// 1.5  - траслитерация url
+function urlLit(w, v) {
+    var tr = 'a b v g d e ["zh","j"] z i y k l m n o p r s t u f h c ch sh ["shh","shch"] ~ y ~ e yu ya ~ ["jo","e"]'.split(' ');
+    var ww = '';
+    w = w.toLowerCase().replace(/ /g, '-');
+    for (i = 0; i < w.length; ++i) {
+        cc = w.charCodeAt(i);
+        ch = (cc >= 1072 ? tr[cc - 1072] : w[i]);
+        if (ch.length < 3) ww += ch; else ww += eval(ch)[v];
+    }
+    return (ww.replace(/~/g, ''));
+}
+// 2 - отправка
+function sendUrl(screen) {
     var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID').val());
     var furnituraSelect = $("#TYPE_BAFFLE_ID").val();
     var Allheight = $('#HIGHT_SETS_ID').val();
@@ -281,6 +326,7 @@ $('.sendGet').click(function () {
         '&priceAdditions=' + priceAdditions +
         '&quantityAdditions=' + quantityAdditions +
         justCarcassPriceStr +
+        '&screen=' + screen +
         '&furnituraelementsnames=' + furnituraNameStr +
         '&furnituraelementsprice=' + furnituraElPrice +
         priceProfilePaintingStr +
@@ -289,20 +335,9 @@ $('.sendGet').click(function () {
     url = url.replace(/°/g, "");
     url = urlLit(url, 0);
     window.open('http://fasts-like.com/html2pdf.php' + url, '_blank');
-});
+};
 
-// траслитерация url
-function urlLit(w, v) {
-    var tr = 'a b v g d e ["zh","j"] z i y k l m n o p r s t u f h c ch sh ["shh","shch"] ~ y ~ e yu ya ~ ["jo","e"]'.split(' ');
-    var ww = '';
-    w = w.toLowerCase().replace(/ /g, '-');
-    for (i = 0; i < w.length; ++i) {
-        cc = w.charCodeAt(i);
-        ch = (cc >= 1072 ? tr[cc - 1072] : w[i]);
-        if (ch.length < 3) ww += ch; else ww += eval(ch)[v];
-    }
-    return (ww.replace(/~/g, ''));
-}
+
 
 
 
