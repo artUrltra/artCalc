@@ -1,4 +1,5 @@
 $( function() {
+    if (window.s === undefined) window.s = '';
     var countEl = $( '#minbeds' ).children().length;
     var select = $( "#minbeds" );
     var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
@@ -22,6 +23,9 @@ $( function() {
         $('#slider').append('<span class="possibleState" style="left: ' + (left)*(i-1) + '%;"></span>')
     }
     function changeState(e) {
+        if (e == 1) window.s = '';
+        if (e == 2) window.s = '-2';
+        if (e == 3) window.s = '-3';
         var stateName = '#state' + e;
         $( '#allStates > *' ).fadeOut(100);
         $( '#allStates > ' + stateName ).delay( 100 ).fadeIn(100);

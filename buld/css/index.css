@@ -233,94 +233,94 @@ body .next-line {
   margin: 0;
 }
 
-.POLOVINCHATAYA {
+.POLOVINCHATAYA, .POLOVINCHATAYA-2, .POLOVINCHATAYA-3 {
   display: none;
 }
 
-.POLOVINCHATAYA .check {
+.POLOVINCHATAYA .check, .POLOVINCHATAYA-2 .check, .POLOVINCHATAYA-3 .check {
   margin-right: 10px;
 }
 
-#napolnenie-tab .top {
+#napolnenie-tab .top, #napolnenie-tab-2 .top, #napolnenie-tab-3 .top {
   display: inline-flex;
 }
 
-#napolnenie-tab .form-group {
+#napolnenie-tab .form-group, #napolnenie-tab-2 .form-group, #napolnenie-tab-3 .form-group {
   margin: 0;
 }
 
-#napolnenie-tab small {
+#napolnenie-tab small, #napolnenie-tab-2 small, #napolnenie-tab-3 small {
   margin-right: 5px;
 }
 
-#napolnenie-tab .napolnenie-el {
+#napolnenie-tab .napolnenie-el, #napolnenie-tab-2 .napolnenie-el, #napolnenie-tab-3 .napolnenie-el {
   width: 100%;
   min-height: 50px;
   margin-bottom: 15px;
 }
 
-#napolnenie-tab .napolnenie-el > div {
+#napolnenie-tab .napolnenie-el > div, #napolnenie-tab-2 .napolnenie-el > div, #napolnenie-tab-3 .napolnenie-el > div {
   padding: 0 10px;
   width: calc(100%/6);
   display: initial;
   float: left;
 }
 
-#napolnenie-tab .napolnenie-el img {
+#napolnenie-tab .napolnenie-el img, #napolnenie-tab-2 .napolnenie-el img, #napolnenie-tab-3 .napolnenie-el img {
   width: 100%;
 }
 
-#napolnenie-tab .napolnenie-el:last-child {
+#napolnenie-tab .napolnenie-el:last-child, #napolnenie-tab-2 .napolnenie-el:last-child, #napolnenie-tab-3 .napolnenie-el:last-child {
   margin-bottom: 0px;
 }
 
-#furnitura-tab h3 {
+#furnitura-tab h3, #furnitura-tab-2 h3, #furnitura-tab-3 h3 {
   height: 50px;
 }
 
-.price-block {
+.price-block, .price-block-2, .price-block-3 {
   margin-right: 0;
   margin-left: 0;
 }
 
-.price-block .red {
+.price-block .red, .price-block-2 .red, .price-block-3 .red {
   color: red;
 }
 
-.price-block .red h4 {
+.price-block .red h4, .price-block-2 .red h4, .price-block-3 .red h4 {
   font-weight: bold;
 }
 
-.price-block .bs-component {
+.price-block .bs-component, .price-block-2 .bs-component, .price-block-3 .bs-component {
   margin-top: 30px;
 }
 
-.price-block .bs-component .alert-default {
+.price-block .bs-component .alert-default, .price-block-2 .bs-component .alert-default, .price-block-3 .bs-component .alert-default {
   height: 70px;
 }
 
-.price-block .bs-component h4 {
+.price-block .bs-component h4, .price-block-2 .bs-component h4, .price-block-3 .bs-component h4 {
   color: black;
   margin-top: 10px;
 }
 
-.price-block .bs-component .left {
+.price-block .bs-component .left, .price-block-2 .bs-component .left, .price-block-3 .bs-component .left {
   float: left;
   display: flex;
 }
 
-.price-block .bs-component .right {
+.price-block .bs-component .right, .price-block-2 .bs-component .right, .price-block-3 .bs-component .right {
   float: right;
   display: flex;
 }
 
-.price-block .bs-component .red {
+.price-block .bs-component .red, .price-block-2 .bs-component .red, .price-block-3 .bs-component .red {
   color: red;
   font-weight: bold;
   margin-left: 10px;
 }
 
-.price-block .table .form-group {
+.price-block .table .form-group, .price-block-2 .table .form-group, .price-block-3 .table .form-group {
   margin: 0;
   padding: 0;
 }
@@ -334,17 +334,17 @@ body .next-line {
   padding: 0 !important;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK-HS {
+#PAINTING-DIAGRAMMA-BLOCK-HS, #PAINTING-DIAGRAMMA-BLOCK-HS-2, #PAINTING-DIAGRAMMA-BLOCK-HS-3 {
   margin-top: 20px;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK {
+#PAINTING-DIAGRAMMA-BLOCK, #PAINTING-DIAGRAMMA-BLOCK-2, #PAINTING-DIAGRAMMA-BLOCK-3 {
   text-align: center;
   padding: 5px;
   height: 461px;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK .PAINTING-DIAGRAMMA-EL {
+#PAINTING-DIAGRAMMA-BLOCK .PAINTING-DIAGRAMMA-EL, #PAINTING-DIAGRAMMA-BLOCK .PAINTING-DIAGRAMMA-EL-2, #PAINTING-DIAGRAMMA-BLOCK .PAINTING-DIAGRAMMA-EL-3, #PAINTING-DIAGRAMMA-BLOCK-2 .PAINTING-DIAGRAMMA-EL, #PAINTING-DIAGRAMMA-BLOCK-2 .PAINTING-DIAGRAMMA-EL-2, #PAINTING-DIAGRAMMA-BLOCK-2 .PAINTING-DIAGRAMMA-EL-3, #PAINTING-DIAGRAMMA-BLOCK-3 .PAINTING-DIAGRAMMA-EL, #PAINTING-DIAGRAMMA-BLOCK-3 .PAINTING-DIAGRAMMA-EL-2, #PAINTING-DIAGRAMMA-BLOCK-3 .PAINTING-DIAGRAMMA-EL-3 {
   display: flex;
   width: 50px;
   height: 70px;
@@ -357,11 +357,11 @@ body .next-line {
   margin: -1px;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK .used {
+#PAINTING-DIAGRAMMA-BLOCK .used, #PAINTING-DIAGRAMMA-BLOCK-2 .used, #PAINTING-DIAGRAMMA-BLOCK-3 .used {
   box-shadow: 0 0px 30px black, -23px 0 20px -5px rgba(0, 0, 0, 0.3), 23px 0 30px -5px rgba(0, 0, 0, 0.3), 50px 150px 40px rgba(0, 0, 0, 0.5) inset;
 }
 
-#PAINTING-DIAGRAMMA {
+#PAINTING-DIAGRAMMA, #PAINTING-DIAGRAMMA-2, #PAINTING-DIAGRAMMA-3 {
   height: 100%;
   border-right: 1px solid #d2d2d2;
   border-bottom: 1px solid #d2d2d2;
@@ -369,11 +369,11 @@ body .next-line {
   background-image: linear-gradient(to right, #d2d2d2 1px, transparent 1px), linear-gradient(to bottom, #d2d2d2 1px, transparent 1px);
 }
 
-#profil-tab {
+#profil-tab, #profil-tab-2, #profil-tab-3 {
   padding: 0 2%;
 }
 
-#profil-tab .minheight {
+#profil-tab .minheight, #profil-tab-2 .minheight, #profil-tab-3 .minheight {
   min-height: 30px;
 }
 
@@ -386,11 +386,11 @@ body .next-line {
   margin-left: 10px;
 }
 
-#KARKAS-BLOCK span, #KARKAS-BLOCK #KARKAS-PRICE, #KARKAS-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE, #KARKAS-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK span, #HORIZONTAL-PEREMOCHKI-BLOCK #KARKAS-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK span, #VERTIKALNUE-PEREMOCHKI-BLOCK #KARKAS-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE {
+#KARKAS-BLOCK span, #KARKAS-BLOCK #KARKAS-PRICE, #KARKAS-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE, #KARKAS-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE, #KARKAS-BLOCK #KARKAS-PRICE-2, #KARKAS-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE-2, #KARKAS-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE-2, #KARKAS-BLOCK #KARKAS-PRICE-3, #KARKAS-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE-3, #KARKAS-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE-3, #HORIZONTAL-PEREMOCHKI-BLOCK span, #HORIZONTAL-PEREMOCHKI-BLOCK #KARKAS-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK #KARKAS-PRICE-2, #HORIZONTAL-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE-2, #HORIZONTAL-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE-2, #HORIZONTAL-PEREMOCHKI-BLOCK #KARKAS-PRICE-3, #HORIZONTAL-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE-3, #HORIZONTAL-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE-3, #VERTIKALNUE-PEREMOCHKI-BLOCK span, #VERTIKALNUE-PEREMOCHKI-BLOCK #KARKAS-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK #KARKAS-PRICE-2, #VERTIKALNUE-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE-2, #VERTIKALNUE-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE-2, #VERTIKALNUE-PEREMOCHKI-BLOCK #KARKAS-PRICE-3, #VERTIKALNUE-PEREMOCHKI-BLOCK #HORIZONTAL-PEREMOCHKI-PRICE-3, #VERTIKALNUE-PEREMOCHKI-BLOCK #VERTIKALNUE-PEREMOCHKI-PRICE-3, #KARKAS-BLOCK-2 span, #KARKAS-BLOCK-2 #KARKAS-PRICE, #KARKAS-BLOCK-2 #HORIZONTAL-PEREMOCHKI-PRICE, #KARKAS-BLOCK-2 #VERTIKALNUE-PEREMOCHKI-PRICE, #KARKAS-BLOCK-2 #KARKAS-PRICE-2, #KARKAS-BLOCK-2 #HORIZONTAL-PEREMOCHKI-PRICE-2, #KARKAS-BLOCK-2 #VERTIKALNUE-PEREMOCHKI-PRICE-2, #KARKAS-BLOCK-2 #KARKAS-PRICE-3, #KARKAS-BLOCK-2 #HORIZONTAL-PEREMOCHKI-PRICE-3, #KARKAS-BLOCK-2 #VERTIKALNUE-PEREMOCHKI-PRICE-3, #HORIZONTAL-PEREMOCHKI-BLOCK-2 span, #HORIZONTAL-PEREMOCHKI-BLOCK-2 #KARKAS-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK-2 #HORIZONTAL-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK-2 #VERTIKALNUE-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK-2 #KARKAS-PRICE-2, #HORIZONTAL-PEREMOCHKI-BLOCK-2 #HORIZONTAL-PEREMOCHKI-PRICE-2, #HORIZONTAL-PEREMOCHKI-BLOCK-2 #VERTIKALNUE-PEREMOCHKI-PRICE-2, #HORIZONTAL-PEREMOCHKI-BLOCK-2 #KARKAS-PRICE-3, #HORIZONTAL-PEREMOCHKI-BLOCK-2 #HORIZONTAL-PEREMOCHKI-PRICE-3, #HORIZONTAL-PEREMOCHKI-BLOCK-2 #VERTIKALNUE-PEREMOCHKI-PRICE-3, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 span, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 #KARKAS-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 #HORIZONTAL-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 #VERTIKALNUE-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 #KARKAS-PRICE-2, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 #HORIZONTAL-PEREMOCHKI-PRICE-2, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 #VERTIKALNUE-PEREMOCHKI-PRICE-2, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 #KARKAS-PRICE-3, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 #HORIZONTAL-PEREMOCHKI-PRICE-3, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 #VERTIKALNUE-PEREMOCHKI-PRICE-3, #KARKAS-BLOCK-3 span, #KARKAS-BLOCK-3 #KARKAS-PRICE, #KARKAS-BLOCK-3 #HORIZONTAL-PEREMOCHKI-PRICE, #KARKAS-BLOCK-3 #VERTIKALNUE-PEREMOCHKI-PRICE, #KARKAS-BLOCK-3 #KARKAS-PRICE-2, #KARKAS-BLOCK-3 #HORIZONTAL-PEREMOCHKI-PRICE-2, #KARKAS-BLOCK-3 #VERTIKALNUE-PEREMOCHKI-PRICE-2, #KARKAS-BLOCK-3 #KARKAS-PRICE-3, #KARKAS-BLOCK-3 #HORIZONTAL-PEREMOCHKI-PRICE-3, #KARKAS-BLOCK-3 #VERTIKALNUE-PEREMOCHKI-PRICE-3, #HORIZONTAL-PEREMOCHKI-BLOCK-3 span, #HORIZONTAL-PEREMOCHKI-BLOCK-3 #KARKAS-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK-3 #HORIZONTAL-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK-3 #VERTIKALNUE-PEREMOCHKI-PRICE, #HORIZONTAL-PEREMOCHKI-BLOCK-3 #KARKAS-PRICE-2, #HORIZONTAL-PEREMOCHKI-BLOCK-3 #HORIZONTAL-PEREMOCHKI-PRICE-2, #HORIZONTAL-PEREMOCHKI-BLOCK-3 #VERTIKALNUE-PEREMOCHKI-PRICE-2, #HORIZONTAL-PEREMOCHKI-BLOCK-3 #KARKAS-PRICE-3, #HORIZONTAL-PEREMOCHKI-BLOCK-3 #HORIZONTAL-PEREMOCHKI-PRICE-3, #HORIZONTAL-PEREMOCHKI-BLOCK-3 #VERTIKALNUE-PEREMOCHKI-PRICE-3, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 span, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 #KARKAS-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 #HORIZONTAL-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 #VERTIKALNUE-PEREMOCHKI-PRICE, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 #KARKAS-PRICE-2, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 #HORIZONTAL-PEREMOCHKI-PRICE-2, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 #VERTIKALNUE-PEREMOCHKI-PRICE-2, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 #KARKAS-PRICE-3, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 #HORIZONTAL-PEREMOCHKI-PRICE-3, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 #VERTIKALNUE-PEREMOCHKI-PRICE-3 {
   display: inline-block;
 }
 
-#KARKAS-BLOCK span, #HORIZONTAL-PEREMOCHKI-BLOCK span, #VERTIKALNUE-PEREMOCHKI-BLOCK span {
+#KARKAS-BLOCK span, #HORIZONTAL-PEREMOCHKI-BLOCK span, #VERTIKALNUE-PEREMOCHKI-BLOCK span, #KARKAS-BLOCK-2 span, #HORIZONTAL-PEREMOCHKI-BLOCK-2 span, #VERTIKALNUE-PEREMOCHKI-BLOCK-2 span, #KARKAS-BLOCK-3 span, #HORIZONTAL-PEREMOCHKI-BLOCK-3 span, #VERTIKALNUE-PEREMOCHKI-BLOCK-3 span {
   margin-left: 5px;
 }
 
@@ -595,7 +595,7 @@ body .next-line {
   top: 7px;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK .ruler, #PAINTING-DIAGRAMMA-BLOCK .ruler-v {
+#PAINTING-DIAGRAMMA-BLOCK .ruler, #PAINTING-DIAGRAMMA-BLOCK .ruler-v, #PAINTING-DIAGRAMMA-BLOCK-2 .ruler, #PAINTING-DIAGRAMMA-BLOCK-2 .ruler-v, #PAINTING-DIAGRAMMA-BLOCK-3 .ruler, #PAINTING-DIAGRAMMA-BLOCK-3 .ruler-v {
   background-color: #ffffff;
   background-image: linear-gradient(90deg, rgba(73, 73, 73, 0.5) 0, rgba(73, 73, 73, 0.5) 2%, transparent 2%), linear-gradient(180deg, #ffffff 50%, transparent 50%), linear-gradient(90deg, transparent 50%, rgba(73, 73, 73, 0.5) 50%, rgba(73, 73, 73, 0.5) 52%, transparent 52%), linear-gradient(180deg, #ffffff 70%, transparent 70%), linear-gradient(90deg, transparent 10%, rgba(73, 73, 73, 0.4) 10%, rgba(73, 73, 73, 0.4) 12%, transparent 12%, transparent 20%, rgba(73, 73, 73, 0.4) 20%, rgba(73, 73, 73, 0.4) 22%, transparent 22%, transparent 30%, rgba(73, 73, 73, 0.4) 30%, rgba(73, 73, 73, 0.4) 32%, transparent 32%, transparent 40%, rgba(73, 73, 73, 0.4) 40%, rgba(73, 73, 73, 0.4) 42%, transparent 42%, transparent 60%, rgba(73, 73, 73, 0.4) 60%, rgba(73, 73, 73, 0.4) 62%, transparent 62%, transparent 70%, rgba(73, 73, 73, 0.4) 70%, rgba(73, 73, 73, 0.4) 72%, transparent 72%, transparent 80%, rgba(73, 73, 73, 0.4) 80%, rgba(73, 73, 73, 0.4) 82%, transparent 82%, transparent 90%, rgba(73, 73, 73, 0.4) 90%, rgba(73, 73, 73, 0.4) 92%, transparent 92%);
   background-size: 50px 20px;
@@ -608,15 +608,15 @@ body .next-line {
   padding: 0;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK {
+#PAINTING-DIAGRAMMA-BLOCK, #PAINTING-DIAGRAMMA-BLOCK-2, #PAINTING-DIAGRAMMA-BLOCK-3 {
   position: relative !important;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK .ruler, #PAINTING-DIAGRAMMA-BLOCK .ruler-v {
+#PAINTING-DIAGRAMMA-BLOCK .ruler, #PAINTING-DIAGRAMMA-BLOCK .ruler-v, #PAINTING-DIAGRAMMA-BLOCK-2 .ruler, #PAINTING-DIAGRAMMA-BLOCK-2 .ruler-v, #PAINTING-DIAGRAMMA-BLOCK-3 .ruler, #PAINTING-DIAGRAMMA-BLOCK-3 .ruler-v {
   margin-bottom: 0px;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK .ruler label, #PAINTING-DIAGRAMMA-BLOCK .ruler-v label {
+#PAINTING-DIAGRAMMA-BLOCK .ruler label, #PAINTING-DIAGRAMMA-BLOCK .ruler-v label, #PAINTING-DIAGRAMMA-BLOCK-2 .ruler label, #PAINTING-DIAGRAMMA-BLOCK-2 .ruler-v label, #PAINTING-DIAGRAMMA-BLOCK-3 .ruler label, #PAINTING-DIAGRAMMA-BLOCK-3 .ruler-v label {
   text-align: left;
   font-size: 9px;
   padding-top: 2px;
@@ -625,12 +625,12 @@ body .next-line {
   text-indent: 3px;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK .ruler {
+#PAINTING-DIAGRAMMA-BLOCK .ruler, #PAINTING-DIAGRAMMA-BLOCK-2 .ruler, #PAINTING-DIAGRAMMA-BLOCK-3 .ruler {
   width: 1100px;
   overflow: hidden;
 }
 
-#PAINTING-DIAGRAMMA-BLOCK .ruler-v {
+#PAINTING-DIAGRAMMA-BLOCK .ruler-v, #PAINTING-DIAGRAMMA-BLOCK-2 .ruler-v, #PAINTING-DIAGRAMMA-BLOCK-3 .ruler-v {
   transform: scale(-1, 1);
   transform: rotate(270deg);
   z-index: 9999;
