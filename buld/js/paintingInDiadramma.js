@@ -1,5 +1,5 @@
 function paintingInDiadramma() {
-    var total_painting = parseInt( $( '#TOTAL_PAINTING_ID' ).val() );
+    var total_painting = parseInt( $( '#TOTAL_PAINTING_ID'+window.s ).val() );
 
     // Перемычки
     $( '.paintingInDiadrammaPereochki' ).remove();

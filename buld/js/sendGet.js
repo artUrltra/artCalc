@@ -4,7 +4,7 @@ $('.sendGet').click(function () {
 });
 // 1 - получение скрина
 function getScreen() {
-        html2canvas($("#PAINTING-DIAGRAMMA"), {
+        html2canvas($("#PAINTING-DIAGRAMMA"+window.s), {
             background:'#fff',
             onrendered: function(canvas) {
                 var imgData = canvas.toDataURL('image/jpeg');
@@ -44,19 +44,19 @@ function urlLit(w, v) {
 }
 // 2 - отправка
 function sendUrl(screen) {
-    var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID').val());
-    var furnituraSelect = $("#TYPE_BAFFLE_ID").val();
-    var Allheight = $('#HIGHT_SETS_ID').val();
-    var Allwidth = $('#WIDTH_SETS_ID').val();
+    var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID'+window.s).val());
+    var furnituraSelect = $("#TYPE_BAFFLE_ID"+window.s).val();
+    var Allheight = $('#HIGHT_SETS_ID'+window.s).val();
+    var Allwidth = $('#WIDTH_SETS_ID'+window.s).val();
     var count = TOTAL_PAINTING;
-    var count1 = $('#MOVABLE_PAINTING_ID').val();
-    var TOTAL = $('.summaBezParametrov .price').text();
-    var TOTAL2 = $('.summaSParametrami .price').text();
-    var productionRub = $('.proizvaodstvoTo input').val();
-    var installationRub = $('.montazhTo input').val();
-    var urgencyRub = $('.srochnostTo input').val();
-    var shippingRub = $('.srochnostTo input').val();
-    var marginRub = $('.dostavkaTo input').val();
+    var count1 = $('#MOVABLE_PAINTING_ID'+window.s).val();
+    var TOTAL = $('.summaBezParametrov'+window.s+' .price').text();
+    var TOTAL2 = $('.summaSParametrami'+window.s+' .price').text();
+    var productionRub = $('.proizvaodstvoTo'+window.s+' input').val();
+    var installationRub = $('.montazhTo'+window.s+' input').val();
+    var urgencyRub = $('.srochnostTo'+window.s+' input').val();
+    var shippingRub = $('.srochnostTo'+window.s+' input').val();
+    var marginRub = $('.dostavkaTo'+window.s+' input').val();
     var TotalPolotno = 0;
     for (i = 1; i <= TOTAL_PAINTING; i++) {
         var s = $('*[data-id="' + i + '"]').find(".data-price-in-profil").text();
@@ -132,10 +132,10 @@ function sendUrl(screen) {
     ////////////////////////////////////////////////////////////////////////////
 
     // Названия дополнений (на английском, я потом буду брать из бд) - colourSealant - colorDecorativeCap - colorDecorativeCapIn - typeMunting
-    var colourSealant = $('#karkas-tsvet-uplotnitelya').val();
-    var colorDecorativeCap = $('#karkas-tsvet-zaglushki').val();
-    var colorDecorativeCapIn = $('#karkas-tsvet-zaglushki-tortsevoy').val();
-    var typeMunting = $('#karkas-vid-krepleniya').val();
+    var colourSealant = $('#karkas-tsvet-uplotnitelya'+window.s).val();
+    var colorDecorativeCap = $('#karkas-tsvet-zaglushki'+window.s).val();
+    var colorDecorativeCapIn = $('#karkas-tsvet-zaglushki-tortsevoy'+window.s).val();
+    var typeMunting = $('#karkas-vid-krepleniya'+window.s).val();
     ////////////////////////////////////////////////////////////////////////////
 
     // Цена дополнений - priceAdditions
@@ -218,7 +218,7 @@ function sendUrl(screen) {
     ////////////////////////////////////////////////////////////////////////////
 
     // Название картинки покраски профиля - nameProfilePicturePainting
-    var nameProfilePicturePainting = $('.vyiborDekoraDlyaProfilya img').attr('src');
+    var nameProfilePicturePainting = $('.vyiborDekoraDlyaProfilya'+window.s+' img').attr('src');
     nameProfilePicturePainting = nameProfilePicturePainting.match(/([\w,\s-]+)\.[A-Za-z]{3}/)[1];
     ////////////////////////////////////////////////////////////////////////////
 
@@ -232,7 +232,7 @@ function sendUrl(screen) {
 
     var m = [];
     var m2 = [];
-    var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID').val());
+    var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID'+window.s).val());
     if (isNaN(TOTAL_PAINTING)){
         TOTAL_PAINTING = 0;
     }
@@ -336,9 +336,3 @@ function sendUrl(screen) {
     url = urlLit(url, 0);
     window.open('http://fasts-like.com/html2pdf.php' + url, '_blank');
 };
-
-
-
-
-
-

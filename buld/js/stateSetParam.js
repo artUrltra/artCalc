@@ -15,36 +15,36 @@ $("#state1").on('keyup change', '.WIDTH_SETS_ID', function () {
     $('.WIDTH_SETS_ID' ).val( s1 );
 })
 
-$("#state2").on('keyup change', '.TOTAL_PAINTING_ID', function () {
-    var s2 = $( '#state2 .TOTAL_PAINTING_ID' ).val();
-    $('.TOTAL_PAINTING_ID' ).val( s2 );
+$("#state2").on('keyup change', '.TOTAL_PAINTING_ID-2', function () {
+    var s2 = $( '#state2 .TOTAL_PAINTING_ID-2' ).val();
+    $('.TOTAL_PAINTING_ID-2' ).val( s2 );
 })
-$("#state2").on('keyup change', '.MOVABLE_PAINTING_ID', function () {
-    var s2 = $( '#state2 .MOVABLE_PAINTING_ID' ).val();
-    $('.MOVABLE_PAINTING_ID' ).val( s2 );
+$("#state2").on('keyup change', '.MOVABLE_PAINTING_ID-2', function () {
+    var s2 = $( '#state2 .MOVABLE_PAINTING_ID-2' ).val();
+    $('.MOVABLE_PAINTING_ID-2' ).val( s2 );
 })
-$("#state2").on('keyup change', '.HIGHT_SETS_ID', function () {
-    var s2 = $( '#state2 .HIGHT_SETS_ID' ).val();
-    $('.HIGHT_SETS_ID' ).val( s2 );
+$("#state2").on('keyup change', '.HIGHT_SETS_ID-2', function () {
+    var s2 = $( '#state2 .HIGHT_SETS_ID-2' ).val();
+    $('.HIGHT_SETS_ID-2' ).val( s2 );
 })
-$("#state2").on('keyup change', '.WIDTH_SETS_ID', function () {
-    var s2 = $( '#state2 .WIDTH_SETS_ID ' ).val();
-    $('.WIDTH_SETS_ID' ).val( s2 );
+$("#state2").on('keyup change', '.WIDTH_SETS_ID-2', function () {
+    var s2 = $( '#state2 .WIDTH_SETS_ID-2' ).val();
+    $('.WIDTH_SETS_ID-2' ).val( s2 );
 })
 
-$("#state3").on('keyup change', '.TOTAL_PAINTING_ID', function () {
-    var s3 = $( '#state3 .TOTAL_PAINTING_ID' ).val();
-    $('.TOTAL_PAINTING_ID' ).val( s3 );
+$("#state3").on('keyup change', '.TOTAL_PAINTING_ID-3', function () {
+    var s3 = $( '#state3 .TOTAL_PAINTING_ID-3' ).val();
+    $('.TOTAL_PAINTING_ID-3' ).val( s3 );
 })
-$("#state3").on('keyup change', '.MOVABLE_PAINTING_ID', function () {
-    var s3 = $( '#state3 .MOVABLE_PAINTING_ID' ).val();
-    $('.MOVABLE_PAINTING_ID' ).val( s3 );
+$("#state3").on('keyup change', '.MOVABLE_PAINTING_ID-3', function () {
+    var s3 = $( '#state3 .MOVABLE_PAINTING_ID-3' ).val();
+    $('.MOVABLE_PAINTING_ID-3' ).val( s3 );
 })
-$("#state3").on('keyup change', '.HIGHT_SETS_ID', function () {
-    var s3 = $( '#state3 .HIGHT_SETS_ID' ).val();
-    $('.HIGHT_SETS_ID' ).val( s3 );
+$("#state3").on('keyup change', '.HIGHT_SETS_ID-3', function () {
+    var s3 = $( '#state3 .HIGHT_SETS_ID-3' ).val();
+    $('.HIGHT_SETS_ID-3' ).val( s3 );
 })
-$("#state3").on('keyup change', '.WIDTH_SETS_ID', function () {
-    var s3 = $( '#state3 .WIDTH_SETS_ID ' ).val();
-    $('.WIDTH_SETS_ID' ).val( s3 );
+$("#state3").on('keyup change', '.WIDTH_SETS_ID-3', function () {
+    var s3 = $( '#state3 .WIDTH_SETS_ID-3' ).val();
+    $('.WIDTH_SETS_ID-3' ).val( s3 );
 })

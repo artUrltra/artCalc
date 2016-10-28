@@ -40,7 +40,7 @@ function PAINTING() {
             }
             var left = 50;
             var top = 20;
-            $('#PAINTING-DIAGRAMMA'+window.s).append('<div  class="drag PAINTING-DIAGRAMMA-EL" style="left:' + left * i + 'px;top:' + top * i + 'px;"' +
+            $('#PAINTING-DIAGRAMMA'+window.s).append('<div  class="drag PAINTING-DIAGRAMMA-EL'+window.s+'" style="left:' + left * i + 'px;top:' + top * i + 'px;"' +
                 'data-id="' + i + '"' +
                 'data-type="' + type + '"' +
                 'data-height=""' +
@@ -273,6 +273,7 @@ function fPolovinchatayaKol() {
 }
 $('#POLOVINCHATAYA_KOL').bind('input', fPolovinchatayaKol);
 $('#POLOVINCHATAYA_KOL-2').bind('input', fPolovinchatayaKol);
+$('#POLOVINCHATAYA_KOL-3').bind('input', fPolovinchatayaKol);
 //  ============================= //
 
 // Выбор изображения после диалога //
@@ -313,7 +314,7 @@ function fBaffleSekectorClass() {
 
     $('*').removeClass('used');
     $('*[data-id="' + $(this).val() + '"]').addClass('used');
-    $('.PAINTING-DIAGRAMMA-EL').css({'z-index': '0'});
+    $('.PAINTING-DIAGRAMMA-EL'.window.s).css({'z-index': '0'});
     $('*[data-id="' + $(this).val() + '"]').css({'z-index': '1000'});
 
     $('#tab-profil-vyisota'+window.s).val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS"+window.s+" option:selected").val() + '"]').find(".height").text());
@@ -365,12 +366,12 @@ function fBaffleSekectorClass() {
 
     setPriceInProfil();
 
-    $('.add-material-block-past div').remove();
+    $('.add-material-block-past'+window.s+' div').remove();
 
     for (var i = 1; i <= 5; i++) {
         var el = getFromData('material-' + i + '-type');
         if (el != '' && el != 0) {
-            $(".add-material-block-past").append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el" data-material-el-id="' + i + '">' + $(".napolnenie-el-set").html() + '</div>');
+            $(".add-material-block-past"+window.s).append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el" data-material-el-id="' + i + '">' + $(".napolnenie-el-set").html() + '</div>');
             $('*[data-material-el-id="' + i + '"]').find('.napolnenie-el-material').val(getFromData('material-' + i + '-type'));
             napolnenieImg(getFromData('material-' + i + '-type'), i);
             $('*[data-material-el-id="' + i + '"]').find('.napolnenie-el-tolschina').val(getFromData('material-' + i + '-tolschina'));
@@ -389,6 +390,7 @@ function fBaffleSekectorClass() {
 }
 $(".BAFFLE_SEKECTOR_CLASS").change(fBaffleSekectorClass);
 $(".BAFFLE_SEKECTOR_CLASS-2").change(fBaffleSekectorClass);
+$(".BAFFLE_SEKECTOR_CLASS-3").change(fBaffleSekectorClass);
 
 //  ============================= //
 
@@ -400,6 +402,7 @@ function fBtnDecor() {
 }
 $('#btn-decor').click(fBtnDecor);
 $('#btn-decor-2').click(fBtnDecor);
+$('#btn-decor-3').click(fBtnDecor);
 
 function fBtnRal() {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
@@ -413,6 +416,7 @@ function fBtnRal() {
 }
 $('#btn-ral').click(fBtnRal);
 $('#btn-ral-2').click(fBtnRal);
+$('#btn-ral-3').click(fBtnRal);
 
 function fBtnAnod() {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
@@ -426,6 +430,7 @@ function fBtnAnod() {
 }
 $('#btn-anod').click(fBtnAnod);
 $('#btn-anod-2').click(fBtnAnod);
+$('#btn-anod-3').click(fBtnAnod);
 
 function fBtnDekorProfil() {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
@@ -435,6 +440,7 @@ function fBtnDekorProfil() {
 }
 $('#btn-dekor-profil').click(fBtnDekorProfil);
 $('#btn-dekor-profil-2').click(fBtnDekorProfil);
+$('#btn-dekor-profil-3').click(fBtnDekorProfil);
 
 function fAddMaterialBlockPast() {
     var polotnoId = getFromData('id');
@@ -506,6 +512,8 @@ function fAddMaterialBlockPast() {
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 }
 $(".add-material-block-past").on('click', '#open-material-btn', fAddMaterialBlockPast);
+$(".add-material-block-past-2").on('click', '#open-material-btn', fAddMaterialBlockPast);
+$(".add-material-block-past-3").on('click', '#open-material-btn', fAddMaterialBlockPast);
 
 function SelectMaterialEnd(name,number){
     setDataAndText('material-' + number + '-type', name);
@@ -523,7 +531,6 @@ function DekorRePrice2(){
     var img = data[1];
     var TotalPrice = 0;
     var count = parseInt($("#TOTAL_PAINTING_ID"+window.s).val());
-
     if (type == "anod") {
         if (count > 0) {
             for (var i = 0; i < count; i++) {
@@ -583,122 +590,65 @@ function DekorRePrice2(){
                 }
                 TotalPrice = TotalPrice + ((((sizeW + sizeH) * 0.002) * priceKarkas) + sumPerH + sumPerV);
             }
-
         }
     } else {
         if (type == "color") {
-
             var price = {
-
                 "Tur": 40,
-
                 "Euroshop": 34,
-
                 "EuroshopLite": 34,
-
                 "Optimax2": 92,
-
                 "Standart": 47,
-
                 "MobyLight": 41,
-
                 "Optima": 57,
-
                 "Base": 94,
-
                 "Statusx1": 124,
-
                 "Statusx2": 101,
-
                 "OptimaLite": 41,
-
                 "StandartStoika": 38
-
             };
-
         }
-
         if (type == "image") {
-
             var price = {
-
                 "Tur": 89,
-
                 "Euroshop": 76,
-
                 "EuroshopLite": 76,
-
                 "Optimax2": 205,
-
                 "Standart": 105,
-
                 "MobyLight": 92,
-
                 "Optima": 127,
-
                 "Base": 209,
-
                 "Statusx1": 276,
-
                 "Statusx2": 225,
-
                 "OptimaLite": 92,
-
                 "StandartStoika": 85
-
             };
-
         }
-
         if (count > 0) {
-
             for (var i = 0; i < count; i++) {
-
                 var num = i + 1;
-
                 var karkasname = $('*[data-id=' + num + ']').find('.karkas-name').text();
-
                 var sizeW = parseInt($('*[data-id=' + num + ']').find('.width').text());
-
                 var sizeH = parseInt($('*[data-id=' + num + ']').find('.height').text());
-
                 var countPerH = parseInt($('*[data-id=' + num + ']').find('.horizontal-pereochki-count').text());
-
                 var countPerV = parseInt($('*[data-id=' + num + ']').find('.vertikalnue-pereochki-count').text());
-
                 var countProfil = 1;
-
                 if (karkasname in price) {
-
                     var price2 = price[karkasname];
-
                 }
-
                 if (countPerH > 0) {
-
                     var sizePerH = sizeW * 0.002 * countPerH;
-
                 } else {
-
                     var sizePerH = 0;
-
                 }
-
                 if (sizePerV > 0) {
-
                     var sizePerV = sizeW * 0.002 * countPerV;
-
                 } else {
-
                     var sizePerV = 0;
-
                 }
-
                 TotalPrice = TotalPrice + ((((sizeW + sizeH) * 0.002) + (sizePerH + sizePerV)) * price2) * countProfil;
             }
-
         }
-
         if (img == "RAL9006" || img == "RAL9016" || img == "RAL9003") {
         } else {
             if (TotalPrice < 3650) {
@@ -706,33 +656,26 @@ function DekorRePrice2(){
             }
         }
     }
-
     $(".TAB-POKRASKA-PRICE"+window.s).text(parseInt(TotalPrice));
     setDataAndText('decor-price', parseInt(TotalPrice));
-
 }
 
 function SelectDekorEnd(type, img) {
     $("#DekorType"+window.s).val(type);
     if (type == "color" || type == "anod") {
-        $(".vyiborDekoraDlyaProfilya img").attr("src", "img/dekorRal/" + img + ".png");
+        $(".vyiborDekoraDlyaProfilya"+window.s+" img").attr("src", "img/dekorRal/" + img + ".png");
     }
     if (type == "image") {
-        $(".vyiborDekoraDlyaProfilya img").attr("src", "img/dekor/" + img + ".png");
+        $(".vyiborDekoraDlyaProfilya"+window.s+" img").attr("src", "img/dekor/" + img + ".png");
     }
     DekorRePrice(img, type);
 }
 
 function DekorRePrice(img, type) {
-
     var count = parseInt($("#TOTAL_PAINTING_ID"+window.s).val());
-
     var count1 = parseInt($("#MOVABLE_PAINTING_ID"+window.s).val());
-
     var count2 = count - count1;
-
     var TotalPrice = 0;
-
     if (type == "anod") {
         if (count > 0) {
             for (var i = 0; i < count; i++) {
@@ -792,122 +735,65 @@ function DekorRePrice(img, type) {
                 }
                 TotalPrice = TotalPrice + ((((sizeW + sizeH) * 0.002) * priceKarkas) + sumPerH + sumPerV);
             }
-
         }
     } else {
         if (type == "color") {
-
             var price = {
-
                 "Tur": 40,
-
                 "Euroshop": 34,
-
                 "EuroshopLite": 34,
-
                 "Optimax2": 92,
-
                 "Standart": 47,
-
                 "MobyLight": 41,
-
                 "Optima": 57,
-
                 "Base": 94,
-
                 "Statusx1": 124,
-
                 "Statusx2": 101,
-
                 "OptimaLite": 41,
-
                 "StandartStoika": 38
-
             };
-
         }
-
         if (type == "image") {
-
             var price = {
-
                 "Tur": 89,
-
                 "Euroshop": 76,
-
                 "EuroshopLite": 76,
-
                 "Optimax2": 205,
-
                 "Standart": 105,
-
                 "MobyLight": 92,
-
                 "Optima": 127,
-
                 "Base": 209,
-
                 "Statusx1": 276,
-
                 "Statusx2": 225,
-
                 "OptimaLite": 92,
-
                 "StandartStoika": 85
-
             };
-
         }
-
         if (count > 0) {
-
             for (var i = 0; i < count; i++) {
-
                 var num = i + 1;
-
                 var karkasname = $('*[data-id=' + num + ']').find('.karkas-name').text();
-
                 var sizeW = parseInt($('*[data-id=' + num + ']').find('.width').text());
-
                 var sizeH = parseInt($('*[data-id=' + num + ']').find('.height').text());
-
                 var countPerH = parseInt($('*[data-id=' + num + ']').find('.horizontal-pereochki-count').text());
-
                 var countPerV = parseInt($('*[data-id=' + num + ']').find('.vertikalnue-pereochki-count').text());
-
                 var countProfil = 1;
-
                 if (karkasname in price) {
-
                     var price2 = price[karkasname];
-
                 }
-
                 if (countPerH > 0) {
-
                     var sizePerH = sizeW * 0.002 * countPerH;
-
                 } else {
-
                     var sizePerH = 0;
-
                 }
-
                 if (sizePerV > 0) {
-
                     var sizePerV = sizeW * 0.002 * countPerV;
-
                 } else {
-
                     var sizePerV = 0;
-
                 }
-
                 TotalPrice = TotalPrice + ((((sizeW + sizeH) * 0.002) + (sizePerH + sizePerV)) * price2) * countProfil;
             }
-
         }
-
         if (img == "RAL9006" || img == "RAL9016" || img == "RAL9003") {
         } else {
             if (TotalPrice < 3650) {
@@ -919,13 +805,10 @@ function DekorRePrice(img, type) {
     $("#pokraskaTypeAndName"+window.s).val(type + "." + img);
     $(".TAB-POKRASKA-PRICE"+window.s).text(parseInt(TotalPrice));
     setDataAndText('decor-price', parseInt(TotalPrice));
-
 }
-//  ============================= //
 
 // ТАБ НАПОЛНИТЕЛ установка толщины
 function setNapolnenieElTolschinaShow(napolnenieType, id) {
-
     var karkasname = $('*[data-id=' + id + ']').find('.karkas-name').text();
     switch (karkasname) {
         case "Tur":
@@ -936,19 +819,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {4: 1300},
                 5: {0: 0},
                 6: {0: 0},
-
                 7: {4: 160},
                 8: {4: 560, 5: 665},
                 9: {4: 1600, 5: 2000},
-
                 10: {4: 1480},
-
                 11: {0: 0},
                 12: {4: 93},
                 13: {0: 0},
                 14: {4: 285},
                 15: {0: 0},
-
                 16: {4: 1000},
                 17: {4: 1000},
                 18: {0: 0},
@@ -970,19 +849,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {4: 1300},
                 5: {6: 1400},
                 6: {0: 0},
-
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200},
-
                 10: {4: 1480, 5: 1850},
-
                 11: {8: 300, 16: 350},
                 12: {4: 93, 6: 120, 8: 150, 16: 325},
                 13: {16: 165},
                 14: {4: 285, 6: 380, 8: 480, 16: 800},
                 15: {8: 225, 16: 340},
-
                 16: {4: 1000, 5: 1250},
                 17: {4: 1000},
                 18: {0: 0},
@@ -1004,19 +879,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {4: 1300},
                 5: {6: 1400},
                 6: {0: 0},
-
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200},
-
                 10: {4: 1480, 5: 1850},
-
                 11: {8: 300, 16: 350},
                 12: {4: 93, 6: 120, 8: 150, 16: 325},
                 13: {16: 165},
                 14: {4: 285, 6: 380, 8: 480, 16: 800},
                 15: {8: 225, 16: 340},
-
                 16: {4: 1000, 5: 1250},
                 17: {4: 1000},
                 18: {0: 0},
@@ -1038,19 +909,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {0: 0},
                 5: {6: 1400, 8: 1600},
                 6: {6: 2200, 8: 2400},
-
                 7: {4: 160, 6: 260, 8: 345, 10: 395},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200, 10: 1470},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200, 10: 4000},
-
                 10: {5: 1850, 6: 2200, 8: 2960},
-
                 11: {8: 300, 10: 320},
                 12: {4: 93, 6: 120, 8: 150, 10: 211, 12: 253},
                 13: {10: 150},
                 14: {4: 285, 6: 380, 8: 480, 10: 565, 12: 660},
                 15: {8: 225, 10: 270},
-
                 16: {5: 1250},
                 17: {6: 1500, 8: 2000},
                 18: {8: 2100},
@@ -1072,19 +939,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {4: 1300},
                 5: {6: 1400},
                 6: {0: 0},
-
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200},
-
                 10: {4: 1480, 5: 1850},
-
                 11: {8: 300, 16: 350},
                 12: {4: 93, 6: 120, 8: 150, 16: 325},
                 13: {16: 165},
                 14: {4: 285, 6: 380, 8: 480, 16: 800},
                 15: {8: 225, 16: 340},
-
                 16: {4: 1000, 5: 1250},
                 17: {4: 1000},
                 18: {0: 0},
@@ -1105,21 +968,16 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 3: {4: 1050, 5: 1350},
                 4: {4: 1300},
                 5: {6: 1400},
-
                 6: {0: 0},
-
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200},
-
                 10: {4: 1480, 5: 1850},
-
                 11: {8: 300, 16: 350},
                 12: {4: 93, 6: 120, 8: 150, 16: 325},
                 13: {10: 150, 16: 165},
                 14: {4: 285, 6: 380, 8: 480, 16: 800},
                 15: {8: 225, 16: 340},
-
                 16: {4: 1000, 5: 1250},
                 17: {4: 1000},
                 18: {0: 0},
@@ -1141,19 +999,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {4: 1300},
                 5: {6: 1400},
                 6: {0: 0},
-
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200},
-
                 10: {4: 1480, 5: 1850},
-
                 11: {8: 300, 16: 350},
                 12: {4: 93, 6: 120, 8: 150, 16: 325},
                 13: {10: 150, 16: 165},
                 14: {4: 285, 6: 380, 8: 480, 16: 800},
                 15: {8: 225, 16: 340},
-
                 16: {4: 1000, 5: 1250},
                 17: {4: 1000},
                 18: {0: 0},
@@ -1175,19 +1029,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {4: 1300},
                 5: {0: 0},
                 6: {0: 0},
-
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200},
-
                 10: {4: 1480, 5: 1850},
-
                 11: {8: 300, 16: 350},
                 12: {4: 93, 6: 120, 8: 150, 16: 325},
                 13: {10: 150, 16: 165},
                 14: {4: 285, 6: 380, 8: 480, 16: 800},
                 15: {8: 225, 16: 340},
-
                 16: {4: 1000, 5: 1250},
                 17: {4: 1000},
                 18: {0: 0},
@@ -1209,19 +1059,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {0: 0},
                 5: {6: 1400, 8: 1600, 10: 2000},
                 6: {6: 2200, 8: 2400, 10: 2600},
-
                 7: {4: 160, 6: 260, 8: 345, 10: 395},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200, 10: 1470},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200, 10: 4000},
-
                 10: {5: 1850, 6: 2200, 8: 2960, 10: 3700},
-
                 11: {8: 300, 10: 320},
                 12: {4: 93, 6: 120, 8: 150, 10: 211, 12: 253},
                 13: {10: 150},
                 14: {4: 285, 6: 380, 8: 480, 10: 565, 12: 660},
                 15: {8: 225, 10: 270},
-
                 16: {5: 1250, 10: 2500},
                 17: {6: 1500, 8: 2000, 10: 2500},
                 18: {8: 2100},
@@ -1243,19 +1089,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {0: 0},
                 5: {6: 1400, 8: 1600, 10: 2000},
                 6: {6: 2200, 8: 2400, 10: 2600},
-
                 7: {4: 160, 6: 260, 8: 345, 10: 395},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200, 10: 1470},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200, 10: 4000},
-
                 10: {5: 1850, 6: 2200, 8: 2960, 10: 3700},
-
                 11: {8: 300, 10: 320},
                 12: {4: 93, 6: 120, 8: 150, 10: 211, 12: 253},
                 13: {10: 150},
                 14: {4: 285, 6: 380, 8: 480, 10: 565, 12: 660},
                 15: {8: 225, 10: 270},
-
                 16: {5: 1250, 10: 2500},
                 17: {6: 1500, 8: 2000, 10: 2500},
                 18: {8: 2100},
@@ -1277,19 +1119,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {4: 1300},
                 5: {0: 0},
                 6: {0: 0},
-
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200},
-
                 10: {4: 1480, 5: 1850},
-
                 11: {8: 300, 16: 350},
                 12: {4: 93, 6: 120, 8: 150, 16: 325},
                 13: {10: 150, 16: 165},
                 14: {4: 285, 6: 380, 8: 480, 16: 800},
                 15: {8: 225, 16: 340},
-
                 16: {4: 1000, 5: 1250},
                 17: {4: 1000},
                 18: {0: 0},
@@ -1311,19 +1149,15 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
                 4: {4: 1300},
                 5: {0: 0},
                 6: {0: 0},
-
                 7: {4: 160, 6: 260, 8: 345, 16: 660},
                 8: {4: 560, 5: 665, 6: 820, 8: 1200},
                 9: {4: 1600, 5: 2000, 6: 2400, 8: 3200},
-
                 10: {4: 1480, 5: 1850},
-
                 11: {8: 300, 16: 350},
                 12: {4: 93, 6: 120, 8: 150, 16: 325},
                 13: {10: 150, 16: 165},
                 14: {4: 285, 6: 380, 8: 480, 16: 800},
                 15: {8: 225, 16: 340},
-
                 16: {4: 1000, 5: 1250},
                 17: {4: 1000},
                 18: {0: 0},
@@ -1418,7 +1252,6 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
             var value = 26;
             break;
     }
-
     if (value in thickness) {
         thickness = thickness[value];
     }
@@ -1426,12 +1259,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
     for (var Val in thickness) {
         $('*[data-material-el-id="' + id + '"]').find('.napolnenie-el-tolschina').append($("<option value=" + thickness[Val] + " >" + Val + " мм</option>"));
     }
-
-    // }
-
 }
-
-//  ============================= //
 
 // ТАБ НАПОЛНЕНИЕ картинка //
 function napolnenieImg(name, id) {
@@ -1451,7 +1279,6 @@ function napolnenieImg(name, id) {
         case "DSPshlifovannyiy":
             var img = 13;
             break;
-
         case "stekloObyichnoe":
             var img = 1;
             break;
@@ -1485,14 +1312,12 @@ function napolnenieImg(name, id) {
         case "stekloProtivopozharnoe":
             var img = 26;
             break;
-
         case "zerkaloSerebro":
             var img = 3;
             break;
         case "zerkaloBronza":
             var img = 4;
             break;
-
         case "polikarbonatMonolit":
             var img = 9;
             break;
@@ -1502,7 +1327,6 @@ function napolnenieImg(name, id) {
         case "PVHvspenennyiy":
             var img = 8;
             break;
-
         case "sendvichPaneliPVH":
             var img = 15;
             break;
@@ -1519,11 +1343,9 @@ function napolnenieImg(name, id) {
             var img = 21;
             break;
     }
-
     $('*[data-material-el-id="' + id + '"]').find('img').attr('src', 'img/material/' + img + '.png');
     setNapolnenieElTolschinaShow(name, id)
 }
-//  ============================= //
 
 // ТАБ НАПОЛНЕНИЕ картинка //
 function removeElNapolnenie(t) {
@@ -1537,7 +1359,6 @@ function removeElNapolnenie(t) {
     setDataAndText('material-' + id + '-dvoynoe-zapolnenie', '');
     setDataAndText('material-' + id + '-tolschina', '');
 }
-//  ============================= //
 
 // ТАБ НАПОЛНЕНИЕ установка высоты //
 function addWHElNapolnenie() {
@@ -1545,22 +1366,19 @@ function addWHElNapolnenie() {
         $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-vyisota').val(getFromData('height'));
     }
 }
-//  ============================= //
 
 // ТАБ НАПОЛНЕНИЕ  выставленеи ширины одинаковой у всех //
 function addWElNapolnenieToFive() {
-    var allElInC = $('.add-material-block-past > div').length;
+    var allElInC = $('.add-material-block-past'+window.s+' > div').length;
     for (i = 1; i <= 5; i++) {
         $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-shirina').val(getFromData('width') / allElInC);
     }
 }
-//  ============================= //
 
 // ТАБ ФУРНИТУРА загрузка по типу плотна //
 function loadFurnitura() {
     $('#furnitura-tab'+window.s).html("")
     var type = $('#TYPE_BAFFLE_ID'+window.s).val();
-
     // $( '#POLOVINCHATAYA_KOL'+window.s ).val('');
     if (type == 0) {
         $('#furnitura-tab'+window.s).html($('.furnitura-net').html());
@@ -1579,12 +1397,11 @@ function loadFurnitura() {
         $('.POLOVINCHATAYA'+window.s).hide();
         $(".POLOVINCHATAYA"+window.s+" input").prop("checked", false);
     }
-    // =
 }
 loadFurnitura();
 $("#TYPE_BAFFLE_ID").change(function () { loadFurnitura(); });
 $("#TYPE_BAFFLE_ID-2").change(function () { loadFurnitura(); });
-//  ============================= //
+$("#TYPE_BAFFLE_ID-3").change(function () { loadFurnitura(); });
 
 // ТАБ ФУРНИТУРА - Раздвижная перегородка - Раздвижные механизмы//
 function loadRazdvizhnyieMehanizmyiPrice(t) {
@@ -1616,7 +1433,6 @@ function loadRazdvizhnyieMehanizmyiPrice(t) {
     loadVidKrepleniyaNapravlyayuschie(id);
     loadPovodok(id);
 }
-//  ============================= //
 
 // ТАБ ФУРНИТУРА - Раздвижная перегородка - механизмы синхронизации //
 function loadMehanizmSinhronizatsii(id) {
@@ -1658,8 +1474,7 @@ function setMehanizmSinhronizatsii(t) {
         $('.mehanizm-sinhronizatsii .price').text(6320 * $('#TOTAL_PAINTING_ID'+window.s).val() / 2);
         $('.mehanizm-sinhronizatsii img').attr('src', 'img/furnityra/37.jpg');
     }
-};
-//  ============================= //
+}
 
 // ТАБ ФУРНИТУРА - Раздвижная перегородка - напрявляющие //
 function loadNapravlyayuschie(id) {
@@ -1693,8 +1508,6 @@ function setNapravlyayuschie() {
     var kol = $('.napravlyayuschie input').val();
     var id = $(".napravlyayuschie select").val();
     var allWidth = parseInt($("#WIDTH_SETS_ID"+window.s).val());
-
-
     if (id == 0) {
         var res = 0;
         var img = 0;
@@ -1719,7 +1532,6 @@ function setNapravlyayuschie() {
     $('.napravlyayuschie .price').text(parseInt(res * kol));
 
 }
-//  ============================= //
 
 // ТАБ ФУРНИТУРА - Раздвижная перегородка - напрявляющие //
 function loadVidKrepleniyaNapravlyayuschie(id) {
@@ -1766,7 +1578,6 @@ function setVidKrepleniyaNapravlyayuschie() {
         $('.vidKrepleniyaNapravlyayuschey img').attr('src', 'img/furnityra/34.jpg');
     }
 }
-//  ============================= //
 
 // ТАБ ФУРНИТУРА - Раздвижная перегородка - проводок //
 function loadPovodok(id) {
@@ -1801,7 +1612,6 @@ function setPovodok() {
         $('.povodok img').attr('src', 'img/furnityra/36.jpg');
     }
 }
-//  ============================= //
 
 // ТАБ ФУРНИТУРА - Складная перегородка - Складные механизмы //
 function setSkladnyieMehanizmyi() {
@@ -1819,7 +1629,6 @@ function setSkladnyieMehanizmyi() {
         $('.setSkladnyieMehanizmyi .price').text(490 * ( p - ps ));
         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
     }
-
 
     // if( $( '#POLOVINCHATAYA_CHECKBOX'+window.s ).prop( 'checked' ) == false ) {
     //     if (id == 0) {
@@ -1848,7 +1657,6 @@ function setSkladnyieMehanizmyi() {
     loadNapravlyayuschie(id);
     loadVidKrepleniya(id);
 }
-//  ============================= //
 
 // ТАБ ФУРНИТУРА - Складная перегородка - Петли // petli
 function loadPetli(id) {
@@ -1879,7 +1687,6 @@ function setPetli() {
         $('.petli img').attr('src', 'img/furnityra/11.jpg');
     }
 }
-//  ============================= //
 
 // ТАБ ФУРНИТУРА - Складная перегородка - Петли // napravlyayuschie
 function loadNapravlyayuschie(id) {
@@ -1897,9 +1704,6 @@ function loadNapravlyayuschie(id) {
         ));
     }
 }
-
-
-//  ============================= //
 
 // ТАБ ФУРНИТУРА - Складная перегородка - Вид крепления // vidKrepleniya
 function loadVidKrepleniya(id) {
@@ -1936,7 +1740,6 @@ function setVidKrepleniya() {
         $('.vidKrepleniya img').attr('src', 'img/furnityra/28.jpg');
     }
 }
-//  ============================= //
 
 // ТАБ ФУРНИТУРА - Мобильная перегородка - nozhki
 function setNozhki() {
@@ -2813,9 +2616,7 @@ function calcNow() {
             }
         }
     }
-
     ifEmptyPeremuchka();
-    //  ============================= //
 
     // ТАБ ПРОФИЛЬ каркас подсчет цены //
     function carcasPrice() {
@@ -2848,9 +2649,7 @@ function calcNow() {
         $('#KARKAS-NAME'+window.s).text(getFromData('karkas-name'));
         $('#KARKAS-INFO'+window.s).text(getFromData('karkas-info'));
     }
-
     carcasPrice();
-    //  ============================= //
 
     // ТАБ ПРОФИЛЬ Загрузка всех цветов уплотнителей по профилю //
     function loadColorUplotnitelya() {
@@ -2883,9 +2682,7 @@ function calcNow() {
 
         }
     }
-
     loadColorUplotnitelya();
-    //  ============================= //
 
     // ТАБ ПРОФИЛЬ Загрузка всех цветов заглушки по профилю //
     function loadZaglushki() {
@@ -2940,9 +2737,7 @@ function calcNow() {
             }
         }
     }
-
     loadZaglushki();
-    //  ============================= //
 
     // ТАБ ПРОФИЛЬ Загрузка всех цветов заглушки торцевой по профилю //
     function loadZaglushkiTortsevoy() {
@@ -3002,9 +2797,7 @@ function calcNow() {
             }
         }
     }
-
     loadZaglushkiTortsevoy();
-    //  ============================= //
 
     // ТАБ ПРОФИЛЬ Загрузка всех видов крепления по профилю //
     function loadVidKrepleniya() {
@@ -3053,13 +2846,11 @@ function calcNow() {
             }
         }
     }
-
     loadVidKrepleniya();
-    //  ============================= //
 
     // ТАБ НАПОЛНЕНИЕ запись колличества //
     function addNapolnenieEl() {
-        var allElInC = $('.add-material-block-past > div').length;
+        var allElInC = $('.add-material-block-past'+window.s+' > div').length;
         for (i = 1; i <= allElInC; i++) {
             var count = $('*[data-material-el-id="' + i + '"]').find('.tab-napolnenie-kollichestvo').val();
             setDataAndText('material-' + i + '-kol', count)
@@ -3079,9 +2870,7 @@ function calcNow() {
             setDataAndText('material-' + i + '-width', obj);
         }
     }
-
     seveHeightNapolnenie();
-    //  ============================= //
 
     // ТАБ НАПОЛНЕНИЕ толщина соxранение //
     function seveTolshina() {
@@ -3105,9 +2894,7 @@ function calcNow() {
         }
 
     }
-
     seveTolshina();
-    //  ============================= //
 
     // ТАБ НАПОЛНЕНИЕ заказлка стекла да/нет//zakalkaStekla
     function zakalkaStekla() {
@@ -3120,8 +2907,8 @@ function calcNow() {
             }
         }
     }
-
     zakalkaStekla();
+
     //  ============================= //
 
     // ТАБ НАПОЛНЕНИЕ двойное заполнение доступно/нет//
@@ -3525,6 +3312,7 @@ function fDiagrammaDialogWindowBtn(e) {
 }
 $("#DIAGRAMMA-DIALOG-WINDOW-BTN").click(fDiagrammaDialogWindowBtn);
 $("#DIAGRAMMA-DIALOG-WINDOW-BTN-2").click(fDiagrammaDialogWindowBtn);
+$("#DIAGRAMMA-DIALOG-WINDOW-BTN-3").click(fDiagrammaDialogWindowBtn);
 
 ////////////////////////////////////////////////////////////////////////////////////////// Поля в ТАБАХ Профиль Наполнение Фурнитура
 
@@ -3643,7 +3431,7 @@ $(".modal-body").on("click", ".selectKarkasImg", function () {
                 $('*[data-id="' + i + '"]').find('.material-' + j + '-ploschad').text('');
                 $('*[data-id="' + i + '"]').find('.material-' + j + '-price').text('');
 
-                $('.add-material-block-past div').remove();
+                $('.add-material-block-past'+window.s+' div').remove();
             }
         }
     }
@@ -3665,8 +3453,10 @@ function gruapName() {
 }
 $("#NUMBER_OF_DUPLICATOR_ID").bind('input', function () { gruapName(); });
 $("#NUMBER_OF_DUPLICATOR_ID-2").bind('input', function () { gruapName(); });
+$("#NUMBER_OF_DUPLICATOR_ID-3").bind('input', function () { gruapName(); });
 $("#NUMBER_OF_DUPLICATOR_ID").change(function () { gruapName(); });
 $("#NUMBER_OF_DUPLICATOR_ID-2").change(function () { gruapName(); });
+$("#NUMBER_OF_DUPLICATOR_ID-3").change(function () { gruapName(); });
 
 // #BTN-KARKAS-SELECTOR
 function fBtnKarkasSelector() {
@@ -3811,12 +3601,13 @@ function fBtnKarkasSelector() {
 }
 $('#BTN-KARKAS-SELECTOR').click(fBtnKarkasSelector);
 $('#BTN-KARKAS-SELECTOR-2').click(fBtnKarkasSelector);
+$('#BTN-KARKAS-SELECTOR-3').click(fBtnKarkasSelector);
 
 // выбор вертикальных перемычек #BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR
 function fBtnVertikalnuePeremochkiSelector() {
     var text = $('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS"+window.s+" option:selected").val() + '"]').attr("data-karkas-name");
-    $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html("");
-    $("#DIAGRAMMA-DIALOG-WINDOW"+window.s).modal('toggle');
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
     var height = parseInt(getFromData('height'));
     var countPer = parseInt(getFromData('vertikalnue-pereochki-count'));
 
@@ -3885,33 +3676,34 @@ function fBtnVertikalnuePeremochkiSelector() {
     var resultHtmlStandartStoika = makeHTMLFromTemplate(StandartStoika, templateDataToStandartStoika);
 
     if (text == "Euroshop" || text == "EuroshopLite" || text == "Standart" || text == "MobyLight" || text == "Optima" || text == "OptimaLite" || text == "StandartStoika") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlStandart);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlMobyLight);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlTur);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlOptima);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlOptimaLite);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlStandartStoika);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlEuroshop);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlEuroshopLite);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStandart);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlMobyLight);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlTur);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlOptima);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlOptimaLite);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStandartStoika);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlEuroshop);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlEuroshopLite);
     }
     if (text == "Tur") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlTur);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlTur);
     }
     if (text == "Base") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlBase);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlBase);
     }
     if (text == "Optimax2") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlOptimax2);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlOptimax2);
     }
     if (text == "Statusx1") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlStatusx1);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlStatusx1);
     }
     if (text == "Statusx2") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlStatusx2);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlStatusx2);
     }
 }
 $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(fBtnVertikalnuePeremochkiSelector);
 $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR-2').click(fBtnVertikalnuePeremochkiSelector);
+$('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR-3').click(fBtnVertikalnuePeremochkiSelector);
 
 // выбор вертикальных перемычек
 function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
@@ -4071,8 +3863,8 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
 // выбор горизонтальных перемычек #BTN-HORIZONTAL-PEREMOCHKI-SELECTOR
 function fBtnHorizontalPeremochkiSelector() {
     var text = $('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS"+window.s+" option:selected").val() + '"]').attr("data-karkas-name");
-    $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html("");
-    $("#DIAGRAMMA-DIALOG-WINDOW"+window.s).modal('toggle');
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
     var width = parseInt(getFromData('width'));
     var countPer = parseInt(getFromData('horizontal-pereochki-count'));
 
@@ -4141,32 +3933,33 @@ function fBtnHorizontalPeremochkiSelector() {
     var resultHtmlStandartStoika = makeHTMLFromTemplate(StandartStoika, templateDataToStandartStoika);
 
     if (text == "Euroshop" || text == "EuroshopLite" || text == "Standart" || text == "MobyLight" || text == "Optima" || text == "OptimaLite" || text == "StandartStoika") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlStandart);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlMobyLight);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlTur);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlOptima);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlOptimaLite);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlStandartStoika);
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').append(resultHtmlEuroshop);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStandart);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlMobyLight);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlTur);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlOptima);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlOptimaLite);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStandartStoika);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlEuroshop);
     }
     if (text == "Tur") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlTur);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlTur);
     }
     if (text == "Base") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlBase);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlBase);
     }
     if (text == "Optimax2") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlOptimax2);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlOptimax2);
     }
     if (text == "Statusx1") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlStatusx1);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlStatusx1);
     }
     if (text == "Statusx2") {
-        $('#DIAGRAMMA-DIALOG-WINDOW'+window.s+' .modal-body').html(resultHtmlStatusx2);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlStatusx2);
     }
 }
 $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR').click(fBtnHorizontalPeremochkiSelector);
 $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR-2').click(fBtnHorizontalPeremochkiSelector);
+$('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR-3').click(fBtnHorizontalPeremochkiSelector);
 
 // выбор горизонтальных перемычек
 function SelectHorizontalPeremochki(name, url, text, price) {
@@ -4237,8 +4030,10 @@ function SelectHorizontalPeremochki(name, url, text, price) {
 
 $("#TOTAL_PAINTING_ID, #MOVABLE_PAINTING_ID").change(function () { PAINTING(); paintingInDiadramma(); });
 $("#TOTAL_PAINTING_ID-2, #MOVABLE_PAINTING_ID-2").change(function () { PAINTING(); paintingInDiadramma(); });
+$("#TOTAL_PAINTING_ID-3, #MOVABLE_PAINTING_ID-3").change(function () { PAINTING(); paintingInDiadramma(); });
 $("#TOTAL_PAINTING_ID, #MOVABLE_PAINTING_ID").bind('input', function () { PAINTING(); paintingInDiadramma(); });
 $("#TOTAL_PAINTING_ID-2, #MOVABLE_PAINTING_ID-2").bind('input', function () { PAINTING(); paintingInDiadramma(); });
+$("#TOTAL_PAINTING_ID-3, #MOVABLE_PAINTING_ID-3").bind('input', function () { PAINTING(); paintingInDiadramma(); });
 
 // +-
 function PM(pm, t) {
@@ -4276,6 +4071,7 @@ function fTabProfilVPeremyichkiShtuk() {
 }
 $("#tab-profil-v-peremyichki-shtuk").bind('input', fTabProfilVPeremyichkiShtuk);
 $("#tab-profil-v-peremyichki-shtuk-2").bind('input', fTabProfilVPeremyichkiShtuk);
+$("#tab-profil-v-peremyichki-shtuk-3").bind('input', fTabProfilVPeremyichkiShtuk);
 
 function fTabProfilPeremyichkiHorizontalShtuk() {
     setDataAndText('horizontal-pereochki-count', $(this).val());
@@ -4285,24 +4081,31 @@ function fTabProfilPeremyichkiHorizontalShtuk() {
 }
 $("#tab-profil-peremyichki-horizontal-shtuk").bind('input', fTabProfilPeremyichkiHorizontalShtuk);
 $("#tab-profil-peremyichki-horizontal-shtuk-2").bind('input', fTabProfilPeremyichkiHorizontalShtuk);
+$("#tab-profil-peremyichki-horizontal-shtuk-3").bind('input', fTabProfilPeremyichkiHorizontalShtuk);
 
 $("#TOTAL_PAINTING_ID").bind('blur', function () { TOTAL_PAINTING = parseInt($(this).val()); });
 $("#TOTAL_PAINTING_ID-2").bind('blur', function () { TOTAL_PAINTING = parseInt($(this).val()); });
+$("#TOTAL_PAINTING_ID-3").bind('blur', function () { TOTAL_PAINTING = parseInt($(this).val()); });
 
 $("#MOVABLE_PAINTING_ID").bind('input', function () { MOVABLE_PAINTING = parseInt($(this).val()); });
 $("#MOVABLE_PAINTING_ID-2").bind('input', function () { MOVABLE_PAINTING = parseInt($(this).val()); });
+$("#MOVABLE_PAINTING_ID-3").bind('input', function () { MOVABLE_PAINTING = parseInt($(this).val()); });
 
 $("#NUMBER_SETS_ID").bind('input', function () { NUMBER_SETS = parseInt($(this).val()); });
 $("#NUMBER_SETS_ID-2").bind('input', function () { NUMBER_SETS = parseInt($(this).val()); });
+$("#NUMBER_SETS_ID-3").bind('input', function () { NUMBER_SETS = parseInt($(this).val()); });
 
 $("#HIGHT_SETS_ID, #WIDTH_SETS_ID").bind('input', function () { DandDStart() });
 $("#HIGHT_SETS_ID-2, #WIDTH_SETS_ID-2").bind('input', function () { DandDStart() });
+$("#HIGHT_SETS_ID-3, #WIDTH_SETS_ID-3").bind('input', function () { DandDStart() });
 
 //$("#WIDTH_SETS_ID").bind('input', function(){ WIDTH_SETS = parseInt($(this).val()); });
 //$("#WIDTH_SETS_ID-2").bind('input', function(){ WIDTH_SETS = parseInt($(this).val()); });
+//$("#WIDTH_SETS_ID-3").bind('input', function(){ WIDTH_SETS = parseInt($(this).val()); });
 
 $("#TYPE_BAFFLE_ID").change(function () { TYPE_BAFFLE = parseInt($(this).val()); });
 $("#TYPE_BAFFLE_ID-2").change(function () { TYPE_BAFFLE = parseInt($(this).val()); });
+$("#TYPE_BAFFLE_ID-3").change(function () { TYPE_BAFFLE = parseInt($(this).val()); });
 
 //function fTabProfilVyisota() {
     //$('*[data-group="' + $("#NUMBER_OF_DUPLICATOR_ID"+window.s).val() + '"]').attr('data-height', $('#tab-profil-vyisota'+window.s).val());
@@ -4310,6 +4113,7 @@ $("#TYPE_BAFFLE_ID-2").change(function () { TYPE_BAFFLE = parseInt($(this).val()
 //}
 //$("#tab-profil-vyisota").change(fTabProfilVyisota);
 //$("#tab-profil-vyisota-2").change(fTabProfilVyisota);
+//$("#tab-profil-vyisota-3").change(fTabProfilVyisota);
 
 function fTabProfilVyisota() {
     $('*[data-group="' + $("#NUMBER_OF_DUPLICATOR_ID"+window.s).val() + '"]').attr('data-height', $('#tab-profil-vyisota'+window.s).val());
@@ -4318,30 +4122,35 @@ function fTabProfilVyisota() {
 }
 $("#tab-profil-vyisota").bind('input', fTabProfilVyisota);
 $("#tab-profil-vyisota-2").bind('input', fTabProfilVyisota);
+$("#tab-profil-vyisota-3").bind('input', fTabProfilVyisota);
 
 function fKarkasTsvetUplotnitelya() {
     setDataAndText('karkas-tsvet-uplotnitelya', $("#karkas-tsvet-uplotnitelya"+window.s).val())
 }
 $('#karkas-tsvet-uplotnitelya').change(fKarkasTsvetUplotnitelya);
 $('#karkas-tsvet-uplotnitelya-2').change(fKarkasTsvetUplotnitelya);
+$('#karkas-tsvet-uplotnitelya-3').change(fKarkasTsvetUplotnitelya);
 
 function fKarkasTsvetZaglushki() {
     setDataAndText('karkas-tsvet-zaglushki', $("#karkas-tsvet-zaglushki"+window.s).val())
 }
 $('#karkas-tsvet-zaglushki').change(fKarkasTsvetZaglushki);
 $('#karkas-tsvet-zaglushki-2').change(fKarkasTsvetZaglushki);
+$('#karkas-tsvet-zaglushki-3').change(fKarkasTsvetZaglushki);
 
 function fKarkasTsvetZaglushkiTortsevoy() {
     setDataAndText('karkas-tsvet-zaglushki-tortsevoy', $("#karkas-tsvet-zaglushki-tortsevoy"+window.s).val())
 }
 $('#karkas-tsvet-zaglushki-tortsevoy').change(fKarkasTsvetZaglushkiTortsevoy);
 $('#karkas-tsvet-zaglushki-tortsevoy-2').change(fKarkasTsvetZaglushkiTortsevoy);
+$('#karkas-tsvet-zaglushki-tortsevoy-3').change(fKarkasTsvetZaglushkiTortsevoy);
 
 function fKarkasVidKrepleniya() {
     setDataAndText('karkas-vid-krepleniya', $("#karkas-vid-krepleniya"+window.s).val())
 }
 $('#karkas-vid-krepleniya').change(fKarkasVidKrepleniya);
 $('#karkas-vid-krepleniya-2').change(fKarkasVidKrepleniya);
+$('#karkas-vid-krepleniya-3').change(fKarkasVidKrepleniya);
 
 function fTabProfilVyisotaShirinaChange() {
     setDataAndText('area', parseInt($("#tab-profil-vyisota"+window.s).val() * $("#tab-profil-shirina"+window.s).val() / 1000000));
@@ -4351,6 +4160,7 @@ function fTabProfilVyisotaShirinaChange() {
 }
 $("#tab-profil-vyisota, #tab-profil-shirina").change(fTabProfilVyisotaShirinaChange);
 $("#tab-profil-vyisota-2, #tab-profil-shirina-2").change(fTabProfilVyisotaShirinaChange);
+$("#tab-profil-vyisota-3, #tab-profil-shirina-3").change(fTabProfilVyisotaShirinaChange);
 
 function fTabProfilVyisotaShirinaBind() {
     setDataAndText('area', parseInt($("#tab-profil-vyisota"+window.s).val() * $("#tab-profil-shirina"+window.s).val() / 1000000));
@@ -4359,13 +4169,14 @@ function fTabProfilVyisotaShirinaBind() {
 }
 $('#tab-profil-vyisota, #tab-profil-shirina').bind('input', fTabProfilVyisotaShirinaBind);
 $('#tab-profil-vyisota-2, #tab-profil-shirina-2').bind('input', fTabProfilVyisotaShirinaBind);
+$('#tab-profil-vyisota-3, #tab-profil-shirina-3').bind('input', fTabProfilVyisotaShirinaBind);
 
 // Добавление поля
 function fAddMaterialBtn() {
     loop1: for (i = 1; i <= 5; i++) {
         var type = getFromData('material-' + i + '-type');
         if (type == '') {
-            $(".add-material-block-past").append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el" data-material-el-id="' + i + '">' + $(".napolnenie-el-set").html() + '</div>');
+            $(".add-material-block-past"+window.s).append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el" data-material-el-id="' + i + '">' + $(".napolnenie-el-set").html() + '</div>');
             setDataAndText('material-' + i + '-type', 0);
             break loop1;
         }
@@ -4374,6 +4185,8 @@ function fAddMaterialBtn() {
     addWHElNapolnenie();
 }
 $('.add-material-btn').click(fAddMaterialBtn);
+$('.add-material-btn-2').click(fAddMaterialBtn);
+$('.add-material-btn-3').click(fAddMaterialBtn);
 
 // Инпуты и слеекты //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -4390,6 +4203,7 @@ function fProizvaodstvoIn() {
 }
 $('.proizvaodstvoIn input').on('keyup', fProizvaodstvoIn);
 $('.proizvaodstvoIn-2 input').on('keyup', fProizvaodstvoIn);
+$('.proizvaodstvoIn-3 input').on('keyup', fProizvaodstvoIn);
 
 function fMontazhIn() {
     var value = $(this).val();
@@ -4402,6 +4216,7 @@ function fMontazhIn() {
 }
 $('.montazhIn input').on('keyup', fMontazhIn);
 $('.montazhIn-2 input').on('keyup', fMontazhIn);
+$('.montazhIn-3 input').on('keyup', fMontazhIn);
 
 function fDostavkaIn() {
     var value = $(this).val();
@@ -4414,6 +4229,7 @@ function fDostavkaIn() {
 }
 $('.dostavkaIn input').on('keyup', fDostavkaIn);
 $('.dostavkaIn-2 input').on('keyup', fDostavkaIn);
+$('.dostavkaIn-3 input').on('keyup', fDostavkaIn);
 
 function fSrochnostIn() {
     var value = $(this).val();
@@ -4426,6 +4242,7 @@ function fSrochnostIn() {
 }
 $('.srochnostIn input').on('keyup', fSrochnostIn);
 $('.srochnostIn-2 input').on('keyup', fSrochnostIn);
+$('.srochnostIn-3 input').on('keyup', fSrochnostIn);
 
 function fNashProtsentIn() {
     var value = $(this).val();
@@ -4438,6 +4255,7 @@ function fNashProtsentIn() {
 }
 $('.nashProtsentIn input').on('keyup', fNashProtsentIn);
 $('.nashProtsentIn-2 input').on('keyup', fNashProtsentIn);
+$('.nashProtsentIn-3 input').on('keyup', fNashProtsentIn);
 
 function fProizvaodstvoTo() {
     var value = $(this).val();
@@ -4450,6 +4268,7 @@ function fProizvaodstvoTo() {
 }
 $('.proizvaodstvoTo input').on('keyup', fProizvaodstvoTo);
 $('.proizvaodstvoTo-2 input').on('keyup', fProizvaodstvoTo);
+$('.proizvaodstvoTo-3 input').on('keyup', fProizvaodstvoTo);
 
 function fMontazhTo() {
     var value = $(this).val();
@@ -4462,6 +4281,7 @@ function fMontazhTo() {
 }
 $('.montazhTo input').on('keyup', fMontazhTo);
 $('.montazhTo-2 input').on('keyup', fMontazhTo);
+$('.montazhTo-3 input').on('keyup', fMontazhTo);
 
 function fDostavkaTo() {
     var value = $(this).val();
@@ -4474,6 +4294,7 @@ function fDostavkaTo() {
 }
 $('.dostavkaTo input').on('keyup', fDostavkaTo);
 $('.dostavkaTo-2 input').on('keyup', fDostavkaTo);
+$('.dostavkaTo-3 input').on('keyup', fDostavkaTo);
 
 function fSrochnostTo() {
     var value = $(this).val();
@@ -4486,6 +4307,7 @@ function fSrochnostTo() {
 }
 $('.srochnostTo input').on('keyup', fSrochnostTo);
 $('.srochnostTo-2 input').on('keyup', fSrochnostTo);
+$('.srochnostTo-3 input').on('keyup', fSrochnostTo);
 
 function fNashProtsentTo() {
     var value = $(this).val();
@@ -4498,6 +4320,7 @@ function fNashProtsentTo() {
 }
 $('.nashProtsentTo input').on('keyup', fNashProtsentTo);
 $('.nashProtsentTo-2 input').on('keyup', fNashProtsentTo);
+$('.nashProtsentTo-3 input').on('keyup', fNashProtsentTo);
 
 // Добавить в скирип //////////////////////////////////////////////////////////////////////////////////////////////
 
