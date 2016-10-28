@@ -738,320 +738,6 @@
         </div>
     </div>
     <!------------------------------------------------------------------------------------------------------------------------------------>
-    <div class="furnitura-net">
-        <div class="container">
-            <div class="row text-center">
-                <h1>Нет фурниртуры</h1>
-            </div>
-        </div>
-    </div>
-    <div class="furnitura-razdvizhnyie">
-        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center razdvizhnyie-mehanizmyi">
-            <h3>Раздвижные механизмы</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="loadRazdvizhnyieMehanizmyiPrice(this)">
-                    <option value="0">Нет</option>
-                    <option value="1">Standart до 40 кг (Россия)</option>
-                    <option value="2">Standart до 100 кг (Россия)</option>
-                    <option value="3">B-103 до 100 кг (Degon, Польша)</option>
-                    <option value="4">B-104 до 100 кг (Degon, Польша)</option>
-                    <option value="5">R3 до 60 кг (Китай)</option>
-                    <option value="6">D 80 (Ducasse, Испания)</option>
-                </select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center mehanizm-sinhronizatsii">
-            <h3>Механизм синхронизации</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setMehanizmSinhronizatsii(this)"></select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center napravlyayuschie">
-            <h3>Направляющие</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setNapravlyayuschie(this)"></select>
-            </div>
-            <div class="form-group label-floating is-empty input-custom-block-mini">
-                <input type="text" placeholder="Колличество" class="form-control" value="1"
-                       oninput="setNapravlyayuschie()">
-                <div class="input-group">
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-fab btn-fab-mini btn-plaus">
-                                    <i class="material-icons">add</i>
-                                </button>
-                                <button type="button" class="btn btn-fab btn-fab-mini btn-minus">
-                                    <i class="material-icons">remove</i>
-                                </button>
-                            </span>
-                </div>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center vidKrepleniyaNapravlyayuschey">
-            <h3>Вид крепления направляющей</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setVidKrepleniyaNapravlyayuschie(this)"></select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center povodok">
-            <h3>Поводок</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setPovodok(this)"></select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="checkbox aksessuaryi-block-swith">
-                <label>
-                    <input type="checkbox" checked="checked" onchange="aksessuaryiBlockSwith()">
-                    <span class="checkbox-material">
-                    <span class="check"></span>
-                </span>
-                    Аксессуары
-                </label>
-            </div>
-        </div>
-        <span class="aksessuaryi-block-hs">
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center dovodchik">
-                <h3>Доводчик</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setDovodchik()">
-                        <option value="0">Нет</option>
-                        <option value="1">Standart до 25 кг, Россия</option>
-                        <option value="2">Standart до 50 кг, Россия</option>
-                        <option value="3">Standart до 100 кг, Россия</option>
-                        <option value="4">Soft, Ducasse Испания</option>
-                    </select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center dekorativnayaPlankaDlyaProfilya">
-                <h3>Декоративная планка для профиля</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setDekorativnayaPlankaDlyaProfilya()"></select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center schetochnyiyUplotnitel">
-                <h3>Щеточный уплотнитель</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setSchetochnyiyUplotnitel()">
-                        <option value="0"></option>
-                        <option value="1">6 мм (Серый, бронза, золото)</option>
-                        <option value="2">12 мм (Серый, бронза, золото)</option>
-                    </select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center rakovina">
-                <h3>Ручка</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setRakovina()">
-                    </select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center zamok">
-                <h3>Замок дверной</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setZamok()">
-                        <option value="0"></option>
-                        <option value="1">Поворотный</option>
-                        <option value="2">Замок врезной цилиндровый узкопроф.201 (20 mm) (никель) 3 кл.</option>
-                        <option value="3">Замок врезной крестообразный узкопроф.201F (20 mm) (никель) 3 кл.</option>
-                    </select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-        </span>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 furnitura-price text-right">
-            <h3>Сумма: <span class="price"></span></h3>
-        </div>
-    </div>
-    <div class="skladnaya-peregorodka">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center setSkladnyieMehanizmyi">
-            <h3>Складные механизмы</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setSkladnyieMehanizmyi()">
-                    <option value="0"></option>
-                    <option value="1">Stanfold до 40 кг (Россия)</option>
-                    <option value="2">B-100 до 80 кг (Degon, Польша)</option>
-                </select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center petli">
-            <h3>Петли</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setPetli()"></select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center napravlyayuschie">
-            <h3>Направляющие</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setNapravlyayuschie()"></select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center vidKrepleniya">
-            <h3>Вид крепления направляющей</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setVidKrepleniya()"></select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="checkbox aksessuaryi-block-swith">
-                <label>
-                    <input type="checkbox" checked="checked" onchange="aksessuaryiBlockSwith()">
-                    <span class="checkbox-material">
-                    <span class="check"></span>
-                </span>
-                    Аксессуары
-                </label>
-            </div>
-        </div>
-        <span class="aksessuaryi-block-hs">
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center dekorativnayaPlankaDlyaProfilya">
-                <h3>Декоративная планка для профиля</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setDekorativnayaPlankaDlyaProfilya()">
-                        <option value="0"></option>
-                        <option value="1">Цвет: серебро, Россия</option>
-                    </select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center schetochnyiyUplotnitel">
-                <h3>Щеточный уплотнитель</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setSchetochnyiyUplotnitel()">
-                        <option value="0"></option>
-                        <option value="1">6 мм (Серый, бронза, золото)</option>
-                        <option value="2">12 мм (Серый, бронза, золото)</option>
-                    </select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center rakovina">
-                <h3>Ручка</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setRakovina()">
-                        <option value="0"></option>
-                        <option value="1">Раковина</option>
-                    </select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center kreplenieRuchki">
-                <h3>Крепление ручки</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setKreplenieRuchki()">
-                        <option value="0"></option>
-                        <option value="1">К двери-гармошке</option>
-                    </select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-            <div class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center zamokSkladnyie">
-                <h3>Замок дверной</h3>
-                <hr>
-                <img src="img/furnityra/0.jpg">
-                <div class="form-group label-floating is-empty">
-                    <select class="form-control" onchange="setZamokSkladnyie()">
-                        <option value="0"></option>
-                        <option value="1">Поворотный</option>
-                    </select>
-                </div>
-                <h4>Цена:<span class="price">0</span></h4>
-            </div>
-        </span>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 furnitura-price text-right">
-            <h3>Сумма: <span class="price"></span></h3>
-        </div>
-    </div>
-    <div class="mobilnyie-peregorodki">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center nozhki">
-            <h3>Ножки</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setNozhki()">
-                    <option value="0"></option>
-                    <option value="1">Euroshop/Standart - круглая регулируемая</option>
-                    <option value="2">Optima - круглая регулируемая</option>
-                    <option value="3">Optima - Широкая двухсторонняя</option>
-                    <option value="4">M. Light - круглая регулируемая</option>
-                    <option value="5">M. Light - Широкая двухсторонняя</option>
-                </select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center stoyki">
-            <h3>Стойки</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setStoyki()"></select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center tipSoedineniyaPoloten">
-            <h3>Тип соединения полотен</h3>
-            <hr>
-            <img src="img/furnityra/0.jpg">
-            <div class="form-group label-floating is-empty">
-                <select class="form-control" onchange="setTipSoedineniyaPoloten()">
-                    <option value="0"></option>
-                    <option value="1">Петли</option>
-                </select>
-            </div>
-            <h4>Цена:<span class="price">0</span></h4>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 furnitura-price text-right">
-            <h3>Сумма: <span class="price"></span></h3>
-        </div>
-    </div>
     <!------------------------------------------------------------------------------------------------------------------------------------>
     <!--DesignSchemeTur-->
     <div id="DesignSchemeTur">
@@ -1066,7 +752,7 @@
                     <p>Паз: 5.5 мм</p>
                     <p>Cтекло: 4 мм</p>
                 </div>
-                <h4><b>%priceTUR%</h4>
+                <h4><b>%priceTUR%</b></h4>
             </center>
         </div>
     </div>
@@ -1083,7 +769,7 @@
                     <p>Паз: 8.5 мм</p>
                     <p>Cтекло: 4,5 мм</p>
                 </div>
-                <h4><b>%priceEuroshop%</h4>
+                <h4><b>%priceEuroshop%</b></h4>
             </center>
         </div>
     </div>
@@ -1100,7 +786,7 @@
                     <p>Паз: 8.5 мм</p>
                     <p>Cтекло: 4,5 мм</p>
                 </div>
-                <h4><b>%priceOptimax2%</h4>
+                <h4><b>%priceOptimax2%</b></h4>
             </center>
         </div>
     </div>
@@ -1117,7 +803,7 @@
                     <p>Паз: 8.5 мм</p>
                     <p>Cтекло: 4,5 мм</p>
                 </div>
-                <h4><b>%priceStandart%</h4>
+                <h4><b>%priceStandart%</b></h4>
             </center>
         </div>
     </div>
@@ -1134,7 +820,7 @@
                     <p>Паз: 8.5 мм</p>
                     <p>Cтекло: 4,5 мм</p>
                 </div>
-                <h4><b>%priceMobyLight%</h4>
+                <h4><b>%priceMobyLight%</b></h4>
             </center>
         </div>
     </div>
@@ -1152,7 +838,7 @@
                     <p>Cтекло: 4,5 мм</p>
                     <p>Глухие панели: до 16 мм</p>
                 </div>
-                <h4><b>%priceOptima%</h4>
+                <h4><b>%priceOptima%</b></h4>
             </center>
         </div>
     </div>
@@ -1169,7 +855,7 @@
                     <p>Cтекло – 5-8 мм</p>
                     <p>Глухие панели: до 12,5 мм</p>
                 </div>
-                <h4><b>%priceBase%</h4>
+                <h4><b>%priceBase%</b></h4>
             </center>
         </div>
     </div>
@@ -1187,7 +873,7 @@
                     <p>Cтекло: 5-10 мм</p>
                     <p>Глухие панели: до 13 мм</p>
                 </div>
-                <h4><b>%priceStatusx1%</h4>
+                <h4><b>%priceStatusx1%</b></h4>
             </center>
         </div>
     </div>
@@ -1205,7 +891,7 @@
                     <p>Cтекло: 5-10 мм</p>
                     <p>Глухие панели: до 12,5 мм</p>
                 </div>
-                <h4><b>%priceStatusx2%</h4>
+                <h4><b>%priceStatusx2%</b></h4>
             </center>
         </div>
     </div>
@@ -1223,7 +909,7 @@
                     <p>Cтекло: 4,5 мм</p>
                     <p>Глухие панели: до 16 мм</p>
                 </div>
-                <h4><b>%priceOptimaLite%</h4>
+                <h4><b>%priceOptimaLite%</b></h4>
             </center>
         </div>
     </div>
@@ -1241,7 +927,7 @@
                     <p>Cтекло: 4,5 мм</p>
                     <p>Глухие панели: до 8,5 мм</p>
                 </div>
-                <h4><b>%priceStandartStoika%</h4>
+                <h4><b>%priceStandartStoika%</b></h4>
             </center>
         </div>
     </div>
@@ -1439,6 +1125,326 @@
             </center>
         </div>
     </div>
+
+
+    <div class="mehanizmyi-modal">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mehanizmyi-modal-title">
+            <h3>Механизмы</h3>
+            <hr/>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mehanizmyi-modal-details text-right">
+            <div class="details">Подробнее<span><i aria-hidden="true" class="fa fa-question"></i></span></div>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mehanizmyi-modal-text-left">
+            <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</h5>
+            <div class="imgTestLeft"></div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mehanizmyi-modal-text-right">
+            <h3>TEXT</h3>
+            <h4>TEXT</h4><br/><br/><br/><br/>
+            <h5>Lorem Ipsum is simply</h5>
+            <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard</h5><br/>
+            <h5 class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Вес полотна</h5>
+            <h5 class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Цена</h5><br/>
+            <h5 class="box row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">80 кг -</div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 red">6620 руб.</div>
+            </h5>
+        </div>
+    </div>
+
+
+    <div class="podvesyi-modal">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 podvesyi-modal-left">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="imgTest"></div>
+                <h5>Текст</h5>
+                <h5>Текст</h5>
+                <h5>Текст</h5>
+                <h5>Текст</h5>
+                <h4>Цена:<span class="red">15 000 руб.</span></h4>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-5 podvesyi-modal-img">
+                <div class="imgTest"></div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 podvesyi-modal-left">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="imgTest"></div>
+                <h5>Текст</h5>
+                <h5>Текст</h5>
+                <h5>Текст</h5>
+                <h5>Текст</h5>
+                <h4>Цена:<span class="red">15 000 руб.</span></h4>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-5 podvesyi-modal-img">
+                <div class="imgTest"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="kreplenie-modal">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 addon-modal-left">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-7">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="imgTestLeft">
+                        <img %img% class="addon-img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 addon-modal-text">
+                <h4>%text1%</h4>
+                <h4>%text2%</h4>
+                <h3>%text3%</h3>
+                <h5>Цена:<span class="red">%price%</span> руб.</h5><br/>
+                <button onclick="SelectKreplenieEnd('%img2%','%text1%','%text2%','%text3%','%price%');"
+                        data-dismiss="modal">Выбрать
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="zaglushka-modal">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 addon-modal-left">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-7">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="imgTestLeft">
+                        <img %img% class="addon-img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 addon-modal-text">
+                <h4>%text1%</h4>
+                <h4>%text2%</h4>
+                <h3>%text3%</h3>
+                <h5>Цена:<span class="red">%price%</span> руб.</h5><br/>
+                <button onclick="SelectZaglushkaEnd('%img2%','%text1%','%text2%','%text3%','%price1%','белый');"
+                        data-dismiss="modal">белый
+                </button>
+                <button onclick="SelectZaglushkaEnd('%img2%','%text1%','%text2%','%text3%','%price2%','серый');"
+                        data-dismiss="modal">серый
+                </button>
+                <button onclick="SelectZaglushkaEnd('%img2%','%text1%','%text2%','%text3%','%price3%','чёрный');"
+                        data-dismiss="modal">чёрный
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="uplotnitel-modal">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 addon-modal-left">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-7">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="imgTestLeft">
+                        <img %img% class="addon-img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 addon-modal-text">
+                <h4>%text1%</h4>
+                <h3>%text3%</h3>
+                <button onclick="SelectUplotnitelEnd('%img2%','прозрачный','%text3%','%prozrachnii%');"
+                        data-dismiss="modal">прозрачный
+                </button>
+                <button onclick="SelectUplotnitelEnd('%img2%','серый','%text3%','%serii%');"
+                        data-dismiss="modal">серый
+                </button>
+                <button onclick="SelectUplotnitelEnd('%img2%','белый','%text3%','%belii%');"
+                        data-dismiss="modal">белый
+                </button>
+                <button onclick="SelectUplotnitelEnd('%img2%','чёрный','%text3%','%chernii%');"
+                        data-dismiss="modal">чёрный
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="zaglushka-torcevaya-modal">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 addon-modal-left">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-7">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="imgTestLeft">
+                        <img %img% class="addon-img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 addon-modal-text">
+                <h4>%text1%</h4>
+                <h3>%text3%</h3>
+                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','%price1%','%text3%');"
+                        data-dismiss="modal">белый
+                </button>
+                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','%price2%','%text3%');"
+                        data-dismiss="modal">серый
+                </button>
+                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','%price3%','%text3%');"
+                        data-dismiss="modal">чёрный
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="razdvizhnyie-mehanizmyi-modal">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="border-bottom: solid 2px #8c8c8c;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mehanizmyi-modal-details text-right">
+                <div class="details">Подробнее<span><i aria-hidden="true" class="fa fa-question"></i></span></div>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mehanizmyi-modal-text-left">
+                <h5>
+                    Колеса: нейлон.
+                    Особенности: При ширине двери от 600мм до 900мм устанавливается один доводчик-каретка плюс каретка
+                    роликов. Если же полотно более 900 мм, тогда устанавливается два доводчика-каретки.
+                    Комплектация: 1 стальная доводчик-каретка на шариковых подшипниках, нижний поводок, крепежный
+                    комплект, 2 активатора.
+                </h5>
+                <div class="imgTestLeft">
+                    <img src="img/select-razdvizh-mehanizm/Standart.png" style="height: 100%;width: 100%;">
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mehanizmyi-modal-text-right">
+                <h3>Standart</h3>
+                <h4>Пр-во: Россия</h4><br/><br/><br/><br/>
+                <h5>Цена 1: %price1%</h5>
+                <h5>Цена 2: %price2%</h5>
+                <br/>
+                <button onclick="SelectRazdvizhnyieMehanizmyiEnd('img/furnityra/1.png','Standart до 40 кг','%price1%');"
+                        data-dismiss="modal">до 40 кг
+                </button>
+                <button onclick="SelectRazdvizhnyieMehanizmyiEnd('img/furnityra/1.png','Standart до 100 кг','%price2%');"
+                        data-dismiss="modal">до 100 кг
+                </button>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="border-bottom: solid 2px #8c8c8c;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mehanizmyi-modal-details text-right">
+                <div class="details">Подробнее<span><i aria-hidden="true" class="fa fa-question"></i></span></div>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mehanizmyi-modal-text-left">
+                <h5>
+                    Колеса: износоустойчивая резина.
+                    Особенности: при крайнем открытом или закрытом положении дверь фиксируется защелкой.
+                    Комплектация: 2 стальные каретки (покрытие хром сталь) с роликами на шариковых подшипниках, нижний
+                    поводок, крепежный комплект, 2 фиксатора.
+                </h5>
+                <div class="imgTestLeft">
+                    <img src="img/select-razdvizh-mehanizm/B103.png" style="height: 100%;width: 100%;">
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mehanizmyi-modal-text-right">
+                <h3>B-103</h3>
+                <h4>Пр-во: Россия</h4><br/><br/><br/><br/>
+                <h5>Цена: %price3%</h5>
+                <h5></h5><br/>
+                <button onclick="SelectRazdvizhnyieMehanizmyiEnd('img/furnityra/22.png','B-103 до 100 кг','%price3%');"
+                        data-dismiss="modal">до 100 кг
+                </button>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="border-bottom: solid 2px #8c8c8c;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mehanizmyi-modal-details text-right">
+                <div class="details">Подробнее<span><i aria-hidden="true" class="fa fa-question"></i></span></div>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mehanizmyi-modal-text-left">
+                <h5>
+                    Колеса: износоустойчивая резина.
+                    Особенности: при крайнем открытом или закрытом положении дверь фиксируется защелкой.
+                    Комплектация: 2 стальные каретки (покрытие хром сталь) с роликами на шариковых подшипниках, нижний
+                    поводок, крепежный комплект, 2 фиксатора.
+                </h5>
+                <div class="imgTestLeft">
+                    <img src="img/select-razdvizh-mehanizm/B103.png" style="height: 100%;width: 100%;">
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mehanizmyi-modal-text-right">
+                <h3>B-104</h3>
+                <h4>Пр-во: Россия</h4><br/><br/><br/><br/>
+                <h5>Цена: %price4%</h5>
+                <h5></h5><br/>
+                <button onclick="SelectRazdvizhnyieMehanizmyiEnd('img/furnityra/23.png','B-104 до 100 кг','%price4%');"
+                        data-dismiss="modal">до 100 кг
+                </button>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="border-bottom: solid 2px #8c8c8c;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mehanizmyi-modal-details text-right">
+                <div class="details">Подробнее<span><i aria-hidden="true" class="fa fa-question"></i></span></div>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mehanizmyi-modal-text-left">
+                <h5>
+                    Колеса: износоустойчивая резина.
+                    Особенности: при крайнем открытом или закрытом положении дверь фиксируется защелкой.
+                    Комплектация: 2 стальные каретки (покрытие хром сталь) с роликами на шариковых подшипниках, нижний
+                    поводок, крепежный комплект, 2 фиксатора.
+                </h5>
+                <div class="imgTestLeft">
+                    <img src="img/select-razdvizh-mehanizm/r3.png" style="height: 100%;width: 100%;">
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mehanizmyi-modal-text-right">
+                <h3>R3</h3>
+                <h4>Пр-во: Россия</h4><br/><br/><br/><br/>
+                <h5>Цена: %price5%</h5>
+                <h5></h5><br/>
+                <button onclick="SelectRazdvizhnyieMehanizmyiEnd('img/furnityra/24.png','R3 до 60 кг','%price5%');"
+                        data-dismiss="modal">до 60 кг
+                </button>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="border-bottom: solid 2px #8c8c8c;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mehanizmyi-modal-details text-right">
+                <div class="details">Подробнее<span><i aria-hidden="true" class="fa fa-question"></i></span></div>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mehanizmyi-modal-text-left">
+                <h5>
+                    Колеса: износоустойчивая резина.
+                    Особенности: при крайнем открытом или закрытом положении дверь фиксируется защелкой.
+                    Комплектация: 2 стальные каретки (покрытие хром сталь) с роликами на шариковых подшипниках, нижний
+                    поводок, крепежный комплект, 2 фиксатора.
+                </h5>
+                <div class="imgTestLeft">
+                    <img src="img/select-razdvizh-mehanizm/D-80.png" style="height: 100%;width: 100%;">
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mehanizmyi-modal-text-right">
+                <h3>D 80</h3>
+                <h4>Пр-во: Россия</h4><br/><br/><br/><br/>
+                <h5>Цена: %price6%</h5>
+                <h5></h5><br/>
+                <button onclick="SelectRazdvizhnyieMehanizmyiEnd('img/furnityra/30.png','D 80 до 80 кг','%price6%');"
+                        data-dismiss="modal">Выбрать
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="obshee-modal">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 podvesyi-modal-left" onclick="Select%funcName%End('%img2%','%text2%','%price%')" data-dismiss="modal" style="height: 250px;">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="imgTestLeft">
+                    <img %img% class="addon-img">
+                </div>
+                <h5>%text1%</h5>
+                <h5>%text2%</h5>
+                <h5></h5>
+                <h5></h5>
+                <h4>Цена:<span class="red">%price% руб.</span></h4>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-5 podvesyi-modal-img">
+                <div class="imgTestRight">
+                    <img %img% class="addon-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <!-- Modal -->
 <div class="modal fade" id="DIAGRAMMA-DIALOG-WINDOW" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

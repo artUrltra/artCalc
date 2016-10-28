@@ -6,6 +6,10 @@ function setDataAndText(group, text) {
 }
 //  ============================= //
 
+function message(text) {
+    $.snackbar({content: text});
+}
+
 // Получение даты //
 function getFromData(name) {
     return $('*[data-id="' + $('.BAFFLE_SEKECTOR_CLASS').val() + '"]').attr('data-' + name);
@@ -72,6 +76,9 @@ function PAINTING() {
                 'data-horizontal-pereochki-info=""' +
                 'data-horizontal-pereochki-price=""' +
                 'data-horizontal-pereochki-price-for-one=""' +
+                'data-furnitura-razdvizh-mehanizm="Standart до 40 кг"' +
+                'data-furnitura-dovodchik=""' +
+                'data-furnitura-skladnoi-mehanizm=""' +
                 'data-material-1-type=""' +
                 'data-material-1-color=""' +
                 'data-material-1-width=""' +
@@ -219,7 +226,7 @@ function PAINTING() {
 // Отрисовка половинчатых створок //
 $('#POLOVINCHATAYA_KOL').bind('input', function () {
     if ($('#POLOVINCHATAYA_CHECKBOX').prop('checked') == false) {
-        $.snackbar({content: "Для использования половинчатой створки поставьте галочку!!!"});
+        message("Для использования половинчатой створки поставьте галочку!!!");
         $('#POLOVINCHATAYA_KOL').val('');
     } else {
         var p = $('#TOTAL_PAINTING_ID').val();
@@ -227,14 +234,14 @@ $('#POLOVINCHATAYA_KOL').bind('input', function () {
         var h = $('#HIGHT_SETS_ID').val();
         var w = $('#WIDTH_SETS_ID').val();
         if (p == '' || mp == '' || h == '' || w == '') {
-            $.snackbar({content: "Для использования половинчатой створки заполните поля: Всего полотен, Подвижные полотна, Высота, Ширина!!!!"});
+            message("Для использования половинчатой створки заполните поля: Всего полотен, Подвижные полотна, Высота, Ширина!!!!");
             $('#POLOVINCHATAYA_KOL').val('');
         } else {
             p = checkTheErrorNumber(p);
             mp = checkTheErrorNumber(mp);
             var ps = checkTheErrorNumber($('#POLOVINCHATAYA_KOL').val());
             if (( p - mp ) <= ps) {
-                $.snackbar({content: "Для использования половинчатой створки должно быть: полотен - подвижных полотен > половинчатых створок!!!!"});
+                message("Для использования половинчатой створки должно быть: полотен - подвижных полотен > половинчатых створок!!!!");
                 $('#POLOVINCHATAYA_KOL').val('');
             } else {
                 PAINTING();
@@ -389,36 +396,577 @@ $(".BAFFLE_SEKECTOR_CLASS").change(function () {
 
 });
 
-//  ============================= //
+//  выбор фурнитуры //
+$("#furnitura-tab").on('click', '#razdvizhnyie-mehanizmyi-select', function () {
+    var count = parseInt($("#TOTAL_PAINTING_ID").val());
+    if (!isNaN(count)) {
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+        var html = $('.razdvizhnyie-mehanizmyi-modal').html();
+        var templateData = {
+            price1: count * 475,
+            price2: count * 830,
+            price3: count * 650,
+            price4: count * 705,
+            price5: count * 500,
+            price6: count * 2000
+        };
+        var resultHtml = makeHTMLFromTemplate(html, templateData);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+    } else {
+        message("Укажите количество полотен!");
+    }
+});
+function SelectRazdvizhnyieMehanizmyiEnd(img, text, price) {
+    $(".razdvizhnyie-mehanizmyi img").attr('src', img);
+    $(".razdvizhnyie-mehanizmyi .text").text(text);
+    $(".razdvizhnyie-mehanizmyi .price").text(price);
+    setDataAndText("furnitura-razdvizh-mehanizm", text);
+
+    $(".mehanizm-sinhronizatsii img").attr('src', "img/furnityra/0.png");
+    $(".mehanizm-sinhronizatsii .text").text("Не выбрано");
+    $(".mehanizm-sinhronizatsii .price").text(0);
+    $(".napravlyayuschie img").attr('src', "img/furnityra/0.png");
+    $(".napravlyayuschie .text").text("Не выбрано");
+    $(".napravlyayuschie .price").text(0);
+    $(".vidKrepleniyaNapravlyayuschey img").attr('src', "img/furnityra/0.png");
+    $(".vidKrepleniyaNapravlyayuschey .text").text("Не выбрано");
+    $(".vidKrepleniyaNapravlyayuschey .price").text(0);
+    $(".povodok img").attr('src', "img/furnityra/0.png");
+    $(".povodok .text").text("Не выбрано");
+    $(".povodok .price").text(0);
+    getDataFurnitura();
+};
+
+function openModalRadvizh(type) {
+    var typeRazdvizhMehanizm = getFromData("furnitura-razdvizh-mehanizm");
+    var typeDovodchik = getFromData("furnitura-dovodchik");
+    var karkasName = getFromData("karkas-name");
+    var Count = parseInt($("#TOTAL_PAINTING_ID").val());
+    var width = parseInt($("#WIDTH_SETS_ID").val());
+    var allWidth = count * width;
+    if (!isNaN(Count) && !isNaN(width)) {
+        switch (type) {
+            case "mehanizmsinhronizacii":
+                if (typeRazdvizhMehanizm == "Standart до 40 кг" || typeRazdvizhMehanizm == "Standart до 100 кг" || typeRazdvizhMehanizm == "B-103 до 100 кг" || typeRazdvizhMehanizm == "B-104 до 100 кг" || typeRazdvizhMehanizm == "R3 до 60 кг") {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/3.png"', 'img/furnityra/3.png', 'Механизм синхронизации', 'Синхронный', 1590 * Count / 2];
+                }
+                if (typeRazdvizhMehanizm == "D 80 до 80 кг") {
+                    var count = 3;
+                    var arr = ['src="img/furnityra/3.png"', 'img/furnityra/3.png', 'Механизм синхронизации', 'Синхронный', 1590 * Count / 2,
+                        'src="img/furnityra/37.png"', 'img/furnityra/37.png', 'Механизм синхронизации', 'D-80 Synchro, Ducasse', 6320 * Count / 2,
+                        'src="img/furnityra/37.png"', 'img/furnityra/37.png', 'Механизм синхронизации', 'D-80 Telescopic, Ducasse', 6320 * Count / 2];
+                }
+                break;
+            case "naprav":
+                var count = 2;
+                var arr = ['src="img/furnityra/4.png"', 'img/furnityra/4.png', 'Направляющие', 'Неокрашенная, Россия', (145 * (width * 2 / 1000)) * 1.05,
+                    'src="img/furnityra/5.png"', 'img/furnityra/5.png', 'Направляющие', 'Цвет: серебро, Россия', (215 * (width * 2 / 1000)) * 1.05];
+                break;
+            case "vidkreplenianaprav":
+                if (width > 3000) {
+                    var double = 2;
+                } else {
+                    var double = 1;
+                }
+                if (typeRazdvizhMehanizm == "Standart до 40 кг" || typeRazdvizhMehanizm == "Standart до 100 кг") {
+                    var count = 2;
+                    var arr = ['src="img/furnityra/6.png"', 'img/furnityra/6.png', 'Вид крепления направляющей', 'К стене, Россия', 50 * 2 * double,
+                        'src="img/furnityra/7.png"', 'img/furnityra/7.png', 'Вид крепления направляющей', 'К потолку, Россия', 50 * 2 * double];
+                }
+                if (typeRazdvizhMehanizm == "B-103 до 100 кг" || typeRazdvizhMehanizm == "B-104 до 100 кг" || typeRazdvizhMehanizm == "R3 до 60 кг") {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/28.png"', 'img/furnityra/28.png', 'Вид крепления направляющей', 'Уголок крепежный, Degon Польша и Китайя', 50 * 2 * double];
+                }
+                if (typeRazdvizhMehanizm == "D 80 до 80 кг") {
+                    var count = 2;
+                    var arr = ['src="img/furnityra/33.png"', 'img/furnityra/33.png', 'Вид крепления направляющей', 'Кронштейн, Ducasse Испания', 50 * 2 * double,
+                        'src="img/furnityra/34.png"', 'img/furnityra/34.png', 'Вид крепления направляющей', 'Кронштейн широкий, Ducasse Испания', 680 * 2 * double];
+                }
+                break;
+            case "povodok":
+                if (typeRazdvizhMehanizm == "Standart до 40 кг" || typeRazdvizhMehanizm == "Standart до 100 кг" || typeRazdvizhMehanizm == "B-103 до 100 кг" || typeRazdvizhMehanizm == "B-104 до 100 кг" || typeRazdvizhMehanizm == "R3 до 60 кг") {
+                    var count = 2;
+                    var arr = ['src="img/furnityra/8.png"', 'img/furnityra/8.png', 'Поводок', 'Белый', 20 * Count,
+                        'src="img/furnityra/9.png"', 'img/furnityra/9.png', 'Поводок', 'Коричневый', 20 * Count];
+                }
+                if (typeRazdvizhMehanizm == "D 80 до 80 кг") {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/36.png"', 'img/furnityra/36.png', 'Поводок', 'Поводок, Ducasse Испания', 110 * Count];
+                }
+                break;
+            case "dovodchik":
+                var count = 4;
+                var arr = ['src="img/furnityra/12.png"', 'img/furnityra/12.png', 'Доводчик', 'Standart до 25 кг, Россия', 1260 * Count,
+                    'src="img/furnityra/12.png"', 'img/furnityra/12.png', 'Доводчик', 'Standart до 50 кг, Россия', 1260 * Count,
+                    'src="img/furnityra/12.png"', 'img/furnityra/12.png', 'Доводчик', 'Standart до 100 кг, Россия', 1260 * Count,
+                    'src="img/furnityra/35.png"', 'img/furnityra/35.png', 'Доводчик', 'Soft, Ducasse Испания', 5180 * Count];
+                break;
+            case "dekplankadlyaprofilya":
+                if (typeDovodchik == "Standart до 25 кг, Россия" || typeDovodchik == "Standart до 50 кг, Россия" || typeDovodchik == "Standart до 100 кг, Россия") {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/13.png"', 'img/furnityra/13.png', 'Декоративная планка для профиля', 'Цвет: серебро, Россия', ((width * 2 / 1000) * 1.1) * 320 * 1.05 + 150 * 2 + 55 * 2];
+                }
+                if (typeDovodchik == "Soft, Ducasse Испания") {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/32.png"', 'img/furnityra/32.png', 'Декоративная планка для профиля', 'Алюм. карниз, Ducasse Испания', ((width * 2 / 1000) * 1.1) * 1500 * 1.05 + 150 * 2 + 55 * 2 + Count * 400];
+                }
+                break;
+            case "schetochniiuplotnitel":
+                var count = 2;
+                var arr = ['src="img/furnityra/14.png"', 'img/furnityra/14.png', 'Щеточный уплотнитель', '6 мм (Серый, бронза, золото)', width / 1000 * 12,
+                    'src="img/furnityra/15.png"', 'img/furnityra/15.png', 'Щеточный уплотнитель', '12 мм (Серый, бронза, золото)', width / 1000 * 25];
+                break;
+            case "ruchka":
+                if (karkasName == "Optima" || karkasName == "Optimax2") {
+                    var count = 5;
+                    var arr = ['src="img/furnityra/16.png"', 'img/furnityra/16.png', 'Ручка', 'Ручка-раковина бронза Besana (Италия)', '260',
+                        'src="img/furnityra/41.png"', 'img/furnityra/41.png', 'Ручка', 'Ручка-раковина 64мм хром Производитель: Giusti, Италия', '225',
+                        'src="img/furnityra/42.png"', 'img/furnityra/42.png', 'Ручка', 'Ручка-раковина бронза Giusti (Италия)', '160',
+                        'src="img/furnityra/43.png"', 'img/furnityra/43.png', 'Ручка', 'Ручка  OL 8 (Китай) Цвет: бронза, медь, матовое золото, матовый никель, золото', '170',
+                        'src="img/furnityra/44.png"', 'img/furnityra/44.png', 'Ручка', 'Ручка OL 5 (Китай) Цвет: золото, хром, бронза, матовый никель', '120'];
+                }
+                if (karkasName == "Standart") {
+                    var count = 6;
+                    var arr = ['src="img/furnityra/16.png"', 'img/furnityra/16.png', 'Ручка', 'Ручка-раковина бронза Besana (Италия)', '260',
+                        'src="img/furnityra/40.png"', 'img/furnityra/40.png', 'Ручка', 'Ручка-раковина бронза состаренная Giusti (Италия)', '395',
+                        'src="img/furnityra/41.png"', 'img/furnityra/41.png', 'Ручка', 'Ручка-раковина 64мм хром Производитель: Giusti, Италия', '225',
+                        'src="img/furnityra/42.png"', 'img/furnityra/42.png', 'Ручка', 'Ручка-раковина бронза Giusti (Италия)', '160',
+                        'src="img/furnityra/43.png"', 'img/furnityra/43.png', 'Ручка', 'Ручка  OL 8 (Китай) Цвет: бронза, медь, матовое золото, матовый никель, золото', '170',
+                        'src="img/furnityra/44.png"', 'img/furnityra/44.png', 'Ручка', 'Ручка OL 5 (Китай) Цвет: золото, хром, бронза, матовый никель', '120'];
+                }
+                break;
+            case "zamok":
+                var count = 3;
+                var arr = ['src="img/furnityra/17.png"', 'img/furnityra/17.png', 'Замок', 'Поворотный', '140',
+                    'src="img/furnityra/38.png"', 'img/furnityra/38.png', 'Замок', 'Замок врезной цилиндровый узкопроф.201 (20 mm) (никель) 3 кл.', '750',
+                    'src="img/furnityra/39.png"', 'img/furnityra/39.png', 'Замок', 'Замок врезной крестообразный узкопроф.201F (20 mm) (никель) 3 кл.', '1000'];
+                break;
+        }
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+        var html = $('.obshee-modal').html();
+        for (var i = 0; i < count * 5; i += 5) {
+            var templateData = {
+                img: arr[i],
+                img2: arr[i + 1],
+                text1: arr[i + 2],
+                text2: arr[i + 3],
+                price: arr[i + 4],
+                funcName: type
+            };
+            var resultHtml = makeHTMLFromTemplate(html, templateData);
+            $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+        }
+        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+    } else {
+        message("Укажите количество полотен и ширину!");
+    }
+}
+function SelectmehanizmsinhronizaciiEnd(img, text, price) {
+    $(".mehanizm-sinhronizatsii img").attr('src', img);
+    $(".mehanizm-sinhronizatsii .text").text(text);
+    $(".mehanizm-sinhronizatsii .price").text(price);
+    getDataFurnitura();
+};
+function SelectnapravEnd(img, text, price) {
+    $(".napravlyayuschie img").attr('src', img);
+    $(".napravlyayuschie .text").text(text);
+    $(".napravlyayuschie .price").text(price);
+    getDataFurnitura();
+};
+function SelectvidkreplenianapravEnd(img, text, price) {
+    $(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
+    $(".vidKrepleniyaNapravlyayuschey .text").text(text);
+    $(".vidKrepleniyaNapravlyayuschey .price").text(price);
+    getDataFurnitura();
+};
+function SelectpovodokEnd(img, text, price) {
+    $(".povodok img").attr('src', img);
+    $(".povodok .text").text(text);
+    $(".povodok .price").text(price);
+    getDataFurnitura();
+};
+
+function SelectdovodchikEnd(img, text, price) {
+    $(".dovodchik img").attr('src', img);
+    $(".dovodchik .text").text(text);
+    $(".dovodchik .price").text(price);
+    setDataAndText("furnitura-dovodchik", text);
+
+    $(".dekorativnayaPlankaDlyaProfilya img").attr('src', "img/furnityra/0.png");
+    $(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
+    $(".dekorativnayaPlankaDlyaProfilya .price").text(0);
+    getDataFurnitura();
+};
+function SelectdekplankadlyaprofilyaEnd(img, text, price) {
+    $(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
+    $(".dekorativnayaPlankaDlyaProfilya .text").text(text);
+    $(".dekorativnayaPlankaDlyaProfilya .price").text(price);
+    getDataFurnitura();
+};
+function SelectschetochniiuplotnitelEnd(img, text, price) {
+    $(".schetochnyiyUplotnitel img").attr('src', img);
+    $(".schetochnyiyUplotnitel .text").text(text);
+    $(".schetochnyiyUplotnitel .price").text(price);
+    getDataFurnitura();
+};
+function SelectruchkaEnd(img, text, price) {
+    $(".rakovina img").attr('src', img);
+    $(".rakovina .text").text(text);
+    $(".rakovina .price").text(price);
+    getDataFurnitura();
+};
+function SelectzamokEnd(img, text, price) {
+    $(".zamok img").attr('src', img);
+    $(".zamok .text").text(text);
+    $(".zamok .price").text(price);
+    getDataFurnitura();
+};
+
+$("#furnitura-tab").on('click', '#mehanizm-sinhronizacii-select', function () {
+    if (getFromData("furnitura-razdvizh-mehanizm") != "" || !isNaN(getFromData("furnitura-razdvizh-mehanizm"))) {
+        openModalRadvizh("mehanizmsinhronizacii");
+    } else {
+        message("Выберите раздвижной механизм!");
+    }
+});
+$("#furnitura-tab").on('click', '#naprav-select', function () {
+    openModalRadvizh("naprav");
+});
+$("#furnitura-tab").on('click', '#vid-kreplenia-naprav-select', function () {
+    openModalRadvizh("vidkreplenianaprav");
+});
+$("#furnitura-tab").on('click', '#povodok-select', function () {
+    openModalRadvizh("povodok");
+});
+
+$("#furnitura-tab").on('click', '#dovodchik-select', function () {
+    openModalRadvizh("dovodchik");
+});
+$("#furnitura-tab").on('click', '#dek-planka-dlya-profilya-select', function () {
+    openModalRadvizh("dekplankadlyaprofilya");
+});
+$("#furnitura-tab").on('click', '#schetochnii-uplotnitel-select', function () {
+    openModalRadvizh("schetochniiuplotnitel");
+});
+$("#furnitura-tab").on('click', '#ruchka-select', function () {
+    var karkasName = getFromData("karkas-name");
+    if (karkasName == "Optima" || karkasName == "Optimax2" || karkasName == "Standart") {
+        openModalRadvizh("ruchka");
+    } else {
+        message("Ручки для выбраных профилей нет!");
+    }
+});
+$("#furnitura-tab").on('click', '#zamok-select', function () {
+    openModalRadvizh("zamok");
+});
+
+
+function openModalSkladnie(type) {
+    var typeSkladnoiMehanizm = getFromData("furnitura-skladnoi-mehanizm");
+    var karkasName = getFromData("karkas-name");
+    var Count = parseInt($("#TOTAL_PAINTING_ID").val());
+    var width = parseInt($("#WIDTH_SETS_ID").val());
+    if (!isNaN(Count) && !isNaN(width)) {
+        switch (type) {
+            case "mehanizmsinhronskladnie":
+                var count = 2;
+                var arr = ['src="img/furnityra/10.png"', 'img/furnityra/10.png', 'Складные механизмы', 'Stanfold до 40 кг (Россия)', 950 * Count,
+                    'src="img/furnityra/29.png"', 'img/furnityra/29.png', 'Складные механизмы', 'B-100 до 80 кг (Degon, Польша)', 490 * Count];
+                break;
+            case "petliskladnie":
+                if (typeSkladnoiMehanizm == "Stanfold до 40 кг (Россия)") {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/11.png"', 'img/furnityra/11.png', 'Петли', 'Комплектные, Россия', 50 * 3 * Count];
+                }
+                if (typeSkladnoiMehanizm == "B-100 до 80 кг (Degon, Польша)") {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/11.png"', 'img/furnityra/11.png', 'Петли', 'Комплектные, Degon Польша', 30 * 3 * Count];
+                }
+                break;
+            case "napravlyayuschieskladnie":
+                if (typeSkladnoiMehanizm == "Stanfold до 40 кг (Россия)") {
+                    var count = 2;
+                    var arr = ['src="img/furnityra/4.png"', 'img/furnityra/4.png', 'Направляющие', 'Неокрашенная, Россия', (145 * (width / 1000)) * 1.05,
+                        'src="img/furnityra/5.png"', 'img/furnityra/5.png', 'Направляющие', 'Цвет: серебро, Россия', (215 * (width / 1000)) * 1.05];
+                }
+                if (typeSkladnoiMehanizm == "B-100 до 80 кг (Degon, Польша)") {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/25.png"', 'img/furnityra/25.png', 'Направляющие', 'Неокрашенная, Degon Польша', (145 * (width / 1000)) * 1.05];
+                }
+                break;
+            case "vidkrepleniyanapravlyayuschihskladnie":
+                if (width > 3000) {
+                    var double = 2;
+                } else {
+                    var double = 1;
+                }
+                if (typeSkladnoiMehanizm == "Stanfold до 40 кг (Россия)") {
+                    var count = 2;
+                    var arr = ['src="img/furnityra/6.png"', 'img/furnityra/6.png', 'Вид крепления направляющей', 'К стене', 50 * 2 * double,
+                        'src="img/furnityra/7.png"', 'img/furnityra/7.png', 'Вид крепления направляющей', 'К потолку', 50 * 2 * double];
+                }
+                if (typeSkladnoiMehanizm == "B-100 до 80 кг (Degon, Польша)") {
+                    var count = 3;
+                    var arr = ['src="img/furnityra/6.png"', 'img/furnityra/6.png', 'Вид крепления направляющей', 'К стене', 50 * 2 * double,
+                        'src="img/furnityra/7.png"', 'img/furnityra/7.png', 'Вид крепления направляющей', 'К потолку', 50 * 2 * double,
+                        'src="img/furnityra/28.png"', 'img/furnityra/28.png', 'Вид крепления направляющей', 'Уголок крепежный, Degon Польша', 50 * 2 * double];
+                }
+                break;
+            case "dekplankadlyaprofilyaskladnie":
+                var count = 1;
+                var arr = ['src="img/furnityra/13.png"', 'img/furnityra/13.png', 'Декоративная планка для профиля', 'Цвет: серебро, Россия', ((width * 2 / 1000) * 1.1) * 320 * 1.05 + 150 * 2 + 55 * 2];
+                break;
+            case "schetochniiuplotnitelskladnie":
+                var count = 2;
+                var arr = ['src="img/furnityra/14.png"', 'img/furnityra/14.png', 'Щеточный уплотнитель', '6 мм (Серый, бронза, золото)', width / 1000 * 12,
+                    'src="img/furnityra/15.png"', 'img/furnityra/15.png', 'Щеточный уплотнитель', '12 мм (Серый, бронза, золото)', width / 1000 * 15];
+                break;
+            case "ruchkaskladnie":
+                var count = 1;
+                var arr = ['src="img/furnityra/16.png"', 'img/furnityra/16.png', 'Ручка', 'Раковина', '215'];
+                break;
+            case "kreplenieruchliskladnie":
+                var count = 1;
+                var arr = ['src="img/furnityra/18.png"', 'img/furnityra/18.png', 'Крепление ручки', 'К двери-гармошке', '50'];
+                break;
+            case "zamokskladnie":
+                var count = 1;
+                var arr = ['src="img/furnityra/17.png"', 'img/furnityra/17.png', 'Замок', 'Поворотный', '140'];
+                break;
+        }
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+        var html = $('.obshee-modal').html();
+        for (var i = 0; i < count * 5; i += 5) {
+            var templateData = {
+                img: arr[i],
+                img2: arr[i + 1],
+                text1: arr[i + 2],
+                text2: arr[i + 3],
+                price: arr[i + 4],
+                funcName: type
+            };
+            var resultHtml = makeHTMLFromTemplate(html, templateData);
+            $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+        }
+        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+    } else {
+        message("Укажите количество полотен и ширину!");
+    }
+}
+
+$("#furnitura-tab").on('click', '#mehanizm-sinhron-skladnie', function () {
+    openModalSkladnie("mehanizmsinhronskladnie");
+});
+$("#furnitura-tab").on('click', '#petli-skladnie', function () {
+    if (getFromData("furnitura-skladnoi-mehanizm") != "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
+        openModalSkladnie("petliskladnie");
+    } else {
+        message("Выберите синхронный механизм!");
+    }
+});
+$("#furnitura-tab").on('click', '#napravlyayuschie-skladnie', function () {
+    if (getFromData("furnitura-skladnoi-mehanizm") != "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
+        openModalSkladnie("napravlyayuschieskladnie");
+    } else {
+        message("Выберите синхронный механизм!");
+    }
+});
+$("#furnitura-tab").on('click', '#vid-krepleniya-napravlyayuschih-skladnie', function () {
+    if (getFromData("furnitura-skladnoi-mehanizm") != "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
+        openModalSkladnie("vidkrepleniyanapravlyayuschihskladnie");
+    } else {
+        message("Выберите синхронный механизм!");
+    }
+});
+
+$("#furnitura-tab").on('click', '#dek-planka-dlya-profilya-skladnie', function () {
+    openModalSkladnie("dekplankadlyaprofilyaskladnie");
+});
+$("#furnitura-tab").on('click', '#schetochnii-uplotnitel-skladnie', function () {
+    openModalSkladnie("schetochniiuplotnitelskladnie");
+});
+$("#furnitura-tab").on('click', '#ruchka-skladnie', function () {
+    openModalSkladnie("ruchkaskladnie");
+});
+$("#furnitura-tab").on('click', '#kreplenie-ruchli-skladnie', function () {
+    openModalSkladnie("kreplenieruchliskladnie");
+});
+$("#furnitura-tab").on('click', '#zamok-skladnie', function () {
+    openModalSkladnie("zamokskladnie");
+});
+
+function SelectmehanizmsinhronskladnieEnd(img, text, price) {
+    $(".setSkladnyieMehanizmyi img").attr('src', img);
+    $(".setSkladnyieMehanizmyi .text").text(text);
+    $(".setSkladnyieMehanizmyi .price").text(price);
+    getDataFurnitura();
+    setDataAndText("furnitura-skladnoi-mehanizm", text);
+};
+function SelectpetliskladnieEnd(img, text, price) {
+    $(".petli-skladnie img").attr('src', img);
+    $(".petli-skladnie .text").text(text);
+    $(".petli-skladnie .price").text(price);
+    getDataFurnitura();
+};
+function SelectnapravlyayuschieskladnieEnd(img, text, price) {
+    $(".napravlyayuschie-skladnie img").attr('src', img);
+    $(".napravlyayuschie-skladnie .text").text(text);
+    $(".napravlyayuschie-skladnie .price").text(price);
+    getDataFurnitura();
+};
+function SelectvidkrepleniyanapravlyayuschihskladnieEnd(img, text, price) {
+    $(".vidKrepleniya-skladnie img").attr('src', img);
+    $(".vidKrepleniya-skladnie .text").text(text);
+    $(".vidKrepleniya-skladnie .price").text(price);
+    getDataFurnitura();
+};
+
+function SelectdekplankadlyaprofilyaskladnieEnd(img, text, price) {
+    $(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
+    $(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
+    $(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
+    getDataFurnitura();
+};
+function SelectschetochniiuplotnitelskladnieEnd(img, text, price) {
+    $(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
+    $(".schetochnyiyUplotnitel-skladnie .text").text(text);
+    $(".schetochnyiyUplotnitel-skladnie .price").text(price);
+    getDataFurnitura();
+};
+function SelectruchkaskladnieEnd(img, text, price) {
+    $(".rakovina-skladnie img").attr('src', img);
+    $(".rakovina-skladnie .text").text(text);
+    $(".rakovina-skladnie .price").text(price);
+    getDataFurnitura();
+};
+function SelectkreplenieruchliskladnieEnd(img, text, price) {
+    $(".kreplenieRuchki-skladnie img").attr('src', img);
+    $(".kreplenieRuchki-skladnie .text").text(text);
+    $(".kreplenieRuchki-skladnie .price").text(price);
+    getDataFurnitura();
+};
+function SelectzamokskladnieEnd(img, text, price) {
+    $(".zamokSkladnyie-skladnie img").attr('src', img);
+    $(".zamokSkladnyie-skladnie .text").text(text);
+    $(".zamokSkladnyie-skladnie .price").text(price);
+    getDataFurnitura();
+};
+
+
+function openModalMobil(type) {
+    var karkasName = getFromData("karkas-name");
+    var Count = parseInt($("#TOTAL_PAINTING_ID").val());
+    var width = parseInt($("#WIDTH_SETS_ID").val());
+    var height = parseInt($("#HIGHT_SETS_ID").val());
+    if (!isNaN(Count) && !isNaN(width) && karkasName != "") {
+        switch (type) {
+            case "nozhkimobilnie":
+                var count = 5;
+                var arr = ['src="img/furnityra/19.png"', 'img/furnityra/19.png', 'Ножки', 'Euroshop/Standart - круглая регулируемая', 42 * 2 * Count,
+                    'src="img/furnityra/19.png"', 'img/furnityra/19.png', 'Ножки', 'Optima - круглая регулируемая', 42 * 2 * Count,
+                    'src="img/furnityra/20.png"', 'img/furnityra/20.png', 'Ножки', 'Optima - Широкая двухсторонняя', 275 * 2 * Count,
+                    'src="img/furnityra/19.png"', 'img/furnityra/19.png', 'Ножки', 'M. Light - круглая регулируемая', 42 * 2 * Count,
+                    'src="img/furnityra/21.png"', 'img/furnityra/21.png', 'Ножки', 'M. Light - Широкая двухсторонняя', 450 * 2 * Count];
+                break;
+            case "stoykimobilnie" :
+                if (karkasName == 'Euroshop' || karkasName == 'EuroshopLite') {
+                    var count = 5;
+                    var arr = ['src="img/furnityra/mobilnyie/1.png"', 'img/furnityra/mobilnyie/1.png', 'Стойки', 'Стойка скругленная 90 °', (Count - 1) * height / 1000 * 141,
+                        'src="img/furnityra/mobilnyie/2.png"', 'img/furnityra/mobilnyie/2.png', 'Стойки', 'Стойка 135 °', (Count - 1) * height / 1000 * 136,
+                        'src="img/furnityra/mobilnyie/3.png"', 'img/furnityra/mobilnyie/3.png', 'Стойки', 'Стойка угловая 90 °', (Count - 1) * height / 1000 * 159,
+                        'src="img/furnityra/mobilnyie/4.png"', 'img/furnityra/mobilnyie/4.png', 'Стойки', 'Стойка Т-образная', (Count - 1) * height / 1000 * 193,
+                        'src="img/furnityra/mobilnyie/5.png"', 'img/furnityra/mobilnyie/5.png', 'Стойки', 'Стойка Т-образная скругленная', (Count - 1) * height / 1000 * 272];
+                } else if (karkasName == 'Standart' || karkasName == 'StandartStoika') {
+                    var count = 4;
+                    var arr = ['src="img/furnityra/mobilnyie/7.png"', 'img/furnityra/mobilnyie/6.png', 'Стойки', 'Стойка четырёхгранная', (Count - 1) * height / 1000 * 184,
+                        'src="img/furnityra/mobilnyie/7.png"', 'img/furnityra/mobilnyie/7.png', 'Стойки', 'Стойка 90 °', (Count - 1) * height / 1000 * 200,
+                        'src="img/furnityra/mobilnyie/8.png"', 'img/furnityra/mobilnyie/8.png', 'Стойки', 'Стойка Т-образная', (Count - 1) * height / 1000 * 184,
+                        'src="img/furnityra/mobilnyie/9.png"', 'img/furnityra/mobilnyie/9.png', 'Стойки', 'Стойка три паза', (Count - 1) * height / 1000 * 211];
+                } else if (karkasName == 'Tur') {
+                    var count = 4;
+                    var arr = ['src="img/furnityra/mobilnyie/10.png"', 'img/furnityra/mobilnyie/10.png', 'Стойки', 'Стойка угловая трехгранная', (Count - 1) * height / 1000 * 87,
+                        'src="img/furnityra/mobilnyie/11.png"', 'img/furnityra/mobilnyie/11.png', 'Стойки', 'Стойка угловая', (Count - 1) * height / 1000 * 116,
+                        'src="img/furnityra/mobilnyie/12.png"', 'img/furnityra/mobilnyie/12.png', 'Стойки', 'Стойка восьмигранная', (Count - 1) * height / 1000 * 293,
+                        'src="img/furnityra/mobilnyie/13.png"', 'img/furnityra/mobilnyie/13.png', 'Стойки', 'Угловая пятигранная', (Count - 1) * height / 1000 * 166];
+                } else if (karkasName == 'Optima' || karkasName == 'OptimaLite' || karkasName == 'Optimax2') {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/mobilnyie/14.png"', 'img/furnityra/mobilnyie/14.png', 'Стойки', 'Стойка угловая 90 °', (Count - 1) * height / 1000 * 304];
+                } else if (karkasName == 'Statusx1' || karkasName == 'Statusx2') {
+                    var count = 2;
+                    var arr = ['src="img/furnityra/mobilnyie/15.png"', 'img/furnityra/mobilnyie/15.png', 'Стойки', 'Стойка поворотная односторонняя 90 °', (Count - 1) * height / 1000 * 640,
+                        'src="img/furnityra/mobilnyie/16.png"', 'img/furnityra/mobilnyie/16.png', 'Стойки', 'Стойка поворотная двухсторонняя 90 °', (Count - 1) * height / 1000 * 550];
+                } else if (karkasName == 'MobyLight') {
+                    var count = 1;
+                    var arr = ['src="img/furnityra/mobilnyie/17.png"', 'img/furnityra/mobilnyie/17.png', 'Мобилайт стойка', 0];
+                } else if (karkasName == 'Base') {
+                    var count = 4;
+                    var arr = ['src="img/furnityra/mobilnyie/18.png"', 'img/furnityra/mobilnyie/18.png', 'Стойки', 'Столб три грани', (Count - 1) * height / 1000 * 783,
+                        'src="img/furnityra/mobilnyie/19.png"', 'img/furnityra/mobilnyie/19.png', 'Стойки', 'Угловой столб дуга', (Count - 1) * height / 1000 * 701,
+                        'src="img/furnityra/mobilnyie/20.png"', 'img/furnityra/mobilnyie/20.png', 'Стойки', 'Столб универсальный', (Count - 1) * height / 1000 * 617];
+                }
+                break;
+            case "tipSoedineniyaPolotenmobilnie":
+                var count = 1;
+                var arr = ['src="img/furnityra/11.png"', 'img/furnityra/11.png', 'Тип соединения полотен', 'Петли', 50 * 3 * Count];
+                break;
+        }
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+        var html = $('.obshee-modal').html();
+        for (var i = 0; i < count * 5; i += 5) {
+            var templateData = {
+                img: arr[i],
+                img2: arr[i + 1],
+                text1: arr[i + 2],
+                text2: arr[i + 3],
+                price: arr[i + 4],
+                funcName: type
+            };
+            var resultHtml = makeHTMLFromTemplate(html, templateData);
+            $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+        }
+        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+    } else {
+        message("Укажите количество полотен, ширину и профиль!");
+    }
+}
+
+$("#furnitura-tab").on('click', '#nozhki-mobilnie', function () {
+    openModalMobil("nozhkimobilnie");
+});
+$("#furnitura-tab").on('click', '#stoyki-mobilnie', function () {
+    var Count = parseInt($("#TOTAL_PAINTING_ID").val());
+    if (Count > 1) {
+        openModalMobil("stoykimobilnie");
+    } else {
+        message("Количество полотен должно быть минимум 2!");
+    }
+});
+$("#furnitura-tab").on('click', '#tipSoedineniyaPoloten-mobilnie', function () {
+    openModalMobil("tipSoedineniyaPolotenmobilnie");
+});
+
+function SelectnozhkimobilnieEnd(img, text, price) {
+    $(".nozhki-mobil img").attr('src', img);
+    $(".nozhki-mobil .text").text(text);
+    $(".nozhki-mobil .price").text(price);
+    getDataFurnitura();
+};
+function SelectkstoykimobilnieEnd(img, text, price) {
+    $(".stoyki-mobil img").attr('src', img);
+    $(".stoyki-mobil .text").text(text);
+    $(".stoyki-mobil .price").text(price);
+    getDataFurnitura();
+};
+function SelecttipSoedineniyaPolotenmobilnieEnd(img, text, price) {
+    $(".tipSoedineniyaPoloten-mobil img").attr('src', img);
+    $(".tipSoedineniyaPoloten-mobil .text").text(text);
+    $(".tipSoedineniyaPoloten-mobil .price").text(price);
+    getDataFurnitura();
+};
 
 // ТАБ ПРОФИЛЬ - Выбор декора для профиля //
-$('#btn-decor').click(function () {
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append($('.decor').html());
-});
-
-$('#btn-ral').click(function () {
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-    var html = $('.rai').html();
-    var templateData = {
-        type: "color"
-    };
-    var resultHtml = makeHTMLFromTemplate(html, templateData);
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
-});
-
-$('#btn-anod').click(function () {
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-    var html = $('.rai').html();
-    var templateData = {
-        type: "anod"
-    };
-    var resultHtml = makeHTMLFromTemplate(html, templateData);
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
-});
 
 $('#btn-dekor-profil').click(function () {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
@@ -427,16 +975,142 @@ $('#btn-dekor-profil').click(function () {
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 });
 
-$('#btn-uplotnitel').click(function () {
+$('#KREPLENIE-BLOCK').click(function () {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    var html = $('.uplotnitel-modal').html();
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html);
+    var html = $('.kreplenie-modal').html();
+    var karkasName = getFromData('karkas-name');
+    if (karkasName == "Euroshop" || karkasName == "EuroshopLite") {
+        var count = 2;
+        var arr = ['src="img/addontoprofil/Euroshop/kreplenie-otkritoe.png"', 'img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Вид крепления', 'Открытое', 'E401/E401', '35',
+            'src="img/addontoprofil/Euroshop/kreplenie-skritoe.png"', 'img/addontoprofil/Euroshop/kreplenie-skritoe.png', 'Вид крепления', 'Скрытое', 'E401/E401', '186'];
+    } else {
+        var count = 1;
+        var arr = ['src="img/addontoprofil/Euroshop/kreplenie-otkritoe.png"', 'img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Вид крепления', 'Открытое', 'E401/E401', '35'];
+    }
+    for (var i = 0; i < count * 6; i += 6) {
+        var templateData = {
+            img: arr[i],
+            img2: arr[i + 1],
+            text1: arr[i + 2],
+            text2: arr[i + 3],
+            text3: arr[i + 4],
+            price: arr[i + 5]
+        };
+        var resultHtml = makeHTMLFromTemplate(html, templateData);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+    }
+
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 });
 
+$('#ZAGLUSHKA-V-PAZ-BLOCK').click(function () {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    var html = $('.zaglushka-modal').html();
+    var count = 2;
+    var arr = ['src="img/addontoprofil/Euroshop/zaglushka-dek-v-paz.png"', 'img/addontoprofil/Euroshop/zaglushka-dek-v-paz.png', 'Заглушка в паз', 'Заглушка декоративная', 'K403', '24.61', '24.61', '24.61',
+        'src="img/addontoprofil/Euroshop/zaglushka-dek-v-paz-alternativa.png"', 'img/addontoprofil/Euroshop/zaglushka-dek-v-paz-alternativa.png', 'Заглушка в паз', 'Заглушка декоративная', 'K404', '20.54', '20.54', '20.54'];
+    for (var i = 0; i < count * 8; i += 8) {
+        var templateData = {
+            img: arr[i],
+            img2: arr[i + 1],
+            text1: arr[i + 2],
+            text2: arr[i + 3],
+            text3: arr[i + 4],
+            price1: arr[i + 5],
+            price2: arr[i + 6],
+            price3: arr[i + 7],
+            price: arr[i + 7]
+        };
+        var resultHtml = makeHTMLFromTemplate(html, templateData);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+    }
+
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+});
+
+$('#ZAGLUSHKA-TORCEVAYA-BLOCK').click(function () {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    var html = $('.zaglushka-torcevaya-modal').html();
+    var count = 1;
+    var arr = ['src="img/addontoprofil/Euroshop/zaglushka-dek.png"', 'img/addontoprofil/Euroshop/zaglushka-dek.png', 'Заглушка торцевая', 'Заглушка торцевая', 'A14', 'белый', 'серый', 'чёрный'];
+    for (var i = 0; i < count * 8; i += 8) {
+        var templateData = {
+            img: arr[i],
+            img2: arr[i + 1],
+            text1: arr[i + 2],
+            text2: arr[i + 3],
+            text3: arr[i + 4],
+            price1: arr[i + 5],
+            price2: arr[i + 6],
+            price3: arr[i + 7],
+        };
+        var resultHtml = makeHTMLFromTemplate(html, templateData);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+    }
+
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+});
+
+$('#UPLOTNITEL-BLOCK').click(function () {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    var html = $('.uplotnitel-modal').html();
+    var count = 2;
+    var arr = ['src="img/addontoprofil/Euroshop/uplotnitel-2.png"', 'img/addontoprofil/Euroshop/uplotnitel-2.png', 'Уплотнитель', 'Уплотнитель', 'K402', '18.05', '18.05', '18.05', '18.05',
+        'src="img/addontoprofil/Euroshop/uplotnitel.png"', 'img/addontoprofil/Euroshop/uplotnitel.png', 'Уплотнитель', 'Уплотнитель', 'K401', '41.56', '49.89', '58.90', '58.90'];
+    for (var i = 0; i < count * 9; i += 9) {
+        var templateData = {
+            img: arr[i],
+            img2: arr[i + 1],
+            text1: arr[i + 2],
+            text2: arr[i + 3],
+            text3: arr[i + 4],
+            prozrachnii: arr[i + 5],
+            serii: arr[i + 6],
+            belii: arr[i + 7],
+            chernii: arr[i + 8],
+
+        };
+        var resultHtml = makeHTMLFromTemplate(html, templateData);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+    }
+
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+});
+
+function SelectKreplenieEnd(img, text1, text2, text3, price) {
+    setDataAndText('karkas-vid-krepleniya', price);
+    $("#kreplenie-img").attr('src', img);
+    $("#kreplenie-text1").text(text2);
+    $("#kreplenie-text2").text(text3);
+    $("#kreplenie-price").text(price);
+};
+
+function SelectZaglushkaEnd(img, text1, text2, text3, price, color) {
+    setDataAndText('karkas-tsvet-zaglushki', price);
+    $("#zaglushka-v-paz-img").attr('src', img);
+    $("#zaglushka-v-paz-text2").text(text3);
+    $("#zaglushka-v-paz-text3").text(color);
+    $("#zaglushka-v-paz-price").text(price);
+};
+
+function SelectZaglushkaTorcevayaEnd(img, text1, text2) {
+    setDataAndText('karkas-tsvet-zaglushki-tortsevoy', text2);
+    $("#zaglushka-torcevaya-img").attr('src', img);
+    $("#zaglushka-torcevaya-text1").text(text1);
+    $("#zaglushka-torcevaya-text2").text(text2);
+};
+
+function SelectUplotnitelEnd(img, text1, text2, price) {
+    setDataAndText('karkas-tsvet-uplotnitelya', price);
+    $("#uplotnitel-img").attr('src', img);
+    $("#uplotnitel-text1").text(text1);
+    $("#uplotnitel-text2").text(text2);
+    $("#uplotnitel-price").text(price);
+};
+
 $(".add-material-block-past").on('click', '#open-material-btn', function () {
     var polotnoId = getFromData('id');
-    var materialId = $( this ).parent().parent().parent().attr('data-material-el-id');
+    var materialId = $(this).parent().parent().parent().attr('data-material-el-id');
     var html = $('.napolnenie-left-tab').html();
     var ploschad = getFromData('material-' + materialId + '-ploschad');
     var kol = $('*[data-material-el-id="' + materialId + '"]').find('.tab-napolnenie-kollichestvo').val();
@@ -473,24 +1147,41 @@ $(".add-material-block-past").on('click', '#open-material-btn', function () {
     var resultHtml = makeHTMLFromTemplate(html, templateData);
 
 
-
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtml);
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 });
 
-function SelectMaterialEnd(name,number){
+function SelectMaterialEnd(name, number) {
     setDataAndText('material-' + number + '-type', name);
     napolnenieImg(name, number);
 }
 
-$('body').on("change",function () {
+$('body').on("change", function () {
     DekorRePrice2();
+    PriceForKarkas();
 });
 
-function DekorRePrice2(){
+function PriceForKarkas() {
+    var karkasPrice = parseInt(getFromData('karkas-price'));
+    var horizontalPerPrice = parseInt(getFromData('horizontal-pereochki-price'));
+    var vertikalnuePerPrice = parseInt(getFromData('vertikalnue-pereochki-price'));
+    if (karkasPrice < 0 || karkasPrice == "" || isNaN(karkasPrice)) {
+        karkasPrice = 0;
+    }
+    if (horizontalPerPrice < 0 || horizontalPerPrice == "" || isNaN(horizontalPerPrice)) {
+        horizontalPerPrice = 0;
+    }
+    if (vertikalnuePerPrice < 0 || vertikalnuePerPrice == "" || isNaN(vertikalnuePerPrice)) {
+        vertikalnuePerPrice = 0;
+    }
+    var sum = karkasPrice + horizontalPerPrice + vertikalnuePerPrice;
+    $(".TAB-PROFIL-KARKAS-PRICE").text(sum);
+}
+
+function DekorRePrice2() {
     var typeAndText = $("#pokraskaTypeAndName").val();
-    var data = explode(".",typeAndText);
+    var data = explode(".", typeAndText);
     var type = data[0];
     var img = data[1];
     var TotalPrice = 0;
@@ -545,12 +1236,12 @@ function DekorRePrice2(){
                 var countPerV = parseInt($('*[data-id=' + num + ']').find('.vertikalnue-pereochki-count').text());
                 if (countPerH == "0" || isNaN(countPerH) || countPerH == null || countPerH < 1) {
                     var sumPerH = 0;
-                }else{
+                } else {
                     var sumPerH = (sizeW * 0.001 * priceKarkas * countPerH);
                 }
                 if (countPerV == "0" || isNaN(countPerV) || countPerV == null || countPerV < 1) {
                     var sumPerV = 0;
-                }else{
+                } else {
                     var sumPerV = (sizeH * 0.001 * priceKarkas * countPerV);
                 }
                 TotalPrice = TotalPrice + ((((sizeW + sizeH) * 0.002) * priceKarkas) + sumPerH + sumPerV);
@@ -678,8 +1369,12 @@ function DekorRePrice2(){
             }
         }
     }
-
+    var ploshad = (sizeW * sizeH) / 1000000;
+    if (isNaN(ploshad)) {
+        ploshad = 0;
+    }
     $(".TAB-POKRASKA-PRICE").text(parseInt(TotalPrice));
+    $(".TAB-POKRASKA-PLOSHAD").text(parseInt(ploshad));
     setDataAndText('decor-price', parseInt(TotalPrice));
 
 }
@@ -754,12 +1449,12 @@ function DekorRePrice(img, type) {
                 var countPerV = parseInt($('*[data-id=' + num + ']').find('.vertikalnue-pereochki-count').text());
                 if (countPerH == "0" || isNaN(countPerH) || countPerH == null || countPerH < 1) {
                     var sumPerH = 0;
-                }else{
+                } else {
                     var sumPerH = (sizeW * 0.001 * priceKarkas * countPerH);
                 }
                 if (countPerV == "0" || isNaN(countPerV) || countPerV == null || countPerV < 1) {
                     var sumPerV = 0;
-                }else{
+                } else {
                     var sumPerV = (sizeH * 0.001 * priceKarkas * countPerV);
                 }
                 TotalPrice = TotalPrice + ((((sizeW + sizeH) * 0.002) * priceKarkas) + sumPerH + sumPerV);
@@ -1407,7 +2102,7 @@ function setNapolnenieElTolschinaShow(napolnenieType, id) {
 
 // ТАБ НАПОЛНЕНИЕ картинка //
 function napolnenieImg(name, id) {
-    switch (name){
+    switch (name) {
         case "LDSP":
             var img = 11;
             break;
@@ -1556,707 +2251,9 @@ function loadFurnitura() {
 loadFurnitura();
 $("#TYPE_BAFFLE_ID").change(function () {
     loadFurnitura();
+    getDataFurnitura();
 });
 //  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - Раздвижные механизмы//
-function loadRazdvizhnyieMehanizmyiPrice(t) {
-    var id = $(t).val();
-    if (id == 0) {
-        $('.razdvizhnyie-mehanizmyi .price').text(0);
-        $('.razdvizhnyie-mehanizmyi img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.razdvizhnyie-mehanizmyi .price').text(475 * $('#TOTAL_PAINTING_ID').val());
-        $('.razdvizhnyie-mehanizmyi img').attr('src', 'img/furnityra/1.jpg');
-    } else if (id == 2) {
-        $('.razdvizhnyie-mehanizmyi .price').text(830 * $('#TOTAL_PAINTING_ID').val());
-        $('.razdvizhnyie-mehanizmyi img').attr('src', 'img/furnityra/1.jpg');
-    } else if (id == 3) {
-        $('.razdvizhnyie-mehanizmyi .price').text(650 * $('#TOTAL_PAINTING_ID').val());
-        $('.razdvizhnyie-mehanizmyi img').attr('src', 'img/furnityra/22.jpg');
-    } else if (id == 4) {
-        $('.razdvizhnyie-mehanizmyi .price').text(705 * $('#TOTAL_PAINTING_ID').val());
-        $('.razdvizhnyie-mehanizmyi img').attr('src', 'img/furnityra/23.jpg');
-    } else if (id == 5) {
-        $('.razdvizhnyie-mehanizmyi .price').text(500 * $('#TOTAL_PAINTING_ID').val());
-        $('.razdvizhnyie-mehanizmyi img').attr('src', 'img/furnityra/24.jpg');
-    } else if (id == 6) {
-        $('.razdvizhnyie-mehanizmyi .price').text(2000 * $('#TOTAL_PAINTING_ID').val());
-        $('.razdvizhnyie-mehanizmyi img').attr('src', 'img/furnityra/30.jpg');
-    }
-    loadMehanizmSinhronizatsii(id);
-    loadNapravlyayuschie(id);
-    loadVidKrepleniyaNapravlyayuschie(id);
-    loadPovodok(id);
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - механизмы синхронизации //
-function loadMehanizmSinhronizatsii(id) {
-    $(".mehanizm-sinhronizatsii select").html('');
-    if (id == 0) {
-        $(".mehanizm-sinhronizatsii select").prepend($('' +
-            '<option value="0">Нет</option>'
-        ));
-        $('.mehanizm-sinhronizatsii .price').text(0);
-    } else if (id == 1 || id == 2 || id == 3 || id == 4 || id == 5) {
-        $(".mehanizm-sinhronizatsii select").prepend($('' +
-            '<option value="1">Нет</option>' +
-            '<option value="2">Синхронный</option>'
-        ));
-        $('.mehanizm-sinhronizatsii .price').text(0);
-    } else if (id == 6) {
-        $(".mehanizm-sinhronizatsii select").prepend($('' +
-            '<option value="1">Нет</option>' +
-            '<option value="2" >Синхронный</option>' +
-            '<option value="3">D-80 Synchro, Ducasse</option>' +
-            '<option value="4">D-80 Telescopic, Ducasse</option>'
-        ));
-        $('.mehanizm-sinhronizatsii .price').text(0);
-    }
-}
-
-function setMehanizmSinhronizatsii(t) {
-    var id = $(t).val();
-    if (id == 0 || id == 1) {
-        $('.mehanizm-sinhronizatsii .price').text(0);
-        $('.mehanizm-sinhronizatsii img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 2) {
-        $('.mehanizm-sinhronizatsii .price').text(1590 * $('#TOTAL_PAINTING_ID').val() / 2);
-        $('.mehanizm-sinhronizatsii img').attr('src', 'img/furnityra/3.jpg');
-    } else if (id == 3) {
-        $('.mehanizm-sinhronizatsii .price').text(6320 * $('#TOTAL_PAINTING_ID').val() / 2);
-        $('.mehanizm-sinhronizatsii img').attr('src', 'img/furnityra/37.jpg');
-    } else if (id == 4) {
-        $('.mehanizm-sinhronizatsii .price').text(6320 * $('#TOTAL_PAINTING_ID').val() / 2);
-        $('.mehanizm-sinhronizatsii img').attr('src', 'img/furnityra/37.jpg');
-    }
-};
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - напрявляющие //
-function loadNapravlyayuschie(id) {
-    $(".napravlyayuschie select").html('');
-    if (id == 1 || id == 2) {
-        $(".napravlyayuschie select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="1">Неокрашенная, Россия</option>' +
-            '<option value="2">Цвет: серебро, Россия</option>'
-        ));
-        // $('.mehanizm-sinhronizatsii .price').text(0);
-    } else if (id == 3 || id == 4) {
-        $(".napravlyayuschie select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="3">Неокрашенная, Degon Польша</option>'
-        ));
-    } else if (id == 5) {
-        $(".napravlyayuschie select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="4">Неокрашенная, Китай</option>'
-        ));
-    } else if (id == 6) {
-        $(".napravlyayuschie select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="5">Направляющия U-21, Ducasse Испания</option>'
-        ));
-    }
-}
-
-function setNapravlyayuschie() {
-    var kol = $('.napravlyayuschie input').val();
-    var id = $(".napravlyayuschie select").val();
-    var allWidth = parseInt($("#WIDTH_SETS_ID").val());
-
-
-    if (id == 0) {
-        var res = 0;
-        var img = 0;
-    } else if (id == 1) {
-        var res = (245 * allWidth * 2 / 1000) * 1.05;
-        var img = 4;
-    } else if (id == 2) {
-        var res = (315 * allWidth * 2 / 1000) * 1.05;
-        var img = 5;
-    } else if (id == 3) {
-        var res = (245 * allWidth * 2 / 1000) * 1.05;
-        var img = 25;
-    } else if (id == 4) {
-        var res = (400 * allWidth * 2 / 1000) * 1.05;
-        var img = 26;
-    } else if (id == 5) {
-        var res = (275 * allWidth * 2 / 1000) * 1.05;
-        var img = 26;
-    }
-    console.log(245 * allWidth * 2 / 1000);
-    $('.napravlyayuschie img').attr('src', 'img/furnityra/' + img + '.jpg');
-    $('.napravlyayuschie .price').text(parseInt(res * kol));
-
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - напрявляющие //
-function loadVidKrepleniyaNapravlyayuschie(id) {
-    $(".vidKrepleniyaNapravlyayuschey select").html('');
-    if (id == 1 || id == 2) {
-        $(".vidKrepleniyaNapravlyayuschey select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="1" >К стене, Россия</option>' +
-            '<option value="2">К потолку, Россия</option>'
-        ));
-    } else if (id == 3 || id == 4 || id == 5) {
-        $(".vidKrepleniyaNapravlyayuschey select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="3" >Уголок крепежный, Degon Польша и Китайя</option>'
-        ));
-    } else if (id == 6) {
-        $(".vidKrepleniyaNapravlyayuschey select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="4" >Кронштейн, Ducasse Испания</option>' +
-            '<option value="5">Кронштейн широкий, Ducasse Испания</option>'
-        ));
-    }
-}
-
-function setVidKrepleniyaNapravlyayuschie() {
-    var id = $(".vidKrepleniyaNapravlyayuschey select").val();
-    if (id == 0) {
-        $('.vidKrepleniyaNapravlyayuschey .price').text(0);
-        $('.vidKrepleniyaNapravlyayuschey img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.vidKrepleniyaNapravlyayuschey .price').text(50);
-        $('.vidKrepleniyaNapravlyayuschey img').attr('src', 'img/furnityra/6.jpg');
-    } else if (id == 2) {
-        $('.vidKrepleniyaNapravlyayuschey .price').text(50);
-        $('.vidKrepleniyaNapravlyayuschey img').attr('src', 'img/furnityra/7.jpg');
-    } else if (id == 3) {
-        $('.vidKrepleniyaNapravlyayuschey .price').text(50);
-        $('.vidKrepleniyaNapravlyayuschey img').attr('src', 'img/furnityra/28.jpg');
-    } else if (id == 4) {
-        $('.vidKrepleniyaNapravlyayuschey .price').text(50);
-        $('.vidKrepleniyaNapravlyayuschey img').attr('src', 'img/furnityra/33.jpg');
-    } else if (id == 5) {
-        $('.vidKrepleniyaNapravlyayuschey .price').text(680);
-        $('.vidKrepleniyaNapravlyayuschey img').attr('src', 'img/furnityra/34.jpg');
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - проводок //
-function loadPovodok(id) {
-    $(".povodok select").html('');
-    if (id == 1 || id == 2 || id == 3 || id == 4 || id == 5) {
-        $(".povodok select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="1" >Белый</option>' +
-            '<option value="2">Коричневый</option>'
-        ));
-    } else if (id == 6) {
-        $(".povodok select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="3" >Поводок, Ducasse Испания</option>'
-        ));
-    }
-}
-
-function setPovodok() {
-    var id = $(".povodok select").val();
-    if (id == 0) {
-        $('.povodok .price').text(0);
-        $('.povodok img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.povodok .price').text(20 * $('#TOTAL_PAINTING_ID').val());
-        $('.povodok img').attr('src', 'img/furnityra/8.jpg');
-    } else if (id == 2) {
-        $('.povodok .price').text(20 * $('#TOTAL_PAINTING_ID').val());
-        $('.povodok img').attr('src', 'img/furnityra/9.jpg');
-    } else if (id == 3) {
-        $('.povodok .price').text(110 * $('#TOTAL_PAINTING_ID').val());
-        $('.povodok img').attr('src', 'img/furnityra/36.jpg');
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Складная перегородка - Складные механизмы //
-function setSkladnyieMehanizmyi() {
-    var id = $('.setSkladnyieMehanizmyi select').val();
-    var ps = checkTheErrorNumber($('#POLOVINCHATAYA_KOL').val());
-    var p = checkTheErrorNumber($('#TOTAL_PAINTING_ID').val());
-
-    if (id == 0) {
-        $('.setSkladnyieMehanizmyi .price').text(0);
-        $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.setSkladnyieMehanizmyi .price').text(950 * ( p - ps ));
-        $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/10.jpg');
-    } else if (id == 2) {
-        $('.setSkladnyieMehanizmyi .price').text(490 * ( p - ps ));
-        $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
-    }
-
-
-    // if( $( '#POLOVINCHATAYA_CHECKBOX' ).prop( 'checked' ) == false ) {
-    //     if (id == 0) {
-    //         $('.setSkladnyieMehanizmyi .price').text(0);
-    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/0.jpg');
-    //     } else if (id == 1) {
-    //         $('.setSkladnyieMehanizmyi .price').text(950 * $('#TOTAL_PAINTING_ID').val());
-    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/10.jpg');
-    //     } else if (id == 2) {
-    //         $('.setSkladnyieMehanizmyi .price').text(490 * $('#TOTAL_PAINTING_ID').val());
-    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
-    //     }
-    // } else {
-    //     if (id == 0) {
-    //         $('.setSkladnyieMehanizmyi .price').text(0);
-    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/0.jpg');
-    //     } else if (id == 1) {
-    //         $('.setSkladnyieMehanizmyi .price').text(950 * ( checkTheErrorNumber( $('#TOTAL_PAINTING_ID').val() ) - checkTheErrorNumber( $( '#POLOVINCHATAYA_KOL' ).val() ) ) );
-    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/10.jpg');
-    //     } else if (id == 2) {
-    //         $('.setSkladnyieMehanizmyi .price').text(490 * checkTheErrorNumber( ( $('#TOTAL_PAINTING_ID').val() ) - checkTheErrorNumber( $( '#POLOVINCHATAYA_KOL' ).val() ) ) );
-    //         $('.setSkladnyieMehanizmyi img').attr('src', 'img/furnityra/29.jpg');
-    //     }
-    // }
-    loadPetli(id);
-    loadNapravlyayuschie(id);
-    loadVidKrepleniya(id);
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Складная перегородка - Петли // petli
-function loadPetli(id) {
-    $(".petli select").html('');
-    if (id == 1) {
-        $(".petli select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="1" >Комплектные, Россия</option>'
-        ));
-    } else if (id == 2) {
-        $(".petli select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="2" >Комплектные, Degon Польша</option>'
-        ));
-    }
-}
-
-function setPetli() {
-    var id = $('.petli select').val();
-    if (id == 0) {
-        $('.petli .price').text(0);
-        $('.petli img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.petli .price').text(50 * 3 * $('#TOTAL_PAINTING_ID').val());
-        $('.petli img').attr('src', 'img/furnityra/11.jpg');
-    } else if (id == 2) {
-        $('.petli .price').text(30 * 3 * $('#TOTAL_PAINTING_ID').val());
-        $('.petli img').attr('src', 'img/furnityra/11.jpg');
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Складная перегородка - Петли // napravlyayuschie
-function loadNapravlyayuschie(id) {
-    $(".napravlyayuschie select").html('');
-    if (id == 1) {
-        $(".napravlyayuschie select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="1" >Неокрашенная, Россия</option>' +
-            '<option value="2">Цвет: серебро, Россия</option>'
-        ));
-    } else if (id == 2) {
-        $(".napravlyayuschie select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="3" >Неокрашенная, Degon Польша</option>'
-        ));
-    }
-}
-
-
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Складная перегородка - Вид крепления // vidKrepleniya
-function loadVidKrepleniya(id) {
-    $(".vidKrepleniya select").html('');
-    if (id == 1) {
-        $(".vidKrepleniya select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="1" >К стене</option>' +
-            '<option value="2">К потолку</option>'
-        ));
-    } else if (id == 2) {
-        $(".vidKrepleniya select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="1" >К стене</option>' +
-            '<option value="2">К потолку</option>' +
-            '<option value="3">Уголок крепежный, Degon Польша</option>'
-        ));
-    }
-}
-
-function setVidKrepleniya() {
-    var id = $('.vidKrepleniya select').val();
-    if (id == 0) {
-        $('.vidKrepleniya .price').text(0);
-        $('.vidKrepleniya img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.vidKrepleniya .price').text(50);
-        $('.vidKrepleniya img').attr('src', 'img/furnityra/6.jpg');
-    } else if (id == 2) {
-        $('.vidKrepleniya .price').text(50);
-        $('.vidKrepleniya img').attr('src', 'img/furnityra/7.jpg');
-    } else if (id == 3) {
-        $('.vidKrepleniya .price').text(50);
-        $('.vidKrepleniya img').attr('src', 'img/furnityra/28.jpg');
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Мобильная перегородка - nozhki
-function setNozhki() {
-    var id = $('.nozhki select').val();
-    if (id == 0) {
-        $('.nozhki .price').text(0);
-        $('.nozhki img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.nozhki .price').text(42 * 2 * $('#TOTAL_PAINTING_ID').val());
-        $('.nozhki img').attr('src', 'img/furnityra/19.jpg');
-    } else if (id == 2) {
-        $('.nozhki .price').text(42 * 2 * $('#TOTAL_PAINTING_ID').val());
-        $('.nozhki img').attr('src', 'img/furnityra/19.jpg');
-    } else if (id == 3) {
-        $('.nozhki .price').text(275 * 2 * $('#TOTAL_PAINTING_ID').val());
-        $('.nozhki img').attr('src', 'img/furnityra/20.jpg');
-    } else if (id == 4) {
-        $('.nozhki .price').text(42 * 2 * $('#TOTAL_PAINTING_ID').val());
-        $('.nozhki img').attr('src', 'img/furnityra/19.jpg');
-    } else if (id == 5) {
-        $('.nozhki .price').text(450 * 2 * $('#TOTAL_PAINTING_ID').val());
-        $('.nozhki img').attr('src', 'img/furnityra/21.jpg');
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Мобильная перегородка - stoyki
-function loadStoyki() {
-
-    var name = getFromData('karkas-name');
-
-    $(".stoyki select").html('');
-
-    if (name == 'Euroshop') {
-
-        $(".stoyki select").prepend($('' +
-            '<option value="0">Нет</option>' +
-
-            '<option value="1" >Стойка скругленная 90 °</option>' +
-
-            '<option value="2">Стойка 135 °</option>' +
-
-            '<option value="3">Стойка угловая 90 °</option>' +
-
-            '<option value="4">Стойка Т-образная</option>' +
-
-            '<option value="5">Стойка Т-образная скругленная</option>'
-        ));
-
-    } else if (name == 'EuroshopLite') {
-
-        $(".stoyki select").prepend($('' +
-            '<option value="0">Нет</option>' +
-
-            '<option value="1" >Стойка скругленная 90 °</option>' +
-
-            '<option value="2">Стойка 135 °</option>' +
-
-            '<option value="3">Стойка угловая 90 °</option>' +
-
-            '<option value="4">Стойка Т-образная</option>' +
-
-            '<option value="5">Стойка Т-образная скругленная</option>'
-        ));
-
-    } else if (name == 'Standart' || name == 'StandartStoika') {
-
-        $(".stoyki select").prepend($('' +
-            '<option value="0">Нет</option>' +
-
-            '<option value="6" >Стойка четырёхгранная</option>' +
-
-            '<option value="7">Стойка 90 °</option>' +
-
-            '<option value="8">Стойка Т-образная</option>' +
-
-            '<option value="9">Стойка три паза</option>'
-        ));
-
-    } else if (name == 'Tur') {
-
-        $(".stoyki select").prepend($('' +
-            '<option value="0">Нет</option>' +
-
-            '<option value="10" >Стойка угловая трехгранная</option>' +
-
-            '<option value="11">Стойка угловая</option>' +
-
-            '<option value="12">Стойка восьмигранная</option>' +
-
-            '<option value="13">Угловая пятигранная</option>'
-        ));
-
-    } else if (name == 'Optima' || name == 'OptimaLite' || name == 'Optimax2') {
-
-        $(".stoyki select").prepend($('' +
-            '<option value="0">Нет</option>' +
-
-            '<option value="14" >Стойка угловая 90 °</option>'
-        ));
-
-    } else if (name == 'Statusx1' || name == 'Statusx2') {
-
-        $(".stoyki select").prepend($('' +
-            '<option value="0">Нет</option>' +
-
-            '<option value="15" >Стойка поворотная односторонняя 90 °</option>' +
-
-            '<option value="16">Стойка поворотная двухсторонняя 90 °</option>'
-        ));
-
-    } else if (name == 'MobyLight') {
-
-        $(".stoyki select").prepend($('' +
-            '<option value="0">Нет</option>' +
-
-            '<option value="17" >Мобилайт стойка</option>'
-        ));
-
-    } else if (name == 'Base') {
-
-        $(".stoyki select").prepend($('' +
-            '<option value="0">Нет</option>' +
-
-            '<option value="18" >Столб три грани</option>' +
-
-            '<option value="19">Угловой столб дуга</option>' +
-
-            '<option value="20">Столб универсальный</option>'
-        ));
-
-    }
-
-
-    setStoyki();
-
-}
-
-//  ============================= //
-
-function setStoyki() {
-
-    var id = parseInt($('.stoyki select').val());
-
-    switch (id) {
-        case 1:
-            var price = 141;
-            break;
-        case 2:
-            var price = 136;
-            break;
-        case 3:
-            var price = 159;
-            break;
-        case 4:
-            var price = 193;
-            break;
-        case 5:
-            var price = 272;
-            break;
-        case 6:
-            var price = 184;
-            break;
-        case 7:
-            var price = 200;
-            break;
-        case 8:
-            var price = 184;
-            break;
-        case 9:
-            var price = 211;
-            break;
-        case 10:
-            var price = 87;
-            break;
-        case 11:
-            var price = 116;
-            break;
-        case 12:
-            var price = 239;
-            break;
-        case 13:
-            var price = 166;
-            break;
-        case 14:
-            var price = 304;
-            break;
-        case 15:
-            var price = 640;
-            break;
-        case 16:
-            var price = 550;
-            break;
-        case 17:
-            var price = 0;
-            break;
-        case 18:
-            var price = 783;
-            break;
-        case 19:
-            var price = 701;
-            break;
-        case 20:
-            var price = 617;
-            break;
-        case 0:
-            var price = 0;
-            break;
-    }
-    var peremennaia = parseInt($("#TOTAL_PAINTING_ID").val()) - 1;
-    if (peremennaia == 0) {
-        peremennaia = 1;
-    }
-    var totalPrice = peremennaia * price * (parseInt($("#HIGHT_SETS_ID").val()) / 1000);
-    if (isNaN(totalPrice)) {
-        totalPrice = 0;
-    }
-    $('.stoyki .price').text(totalPrice);
-    $('.stoyki img').attr('src', 'img/furnityra/mobilnyie/' + id + '.png');
-}
-// ТАБ ФУРНИТУРА - Мобильная перегородка - TipSoedineniyaPoloten
-function setTipSoedineniyaPoloten() {
-
-    var id = $('.tipSoedineniyaPoloten select').val();
-
-    var count = parseInt($("#MOVABLE_PAINTING_ID").val());
-
-    if($("#MOVABLE_PAINTING_ID").val() == ""){
-        count = parseInt($("#TOTAL_PAINTING_ID").val());
-    }
-
-    if (id == 1) {
-
-        $('.tipSoedineniyaPoloten .price').text(50 * 3 * count);
-
-        $('.tipSoedineniyaPoloten img').attr('src', 'img/furnityra/11.jpg');
-
-    }
-
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - Аксессуары - показать скрыть аксессуары
-function aksessuaryiBlockSwith() {
-    if ($('.aksessuaryi-block-swith input').prop('checked')) {
-        $('.aksessuaryi-block-hs').show();
-    } else {
-        $('.aksessuaryi-block-hs').hide();
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - Аксессуары -  Доводчик
-function setDovodchik() {
-    var id = $('.dovodchik select').val();
-    var kolP = $('#TOTAL_PAINTING_ID').val();
-    if (id == 0) {
-        $('.dovodchik .price').text(0);
-        $('.dovodchik img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.dovodchik .price').text(1260 * kolP);
-        $('.dovodchik img').attr('src', 'img/furnityra/12.jpg');
-    } else if (id == 2) {
-        $('.dovodchik .price').text(1260 * kolP);
-        $('.dovodchik img').attr('src', 'img/furnityra/12.jpg');
-    } else if (id == 3) {
-        $('.dovodchik .price').text(1260 * kolP);
-        $('.dovodchik img').attr('src', 'img/furnityra/12.jpg');
-    } else if (id == 4) {
-        $('.dovodchik .price').text(5180 * kolP);
-        $('.dovodchik img').attr('src', 'img/furnityra/35.jpg');
-    }
-    loadDekorativnayaPlankaDlyaProfilya();
-    loadRuchkaDlyaProfilya();
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - Аксессуары -  Декоративная планка
-function loadDekorativnayaPlankaDlyaProfilya() {
-    var id = $('.dovodchik select').val();
-    $(".dekorativnayaPlankaDlyaProfilya select").html('');
-    if (id == 1 || id == 2 || id == 3) {
-        $(".dekorativnayaPlankaDlyaProfilya select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="1" >Цвет: серебро, Россия</option>'
-        ));
-    } else if (id == 4) {
-        $(".dekorativnayaPlankaDlyaProfilya select").prepend($('' +
-            '<option value="0">Нет</option>' +
-            '<option value="2" >Алюм. карниз, Ducasse Испания</option>'
-        ));
-    }
-}
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - Аксессуары -  Ручка
-function loadRuchkaDlyaProfilya() {
-    var karkasname = getFromData('karkas-name');
-    var typeFurnitura = parseInt($("#TYPE_BAFFLE_ID").val());
-    if (typeFurnitura == 1) {
-        if (karkasname == "Standart" || karkasname == "Optima" || karkasname == "Optimax2") {
-            if (karkasname == "Standart") {
-                $(".rakovina select").empty();
-                var ruchki = {
-                    1: "Ручка-раковина бронза Besana (Италия)",
-                    2: "Ручка-раковина бронза состаренная Giusti (Италия)",
-                    3: "Ручка-раковина 64мм хром Производитель: Giusti, Италия",
-                    4: "Ручка-раковина бронза Giusti (Италия)",
-                    5: "Ручка  OL 8 (Китай) Цвет: бронза, медь, матовое золото, матовый никель, золото",
-                    6: "Ручка OL 5 (Китай) Цвет: золото, хром, бронза, матовый никель"
-                };
-                for (var value in ruchki) {
-                    $(".rakovina select").append($("<option value=" + value + " >" + ruchki[value] + "</option>"));
-                }
-            }
-            if (karkasname == "Optima" || karkasname == "Optimax2") {
-                $(".rakovina select").empty();
-                var ruchki = {
-                    1: "Ручка-раковина бронза Besana (Италия)",
-                    3: "Ручка-раковина 64мм хром Производитель: Giusti, Италия",
-                    4: "Ручка-раковина бронза Giusti (Италия)",
-                    5: "Ручка  OL 8 (Китай) Цвет: бронза, медь, матовое золото, матовый никель, золото",
-                    6: "Ручка OL 5 (Китай) Цвет: золото, хром, бронза, матовый никель"
-                };
-                for (var value in ruchki) {
-                    $(".rakovina select").append($("<option value=" + value + " >" + ruchki[value] + "</option>"));
-                }
-            }
-        } else {
-            $(".rakovina select").empty();
-            var ruchki = {
-                0: "Нет"
-            };
-            for (var value in ruchki) {
-                $(".rakovina select").append($("<option value=" + value + " >" + ruchki[value] + "</option>"));
-            }
-        }
-    } else {
-        $(".rakovina select").empty();
-        var ruchki = {
-            0: "Нет"
-        };
-        for (var value in ruchki) {
-            $(".rakovina select").append($("<option value=" + value + " >" + ruchki[value] + "</option>"));
-        }
-    }
-}
-
 function setDekorativnayaPlankaDlyaProfilya() {
     var allWidth = parseInt($("#WIDTH_SETS_ID").val());
     var price = 0;
@@ -2265,191 +2262,501 @@ function setDekorativnayaPlankaDlyaProfilya() {
     var id = $('.dekorativnayaPlankaDlyaProfilya select').val();
     if (id == 0) {
         $('.dekorativnayaPlankaDlyaProfilya .price').text(0);
-        $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/0.jpg');
+        $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/0.png');
     } else if (id == 1) {
         price = 320;
         $('.dekorativnayaPlankaDlyaProfilya .price').text(((allWidth * 2 / 1000) * 1.1) * price * 1.05 + kornevoiiY + kreplenieP);
-        $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/13.jpg');
+        $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/13.png');
     } else if (id == 2) {
         price = 1500;
         $('.dekorativnayaPlankaDlyaProfilya .price').text(((allWidth * 2 / 1000) * 1.1) * price * 1.05 + kornevoiiY + kreplenieP);
-        $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/32.jpg');
+        $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/32.png');
     }
 }
 //  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - Аксессуары - Щеточный уплотнитель
-function setSchetochnyiyUplotnitel() {
-    var id = $('.schetochnyiyUplotnitel select').val();
-    var allWidth = parseInt($('#WIDTH_SETS_ID').val());
-    if (id == 0) {
-        $('.schetochnyiyUplotnitel .price').text(0);
-        $('.schetochnyiyUplotnitel img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.schetochnyiyUplotnitel .price').text(allWidth / 1000 * 12);
-        $('.schetochnyiyUplotnitel img').attr('src', 'img/furnityra/14.jpg');
-    } else if (id == 2) {
-        $('.schetochnyiyUplotnitel .price').text(allWidth / 1000 * 25);
-        $('.schetochnyiyUplotnitel img').attr('src', 'img/furnityra/15.jpg');
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - Аксессуары - Ручка
-function setRakovina() {
-    var id = parseInt($('.rakovina select').val());
-    var count1 = parseInt($("#MOVABLE_PAINTING_ID").val());
-    if($("#MOVABLE_PAINTING_ID").val() == ""){
-        count1 = parseInt($("#TOTAL_PAINTING_ID").val());
-    }
-    switch (id) {
-        case 1:
-            var price = 260;
-            var src = 16;
-            break;
-        case 2:
-            var price = 395;
-            var src = 22;
-            break;
-        case 3:
-            var price = 225;
-            var src = 23;
-            break;
-        case 4:
-            var price = 160;
-            var src = 24;
-            break;
-        case 5:
-            var price = 170;
-            var src = 25;
-            break;
-        case 6:
-            var price = 120;
-            var src = 26;
-            break;
-        default:
-            var price = 0;
-            var src = 0;
-            break;
-    }
-    $('.rakovina .price').text(price * count1);
-    $('.rakovina img').attr('src', 'img/furnityra/' + src + '.jpg');
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Раздвижная перегородка - Аксессуары - ЗАмок
-function setZamok() {
-    var id = $('.zamok select').val();
-    if (id == 0) {
-        $('.zamok .price').text(0);
-        $('.zamok img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.zamok .price').text(140);
-        $('.zamok img').attr('src', 'img/furnityra/17.jpg');
-    } else if (id == 2) {
-        $('.zamok .price').text(750);
-        $('.zamok img').attr('src', 'img/furnityra/38.jpg');
-    } else if (id == 3) {
-        $('.zamok .price').text(1000);
-        $('.zamok img').attr('src', 'img/furnityra/39.jpg');
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Складная перегородка - Аксессуары - Декоративная планка для профиля - Стоимость – ((«Ширина/1000»+10%)*«Цена*1,05 +«Коннектор угловой»*2 +«Крепление планки»*2.
-function setDekorativnayaPlankaDlyaProfilya() {
-    var id = $('.dekorativnayaPlankaDlyaProfilya select').val();
-    var kornevoiiY = 120 * 2;
-    var kreplenieP = 55 * 2;
-    var allWidth = parseInt($("#WIDTH_SETS_ID").val());
-    if (id == 0) {
-        $('.dekorativnayaPlankaDlyaProfilya .price').text(0);
-        $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        var price = 320;
-        $('.dekorativnayaPlankaDlyaProfilya .price').text(((allWidth * 2 / 1000) * 1.1) * price * 1.05 + kornevoiiY + kreplenieP);
-        $('.dekorativnayaPlankaDlyaProfilya img').attr('src', 'img/furnityra/13.jpg');
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА - Складная перегородка - Аксессуары - Крепление ручки
-function setKreplenieRuchki() {
-    var id = $('.kreplenieRuchki select').val();
-    if (id == 0) {
-        $('.kreplenieRuchki .price').text(0);
-        $('.kreplenieRuchki img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.kreplenieRuchki .price').text(50);
-        $('.kreplenieRuchki img').attr('src', 'img/furnityra/18.jpg');
-    }
-}
-//  ============================= //
-// ТАБ ФУРНИТУРА - Складная перегородка - Аксессуары - Замок дверной
-function setZamokSkladnyie() {
-    var id = $('.zamokSkladnyie select').val();
-    if (id == 0) {
-        $('.zamokSkladnyie .price').text(0);
-        $('.zamokSkladnyie img').attr('src', 'img/furnityra/0.jpg');
-    } else if (id == 1) {
-        $('.zamokSkladnyie .price').text(140);
-        $('.zamokSkladnyie img').attr('src', 'img/furnityra/17.jpg');
-    }
-}
-//  ============================= //
-
-// ТАБ ФУРНИТУРА цена
-function setFurnituraPrice() {
-    // тип полотна
+function getDataFurnitura() {
     var type = $('#TYPE_BAFFLE_ID').val();
-
-    if (type == 1) {
-        var razdvizhnyie = parseInt($('#furnitura-tab .razdvizhnyie-mehanizmyi .price').text());
-        var mehanizm = parseInt($('#furnitura-tab .mehanizm-sinhronizatsii .price').text());
-        var napravlyayuschie = parseInt($('#furnitura-tab .napravlyayuschie .price').text());
-        var vidKrepleniyaNapravlyayuschey = parseInt($('#furnitura-tab .vidKrepleniyaNapravlyayuschey .price').text());
-        var povodok = parseInt($('#furnitura-tab .povodok .price').text());
-        // есть акс
-        var dovodchik = 0;
-        var dekorativnayaPlankaDlyaProfilya = 0;
-        var schetochnyiyUplotnitel = 0;
-        var rakovina = 0;
-        var zamok = 0;
-        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            dovodchik = parseInt($('#furnitura-tab .dovodchik .price').text());
-            dekorativnayaPlankaDlyaProfilya = parseInt($('#furnitura-tab .dekorativnayaPlankaDlyaProfilya .price').text());
-            schetochnyiyUplotnitel = parseInt($('#furnitura-tab .schetochnyiyUplotnitel .price').text());
-            rakovina = parseInt($('#furnitura-tab .rakovina .price').text());
-            zamok = parseInt($('#furnitura-tab .zamok .price').text());
-        }
-        $('#furnitura-tab .furnitura-price .price').text(razdvizhnyie + mehanizm + napravlyayuschie + vidKrepleniyaNapravlyayuschey + povodok + dovodchik + dekorativnayaPlankaDlyaProfilya + schetochnyiyUplotnitel + rakovina + zamok);
-    } else if (type == 3 || type == 2) {
-        var setSkladnyieMehanizmyi = parseInt($('#furnitura-tab .setSkladnyieMehanizmyi .price').text());
-        var petli = parseInt($('#furnitura-tab .petli .price').text());
-        var napravlyayuschie = parseInt($('#furnitura-tab .napravlyayuschie .price').text());
-        var vidKrepleniya = parseInt($('#furnitura-tab .vidKrepleniya .price').text());
-        // есть акс
-        var dekorativnayaPlankaDlyaProfilya = 0;
-        var schetochnyiyUplotnitel = 0;
-        var rakovina = 0;
-        var kreplenieRuchki = 0;
-        var zamokSkladnyie = 0;
-
-        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            var dekorativnayaPlankaDlyaProfilya = parseInt($('#furnitura-tab .dekorativnayaPlankaDlyaProfilya .price').text());
-            var schetochnyiyUplotnitel = parseInt($('#furnitura-tab .schetochnyiyUplotnitel .price').text());
-            var rakovina = parseInt($('#furnitura-tab .rakovina .price').text());
-            var kreplenieRuchki = parseInt($('#furnitura-tab .kreplenieRuchki .price').text());
-            var zamokSkladnyie = parseInt($('#furnitura-tab .zamokSkladnyie .price').text());
-        }
-
-        $('#furnitura-tab .furnitura-price .price').text(setSkladnyieMehanizmyi + petli + napravlyayuschie + vidKrepleniya + dekorativnayaPlankaDlyaProfilya + schetochnyiyUplotnitel + rakovina + kreplenieRuchki + zamokSkladnyie);
-    } else if (type == 4) {
-        var nozhki = parseInt($('#furnitura-tab .nozhki .price').text());
-        var stoyki = parseInt($('#furnitura-tab .stoyki .price').text());
-        var tipSoedineniyaPoloten = parseInt($('#furnitura-tab .tipSoedineniyaPoloten .price').text());
-        $('#furnitura-tab .furnitura-price .price').text(nozhki + stoyki + tipSoedineniyaPoloten);
+    var Count = parseInt($("#TOTAL_PAINTING_ID").val());
+    var width = parseInt($("#WIDTH_SETS_ID").val());
+    if (width > 3000) {
+        var double = 2;
+    } else {
+        var double = 1;
     }
+    var height = parseInt($("#HIGHT_SETS_ID").val());
+    if (type == 1) {
+        var razdvizhnyieMehanizmyi = $(".razdvizhnyie-mehanizmyi .text").html();
+        var mehanizmSinhronizatsii = $(".mehanizm-sinhronizatsii .text").html();
+        var napravlyayuschie = $(".napravlyayuschie .text").html();
+        var vidKrepleniyaNapravlyayuschey = $(".vidKrepleniyaNapravlyayuschey .text").html();
+        var povodok = $(".povodok .text").html();
+
+        switch (razdvizhnyieMehanizmyi) {
+            case "Standart до 40 кг":
+                var razdvizhnyieMehanizmyiPrice = 475 * Count;
+                break;
+            case "Standart до 100 кг":
+                var razdvizhnyieMehanizmyiPrice = 830 * Count;
+                break;
+            case "B-103 до 100 кг":
+                var razdvizhnyieMehanizmyiPrice = 650 * Count;
+                break;
+            case "B-104 до 100 кг":
+                var razdvizhnyieMehanizmyiPrice = 705 * Count;
+                break;
+            case "R3 до 60 кг":
+                var razdvizhnyieMehanizmyiPrice = 500 * Count;
+                break;
+            case "D 80 до 80 кг":
+                var razdvizhnyieMehanizmyiPrice = 2000 * Count;
+                break;
+            case "Не выбрано":
+                var razdvizhnyieMehanizmyiPrice = 0;
+                break;
+        }
+        if (isNaN(razdvizhnyieMehanizmyiPrice)) {
+            var razdvizhnyieMehanizmyiPrice = 0;
+        }
+        switch (mehanizmSinhronizatsii) {
+            case "Синхронный":
+                var mehanizmSinhronizatsiiPrice = 1590 * Count / 2;
+                break;
+            case "D-80 Synchro, Ducasse":
+                var mehanizmSinhronizatsiiPrice = 6320 * Count / 2;
+                break;
+            case "D-80 Telescopic, Ducasse":
+                var mehanizmSinhronizatsiiPrice = 6320 * Count / 2;
+                break;
+            case "Не выбрано":
+                var mehanizmSinhronizatsiiPrice = 0;
+                break;
+        }
+        if (isNaN(mehanizmSinhronizatsiiPrice)) {
+            var mehanizmSinhronizatsiiPrice = 0;
+        }
+        switch (napravlyayuschie) {
+            case "Неокрашенная, Россия":
+                var napravlyayuschiePrice = 145 * width * 2 / 1000 * 1.05;
+                break;
+            case "Цвет: серебро, Россия":
+                var napravlyayuschiePrice = 215 * width * 2 / 1000 * 1.05;
+                break;
+            case "Не выбрано":
+                var napravlyayuschiePrice = 0;
+                break;
+        }
+        if (isNaN(napravlyayuschiePrice)) {
+            var napravlyayuschiePrice = 0;
+        }
+        switch (vidKrepleniyaNapravlyayuschey) {
+            case "К стене, Россия":
+                var vidKrepleniyaNapravlyayuscheyPrice = 50 * 2 * double;
+                break;
+            case "К потолку, Россия":
+                var vidKrepleniyaNapravlyayuscheyPrice = 50 * 2 * double;
+                break;
+            case "Уголок крепежный, Degon Польша и Китайя":
+                var vidKrepleniyaNapravlyayuscheyPrice = 50 * 2 * double;
+                break;
+            case "Не выбрано":
+                var vidKrepleniyaNapravlyayuscheyPrice = 0;
+                break;
+        }
+        if (isNaN(vidKrepleniyaNapravlyayuscheyPrice)) {
+            var vidKrepleniyaNapravlyayuscheyPrice = 0;
+        }
+        switch (povodok) {
+            case "Белый":
+                var povodokPrice = 20 * Count;
+                break;
+            case "Коричневый":
+                var povodokPrice = 20 * Count;
+                break;
+            case "Поводок, Ducasse Испания":
+                var povodokPrice = 110 * Count;
+                break;
+            case "Не выбрано":
+                var povodokPrice = 0;
+                break;
+        }
+        if (isNaN(povodokPrice)) {
+            var povodokPrice = 0;
+        }
+
+        $(".razdvizhnyie-mehanizmyi .price").text(razdvizhnyieMehanizmyiPrice);
+        $(".mehanizm-sinhronizatsii .price").text(mehanizmSinhronizatsiiPrice);
+        $(".napravlyayuschie .price").text(napravlyayuschiePrice);
+        $(".vidKrepleniyaNapravlyayuschey .price").text(vidKrepleniyaNapravlyayuscheyPrice);
+        $(".povodok .price").text(povodokPrice);
+
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            var dovodchik = $(".dovodchik .text").html();
+            var dekorativnayaPlankaDlyaProfilya = $(".dekorativnayaPlankaDlyaProfilya .text").html();
+            var schetochnyiyUplotnitel = $(".schetochnyiyUplotnitel .text").html();
+            var rakovina = $(".rakovina .text").html();
+            var zamok = $(".zamok .text").html();
+
+            switch (dovodchik) {
+                case "Standart до 25 кг, Россия":
+                    var dovodchikPrice = 1260 * Count;
+                    break;
+                case "Standart до 50 кг, Россия":
+                    var dovodchikPrice = 1260 * Count;
+                    break;
+                case "Standart до 100 кг, Россия":
+                    var dovodchikPrice = 1260 * Count;
+                    break;
+                case "Soft, Ducasse Испания":
+                    var dovodchikPrice = 5180 * Count;
+                    break;
+                case "Не выбрано":
+                    var dovodchikPrice = 0;
+                    break;
+            }
+            if (isNaN(dovodchikPrice)) {
+                var dovodchikPrice = 0;
+            }
+            switch (dekorativnayaPlankaDlyaProfilya) {
+                case "Цвет: серебро, Россия":
+                    var dekorativnayaPlankaDlyaProfilyaPrice = ((width * 2 / 1000) * 1.1) * 320 * 1.05 + 150 * 2 + 55 * 2;
+                    break;
+                case "Алюм. карниз, Ducasse Испания":
+                    var dekorativnayaPlankaDlyaProfilyaPrice = ((width * 2 / 1000) * 1.1) * 1500 * 1.05 + 150 * 2 + 55 * 2;
+                    break;
+                case "Не выбрано":
+                    var dekorativnayaPlankaDlyaProfilyaPrice = 0;
+                    break;
+            }
+            if (isNaN(dekorativnayaPlankaDlyaProfilyaPrice)) {
+                var dekorativnayaPlankaDlyaProfilyaPrice = 0;
+            }
+            switch (schetochnyiyUplotnitel) {
+                case "6 мм (Серый, бронза, золото)":
+                    var schetochnyiyUplotnitelPrice = width / 1000 * 12;
+                    break;
+                case "12 мм (Серый, бронза, золото)":
+                    var schetochnyiyUplotnitelPrice = width / 1000 * 25;
+                    break;
+                case "Не выбрано":
+                    var schetochnyiyUplotnitelPrice = 0;
+                    break;
+            }
+            if (isNaN(schetochnyiyUplotnitelPrice)) {
+                var schetochnyiyUplotnitelPrice = 0;
+            }
+            switch (rakovina) {
+                case "Ручка-раковина бронза Besana (Италия)":
+                    var rakovinaPrice = 260;
+                    break;
+                case "Ручка-раковина бронза состаренная Giusti (Италия)":
+                    var rakovinaPrice = 395;
+                    break;
+                case "Ручка-раковина 64мм хром Производитель: Giusti, Италия":
+                    var rakovinaPrice = 225;
+                    break;
+                case "Ручка-раковина бронза Giusti (Италия)":
+                    var rakovinaPrice = 160;
+                    break;
+                case "Ручка OL 8 (Китай) Цвет: бронза, медь, матовое золото, матовый никель, золото":
+                    var rakovinaPrice = 170;
+                    break;
+                case "Ручка OL 5 (Китай) Цвет: золото, хром, бронза, матовый никель":
+                    var rakovinaPrice = 120;
+                    break;
+                case "Не выбрано":
+                    var rakovinaPrice = 0;
+                    break;
+            }
+            if (isNaN(rakovinaPrice)) {
+                var rakovinaPrice = 0;
+            }
+            switch (zamok) {
+                case "Поворотный":
+                    var zamokPrice = 140;
+                    break;
+                case "Замок врезной цилиндровый узкопроф.201 (20 mm) (никель) 3 кл.":
+                    var zamokPrice = 750;
+                    break;
+                case "Замок врезной крестообразный узкопроф.201F (20 mm) (никель) 3 кл.":
+                    var zamokPrice = 1000;
+                    break;
+                case "Не выбрано":
+                    var zamokPrice = 0;
+                    break;
+            }
+            if (isNaN(zamokPrice)) {
+                var zamokPrice = 0;
+            }
+
+            $(".dovodchik .price").text(dovodchikPrice);
+            $(".dekorativnayaPlankaDlyaProfilya .price").text(dekorativnayaPlankaDlyaProfilyaPrice);
+            $(".schetochnyiyUplotnitel .price").text(schetochnyiyUplotnitelPrice);
+            $(".rakovina .price").text(rakovinaPrice);
+            $(".zamok .price").text(zamokPrice);
+        }
+    }
+    if (type == 2 || type == 3) {
+        var setSkladnyieMehanizmyi = $(".setSkladnyieMehanizmyi .text").html();
+        var petliSkladnie = $(".petli-skladnie .text").html();
+        var napravlyayuschieSkladnie = $(".napravlyayuschie-skladnie .text").html();
+        var vidKrepleniyaSkladnie = $(".vidKrepleniya-skladnie .text").html();
+
+        switch (setSkladnyieMehanizmyi) {
+            case "Stanfold до 40 кг (Россия)":
+                var setSkladnyieMehanizmyiPrice = 950 * Count;
+                break;
+            case "B-100 до 80 кг (Degon, Польша)":
+                var setSkladnyieMehanizmyiPrice = 490 * Count;
+                break;
+            case "Не выбрано":
+                var setSkladnyieMehanizmyiPrice = 0;
+                break;
+        }
+        if (isNaN(setSkladnyieMehanizmyiPrice)) {
+            var setSkladnyieMehanizmyiPrice = 0;
+        }
+        switch (petliSkladnie) {
+            case "Комплектные, Россия":
+                var petliSkladniePrice = 50 * 3 * Count;
+                break;
+            case "Комплектные, Degon Польша":
+                var petliSkladniePrice = 30 * 3 * Count;
+                break;
+            case "Не выбрано":
+                var petliSkladniePrice = 0;
+                break;
+        }
+        if (isNaN(petliSkladniePrice)) {
+            var petliSkladniePrice = 0;
+        }
+        switch (napravlyayuschieSkladnie) {
+            case "Неокрашенная, Россия":
+                var napravlyayuschieSkladniePrice = 145 * width / 1000 * 1.05;
+                break;
+            case "Цвет: серебро, Россия":
+                var napravlyayuschieSkladniePrice = 215 * width / 1000 * 1.05;
+                break;
+            case "Неокрашенная, Degon Польша":
+                var napravlyayuschieSkladniePrice = 145 * width / 1000 * 1.05;
+                break;
+            case "Не выбрано":
+                var napravlyayuschieSkladniePrice = 0;
+                break;
+        }
+        if (isNaN(napravlyayuschieSkladniePrice)) {
+            var napravlyayuschieSkladniePrice = 0;
+        }
+        switch (vidKrepleniyaSkladnie) {
+            case "К стене":
+                var vidKrepleniyaSkladniePrice = 50 * 2 * double;
+                break;
+            case "К потолку":
+                var vidKrepleniyaSkladniePrice = 50 * 2 * double;
+                break;
+            case "Уголок крепежный, Degon Польша":
+                var vidKrepleniyaSkladniePrice = 50 * 2 * double;
+                break;
+            case "Не выбрано":
+                var vidKrepleniyaSkladniePrice = 0;
+                break;
+        }
+        if (isNaN(vidKrepleniyaSkladniePrice)) {
+            var vidKrepleniyaSkladniePrice = 0;
+        }
+
+        $(".setSkladnyieMehanizmyi .price").text(setSkladnyieMehanizmyiPrice);
+        $(".petli-skladnie .price").text(petliSkladniePrice);
+        $(".napravlyayuschie-skladnie .price").text(napravlyayuschieSkladniePrice);
+        $(".vidKrepleniya-skladnie .price").text(vidKrepleniyaSkladniePrice);
+
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            var dekorativnayaPlankaDlyaProfilyaSkladnie = $(".dekorativnayaPlankaDlyaProfilya-skladnie .text").html();
+            var schetochnyiyUplotnitelSkladnie = $(".schetochnyiyUplotnitel-skladnie .text").html();
+            var rakovinaSkladnie = $(".rakovina-skladnie .text").html();
+            var kreplenieRuchkiSkladnie = $(".kreplenieRuchki-skladnie .text").html();
+            var zamokSkladnyieSkladnie = $(".zamokSkladnyie-skladnie .text").html();
+
+            switch (dekorativnayaPlankaDlyaProfilyaSkladnie) {
+                case "Цвет: серебро, Россия":
+                    var dekorativnayaPlankaDlyaProfilyaSkladniePrice = ((width * 2 / 1000) * 1.1) * 320 * 1.05 + 150 * 2 + 55 * 2;
+                    break;
+                case "Не выбрано":
+                    var dekorativnayaPlankaDlyaProfilyaSkladniePrice = 0;
+                    break;
+            }
+            if (isNaN(dekorativnayaPlankaDlyaProfilyaSkladniePrice)) {
+                var dekorativnayaPlankaDlyaProfilyaSkladniePrice = 0;
+            }
+            switch (schetochnyiyUplotnitelSkladnie) {
+                case "6 мм (Серый, бронза, золото)":
+                    var schetochnyiyUplotnitelSkladniePrice = width / 1000 * 12;
+                    break;
+                case "12 мм (Серый, бронза, золото)":
+                    var schetochnyiyUplotnitelSkladniePrice = width / 1000 * 25;
+                    break;
+                case "Не выбрано":
+                    var schetochnyiyUplotnitelSkladniePrice = 0;
+                    break;
+            }
+            if (isNaN(schetochnyiyUplotnitelSkladniePrice)) {
+                var schetochnyiyUplotnitelSkladniePrice = 0;
+            }
+            switch (rakovinaSkladnie) {
+                case "Раковина":
+                    var rakovinaSkladniePrice = 215;
+                    break;
+                case "Не выбрано":
+                    var rakovinaSkladniePrice = 0;
+                    break;
+            }
+            if (isNaN(rakovinaSkladniePrice)) {
+                var rakovinaSkladniePrice = 0;
+            }
+            switch (kreplenieRuchkiSkladnie) {
+                case "К двери-гармошке":
+                    var kreplenieRuchkiSkladniePrice = 50;
+                    break;
+                case "Не выбрано":
+                    var kreplenieRuchkiSkladniePrice = 0;
+                    break;
+            }
+            if (isNaN(kreplenieRuchkiSkladniePrice)) {
+                var kreplenieRuchkiSkladniePrice = 0;
+            }
+            switch (zamokSkladnyieSkladnie) {
+                case "Поворотный":
+                    var zamokSkladnyieSkladniePrice = 140;
+                    break;
+                case "Не выбрано":
+                    var zamokSkladnyieSkladniePrice = 0;
+                    break;
+            }
+            if (isNaN(zamokSkladnyieSkladniePrice)) {
+                var zamokSkladnyieSkladniePrice = 0;
+            }
+
+            $(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(dekorativnayaPlankaDlyaProfilyaSkladniePrice);
+            $(".schetochnyiyUplotnitel-skladnie .price").text(schetochnyiyUplotnitelSkladniePrice);
+            $(".rakovina-skladnie .price").text(rakovinaSkladniePrice);
+            $(".kreplenieRuchki-skladnie .price").text(kreplenieRuchkiSkladniePrice);
+            $(".zamokSkladnyie-skladnie .price").text(zamokSkladnyieSkladniePrice);
+        }
+    }
+    if (type == 4) {
+        var nozhkiMobil = $(".nozhki-mobil .text").html();
+        var stoykiMobil = $(".stoyki-mobil .text").html();
+        var tipSoedineniyaPolotenMobil = $(".tipSoedineniyaPoloten-mobil .text").html();
+
+        switch (nozhkiMobil) {
+            case "Euroshop/Standart - круглая регулируемая":
+                var nozhkiMobilPrice = 42 * Count;
+                break;
+            case "Optima - круглая регулируемая":
+                var nozhkiMobilPrice = 42 * Count;
+                break;
+            case "Optima - Широкая двухсторонняя":
+                var nozhkiMobilPrice = 275 * Count;
+                break;
+            case "M. Light - круглая регулируемая":
+                var nozhkiMobilPrice = 42 * Count;
+                break;
+            case "M. Light - Широкая двухсторонняя":
+                var nozhkiMobilPrice = 450 * Count;
+                break;
+            case "Не выбрано":
+                var nozhkiMobilPrice = 0;
+                break;
+        }
+        if (isNaN(nozhkiMobilPrice)) {
+            var nozhkiMobilPrice = 0;
+        }
+        switch (stoykiMobil) {
+            case "Стойка скругленная 90 °":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 141;
+                break;
+            case "Стойка 135 °":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 136;
+                break;
+            case "Стойка угловая 90 °":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 159;
+                break;
+            case "Стойка Т-образная":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 193;
+                break;
+            case "Стойка Т-образная скругленная":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 272;
+                break;
+            case "Стойка четырёхгранная":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 184;
+                break;
+            case "Стойка 90 °":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 200;
+                break;
+            case "Стойка Т-образная":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 184;
+                break;
+            case "Стойка три паза":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 211;
+                break;
+            case "Стойка угловая трехгранная":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 87;
+                break;
+            case "Стойка угловая":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 116;
+                break;
+            case "Стойка восьмигранная":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 293;
+                break;
+            case "Угловая пятигранная":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 166;
+                break;
+            case "Стойка угловая 90 °":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 304;
+                break;
+            case "Стойка поворотная односторонняя 90 °":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 640;
+                break;
+            case "Стойка поворотная двухсторонняя 90 °":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 550;
+                break;
+            case "Мобилайт стойка":
+                var stoykiMobilPrice = 0;
+                break;
+            case "Столб три грани":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 783;
+                break;
+            case "Угловой столб дуга":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 701;
+                break;
+            case "Столб универсальный":
+                var stoykiMobilPrice = (Count - 1) * height / 1000 * 617;
+                break;
+            case "Не выбрано":
+                var stoykiMobilPrice = 0;
+                break;
+        }
+        if (isNaN(stoykiMobilPrice)) {
+            var stoykiMobilPrice = 0;
+        }
+        switch (tipSoedineniyaPolotenMobil) {
+            case "Петли":
+                var tipSoedineniyaPolotenMobilPrice = 50 * 3 * Count;
+                break;
+            case "Не выбрано":
+                var tipSoedineniyaPolotenMobilPrice = 0;
+                break;
+        }
+        if (isNaN(tipSoedineniyaPolotenMobilPrice)) {
+            var tipSoedineniyaPolotenMobilPrice = 0;
+        }
+
+        $(".nozhki-mobil .price").text(nozhkiMobilPrice);
+        $(".stoyki-mobil .price").text(stoykiMobilPrice);
+        $(".tipSoedineniyaPoloten-mobil .price").text(tipSoedineniyaPolotenMobilPrice);
+    }
+}
+function aksessuaryiBlockSwith() {
+    $(".aksessuaryi-block-swith input").prop("checked") ? $(".aksessuaryi-block-hs").show() : $(".aksessuaryi-block-hs").hide()
 }
 //  ============================= //
 
@@ -3488,12 +3795,16 @@ function setAllSaveParameters() {
 }
 
 // Вызов диалога
-$("#DIAGRAMMA-DIALOG-WINDOW-BTN").click(function (e) {
+$("#DIAGRAMMA-DIALOG-WINDOW-BTN").click(function () {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    if (TYPE_BAFFLE < 4 && TYPE_BAFFLE > 0) {
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html($("#DesignScheme" + TYPE_BAFFLE).html());
+    if (TYPE_BAFFLE == 0) {
+        message("Для стационарной перегородки схем не существует!");
+    } else {
+        if (TYPE_BAFFLE < 4 && TYPE_BAFFLE > 0) {
+            $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+            $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+            $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html($("#DesignScheme" + TYPE_BAFFLE).html());
+        }
     }
 });
 
@@ -3507,9 +3818,9 @@ function setPriceInProfil() {
     var vertikalnuePereochkiPrice = checkTheErrorNumber(getFromData('vertikalnue-pereochki-price'));
     var horizontalPereochkiPrice = checkTheErrorNumber(getFromData('horizontal-pereochki-price'));
 
-    var karkasVidKrepleniya = 0;
-    if (getFromData('karkas-vid-krepleniya') == 'ДА') {
-        karkasVidKrepleniya = 186;
+    var karkasVidKrepleniya = parseInt(getFromData('karkas-vid-krepleniya'));
+    if (karkasVidKrepleniya == "" || isNaN(karkasVidKrepleniya)) {
+        karkasVidKrepleniya = 0;
     }
 
     var res = karkasPrice + decorPrice + vertikalnuePereochkiPrice + horizontalPereochkiPrice + karkasVidKrepleniya;
@@ -3896,7 +4207,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlTur);
 
     } else {
-        $.snackbar({content: "Каркасов с такой высотой нет!!! Проверь высоту и полотна."});
+        message("Каркасов с такой высотой нет, проверьте высоту полотна.");
     }
 
 });
@@ -4072,8 +4383,8 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
     // }
     var uplotnitelPrice = 0;
     var karkasName = getFromData('karkas-name');
-    for(var i = 0; i < 5; i++){
-        if(karkasName == "Euroshop" || karkasName == "EuroshopLite" || karkasName == "Standart" || karkasName == "MobyLight" || karkasName == "Optima" || karkasName == "OptimaLite" || karkasName == "StandartStoika") {
+    for (var i = 0; i < 5; i++) {
+        if (karkasName == "Euroshop" || karkasName == "EuroshopLite" || karkasName == "Standart" || karkasName == "MobyLight" || karkasName == "Optima" || karkasName == "OptimaLite" || karkasName == "StandartStoika") {
             if (getFromData('material-' + (i + 1) + '-type') == "LDSP" && getFromData('material-' + (i + 1) + '-tolschina') == "16") {
                 uplotnitelPrice = 55;
             }
@@ -4082,118 +4393,118 @@ function SelectPeremyichkaVERTIKALNUE(name, url, text, price) {
 
     if (name == 'TUR') {
         var res = parseInt((getFromData('height') / 1000 * (94 + 13 * 2) + 22 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 22 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'Euroshop') {
-        if(uplotnitelPrice == 0){
+        if (uplotnitelPrice == 0) {
             uplotnitelPrice = 14.5;
         }
         var res = parseInt((getFromData('height') / 1000 * (111 + uplotnitelPrice * 2) + 36 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 36 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'EuroshopLite') {
-        if(uplotnitelPrice == 0){
+        if (uplotnitelPrice == 0) {
             uplotnitelPrice = 14.5;
         }
         var res = parseInt((getFromData('height') / 1000 * (89 + uplotnitelPrice * 2) + 36 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 36 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'Standart') {
-        if(uplotnitelPrice == 0){
+        if (uplotnitelPrice == 0) {
             uplotnitelPrice = 14.5;
         }
         var res = parseInt((getFromData('height') / 1000 * (266 + uplotnitelPrice * 2) + 35 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 35 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'MobyLight') {
-        if(uplotnitelPrice == 0){
+        if (uplotnitelPrice == 0) {
             uplotnitelPrice = 14.5;
         }
         var res = parseInt((getFromData('height') / 1000 * (176 + uplotnitelPrice * 2 + 30 * 2) + 30 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 30 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'Optima') {
-        if(uplotnitelPrice == 0){
+        if (uplotnitelPrice == 0) {
             uplotnitelPrice = 14.5;
         }
         var res = parseInt((getFromData('height') / 1000 * (272 + uplotnitelPrice * 2) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 53 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'OptimaLite') {
-        if(uplotnitelPrice == 0){
+        if (uplotnitelPrice == 0) {
             uplotnitelPrice = 14.5;
         }
         var res = parseInt((getFromData('height') / 1000 * (187 + uplotnitelPrice * 2) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 53 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'StandartStoika') {
-        if(uplotnitelPrice == 0){
+        if (uplotnitelPrice == 0) {
             uplotnitelPrice = 14.5;
         }
         var res = parseInt((getFromData('height') / 1000 * (216 + uplotnitelPrice * 2) + 35 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 35 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'Optimax2') {
         var res = parseInt((getFromData('height') / 1000 * (555 + 17 * 4) + 53 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 53 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'Base') {
         var res = parseInt((getFromData('height') / 1000 * (540 + 15 * 4) + 33 * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 33 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'Statusx1') {
         var res = parseInt((getFromData('height') / 1000 * (395 + 14 * 2) + (27 + 2.5 * 2) * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 27 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
     } else if (name == 'Statusx2') {
         var res = parseInt((getFromData('height') / 1000 * (490 + 14 * 4) + (27 + 2.5 * 2) * 2) * getFromData('vertikalnue-pereochki-count'));
-        if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+        if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
             var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 27 * 2);
-        }else{
+        } else {
             var addKreplenie = 0;
         }
         var result = res + addKreplenie;
@@ -4469,6 +4780,7 @@ $("#tab-profil-peremyichki-horizontal-shtuk").bind('input', function () {
 
 $("#TOTAL_PAINTING_ID").bind('blur', function () {
     TOTAL_PAINTING = parseInt($(this).val());
+    getDataFurnitura();
 });
 $("#MOVABLE_PAINTING_ID").bind('input', function () {
     MOVABLE_PAINTING = parseInt($(this).val());
@@ -4477,7 +4789,8 @@ $("#NUMBER_SETS_ID").bind('input', function () {
     NUMBER_SETS = parseInt($(this).val());
 });
 $("#HIGHT_SETS_ID, #WIDTH_SETS_ID").bind('input', function () {
-    DandDStart()
+    DandDStart();
+    getDataFurnitura();
 });
 // $("#WIDTH_SETS_ID").bind('input', function(){
 //     WIDTH_SETS = parseInt($(this).val());
@@ -4504,9 +4817,7 @@ $('#karkas-tsvet-zaglushki').change(function () {
 $('#karkas-tsvet-zaglushki-tortsevoy').change(function () {
     setDataAndText('karkas-tsvet-zaglushki-tortsevoy', $("#karkas-tsvet-zaglushki-tortsevoy").val())
 });
-$('#karkas-vid-krepleniya').change(function () {
-    setDataAndText('karkas-vid-krepleniya', $("#karkas-vid-krepleniya").val())
-});
+
 $("#tab-profil-vyisota, #tab-profil-shirina").change(function () {
     setDataAndText('area', parseInt($("#tab-profil-vyisota").val() * $("#tab-profil-shirina").val() / 1000000));
     // setWidthDandDEl();
@@ -4650,7 +4961,7 @@ function debounce(func, wait, immediate) {
 
 var myEfficientFn = debounce(function () {
     calcNow();
-    setFurnituraPrice();
+    getDataFurnitura();
     globalPrice();
     TableForInfo();
     setHeightDandDEl();

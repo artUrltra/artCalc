@@ -1,8 +1,8 @@
 .container
     .row.price-block
-        .col-xs-12.col-sm-12.col-md-12.col-lg-12
-            .bs-component
-                .alert.alert-dismissible.alert-default
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12(data-toggle="collapse" data-target="#setting-v-niz" style="border-bottom: solid 2px #ddd !important")
+            .bs-component(style="margin-top: 0px;")
+                .alert.alert-dismissible.alert-default(style="height: 100%;")
                     .left.summaBezParametrov
                         h4  Сумма без параметров:
                         h4.red
@@ -13,7 +13,7 @@
                         h4.red
                             span.price 0
                             | руб
-        .col-xs-offset-3.col-sm-offset-3.col-md-offset-3.col-md-offset-lg3.col-xs-6.col-sm-6.col-md-6.col-lg-6
+        .col-xs-offset-3.col-sm-offset-3.col-md-offset-3.col-md-offset-lg3.col-xs-6.col-sm-6.col-md-6.col-lg-6.collapse#setting-v-niz
             .bs-component
                 table.table.table-striped.table-hover
                     thead

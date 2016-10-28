@@ -1,38 +1,54 @@
 #profil-tab.tab-pane.fade.in.active.row
     center
-      .col-xs-1.col-sm-1.col-md-1.col-lg-1.top-menu
-          +input-custom-block-mini("Группа", "NUMBER_OF_DUPLICATOR_ID")
-      .col-xs-2.col-sm-2.col-md-2.col-lg-2.top-menu
-        .form-group.label-floating.is-empty
-            select.form-control.BAFFLE_SEKECTOR_CLASS
-      .col-xs-1.col-sm-1.col-md-1.col-lg-1.top-menu
-        h5 стоимоть
-            span.TAB-PROFIL-PRICE 0
-            | руб.
+        .col-xs-1.col-sm-1.col-md-1.col-lg-1.top-menu
+            h4.left-text Группа
+        .col-xs-1.col-sm-1.col-md-1.col-lg-1.top-menu
+            .form-group.label-floating.is-empty
+                input(id="NUMBER_OF_DUPLICATOR_ID").form-control(type='text')
+        .col-xs-1.col-sm-1.col-md-1.col-lg-1.top-menu
+            .form-group.label-floating.is-empty
+                select.form-control.BAFFLE_SEKECTOR_CLASS
+        .col-xs-2.col-sm-2.col-md-2.col-lg-2.top-menu
+            h5 стоимоть
+                span.TAB-PROFIL-PRICE 0
+                | руб.
     .col-xs-12.col-sm-12.col-md-12.col-lg-12
         hr
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.polotno-el#EDIT-BLOCK(style="width: 16%;")
         br
         .well
-            .col-md-6
-                +input-custom-block-mini("Высота", "tab-profil-vyisota")
-            .col-md-6
-                +input-custom-block-mini("Ширина", "tab-profil-shirina")
+            .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    h5.left-text Высота
+                .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    input(id="tab-profil-vyisota").form-control(type='text')
+            .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    h5.left-text Ширина
+                .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                    input(id="tab-profil-shirina").form-control(type='text')
+            .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                h5 Площадь
+                    span.TAB-PROFIL-AREA 0
+                    | кв/м
+                h5 Стоимость
+                    span.TAB-PROFIL-KARKAS-PRICE.red 0
+                    | руб.
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.polotno-el#KARKAS-BLOCK(style="width: 28%;")
         br
         .well
             .top
                 .form-group.label-floating.is-empty.text-center
-                    button.btn.btn-raised.btn-default#BTN-KARKAS-SELECTOR(type="button") Каркас
+                    button.btn.btn-raised.btn-default#BTN-KARKAS-SELECTOR(type="button") Профиль
             .left
                 img(src="img/maket2.jpg")
             .right
                 center
-                  h4#KARKAS-NAME Euroshop
+                    h4#KARKAS-NAME Euroshop
                 #KARKAS-INFO <div class="height-30"><p class="profil-text-left">Высота до</p><p class="profil-text-right">2,8м;</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм;</p></div><div class="height-30"><p class="profil-text-left">Стекло</p><p class="profil-text-right">4.5 мм;</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right">до 12,4 мм;</p></div>
                 center
-                  h4#KARKAS-PRICE 0
-                  span руб.
+                    h4#KARKAS-PRICE 0
+                    span руб.
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.polotno-el#HORIZONTAL-PEREMOCHKI-BLOCK(style="width: 28%;")
         br
         .well
@@ -44,11 +60,11 @@
                 img(src="img/maket2.jpg")
             .right
                 center
-                  h4#HORIZONTAL-PEREMOCHKI-NAME Euroshop
+                    h4#HORIZONTAL-PEREMOCHKI-NAME Euroshop
                 #HORIZONTAL-PEREMOCHKI-INFO <div class="height-30"><p class="profil-text-left">Высота до</p><p class="profil-text-right">2,8м;</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм;</p></div><div class="height-30"><p class="profil-text-left">Стекло</p><p class="profil-text-right">4.5 мм;</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right">до 12,4 мм;</p></div>
                 center
-                  h4#HORIZONTAL-PEREMOCHKI-PRICE 0
-                  span руб.
+                    h4#HORIZONTAL-PEREMOCHKI-PRICE 0
+                    span руб.
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.polotno-el#VERTIKALNUE-PEREMOCHKI-BLOCK(style="width: 28%;")
         br
         .well
@@ -60,58 +76,88 @@
                 img(src="img/maket2.jpg")
             .right
                 center
-                  h4#VERTIKALNUE-PEREMOCHKI-NAME Euroshop
+                    h4#VERTIKALNUE-PEREMOCHKI-NAME Euroshop
                 div#VERTIKALNUE-PEREMOCHKI-INFO <div class="height-30"><p class="profil-text-left">Высота до</p><p class="profil-text-right">2,8м;</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8,5 мм;</p></div><div class="height-30"><p class="profil-text-left">Стекло</p><p class="profil-text-right">4.5 мм;</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right">до 12,4 мм;</p></div>
                 center
-                  h4#VERTIKALNUE-PEREMOCHKI-PRICE 0
-                  span руб.
+                    h4#VERTIKALNUE-PEREMOCHKI-PRICE 0
+                    span руб.
+
     .col-xs-12.col-sm-12.col-md-12.col-lg-12
-        h3 Дополнения
-        button.btn.btn-raised.btn-default(type="button")#btn-uplotnitel Выбор
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
-        h4 Цвет уплотнителя
-        .form-group.label-floating.is-empty
-            select.form-control#karkas-tsvet-uplotnitelya
-                option(value='none')
-                option(value='1')
-                option(value='2')
-                option(value='3')
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
-        h4 Цвет декоративной заглушки в паз
-        .form-group.label-floating.is-empty
-            select.form-control#karkas-tsvet-zaglushki
-                option(value='none')
-                option(value='1')
-                option(value='2')
-                option(value='3')
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
-        h4 Цвет декоративной заглушки торцевой
-        .form-group.label-floating.is-empty
-            select.form-control#karkas-tsvet-zaglushki-tortsevoy
-                option(value='none')
-                option(value='1')
-                option(value='2')
-                option(value='3')
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.text-center
-        h4 Вид крепления
-        .form-group.label-floating.is-empty
-            select.form-control#karkas-vid-krepleniya
-                option(value='none')
-                option(value='1')
-                option(value='2')
-                option(value='3')
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12
-        h3 Выбор декора для профиля
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12.vyiborDekoraDlyaProfilya
-        center
-         button.btn.btn-raised.btn-default(type="button")#btn-dekor-profil Декор профиля
-         br
-         input#pokraskaTypeAndName(type="hidden",value="color.RAL9003")
-         img(src='img/dekorRal/RAL9003.png')
-    .col-xs-12.col-sm-12.col-md-4.col-lg-12.polotno-el.text-right
-        h4 Площадь
-            span.TAB-PROFIL-AREA 0
-            | кв/м
-        h4 Цена покраски
-            span.TAB-POKRASKA-PRICE 0
-            | руб.
+        center(data-toggle="collapse" data-target="#addon-v-niz" style="border-bottom: solid 2px #ddd !important;")
+            h3 Дополнения
+            i.fa.fa-arrow-down(aria-hidden="true")
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12.collapse#addon-v-niz
+            .col-xs-3.col-sm-3.col-md-3.col-lg-3.polotno-el.border-right#KREPLENIE-BLOCK
+                center
+                    h4 Вид крепления
+                .well.min-height-100
+                    .left
+                        img#kreplenie-img(src="img/addontoprofil/Euroshop/kreplenie-otkritoe.png")
+                    .right
+                        center
+                            h4#kreplenie-text1 Открытое
+                            h4#kreplenie-text2 E401/E401
+                        center
+                            h4 Цена:
+                            span#kreplenie-price.margin-left-10.margin-right-10 35
+                            | руб.
+            .col-xs-3.col-sm-3.col-md-3.col-lg-3.polotno-el.border-right#ZAGLUSHKA-V-PAZ-BLOCK
+                center
+                    h4 Заглушка в паз
+                .well.min-height-100
+                    .left
+                        img#zaglushka-v-paz-img(src="img/addontoprofil/Euroshop/zaglushka-dek-v-paz.png")
+                    .right
+                        center
+                            h4#zaglushka-v-paz-text2 K403
+                            h4#zaglushka-v-paz-text3 белый
+                        center
+                            h4 Цена:
+                            span#zaglushka-v-paz-price.margin-left-10.margin-right-10 24.61
+                            | руб.
+            .col-xs-3.col-sm-3.col-md-3.col-lg-3.polotno-el.border-right#UPLOTNITEL-BLOCK
+                center
+                    h4 Уплотнитель
+                .well.min-height-100
+                    .left
+                        img#uplotnitel-img(src="img/addontoprofil/Euroshop/uplotnitel-2.png")
+                    .right
+                        center
+                            h4#uplotnitel-text1 белый
+                            h4#uplotnitel-text2 Е128-С
+                        center
+                            h4 Цена:
+                            span#uplotnitel-price.margin-left-10.margin-right-10 58.90
+                            | руб.
+            .col-xs-3.col-sm-3.col-md-3.col-lg-3.polotno-el#ZAGLUSHKA-TORCEVAYA-BLOCK
+                center
+                    h4 Заглушка торцевая
+                .well.min-height-100
+                    .left
+                        img#zaglushka-torcevaya-img(src="img/addontoprofil/Euroshop/zaglushka-dek.png")
+                    .right
+                        center
+                            h4#zaglushka-torcevaya-text1 белый
+                            h4#zaglushka-torcevaya-text2 A14
+
+
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12.border-bottom-2
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12(data-toggle="collapse" data-target="#dekor-v-niz")
+            center
+                .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                    h4(style="padding-top: 15px;") Площадь
+                        span.TAB-POKRASKA-PLOSHAD 0
+                        | кв/м
+                .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                    h3 Выбор декора для профиля
+                    i.fa.fa-arrow-down(aria-hidden="true")
+                .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                    h4(style="padding-top: 15px;") Цена
+                        span.TAB-POKRASKA-PRICE 0
+                        | руб.
+        #dekor-v-niz.col-xs-12.col-sm-12.col-md-12.col-lg-12.vyiborDekoraDlyaProfilya.collapse
+            center
+                button.btn.btn-raised.btn-default(type="button")#btn-dekor-profil Декор профиля
+                br
+                input#pokraskaTypeAndName(type="hidden",value="color.RAL9003")
+                img(src='img/dekorRal/RAL9003.png')

@@ -2,12 +2,72 @@
   outline: none !important;
 }
 
+.form-group.label-static label.control-label, .form-group.label-placeholder label.control-label, .form-group.label-floating label.control-label {
+  position: inherit;
+}
+
 .checkbox label, .radio label, label {
   width: 100%;
 }
 
 .form-control:focus {
   box-shadow: none !important;
+}
+
+#DIAGRAMMA-DIALOG-WINDOW-BTN.col-xs-12.col-sm-12.col-md-12.col-lg-12:hover {
+  background-color: #e0efef;
+}
+
+.col-xs-1.col-sm-1.col-md-1.col-lg-1 input {
+  background: white;
+  height: 30px;
+  margin-top: 10px;
+  text-align: center;
+  width: 40px;
+}
+
+.imgTestRight img {
+  height: 150px;
+}
+
+.podvesyi-modal-left {
+  border-bottom: solid 1px #ccc;
+  border-right: solid 1px #ccc;
+  background-color: #f6f6f6;
+}
+
+.col-xs-15.col-sm-15.col-md-15.col-lg-15:hover {
+  background-color: #e0efef;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6:hover {
+  background-color: #e0efef;
+}
+
+.col-xs-15.col-sm-15.col-md-15.col-lg-15 h3 {
+  height: 60px;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.min-height-100 {
+  min-height: 130px !important;
+}
+
+.red {
+  color: red;
+}
+
+.left-text {
+  line-height: 1.07142857;
+  font-weight: 400;
+  padding-top: 6px;
 }
 
 .width-50 {
@@ -42,7 +102,7 @@
 }
 
 .container {
-  min-width: 1350px !important;
+  max-width: 1350px !important;
   width: 100% !important;
 }
 
@@ -330,10 +390,6 @@ body .next-line {
   margin-bottom: 0px;
 }
 
-#furnitura-tab h3 {
-  height: 50px;
-}
-
 .price-block {
   margin-right: 0;
   margin-left: 0;
@@ -392,8 +448,8 @@ body .next-line {
 
 #PAINTING-DIAGRAMMA-BLOCK {
   text-align: center;
-  overflow: hidden;
-  height: 450px;
+  height: 451px;
+  width: 1281px;
 }
 
 #PAINTING-DIAGRAMMA-BLOCK .PAINTING-DIAGRAMMA-EL {
@@ -415,13 +471,18 @@ body .next-line {
 
 #PAINTING-DIAGRAMMA {
   height: 100%;
-  box-shadow: inset -1px -2px 107px 52px rgba(0, 0, 0, 0.41);
-  border: 1px solid #eeeeee;
-  border-radius: 20px;
+  border-right: 1px solid #d2d2d2;
+  border-bottom: 1px solid #d2d2d2;
+  background-size: 50px 50px !important;
+  background-image: linear-gradient(to right, #d2d2d2 1px, transparent 1px), linear-gradient(to bottom, #d2d2d2 1px, transparent 1px);
 }
 
 #profil-tab {
   padding: 0 2%;
+}
+
+#profil-tab .minheight {
+  min-height: 30px;
 }
 
 .TAB-PROFIL-AREA, .TAB-PROFIL-PRICE, .TAB-POKRASKA-PRICE {
@@ -431,6 +492,18 @@ body .next-line {
 
 .vyiborDekoraDlyaProfilya img {
   margin-left: 10px;
+}
+
+.border-bottom {
+  border-bottom: solid 2px #ddd;
+}
+
+.border-right {
+  border-right: solid 2px #ddd;
+}
+
+.border-left {
+  border-left: solid 2px #ddd;
 }
 
 #EDIT-BLOCK.polotno-el {
@@ -520,6 +593,41 @@ body .next-line {
 
 .hideBlock {
   display: none;
+}
+
+#myTab {
+  text-align: center;
+  background: none;
+}
+
+#myTab li {
+  display: inline-block;
+  float: none !important;
+}
+
+.nav-tabs > li > a {
+  color: #ddd !important;
+}
+
+.nav-tabs > li > a:hover {
+  color: #ddd !important;
+}
+
+.nav-tabs > li.active > a {
+  color: #760e0f !important;
+  border-top: solid 2px #ddd !important;
+  border-top-right-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+  border-right: solid 2px #ddd !important;
+  border-left: solid 2px #ddd !important;
+}
+
+.nav-tabs {
+  border-bottom: 2px solid #ddd;
+}
+
+.border-bottom-2 {
+  border-bottom: 2px solid #ddd !important;
 }
 
 /* custom inclusion of right, left and below tabs */
@@ -700,7 +808,6 @@ body .next-line {
 
 .mehanizmyi-modal-text-left .imgTestLeft {
   width: 100%;
-  background: red;
   height: 200px;
 }
 
@@ -746,45 +853,48 @@ body .next-line {
   display: block;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left {
   padding: 5px 0 !important;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left * {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left * {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left .uplotnitel-modal-text {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .uplotnitel-modal-addon {
   padding: 10%;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left .imgTestLeft {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .addon-img {
+  height: 200px;
   width: 100%;
-  background: red;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .imgTestLeft {
+  width: 100%;
   height: 200px;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left .imgTestRight {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .imgTestRight {
   width: 100%;
-  background: green;
   height: 200px;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left h3 {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left h3 {
   font-weight: 400;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left h4, .col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left h3, .col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left h5 {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left h4, .col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left h3, .col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left h5 {
   line-height: 1.3;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left .red {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .red {
   margin-left: 5px;
   color: #d3262d;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left button {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left button {
   padding: 3px 10px !important;
   margin-bottom: 5px !important;
   background: #e5e5e5;
@@ -793,10 +903,120 @@ body .next-line {
   font-weight: 400;
 }
 
-.col-xs-6.col-sm-6.col-md-6.col-lg-6.uplotnitel-modal-left button:hover {
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left button:hover {
   border: 2px solid #b4b4b4;
   margin-bottom: 4px !important;
   margin-top: -1px !important;
   font-weight: 600;
   background: #d3d3d3;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK .ruler, #PAINTING-DIAGRAMMA-BLOCK .ruler-v {
+  background-color: #ffffff;
+  background-image: linear-gradient(90deg, rgba(73, 73, 73, 0.5) 0, rgba(73, 73, 73, 0.5) 2%, transparent 2%), linear-gradient(180deg, #ffffff 50%, transparent 50%), linear-gradient(90deg, transparent 50%, rgba(73, 73, 73, 0.5) 50%, rgba(73, 73, 73, 0.5) 52%, transparent 52%), linear-gradient(180deg, #ffffff 70%, transparent 70%), linear-gradient(90deg, transparent 10%, rgba(73, 73, 73, 0.4) 10%, rgba(73, 73, 73, 0.4) 12%, transparent 12%, transparent 20%, rgba(73, 73, 73, 0.4) 20%, rgba(73, 73, 73, 0.4) 22%, transparent 22%, transparent 30%, rgba(73, 73, 73, 0.4) 30%, rgba(73, 73, 73, 0.4) 32%, transparent 32%, transparent 40%, rgba(73, 73, 73, 0.4) 40%, rgba(73, 73, 73, 0.4) 42%, transparent 42%, transparent 60%, rgba(73, 73, 73, 0.4) 60%, rgba(73, 73, 73, 0.4) 62%, transparent 62%, transparent 70%, rgba(73, 73, 73, 0.4) 70%, rgba(73, 73, 73, 0.4) 72%, transparent 72%, transparent 80%, rgba(73, 73, 73, 0.4) 80%, rgba(73, 73, 73, 0.4) 82%, transparent 82%, transparent 90%, rgba(73, 73, 73, 0.4) 90%, rgba(73, 73, 73, 0.4) 92%, transparent 92%);
+  background-size: 50px 20px;
+  background-repeat: repeat-x;
+  min-height: 20px;
+  /* only needed for labels */
+  white-space: nowrap;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK {
+  position: relative !important;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK .ruler, #PAINTING-DIAGRAMMA-BLOCK .ruler-v {
+  margin-bottom: 0px;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK .ruler label, #PAINTING-DIAGRAMMA-BLOCK .ruler-v label {
+  text-align: left;
+  font-size: 9px;
+  padding-top: 2px;
+  display: inline-block;
+  width: 100px;
+  text-indent: 3px;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK .ruler {
+  overflow: hidden;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK .ruler-v {
+  transform: scale(-1, 1);
+  transform: rotate(270deg);
+  z-index: 9999;
+  position: absolute !important;
+  display: block;
+  height: 20px;
+  width: 452px;
+  top: calc(50% + 9px);
+  left: -221px;
+  min-height: 0px !important;
+}
+
+#stateSlider * {
+  transition-duration: .2s;
+}
+
+#stateSlider #minbeds {
+  display: none;
+}
+
+#stateSlider span.ui-slider-handle.ui-corner-all.ui-state-default {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-top: -3px;
+  cursor: pointer;
+}
+
+#stateSlider span.ui-slider-handle.ui-corner-all.ui-state-default.ui-state-hover, #stateSlider span.ui-slider-handle.ui-corner-all.ui-state-default.ui-state-active {
+  margin-top: -8px;
+  margin-left: -15px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background: #9a989a !important;
+  z-index: 999;
+  position: absolute;
+}
+
+#stateSlider .ui-slider-range.ui-corner-all.ui-widget-header.ui-slider-range-min {
+  background: #a8c1c4;
+}
+
+#stateSlider div#slider {
+  background: #4d4b4d !important;
+}
+
+#stateSlider .showStageName {
+  width: 210px;
+  position: absolute;
+  opacity: 1;
+  font-size: 12px;
+  margin-left: -45px;
+  margin-top: 35px;
+  text-align: left;
+  font-style: italic;
+}
+
+#stateSlider .possibleState {
+  margin-top: -8px;
+  margin-left: -9px;
+  position: absolute;
+  z-index: 9;
+  width: 25px;
+  height: 25px;
+  display: block;
+  border-radius: 50%;
+  border: 1.5px dashed black;
+  top: 0;
+}
+
+#PAINTING-DIAGRAMMA-BLOCK-HS {
+  margin-top: 30px;
 }

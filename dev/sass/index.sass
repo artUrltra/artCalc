@@ -2,7 +2,8 @@
   outline: none !important
 
 //кастом
-
+.form-group.label-static label.control-label, .form-group.label-placeholder label.control-label, .form-group.label-floating label.control-label
+  position: inherit
 .checkbox label, .radio label, label
   width: 100%
 .form-control:focus
@@ -12,6 +13,38 @@
 
 //label.control-label
 //  line-height: 0 !important
+#DIAGRAMMA-DIALOG-WINDOW-BTN.col-xs-12.col-sm-12.col-md-12.col-lg-12:hover
+  background-color: #e0efef
+.col-xs-1.col-sm-1.col-md-1.col-lg-1 input
+  background: white
+  height: 30px
+  margin-top: 10px
+  text-align: center
+  width: 40px
+.imgTestRight img
+  height: 150px
+.podvesyi-modal-left
+  border-bottom: solid 1px #ccc
+  border-right: solid 1px #ccc
+  background-color: #f6f6f6
+.col-xs-15.col-sm-15.col-md-15.col-lg-15:hover
+  background-color: #e0efef
+.col-xs-6.col-sm-6.col-md-6.col-lg-6:hover
+  background-color: #e0efef
+.col-xs-15.col-sm-15.col-md-15.col-lg-15 h3
+  height: 60px
+.margin-left-10
+  margin-left: 10px
+.margin-right-10
+  margin-right: 10px
+.min-height-100
+  min-height: 130px !important
+.red
+  color: red
+.left-text
+  line-height: 1.07142857
+  font-weight: 400
+  padding-top: 6px
 .width-50
   width: 50%
 .top-menu
@@ -34,7 +67,7 @@
   margin-bottom: 0px
 
 .container
-  min-width: 1350px !important
+  max-width: 1350px !important
   width: 100% !important
 
 .height-30
@@ -223,10 +256,6 @@ body
       width: 100%
   .napolnenie-el:last-child
     margin-bottom: 0px
-
-#furnitura-tab
-  h3
-    height: 50px
 .price-block
   margin-right: 0
   margin-left: 0
@@ -269,8 +298,9 @@ body
   text-align: center
   //overflow-y: auto
   //overflow-x: auto
-  overflow: hidden
-  height: 450px
+  //overflow: hidden
+  height: 451px
+  width: 1281px
   //height: 0px
   .PAINTING-DIAGRAMMA-EL
     display: flex
@@ -290,13 +320,16 @@ body
 #PAINTING-DIAGRAMMA
   //height: 400px
   height: 100%
-  box-shadow: inset -1px -2px 107px 52px rgba(0,0,0,0.41)
-  border: 1px solid #eeeeee
-  border-radius: 20px
+  border-right: 1px solid #d2d2d2
+  border-bottom: 1px solid #d2d2d2
+  background-size: 50px 50px !important
+  background-image: linear-gradient(to right, #d2d2d2 1px, transparent 1px), linear-gradient(to bottom, #d2d2d2 1px, transparent 1px)
 
 //PAINTING-DIAGRAMMA  //
 #profil-tab
   padding: 0 2%
+  .minheight
+    min-height: 30px
 .TAB-PROFIL-AREA, .TAB-PROFIL-PRICE, .TAB-POKRASKA-PRICE
   margin-left: 10px
   margin-right: 10px
@@ -304,6 +337,12 @@ body
 .vyiborDekoraDlyaProfilya
   img
     margin-left: 10px
+.border-bottom
+  border-bottom: solid 2px #ddd
+.border-right
+  border-right: solid 2px #ddd
+.border-left
+  border-left: solid 2px #ddd
 
 #EDIT-BLOCK.polotno-el
   border-bottom: solid 2px #ddd
@@ -377,15 +416,35 @@ body
   position: relative
 .hideBlock
   display: none
-
-
-
-
-
-
-
+#myTab
+  text-align: center
+  background: none
+#myTab li
+  display: inline-block
+  float: none !important
+.nav-tabs>li>a
+  color: #ddd !important
+.nav-tabs>li>a:hover
+  color: #ddd !important
+.nav-tabs>li.active>a
+  color: #760e0f !important
+  border-top: solid 2px #ddd !important
+  border-top-right-radius: 10px !important
+  border-top-left-radius: 10px !important
+  border-right: solid 2px #ddd !important
+  border-left: solid 2px #ddd !important
+.nav-tabs
+  border-bottom: 2px solid #ddd
+.border-bottom-2
+  border-bottom: 2px solid #ddd !important
 
 @import "parts/tab.sass"
 @import "parts/mehanizmyiModal.sass"
 @import "parts/podvesyiModal.sass"
 @import "parts/uplotnitelModal.sass"
+
+@import "parts/ruler.sass"
+@import "parts/stateSlider.sass"
+
+#PAINTING-DIAGRAMMA-BLOCK-HS
+  margin-top: 30px
