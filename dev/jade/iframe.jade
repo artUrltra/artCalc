@@ -1,0 +1,63 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title Калькулятор
+        link(rel='stylesheet', type='text/css', href='css/preloader.css')
+    body
+        .preloade-wrapper
+            .preloader.loading
+                span.slice
+                span.slice
+                span.slice
+                span.slice
+                span.slice
+                span.slice
+
+        #allStates
+            iframe(src="index.html" width="100%")#state1
+            iframe(src="index.html" width="100%")#state2
+            iframe(src="index.html" width="100%")#state3
+        .container#stateSlider.text-center
+            h3 Ценовые варианты
+            form
+                select#minbeds(name='minbeds')
+                    option(value="state1")
+                    option(value="state2")
+                    option(value="state3")
+            .loadImgBlock
+            .col-xs-12.col-sm-12.col-md-12.col-lg-12.text-center
+
+
+                button.btn.btn-raised.btn-default.addImg(type="button") Добавить картинку
+                button.btn.btn-raised.btn-default.sendGet(type="button") Скачать PDF
+                button.btn.btn-raised.btn-default.saveHistory(type="button") Сохранить историю
+        script(src='lib/jquery.min.js')
+        script(src='lib/bootstrap.min.js')
+        script(src='lib/bootstrap.min.js')
+
+
+
+
+
+
+        link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/css?family=Roboto:300,400,500,700')
+        link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/icon?family=Material+Icons')
+        link(rel='stylesheet', type='text/css', href='lib/bootstrap.min.css')
+        link(rel='stylesheet', type='text/css', href='css/bootstrap-material-design.css')
+        link(rel='stylesheet', type='text/css', href='css/ripples.min.css')
+        link(rel='stylesheet', type='text/css', href='lib/font-awesome.min.css')
+        script(src='lib/snackbar.min.js')
+        link(rel='stylesheet', type='text/css', href='lib/snackbar.min.css')
+        link(rel='stylesheet', type='text/css', href='css/index.css')
+        link(rel='stylesheet', href='lib/jquery-ui.css')
+        script(type='text/javascript', src='lib/jquery-ui.min.js')
+        script(type='text/javascript', src='lib/jquery.ui.touch-punch.min.js')
+        script(type='text/javascript', src='lib/html2canvas.js')
+        script(type='text/javascript', src='lib/jquery.plugin.html2canvas.js')
+        script(type='text/javascript', src='js/iframe.js')
+        link(rel='stylesheet', href='css/iframe.css')
+        script(src='js/loadImg.js')
+        script(src='js/sendGet.js')

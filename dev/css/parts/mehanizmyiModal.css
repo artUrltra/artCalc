@@ -1,0 +1,40 @@
+.mehanizmyi-modal-title {
+  margin-top: -70px;
+}
+
+.mehanizmyi-modal-details .details {
+  font-style: italic;
+  font-weight: 100;
+  text-decoration: underline;
+}
+
+.mehanizmyi-modal-details .details span i {
+  border: 1px solid #b4b4b4;
+  border-radius: 50%;
+  padding: 2px 5px;
+  margin-left: 5px;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  transition-duration: .3s;
+  cursor: pointer;
+}
+
+.mehanizmyi-modal-details .details span i:hover {
+  background: #c30200;
+  color: white;
+}
+
+.mehanizmyi-modal-text-left {
+  text-align: left;
+}
+
+.mehanizmyi-modal-text-left .imgTestLeft {
+  width: 100%;
+  height: 200px;
+}
+
+.mehanizmyi-modal-text-right .box {
+  padding: 5px 0;
+  border: 1px solid #b4b4b4;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+}

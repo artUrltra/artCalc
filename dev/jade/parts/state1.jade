@@ -1,0 +1,19 @@
+include ../parts/top-block
+.row.step-block.wrapper-tabs
+    ul#myTab.nav.nav-tabs
+        li.active
+            a(href='#profil-tab') Профиль
+                i.fa.fa-arrow-right(aria-hidden='true')
+        li
+            a(href='#napolnenie-tab') Наполнение
+                i.fa.fa-arrow-right(aria-hidden='true')
+        li#top-furnitura-tab
+            a(href='#furnitura-tab') Фуринтура
+    .tab-content
+        include ../parts/profil-tab
+        include ../parts/napolnenie-tab
+        include ../parts/furnitura-tab
+include ../parts/price-block
+include ../parts/hide.html
+include ../parts/load-img.jade
+include ../parts/napolnenie-block.jade

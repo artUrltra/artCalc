@@ -1,0 +1,13 @@
+mixin input-custom-block-mini(name, id, ml)
+    label.control-label(for=id)!= name
+        input(id=id,maxlength=ml).form-control(type='text')
+        //.input-group
+        //    span.input-group-btn
+        //        button.btn.btn-fab.btn-fab-mini.btn-plaus(type='button')
+        //            i.material-icons add
+        //        button.btn.btn-fab.btn-fab-mini.btn-minus(type='button')
+        //            i.material-icons remove
+mixin input-custom-block-super-mini(name, id, ml)
+    .form-group
+        label.control-label.input-custom-block-super-mini(for=id)!= name
+        input(id=id,maxlength=ml,placeholder='0').form-control.input-custom-block-super-mini(type='text')

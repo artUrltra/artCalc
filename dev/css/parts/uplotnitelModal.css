@@ -1,0 +1,57 @@
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left {
+  padding: 5px 0 !important;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left * {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .uplotnitel-modal-addon {
+  padding: 10%;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .addon-img {
+  height: 200px;
+  width: 100%;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .imgTestLeft {
+  width: 100%;
+  height: 200px;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .imgTestRight {
+  width: 100%;
+  height: 200px;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left h3 {
+  font-weight: 400;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left h4, .col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left h3, .col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left h5 {
+  line-height: 1.3;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left .red {
+  margin-left: 5px;
+  color: #d3262d;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left button {
+  padding: 3px 10px !important;
+  margin-bottom: 5px !important;
+  background: #e5e5e5;
+  border: 1px solid #b4b4b4;
+  color: #757575;
+  font-weight: 400;
+}
+
+.col-xs-6.col-sm-6.col-md-6.col-lg-6.addon-modal-left button:hover {
+  border: 2px solid #b4b4b4;
+  margin-bottom: 4px !important;
+  margin-top: -1px !important;
+  font-weight: 600;
+  background: #d3d3d3;
+}
