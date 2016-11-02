@@ -5,7 +5,7 @@ $( function() {
         min: 1,
         max: countEl,
         range: "min",
-        value: select[ 0 ].selectedIndex + 1,
+        value: select.selectedIndex + 1,
         slide: function( event, ui ) {
             select[ 0 ].selectedIndex = ui.value - 1;
             var stateName = $( '#minbeds :nth-child(' + ui.value + ')' ).text();

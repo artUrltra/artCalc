@@ -1,0 +1,236 @@
+.vi-container {
+  width: 1290px;
+  max-width: 92%;
+  margin: auto;
+  display: flex;
+  padding: 10px 10px;
+  margin-bottom: 20px;
+}
+
+.vi-r {
+  clear: both;
+  clear: top;
+  clear: left;
+  clear: right;
+}
+
+.vi-block-5 {
+  min-width: 5%;
+  max-width: 5%;
+}
+
+.vi-block-7 {
+  min-width: 7%;
+  max-width: 7%;
+}
+
+.vi-block-10 {
+  min-width: 10%;
+  max-width: 10%;
+}
+
+.vi-block-13 {
+  min-width: 13%;
+  max-width: 13%;
+}
+
+.vi-block-14 {
+  min-width: 14%;
+  max-width: 14%;
+}
+
+.vi-block-15 {
+  min-width: 15%;
+  max-width: 15%;
+}
+
+.vi-block-16 {
+  min-width: 16%;
+  max-width: 16%;
+}
+
+.vi-block-20 {
+  min-width: 20%;
+  max-width: 20%;
+}
+
+.vi-block-23 {
+  min-width: 23%;
+  max-width: 23%;
+}
+
+.vi-block-25 {
+  min-width: 25%;
+  max-width: 25%;
+}
+
+.vi-block-30 {
+  max-width: 30%;
+  max-width: 30%;
+}
+
+.vi-block-33 {
+  min-width: 33.3333333333%;
+  max-width: 33.3333333333%;
+}
+
+.vi-block-35 {
+  min-width: 35%;
+  max-width: 35%;
+}
+
+.vi-block-40 {
+  min-width: 40%;
+  max-width: 40%;
+}
+
+.vi-block-45 {
+  min-width: 45%;
+  max-width: 45%;
+}
+
+.vi-block-50 {
+  min-width: 50%;
+  max-width: 50%;
+}
+
+.vi-block-55 {
+  min-width: 55%;
+  max-width: 55%;
+}
+
+.vi-block-60 {
+  min-width: 60%;
+  max-width: 60%;
+}
+
+.vi-block-70 {
+  min-width: 70%;
+  max-width: 70%;
+}
+
+.vi-block-80 {
+  min-width: 80%;
+  max-width: 80%;
+}
+
+.vi-block-90 {
+  min-width: 90%;
+  max-width: 90%;
+}
+
+.vi-block-100 {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.vi-block-5,
+.vi-block-7,
+.vi-block-10,
+.vi-block-13,
+.vi-block-15,
+.vi-block-16,
+.vi-block-20,
+.vi-block-23,
+.vi-block-25,
+.vi-block-30,
+.vi-block-33,
+.vi-block-35,
+.vi-block-40,
+.vi-block-45,
+.vi-block-50,
+.vi-block-55,
+.vi-block-60,
+.vi-block-80,
+.vi-block-90,
+.vi-block-70,
+.vi-block-100 {
+  float: left;
+  padding: 0px 5px;
+}
+
+.vi-container h3 {
+  font-size: 14px;
+  line-height: 0;
+  margin: 10px 0px;
+  padding: 0;
+  display: inline;
+}
+
+.vi-container .vi-text-center {
+  text-align: center !important;
+}
+
+.vi-container input[type='text'] {
+  width: 100%;
+  background: none;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0px 5px 2px 5px;
+}
+
+.vi-container select {
+  width: 100%;
+  background: none;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.vi-blockColor-white {
+  background: white;
+}
+
+.vi-textColor-white {
+  color: white;
+}
+
+.vi-blockColor-red {
+  background: red;
+}
+
+.vi-textColor-red {
+  color: red;
+}
+
+.vi-blockColor-blue {
+  background: blue;
+}
+
+.vi-textColor-blue {
+  color: blue;
+}
+
+.vi-blockColor-green {
+  background: green;
+}
+
+.vi-textColor-green {
+  color: green;
+}
+
+.vi-blockColor-lightGray {
+  background: #e5e5e5;
+}
+
+.vi-textColor-lightGray {
+  color: #e5e5e5;
+}
+
+.vi-blockColor-darkGray {
+  background: #737373;
+}
+
+.vi-textColor-darkGray {
+  color: #737373;
+}
+
+.vi-borderRight {
+  border-right: 1px solid #737373;
+}

@@ -35,10 +35,10 @@ function DandDStart(st) {
         snapMode: "both"
     });
     paintingInDiadramma();
-    setHeightDandDEl(st);
-    setWidthDandDEl(st);
+    setHeightDandDEl();
+    setWidthDandDEl();
 }
-function setHeightDandDEl(st) {
+function setHeightDandDEl() {
     var p = parseInt( $('#TOTAL_PAINTING_ID').val() );
     for ( i=0; i<=p; i++){
         var wi = parseFloat( $('*[data-id="' + i + '"]').attr( 'data-height' ) );
@@ -46,7 +46,7 @@ function setHeightDandDEl(st) {
     }
 
 }
-function setWidthDandDEl(st) {
+function setWidthDandDEl() {
     var p = parseInt( $('#TOTAL_PAINTING_ID').val() );
     for ( i=0; i<=p; i++){
         var wi = parseFloat( $('*[data-id="' + i + '"]').attr( 'data-width' ) );

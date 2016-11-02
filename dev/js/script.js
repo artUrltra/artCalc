@@ -3656,7 +3656,6 @@ function SelectTabKarkasEnd(name, type) {
             setDataAndText('karkas-name', name);
             setDataAndText('karkas-price', parseInt(price));
             setDataAndText('karkas-full-price', parseInt((parseFloat(decorPrice) + price)));
-            $(".js-div-for-3d").html("");
             $("img.selectKarkasImg").show();
             break;
         case "H":
@@ -3735,7 +3734,6 @@ function SelectTabKarkasEnd(name, type) {
 
             $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(price));
             setDataAndText('horizontal-pereochki-price', parseInt(price));
-            $(".js-div-for-3d").html("");
             $("img.selectKarkasImg").show();
             break;
         case "V":
@@ -3903,7 +3901,6 @@ function SelectTabKarkasEnd(name, type) {
 
             $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(price));
             setDataAndText('vertikalnue-pereochki-price', parseInt(price));
-            $(".js-div-for-3d").html("");
             $("img.selectKarkasImg").show();
             break;
     }
@@ -3972,6 +3969,7 @@ function load3D(name){
     $(".js-div-for-3d").html("");
     $(".js-div-for-3d").hide();
     $("img.selectKarkasImg").show();
+
     $("img#img-modal-" + name).hide();
     var html = $("#" + name + "-3d").html();
     $("div#div-for-3d-" + name).append(html);
@@ -4002,6 +4000,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
 
     setDataAndText('karkas-vid-krepleniya', '');
 
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
     var hm = parseInt(getFromData('height'));
 
     var priceTur = ((parseInt(getFromData('width')) + (parseInt(getFromData('height')))) * 0.002 * (94 + 13) + (22 + 20) * 4);
@@ -4127,14 +4126,14 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
 
     if (hm <= 6000 && hm >= 5000) {
 
-        $("#DIAGRAMMA-DIALOG-WINDOW-TAB-PROFIL").modal('toggle');
+        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx1);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx2);
 
     } else if (hm <= 5000 && hm >= 4000) {
 
-        $("#DIAGRAMMA-DIALOG-WINDOW-TAB-PROFIL").modal('toggle');
+        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx1);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx2);
@@ -4143,7 +4142,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
 
     } else if (hm <= 4000 && hm >= 3000) {
 
-        $("#DIAGRAMMA-DIALOG-WINDOW-TAB-PROFIL").modal('toggle');
+        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx1);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx2);
@@ -4153,7 +4152,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
 
     } else if (hm <= 3000 && hm >= 2800) {
 
-        $("#DIAGRAMMA-DIALOG-WINDOW-TAB-PROFIL").modal('toggle');
+        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx1);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx2);
@@ -4165,7 +4164,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
 
     } else if (hm <= 2800 && hm >= 2600) {
 
-        $("#DIAGRAMMA-DIALOG-WINDOW-TAB-PROFIL").modal('toggle');
+        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx1);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtmlStatusx2);

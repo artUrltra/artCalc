@@ -4,31 +4,30 @@ $('.sendGet').click(function () {
 });
 // 1 - получение скрина
 function getScreen() {
-        html2canvas($("#PAINTING-DIAGRAMMA"), {
-            background:'#fff',
-            onrendered: function(canvas) {
-                var imgData = canvas.toDataURL('image/jpeg');
-                var url = 'loadImg.php';
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    dataType: 'text',
-                    async: false,
-                    data: {
-                        screen : imgData
-                    },
-                    success: function(response){
-                        response = "" + response
-                        var ans = response.substr(12);
-                        sendUrl(ans);
-                        console.log("2222")
-                    },
-                    error:function(xhr, ajaxOptions, thrownError){
-                        console.log( xhr.responseText )
-                    }
-                });
-            }
-        });
+    html2canvas($( "#state1" ).contents().find("#PAINTING-DIAGRAMMA"), {
+        background:'#fff',
+        onrendered: function(canvas) {
+            var imgData = canvas.toDataURL('image/jpeg');
+            var url = 'loadImg.php';
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: 'text',
+                async: false,
+                data: {
+                    screen : imgData
+                },
+                success: function(response){
+                    response = "" + response;
+                    sendUrl(response);
+                    // console.log("html2canvas success", response)
+                },
+                error:function(xhr, ajaxOptions, thrownError){
+                    // console.log("html2canvas error", xhr.responseText )
+                }
+            });
+        }
+    });
 }
 // 1.5  - траслитерация url
 function urlLit(w, v) {

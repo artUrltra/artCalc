@@ -29,7 +29,6 @@
 }
 
 #PAINTING-DIAGRAMMA-BLOCK .ruler {
-  width: 1100px;
   overflow: hidden;
 }
 
@@ -42,6 +41,6 @@
   height: 20px;
   width: 452px;
   top: calc(50% + 9px);
-  left: -231px;
+  left: -221px;
   min-height: 0px !important;
 }

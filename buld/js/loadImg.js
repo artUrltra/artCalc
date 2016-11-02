@@ -11,7 +11,7 @@ $(document).on('change', 'input[type=file]', function() {
         data.append( key, value );
     });
     $.ajax({
-        url: './loadImg.php?uploadfiles',
+        url: './php/uploadImg.php',
         type: 'POST',
         data: data,
         cache: false,
