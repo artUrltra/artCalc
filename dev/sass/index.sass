@@ -13,8 +13,25 @@
 
 //label.control-label
 //  line-height: 0 !important
+.height-130
+  height: 130px
+.width-130
+  width: 130px
+.js-div-for-3d
+  height: 202px !important
+  display: none
+.selectKarkasImg
+  height: 202px !important
+.profil-select img
+  width: 200px
+.napolnenie-el-img img
+  width: 200px !important
+.col-xs-3.col-sm-3.col-md-3.col-lg-3:hover
+  background-color: #e0efef
+  cursor: pointer
 #DIAGRAMMA-DIALOG-WINDOW-BTN.col-xs-12.col-sm-12.col-md-12.col-lg-12:hover
   background-color: #e0efef
+  cursor: pointer
 .col-xs-1.col-sm-1.col-md-1.col-lg-1 input
   background: white
   height: 30px
@@ -29,8 +46,10 @@
   background-color: #f6f6f6
 .col-xs-15.col-sm-15.col-md-15.col-lg-15:hover
   background-color: #e0efef
+  cursor: pointer
 .col-xs-6.col-sm-6.col-md-6.col-lg-6:hover
   background-color: #e0efef
+  cursor: pointer
 .col-xs-15.col-sm-15.col-md-15.col-lg-15 h3
   height: 60px
 .margin-left-10
@@ -45,6 +64,7 @@
   line-height: 1.07142857
   font-weight: 400
   padding-top: 6px
+  text-align: left
 .width-50
   width: 50%
 .top-menu
@@ -90,6 +110,7 @@
       display: inline-flex
 .col-md-3.profil-select:hover
   background-color: #e0efef
+  cursor: pointer
 .display-none
   display: none
 .input-group .input-group-btn
@@ -232,10 +253,12 @@ body
       margin-bottom: 20px
   .form-group
     margin: 0
-.POLOVINCHATAYA
-  display: none
-  .check
-    margin-right: 10px
+//.POLOVINCHATAYA
+  //display: none
+  //.check
+  //  margin-right: 10px
+input:disabled
+  background-color: #e5e5e5
 #napolnenie-tab
   .top
     display: inline-flex
@@ -249,7 +272,7 @@ body
     margin-bottom: 15px
     >div
       padding: 0 10px
-      width: calc(100%/6)
+      width: calc(100%/3)
       display: initial
       float: left
     img
@@ -426,7 +449,7 @@ body
   color: #ddd !important
 .nav-tabs>li>a:hover
   color: #ddd !important
-.nav-tabs>li.active>a
+#myTab>li.active>a
   color: #760e0f !important
   border-top: solid 2px #ddd !important
   border-top-right-radius: 10px !important
@@ -448,3 +471,22 @@ body
 
 #PAINTING-DIAGRAMMA-BLOCK-HS
   margin-top: 30px
+
+@import "parts/vi-grid.sass"
+.top-block
+  select
+    border: 0
+    position: relative
+  .triangle
+    width: 0
+    border: 7px solid transparent
+    border-top: 5px solid #737373
+    margin: auto
+    position: absolute
+    margin-left: 50%
+    top: 20px
+  .select-type-block
+    position: relative
+  input
+    border: 0 !important
+    padding: 0px !important

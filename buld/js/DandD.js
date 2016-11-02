@@ -18,11 +18,11 @@ $('#PAINTING-DIAGRAMMA').on( "click resize", ".PAINTING-DIAGRAMMA-EL", function(
     $( this ).addClass( 'used' );
 });
 function DandDStart(st) {
-    $( ".PAINTING-DIAGRAMMA-EL"+st ).resizable({
-        containment:'#PAINTING-DIAGRAMMA'+st,
+    $( ".PAINTING-DIAGRAMMA-EL").resizable({
+        containment:'#PAINTING-DIAGRAMMA',
         handles:'n,e,s,w,se',
-        maxHeight: parseInt( $( '#HIGHT_SETS_ID'+st ).val() / 10 ),
-        maxWidth: parseInt( $( '#WIDTH_SETS_ID'+st ).val() ) / 10,
+        maxHeight: parseInt( $( '#HIGHT_SETS_ID').val() / 10 ),
+        maxWidth: parseInt( $( '#WIDTH_SETS_ID').val() ) / 10,
         resize: function( event, ui ) {
             calcNow();
             setHeightDandDEl();
@@ -30,7 +30,7 @@ function DandDStart(st) {
         }
     });
     $(".drag").draggable({
-        containment: "#PAINTING-DIAGRAMMA"+st,
+        containment: "#PAINTING-DIAGRAMMA",
         snap: true,
         snapMode: "both"
     });
@@ -39,7 +39,7 @@ function DandDStart(st) {
     setWidthDandDEl(st);
 }
 function setHeightDandDEl(st) {
-    var p = parseInt( $('#TOTAL_PAINTING_ID'+st).val() );
+    var p = parseInt( $('#TOTAL_PAINTING_ID').val() );
     for ( i=0; i<=p; i++){
         var wi = parseFloat( $('*[data-id="' + i + '"]').attr( 'data-height' ) );
         $('*[data-id="' + i + '"]').css('height', wi/10 );
@@ -47,7 +47,7 @@ function setHeightDandDEl(st) {
 
 }
 function setWidthDandDEl(st) {
-    var p = parseInt( $('#TOTAL_PAINTING_ID'+st).val() );
+    var p = parseInt( $('#TOTAL_PAINTING_ID').val() );
     for ( i=0; i<=p; i++){
         var wi = parseFloat( $('*[data-id="' + i + '"]').attr( 'data-width' ) );
         $('*[data-id="' + i + '"]').css('width', wi/10 );

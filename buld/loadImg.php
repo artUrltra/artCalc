@@ -3,7 +3,7 @@
 if( !isset( $_GET['uploadfiles'] ) ){
     $error = false;
     $files = array();
-    $uploaddir = './img/uploads/'; // . - текущая папка где находится submit.php
+    $uploaddir = 'artCalc/img/uploads/'; // . - текущая папка где находится submit.php
     if( ! is_dir( $uploaddir ) ) mkdir( $uploaddir, 0777 );
     foreach( $_FILES as $file ){
         if( move_uploaded_file( $file['tmp_name'], $uploaddir . basename($file['name']) ) ){

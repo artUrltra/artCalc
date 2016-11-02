@@ -345,13 +345,13 @@ body .next-line {
   margin: 0;
 }
 
-.POLOVINCHATAYA {
-  display: none;
-}
+/*.POLOVINCHATAYA {*/
+  /*display: none;*/
+/*}*/
 
-.POLOVINCHATAYA .check {
-  margin-right: 10px;
-}
+/*.POLOVINCHATAYA .check {*/
+  /*margin-right: 10px;*/
+/*}*/
 
 #napolnenie-tab .top {
   display: inline-flex;

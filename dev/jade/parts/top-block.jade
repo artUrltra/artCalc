@@ -1,47 +1,74 @@
+.vi-container
+    .vi-block-33
+        .vi-block-40.vi-text-center
+            h3.vi-textColor-darkGray Имя менеджера
+        .vi-block-60
+            input(type='text').vi-textColor-darkGray
+    .vi-block-33
+        .vi-block-40.vi-text-center
+            h3.vi-textColor-darkGray Телефон менеджера
+        .vi-block-60
+            input(type='text').vi-textColor-darkGray
+    .vi-block-33
+        .vi-block-40.vi-text-center
+            h3.vi-textColor-darkGray Email менеджера
+        .vi-block-60
+            input(type='text').vi-textColor-darkGray
+
+.vi-container.top-block.vi-blockColor-lightGray
+    .vi-block-14.select-type-block.vi-borderRight
+        select#TYPE_BAFFLE_ID.vi-textColor-darkGray
+            option(value='0') Стационарная
+            option(value='1') Раздвижная перегородка
+            option(value='2') Складная перегородка
+            option(value='4') Мобильная перегородка
+        .triangle
+    .vi-block-20.vi-borderRight
+        .vi-block-70
+            h3 Половинчатая створка
+        .vi-block-15.vi-blockColor-white.POLOVINCHATAYA
+            input(type='text',disabled="disabled")#POLOVINCHATAYA_KOL
+        .vi-block-15
+            h3 шт.
+    .vi-block-23.vi-borderRight
+        .vi-block-50
+            .vi-block-50
+                h3 Высота:
+            .vi-block-35.vi-blockColor-white
+                input(id="HIGHT_SETS_ID", type='text',maxlength="4")
+            .vi-block-15 .cm
+        .vi-block-50
+            .vi-block-50
+                h3 Ширина:
+            .vi-block-35.vi-blockColor-white
+                input(id="WIDTH_SETS_ID", type='text',maxlength="4")
+            .vi-block-15 .cm
+    .vi-block-35.vi-borderRight
+        .vi-block-45
+            .vi-block-70
+                h3 Всего полотен:
+            .vi-block-20.vi-blockColor-white
+                input(id="TOTAL_PAINTING_ID", type='text',maxlength="1")
+            .vi-block-10
+                h3 шт.
+        .vi-block-55
+            .vi-block-70
+                h3 Подвижные полотна:
+            .vi-block-20.vi-blockColor-white
+                input(id="MOVABLE_PAINTING_ID", type='text',maxlength="1")
+            .vi-block-10
+                h3 шт.
+    .vi-block-7
+        .vi-block-40.vi-blockColor-white
+            input(id="AREA_ID", type='text')
+        .vi-block-60
+            h3 кв/м
 .container
-    .row.wrapper.new-line(style="background-color: #e5e5e5;")
-        .col-xs-2.col-sm-2.col-md-2.col-lg-2(style="width: 15%;padding-right: 5px;border-right: solid 1px #ccc;")
-            .form-group.label-floating.is-empty(style="margin-top: 0px;")
-                select.form-control#TYPE_BAFFLE_ID(style="font-size: 14pt;")
-                    option(value='0') Стационарная
-                    option(value='1') Раздвижная перегородка
-                    option(value='2') Складная перегородка
-                    //option(value='3') Складная перегородка с половинчатой створкой
-                    option(value='4') Мобильная перегородка
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 6%;")
-            h5.left-text Высота
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 5%;")
-            input(id="HIGHT_SETS_ID").form-control(type='text',maxlength="4")
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 6%;")
-            h5.left-text Ширина
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 5%;padding-right: 5px;border-right: solid 1px #ccc;")
-            input(id="WIDTH_SETS_ID").form-control(type='text',maxlength="4")
-        .col-xs-2.col-sm-2.col-md-2.col-lg-2(style="width: 10%;")
-            h5.left-text Всего полотен
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 5%;")
-            input(id="TOTAL_PAINTING_ID").form-control(type='text',maxlength="1")
-        .col-xs-2.col-sm-2.col-md-2.col-lg-2(style="width: 13%;")
-            h5.left-text Подвижные полотна
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 5%;")
-            input(id="MOVABLE_PAINTING_ID").form-control(type='text',maxlength="1")
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 5%;padding-right: 5px;border-right: solid 1px #ccc;")
-            input(name="area", id="AREA_ID", class="input-new form-control", type="text", maxlength="1", disabled="disabled")
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 5%;")
-            h5.left-text кв/м
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 8%;padding-right: 5px;border-right: solid 1px #ccc;")
-            h5.left-text Комплектов
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 6%;")
-            input(id="NUMBER_SETS_ID").form-control(type='text',maxlength="2")
-        .col-xs-1.col-sm-1.col-md-1.col-lg-1(style="width: 6%;")
-            h5.left-text шт.
-
-
-        //line 2
     .row.wrapper.next-line
         .col-xs-12.col-sm-12.col-md-12.col-lg-12
-            .checkbox.POLOVINCHATAYA
+            //.checkbox.POLOVINCHATAYA
                 label
-                    input(type='checkbox')#POLOVINCHATAYA_CHECKBOX
+                    //input(type='checkbox')#POLOVINCHATAYA_CHECKBOX
                     span.checkbox-material
                         span.check
                     | Половинчатая створка
