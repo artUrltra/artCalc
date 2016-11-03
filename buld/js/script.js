@@ -2977,6 +2977,39 @@ function calcNow() {
     ifEmptyCarcas();
     //  ============================= //
 
+    // ТАБ ПРОФИЛЬ если пустой вид крепления //
+    function ifEmptyVidKrepleniya() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-vid-krepleniya') == '') {
+            SelectKreplenieEnd('img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Открытое', 'E401/E401', '35');
+        }
+    }
+    ifEmptyVidKrepleniya();
+//  ============================= //
+// ТАБ ПРОФИЛЬ если пустой уплотнитель //
+    function ifEmptyUplotnitel() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-tsvet-uplotnitelya') == '') {
+            SelectUplotnitelEnd('img/addontoprofil/Euroshop/uplotnitel.png', 'белый', 'K401', '58.90');
+        }
+    }
+    ifEmptyUplotnitel();
+//  ============================= //
+// ТАБ ПРОФИЛЬ если пустая заглушка в паз //
+    function ifEmptyZaglushkaVPaz() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-tsvet-zaglushki') == '') {
+            SelectZaglushkaEnd('img/addontoprofil/Euroshop/zaglushka-dek-v-paz.png', 'белый', 'K403', '24.61');
+        }
+    }
+    ifEmptyZaglushkaVPaz();
+//  ============================= //
+// ТАБ ПРОФИЛЬ если пустая заглушка торцевая //
+    function ifEmptyZaglushkaTortsevaja() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-tsvet-zaglushki-tortsevoy') == '') {
+            SelectZaglushkaTorcevayaEnd('img/addontoprofil/Euroshop/zaglushka-dek.png', 'белый', 'A14', '0');
+        }
+    }
+    ifEmptyZaglushkaTortsevaja();
+//
+
     // ТАБ ПРОФИЛЬ если перемычки пусти //
     function ifEmptyPeremuchka() {
         if (getFromData('vertikalnue-pereochki-name') == '') {
