@@ -1,4 +1,3 @@
-
 $('#PAINTING-DIAGRAMMA').on( "click resize", ".PAINTING-DIAGRAMMA-EL", function(event,ui) {
     var id = parseInt( $( this ).data()['id'] );
     $('.PAINTING-DIAGRAMMA-EL').css({'z-index':'0'});
@@ -16,7 +15,45 @@ $('#PAINTING-DIAGRAMMA').on( "click resize", ".PAINTING-DIAGRAMMA-EL", function(
 
     $( '*' ).removeClass( 'used' );
     $( this ).addClass( 'used' );
+
+    $('.resizeY').remove();
+    $(this).append('<div class="resizeY">');
+    $('.resizeY').append('<div class="arrowTop" onclick="arrowTop(' + id + ')">');
+    $('.resizeY').append('<div class="arrowBottom" onclick="arrowBottom(' + id + ')">');
+    $('.resizeY').append('<div class="arrowY1">');
+    $('.resizeY').append('<div class="arrowY2">');
+    $('.resizeY').append('<div class="indicatorY">' + parseInt($('.resizeY').height() + 2) );
+
+    $('.resizeX').remove();
+    $(this).append('<div class="resizeX">');
+    $('.resizeX').append('<div class="arrowLeft" onclick="arrowLeft(' + id + ')">');
+    $('.resizeX').append('<div class="arrowRight" onclick="arrowRight(' + id + ')">');
+    $('.resizeX').append('<div class="arrowX1">');
+    $('.resizeX').append('<div class="arrowX2">');
+    $('.resizeX').append('<div class="indicatorX">' + parseInt($('.resizeX').width() + 2) );
 });
+
+// Изменение размеров диаграммы кликом по стрелке
+function arrowBottom(id) {
+    var heightDiagramma = $('*[data-id="' + id + '"]').height();
+    $('*[data-id="' + id + '"]').height(heightDiagramma + 50);
+}
+
+function arrowTop(id) {
+    var heightDiagramma = $('*[data-id="' + id + '"]').height();
+    $('*[data-id="' + id + '"]').height(heightDiagramma - 50);
+}
+
+function arrowRight(id) {
+    var heightDiagramma = $('*[data-id="' + id + '"]').width();
+    $('*[data-id="' + id + '"]').width(heightDiagramma + 50);
+}
+
+function arrowLeft(id) {
+    var heightDiagramma = $('*[data-id="' + id + '"]').width();
+    $('*[data-id="' + id + '"]').width(heightDiagramma - 50);
+}
+
 function DandDStart(st) {
     $( ".PAINTING-DIAGRAMMA-EL").resizable({
         containment:'#PAINTING-DIAGRAMMA',

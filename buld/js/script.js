@@ -4674,14 +4674,14 @@ $('.add-material-btn').click(function () {
         var type = getFromData('material-' + i + '-type');
         if (type == '') {
             $(".add-material-block-past").append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el" data-material-el-id="' + i + '">' + $(".napolnenie-el-set").html() + '</div>');
-            setDataAndText('material-' + i + '-type', 0);
-            setNapolnenieElTolschinaShow("stekloObyichnoe", i);
+            setDataAndText('material-' + i + '-type', 'stekloObyichnoe');
+            setNapolnenieElTolschinaShow('stekloObyichnoe', i);
             break loop1;
         }
     }
     addWElNapolnenieToFive();
     addWHElNapolnenie();
-    napolneniePrice();
+    calcNow();
 });
 
 
