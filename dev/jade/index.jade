@@ -1,4 +1,4 @@
-doctype html
+﻿doctype html
 html(lang='en')
     head
         meta(charset='utf-8')
@@ -13,7 +13,7 @@ html(lang='en')
         link(rel='shortcut icon', href='img/favicon.png', type='image/x-icon')
         script(src='lib/jquery.min.js')
         script(src='lib/bootstrap.min.js')
-        script(src='lib/bootstrap.min.js')
+        link(rel='stylesheet' type='text/css' href='http://www.x3dom.org/x3dom/release/x3dom.css')
         link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/css?family=Roboto:300,400,500,700')
         link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/icon?family=Material+Icons')
         link(rel='stylesheet', type='text/css', href='lib/bootstrap.min.css')
@@ -54,7 +54,7 @@ html(lang='en')
         include parts/hide.jade
         script.
             function minimalPriceContent() {
-                SelectKarkasEnd(94,'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм','Tur', 'http://pavel.artultra.ru/karkas/Tur.png',13,20,22,0);
+                SelectTabKarkasEnd('Tur', 'K');
                 SelectKreplenieEnd('img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Открытое', 'E401/E401', '35');
                 SelectUplotnitelEnd('img/addontoprofil/Euroshop/uplotnitel-2.png', 'белый', 'K402', '18.05');
                 SelectZaglushkaEnd('img/addontoprofil/Euroshop/zaglushka-dek-v-paz-alternativa.png', 'белый', 'K404', '20.54');
@@ -71,10 +71,11 @@ html(lang='en')
                 //-if (addMaterialBtn()) SelectMaterialEnd('gipsokarton12', 10);
             }
         script(src='js/script.js')
-        //script(src='js/loadImg.js')
+        script(src='js/loadImg.js')
         script(src='js/sendGet.js')
         script(src='js/paintingInDiadramma.js')
         script(src='js/DandD.js')
         script(src='js/history.js')
         script(src='js/stateSlider.js')
         script(src='js/stateSetParam.js')
+        script(src='js/loadImgAnd3D.js')

@@ -20,15 +20,9 @@ $(document).on('change', 'input[type=file]', function() {
         contentType: false,
         success: function( respond, textStatus, jqXHR ){
             $.snackbar({content: "Файл загружен!"});
-            // console.log( respond );
-            // console.log( textStatus );
-            // console.log( jqXHR );
         },
         error: function( jqXHR, textStatus, errorThrown ){
             $.snackbar({content: "Файл НЕ загружен!"});
-            // console.log( jqXHR );
-            // console.log( textStatus );
-            // console.log( errorThrown );
         }
     });
 

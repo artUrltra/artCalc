@@ -32,7 +32,7 @@
                     span.TAB-PROFIL-AREA 0
                     | кв/м
                 h5 Стоимость
-                    span.TAB-PROFIL-KARKAS-PRICE.red 0
+                    span.TAB-PROFIL-KARKAS-PRICE.red.margin-left-10.margin-right-10 0
                     | руб.
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.polotno-el#KARKAS-BLOCK(style="width: 28%;")
         br
@@ -41,7 +41,7 @@
                 .form-group.label-floating.is-empty.text-center
                     button.btn.btn-raised.btn-default#BTN-KARKAS-SELECTOR(type="button") Профиль
             .left
-                img(src="img/maket2.jpg")
+                img(src="img/1px.png",img="http://fasts-like.com/karkas/Euroshop.png")
             .right
                 center
                     h4#KARKAS-NAME Euroshop
@@ -57,7 +57,7 @@
                     button.btn.btn-raised.btn-default#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR(type="button") Горизонтальные перемычки
                 +input-custom-block-super-mini("шт.", "tab-profil-peremyichki-horizontal-shtuk")
             .left
-                img(src="img/maket2.jpg")
+                img(src="img/1px.png",img="http://fasts-like.com/karkas/Euroshop.png")
             .right
                 center
                     h4#HORIZONTAL-PEREMOCHKI-NAME Euroshop
@@ -73,7 +73,7 @@
                     button.btn.btn-raised.btn-default#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR(type="button") Вертикальные перемычки
                 +input-custom-block-super-mini("шт.", "tab-profil-v-peremyichki-shtuk")
             .left
-                img(src="img/maket2.jpg")
+                img(src="img/1px.png",img="http://fasts-like.com/karkas/Euroshop.png")
             .right
                 center
                     h4#VERTIKALNUE-PEREMOCHKI-NAME Euroshop
@@ -83,7 +83,7 @@
                     span руб.
 
     .col-xs-12.col-sm-12.col-md-12.col-lg-12
-        center(data-toggle="collapse" data-target="#addon-v-niz" style="border-bottom: solid 2px #ddd !important;")
+        center.addons(data-toggle="collapse" data-target="#addon-v-niz" style="border-bottom: solid 2px #ddd !important;")
             h3 Дополнения
             i.fa.fa-arrow-down(aria-hidden="true")
         .col-xs-12.col-sm-12.col-md-12.col-lg-12.collapse#addon-v-niz
@@ -92,7 +92,7 @@
                     h4 Вид крепления
                 .well.min-height-100
                     .left
-                        img#kreplenie-img(src="img/addontoprofil/Euroshop/kreplenie-otkritoe.png")
+                        img#kreplenie-img(src="img/1px.png",img="img/addontoprofil/Euroshop/kreplenie-otkritoe.png")
                     .right
                         center
                             h4#kreplenie-text1 Открытое
@@ -106,11 +106,11 @@
                     h4 Заглушка в паз
                 .well.min-height-100
                     .left
-                        img#zaglushka-v-paz-img(src="img/addontoprofil/Euroshop/zaglushka-dek-v-paz.png")
+                        img#zaglushka-v-paz-img(src="img/1px.png",img="img/addontoprofil/Euroshop/zaglushka-dek-v-paz.png")
                     .right
                         center
-                            h4#zaglushka-v-paz-text2 K403
                             h4#zaglushka-v-paz-text1 белый
+                            h4#zaglushka-v-paz-text2 K403
                         center
                             h4 Цена:
                             span#zaglushka-v-paz-price.margin-left-10.margin-right-10 24.61
@@ -120,11 +120,11 @@
                     h4 Уплотнитель
                 .well.min-height-100
                     .left
-                        img#uplotnitel-img(src="img/addontoprofil/Euroshop/uplotnitel-2.png")
+                        img#uplotnitel-img(src="img/1px.png",img="img/addontoprofil/Euroshop/uplotnitel-2.png")
                     .right
                         center
-                            h4#uplotnitel-text2 Е128-С
                             h4#uplotnitel-text1 белый
+                            h4#uplotnitel-text2 Е128-С
                         center
                             h4 Цена:
                             span#uplotnitel-price.margin-left-10.margin-right-10 58.90
@@ -134,23 +134,17 @@
                     h4 Заглушка торцевая
                 .well.min-height-100
                     .left
-                        img#zaglushka-torcevaya-img(src="img/addontoprofil/Euroshop/zaglushka-dek.png")
+                        img#zaglushka-torcevaya-img(src="img/1px.png",img="img/addontoprofil/Euroshop/zaglushka-dek.png")
                     .right
                         center
-                            h4#zaglushka-torcevaya-text2 A14
                             h4#zaglushka-torcevaya-text1 белый
-                        center
-                            h4 Цена:
-                            span#zaglushka-torcevaya-price.margin-left-10.margin-right-10 0
-                            | руб.
-
-
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12.border-bottom-2
+                            h4#zaglushka-torcevaya-text2 A14
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12.border-bottom-2.select-dekor
         .col-xs-12.col-sm-12.col-md-12.col-lg-12(data-toggle="collapse" data-target="#dekor-v-niz")
             center
                 .col-xs-4.col-sm-4.col-md-4.col-lg-4
                     h4(style="padding-top: 15px;") Площадь
-                        span.TAB-POKRASKA-PLOSHAD 0
+                        span.TAB-POKRASKA-PLOSHAD.margin-right-10.margin-left-10 0
                         | кв/м
                 .col-xs-4.col-sm-4.col-md-4.col-lg-4
                     h3 Выбор декора для профиля
@@ -164,4 +158,4 @@
                 button.btn.btn-raised.btn-default(type="button")#btn-dekor-profil Декор профиля
                 br
                 input#pokraskaTypeAndName(type="hidden",value="color.RAL9003")
-                img(src='img/dekorRal/RAL9003.png')
+                img(src="img/1px.png",img='img/dekorRal/RAL9003.png')

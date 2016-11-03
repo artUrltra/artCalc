@@ -4,11 +4,10 @@ $('.sendGet').click(function () {
     if ($('iframe#state2').get(0).style.display != 'none') getScreen2();
     if ($('iframe#state3').get(0).style.display != 'none') getScreen3();
 });
-
 // 1 - получение скрина
 function getScreen() {
     html2canvas($( "#state1" ).contents().find("#PAINTING-DIAGRAMMA"), {
-        background:'#fff',
+        background:'#e5e5e5',
         onrendered: function(canvas) {
             var imgData = canvas.toDataURL('image/jpeg');
             var url = 'loadImg.php';
@@ -23,10 +22,8 @@ function getScreen() {
                 success: function(response){
                     response = "" + response;
                     sendUrl(response);
-                    // console.log("html2canvas success", response)
                 },
                 error:function(xhr, ajaxOptions, thrownError){
-                    // console.log("html2canvas error", xhr.responseText )
                 }
             });
         }
@@ -89,31 +86,19 @@ function getScreen3() {
 
 // 2 - отправка
 function sendUrl(screen) {
-    // var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID').val());
-    var TOTAL_PAINTING = parseInt( $( "#state1" ).contents().find( "#TOTAL_PAINTING_ID" ).val() );
-    // var furnituraSelect = $("#TYPE_BAFFLE_ID").val();
-    var furnituraSelect = $( "#state1" ).contents().find( "#TYPE_BAFFLE_ID" ).val();
-    // var Allheight = $('#HIGHT_SETS_ID').val();
-    var Allheight = $( "#state1" ).contents().find( "#HIGHT_SETS_ID" ).val();
-    // var Allwidth = $('#WIDTH_SETS_ID').val();
-    var Allwidth = $( "#state1" ).contents().find( "#WIDTH_SETS_ID" ).val();
+    var TOTAL_PAINTING = parseInt($('#TOTAL_PAINTING_ID').val());
+    var furnituraSelect = $("#TYPE_BAFFLE_ID").val();
+    var Allheight = $('#HIGHT_SETS_ID').val();
+    var Allwidth = $('#WIDTH_SETS_ID').val();
     var count = TOTAL_PAINTING;
-    // var count1 = $('#MOVABLE_PAINTING_ID').val();
-    var count1 = $( "#state1" ).contents().find( "#MOVABLE_PAINTING_ID" ).val();
-    // var TOTAL = $('.summaBezParametrov .price').text();
-    var TOTAL = $( "#state1" ).contents().find( "#MOVABLE_PAINTING_ID" ).text();
-    // var TOTAL2 = $('.summaSParametrami .price').text();
-    var TOTAL2 = $( "#state1" ).contents().find( ".summaSParametrami .price" ).text();
-    // var productionRub = $('.proizvaodstvoTo input').val();
-    var productionRub = $( "#state1" ).contents().find( ".proizvaodstvoTo input" ).val();
-    // var installationRub = $('.montazhTo input').val();
-    var installationRub = $( "#state1" ).contents().find( ".montazhTo input" ).val();
-    // var urgencyRub = $('.srochnostTo input').val();
-    var urgencyRub = $( "#state1" ).contents().find( ".srochnostTo input" ).val();
-    // var shippingRub = $('.srochnostTo input').val();
-    var shippingRub = $( "#state1" ).contents().find( ".srochnostTo input" ).val();
-    // var marginRub = $('.dostavkaTo input').val();
-    var marginRub = $( "#state1" ).contents().find( ".dostavkaTo input" ).val();
+    var count1 = $('#MOVABLE_PAINTING_ID').val();
+    var TOTAL = $('.summaBezParametrov .price').text();
+    var TOTAL2 = $('.summaSParametrami .price').text();
+    var productionRub = $('.proizvaodstvoTo input').val();
+    var installationRub = $('.montazhTo input').val();
+    var urgencyRub = $('.srochnostTo input').val();
+    var shippingRub = $('.srochnostTo input').val();
+    var marginRub = $('.dostavkaTo input').val();
     var TotalPolotno = 0;
     for (i = 1; i <= TOTAL_PAINTING; i++) {
         // var s = $('*[data-id="' + i + '"]').find(".data-price-in-profil").text();
@@ -456,12 +441,12 @@ function sendUrl(screen) {
         priceProfilePaintingStr +
         nameProfilePicturePainting +
         '&selectedKarkas=' + m2 +
-        '&state1Profile' + 15290 +
-        '&state1Furnitura' + 19320 +
-        '&state1Zapolnenie' + 4930 +
-        '&state1Zamer' + 1000 +
-        '&state1Montaj' + 10000 +
-        '&state1Dostavka' = 1000;
+        '&state1Profile=' + '15290' +
+        '&state1Furnitura=' + '19320' +
+        '&state1Zapolnenie=' + '4930' +
+        '&state1Zamer=' + '1000' +
+        '&state1Montaj=' + '10000' +
+        '&state1Dostavka=' + '1000';
     url = url.replace(/°/g, "");
     url = urlLit(url, 0);
     window.open('http://fasts-like.com/html2pdf.php' + url, '_blank');
@@ -835,12 +820,12 @@ function sendUrl2(screen) {
         priceProfilePaintingStr +
         nameProfilePicturePainting +
         '&selectedKarkas=' + m2 +
-        '&state2Profile' + 4930 +
-        '&state2Furnitura' + 4930 +
-        '&state2Zapolnenie' + 4930 +
-        '&state2Zamer' + 1000 +
-        '&state2Montaj' + 10000 +
-        '&state2Dostavka' = 1000;
+        '&state2Profile' + '4930' +
+        '&state2Furnitura' + '4930' +
+        '&state2Zapolnenie' + '4930' +
+        '&state2Zamer' + '1000' +
+        '&state2Montaj' + '10000' +
+        '&state2Dostavka' + '1000';
     url = url.replace(/°/g, "");
     url = urlLit(url, 0);
     window.open('http://fasts-like.com/html2pdf.php' + url, '_blank');
@@ -1214,12 +1199,12 @@ function sendUrl3(screen) {
         priceProfilePaintingStr +
         nameProfilePicturePainting +
         '&selectedKarkas=' + m2 +
-        '&state3Profile' + 15290 +
-        '&state3Furnitura' + 19320 +
-        '&state3Zapolnenie' + 19320 +
-        '&state3Zamer' + 1000 +
-        '&state3Montaj' + 10000 +
-        '&state3Dostavka' = 1000;
+        '&state3Profile' + '15290' +
+        '&state3Furnitura' + '19320' +
+        '&state3Zapolnenie' + '19320' +
+        '&state3Zamer' + '1000' +
+        '&state3Montaj' + '10000' +
+        '&state3Dostavka' + '1000';
     url = url.replace(/°/g, "");
     url = urlLit(url, 0);
     window.open('http://fasts-like.com/html2pdf.php' + url, '_blank');
