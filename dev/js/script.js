@@ -3656,7 +3656,6 @@ function SelectTabKarkasEnd(name, type) {
             setDataAndText('karkas-name', name);
             setDataAndText('karkas-price', parseInt(price));
             setDataAndText('karkas-full-price', parseInt((parseFloat(decorPrice) + price)));
-            $("img.selectKarkasImg").show();
             break;
         case "H":
             switch (name){
@@ -3734,7 +3733,6 @@ function SelectTabKarkasEnd(name, type) {
 
             $('#HORIZONTAL-PEREMOCHKI-PRICE').text(parseInt(price));
             setDataAndText('horizontal-pereochki-price', parseInt(price));
-            $("img.selectKarkasImg").show();
             break;
         case "V":
             var uplotnitelPrice = 0;
@@ -3901,7 +3899,6 @@ function SelectTabKarkasEnd(name, type) {
 
             $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(parseInt(price));
             setDataAndText('vertikalnue-pereochki-price', parseInt(price));
-            $("img.selectKarkasImg").show();
             break;
     }
 
@@ -3912,7 +3909,6 @@ $(".modal-body").on("click", ".selectKarkasImg", function () {
     // - удаляем наполение профиля
     var g = getFromData('group');
     var p = parseInt($('#TOTAL_PAINTING_ID').val());
-    console.log('g', g);
     for (var i = 1; i <= p; i++) {
         if ($('*[data-id="' + i + '"]').attr('data-group') == g) {
             for (var j = 1; j <= 5; j++) {
@@ -3970,27 +3966,21 @@ function load3D(name){
     $(".js-div-for-3d").hide();
     $("img.selectKarkasImg").show();
 
-    $("img#img-modal-" + name).hide();
     var html = $("#" + name + "-3d").html();
     $("div#div-for-3d-" + name).append(html);
-    $("div#div-for-3d-" + name).show();
-    x3dom.reload();
+    $("img#img-modal-" + name).hide();
+    $("div#el-loader-" + name).css("position","relative");
+    $("div#el-loader-" + name).css("height","202px");
+    $("div#el-loader-" + name).append("<div class='loading'></div>");
+    setTimeout(function() {
+        x3dom.reload();
+        $("div.loading").remove();
+        $("div#el-loader-" + name).css("height","0px");
+        $("div#div-for-3d-" + name).show();
+    }, 100);
 }
 
 $('#BTN-KARKAS-SELECTOR').click(function () {
-
-    $("#DesignSchemeKarkasStatusx1").hide();
-    $("#DesignSchemeKarkasStatusx2").hide();
-    $("#DesignSchemeKarkasOptima").hide();
-    $("#DesignSchemeKarkasOptimax2").hide();
-    $("#DesignSchemeKarkasBase").hide();
-    $("#DesignSchemeKarkasMobyLight").hide();
-    $("#DesignSchemeKarkasStandart").hide();
-    $("#DesignSchemeKarkasStandartStoika").hide();
-    $("#DesignSchemeKarkasOptimaLite").hide();
-    $("#DesignSchemeKarkasEuroshop").hide();
-    $("#DesignSchemeKarkasEuroshopLite").hide();
-    $("#DesignSchemeKarkasTUR").hide();
 
     setDataAndText('karkas-tsvet-uplotnitelya', '');
 
@@ -4211,6 +4201,10 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
     } else {
         message("Профилей с такой высотой нет, проверьте высоту полотна.");
     }
+
+    $(".js-div-for-3d").html("");
+    $(".js-div-for-3d").hide();
+    $("img.selectKarkasImg").show();
 });
 // выбор вертикальных перемычек #BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR
 $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(function () {
@@ -4366,6 +4360,10 @@ $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(function () {
     if (text == "Statusx2") {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlStatusx2);
     }
+
+    $(".js-div-for-3d").html("");
+    $(".js-div-for-3d").hide();
+    $("img.selectKarkasImg").show();
 });
 
 // выбор горизонтальных перемычек #BTN-HORIZONTAL-PEREMOCHKI-SELECTOR
@@ -4521,6 +4519,10 @@ $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR').click(function () {
     if (text == "Statusx2") {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html(resultHtmlStatusx2);
     }
+
+    $(".js-div-for-3d").html("");
+    $(".js-div-for-3d").hide();
+    $("img.selectKarkasImg").show();
 });
 
 $("#TOTAL_PAINTING_ID, #MOVABLE_PAINTING_ID").change(function () {
