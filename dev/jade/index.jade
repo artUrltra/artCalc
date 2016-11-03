@@ -52,6 +52,24 @@ html(lang='en')
         include parts/napolnenie-block.jade
         include parts/pokraska-block.jade
         include parts/hide.jade
+        script.
+            function minimalPriceContent() {
+                SelectKarkasEnd(94,'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм','Tur', 'http://pavel.artultra.ru/karkas/Tur.png',13,20,22,0);
+                SelectKreplenieEnd('img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Открытое', 'E401/E401', '35');
+                SelectUplotnitelEnd('img/addontoprofil/Euroshop/uplotnitel-2.png', 'белый', 'K402', '18.05');
+                SelectZaglushkaEnd('img/addontoprofil/Euroshop/zaglushka-dek-v-paz-alternativa.png', 'белый', 'K404', '20.54');
+                SelectZaglushkaTorcevayaEnd('img/addontoprofil/Euroshop/zaglushka-dek.png', 'белый', 'A14', '0');
+                //-if (addMaterialBtn()) SelectMaterialEnd('stekloObyichnoe', '1');
+                //-if (addMaterialBtn()) SelectMaterialEnd('LDSP', '2');
+                //-if (addMaterialBtn()) SelectMaterialEnd('DSPshlifovannyiy', 3);
+                //-if (addMaterialBtn()) SelectMaterialEnd('MDFshlifovannyiy', 4);
+                //-if (addMaterialBtn()) SelectMaterialEnd('PVHvspenennyiy', 5);
+                //-if (addMaterialBtn()) SelectMaterialEnd('polikarbonatSotovyiy', 6);
+                //-if (addMaterialBtn()) SelectMaterialEnd('fanera', 7);
+                //-if (addMaterialBtn()) SelectMaterialEnd('gipsovinil12', 8);
+                //-if (addMaterialBtn()) SelectMaterialEnd('gipsodekor12', 9);
+                //-if (addMaterialBtn()) SelectMaterialEnd('gipsokarton12', 10);
+            }
         script(src='js/script.js')
         //script(src='js/loadImg.js')
         script(src='js/sendGet.js')

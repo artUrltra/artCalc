@@ -327,7 +327,7 @@
                     <div class="right">
                       <center>
                         <h4 id="zaglushka-v-paz-text2">K403</h4>
-                        <h4 id="zaglushka-v-paz-text3">белый</h4>
+                        <h4 id="zaglushka-v-paz-text1">белый</h4>
                       </center>
                       <center>
                         <h4>Цена:</h4><span id="zaglushka-v-paz-price" class="margin-left-10 margin-right-10">24.61</span>руб.
@@ -343,8 +343,8 @@
                     <div class="left"><img id="uplotnitel-img" src="img/addontoprofil/Euroshop/uplotnitel-2.png"></div>
                     <div class="right">
                       <center>
-                        <h4 id="uplotnitel-text1">белый</h4>
                         <h4 id="uplotnitel-text2">Е128-С</h4>
+                        <h4 id="uplotnitel-text1">белый</h4>
                       </center>
                       <center>
                         <h4>Цена:</h4><span id="uplotnitel-price" class="margin-left-10 margin-right-10">58.90</span>руб.
@@ -360,8 +360,11 @@
                     <div class="left"><img id="zaglushka-torcevaya-img" src="img/addontoprofil/Euroshop/zaglushka-dek.png"></div>
                     <div class="right">
                       <center>
-                        <h4 id="zaglushka-torcevaya-text1">белый</h4>
                         <h4 id="zaglushka-torcevaya-text2">A14</h4>
+                        <h4 id="zaglushka-torcevaya-text1">белый</h4>
+                      </center>
+                      <center>
+                        <h4>Цена:</h4><span id="zaglushka-torcevaya-price" class="margin-left-10 margin-right-10">0</span>руб.
                       </center>
                     </div>
                   </div>
@@ -1736,7 +1739,7 @@
                 <h4>%text2%</h4>
                 <h3>%text3%</h3>
                 <h5>Цена:<span class="red">%price%</span> руб.</h5><br/>
-                <button onclick="SelectKreplenieEnd('%img2%','%text1%','%text2%','%text3%','%price%');"
+                <button onclick="SelectKreplenieEnd('%img2%','%text2%','%text3%','%price%');"
                         data-dismiss="modal">Выбрать
                 </button>
             </div>
@@ -1758,13 +1761,13 @@
                 <h4>%text2%</h4>
                 <h3>%text3%</h3>
                 <h5>Цена:<span class="red">%price%</span> руб.</h5><br/>
-                <button onclick="SelectZaglushkaEnd('%img2%','%text1%','%text2%','%text3%','%price1%','белый');"
+                <button onclick="SelectZaglushkaEnd('%img2%','белый','%text3%','%price1%');"
                         data-dismiss="modal">белый
                 </button>
-                <button onclick="SelectZaglushkaEnd('%img2%','%text1%','%text2%','%text3%','%price2%','серый');"
+                <button onclick="SelectZaglushkaEnd('%img2%','серый','%text3%','%price2%');"
                         data-dismiss="modal">серый
                 </button>
-                <button onclick="SelectZaglushkaEnd('%img2%','%text1%','%text2%','%text3%','%price3%','чёрный');"
+                <button onclick="SelectZaglushkaEnd('%img2%','чёрный','%text3%','%price3%');"
                         data-dismiss="modal">чёрный
                 </button>
             </div>
@@ -1783,16 +1786,16 @@
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 addon-modal-text">
                 <h4>%text1%</h4>
                 <h3>%text3%</h3>
-                <button onclick="SelectUplotnitelEnd('%img2%','прозрачный','%text3%','%prozrachnii%');"
+                <button onclick="SelectUplotnitelEnd('%img2%','прозрачный','%text3%','%price1%');"
                         data-dismiss="modal">прозрачный
                 </button>
-                <button onclick="SelectUplotnitelEnd('%img2%','серый','%text3%','%serii%');"
+                <button onclick="SelectUplotnitelEnd('%img2%','серый','%text3%','%price2%');"
                         data-dismiss="modal">серый
                 </button>
-                <button onclick="SelectUplotnitelEnd('%img2%','белый','%text3%','%belii%');"
+                <button onclick="SelectUplotnitelEnd('%img2%','белый','%text3%','%price3%');"
                         data-dismiss="modal">белый
                 </button>
-                <button onclick="SelectUplotnitelEnd('%img2%','чёрный','%text3%','%chernii%');"
+                <button onclick="SelectUplotnitelEnd('%img2%','чёрный','%text3%','%price4%');"
                         data-dismiss="modal">чёрный
                 </button>
             </div>
@@ -1811,13 +1814,13 @@
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 addon-modal-text">
                 <h4>%text1%</h4>
                 <h3>%text3%</h3>
-                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','%price1%','%text3%');"
+                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','белый','%text3%','%price1%');"
                         data-dismiss="modal">белый
                 </button>
-                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','%price2%','%text3%');"
+                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','серый','%text3%','%price2%');"
                         data-dismiss="modal">серый
                 </button>
-                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','%price3%','%text3%');"
+                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','чёрный','%text3%','%price3%');"
                         data-dismiss="modal">чёрный
                 </button>
             </div>
@@ -1999,6 +2002,7 @@
         </center>
     </div>
 </div>
+
     <!--include parts/load-img.jade-->
     <div class="napolnenie-left-tab display-none">
       <div class="tabbable tabs-left">
@@ -2180,7 +2184,7 @@
             </div>
             <div class="col-md-3">
               <center>
-                <h4>Гипсодекор</h4><img onclick="SelectMaterialEnd('gipsokarton12','%number%');" src="img/material/24.png" data-dismiss="modal" style="width: 130px;display: %displaygipsokarton12%;">
+                <h4>Гипсокартон</h4><img onclick="SelectMaterialEnd('gipsokarton12','%number%');" src="img/material/24.png" data-dismiss="modal" style="width: 130px;display: %displaygipsokarton12%;">
                 <h4>Цена: %gipsokarton12%</h4>
               </center>
             </div>
@@ -4892,6 +4896,25 @@
         </div>
       </div>
     </div>
+    <script>
+      function minimalPriceContent() {
+          SelectKarkasEnd(94,'Высота: до 2.2 м, Паз: 5.5 мм, Cтекло: 4 мм','Tur', 'http://pavel.artultra.ru/karkas/Tur.png',13,20,22,0);
+          SelectKreplenieEnd('img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Открытое', 'E401/E401', '35');
+          SelectUplotnitelEnd('img/addontoprofil/Euroshop/uplotnitel-2.png', 'белый', 'K402', '18.05');
+          SelectZaglushkaEnd('img/addontoprofil/Euroshop/zaglushka-dek-v-paz-alternativa.png', 'белый', 'K404', '20.54');
+          SelectZaglushkaTorcevayaEnd('img/addontoprofil/Euroshop/zaglushka-dek.png', 'белый', 'A14', '0');
+          //-if (addMaterialBtn()) SelectMaterialEnd('stekloObyichnoe', '1');
+          //-if (addMaterialBtn()) SelectMaterialEnd('LDSP', '2');
+          //-if (addMaterialBtn()) SelectMaterialEnd('DSPshlifovannyiy', 3);
+          //-if (addMaterialBtn()) SelectMaterialEnd('MDFshlifovannyiy', 4);
+          //-if (addMaterialBtn()) SelectMaterialEnd('PVHvspenennyiy', 5);
+          //-if (addMaterialBtn()) SelectMaterialEnd('polikarbonatSotovyiy', 6);
+          //-if (addMaterialBtn()) SelectMaterialEnd('fanera', 7);
+          //-if (addMaterialBtn()) SelectMaterialEnd('gipsovinil12', 8);
+          //-if (addMaterialBtn()) SelectMaterialEnd('gipsodekor12', 9);
+          //-if (addMaterialBtn()) SelectMaterialEnd('gipsokarton12', 10);
+      }
+    </script>
     <script src="js/script.js"></script>
     <!--script(src='js/loadImg.js')-->
     <script src="js/sendGet.js"></script>

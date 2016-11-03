@@ -1017,7 +1017,7 @@ $('#ZAGLUSHKA-V-PAZ-BLOCK').click(function () {
             price1: arr[i + 5],
             price2: arr[i + 6],
             price3: arr[i + 7],
-            price: arr[i + 7]
+            price: arr[i + 7],
         };
         var resultHtml = makeHTMLFromTemplate(html, templateData);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
@@ -1030,7 +1030,7 @@ $('#ZAGLUSHKA-TORCEVAYA-BLOCK').click(function () {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
     var html = $('.zaglushka-torcevaya-modal').html();
     var count = 1;
-    var arr = ['src="img/addontoprofil/Euroshop/zaglushka-dek.png"', 'img/addontoprofil/Euroshop/zaglushka-dek.png', 'Заглушка торцевая', 'Заглушка торцевая', 'A14', 'белый', 'серый', 'чёрный'];
+    var arr = ['src="img/addontoprofil/Euroshop/zaglushka-dek.png"', 'img/addontoprofil/Euroshop/zaglushka-dek.png', 'Заглушка торцевая', 'Заглушка торцевая', 'A14', '0', '0', '0'];
     for (var i = 0; i < count * 8; i += 8) {
         var templateData = {
             img: arr[i],
@@ -1062,10 +1062,10 @@ $('#UPLOTNITEL-BLOCK').click(function () {
             text1: arr[i + 2],
             text2: arr[i + 3],
             text3: arr[i + 4],
-            prozrachnii: arr[i + 5],
-            serii: arr[i + 6],
-            belii: arr[i + 7],
-            chernii: arr[i + 8],
+            price1: arr[i + 5],
+            price2: arr[i + 6],
+            price3: arr[i + 7],
+            price4: arr[i + 8],
 
         };
         var resultHtml = makeHTMLFromTemplate(html, templateData);
@@ -1075,27 +1075,28 @@ $('#UPLOTNITEL-BLOCK').click(function () {
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 });
 
-function SelectKreplenieEnd(img, text1, text2, text3, price) {
+function SelectKreplenieEnd(img, text1, text2, price) {
     setDataAndText('karkas-vid-krepleniya', price);
     $("#kreplenie-img").attr('src', img);
-    $("#kreplenie-text1").text(text2);
-    $("#kreplenie-text2").text(text3);
+    $("#kreplenie-text1").text(text1);
+    $("#kreplenie-text2").text(text2);
     $("#kreplenie-price").text(price);
 };
 
-function SelectZaglushkaEnd(img, text1, text2, text3, price, color) {
+function SelectZaglushkaEnd(img, text1, text2, price) {
     setDataAndText('karkas-tsvet-zaglushki', price);
     $("#zaglushka-v-paz-img").attr('src', img);
-    $("#zaglushka-v-paz-text2").text(text3);
-    $("#zaglushka-v-paz-text3").text(color);
+    $("#zaglushka-v-paz-text1").text(text1);
+    $("#zaglushka-v-paz-text2").text(text2);
     $("#zaglushka-v-paz-price").text(price);
 };
 
-function SelectZaglushkaTorcevayaEnd(img, text1, text2) {
-    setDataAndText('karkas-tsvet-zaglushki-tortsevoy', text2);
+function SelectZaglushkaTorcevayaEnd(img, text1, text2, price) {
+    setDataAndText('karkas-tsvet-zaglushki-tortsevoy', price);
     $("#zaglushka-torcevaya-img").attr('src', img);
     $("#zaglushka-torcevaya-text1").text(text1);
     $("#zaglushka-torcevaya-text2").text(text2);
+    $("#zaglushka-torcevaya-price").text(price);
 };
 
 function SelectUplotnitelEnd(img, text1, text2, price) {
@@ -3085,6 +3086,46 @@ function calcNow() {
     ifEmptyPeremuchka();
     //  ============================= //
 
+    // ТАБ ПРОФИЛЬ если пустой вид крепления //
+    function ifEmptyVidKrepleniya() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-vid-krepleniya') == '') {
+            SelectKreplenieEnd('img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Открытое', 'E401/E401', '35');
+        }
+    }
+
+    ifEmptyVidKrepleniya();
+    //  ============================= //
+
+    // ТАБ ПРОФИЛЬ если пустой уплотнитель //
+    function ifEmptyUplotnitel() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-tsvet-uplotnitelya') == '') {
+            SelectUplotnitelEnd('img/addontoprofil/Euroshop/uplotnitel.png', 'белый', 'K401', '58.90');
+        }
+    }
+
+    ifEmptyUplotnitel();
+    //  ============================= //
+
+    // ТАБ ПРОФИЛЬ если пустая заглушка в паз //
+    function ifEmptyZaglushkaVPaz() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-tsvet-zaglushki') == '') {
+            SelectZaglushkaEnd('img/addontoprofil/Euroshop/zaglushka-dek-v-paz.png', 'белый', 'K403', '24.61');
+        }
+    }
+
+    ifEmptyZaglushkaVPaz();
+    //  ============================= //
+
+    // ТАБ ПРОФИЛЬ если пустая заглушка торцевая //
+    function ifEmptyZaglushkaTortsevaja() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-tsvet-zaglushki-tortsevoy') == '') {
+            SelectZaglushkaTorcevayaEnd('img/addontoprofil/Euroshop/zaglushka-dek.png', 'белый', 'A14', '0');
+        }
+    }
+
+    ifEmptyZaglushkaTortsevaja();
+    //  ============================= //
+
     // ТАБ ПРОФИЛЬ каркас подсчет цены //
     function carcasPrice() {
         if (getFromData('karkas-name') == 'Tur') {
@@ -3811,7 +3852,22 @@ function setPriceInProfil() {
         karkasVidKrepleniya = 0;
     }
 
-    var res = karkasPrice + decorPrice + vertikalnuePereochkiPrice + horizontalPereochkiPrice + karkasVidKrepleniya;
+    var karkasTsvetUplotnitelya = parseInt(getFromData('karkas-tsvet-uplotnitelya'));
+    if (karkasTsvetUplotnitelya == "" || isNaN(karkasTsvetUplotnitelya)) {
+        karkasTsvetUplotnitelya = 0;
+    }
+
+    var karkasTsvetZaglushki = parseInt(getFromData('karkas-tsvet-zaglushki'));
+    if (karkasTsvetZaglushki == "" || isNaN(karkasTsvetZaglushki)) {
+        karkasTsvetZaglushki = 0;
+    }
+
+    var karkasTsvetZaglushkiTortsevoy = parseInt(getFromData('karkas-tsvet-zaglushki-tortsevoy'));
+    if (karkasTsvetZaglushkiTortsevoy == "" || isNaN(karkasTsvetZaglushkiTortsevoy)) {
+        karkasTsvetZaglushkiTortsevoy = 0;
+    }
+
+    var res = karkasPrice + decorPrice + vertikalnuePereochkiPrice + horizontalPereochkiPrice + karkasVidKrepleniya + karkasTsvetUplotnitelya + karkasTsvetZaglushki + karkasTsvetZaglushkiTortsevoy;
     $('.TAB-PROFIL-PRICE').text(parseInt(res));
     setDataAndText('data-price-in-profil', parseInt(res));
 }
@@ -4818,7 +4874,7 @@ $('#tab-profil-vyisota, #tab-profil-shirina').bind('input', function () {
     // setHeightDandDEl();
 });
 // Добавление поля
-$('.add-material-btn').click(function () {
+function addMaterialBtn() {
     loop1: for (i = 1; i <= 5; i++) {
         var type = getFromData('material-' + i + '-type');
         if (type == '') {
@@ -4829,7 +4885,8 @@ $('.add-material-btn').click(function () {
     }
     addWElNapolnenieToFive();
     addWHElNapolnenie();
-});
+}
+$('.add-material-btn').click(addMaterialBtn);
 
 
 // Инпуты и слеекты //////////////////////////////////////////////////////////////////////////////////////////////
