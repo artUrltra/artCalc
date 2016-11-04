@@ -3,7 +3,6 @@ body {
   height: calc(100% + 30px);
   min-height: 50px;
   text-align: center;
-  overflow-x: hidden;
 }
 
 #allStates * {

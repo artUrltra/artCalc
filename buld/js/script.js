@@ -4669,7 +4669,7 @@ $('#tab-profil-vyisota, #tab-profil-shirina').bind('input', function () {
     // setHeightDandDEl();
 });
 // Добавление поля
-$('.add-material-btn').click(function () {
+function addMaterialBtn() {
     loop1: for (var i = 1; i <= 5; i++) {
         var type = getFromData('material-' + i + '-type');
         if (type == '') {
@@ -4682,8 +4682,8 @@ $('.add-material-btn').click(function () {
     addWElNapolnenieToFive();
     addWHElNapolnenie();
     calcNow();
-});
-
+}
+$('.add-material-btn').click(addMaterialBtn);
 
 // Инпуты и слеекты //////////////////////////////////////////////////////////////////////////////////////////////
 

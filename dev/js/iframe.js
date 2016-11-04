@@ -6,39 +6,25 @@ $('iframe').on("load", function() {
 // Убираем прилоадер//
 
 // Получение высоты фрейма 1 и установка высоты
-$('iframe').on("load", function() {
-    var iframe = document.getElementsByTagName('iframe')[0];
-    var iframeDoc = iframe.contentWindow.document;
-    var iframeHeigth = $( iframeDoc ).height();
-    $( 'iframe' ).height( iframeHeigth  );
-    //$('iframe').contents().find("#addons").click(function() {
-        //var el = $('iframe').contents().find("#addon-v-niz");
-        //var eh = el.height();
-        //var fh = $('iframe').contents().height();
-        //if (!el.attr('aria-expanded') || el.attr('aria-expanded') == 'false') {
-            //$('iframe').height(fh + eh);
-        //}
-        //else {
-            //$('iframe').height(fh - eh);
-        //}
-    //});
-    //$('iframe').contents().find("#decors").click(function() {
-        //var el = $('iframe').contents().find("#decor-v-niz");
-        //var eh = el.height();
-        //var fh = $('iframe').contents().height();
-        //if (!el.attr('aria-expanded') || el.attr('aria-expanded') == 'false') {
-            //$('iframe').height(fh + eh);
-        //}
-        //else {
-            //$('iframe').height(fh - eh);
-        //}
-    //});
+$('iframe').on('load', function() {
+    function changeHeight() {
+        if(document.getElementsByTagName('iframe')[0].style.display != 'none') var iframe = document.getElementsByTagName('iframe')[0];
+        if(document.getElementsByTagName('iframe')[1].style.display != 'none') var iframe = document.getElementsByTagName('iframe')[1];
+        if(document.getElementsByTagName('iframe')[2].style.display != 'none') var iframe = document.getElementsByTagName('iframe')[2];
+        var iframeDoc = iframe.contentWindow.document;
+        var iframeHeigth = $(iframeDoc).height();
+        $('iframe').height(iframeHeigth);
+    }
+    changeHeight();
+    //document.getElementById("state1").contentWindow.document.body.onclick = function(){setTimeout(function(){changeHeight()},500)};
+    //document.getElementById("state2").contentWindow.document.body.onclick = function(){setTimeout(function(){changeHeight()},500)};
+    //document.getElementById("state3").contentWindow.document.body.onclick = function(){setTimeout(function(){changeHeight()},500)};
 });
 // Получение высоты фрейма 1 и установка высоты//
 
 // Установка режима "Только чтение" для фрейма 2
 $('iframe').on("load", function() {
-    document.getElementsByTagName('iframe')[1].style.pointerEvents = 'none';
+    //document.getElementsByTagName('iframe')[1].style.pointerEvents = 'none';
 });
 // Установка режима "Только чтение" для фрейма 2//
 

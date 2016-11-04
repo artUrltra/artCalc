@@ -5,7 +5,7 @@
                 h5 Количество комплектов
             .col-xs-6.col-sm-6.col-md-6.col-lg-6
                 input(id='NUMBER_SETS_ID',maxlength=2).form-control(type='text')
-        .col-xs-12.col-sm-12.col-md-12.col-lg-12.percents(data-toggle="collapse" data-target="#setting-v-niz" style="border-bottom: solid 2px #ddd !important")
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12.percents#settings(data-toggle="collapse" data-target="#setting-v-niz" style="border-bottom: solid 2px #ddd !important" onClick="iframeRedraw('#setting-v-niz');")
 
             .bs-component(style="margin-top: 0px;")
                 .alert.alert-dismissible.alert-default(style="height: 100%;")

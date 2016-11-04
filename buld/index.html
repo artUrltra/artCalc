@@ -296,7 +296,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="addons" onClick="iframeRedraw('#addon-v-niz');" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <center data-toggle="collapse" data-target="#addon-v-niz" style="border-bottom: solid 2px #ddd !important;" class="addons">
                 <h3>Дополнения</h3><i aria-hidden="true" class="fa fa-arrow-down"></i>
               </center>
@@ -368,7 +368,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border-bottom-2 select-dekor">
+            <div id="decors" onClick="iframeRedraw('#dekor-v-niz');" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border-bottom-2 select-dekor">
               <div data-toggle="collapse" data-target="#dekor-v-niz" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <center>
                   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -419,7 +419,7 @@
             <input id="NUMBER_SETS_ID" maxlength="2" type="text" class="form-control">
           </div>
         </div>
-        <div data-toggle="collapse" data-target="#setting-v-niz" style="border-bottom: solid 2px #ddd !important" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 percents">
+        <div id="settings" data-toggle="collapse" data-target="#setting-v-niz" style="border-bottom: solid 2px #ddd !important" onClick="iframeRedraw('#setting-v-niz');" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 percents">
           <div style="margin-top: 0px;" class="bs-component">
             <div style="height: 100%;" class="alert alert-dismissible alert-default">
               <div class="left summaBezParametrov">
@@ -4257,16 +4257,37 @@
           SelectUplotnitelEnd('img/addontoprofil/Euroshop/uplotnitel-2.png', 'белый', 'K402', '18.05');
           SelectZaglushkaEnd('img/addontoprofil/Euroshop/zaglushka-dek-v-paz-alternativa.png', 'белый', 'K404', '20.54');
           SelectZaglushkaTorcevayaEnd('img/addontoprofil/Euroshop/zaglushka-dek.png', 'белый', 'A14', '0');
-          //-if (addMaterialBtn()) SelectMaterialEnd('stekloObyichnoe', '1');
-          //-if (addMaterialBtn()) SelectMaterialEnd('LDSP', '2');
-          //-if (addMaterialBtn()) SelectMaterialEnd('DSPshlifovannyiy', 3);
-          //-if (addMaterialBtn()) SelectMaterialEnd('MDFshlifovannyiy', 4);
-          //-if (addMaterialBtn()) SelectMaterialEnd('PVHvspenennyiy', 5);
-          //-if (addMaterialBtn()) SelectMaterialEnd('polikarbonatSotovyiy', 6);
-          //-if (addMaterialBtn()) SelectMaterialEnd('fanera', 7);
-          //-if (addMaterialBtn()) SelectMaterialEnd('gipsovinil12', 8);
-          //-if (addMaterialBtn()) SelectMaterialEnd('gipsodekor12', 9);
-          //-if (addMaterialBtn()) SelectMaterialEnd('gipsokarton12', 10);
+          var state1 = window.parent.$('iframe#state1');
+          var state2 = window.parent.$('iframe#state2');
+          var minimalMaterialArray = [['stekloObyichnoe', 1],
+                                      ['LDSP', 2],
+                                      ['DSPshlifovannyiy', 3],
+                                      ['MDFshlifovannyiy', 4],
+                                      ['PVHvspenennyiy', 5],
+                                      ['polikarbonatSotovyiy', 6],
+                                      ['fanera', 7],
+                                      ['gipsovinil12', 8],
+                                      ['gipsodekor12', 9],
+                                      ['gipsokarton12', 10]];
+          //-for (var j = 1; j <= state1.contents().find('#TOTAL_PAINTING_ID').val(); j++) {
+              //-for (var i = 1; i <= 5; i++) {
+                  //-if (state1.contents().find('*[data-id=' + j + ']').find('.material-' + i + '-type').text() != '') {
+                      //-state2.contents().find('*[data-id=' + j + ']').find('.material-' + i + '-type').text(minimalMaterialArray[i-1][0]);
+                  //-}
+              //-}
+          //-}
+          for (var i = 1; i <= 5; i++) {
+              if (state1.contents().find('*[data-id=' + 1 + ']').find('.material-' + i + '-type').text() != '') {
+                  addMaterialBtn(); SelectMaterialEnd(minimalMaterialArray[i - 1][0], minimalMaterialArray[i - 1][1]);
+              }
+          }
+      }
+      function iframeRedraw(e) {
+          if (window.parent.$('iframe#state1').get(0).style.display != 'none') var fr = window.parent.$('iframe#state1');
+          if (window.parent.$('iframe#state2').get(0).style.display != 'none') var fr = window.parent.$('iframe#state2');
+          if (window.parent.$('iframe#state3').get(0).style.display != 'none') var fr = window.parent.$('iframe#state3');
+          var el = fr.contents().find(e);
+          if (el.attr('aria-expanded') === 'true') fr.height(fr.contents().height() - el.height());
       }
     </script>
     <script src="js/script.js"></script>
