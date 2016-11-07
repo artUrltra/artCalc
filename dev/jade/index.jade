@@ -11,24 +11,7 @@ html(lang='en')
           script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
           script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
         link(rel='shortcut icon', href='img/favicon.png', type='image/x-icon')
-        script(src='lib/jquery.min.js')
-        script(src='lib/bootstrap.min.js')
-        link(rel='stylesheet' type='text/css' href='http://www.x3dom.org/x3dom/release/x3dom.css')
-
-        link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/css?family=Roboto:300,400,500,700')
-        link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/icon?family=Material+Icons')
-        link(rel='stylesheet', type='text/css', href='lib/bootstrap.min.css')
-        link(rel='stylesheet', type='text/css', href='css/bootstrap-material-design.css')
-        link(rel='stylesheet', type='text/css', href='css/ripples.min.css')
-        link(rel='stylesheet', type='text/css', href='lib/font-awesome.min.css')
-        script(src='lib/snackbar.min.js')
-        link(rel='stylesheet', type='text/css', href='lib/snackbar.min.css')
-        link(rel='stylesheet', type='text/css', href='css/index.css')
-        link(rel='stylesheet', href='lib/jquery-ui.css')
-        script(type='text/javascript', src='lib/jquery-ui.min.js')
-        script(type='text/javascript', src='lib/jquery.ui.touch-punch.min.js')
-        script(type='text/javascript', src='lib/html2canvas.js')
-        script(type='text/javascript', src='lib/jquery.plugin.html2canvas.js')
+  
     body
         include parts/mixin
         include parts/top-block
@@ -49,16 +32,36 @@ html(lang='en')
                     include parts/furnitura-tab
         include parts/price-block
         include parts/hide.html
-        include parts/load-img.jade
         include parts/napolnenie-block.jade
         include parts/pokraska-block.jade
         include parts/hide.jade
+        script.
+            function minimalPriceContent() {
+                SelectTabKarkasEnd('Tur', 'K');
+                SelectKreplenieEnd('img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Открытое', 'E401/E401', '35');
+                SelectUplotnitelEnd('img/addontoprofil/Euroshop/uplotnitel-2.png', 'белый', 'K402', '18.05');
+                SelectZaglushkaEnd('img/addontoprofil/Euroshop/zaglushka-dek-v-paz-alternativa.png', 'белый', 'K404', '20.54');
+                SelectZaglushkaTorcevayaEnd('img/addontoprofil/Euroshop/zaglushka-dek.png', 'белый', 'A14', '0');
+            }
+        script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        link(rel='stylesheet' type='text/css' href='http://www.x3dom.org/x3dom/release/x3dom.css')
+        link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/css?family=Roboto:300,400,500,700')
+        link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/icon?family=Material+Icons')
+        link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+        link(rel='stylesheet', type='text/css', href='css/bootstrap-material-design.css')
+        link(rel='stylesheet', type='text/css', href='css/ripples.min.css')
+        script(src='lib/snackbar.min.js')
+        link(rel='stylesheet', type='text/css', href='lib/snackbar.min.css')
+        link(rel='stylesheet', type='text/css', href='css/index.css')
+        link(rel='stylesheet', href='http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css')
+        script(type='text/javascript', src='http://code.jquery.com/ui/1.12.0/jquery-ui.min.js')
+        script(type='text/javascript', src='lib/jquery.ui.touch-punch.min.js')
         script(src='js/script.js')
         script(src='js/loadImg.js')
         script(src='js/sendGet.js')
         script(src='js/paintingInDiadramma.js')
         script(src='js/DandD.js')
-        script(src='js/history.js')
-        script(src='js/stateSlider.js')
         script(src='js/stateSetParam.js')
         script(src='js/loadImgAnd3D.js')
+        link(rel='stylesheet', type='text/css', href='lib/font-awesome.min.css')

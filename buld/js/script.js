@@ -58,10 +58,14 @@ function PAINTING() {
                 'data-karkas-img=""' +
                 'data-karkas-name=""' +
                 'data-karkas-info=""' +
-                'data-karkas-tsvet-uplotnitelya=""' +
-                'data-karkas-tsvet-zaglushki=""' +
-                'data-karkas-tsvet-zaglushki-tortsevoy=""' +
-                'data-karkas-vid-krepleniya=""' +
+                'data-karkas-tsvet-uplotnitelya="белый_K401"' +
+                'data-karkas-tsvet-zaglushki="белый_K403"' +
+                'data-karkas-tsvet-zaglushki-tortsevoy="белый_A14"' +
+                'data-karkas-vid-krepleniya="Открытое_E401/E401"' +
+                'data-karkas-tsvet-uplotnitelya-price="58.90"' +
+                'data-karkas-tsvet-zaglushki-price="24.61"' +
+                'data-karkas-tsvet-zaglushki-tortsevoy-price="0"' +
+                'data-karkas-vid-krepleniya-price="35"' +
                 'data-karkas-price="0"' +
                 'data-karkas-full-price="0"' +
                 'data-vertikalnue-pereochki-count=""' +
@@ -320,8 +324,8 @@ $(".BAFFLE_SEKECTOR_CLASS").change(function () {
     $("#NUMBER_OF_DUPLICATOR_ID").val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').find(".group").text());
     $("#tab-profil-v-peremyichki-shtuk").val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').data('vertikalnue-pereochki-count'));
 
-    SelectTabKarkasEnd(getFromData('horizontal-pereochki-name'),"H");
-    SelectTabKarkasEnd(getFromData('vertikalnue-pereochki-name'),"V");
+    SelectTabKarkasEnd(getFromData('horizontal-pereochki-name'), "H");
+    SelectTabKarkasEnd(getFromData('vertikalnue-pereochki-name'), "V");
 
     setPriceInProfil();
 
@@ -391,6 +395,7 @@ function SelectRazdvizhnyieMehanizmyiEnd(img, text, price) {
     $(".povodok .text").text("Не выбрано");
     $(".povodok .price").text(0);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 
 function openModalRadvizh(type) {
@@ -523,24 +528,28 @@ function SelectmehanizmsinhronizaciiEnd(img, text, price) {
     $(".mehanizm-sinhronizatsii .text").text(text);
     $(".mehanizm-sinhronizatsii .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectnapravEnd(img, text, price) {
     $(".napravlyayuschie img").attr('src', img);
     $(".napravlyayuschie .text").text(text);
     $(".napravlyayuschie .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectvidkreplenianapravEnd(img, text, price) {
     $(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
     $(".vidKrepleniyaNapravlyayuschey .text").text(text);
     $(".vidKrepleniyaNapravlyayuschey .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectpovodokEnd(img, text, price) {
     $(".povodok img").attr('src', img);
     $(".povodok .text").text(text);
     $(".povodok .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 
 function SelectdovodchikEnd(img, text, price) {
@@ -553,30 +562,35 @@ function SelectdovodchikEnd(img, text, price) {
     $(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
     $(".dekorativnayaPlankaDlyaProfilya .price").text(0);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectdekplankadlyaprofilyaEnd(img, text, price) {
     $(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
     $(".dekorativnayaPlankaDlyaProfilya .text").text(text);
     $(".dekorativnayaPlankaDlyaProfilya .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectschetochniiuplotnitelEnd(img, text, price) {
     $(".schetochnyiyUplotnitel img").attr('src', img);
     $(".schetochnyiyUplotnitel .text").text(text);
     $(".schetochnyiyUplotnitel .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectruchkaEnd(img, text, price) {
     $(".rakovina img").attr('src', img);
     $(".rakovina .text").text(text);
     $(".rakovina .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectzamokEnd(img, text, price) {
     $(".zamok img").attr('src', img);
     $(".zamok .text").text(text);
     $(".zamok .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 
 $("#furnitura-tab").on('click', '#mehanizm-sinhronizacii-select', function () {
@@ -757,6 +771,7 @@ function SelectmehanizmsinhronskladnieEnd(img, text, price) {
     $(".setSkladnyieMehanizmyi .text").text(text);
     $(".setSkladnyieMehanizmyi .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
     setDataAndText("furnitura-skladnoi-mehanizm", text);
 };
 function SelectpetliskladnieEnd(img, text, price) {
@@ -764,18 +779,21 @@ function SelectpetliskladnieEnd(img, text, price) {
     $(".petli-skladnie .text").text(text);
     $(".petli-skladnie .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectnapravlyayuschieskladnieEnd(img, text, price) {
     $(".napravlyayuschie-skladnie img").attr('src', img);
     $(".napravlyayuschie-skladnie .text").text(text);
     $(".napravlyayuschie-skladnie .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectvidkrepleniyanapravlyayuschihskladnieEnd(img, text, price) {
     $(".vidKrepleniya-skladnie img").attr('src', img);
     $(".vidKrepleniya-skladnie .text").text(text);
     $(".vidKrepleniya-skladnie .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 
 function SelectdekplankadlyaprofilyaskladnieEnd(img, text, price) {
@@ -783,30 +801,35 @@ function SelectdekplankadlyaprofilyaskladnieEnd(img, text, price) {
     $(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
     $(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectschetochniiuplotnitelskladnieEnd(img, text, price) {
     $(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
     $(".schetochnyiyUplotnitel-skladnie .text").text(text);
     $(".schetochnyiyUplotnitel-skladnie .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectruchkaskladnieEnd(img, text, price) {
     $(".rakovina-skladnie img").attr('src', img);
     $(".rakovina-skladnie .text").text(text);
     $(".rakovina-skladnie .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectkreplenieruchliskladnieEnd(img, text, price) {
     $(".kreplenieRuchki-skladnie img").attr('src', img);
     $(".kreplenieRuchki-skladnie .text").text(text);
     $(".kreplenieRuchki-skladnie .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectzamokskladnieEnd(img, text, price) {
     $(".zamokSkladnyie-skladnie img").attr('src', img);
     $(".zamokSkladnyie-skladnie .text").text(text);
     $(".zamokSkladnyie-skladnie .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 
 
@@ -907,18 +930,21 @@ function SelectnozhkimobilnieEnd(img, text, price) {
     $(".nozhki-mobil .text").text(text);
     $(".nozhki-mobil .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelectkstoykimobilnieEnd(img, text, price) {
     $(".stoyki-mobil img").attr('src', img);
     $(".stoyki-mobil .text").text(text);
     $(".stoyki-mobil .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 function SelecttipSoedineniyaPolotenmobilnieEnd(img, text, price) {
     $(".tipSoedineniyaPoloten-mobil img").attr('src', img);
     $(".tipSoedineniyaPoloten-mobil .text").text(text);
     $(".tipSoedineniyaPoloten-mobil .price").text(price);
     getDataFurnitura();
+    viewTotalFurnitura();
 };
 
 // ТАБ ПРОФИЛЬ - Выбор декора для профиля //
@@ -954,7 +980,28 @@ $('#KREPLENIE-BLOCK').click(function () {
         var resultHtml = makeHTMLFromTemplate(html, templateData);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
     }
+    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
+});
 
+$('#ZAGLUSHKA-TORCEVAYA-BLOCK').click(function () {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    var html = $('.zaglushka-torcevaya-modal').html();
+    var count = 1;
+    var arr = ['src="img/addontoprofil/Euroshop/zaglushka-dek.png"', 'img/addontoprofil/Euroshop/zaglushka-dek.png', 'Заглушка торцевая', 'Заглушка торцевая', 'A14', '0', '0', '0'];
+    for (var i = 0; i < count * 8; i += 8) {
+        var templateData = {
+            img: arr[i],
+            img2: arr[i + 1],
+            text1: arr[i + 2],
+            text2: arr[i + 3],
+            text3: arr[i + 4],
+            price1: arr[i + 5],
+            price2: arr[i + 6],
+            price3: arr[i + 7]
+        };
+        var resultHtml = makeHTMLFromTemplate(html, templateData);
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+    }
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 });
 
@@ -979,30 +1026,6 @@ $('#ZAGLUSHKA-V-PAZ-BLOCK').click(function () {
         var resultHtml = makeHTMLFromTemplate(html, templateData);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
     }
-
-    $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-});
-
-$('#ZAGLUSHKA-TORCEVAYA-BLOCK').click(function () {
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    var html = $('.zaglushka-torcevaya-modal').html();
-    var count = 1;
-    var arr = ['src="img/addontoprofil/Euroshop/zaglushka-dek.png"', 'img/addontoprofil/Euroshop/zaglushka-dek.png', 'Заглушка торцевая', 'Заглушка торцевая', 'A14', 'белый', 'серый', 'чёрный'];
-    for (var i = 0; i < count * 8; i += 8) {
-        var templateData = {
-            img: arr[i],
-            img2: arr[i + 1],
-            text1: arr[i + 2],
-            text2: arr[i + 3],
-            text3: arr[i + 4],
-            price1: arr[i + 5],
-            price2: arr[i + 6],
-            price3: arr[i + 7],
-        };
-        var resultHtml = makeHTMLFromTemplate(html, templateData);
-        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
-    }
-
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 });
 
@@ -1019,44 +1042,43 @@ $('#UPLOTNITEL-BLOCK').click(function () {
             text1: arr[i + 2],
             text2: arr[i + 3],
             text3: arr[i + 4],
-            prozrachnii: arr[i + 5],
-            serii: arr[i + 6],
-            belii: arr[i + 7],
-            chernii: arr[i + 8],
-
+            price1: arr[i + 5],
+            price2: arr[i + 6],
+            price3: arr[i + 7],
+            price4: arr[i + 8]
         };
         var resultHtml = makeHTMLFromTemplate(html, templateData);
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
     }
-
     $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
 });
 
-function SelectKreplenieEnd(img, text1, text2, text3, price) {
-    setDataAndText('karkas-vid-krepleniya', price);
+function SelectKreplenieEnd(img, text1, text2, price) {
+    setDataAndText('karkas-vid-krepleniya', text1 + "_" +  text2);
+    setDataAndText('karkas-vid-krepleniya-price', price);
     $("#kreplenie-img").attr('src', img);
-    $("#kreplenie-text1").text(text2);
-    $("#kreplenie-text2").text(text3);
+    $("#kreplenie-text1").text(text1);
+    $("#kreplenie-text2").text(text2);
     $("#kreplenie-price").text(price);
 };
-
-function SelectZaglushkaEnd(img, text1, text2, text3, price, color) {
-    setDataAndText('karkas-tsvet-zaglushki', price);
+function SelectZaglushkaEnd(img, text1, text2, price) {
+    setDataAndText('karkas-tsvet-zaglushki', text1 + "_" +  text2);
+    setDataAndText('karkas-tsvet-zaglushki-price', price);
     $("#zaglushka-v-paz-img").attr('src', img);
-    $("#zaglushka-v-paz-text2").text(text3);
-    $("#zaglushka-v-paz-text3").text(color);
+    $("#zaglushka-v-paz-text1").text(text1);
+    $("#zaglushka-v-paz-text2").text(text2);
     $("#zaglushka-v-paz-price").text(price);
 };
-
-function SelectZaglushkaTorcevayaEnd(img, text1, text2) {
-    setDataAndText('karkas-tsvet-zaglushki-tortsevoy', text2);
+function SelectZaglushkaTorcevayaEnd(img, text1, text2, price) {
+    setDataAndText('karkas-tsvet-zaglushki-tortsevoy', text1 + "_" +  text2);
+    setDataAndText('karkas-tsvet-zaglushki-price', price);
     $("#zaglushka-torcevaya-img").attr('src', img);
     $("#zaglushka-torcevaya-text1").text(text1);
     $("#zaglushka-torcevaya-text2").text(text2);
 };
-
 function SelectUplotnitelEnd(img, text1, text2, price) {
-    setDataAndText('karkas-tsvet-uplotnitelya', price);
+    setDataAndText('karkas-tsvet-uplotnitelya', text1 + "_" +  text2);
+    setDataAndText('karkas-tsvet-uplotnitelya-price', price);
     $("#uplotnitel-img").attr('src', img);
     $("#uplotnitel-text1").text(text1);
     $("#uplotnitel-text2").text(text2);
@@ -1547,8 +1569,7 @@ function DekorRePrice(img, type) {
 
 // ТАБ НАПОЛНИТЕЛ установка толщины
 function setNapolnenieElTolschinaShow(napolnenieType, id) {
-
-    var karkasname = $('*[data-id=' + id + ']').find('.karkas-name').text();
+    var karkasname = getFromData("karkas-name");
     switch (karkasname) {
         case "Tur":
             var thickness = {
@@ -2197,6 +2218,7 @@ loadFurnitura();
 $("#TYPE_BAFFLE_ID").change(function () {
     loadFurnitura();
     getDataFurnitura();
+    viewTotalFurnitura();
 });
 //  ============================= //
 function setDekorativnayaPlankaDlyaProfilya() {
@@ -2714,7 +2736,7 @@ function globalPrice() {
     var globalPrice = 0;
     var globalMaterialPrice = 0;
     var globalProfilPrice = 0;
-    var globalFurnityraPrice = checkTheErrorNumber($('.furnitura-price .price').text());
+    var globalFurnityraPrice = checkTheErrorNumber($('.furnitura-price .price').html());
     var countIzdelie = checkTheErrorNumber($("#NUMBER_SETS_ID").val());
 
     // 1 сумма все профилей data-price-in-profil
@@ -2985,60 +3007,97 @@ function calcNow() {
     ifEmptyCarcas();
     //  ============================= //
 
+    // ТАБ ПРОФИЛЬ если пустой вид крепления //
+    function ifEmptyVidKrepleniya() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-vid-krepleniya') == '') {
+            SelectKreplenieEnd('img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Открытое', 'E401/E401', '35');
+        }
+    }
+
+    ifEmptyVidKrepleniya();
+//  ============================= //
+// ТАБ ПРОФИЛЬ если пустой уплотнитель //
+    function ifEmptyUplotnitel() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-tsvet-uplotnitelya') == '') {
+            SelectUplotnitelEnd('img/addontoprofil/Euroshop/uplotnitel.png', 'белый', 'K401', '58.90');
+        }
+    }
+
+    ifEmptyUplotnitel();
+//  ============================= //
+// ТАБ ПРОФИЛЬ если пустая заглушка в паз //
+    function ifEmptyZaglushkaVPaz() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-tsvet-zaglushki') == '') {
+            SelectZaglushkaEnd('img/addontoprofil/Euroshop/zaglushka-dek-v-paz.png', 'белый', 'K403', '24.61');
+        }
+    }
+
+    ifEmptyZaglushkaVPaz();
+//  ============================= //
+// ТАБ ПРОФИЛЬ если пустая заглушка торцевая //
+    function ifEmptyZaglushkaTortsevaja() {
+        if ($('#TOTAL_PAINTING_ID').val() != '' && getFromData('karkas-tsvet-zaglushki-tortsevoy') == '') {
+            SelectZaglushkaTorcevayaEnd('img/addontoprofil/Euroshop/zaglushka-dek.png', 'белый', 'A14', '0');
+        }
+    }
+
+    ifEmptyZaglushkaTortsevaja();
+//
+
     // ТАБ ПРОФИЛЬ если перемычки пусти //
     function ifEmptyPeremuchka() {
         if (getFromData('vertikalnue-pereochki-name') == '') {
             if (getFromData('karkas-name') == 'Tur') {
-                SelectTabKarkasEnd('Tur','V');
+                SelectTabKarkasEnd('Tur', 'V');
             } else if (getFromData('karkas-name') == 'Euroshop') {
-                SelectTabKarkasEnd('Euroshop','V');
+                SelectTabKarkasEnd('Euroshop', 'V');
             } else if (getFromData('karkas-name') == 'EuroshopLite') {
-                SelectTabKarkasEnd('EuroshopLite','V');
+                SelectTabKarkasEnd('EuroshopLite', 'V');
             } else if (getFromData('karkas-name') == 'Optimax2') {
-                SelectTabKarkasEnd('Optimax2','V');
+                SelectTabKarkasEnd('Optimax2', 'V');
             } else if (getFromData('karkas-name') == 'Standart') {
-                SelectTabKarkasEnd('Standart','V');
+                SelectTabKarkasEnd('Standart', 'V');
             } else if (getFromData('karkas-name') == 'MobyLight') {
-                SelectTabKarkasEnd('MobyLight','V');
+                SelectTabKarkasEnd('MobyLight', 'V');
             } else if (getFromData('karkas-name') == 'Optima') {
-                SelectTabKarkasEnd('Optima','V');
+                SelectTabKarkasEnd('Optima', 'V');
             } else if (getFromData('karkas-name') == 'OptimaLite') {
-                SelectTabKarkasEnd('Optima','V');
-            }  else if (getFromData('karkas-name') == 'Base') {
-                SelectTabKarkasEnd('Base','V');
+                SelectTabKarkasEnd('Optima', 'V');
+            } else if (getFromData('karkas-name') == 'Base') {
+                SelectTabKarkasEnd('Base', 'V');
             } else if (getFromData('karkas-name') == 'Statusx1') {
-                SelectTabKarkasEnd('Statusx1','V');
+                SelectTabKarkasEnd('Statusx1', 'V');
             } else if (getFromData('karkas-name') == 'Statusx2') {
-                SelectTabKarkasEnd('Statusx2','V');
+                SelectTabKarkasEnd('Statusx2', 'V');
             } else if (getFromData('karkas-name') == 'StandartStoika') {
-                SelectTabKarkasEnd('StandartStoika','V');
+                SelectTabKarkasEnd('StandartStoika', 'V');
             }
         }
         if (getFromData('horizontal-pereochki-name') == '') {
             if (getFromData('karkas-name') == 'Tur') {
-                SelectTabKarkasEnd('Tur','H');
+                SelectTabKarkasEnd('Tur', 'H');
             } else if (getFromData('karkas-name') == 'Euroshop') {
-                SelectTabKarkasEnd('Euroshop','H');
+                SelectTabKarkasEnd('Euroshop', 'H');
             } else if (getFromData('karkas-name') == 'EuroshopLite') {
-                SelectTabKarkasEnd('EuroshopLite','H');
+                SelectTabKarkasEnd('EuroshopLite', 'H');
             } else if (getFromData('karkas-name') == 'Optimax2') {
-                SelectTabKarkasEnd('Optimax2','H');
+                SelectTabKarkasEnd('Optimax2', 'H');
             } else if (getFromData('karkas-name') == 'Standart') {
-                SelectTabKarkasEnd('Standart','H');
+                SelectTabKarkasEnd('Standart', 'H');
             } else if (getFromData('karkas-name') == 'MobyLight') {
-                SelectTabKarkasEnd('MobyLight','H');
+                SelectTabKarkasEnd('MobyLight', 'H');
             } else if (getFromData('karkas-name') == 'Optima') {
-                SelectTabKarkasEnd('Optima','H');
+                SelectTabKarkasEnd('Optima', 'H');
             } else if (getFromData('karkas-name') == 'OptimaLite') {
-                SelectTabKarkasEnd('Optima','H');
-            }  else if (getFromData('karkas-name') == 'Base') {
-                SelectTabKarkasEnd('Base','H');
+                SelectTabKarkasEnd('Optima', 'H');
+            } else if (getFromData('karkas-name') == 'Base') {
+                SelectTabKarkasEnd('Base', 'H');
             } else if (getFromData('karkas-name') == 'Statusx1') {
-                SelectTabKarkasEnd('Statusx1','H');
+                SelectTabKarkasEnd('Statusx1', 'H');
             } else if (getFromData('karkas-name') == 'Statusx2') {
-                SelectTabKarkasEnd('Statusx2','H');
+                SelectTabKarkasEnd('Statusx2', 'H');
             } else if (getFromData('karkas-name') == 'StandartStoika') {
-                SelectTabKarkasEnd('StandartStoika','H');
+                SelectTabKarkasEnd('StandartStoika', 'H');
             }
         }
     }
@@ -3049,29 +3108,29 @@ function calcNow() {
     // ТАБ ПРОФИЛЬ каркас подсчет цены //
     function carcasPrice() {
         if (getFromData('karkas-name') == 'Tur') {
-            SelectTabKarkasEnd('Tur','K');
+            SelectTabKarkasEnd('Tur', 'K');
         } else if (getFromData('karkas-name') == 'Euroshop') {
-            SelectTabKarkasEnd('Euroshop','K');
+            SelectTabKarkasEnd('Euroshop', 'K');
         } else if (getFromData('karkas-name') == 'EuroshopLite') {
-            SelectTabKarkasEnd('EuroshopLite','K');
+            SelectTabKarkasEnd('EuroshopLite', 'K');
         } else if (getFromData('karkas-name') == 'Optimax2') {
-            SelectTabKarkasEnd('Optimax2','K');
+            SelectTabKarkasEnd('Optimax2', 'K');
         } else if (getFromData('karkas-name') == 'Standart') {
-            SelectTabKarkasEnd('Standart','K');
+            SelectTabKarkasEnd('Standart', 'K');
         } else if (getFromData('karkas-name') == 'MobyLight') {
-            SelectTabKarkasEnd('MobyLight','K');
+            SelectTabKarkasEnd('MobyLight', 'K');
         } else if (getFromData('karkas-name') == 'Optima') {
-            SelectTabKarkasEnd('Optima','K');
+            SelectTabKarkasEnd('Optima', 'K');
         } else if (getFromData('karkas-name') == 'OptimaLite') {
-            SelectTabKarkasEnd('Optima','K');
-        }  else if (getFromData('karkas-name') == 'Base') {
-            SelectTabKarkasEnd('Base','K');
+            SelectTabKarkasEnd('Optima', 'K');
+        } else if (getFromData('karkas-name') == 'Base') {
+            SelectTabKarkasEnd('Base', 'K');
         } else if (getFromData('karkas-name') == 'Statusx1') {
-            SelectTabKarkasEnd('Statusx1','K');
+            SelectTabKarkasEnd('Statusx1', 'K');
         } else if (getFromData('karkas-name') == 'Statusx2') {
-            SelectTabKarkasEnd('Statusx2','K');
+            SelectTabKarkasEnd('Statusx2', 'K');
         } else if (getFromData('karkas-name') == 'StandartStoika') {
-            SelectTabKarkasEnd('StandartStoika','K');
+            SelectTabKarkasEnd('StandartStoika', 'K');
         }
     }
 
@@ -3553,18 +3612,27 @@ $("#DIAGRAMMA-DIALOG-WINDOW-BTN").click(function () {
 
 // -  вывод цены профиля
 function setPriceInProfil() {
-
     var karkasPrice = checkTheErrorNumber(getFromData('karkas-price'));
     var decorPrice = checkTheErrorNumber(getFromData('decor-price'));
     var vertikalnuePereochkiPrice = checkTheErrorNumber(getFromData('vertikalnue-pereochki-price'));
     var horizontalPereochkiPrice = checkTheErrorNumber(getFromData('horizontal-pereochki-price'));
-
     var karkasVidKrepleniya = parseInt(getFromData('karkas-vid-krepleniya'));
     if (karkasVidKrepleniya == "" || isNaN(karkasVidKrepleniya)) {
         karkasVidKrepleniya = 0;
     }
-
-    var res = karkasPrice + decorPrice + vertikalnuePereochkiPrice + horizontalPereochkiPrice + karkasVidKrepleniya;
+    var karkasTsvetUplotnitelya = parseInt(getFromData('karkas-tsvet-uplotnitelya'));
+    if (karkasTsvetUplotnitelya == "" || isNaN(karkasTsvetUplotnitelya)) {
+        karkasTsvetUplotnitelya = 0;
+    }
+    var karkasTsvetZaglushki = parseInt(getFromData('karkas-tsvet-zaglushki'));
+    if (karkasTsvetZaglushki == "" || isNaN(karkasTsvetZaglushki)) {
+        karkasTsvetZaglushki = 0;
+    }
+    var karkasTsvetZaglushkiTortsevoy = parseInt(getFromData('karkas-tsvet-zaglushki-tortsevoy'));
+    if (karkasTsvetZaglushkiTortsevoy == "" || isNaN(karkasTsvetZaglushkiTortsevoy)) {
+        karkasTsvetZaglushkiTortsevoy = 0;
+    }
+    var res = karkasPrice + decorPrice + vertikalnuePereochkiPrice + horizontalPereochkiPrice + karkasVidKrepleniya + karkasTsvetUplotnitelya + karkasTsvetZaglushki + karkasTsvetZaglushkiTortsevoy;
     $('.TAB-PROFIL-PRICE').text(parseInt(res));
     setDataAndText('data-price-in-profil', parseInt(res));
 }
@@ -3577,9 +3645,9 @@ function SelectTabKarkasEnd(name, type) {
     var countPer = parseInt(getFromData('vertikalnue-pereochki-count'));
     var vertikalnue_pereochkicount = parseInt(getFromData('vertikalnue-pereochki-count'));
     var horizontal_pereochkicount = parseInt(getFromData('horizontal-pereochki-count'));
-    switch (type){
+    switch (type) {
         case "K":
-            switch (name){
+            switch (name) {
                 case "Tur":
                     var price = ((width + height) * 0.002 * (94 + 13) + (22 + 20) * 4);
                     var info = '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>';
@@ -3645,7 +3713,7 @@ function SelectTabKarkasEnd(name, type) {
             if (decorPrice == '' || isNaN(decorPrice)) {
                 decorPrice = 0;
             }
-            if(isNaN(price)){
+            if (isNaN(price)) {
                 price = 0;
             }
             $('#KARKAS-BLOCK img').attr('src', img);
@@ -3658,7 +3726,7 @@ function SelectTabKarkasEnd(name, type) {
             setDataAndText('karkas-full-price', parseInt((parseFloat(decorPrice) + price)));
             break;
         case "H":
-            switch (name){
+            switch (name) {
                 case "Tur":
                     var price = (width / 1000 * (94 + 13 * 2) + 22 * 2) * countPer;
                     var info = '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до 2.6 м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">8.5 мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">4,5 мм</p></div>';
@@ -3720,7 +3788,7 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/StandartStoika.png';
                     break;
             }
-            if(isNaN(price)){
+            if (isNaN(price)) {
                 price = 0;
             }
             $('#HORIZONTAL-PEREMOCHKI-BLOCK img').attr('src', img);
@@ -3744,11 +3812,11 @@ function SelectTabKarkasEnd(name, type) {
                     }
                 }
             }
-            switch (name){
+            switch (name) {
                 case "Tur":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 22 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
                     var price = (height / 1000 * (94 + 13 * 2) + 22 * 2) * countPer + addKreplenie;
@@ -3756,12 +3824,12 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/Tur.png';
                     break;
                 case "Euroshop":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 36 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
-                    if(uplotnitelPrice == 0){
+                    if (uplotnitelPrice == 0) {
                         uplotnitelPrice = 14.5;
                     }
                     var price = (height / 1000 * (111 + uplotnitelPrice * 2) + 36 * 2) * countPer + addKreplenie;
@@ -3769,12 +3837,12 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/Euroshop.png';
                     break;
                 case "EuroshopLite":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 36 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
-                    if(uplotnitelPrice == 0){
+                    if (uplotnitelPrice == 0) {
                         uplotnitelPrice = 14.5;
                     }
                     var price = (height / 1000 * (89 + uplotnitelPrice * 2) + 36 * 2) * countPer + addKreplenie;
@@ -3782,9 +3850,9 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/EuroshopLite.png';
                     break;
                 case "Optimax2":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 53 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
                     var price = (height / 1000 * (555 + 17 * 4) + 53 * 2) * countPer + addKreplenie;
@@ -3792,12 +3860,12 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/Optimax2.png';
                     break;
                 case "Optima":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 53 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
-                    if(uplotnitelPrice == 0){
+                    if (uplotnitelPrice == 0) {
                         uplotnitelPrice = 14.5;
                     }
                     var price = (height / 1000 * (272 + uplotnitelPrice * 2) + 53 * 2) * countPer + addKreplenie;
@@ -3805,12 +3873,12 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/Optima.png';
                     break;
                 case "Standart":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 35 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
-                    if(uplotnitelPrice == 0){
+                    if (uplotnitelPrice == 0) {
                         uplotnitelPrice = 14.5;
                     }
                     var price = (height / 1000 * (266 + uplotnitelPrice * 2) + 35 * 2) * countPer + addKreplenie;
@@ -3818,12 +3886,12 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/Standart.png';
                     break;
                 case "MobyLight":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 24 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
-                    if(uplotnitelPrice == 0){
+                    if (uplotnitelPrice == 0) {
                         uplotnitelPrice = 14.5;
                     }
                     var price = (height / 1000 * (176 + uplotnitelPrice * 2 + 7.2 * 2) + 24 * 2) * countPer + addKreplenie;
@@ -3831,12 +3899,12 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/MobyLight.png';
                     break;
                 case "OptimaLite":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 53 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
-                    if(uplotnitelPrice == 0){
+                    if (uplotnitelPrice == 0) {
                         uplotnitelPrice = 14.5;
                     }
                     var price = (height / 1000 * (187 + uplotnitelPrice * 2) + 53 * 2) * countPer + addKreplenie;
@@ -3844,9 +3912,9 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/OptimaLite.png';
                     break;
                 case "Base":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 33 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
                     var price = (height / 1000 * (540 + 15 * 4) + 33 * 2) * countPer + addKreplenie;
@@ -3854,9 +3922,9 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/Base.png';
                     break;
                 case "Statusx1":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 33 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
                     var price = (height / 1000 * (395 + 14 * 2) + 27 + 2.5 * 2) * countPer + addKreplenie;
@@ -3864,9 +3932,9 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/Statusx1.png';
                     break;
                 case "Statusx2":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 27 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
                     var price = (height / 1000 * (490 + 14 * 4) + 27 + 2.5 * 2) * countPer + addKreplenie;
@@ -3874,12 +3942,12 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/Statusx2.png';
                     break;
                 case "StandartStoika":
-                    if(vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0){
+                    if (vertikalnue_pereochkicount > 0 && horizontal_pereochkicount > 0) {
                         var addKreplenie = parseInt(vertikalnue_pereochkicount * horizontal_pereochkicount * 35 * 2);
-                    }else{
+                    } else {
                         var addKreplenie = 0;
                     }
-                    if(uplotnitelPrice == 0){
+                    if (uplotnitelPrice == 0) {
                         uplotnitelPrice = 14.5;
                     }
                     var price = (height / 1000 * (216 + uplotnitelPrice * 2) + 35 * 2) * countPer + addKreplenie;
@@ -3887,7 +3955,7 @@ function SelectTabKarkasEnd(name, type) {
                     var img = 'http://fasts-like.com/karkas/StandartStoika.png';
                     break;
             }
-            if(isNaN(price)){
+            if (isNaN(price)) {
                 price = 0;
             }
             $('#VERTIKALNUE-PEREMOCHKI-BLOCK img').attr('src', img);
@@ -3961,7 +4029,7 @@ $("#NUMBER_OF_DUPLICATOR_ID").change(function () {
     gruapName();
 });
 
-function load3D(name){
+function load3D(name) {
     $(".js-div-for-3d").html("");
     $(".js-div-for-3d").hide();
     $("img.selectKarkasImg").show();
@@ -3969,13 +4037,13 @@ function load3D(name){
     var html = $("#" + name + "-3d").html();
     $("div#div-for-3d-" + name).append(html);
     $("img#img-modal-" + name).hide();
-    $("div#el-loader-" + name).css("position","relative");
-    $("div#el-loader-" + name).css("height","202px");
+    $("div#el-loader-" + name).css("position", "relative");
+    $("div#el-loader-" + name).css("height", "202px");
     $("div#el-loader-" + name).append("<div class='loading'></div>");
-    setTimeout(function() {
+    setTimeout(function () {
         x3dom.reload();
         $("div.loading").remove();
-        $("div#el-loader-" + name).css("height","0px");
+        $("div#el-loader-" + name).css("height", "0px");
         $("div#div-for-3d-" + name).show();
     }, 100);
 }
@@ -4565,7 +4633,7 @@ $("#myTab a").click(function (e) {
 $("#tab-profil-v-peremyichki-shtuk").bind('input', function () {
     setDataAndText('vertikalnue-pereochki-count', $(this).val());
     var perName = getFromData('vertikalnue-pereochki-name');
-    SelectTabKarkasEnd(perName,'V');
+    SelectTabKarkasEnd(perName, 'V');
     $('.TAB-PROFIL-PRICE').text(parseInt(getFromData('karkas-price')) + parseInt(getFromData('vertikalnue-pereochki-price')) + parseInt(getFromData('horizontal-pereochki-price')));
     paintingInDiadramma();
 });
@@ -4573,7 +4641,7 @@ $("#tab-profil-v-peremyichki-shtuk").bind('input', function () {
 $("#tab-profil-peremyichki-horizontal-shtuk").bind('input', function () {
     setDataAndText('horizontal-pereochki-count', $(this).val());
     var perName = getFromData('horizontal-pereochki-name');
-    SelectTabKarkasEnd(perName,'H');
+    SelectTabKarkasEnd(perName, 'H');
     $('.TAB-PROFIL-PRICE').text(parseInt(getFromData('karkas-price')) + parseInt(getFromData('vertikalnue-pereochki-price')) + parseInt(getFromData('horizontal-pereochki-price')));
     paintingInDiadramma();
 });
@@ -4581,6 +4649,7 @@ $("#tab-profil-peremyichki-horizontal-shtuk").bind('input', function () {
 $("#TOTAL_PAINTING_ID").bind('blur', function () {
     TOTAL_PAINTING = parseInt($(this).val());
     getDataFurnitura();
+    viewTotalFurnitura();
 });
 $("#MOVABLE_PAINTING_ID").bind('input', function () {
     MOVABLE_PAINTING = parseInt($(this).val());
@@ -4591,16 +4660,17 @@ $("#NUMBER_SETS_ID").bind('input', function () {
 $("#HIGHT_SETS_ID, #WIDTH_SETS_ID").bind('input', function () {
     DandDStart();
     getDataFurnitura();
+    viewTotalFurnitura();
 });
 // $("#WIDTH_SETS_ID").bind('input', function(){
 //     WIDTH_SETS = parseInt($(this).val());
 // });
 $("#TYPE_BAFFLE_ID").change(function () {
     var TYPE_BAFFLE = parseInt($(this).val());
-    if(TYPE_BAFFLE == 2){
-        $("#POLOVINCHATAYA_KOL").prop("disabled",false);
-    }else{
-        $("#POLOVINCHATAYA_KOL").prop("disabled",true);
+    if (TYPE_BAFFLE == 2) {
+        $("#POLOVINCHATAYA_KOL").prop("disabled", false);
+    } else {
+        $("#POLOVINCHATAYA_KOL").prop("disabled", true);
     }
 });
 // tab-profil-vyisota
@@ -4636,16 +4706,18 @@ $('#tab-profil-vyisota, #tab-profil-shirina').bind('input', function () {
 });
 // Добавление поля
 $('.add-material-btn').click(function () {
-    loop1: for (i = 1; i <= 5; i++) {
+    loop1: for (var i = 1; i <= 5; i++) {
         var type = getFromData('material-' + i + '-type');
         if (type == '') {
             $(".add-material-block-past").append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el" data-material-el-id="' + i + '">' + $(".napolnenie-el-set").html() + '</div>');
-            setDataAndText('material-' + i + '-type', 0);
+            setDataAndText('material-' + i + '-type', 'stekloObyichnoe');
+            setNapolnenieElTolschinaShow('stekloObyichnoe', i);
             break loop1;
         }
     }
     addWElNapolnenieToFive();
     addWHElNapolnenie();
+    calcNow();
 });
 
 
@@ -4763,10 +4835,56 @@ function debounce(func, wait, immediate) {
     };
 };
 
+function viewTotalFurnitura() {
+    var TYPE_BAFFLE = parseInt($("#TYPE_BAFFLE_ID").val());
+    var checked = $('.aksessuaryi-block-swith input').prop("checked");
+    var price = 0;
+    switch (TYPE_BAFFLE) {
+        case 1:
+            var razdvizhnyieMehanizmyi = parseInt($(".razdvizhnyie-mehanizmyi .price").html());
+            var mehanizmSinhronizatsii = parseInt($(".mehanizm-sinhronizatsii .price").html());
+            var napravlyayuschie = parseInt($(".napravlyayuschie .price").html());
+            var vidKrepleniyaNapravlyayuschey = parseInt($(".vidKrepleniyaNapravlyayuschey .price").html());
+            var povodok = parseInt($(".povodok .price").html());
+            price = razdvizhnyieMehanizmyi + mehanizmSinhronizatsii + napravlyayuschie + vidKrepleniyaNapravlyayuschey + povodok;
+            if (checked == true) {
+                var dovodchik = parseInt($(".dovodchik .price").html());
+                var dekorativnayaPlankaDlyaProfilya = parseInt($(".dekorativnayaPlankaDlyaProfilya .price").html());
+                var schetochnyiyUplotnitel = parseInt($(".schetochnyiyUplotnitel .price").html());
+                var rakovina = parseInt($(".rakovina .price").html());
+                var zamok = parseInt($(".zamok .price").html());
+                price = price + dovodchik + dekorativnayaPlankaDlyaProfilya + schetochnyiyUplotnitel + rakovina + zamok;
+            }
+            break;
+        case 2:
+            var setSkladnyieMehanizmyi = parseInt($(".setSkladnyieMehanizmyi .price").html());
+            var petliSkladnie = parseInt($(".petli-skladnie .price").html());
+            var napravlyayuschieSkladnie = parseInt($(".napravlyayuschie-skladnie .price").html());
+            var vidKrepleniyaSkladnie = parseInt($(".vidKrepleniya-skladnie .price").html());
+            price = setSkladnyieMehanizmyi + petliSkladnie + napravlyayuschieSkladnie + vidKrepleniyaSkladnie;
+            if (checked == true) {
+                var dekorativnayaPlankaDlyaProfilyaSkladnie = parseInt($(".dekorativnayaPlankaDlyaProfilya-skladnie .price").html());
+                var schetochnyiyUplotnitelSkladnie = parseInt($(".schetochnyiyUplotnitel-skladnie .price").html());
+                var rakovinaSkladnie = parseInt($(".rakovina-skladnie .price").html());
+                var kreplenieRuchkiSkladnie = parseInt($(".kreplenieRuchki-skladnie .price").html());
+                var zamokSkladnyieSkladnie = parseInt($(".zamokSkladnyie-skladnie .price").html());
+                price = price + dekorativnayaPlankaDlyaProfilyaSkladnie + schetochnyiyUplotnitelSkladnie + rakovinaSkladnie + kreplenieRuchkiSkladnie + zamokSkladnyieSkladnie;
+            }
+            break;
+        case 3:
+            var nozhkiMobil = parseInt($(".nozhki-mobil .price").html());
+            var stoykiMobil = parseInt($(".stoyki-mobil .price").html());
+            var tipSoedineniyaPolotenMobil = parseInt($(".tipSoedineniyaPoloten-mobil .price").html());
+            price = nozhkiMobil + stoykiMobil + tipSoedineniyaPolotenMobil;
+            break;
+    }
+    $(".furnitura-price .price").text(price);
+}
 
 var myEfficientFn = debounce(function () {
     calcNow();
     getDataFurnitura();
+    viewTotalFurnitura();
     globalPrice();
     TableForInfo();
     setHeightDandDEl();

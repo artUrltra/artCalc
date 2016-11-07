@@ -12,23 +12,6 @@
     script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
     -->
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-    <script src="lib/jquery.min.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://www.x3dom.org/x3dom/release/x3dom.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-material-design.css">
-    <link rel="stylesheet" type="text/css" href="css/ripples.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/font-awesome.min.css">
-    <script src="lib/snackbar.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="lib/snackbar.min.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" href="lib/jquery-ui.css">
-    <script type="text/javascript" src="lib/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="lib/jquery.ui.touch-punch.min.js"></script>
-    <script type="text/javascript" src="lib/html2canvas.js"></script>
-    <script type="text/javascript" src="lib/jquery.plugin.html2canvas.js"></script>
   </head>
   <body>
     <div class="vi-container">
@@ -297,7 +280,7 @@
               </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <center data-toggle="collapse" data-target="#addon-v-niz" style="border-bottom: solid 2px #ddd !important;">
+              <center data-toggle="collapse" data-target="#addon-v-niz" style="border-bottom: solid 2px #ddd !important;" class="addons">
                 <h3>Дополнения</h3><i aria-hidden="true" class="fa fa-arrow-down"></i>
               </center>
               <div id="addon-v-niz" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 collapse">
@@ -326,8 +309,8 @@
                     <div class="left"><img id="zaglushka-v-paz-img" src="img/1px.png" img="img/addontoprofil/Euroshop/zaglushka-dek-v-paz.png"></div>
                     <div class="right">
                       <center>
+                        <h4 id="zaglushka-v-paz-text1">белый</h4>
                         <h4 id="zaglushka-v-paz-text2">K403</h4>
-                        <h4 id="zaglushka-v-paz-text3">белый</h4>
                       </center>
                       <center>
                         <h4>Цена:</h4><span id="zaglushka-v-paz-price" class="margin-left-10 margin-right-10">24.61</span>руб.
@@ -344,7 +327,7 @@
                     <div class="right">
                       <center>
                         <h4 id="uplotnitel-text1">белый</h4>
-                        <h4 id="uplotnitel-text2">Е128-С</h4>
+                        <h4 id="uplotnitel-text2">K402</h4>
                       </center>
                       <center>
                         <h4>Цена:</h4><span id="uplotnitel-price" class="margin-left-10 margin-right-10">58.90</span>руб.
@@ -368,7 +351,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border-bottom-2">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 border-bottom-2 select-dekor">
               <div data-toggle="collapse" data-target="#dekor-v-niz" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <center>
                   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -419,7 +402,7 @@
             <input id="NUMBER_SETS_ID" maxlength="2" type="text" class="form-control">
           </div>
         </div>
-        <div data-toggle="collapse" data-target="#setting-v-niz" style="border-bottom: solid 2px #ddd !important" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div data-toggle="collapse" data-target="#setting-v-niz" style="border-bottom: solid 2px #ddd !important" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 percents">
           <div style="margin-top: 0px;" class="bs-component">
             <div style="height: 100%;" class="alert alert-dismissible alert-default">
               <div class="left summaBezParametrov">
@@ -644,7 +627,7 @@
                 <h4>%text2%</h4>
                 <h3>%text3%</h3>
                 <h5>Цена:<span class="red">%price%</span> руб.</h5><br/>
-                <button onclick="SelectKreplenieEnd('%img2%','%text1%','%text2%','%text3%','%price%');"
+                <button onclick="SelectKreplenieEnd('%img2%','%text2%','%text3%','%price%');"
                         data-dismiss="modal">Выбрать
                 </button>
             </div>
@@ -666,13 +649,13 @@
                 <h4>%text2%</h4>
                 <h3>%text3%</h3>
                 <h5>Цена:<span class="red">%price%</span> руб.</h5><br/>
-                <button onclick="SelectZaglushkaEnd('%img2%','%text1%','%text2%','%text3%','%price1%','белый');"
+                <button onclick="SelectZaglushkaEnd('%img2%','белый','%text3%','%price1%');"
                         data-dismiss="modal">белый
                 </button>
-                <button onclick="SelectZaglushkaEnd('%img2%','%text1%','%text2%','%text3%','%price2%','серый');"
+                <button onclick="SelectZaglushkaEnd('%img2%','серый','%text3%','%price2%');"
                         data-dismiss="modal">серый
                 </button>
-                <button onclick="SelectZaglushkaEnd('%img2%','%text1%','%text2%','%text3%','%price3%','чёрный');"
+                <button onclick="SelectZaglushkaEnd('%img2%','чёрный','%text3%','%price3%');"
                         data-dismiss="modal">чёрный
                 </button>
             </div>
@@ -691,16 +674,17 @@
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 addon-modal-text">
                 <h4>%text1%</h4>
                 <h3>%text3%</h3>
-                <button onclick="SelectUplotnitelEnd('%img2%','прозрачный','%text3%','%prozrachnii%');"
+                <h5>Цена:<span class="red">%price1%</span> руб.</h5><br/>
+                <button onclick="SelectUplotnitelEnd('%img2%','прозрачный','%text3%','%price1%');"
                         data-dismiss="modal">прозрачный
                 </button>
-                <button onclick="SelectUplotnitelEnd('%img2%','серый','%text3%','%serii%');"
+                <button onclick="SelectUplotnitelEnd('%img2%','серый','%text3%','%price2%');"
                         data-dismiss="modal">серый
                 </button>
-                <button onclick="SelectUplotnitelEnd('%img2%','белый','%text3%','%belii%');"
+                <button onclick="SelectUplotnitelEnd('%img2%','белый','%text3%','%price3%');"
                         data-dismiss="modal">белый
                 </button>
-                <button onclick="SelectUplotnitelEnd('%img2%','чёрный','%text3%','%chernii%');"
+                <button onclick="SelectUplotnitelEnd('%img2%','чёрный','%text3%','%price4%');"
                         data-dismiss="modal">чёрный
                 </button>
             </div>
@@ -719,13 +703,13 @@
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 addon-modal-text">
                 <h4>%text1%</h4>
                 <h3>%text3%</h3>
-                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','%price1%','%text3%');"
+                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','белый','%text3%','%price1%');"
                         data-dismiss="modal">белый
                 </button>
-                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','%price2%','%text3%');"
+                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','серый','%text3%','%price2%');"
                         data-dismiss="modal">серый
                 </button>
-                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','%price3%','%text3%');"
+                <button onclick="SelectZaglushkaTorcevayaEnd('%img2%','чёрный','%text3%','%price3%');"
                         data-dismiss="modal">чёрный
                 </button>
             </div>
@@ -1357,16 +1341,6 @@
         </center>
     </div>
 </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center loadImgBlock"></div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-          <button type="button" class="btn btn-raised btn-default addImg">Добавить картинку</button>
-          <button type="button" class="btn btn-raised btn-default sendGet">Скачать PDF</button>
-          <button type="button" class="btn btn-raised btn-default saveHistory">Сохранить историю</button>
-        </div>
-      </div>
-    </div>
     <div class="napolnenie-left-tab display-none">
       <div class="tabbable tabs-left">
         <ul style="height: 700px;" class="nav nav-tabs">
@@ -4259,14 +4233,36 @@
         </div>
       </div>
     </div>
+    <script>
+      function minimalPriceContent() {
+          SelectTabKarkasEnd('Tur', 'K');
+          SelectKreplenieEnd('img/addontoprofil/Euroshop/kreplenie-otkritoe.png', 'Открытое', 'E401/E401', '35');
+          SelectUplotnitelEnd('img/addontoprofil/Euroshop/uplotnitel-2.png', 'белый', 'K402', '18.05');
+          SelectZaglushkaEnd('img/addontoprofil/Euroshop/zaglushka-dek-v-paz-alternativa.png', 'белый', 'K404', '20.54');
+          SelectZaglushkaTorcevayaEnd('img/addontoprofil/Euroshop/zaglushka-dek.png', 'белый', 'A14', '0');
+      }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.x3dom.org/x3dom/release/x3dom.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-material-design.css">
+    <link rel="stylesheet" type="text/css" href="css/ripples.min.css">
+    <script src="lib/snackbar.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/snackbar.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.ui.touch-punch.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/loadImg.js"></script>
     <script src="js/sendGet.js"></script>
     <script src="js/paintingInDiadramma.js"></script>
     <script src="js/DandD.js"></script>
-    <script src="js/history.js"></script>
-    <script src="js/stateSlider.js"></script>
     <script src="js/stateSetParam.js"></script>
     <script src="js/loadImgAnd3D.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/font-awesome.min.css">
   </body>
 </html>
