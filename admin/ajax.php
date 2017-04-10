@@ -170,6 +170,16 @@ if (isset($_GET['add'])) {
             $DB->query_no_var($SQL);
             echo $SQL;
             break;
+        case 'addtemp':
+            $text = htmlspecialchars($_POST['text'], ENT_QUOTES);
+            $SQL = "INSERT INTO temp (name, user,text) VALUES (
+                '" . $_POST['name'] . "',
+                '" . $_POST['manager'] . "',
+                '" . $text . "'
+            )";
+            $DB->query_no_var($SQL);
+            echo $SQL;
+            break;
         case 'editcalcmanager':
             $text = htmlspecialchars($_POST['text'], ENT_QUOTES);
             $sql = "UPDATE calcmanagers SET
@@ -277,6 +287,9 @@ if (isset($_GET['delete'])) {
             break;
         case 'delete13':
             $DB->query_no_var("DELETE FROM Supplements WHERE Supplements.`id` = {$_POST['id']}");
+            break;
+        case 'deltemp':
+            $DB->query_no_var("DELETE FROM temp WHERE temp.`id` = {$_POST['id']}");
             break;
     }
 }
@@ -705,6 +718,14 @@ if(isset($_GET['getmanagers'])){
     $items = $DB->query('SELECT * FROM calcmanagers');
     foreach ($items as &$i){
         $i['text']= str_replace("\"", "'", htmlspecialchars_decode($i['text'], ENT_QUOTES));
+
+    }
+    echo json_encode($items);
+}
+if(isset($_GET['getteml'])){
+    $items = $DB->query('SELECT * FROM temp');
+    foreach ($items as &$i){
+        $i['text']= str_replace("\"", "}", htmlspecialchars_decode($i['text'], ENT_QUOTES));
 
     }
     echo json_encode($items);

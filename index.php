@@ -88,10 +88,10 @@
     <h4 id="orderText">Менеджер</h4>
     <select id="calcmanager"></select>
     <br>
-    <input type="password" id="manegerPass" placeholder="Пароль"/><button id="checkManagerPass">Да</button>
+    <input type="password" autocomplete="off" id="manegerPass" placeholder="Пароль"/><button onClick="state.checkManagerPass()" id="checkManagerPass">Да</button>
 </div>
 <!--Кнопки-->
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center managerBtn">
     <button type="button" class="addImg" id="openimgmodal">Добавить картинку</button>
     <button type="button" class="sendGet">Скачать PDF</button>
     <button type="button" onclick="historyInit()" class="saveHistory">История</button>
@@ -99,7 +99,7 @@
 
 <!-- Фрем  -->
 <iframe src="http://audoors.ru/commercial_offer/?app_page=commercial_offer" width="100%" height="1800px" scrolling="no"
-        id="state4" frameborder="0"></iframe>
+        id="state4" class="managerBtn" frameborder="0"></iframe>
 
 
 <!--Модальное Окно-->
@@ -239,6 +239,14 @@
     <script src="js/jquery.fancybox.min.js"></script>
     <script src="js/gallery.js"></script>
     <script>
+    function ParserIntAndNan(number) {
+        if (isNaN(parseInt(number))) {
+            return 0;
+        } else {
+            return parseInt(number);
+        }
+    }
+
         window.id_pdf = new Date().getTime();
         $.material.init();
 
@@ -249,8 +257,60 @@
         }
         var _FLAG = false;
         function GloblPrice_FLAG() {
-            console.time('PRICE');
             if (_FLAG) {
+                let profile = top.storage.p.find(function(v){return v.name === frames[0].profiles.profile_name});
+                if(profile){
+                    frames[1].profiles.setProfile(profile.id);
+                    frames[2].profiles.setProfile(profile.id);
+                };
+                let profile_h = top.storage.PHW.find(function(v){return v.name === frames[0].profiles.profile_horizontal_name});
+                if(profile_h){
+                    frames[1].profiles.set_horizontal_profile(profile_h.id);
+                    frames[2].profiles.set_horizontal_profile(profile_h.id);
+                };
+                let profile_w = top.storage.PHW.find(function(v){return v.name === frames[0].profiles.profile_vertical_name});
+                if(profile_w){
+                    frames[1].profiles.set_vertical_profile(profile_w.id);
+                    frames[2].profiles.set_vertical_profile(profile_w.id);
+                };
+                
+                let array = [];
+                    frames[0].$('#SUPPLEMENTS .col-md-3').each(function () {
+                        var flag = $(this).find('.input-sm').val() == 'Есть' ? true : false;
+                        if (flag) {
+                            array.push({
+                                name: $(this).find('h3').text(),
+                                img: $(this).find('img').attr('src'),
+                                id: ParserIntAndNan($(this).find('#PriceSupplements').attr('data-pricesupplements')),
+                                price: ParserIntAndNan($(this).find('#PriceSupplements span').attr('data-price'))
+                            });
+                        } else {
+                            array.push(flag);
+                        }
+                    });
+
+                array.forEach(function (v, index) {
+                    var $additions = frames[1].$('#SUPPLEMENTS .col-md-3:eq(' + index + ')');
+                    if (v) {
+                        $additions.find('.input-sm').val('Есть');
+                        frames[1].addition.SelectSupplements(v.img, v.name, v.price, v.id);
+
+                    } else {
+                        $additions.find('.input-sm').val('Нету');
+                    }
+                });
+                array.forEach(function (v, index) {
+                    var $additions = frames[2].$('#SUPPLEMENTS .col-md-3:eq(' + index + ')');
+                    if (v) {
+                        $additions.find('.input-sm').val('Есть');
+                        frames[2].addition.SelectSupplements(v.img, v.name, v.price, v.id);
+
+                    } else {
+                        $additions.find('.input-sm').val('Нету');
+                    }
+                });
+
+
                 frames[1].$('#tab-profil-peremyichki-horizontal-shtuk').val(frames[0].$('#tab-profil-peremyichki-horizontal-shtuk').val());
                 frames[1].$('#tab-profil-v-peremyichki-shtuk').val(frames[0].$('#tab-profil-v-peremyichki-shtuk').val());
                 frames[1].aaa();
@@ -296,8 +356,7 @@
                     frames[2].$('.napolnenie-el-tolschina:eq(' + i + ')').val(frames[0].$('.napolnenie-el-tolschina:eq(' + i + ')').val());
                 }
                 frames[2].nmaterials.ResSumm();
-                state.stateSetPrice();
-                console.timeEnd('PRICE');
+
             }
         }
         $("body").on('mouseover', '.container', GloblPrice_FLAG);
@@ -316,6 +375,16 @@
         function caehcheckFlag() {
             if (flag0 && flag1 && flag2) {
                 _FLAG = true;
+            if(get_cookie('password')){
+
+            $( "#calcmanager" ).val(storage.managers.find(function(v){
+                return v.pass === 'root';
+            }).id);
+            $("#manegerPass").val(get_cookie('password'));
+            $('#checkManagerPass').click();
+        
+        
+        }
             }
         }
         top.frames[0].window.onload = function () {

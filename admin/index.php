@@ -138,7 +138,18 @@ function loading($page, $smarty, $DB)
         case 'Catalogs';
             Catalogs($smarty, $DB);
             break;
+        case 'temp';
+        temp($smarty,$DB);
+            break;
     }
+}
+function temp($smarty,$DB){
+    menu($smarty, $DB);
+
+    $items = $DB->query('SELECT * FROM temp');
+    $smarty->assign('items', $items);
+    $smarty->assign('managers', $DB->query('SELECT * FROM calcmanagers'));
+    $smarty->display('temp.tpl');
 }
 
 function Catalogs($smarty, $DB)

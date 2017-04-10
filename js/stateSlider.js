@@ -151,6 +151,7 @@ var state = {
     checkManager: function(){
         $( "#calcmanager" ).change(function() { state.checkManagerHide(); });
         state.checkManagerHide();
+        
     },
     checkManagerHide: function(){
         $(".managerBtn").hide(100);
@@ -169,7 +170,16 @@ var state = {
         manegerAll = JSON.parse(manegerAll);
         for (let i = 0; i < manegerAll.length; i++){ if(manegerAll[i].name == manegerName){ truePass = manegerAll[i].pass; } }
         if(truePass !== manegerPass){ alert("Пароль не верный!");}
-        else{ state.checkManagerShow(); };
+        else{
+            var CurrentDate = new Date();
+            CurrentDate.setMonth(CurrentDate.getMonth() + 1);
+            CurrentDate.toGMTString()
+            document.cookie ='password='+manegerPass+';expires='+CurrentDate.toGMTString();
+            console.log(document.cookie);
+
+     
+            state.checkManagerShow(); 
+        };
     },
     // checkManager//
     init: function (e, b) {
@@ -514,4 +524,13 @@ window.onload = function () {
         parentM.send('resetFurnituraFlag', 2);
         parentM.send('resetFurnituraFlag', 3);
     });
+}
+function get_cookie ( cookie_name )
+{
+  var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+ 
+  if ( results )
+    return ( unescape ( results[2] ) );
+  else
+    return null;
 }
