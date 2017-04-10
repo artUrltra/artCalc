@@ -1,0 +1,82 @@
+.bc-b6b6b6 {
+    background: #b6b6b6
+}
+
+.bc-000141 {
+    background: #000141
+}
+
+.bc-3949ab {
+    background: #3949ab
+}
+
+.bc-1a237e {
+    background: #1a237e
+}
+
+.top-block-s1 {
+    padding: 15px 8px
+}
+
+.top-block-s2 > div {
+    padding: 10px 8px
+}
+
+.top-block #AREA_ID {
+    margin-right: 5px
+}
+
+.top-block input {
+    margin-left: 5px;
+    margin-right: 5px;
+    background: #b6b6b6;
+    border: 0;
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #686c9a;
+    text-align: center;
+    color: #fff
+}
+
+.top-block select {
+    font-size: 18px;
+    background: #000141;
+    color: #e1e3ee
+}
+
+.top-block h3 {
+    font-size: 14px;
+    line-height: 0;
+    margin: 10px 0;
+    padding: 0;
+    display: inline;
+    color: #fff
+}
+
+.border-right {
+    border-right: 1px solid #81beca
+}
+
+@media (max-width: 760px) {
+    .top-block-s2 {
+        text-align: center
+    }
+}
+
+@media (min-width: 1170px) {
+    .visible-lg {
+        display: inline-block !important
+    }
+}
+
+@media (max-width: 970px) {
+    .border-right {
+        border-right: 0 solid #81beca;
+        border-bottom: 1px solid #81beca
+    }
+}
+
+@media (max-width: 768px) {
+    .top-block-s1 {
+        padding: 15px 0
+    }
+}

@@ -1,0 +1,18 @@
+DirectoryIndex index.php
+
+php_value upload_max_filesize 200M
+php_value post_max_size 200M
+php_value max_execution_time 2000
+php_value max_input_time 2000
+
+# Заголовок Cache-Control
+<IfModule mod_headers.c>
+        Header append Cache-Control "no-store, no-cache, must-revalidate"
+</IfModule>
+
+# Заголовок Expires
+<IfModule mod_expires.c>
+        ExpiresActive On ExpiresDefault "now"
+</IfModule>
+
+php_value memory_limit 200M

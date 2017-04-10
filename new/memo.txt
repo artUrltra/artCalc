@@ -1,0 +1,9 @@
+﻿git init
+git remote add origin https://github.com/artUrltra/artCalc.git
+git pull origin ИМЯ НУЖНОЙ ВЕТКИ 
+git log
+git status
+git add *
+git commit -m "ОПИСАНИЕ"
+git push origin origin/ИМЯ НУЖНОЙ ВЕТКИ или (git push origin master)
+git checkout a983 a1e8 (a1e8 - первые 4 символа id commit’та)
