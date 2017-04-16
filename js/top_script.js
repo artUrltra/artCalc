@@ -170,33 +170,18 @@ function caehcheckFlag() {
         _FLAG = true;
         state.checkManager();
         document.getElementById('text_ifr').removeAttribute('title');
-        top.frames[0].changeAddition();
-        top.frames[0].nfurnitura.setStartValues();
-        top.frames[1].changeAddition();
-        top.frames[1].nfurnitura.setStartValues();
-        top.frames[2].changeAddition();
-        top.frames[2].nfurnitura.setStartValues();
     }
 }
 
-top.frames[0].window.onload = function () {
+window.onload = function () {
     state.stateOneHeight();
     $(".preloade-wrapper").fadeOut(500);
     $("body").css("overflow", "auto");
     flag0 = true;
-    caehcheckFlag();
-
-};
-
-top.frames[1].window.onload = function () {
     flag1 = true;
-    caehcheckFlag();
-
-};
-
-top.frames[2].window.onload = function () {
     flag2 = true;
     caehcheckFlag();
+
 };
 
 /**
@@ -214,7 +199,7 @@ $('#calcmanager').change(function () {
     temps.forEach(function (v) {
         $("#temp").prepend($('<option value="' + v.id + '">' + v.name + '</option>'));
     });
-    if(temps[0] !== undefined){
+    if (temps[0] !== undefined) {
         tinyMCE.get('text').setContent(temps[0].text);
     }
     state.checkManagerHide();
@@ -227,7 +212,7 @@ $('body').on('change', '#temp', function () {
     var item = storage.temp.find(function (v) {
         return v.id === id;
     });
-    $('.panel input[type="checkbox"]').prop( "checked",false);
+    $('.panel input[type="checkbox"]').prop("checked", false);
     $('#zag').parent().removeClass('is-empty');
     $('#zag').val(item.theme);
     catalogs.setcat(item.code);
@@ -277,21 +262,21 @@ function loadmail() {
                 arr.push(s.img.substr(8));
             });
         });
-    }else {
+    } else {
         var $material = frames[0].$('.napolnenie-el');
         $material.each(function () {
             arr.push($(this).find('#open-material-img').attr('src').substr(8));
         });
     }
-    matireals ='';
+    matireals = '';
     var l = arr.length;
-    arr.forEach(function (v,index) {
+    arr.forEach(function (v, index) {
         var item = top.storage.m.find(function (s) {
             return s.img === v
         });
-        if(index !== l-1) {
+        if (index !== l - 1) {
             matireals += item.name + ', ';
-        }else {
+        } else {
             matireals += item.name + ' ';
         }
     });
