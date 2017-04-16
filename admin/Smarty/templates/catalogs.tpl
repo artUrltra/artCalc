@@ -37,13 +37,14 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <button class="btn btn-success btn-lg btn-block" onclick="$('#modal').modal('show');">Добавить
-                        в {$item['title']}
+                        в {$item['name']}
                     </button>
                 </div>
             </div>
             <div class="table-condensed">
                 <table class="table table-hover" id="result">
                     <thead>
+                    <th>#</th>
                     <th>Название</th>
                     <th>Описание</th>
                     <th>Слева</th>
@@ -57,15 +58,16 @@
                     <tbody>
                     {foreach $items as $item}
                         <tr id="{$item['id']}">
-                            <td>{$item['title']}</td>
+                            <td>{$item['id']}</td>
+                            <td>{$item['name']}</td>
                             <td>{$item['description']}</td>
-                            <td>{if $item['show_on_left'] eq '1'}Да{else} Нет{/if}</td>
-                            <td>{if $item['is_group_catalog'] eq '1'}Да{else} Нет{/if}</td>
-                            <td>{if $item['separate'] eq '1'}Да{else} Нет{/if}</td>
+                            <td>{if $item['left'] eq '1'}Да{else} Нет{/if}</td>
+                            <td>{if $item['group'] eq '1'}Да{else} Нет{/if}</td>
+                            <td>{if $item['separately'] eq '1'}Да{else} Нет{/if}</td>
                             <td>{if $item['hide'] eq '1'}Да{else} Нет{/if}</td>
-                            <td><a href="{$item['page_url']}">{substr($item['page_url'],0,20)}...</a></td>
+                            <td><a href="{$item['link']}">{substr($item['link'],0,20)}...</a></td>
                             <td>
-                                <button type="button" onclick="drop({$item['id']})"
+                                <button type="button" onclick="drop({$item['id']},true)"
                                         class="btn btn-link "><span
                                             class="glyphicon glyphicon-remove"></span></button>
                             </td>
@@ -147,15 +149,79 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal  Edit -->
+    <div class="modal fade" tabindex="-1" id="modal_edit" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Редактировать</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Название</label>
+                                <input type="text" class="form-control" id="edit_title" placeholder="Название">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Ссылка</label>
+                                <input type="text" class="form-control" id="edit_link" placeholder="Ссылка">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="edit_show_on_left">Слева
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="edit_is_group_catalog">Группа
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="separate">Отдельно
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="edit_hide">Скрыть
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <textarea class="form-control" id="edit_description" rows="3"
+                                      placeholder="Описание"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary" onclick="save_edit();">Сохранить изменения</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Scripts -->
     <script src="../admin/jquery-3.1.1.min.js"></script>
     <script src="../admin/assets/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../admin/assets/js/ie10-viewport-bug-workaround.js"></script>
     <script>
-        window.item = {
-            id:0
-        };
+        var id;
         function save() {
             var data = {
                 title: $('#title').val(),
@@ -166,46 +232,57 @@
                 separate: $('#separate').prop("checked") ? 1 : 0,
                 hide: $('#hide').prop("checked") ? 1 : 0
             };
-            if(window.item.id != 0){
-                drop1(window.item.id);
-                console.log(true);
-            }
             $.post("../admin/ajax.php?catalog={if $item['id'] eq 0}0{else}{$item['id']}{/if}", data, function (data) {
-                console.log(data);
                 $('#modal').modal('hide');
+                console.log(data);
                 location.reload();
             });
         }
-        function drop(id) {
-            var isAdmin = confirm("Вы хотите удалить елемент");
-            if (isAdmin) {
+        function drop(id, flag) {
+            var isAdmin;
+            if (flag) {
+                isAdmin = confirm("Вы хотите удалить елемент");
+            }
+            if (isAdmin || !flag) {
                 $.get('../admin/ajax.php?delcatalog=' + id);
                 $('#' + id).remove();
             }
-        }
-        function drop1(id) {
-
-                $.get('../admin/ajax.php?delcatalog=' + id);
-                $('#' + id).remove();
         }
         function edit(id) {
             var data = {
-                id :id
-            }
-            $.post('../admin/ajax.php?getcatalog=1',data, function (data) {
+                id: id
+            };
+            $.post('../admin/ajax.php?getcatalog=1', data, function (data) {
                 window.item = JSON.parse(data);
-                console.log(item);
-                $('#title').val(item.title);
-                $('#link').val(item.page_url);
-                $('#description').val(item.description);
-                $('#show_on_left').attr("checked", item.show_on_left =='1' ? true :false);
-                $('#is_group_catalog').attr("checked", item.is_group_catalog =='1' ? true :false);
-                $('#separate').attr("checked", item.separate =='1' ? true :false);
-                $('#hide').attr("checked", item.hide =='1' ? true :false);
 
-                $('#modal').modal('show');
+                $('#edit_title').val(item.name);
+                $('#edit_link').val(item.link);
+                $('#edit_description').val(item.description);
+                $('#edit_show_on_left').attr("checked", item.left == '1' ? true : false);
+                $('#edit_is_group_catalog').attr("checked", item.group == '1' ? true : false);
+                $('#edit_separate').attr("checked", item.separately == '1' ? true : false);
+                $('#edit_hide').attr("checked", item.hide == '1' ? true : false);
+                $('#modal_edit').modal('show');
+                window.id = id;
+            });
 
-            })
+        }
+        function save_edit() {
+            var data = {
+                title: $('#edit_title').val(),
+                link: $('#edit_link').val(),
+                description: $('#edit_description').val(),
+                show_on_left: $('#edit_show_on_left').prop("checked") ? 1 : 0,
+                is_group_catalog: $('#edit_is_group_catalog').prop("checked") ? 1 : 0,
+                separate: $('#edit_separate').prop("checked") ? 1 : 0,
+                hide: $('edit_#hide').prop("checked") ? 1 : 0
+            };
+            if (item.id) {
+                $.post('../admin/ajax.php?upcatalog=' + item.id, data, function (data) {
+                    $('#modal_edit').modal('hide');
+                    location.reload();
+                });
+            }
         }
     </script>
 </body>

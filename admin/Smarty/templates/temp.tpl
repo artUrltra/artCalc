@@ -38,7 +38,7 @@
             toolbar: "save",
             toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
             toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-            toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+            toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft | tags",
             menubar: false,
             toolbar_items_size: 'small',
             style_formats: [{
@@ -78,6 +78,55 @@
                 title: 'Test template 2',
                 content: 'Test 2'
             }],
+            setup: function (editor) {
+                editor.addButton('tags', {
+                    type: 'menubutton',
+                    text: 'Теги',
+                    icon: false,
+                    menu: [{
+                        text: 'Имя клиента',
+                        onclick: function () {
+                            editor.insertContent('&nbsp;#name&nbsp;')
+                        }
+                    },
+                        {
+                            text: 'Ширина',
+                            onclick: function () {
+                                editor.insertContent('&nbsp;#w&nbsp;')
+                            }
+                        }, {
+                            text: 'Высота',
+                            onclick: function () {
+                                editor.insertContent('&nbsp;#h&nbsp;')
+                            }
+                        }, {
+                            text: 'Площядь',
+                            onclick: function () {
+                                editor.insertContent('&nbsp;#s&nbsp;')
+                            }
+                        }, {
+                            text: 'Количество полотен',
+                            onclick: function () {
+                                editor.insertContent('&nbsp;#p&nbsp;')
+                            }
+                        }, {
+                            text: 'Количество подвижных полотене',
+                            onclick: function () {
+                                editor.insertContent('&nbsp;#pm&nbsp;')
+                            }
+                        }, {
+                            text: 'Имя профиля',
+                            onclick: function () {
+                                editor.insertContent('&nbsp;#Profile&nbsp;')
+                            }
+                        }, {
+                            text: 'Матереалы',
+                            onclick: function () {
+                                editor.insertContent('&nbsp;#Matireals&nbsp;')
+                            }
+                        }]
+                });
+            },
             content_css: [
                 '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
                 '//www.tinymce.com/css/codepen.min.css'
@@ -173,6 +222,14 @@
                     {/foreach}
                 </select>
             </div>
+            <div class="col-md-8">
+                <br>
+                <input type="text" class="form-control" id="theme" placeholder="Тема письма"/>
+            </div>
+            <div class="col-md-4">
+                <br>
+                <input type="text" class="form-control" id="code" placeholder="Код каталога (11;33)"/>
+            </div>
             <div class="col-md-12">
                 <br>
                 <center>
@@ -190,6 +247,8 @@
             <tr>
                 <td>Имя шаблона</td>
                 <td>Менеджер</td>
+                <td>Тема</td>
+                <td>Код каталога</td>
                 <td>Копировать шаблон</td>
                 <td>Редактировать</td>
                 <td>Удалить</td>
@@ -200,6 +259,8 @@
                 <tr id="delete{$item['id']}">
                     <td>{$item['name']}</td>
                     <td>{$item['user']}</td>
+                    <td>{$item['theme']}</td>
+                    <td>{$item['code']}</td>
                     <td>
                         <button type="button" data-id="{$item['id']}" data-clipboard-text="Разраб тут с нами"
                                 class="btn btn-link copy"><span
@@ -259,6 +320,8 @@
         var data = {
             name: $("#name").val(),
             manager: $("#manager").val(),
+            code: $("#code").val(),
+            theme: $("#theme").val(),
             text: tinyMCE.get('text').getContent(),
         };
         $.ajax({
@@ -267,7 +330,8 @@
             data: data,
             success: function (data) {
                 tinymce.triggerSave();
-                location.reload();
+                console.log(data);
+                 location.reload();
             },
             error: function (data) {
                 console.log(data);

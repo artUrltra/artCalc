@@ -1,257 +1,278 @@
 var state = {
 
 
-    lastSate: 1,
-    allProfils: 0,
-    allProfilsSortArray: 0,
-    maxPriceId: 0,
+        lastSate: 1,
+        allProfils: 0,
+        allProfilsSortArray: 0,
+        maxPriceId: 0,
 
 
-    start: function () {
-        state.events();
-        $("iframe#state1").on("load", function () {
-            state.stateOneHeight();
-            $(".preloade-wrapper").fadeOut(500);
-            $("body").css("overflow", "auto");
-        });
-    },
+        start: function () {
+            state.events();
+        },
 
 
-    events: function () {
-        //parentM.s1.$('#HIGHT_SETS_ID').on("change", function() {
-        $('#state1').contents().find('#HIGHT_SETS_ID').on("change", function () {
-            //storage.fillPH(parentM.s1.$('#HIGHT_SETS_ID').val());
-            //state.init('1', 'true');
-        });
-        $("iframe#state1").on("load", function () {
-            document.getElementById("state1").contentWindow.document.body.onclick = function () {
-                state.stateHeight(state.lastSate);
-            };
-        });
-        $("iframe#state2").on("load", function () {
-            document.getElementById("state2").contentWindow.document.body.onclick = function () {
-                state.stateHeight(state.lastSate);
-            };
-        });
-        $("iframe#state3").on("load", function () {
-            document.getElementById("state3").contentWindow.document.body.onclick = function () {
-                state.stateHeight(state.lastSate);
-            };
-        });
-    },
+        events: function () {
+            //parentM.s1.$('#HIGHT_SETS_ID').on("change", function() {
+            $('#state1').contents().find('#HIGHT_SETS_ID').on("change", function () {
+                //storage.fillPH(parentM.s1.$('#HIGHT_SETS_ID').val());
+                //state.init('1', 'true');
+            });
+            $("iframe#state1").on("load", function () {
+                document.getElementById("state1").contentWindow.document.body.onclick = function () {
+                    state.stateHeight(state.lastSate);
+                };
+            });
+            $("iframe#state2").on("load", function () {
+                document.getElementById("state2").contentWindow.document.body.onclick = function () {
+                    state.stateHeight(state.lastSate);
+                };
+            });
+            $("iframe#state3").on("load", function () {
+                document.getElementById("state3").contentWindow.document.body.onclick = function () {
+                    state.stateHeight(state.lastSate);
+                };
+            });
+        },
 
 
-    stateOneHeight: function () {
-        state.stateHeight('1');
-    },
+        stateOneHeight: function () {
+            state.stateHeight('1');
+        },
 
 
-    stateHeightNow: function (e) {
-        var stateName = '#state' + e;
-        var thisStateHeight = $("#allStates " + stateName).contents().find("body").height();
-        $('#allStates > ' + stateName).height(thisStateHeight + 120);
-        state.stateSetPrice();
-    },
-
-
-    stateHeight: function (e) {
-        state.stateHeightNow(e);
-        var i = 0,
-            diff = 0,
-            d = new Date();
-        var timer = setTimeout(function () {
-            diff += new Date() - d;
-            timer = setTimeout(arguments.callee, 0);
-            if (i++ == 300) {
-                clearTimeout(timer);
-                state.stateHeightNow(e);
-            }
-            d = new Date();
-        }, 0);
-    },
-
-
-    stateSetPrice: function () {
-        if (top.frames[0].document.readyState === "complete") {
-            $('*[data-slider-id="1"]').find('.price span').text(Math.round(parentM.s1.$('.summaSParametrami .price').text()));
-        }
-        if (top.frames[1].document.readyState === "complete") {
-            $('*[data-slider-id="2"]').find('.price span').text(Math.round(parentM.s1.$('.summaSParametrami .price').text()));
-        }
-        if (top.frames[2].document.readyState === "complete") {
-            $('*[data-slider-id="3"]').find('.price span').text(Math.round(parentM.s1.$('.summaSParametrami .price').text()));
-        }
-    },
-
-
-    middlePrice: function () {
-        var arr = storage.pH;
-        if (arr.length > 0) {
-            for (var i = 0; i < arr.length; i++)
-                if (arr[i].id == storage.pS) {
-                    $("#slider1").slider('value', i);
-                    $("#slider1").find(".bg").height(i * 100 / (arr.length - 1) + '%');
-                    parentM.send('setProfil,' + arr[i].id, 1);
-                    States.OptimalState.init(arr[i].id);
-                    break;
-                }
-            $("#slider2").slider('value', 0);
-            $("#slider2").find(".bg").height(0 + '%');
-            parentM.send('setProfil,' + arr[0].id, 2);
-            States.EconomyState.init(arr[0].id);
-            $("#slider3").slider('value', state.maxPriceId);
-            $("#slider3").find(".bg").height(100 + '%');
-            parentM.send('setProfil,' + arr[arr.length - 1].id, 3);
-            States.PremiumState.init(arr[arr.length - 1].id);
-        }
-        state.stateSetPrice();
-    },
-
-
-    setTopBlock: function () {
-        var h = parentM.s1.$('#HIGHT_SETS_ID').val();
-        var w = parentM.s1.$('#WIDTH_SETS_ID').val();
-        var t = parentM.s1.$('#TOTAL_PAINTING_ID').val();
-        var m = parentM.s1.$('#MOVABLE_PAINTING_ID').val();
-
-        parentM.s2.$('#HIGHT_SETS_ID').val(h);
-        parentM.s2.$('#WIDTH_SETS_ID').val(w);
-        parentM.s2.$('#TOTAL_PAINTING_ID').val(t);
-        parentM.s2.$('#MOVABLE_PAINTING_ID').val(m);
-
-        parentM.s3.$('#HIGHT_SETS_ID').val(h);
-        parentM.s3.$('#WIDTH_SETS_ID').val(w);
-        parentM.s3.$('#TOTAL_PAINTING_ID').val(t);
-        parentM.s3.$('#MOVABLE_PAINTING_ID').val(m);
-
-        parentM.send('changeTopBlock', 2);
-        parentM.send('changeTopBlock', 3);
-
-        parentM.s1.diagrama.rules();
-        parentM.s1.diagrama.painting();
-        parentM.s2.diagrama.rules();
-        parentM.s2.diagrama.painting();
-        parentM.s3.diagrama.rules();
-        parentM.s3.diagrama.painting();
-
-        setTimeout(function () {
-            state.middlePrice();
-        }, 5000);
-    },
-
-
-    setSlider: function (id) {
-        var mid, i;
-        for (i = 0; i < storage.pH.length; i++) if (storage.pH[i].id == id) mid = i;
-        $("#slider" + state.lastSate).slider('value', mid);
-        $("#slider" + state.lastSate).find(".bg").height(mid * 100 / (storage.pH.length - 1) + '%');
-    },
-
-    // checkManager
-    checkManager: function(){
-        $( "#calcmanager" ).change(function() { state.checkManagerHide(); });
-        state.checkManagerHide();
-        
-    },
-    checkManagerHide: function(){
-        $(".managerBtn").hide(100);
-        $("#manegerPass, #checkManagerPass").show(100);
-    },
-    checkManagerShow: function(){
-        $(".managerBtn").show(100);
-        $("#manegerPass, #checkManagerPass").hide(100);
-        $("#manegerPass").val("");
-    },
-    checkManagerPass: function(){
-        let manegerName = $( "#calcmanager option:selected" ).text();
-        let manegerPass = $("#manegerPass").val();
-        let truePass = "";
-        let manegerAll = $.ajax({ type: "GET", url: './admin/ajax.php?selectCalcManagers', async: false }).responseText;
-        manegerAll = JSON.parse(manegerAll);
-        for (let i = 0; i < manegerAll.length; i++){ if(manegerAll[i].name == manegerName){ truePass = manegerAll[i].pass; } }
-        if(truePass !== manegerPass){ alert("Пароль не верный!");}
-        else{
-            var CurrentDate = new Date();
-            CurrentDate.setMonth(CurrentDate.getMonth() + 1);
-            CurrentDate.toGMTString()
-            document.cookie ='password='+manegerPass+';expires='+CurrentDate.toGMTString();
-            console.log(document.cookie);
-
-     
-            state.checkManagerShow(); 
-        };
-    },
-    // checkManager//
-    init: function (e, b) {
-        if (b === undefined) b = 'false';
-        state.start();
-
-        $('#allStates > *').fadeOut(0);
-        $('#allStates > #state' + e).fadeIn(0);
-
-        $('.slider-container').click(function () {
-            $('.slider-container').removeClass('slider-container-active');
-            $(this).addClass('slider-container-active');
-            state.lastSate = $(this).attr('data-slider-id');
-            changeState(state.lastSate);
-            States.Flag = false;
-        });
-
-        function changeState(e) {
+        stateHeightNow: function (e) {
             var stateName = '#state' + e;
-            $('#allStates > *').fadeOut(0);
-            $('#allStates > ' + stateName).fadeIn(0);
-            $(stateName).get(0).contentWindow.myEfficientFn();
             var thisStateHeight = $("#allStates " + stateName).contents().find("body").height();
             $('#allStates > ' + stateName).height(thisStateHeight + 120);
             state.stateSetPrice();
-        }
+        },
 
-        var obj = storage.pH;
-        var max = obj.length > 0 ? obj.length - 1 : 0;
-        state.maxPriceId = max;
-        $("#slider1, #slider2, #slider3").slider({
-            orientation: "vertical",
-            min: 0,
-            max: max,
-            step: 1,
-            stop: function (event, ui) {
-                $("#val").html(ui.value);
-                for (var i = 0; i < obj.length; i++) {
-                    if ($('#val').html() == i && b == 'false') {
-                        parentM.send('setProfil,' + obj[i].id, state.lastSate);
-                        States.Slider(obj[i].id, state.lastSate);
-                        state.stateHeight(state.lastSate);
-                        state.stateSetPrice();
-                        break;
-                    }
+
+        stateHeight: function (e) {
+            state.stateHeightNow(e);
+            var i = 0,
+                diff = 0,
+                d = new Date();
+            var timer = setTimeout(function () {
+                diff += new Date() - d;
+                timer = setTimeout(arguments.callee, 0);
+                if (i++ == 300) {
+                    clearTimeout(timer);
+                    state.stateHeightNow(e);
                 }
-                b = 'false';
-            },
-            slide: function (event, ui) {
-                $(this).find(".bg").height(100 / max * ui.value + '%');
+                d = new Date();
+            }, 0);
+        },
+
+
+        stateSetPrice: function () {
+            if (top.frames[0].document.readyState === "complete") {
+                $('*[data-slider-id="1"]').find('.price span').text(Math.round(parentM.s1.$('.summaSParametrami .price').text()));
+            }
+            if (top.frames[1].document.readyState === "complete") {
+                $('*[data-slider-id="2"]').find('.price span').text(Math.round(parentM.s1.$('.summaSParametrami .price').text()));
+            }
+            if (top.frames[2].document.readyState === "complete") {
+                $('*[data-slider-id="3"]').find('.price span').text(Math.round(parentM.s1.$('.summaSParametrami .price').text()));
+            }
+        },
+
+
+        middlePrice: function () {
+
+            $("#slider1").slider('value', 8);
+            $("#slider1").find(".bg").height(55 + '%');
+            $("#slider2").slider('value', 8);
+            $("#slider2").find(".bg").height(55 + '%');
+            $("#slider3").slider('value', 8);
+            $("#slider3").find(".bg").height(55 + '%');
+            top.frames[0].changeAddition();
+            top.frames[0].nfurnitura.setStartValues();
+            frames[0].profiles.setProfile(parseInt(storage.pS));
+            state.stateSetPrice();
+        },
+
+
+        setTopBlock: function () {
+            var h = parentM.s1.$('#HIGHT_SETS_ID').val();
+            var w = parentM.s1.$('#WIDTH_SETS_ID').val();
+            var t = parentM.s1.$('#TOTAL_PAINTING_ID').val();
+            var m = parentM.s1.$('#MOVABLE_PAINTING_ID').val();
+
+            parentM.s2.$('#HIGHT_SETS_ID').val(h);
+            parentM.s2.$('#WIDTH_SETS_ID').val(w);
+            parentM.s2.$('#TOTAL_PAINTING_ID').val(t);
+            parentM.s2.$('#MOVABLE_PAINTING_ID').val(m);
+
+            parentM.s3.$('#HIGHT_SETS_ID').val(h);
+            parentM.s3.$('#WIDTH_SETS_ID').val(w);
+            parentM.s3.$('#TOTAL_PAINTING_ID').val(t);
+            parentM.s3.$('#MOVABLE_PAINTING_ID').val(m);
+
+            parentM.send('changeTopBlock', 2);
+            parentM.send('changeTopBlock', 3);
+
+            parentM.s1.diagrama.rules();
+            parentM.s1.diagrama.painting();
+            parentM.s2.diagrama.rules();
+            parentM.s2.diagrama.painting();
+            parentM.s3.diagrama.rules();
+            parentM.s3.diagrama.painting();
+
+            setTimeout(function () {
+                state.middlePrice();
+            }, 5000);
+        }
+        ,
+
+
+        setSlider: function (id) {
+            var mid, i;
+            for (i = 0; i < storage.pH.length; i++) if (storage.pH[i].id == id) mid = i;
+            $("#slider" + state.lastSate).slider('value', mid);
+            $("#slider" + state.lastSate).find(".bg").height(mid * 100 / (storage.pH.length - 1) + '%');
+        }
+        ,
+
+// checkManager
+        checkManager: function () {
+            state.initCalcManagers();
+            let name = state.checkManagerGetCookie("name");
+            let password = state.checkManagerGetCookie("password");
+
+            if (state.checkManagerGetCookie("name") !== undefined) {
+                var item = storage.managers.find(function (v) {
+                    return v.name.indexOf(name) >= 0;
+                });
+                if (item) {
+                    $("#manegerPass").val(password);
+                    state.checkManagerShow();
+                    $('#calcmanager').val(item.id);
+                }
+            } else {
+                state.checkManagerHide();
+            }
+        }
+        ,
+        checkManagerHide: function () {
+            $(".managerBtn").hide(100);
+            $("#manegerPass, #checkManagerPass ,#labelmanegerPass").show(100);
+        }
+        ,
+        checkManagerShow: function () {
+            $(".managerBtn").show(100);
+            $("#manegerPass, #checkManagerPass, #labelmanegerPass").hide(100);
+            $("#manegerPass").val("");
+        }
+        ,
+        checkManagerPass: function () {
+            let manegerName = $("#calcmanager option:selected").text();
+            let manegerPass = $("#manegerPass").val();
+            let truePass = "";
+            let manegerAll = $.ajax({type: "GET", url: './admin/ajax.php?selectCalcManagers', async: false}).responseText;
+            manegerAll = JSON.parse(manegerAll);
+            for (let i = 0; i < manegerAll.length; i++) {
+                if (manegerAll[i].name == manegerName) {
+                    truePass = manegerAll[i].pass;
+                }
+            }
+            if (truePass !== manegerPass) {
+                alert("Пароль не верный!");
+            }
+            else {
+                state.checkManagerSetCookie("name", manegerName);
+                state.checkManagerSetCookie("password", truePass);
+                state.checkManagerShow();
+            }
+            ;
+        }
+        ,
+        checkManagerGetCookie: function (name) {
+            var matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+        ,
+        checkManagerSetCookie: function (name, cookie) {
+            document.cookie = name + "=" + cookie;
+        }
+        ,
+// checkManager//
+        init: function (e, b) {
+            if (b === undefined) b = 'false';
+            state.start();
+
+            $('#allStates > *').fadeOut(0);
+            $('#allStates > #state' + e).fadeIn(0);
+
+            $('.slider-container').click(function () {
+                $('.slider-container').removeClass('slider-container-active');
+                $(this).addClass('slider-container-active');
+                state.lastSate = $(this).attr('data-slider-id');
+                changeState(state.lastSate);
+                States.Flag = false;
+            });
+
+            function changeState(e) {
+                var stateName = '#state' + e;
+                $('#allStates > *').fadeOut(0);
+                $('#allStates > ' + stateName).fadeIn(0);
+                $(stateName).get(0).contentWindow.myEfficientFn();
+                var thisStateHeight = $("#allStates " + stateName).contents().find("body").height();
+                $('#allStates > ' + stateName).height(thisStateHeight + 120);
                 state.stateSetPrice();
-            },
-        });
+            }
 
-        $("#update").click(function () {
-            $("#slider1, #slider2, #slider3").slider("option", "value", $("#seekTo").val());
-        });
-    },
+            var obj = storage.pH;
+            var max = obj.length > 0 ? obj.length - 1 : 0;
+            state.maxPriceId = max;
+            $("#slider1, #slider2, #slider3").slider({
+                orientation: "vertical",
+                min: 0,
+                max: max,
+                step: 1,
+                stop: function (event, ui) {
+                    $("#val").html(ui.value);
+                    for (var i = 0; i < obj.length; i++) {
+                        if ($('#val').html() == i && b == 'false') {
+                            parentM.send('setProfil,' + obj[i].id, state.lastSate);
+                            States.Slider(obj[i].id, state.lastSate);
+                            state.stateHeight(state.lastSate);
+                            state.stateSetPrice();
+                            break;
+                        }
+                    }
+                    b = 'false';
+                },
+                slide: function (event, ui) {
+                    $(this).find(".bg").height(100 / max * ui.value + '%');
+                    state.stateSetPrice();
+                },
+            });
+
+            $("#update").click(function () {
+                $("#slider1, #slider2, #slider3").slider("option", "value", $("#seekTo").val());
+            });
+        }
+        ,
 
 
-    initCalcManagers: function () {
-        state.checkManager();
-        $("#calcmanager").empty();
-        $.post('./admin/ajax.php?selectCalcManagers', '', function (data) {
-            var obj = JSON.parse(data);
-            for (var i = 0; i < obj.length; i++)
-                $("#calcmanager").prepend($('<option value="' + obj[i].id + '">' + obj[i].name + '</option>'));
-        });
-    },
+        initCalcManagers: function () {
+            // state.checkManager();
+            $("#calcmanager").empty();
+            storage.managers.forEach(function (v) {
+                $("#calcmanager").prepend($('<option value="' + v.id + '">' + v.name + '</option>'));
+            });
 
 
-};
+        }
+        ,
+
+
+    }
+;
 
 var scheduler = {
 
@@ -343,7 +364,9 @@ var storage = {
     ItemFurn: [],//Элементы фурнытуры
     ExpMatireals: [],
     images: [],
-    managers:[],
+    managers: [],
+    catalogs: [],
+    temp: [],
     init: function () {
         storage.fillP();
         storage.fillPS();
@@ -362,12 +385,40 @@ var storage = {
         storage.fillps();
         storage.fillimages();
         storage.fillmanagers();
+        storage.fillcatalogs();
+        storage.filltemp();
     },
-    fillmanagers:function () {
+    filltemp: function () {
+        $.post('./admin/ajax.php?getteml=1', function (data) {
+            storage.temp = JSON.parse(data);
+            var temps = storage.temp.filter(function (v) {
+                return v.user === state.checkManagerGetCookie("name")
+            });
+            $("#temp").empty();
+            temps.forEach(function (v) {
+                $("#temp").prepend($('<option value="' + v.id + '">' + v.name + '</option>'));
+            });
+            if (temps[0].text) {
+                var srt = temps[0].text;
+                tinyMCE.get('text').setContent(srt);
+                catalogs.setcat(temps[0].code);
+                $('#zag').parent().removeClass('is-empty');
+                $('#zag').val(temps[0].theme);
+            }
+        });
+    },
+    fillcatalogs: function () {
+        $.post('./admin/ajax.php?getcatalogs=1', function (data) {
+            storage.catalogs = JSON.parse(data);
+            catalogs.init();
+        });
+
+    },
+    fillmanagers: function () {
         storage.managers = [];
         $.post('./admin/ajax.php?getmanagers=1', function (data) {
             storage.managers = JSON.parse(data);
-            console.log(storage.managers);
+            state.checkManager();
         });
     },
     fillimages: function () {
@@ -525,12 +576,11 @@ window.onload = function () {
         parentM.send('resetFurnituraFlag', 3);
     });
 }
-function get_cookie ( cookie_name )
-{
-  var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
- 
-  if ( results )
-    return ( unescape ( results[2] ) );
-  else
-    return null;
+function get_cookie(cookie_name) {
+    var results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+
+    if (results)
+        return (unescape(results[2]));
+    else
+        return null;
 }

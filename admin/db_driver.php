@@ -9,12 +9,13 @@
 class DB
 {
     private  $DataBase = NULL;
-    private $DataBasePath = "/var/www/artul201/data/www/audoors.ru/new/admin/db/DataBaseAdmin.db3";
+    private $DataBasePath =NULL;
 
 
     //Конструктор
     function __construct()
     {
+        $this->DataBasePath =__DIR__.'/db/DataBaseAdmin.db3';
         $this->DataBase =new SQLite3($this->DataBasePath);
     }
 

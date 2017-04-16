@@ -2,10 +2,6 @@
 $('.sendGet').click(SaveToPDF);
 
 function SaveToPDF() {
-
-
-
-
     function checkF(arg, s) {
         return (parentM["s" + s].$("#" + arg + " .furnituraElFlag").val() == 1) ? parentM["s" + s].$("#" + arg + " h4.text").html() : "";
     }
@@ -1516,6 +1512,6 @@ function SaveToPdfToFile() {
     };
 
     $.post('./php/longurl.php?n=' + window.id_pdf, 'url=' + JSON.stringify(url), function () {
-        $.get('./html2pdf.php?n=' + window.id_pdf);
+       $.get('./html2pdf.php?n=' + window.id_pdf);
     });
 }

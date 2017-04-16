@@ -172,10 +172,12 @@ if (isset($_GET['add'])) {
             break;
         case 'addtemp':
             $text = htmlspecialchars($_POST['text'], ENT_QUOTES);
-            $SQL = "INSERT INTO temp (name, user,text) VALUES (
+            $SQL = "INSERT INTO temp (name, user,text,theme,code) VALUES (
                 '" . $_POST['name'] . "',
                 '" . $_POST['manager'] . "',
-                '" . $text . "'
+                '" . $text . "',
+                '" . $_POST['theme'] . "',
+                '" . $_POST['code'] . "'
             )";
             $DB->query_no_var($SQL);
             echo $SQL;
@@ -666,67 +668,50 @@ if (isset($_GET['imgadd'])) {
 if (isset($_GET['getimeges'])) {
     echo json_encode($DB->query('SELECT * FROM "images"'));
 }
-
 if (isset($_GET['catalog'])) {
-    $dbp = new PDO('mysql:dbname=artul201_artultra_rospis;host=127.0.0.1;charset=utf8', 'artul201_andriy', 'ul1fpSW0');
-    $items = $dbp->query('SELECT * FROM  `commercial_offer_catalogs` WHERE  `parent_id` =' . $_GET['catalog'], PDO::FETCH_ASSOC)->fetchAll();
-
-    $lev = $dbp->query('SELECT * FROM  `commercial_offer_catalogs` WHERE  `id` =25 AND is_group_catalog =1', PDO::FETCH_ASSOC)->fetchAll();
-    $count = (int)$items[count($items) - 1]['sort'] + 1;
-    $path = null;
-    if ($_GET['catalog'] > '100') {
-        $path = '00' . $_GET['catalog'] . '.';
-    } else {
-        $path = '000' . $_GET['catalog'] . '.';
-    }
-
-    $level = 1;
-    if ($lev[0]['level'] == '0') {
-        $level = 2;
-        if ($lev[0]['id'] > '99') {
-            $path = '00' . $lev[0]['id'] . '.' . $path;
-        } else {
-            $path = '000' . $lev[0]['id'] . '.' . $path;
-        }
-    }
-    if ($_GET['catalog'] == '0') {
-        $level = 0;
-        $path = '';
-    }
-    $SQL = "INSERT INTO `artul201_artultra_rospis`.`commercial_offer_catalogs` (`id`, `title`, `parent_id`, `path`, `level`, `sort`, `show_on_left`, `is_group_catalog`, `page_url`, `hide`, `separate`, `description`, `text`) 
-            VALUES (NULL,'{$_POST['title']}' , '{$_GET['catalog']}', '{$path}', '{$level}', '{$count}', '{$_POST['show_on_left']}', '{$_POST['is_group_catalog']}', '{$_POST['link']}', '{$_POST['hide']}', '{$_POST['separate']}', '{$_POST['description']}', NULL);";
-    $dbp->exec($SQL);
-    $dbp = null;
-    echo $SQL;
+    $sql = "INSERT INTO catalogs (name, link, parent_id, hide, \"left\", \"group\", separately, level, description) 
+VALUES ('{$_POST['title']}','{$_POST['link']}','{$_GET['catalog']}','{$_POST['hide']}','{$_POST['show_on_left']}','{$_POST['separate']}','{$_POST['separate']}',0,'{$_POST['description']}')";
+    $DB->query_no_var($sql);
+    echo $sql;
 }
 
 if (isset($_GET['delcatalog'])) {
-    $dbp = new PDO('mysql:dbname=artul201_artultra_rospis;host=127.0.0.1;charset=utf8', 'artul201_andriy', 'ul1fpSW0');
-    $SQL = "DELETE FROM `artul201_artultra_rospis`.`commercial_offer_catalogs` WHERE  `commercial_offer_catalogs`.`id` ='{$_GET['delcatalog']}'";
-    $dbp->exec($SQL);
-    $dbp = null;
-    echo $SQL;
+    $SQL = "DELETE FROM catalogs WHERE  catalogs.id ='{$_GET['delcatalog']}'";
+    $SQL1 = "DELETE FROM catalogs WHERE  catalogs.parent_id ='{$_GET['delcatalog']}'";
+    $DB->query_no_var($SQL);
+    $DB->query_no_var($SQL1);
 }
 
 if (isset($_GET['getcatalog'])) {
-    $dbp = new PDO('mysql:dbname=artul201_artultra_rospis;host=127.0.0.1;charset=utf8', 'artul201_andriy', 'ul1fpSW0');
-    $item = $dbp->query('SELECT * FROM  `commercial_offer_catalogs` WHERE  `id` =' . $_POST['id'], PDO::FETCH_ASSOC)->fetchAll();
-    $dbp = null;
+    $item = $DB->query('SELECT * FROM   catalogs WHERE  id =' . $_POST['id']);
     echo json_encode($item[0]);
 }
-if(isset($_GET['getmanagers'])){
+if (isset($_GET['getmanagers'])) {
     $items = $DB->query('SELECT * FROM calcmanagers');
-    foreach ($items as &$i){
-        $i['text']= str_replace("\"", "'", htmlspecialchars_decode($i['text'], ENT_QUOTES));
+    foreach ($items as &$i) {
+        $i['text'] = str_replace("\"", "'", htmlspecialchars_decode($i['text'], ENT_QUOTES));
 
     }
     echo json_encode($items);
 }
-if(isset($_GET['getteml'])){
+if (isset($_GET['getteml'])) {
     $items = $DB->query('SELECT * FROM temp');
-    foreach ($items as &$i){
-        $i['text']= str_replace("\"", "}", htmlspecialchars_decode($i['text'], ENT_QUOTES));
+    foreach ($items as &$i) {
+        $i['text'] = str_replace("\"", "}", htmlspecialchars_decode($i['text'], ENT_QUOTES));
 
     }
     echo json_encode($items);
+}
+if (isset($_GET['getcatalogs'])) {
+    $items = $DB->query('SELECT * FROM  catalogs');
+    echo json_encode($items);
+}
+
+if (isset($_GET['gettemp'])) {
+    $items = $DB->query('SELECT * FROM  temp');
+    echo json_encode($items);
+}
+
+if (isset($_GET['upcatalog'])) {
+    $DB->query_no_var("UPDATE catalogs SET name ='{$_POST['title']}', link='{$_POST['link']}',hide='{$_POST['hide']}',\"left\"='{$_POST['show_on_left']}',\"group\"='{$_POST['is_group_catalog']}',separately='{$_POST['separate']}',description='{$_POST['description']}' WHERE id='{$_GET['upcatalog']}'");
 }

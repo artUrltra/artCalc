@@ -206,29 +206,6 @@ function SET_BAFFLE_SEKECTOR() {
 }
 // ============================= //
 // Событие смены селектов полотен
-$(".BAFFLE_SEKECTOR_CLASS").change(function () {
-    $(".napolnenie-el").remove();
-    $(".BAFFLE_SEKECTOR_CLASS").val($(this).val());
-    $('*').removeClass('used');
-    $('*[data-id="' + $(this).val() + '"]').addClass('used');
-    $('.PAINTING-DIAGRAMMA-EL').css({
-        'z-index': '0'
-    });
-    $('*[data-id="' + $(this).val() + '"]').css({
-        'z-index': '1000'
-    });
-    $('#tab-profil-vyisota').val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').attr("data-height"));
-    $('#tab-profil-shirina').val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').attr("data-width"));
-    $("#NUMBER_OF_DUPLICATOR_ID").val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').attr("data-group"));
-    $("#tab-profil-v-peremyichki-shtuk").val($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').data('vertikalnue-pereochki-count'));
-    $('.add-material-block-past div').remove();
-
-    profiles.setProfile($('*[data-id="' + $(".BAFFLE_SEKECTOR_CLASS option:selected").val() + '"]').attr("data-karkas-id"));
-    setPriceInProfil();
-
-    nmaterials.addMaterialsOnBSC();
-});
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ТАБ ПРОФИЛЬ - Выбор декора для профиля //
 function addDecor(id) {

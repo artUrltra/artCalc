@@ -66,10 +66,10 @@
                     <ul class="dropdown-menu">
                         <li><a href="../admin/index.php?page=Catalogs&id=0">Настройка отображения каталога</a></li>
                         {foreach $catalog as $i}
-                            <li><a href="../admin/index.php?page=Catalogs&id={$i['id']}">{$i['title']}</a></li>
+                            <li><a href="../admin/index.php?page=Catalogs&id={$i['id']}">{$i['name']}</a></li>
                         {/foreach}
                         {foreach $catalog1 as $i}
-                            <li><a href="../admin/index.php?page=Catalogs&id={$i['id']}">{$i['title']}</a></li>
+                            <li><a href="../admin/index.php?page=Catalogs&id={$i['id']}">{$i['name']}</a></li>
                         {/foreach}
                     </ul>
                 </li>

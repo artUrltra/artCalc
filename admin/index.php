@@ -23,9 +23,6 @@ if (isset($_POST['submit'])) {
         $_SESSION['Pass'] = $_POST['inputPassword'];
         $_SESSION['Login'] = $_POST['inputLogin'];
         header('Location:  ../admin/?page=stol');;
-    } else {
-        $smarty->assign('name', 1);
-        $smarty->display('load.tpl');
     }
 }
 
@@ -34,8 +31,6 @@ if (isset($_SESSION['Login'])) {
     $Users = $DB->query("SELECT * FROM `users` WHERE `Name` LIKE '{$_SESSION['Login']}'");
     if ($_SESSION['Pass'] == $Users[0]['Pass']) {
         loading(isset($_GET['page']) ? $_GET['page'] : 'stol', $smarty, $DB);
-    } else {
-        header('Location:  ../admin/');
     }
 } else {
     $smarty->assign('name', 0);
@@ -139,11 +134,13 @@ function loading($page, $smarty, $DB)
             Catalogs($smarty, $DB);
             break;
         case 'temp';
-        temp($smarty,$DB);
+            temp($smarty, $DB);
             break;
     }
 }
-function temp($smarty,$DB){
+
+function temp($smarty, $DB)
+{
     menu($smarty, $DB);
 
     $items = $DB->query('SELECT * FROM temp');
@@ -156,13 +153,12 @@ function Catalogs($smarty, $DB)
 {
     menu($smarty, $DB);
     $id = isset($_GET['id']) ? $_GET['id'] : null;
-    $dbp = new PDO('mysql:dbname=artul201_artultra_rospis;host=127.0.0.1;charset=utf8', 'artul201_andriy', 'ul1fpSW0');
-    $items = $dbp->query('SELECT * FROM  `commercial_offer_catalogs` WHERE  `parent_id` =' . $id, PDO::FETCH_ASSOC)->fetchAll();
-    $item = $dbp->query('SELECT * FROM  `commercial_offer_catalogs` WHERE  `id` =' . $id, PDO::FETCH_ASSOC)->fetchAll();
-    $dbp = null;
 
-    $smarty->assign('item', $item[0]);
+    $sql = 'SELECT * FROM catalogs WHERE parent_id =' . $id;
+    $items = $DB->query($sql);
+    $item = $DB->query('SELECT * FROM catalogs WHERE id ='.$id);
     $smarty->assign('items', $items);
+    $smarty->assign('item',$item[0]);
 
     $smarty->display('catalogs.tpl');
 }
@@ -242,19 +238,10 @@ function menu($smarty, $DB)
     unset($scan[array_search('..', $scan)]);
     $smarty->assign('archive', $scan);
     $smarty->assign('user', $_SESSION['Login']);
-    $dbp = new PDO('mysql:dbname=artul201_artultra_rospis;host=127.0.0.1;charset=utf8', 'artul201_andriy', 'ul1fpSW0');
-    $res = $dbp->query('SELECT * FROM  `commercial_offer_catalogs` WHERE  `parent_id` =0', PDO::FETCH_ASSOC)->fetchAll();
-    $res1 = $dbp->query('SELECT * FROM  `commercial_offer_catalogs` WHERE  `parent_id` >0 AND  `is_group_catalog` =1', PDO::FETCH_ASSOC)->fetchAll();
-    foreach ($res1 as &$item) {
-        $arr = array_filter($res, function ($k) use ($item) {
-            return $k['id'] == $item['parent_id'];
-        });
-        $item['title'] = $arr[array_keys($arr)[0]]['title'] . '>' . $item['title'];
-    }
-
+    $res = $DB->query('SELECT * FROM catalogs WHERE parent_id =0');
     $smarty->assign('catalog', $res);
+    $res1 = $DB->query('SELECT * FROM catalogs WHERE "group" = 1 AND parent_id !=0');
     $smarty->assign('catalog1', $res1);
-    $dbp = null;
 }
 
 function castomfurnitura($smarty, $DB)
