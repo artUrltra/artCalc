@@ -1322,7 +1322,7 @@ function heightIframe() {
     var stateSelected = parent.state.lastSate;
     var explode = function () {
         var setNewHeight = $('body').height();
-        window.parent.$("#" + stateSelected).height(setNewHeight)
+        window.parent.$("#state" + stateSelected).height(setNewHeight)
     };
     setTimeout(explode, 500);
 };

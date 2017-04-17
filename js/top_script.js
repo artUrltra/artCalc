@@ -25,7 +25,7 @@ function message(e) {
     });
 }
 // Общий флаг для перенноса данных из стейтов
-var _FLAG = false;
+var _FLAG = true;
 
 /**
  * Функция переноса даных между стейтами
@@ -33,6 +33,11 @@ var _FLAG = false;
  */
 function GloblPrice_FLAG() {
     if (_FLAG) {
+        let type = frames[0].$('#TYPE_BAFFLE_ID').val();
+        frames[1].$('#TYPE_BAFFLE_ID').val(type);
+        frames[1].$('#TYPE_BAFFLE_ID').change();
+        frames[2].$('#TYPE_BAFFLE_ID').val(type);
+        frames[2].$('#TYPE_BAFFLE_ID').change();
         let profile = top.storage.p.find(function (v) {
             return v.name === frames[0].profiles.profile_name
         });
@@ -138,6 +143,7 @@ function GloblPrice_FLAG() {
         }
         frames[2].nmaterials.ResSumm();
 
+        state.stateSetPrice();
     }
 }
 
@@ -146,6 +152,7 @@ function GloblPrice_FLAG() {
  */
 $("body").on('mouseover', '.container', GloblPrice_FLAG);
 $('.slider-container').click(function () {
+    console.log('click');
     _FLAG = false;
     $("body").off('mouseover', '.container', GloblPrice_FLAG);
 
@@ -161,27 +168,13 @@ $('body').on('click', function () {
  *   Блок проверки загрузки каждого стейта отдельно и установки первичных настроек
  * @type {boolean}
  */
-var flag0 = false;
-var flag1 = false;
-var flag2 = false;
-
-function caehcheckFlag() {
-    if (flag0 && flag1 && flag2) {
-        _FLAG = true;
-        state.checkManager();
-        document.getElementById('text_ifr').removeAttribute('title');
-    }
-}
-
 window.onload = function () {
     state.stateOneHeight();
     $(".preloade-wrapper").fadeOut(500);
     $("body").css("overflow", "auto");
-    flag0 = true;
-    flag1 = true;
-    flag2 = true;
-    caehcheckFlag();
-
+    _FLAG = true;
+    state.checkManager();
+    document.getElementById('text_ifr').removeAttribute('title');
 };
 
 /**
