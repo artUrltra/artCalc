@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f01d9500-81db-4fc7-86ad-105665760a78" name="Default" comment="">
+    <list default="true" id="f01d9500-81db-4fc7-86ad-105665760a78" name="Default" comment="Приверка на сотведсти">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/db/DataBaseAdmin.db3" afterPath="$PROJECT_DIR$/admin/db/DataBaseAdmin.db3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/6cf75ea1-451a-4051-bbe7-82118c4ebb5b.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/6cf75ea1-451a-4051-bbe7-82118c4ebb5b.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/Smarty/templates/temp.tpl" afterPath="$PROJECT_DIR$/admin/Smarty/templates/temp.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/stateSlider.js" afterPath="$PROJECT_DIR$/js/stateSlider.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/top_script.js" afterPath="$PROJECT_DIR$/js/top_script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/parserZip.php" afterPath="$PROJECT_DIR$/admin/parserZip.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/setArchive.php" afterPath="$PROJECT_DIR$/admin/setArchive.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,24 +47,6 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="DataBaseAdmin.db3" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="main" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="temp" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -71,99 +54,67 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="catalogs.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/catalogs.js">
+      <file leaf-file-name="archive.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/archive.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1840">
-              <caret line="92" column="11" lean-forward="false" selection-start-line="92" selection-start-column="11" selection-end-line="92" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6420">
-              <caret line="384" column="67" lean-forward="false" selection-start-line="384" selection-start-column="67" selection-end-line="384" selection-end-column="67" />
-              <folding>
-                <element signature="n#script#20;n#div#15;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.htaccess">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-              <folding>
-                <marker date="1492346657363" expanded="true" signature="182:292" ph="&lt;IfModule mod_headers.c&gt;" />
-                <marker date="1492346657363" expanded="true" signature="314:396" ph="&lt;IfModule mod_expires.c&gt;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stateSetParam.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/stateSetParam.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="-1416">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stateSlider.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/stateSlider.js">
+      <file leaf-file-name="setArchive.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/setArchive.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="91" column="47" lean-forward="false" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp.tpl" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/temp.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="257" column="37" lean-forward="true" selection-start-line="257" selection-start-column="37" selection-end-line="257" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="States.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/States.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="60" column="4" lean-forward="false" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="top_script.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/top_script.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="205" column="30" lean-forward="false" selection-start-line="205" selection-start-column="30" selection-end-line="205" selection-end-column="30" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1492418050795" expanded="true" signature="8725:8788" ph="..." />
-                <marker date="1492418050795" expanded="true" signature="8906:8970" ph="..." />
+                <marker date="1492429720777" expanded="true" signature="482:623" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="643:771" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="791:902" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="921:1091" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="1111:1327" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="1347:1447" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="1467:1569" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="1589:1685" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="1705:1848" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="1868:1966" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="1986:2219" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="2239:2344" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="2364:2456" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="2476:2594" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="2614:2730" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="2750:2948" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="2968:3219" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="3239:3301" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="3321:3381" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="3401:3467" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="3487:3552" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="3572:3635" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="3655:3716" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="3736:3812" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="3832:4427" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="4447:4561" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="4581:4696" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="4716:4868" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="4888:5040" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="5060:5212" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="5232:5365" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="5385:5412" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="5385:5444" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="5464:5613" ph="CREATE TABLE... IF" />
+                <marker date="1492429720777" expanded="true" signature="5633:5722" ph="CREATE TABLE... IF" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/profile.js">
+      <file leaf-file-name="parserZip.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/parserZip.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+            <state relative-caret-position="380">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -208,8 +159,8 @@
       <find>$(&quot;slider1</find>
       <find>$(&quot;#slider1</find>
       <find>$(&quot;#slider1&quot;</find>
-      <find>$(&quot;#slider1&quot;)</find>
       <find>slider</find>
+      <find>archive</find>
     </findStrings>
     <replaceStrings>
       <replace>события</replace>
@@ -232,7 +183,6 @@
         <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/admin/index.php" />
         <option value="$PROJECT_DIR$/admin/Smarty/templates/catalogs.tpl" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/console.sql" />
         <option value="$PROJECT_DIR$/admin/ajax.php" />
         <option value="$PROJECT_DIR$/js/catalogs.js" />
         <option value="$PROJECT_DIR$/index.php" />
@@ -240,6 +190,10 @@
         <option value="$PROJECT_DIR$/js/top_script.js" />
         <option value="$PROJECT_DIR$/js/stateSlider.js" />
         <option value="$PROJECT_DIR$/admin/Smarty/templates/temp.tpl" />
+        <option value="$PROJECT_DIR$/admin/tets2.php" />
+        <option value="$PROJECT_DIR$/admin/parserZip.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/console.sql" />
+        <option value="$PROJECT_DIR$/admin/setArchive.php" />
       </list>
     </option>
   </component>
@@ -272,6 +226,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -284,9 +239,40 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dirTestinCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dirTestinCalc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dirTestinCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dirTestinCalc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -405,7 +391,7 @@
       <workItem from="1492334703111" duration="13854000" />
       <workItem from="1492355017319" duration="2131000" />
       <workItem from="1492370977536" duration="1680000" />
-      <workItem from="1492414029939" duration="6258000" />
+      <workItem from="1492414029939" duration="16412000" />
     </task>
     <task id="LOCAL-00001" summary="Баг с подгрузкой">
       <created>1492372869932</created>
@@ -414,11 +400,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492372869932</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Правки Слайдера">
+      <created>1492421268100</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1492421268100</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98495000" />
+    <option name="totallyTimeSpent" value="108649000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -432,27 +425,49 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27231467" sideWeight="0.4917647" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30181542" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="22" y="260" width="1322" height="208" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.64296997" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2730711" sideWeight="0.4917647" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30181542" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27231467" sideWeight="0.5082353" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31753555" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="22" y="260" width="1322" height="208" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.64296997" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2730711" sideWeight="0.4917647" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30181542" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27231467" sideWeight="0.5082353" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -480,7 +495,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Баг с подгрузкой" />
-    <option name="LAST_COMMIT_MESSAGE" value="Баг с подгрузкой" />
+    <MESSAGE value="Правки Слайдера" />
+    <option name="LAST_COMMIT_MESSAGE" value="Правки Слайдера" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -492,54 +508,6 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="60" lean-forward="false" selection-start-line="0" selection-start-column="60" selection-end-line="0" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.catalogs">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/stateSlider.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5380">
-          <caret line="269" column="38" lean-forward="false" selection-start-line="269" selection-start-column="38" selection-end-line="269" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3300">
-          <caret line="165" column="34" lean-forward="false" selection-start-line="165" selection-start-column="34" selection-end-line="165" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/menu.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="68" column="98" lean-forward="false" selection-start-line="68" selection-start-column="98" selection-end-line="68" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/db_driver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
           <caret line="0" column="41" lean-forward="false" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
         </state>
       </provider>
@@ -567,67 +535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2420">
           <caret line="121" column="36" lean-forward="false" selection-start-line="117" selection-start-column="27" selection-end-line="121" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3300">
-          <caret line="165" column="34" lean-forward="false" selection-start-line="165" selection-start-column="34" selection-end-line="165" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/menu.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="68" column="98" lean-forward="false" selection-start-line="68" selection-start-column="98" selection-end-line="68" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/db_driver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="41" lean-forward="false" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.catalogs">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/catalogs.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2420">
-          <caret line="121" column="36" lean-forward="false" selection-start-line="117" selection-start-column="27" selection-end-line="121" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -685,18 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
           <caret line="763" column="24" lean-forward="false" selection-start-line="763" selection-start-column="9" selection-end-line="763" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.calcmanagers">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -761,24 +656,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/db_driver.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="820">
           <caret line="41" column="32" lean-forward="false" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -875,11 +756,260 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.calcmanager">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="116" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <folding>
+            <marker date="1491947299000" expanded="true" signature="2657:2670" ph="..." />
+            <marker date="1491947299000" expanded="true" signature="3239:3250" ph="..." />
+            <marker date="1491947299000" expanded="true" signature="3260:3266" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3266:3272" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3272:3278" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3278:3284" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3284:3290" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3290:3296" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3296:3302" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3302:3308" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3523:3534" ph="..." />
+            <marker date="1491947299000" expanded="true" signature="3544:3550" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3550:3556" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3556:3562" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3562:3568" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3568:3574" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3574:3580" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3580:3586" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3586:3592" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3686:3697" ph="..." />
+            <marker date="1491947299000" expanded="true" signature="3713:3719" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3721:3727" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3960:3971" ph="..." />
+            <marker date="1491947299000" expanded="true" signature="3981:3987" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3987:3993" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3993:3999" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="3999:4005" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="4005:4011" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="4011:4017" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="4017:4023" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="4023:4029" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="4324:4337" ph="..." />
+            <marker date="1491947299000" expanded="true" signature="4417:4423" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="4423:4429" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="4614:4627" ph="..." />
+            <marker date="1491947299000" expanded="true" signature="4707:4713" ph=" " />
+            <marker date="1491947299000" expanded="true" signature="4713:4719" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/tets2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <marker date="1492424088340" expanded="true" signature="265:278" ph="CREATE TABLE... foo" />
+            <marker date="1492424088340" expanded="true" signature="265:407" ph="CREATE TABLE... IF" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/zip.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/manager.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/load.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-556">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="313" column="29" lean-forward="false" selection-start-line="313" selection-start-column="22" selection-end-line="313" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/temp.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="257" column="37" lean-forward="true" selection-start-line="257" selection-start-column="37" selection-end-line="257" selection-end-column="37" />
+        <state relative-caret-position="-1580">
+          <caret line="257" column="37" lean-forward="false" selection-start-line="257" selection-start-column="37" selection-end-line="257" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/archive.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1416">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/parserZip.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.temp">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.decor">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.users">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.cap">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.type">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.calcmanagers">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/setArchive.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1492429720777" expanded="true" signature="482:623" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="643:771" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="791:902" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="921:1091" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="1111:1327" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="1347:1447" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="1467:1569" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="1589:1685" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="1705:1848" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="1868:1966" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="1986:2219" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="2239:2344" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="2364:2456" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="2476:2594" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="2614:2730" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="2750:2948" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="2968:3219" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="3239:3301" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="3321:3381" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="3401:3467" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="3487:3552" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="3572:3635" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="3655:3716" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="3736:3812" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="3832:4427" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="4447:4561" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="4581:4696" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="4716:4868" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="4888:5040" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="5060:5212" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="5232:5365" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="5385:5412" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="5385:5444" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="5464:5613" ph="CREATE TABLE... IF" />
+            <marker date="1492429720777" expanded="true" signature="5633:5722" ph="CREATE TABLE... IF" />
+          </folding>
         </state>
       </provider>
     </entry>

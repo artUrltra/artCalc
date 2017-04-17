@@ -5,8 +5,8 @@
  * Date: 11.01.2017
  * Time: 12:04
  */
-if(!empty($_FILES)){
-    if(is_dir('zip')==false){
+if (!empty($_FILES)) {
+    if (is_dir('zip') == false) {
         mkdir('zip', 0777, true);
     }
 
@@ -14,11 +14,13 @@ if(!empty($_FILES)){
 
     $dir_separator = DIRECTORY_SEPARATOR;
 
-    $folder ="zip";
+    $folder = "zip";
 
-    $path = dirname(__FILE__).$dir_separator.$folder.$dir_separator;
+    $path = dirname(__FILE__) . $dir_separator . $folder . $dir_separator;
 
-    $targer_path = $path.$_FILES['file']['name'];
+    $targer_path = $path . $_FILES['file']['name'];
 
-    move_uploaded_file($temp,$targer_path);
+    move_uploaded_file($temp, $targer_path);
+
+
 }
