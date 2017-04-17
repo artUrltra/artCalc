@@ -250,7 +250,7 @@
                 <td>Тема</td>
                 <td>Код каталога</td>
                 <td>Копировать шаблон</td>
-                <td>Редактировать</td>
+                {*<td>Редактировать</td>*}
                 <td>Удалить</td>
             </tr>
             </thead>
@@ -267,11 +267,11 @@
                                     class="glyphicon glyphicon-copy"></span></button>
                     </td>
 
-                    <td>
+                    {*<td>
                         <button type="button" id="edit" onclick="predit({$item['id']})"
                                 class="btn btn-link "><span
                                     class="glyphicon glyphicon-cog"></span></button>
-                    </td>
+                    </td>*}
 
                     <td>
                         <button type="button" onclick="itemdelete({$item['id']})"

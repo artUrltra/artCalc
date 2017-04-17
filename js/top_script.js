@@ -201,6 +201,10 @@ $('#calcmanager').change(function () {
     });
     if (temps[0] !== undefined) {
         tinyMCE.get('text').setContent(temps[0].text);
+        $('.panel input[type="checkbox"]').prop("checked", false);
+        $('#zag').parent().removeClass('is-empty');
+        $('#zag').val(temps[0].theme);
+        catalogs.setcat(temps[0].code);
     }
     state.checkManagerHide();
 });

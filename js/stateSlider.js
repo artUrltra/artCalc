@@ -68,25 +68,31 @@ var state = {
 
         stateSetPrice: function () {
             if (top.frames[0].document.readyState === "complete") {
-                $('*[data-slider-id="1"]').find('.price span').text(Math.round(parentM.s1.$('.summaSParametrami .price').text()));
+                $('*[data-slider-id="1"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
             }
             if (top.frames[1].document.readyState === "complete") {
-                $('*[data-slider-id="2"]').find('.price span').text(Math.round(parentM.s1.$('.summaSParametrami .price').text()));
+                $('*[data-slider-id="2"]').find('.price span').text(Math.round(frames[1].$('.summaSParametrami .price').text()));
             }
             if (top.frames[2].document.readyState === "complete") {
-                $('*[data-slider-id="3"]').find('.price span').text(Math.round(parentM.s1.$('.summaSParametrami .price').text()));
+                $('*[data-slider-id="3"]').find('.price span').text(Math.round(frames[2].$('.summaSParametrami .price').text()));
             }
         },
 
 
         middlePrice: function () {
 
-            $("#slider1").slider('value', 8);
-            $("#slider1").find(".bg").height(55 + '%');
-            $("#slider2").slider('value', 8);
-            $("#slider2").find(".bg").height(55 + '%');
-            $("#slider3").slider('value', 8);
-            $("#slider3").find(".bg").height(55 + '%');
+            var obj = storage.pH;
+            var max = obj.length > 0 ? obj.length : 0;
+            var center = max/2;
+
+            $("#slider1").slider('value', center);
+            $("#slider2").slider('value',center);
+            $("#slider3").slider('value', center);
+
+            $('#slider1').find(".bg").height(56 + '%');
+            $('#slider2').find(".bg").height(56 + '%');
+            $('#slider3').find(".bg").height(56 + '%');
+
             top.frames[0].changeAddition();
             top.frames[0].nfurnitura.setStartValues();
             top.frames[1].changeAddition();
@@ -239,6 +245,7 @@ var state = {
                 max: max,
                 step: 1,
                 stop: function (event, ui) {
+                    console.log(state.lastSate);
                     $("#val").html(ui.value);
                     for (var i = 0; i < obj.length; i++) {
                         if ($('#val').html() == i && b == 'false') {
@@ -250,6 +257,11 @@ var state = {
                         }
                     }
                     b = 'false';
+                    if (_FLAG) {
+                        $('#slider2 ,#slider3').slider('value', ui.value);
+                        $('#slider3').find(".bg").height(100 / max * ui.value + '%');
+                        $('#slider2').find(".bg").height(100 / max * ui.value + '%');
+                    }
                 },
                 slide: function (event, ui) {
                     $(this).find(".bg").height(100 / max * ui.value + '%');
@@ -265,7 +277,6 @@ var state = {
 
 
         initCalcManagers: function () {
-            // state.checkManager();
             $("#calcmanager").empty();
             storage.managers.forEach(function (v) {
                 $("#calcmanager").prepend($('<option value="' + v.id + '">' + v.name + '</option>'));
