@@ -183,7 +183,14 @@ window.onload = function () {
     $("body").css("overflow", "auto");
     _FLAG = true;
     state.checkManager();
-    document.getElementById('text_ifr').removeAttribute('title');
+    //document.getElementById('text_ifr').removeAttribute('title');
+
+    top.frames[0].changeAddition();
+    top.frames[0].nfurnitura.setStartValues();
+    top.frames[1].changeAddition();
+    top.frames[1].nfurnitura.setStartValues();
+    top.frames[2].changeAddition();
+    top.frames[2].nfurnitura.setStartValues();
 };
 
 /**

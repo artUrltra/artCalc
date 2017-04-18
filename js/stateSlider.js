@@ -93,12 +93,7 @@ var state = {
             $('#slider2').find(".bg").height(58 + '%');
             $('#slider3').find(".bg").height(58 + '%');
 
-            top.frames[0].changeAddition();
-            top.frames[0].nfurnitura.setStartValues();
-            top.frames[1].changeAddition();
-            top.frames[1].nfurnitura.setStartValues();
-            top.frames[2].changeAddition();
-            top.frames[2].nfurnitura.setStartValues();
+
             frames[0].profiles.setProfile(parseInt(storage.pS));
             frames[0].profiles.setProfile(parseInt(storage.pS));
             state.stateSetPrice();
