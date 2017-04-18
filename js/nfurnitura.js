@@ -525,17 +525,17 @@ var nfurnitura = {
         $(".stoiki-stac .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".stoiki-stac img").attr('src', img);
-          top.frames[1].$(".stoiki-stac .text").text(text);
-          top.frames[1].$(".stoiki-stac .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".stoiki-stac img").attr('src', img);
-          top.frames[2].$(".stoiki-stac .text").text(text);
-          top.frames[2].$(".stoiki-stac .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".stoiki-stac img").attr('src', img);
+            top.frames[1].$(".stoiki-stac .text").text(text);
+            top.frames[1].$(".stoiki-stac .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".stoiki-stac img").attr('src', img);
+            top.frames[2].$(".stoiki-stac .text").text(text);
+            top.frames[2].$(".stoiki-stac .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -545,17 +545,17 @@ var nfurnitura = {
         $(".razdvizhnyie-mehanizmyi .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".razdvizhnyie-mehanizmyi img").attr('src', img);
-          top.frames[1].$(".razdvizhnyie-mehanizmyi .text").text(text);
-          top.frames[1].$(".razdvizhnyie-mehanizmyi .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".razdvizhnyie-mehanizmyi img").attr('src', img);
-          top.frames[2].$(".razdvizhnyie-mehanizmyi .text").text(text);
-          top.frames[2].$(".razdvizhnyie-mehanizmyi .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".razdvizhnyie-mehanizmyi img").attr('src', img);
+            top.frames[1].$(".razdvizhnyie-mehanizmyi .text").text(text);
+            top.frames[1].$(".razdvizhnyie-mehanizmyi .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".razdvizhnyie-mehanizmyi img").attr('src', img);
+            top.frames[2].$(".razdvizhnyie-mehanizmyi .text").text(text);
+            top.frames[2].$(".razdvizhnyie-mehanizmyi .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -565,7 +565,7 @@ var nfurnitura = {
         $(".mehanizm-sinhronizatsii .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
+        if (top._FLAG) {
             top.frames[1].$(".mehanizm-sinhronizatsii img").attr('src', img);
             top.frames[1].$(".mehanizm-sinhronizatsii .text").text(text);
             top.frames[1].$(".mehanizm-sinhronizatsii .price").text(price);
@@ -584,17 +584,17 @@ var nfurnitura = {
         $(".mehanizm-teleskop .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".mehanizm-teleskop img").attr('src', img);
-          top.frames[1].$(".mehanizm-teleskop .text").text(text);
-          top.frames[1].$(".mehanizm-teleskop .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".mehanizm-teleskop img").attr('src', img);
-          top.frames[2].$(".mehanizm-teleskop .text").text(text);
-          top.frames[2].$(".mehanizm-teleskop .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".mehanizm-teleskop img").attr('src', img);
+            top.frames[1].$(".mehanizm-teleskop .text").text(text);
+            top.frames[1].$(".mehanizm-teleskop .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".mehanizm-teleskop img").attr('src', img);
+            top.frames[2].$(".mehanizm-teleskop .text").text(text);
+            top.frames[2].$(".mehanizm-teleskop .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -604,7 +604,7 @@ var nfurnitura = {
         $(".napravlyayuschie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-          if(top._FLAG){
+        if (top._FLAG) {
             top.frames[1].$(".napravlyayuschie img").attr('src', img);
             top.frames[1].$(".napravlyayuschie .text").text(text);
             top.frames[1].$(".napravlyayuschie .price").text(price);
@@ -615,7 +615,7 @@ var nfurnitura = {
             top.frames[2].$(".napravlyayuschie .price").text(price);
             top.frames[2].nfurnitura.getDataFurnitura();
             top.frames[2].nfurnitura.viewTotalFurnitura();
-          }
+        }
     },
 
     SelectnapravnEnd: function (img, text, price) {
@@ -624,17 +624,17 @@ var nfurnitura = {
         $(".napravlyayuschien .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".napravlyayuschien img").attr('src', img);
-          top.frames[1].$(".napravlyayuschien .text").text(text);
-          top.frames[1].$(".napravlyayuschien .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".napravlyayuschien img").attr('src', img);
-          top.frames[2].$(".napravlyayuschien .text").text(text);
-          top.frames[2].$(".napravlyayuschien .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".napravlyayuschien img").attr('src', img);
+            top.frames[1].$(".napravlyayuschien .text").text(text);
+            top.frames[1].$(".napravlyayuschien .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".napravlyayuschien img").attr('src', img);
+            top.frames[2].$(".napravlyayuschien .text").text(text);
+            top.frames[2].$(".napravlyayuschien .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -644,17 +644,17 @@ var nfurnitura = {
         $(".vidKrepleniyaNapravlyayuschey .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
-          top.frames[1].$(".vidKrepleniyaNapravlyayuschey .text").text(text);
-          top.frames[1].$(".vidKrepleniyaNapravlyayuschey .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
-          top.frames[2].$(".vidKrepleniyaNapravlyayuschey .text").text(text);
-          top.frames[2].$(".vidKrepleniyaNapravlyayuschey .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
+            top.frames[1].$(".vidKrepleniyaNapravlyayuschey .text").text(text);
+            top.frames[1].$(".vidKrepleniyaNapravlyayuschey .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
+            top.frames[2].$(".vidKrepleniyaNapravlyayuschey .text").text(text);
+            top.frames[2].$(".vidKrepleniyaNapravlyayuschey .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -664,17 +664,17 @@ var nfurnitura = {
         $(".povodok .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".povodok img").attr('src', img);
-          top.frames[1].$(".povodok .text").text(text);
-          top.frames[1].$(".povodok .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".povodok img").attr('src', img);
-          top.frames[2].$(".povodok .text").text(text);
-          top.frames[2].$(".povodok .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".povodok img").attr('src', img);
+            top.frames[1].$(".povodok .text").text(text);
+            top.frames[1].$(".povodok .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".povodok img").attr('src', img);
+            top.frames[2].$(".povodok .text").text(text);
+            top.frames[2].$(".povodok .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -688,25 +688,25 @@ var nfurnitura = {
         $(".dekorativnayaPlankaDlyaProfilya .price").text(0);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".dovodchik img").attr('src', img);
-          top.frames[1].$(".dovodchik .text").text(text);
-          top.frames[1].$(".dovodchik .price").text(price);
-          top.frames[1].setDataAndText("furnitura-dovodchik", text);
-          top.frames[1].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', "img/furnityra/0.png");
-          top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
-          top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .price").text(0);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".dovodchik img").attr('src', img);
-          top.frames[2].$(".dovodchik .text").text(text);
-          top.frames[2].$(".dovodchik .price").text(price);
-          top.frames[2].setDataAndText("furnitura-dovodchik", text);
-          top.frames[2].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', "img/furnityra/0.png");
-          top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
-          top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .price").text(0);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".dovodchik img").attr('src', img);
+            top.frames[1].$(".dovodchik .text").text(text);
+            top.frames[1].$(".dovodchik .price").text(price);
+            top.frames[1].setDataAndText("furnitura-dovodchik", text);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', "img/furnityra/0.png");
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .price").text(0);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".dovodchik img").attr('src', img);
+            top.frames[2].$(".dovodchik .text").text(text);
+            top.frames[2].$(".dovodchik .price").text(price);
+            top.frames[2].setDataAndText("furnitura-dovodchik", text);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', "img/furnityra/0.png");
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .price").text(0);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -716,17 +716,17 @@ var nfurnitura = {
         $(".dekorativnayaPlankaDlyaProfilya .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
-          top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .text").text(text);
-          top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
-          top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .text").text(text);
-          top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .text").text(text);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .text").text(text);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -736,17 +736,17 @@ var nfurnitura = {
         $(".schetochnyiyUplotnitel .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".schetochnyiyUplotnitel img").attr('src', img);
-          top.frames[1].$(".schetochnyiyUplotnitel .text").text(text);
-          top.frames[1].$(".schetochnyiyUplotnitel .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".schetochnyiyUplotnitel img").attr('src', img);
-          top.frames[2].$(".schetochnyiyUplotnitel .text").text(text);
-          top.frames[2].$(".schetochnyiyUplotnitel .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".schetochnyiyUplotnitel img").attr('src', img);
+            top.frames[1].$(".schetochnyiyUplotnitel .text").text(text);
+            top.frames[1].$(".schetochnyiyUplotnitel .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".schetochnyiyUplotnitel img").attr('src', img);
+            top.frames[2].$(".schetochnyiyUplotnitel .text").text(text);
+            top.frames[2].$(".schetochnyiyUplotnitel .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -756,17 +756,17 @@ var nfurnitura = {
         $(".rakovina .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".rakovina img").attr('src', img);
-          top.frames[1].$(".rakovina .text").text(text);
-          top.frames[1].$(".rakovina .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".rakovina img").attr('src', img);
-          top.frames[2].$(".rakovina .text").text(text);
-          top.frames[2].$(".rakovina .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".rakovina img").attr('src', img);
+            top.frames[1].$(".rakovina .text").text(text);
+            top.frames[1].$(".rakovina .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".rakovina img").attr('src', img);
+            top.frames[2].$(".rakovina .text").text(text);
+            top.frames[2].$(".rakovina .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -776,17 +776,17 @@ var nfurnitura = {
         $(".zamok .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".zamok img").attr('src', img);
-          top.frames[1].$(".zamok .text").text(text);
-          top.frames[1].$(".zamok .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".zamok img").attr('src', img);
-          top.frames[2].$(".zamok .text").text(text);
-          top.frames[2].$(".zamok .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".zamok img").attr('src', img);
+            top.frames[1].$(".zamok .text").text(text);
+            top.frames[1].$(".zamok .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".zamok img").attr('src', img);
+            top.frames[2].$(".zamok .text").text(text);
+            top.frames[2].$(".zamok .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -797,19 +797,19 @@ var nfurnitura = {
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
         setDataAndText("furnitura-skladnoi-mehanizm", text);
-        if(top._FLAG){
-          top.frames[1].$(".setSkladnyieMehanizmyi img").attr('src', img);
-          top.frames[1].$(".setSkladnyieMehanizmyi .text").text(text);
-          top.frames[1].$(".setSkladnyieMehanizmyi .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[1].setDataAndText("furnitura-skladnoi-mehanizm", text);
-          top.frames[2].$(".setSkladnyieMehanizmyi img").attr('src', img);
-          top.frames[2].$(".setSkladnyieMehanizmyi .text").text(text);
-          top.frames[2].$(".setSkladnyieMehanizmyi .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
-          top.frames[2].setDataAndText("furnitura-skladnoi-mehanizm", text);
+        if (top._FLAG) {
+            top.frames[1].$(".setSkladnyieMehanizmyi img").attr('src', img);
+            top.frames[1].$(".setSkladnyieMehanizmyi .text").text(text);
+            top.frames[1].$(".setSkladnyieMehanizmyi .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[1].setDataAndText("furnitura-skladnoi-mehanizm", text);
+            top.frames[2].$(".setSkladnyieMehanizmyi img").attr('src', img);
+            top.frames[2].$(".setSkladnyieMehanizmyi .text").text(text);
+            top.frames[2].$(".setSkladnyieMehanizmyi .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
+            top.frames[2].setDataAndText("furnitura-skladnoi-mehanizm", text);
         }
     },
 
@@ -819,17 +819,17 @@ var nfurnitura = {
         $(".mehanizm-rotornii .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".mehanizm-rotornii img").attr('src', img);
-          top.frames[1].$(".mehanizm-rotornii .text").text(text);
-          top.frames[1].$(".mehanizm-rotornii .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".mehanizm-rotornii img").attr('src', img);
-          top.frames[2].$(".mehanizm-rotornii .text").text(text);
-          top.frames[2].$(".mehanizm-rotornii .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".mehanizm-rotornii img").attr('src', img);
+            top.frames[1].$(".mehanizm-rotornii .text").text(text);
+            top.frames[1].$(".mehanizm-rotornii .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".mehanizm-rotornii img").attr('src', img);
+            top.frames[2].$(".mehanizm-rotornii .text").text(text);
+            top.frames[2].$(".mehanizm-rotornii .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -839,17 +839,17 @@ var nfurnitura = {
         $(".petli-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".petli-skladnie img").attr('src', img);
-          top.frames[1].$(".petli-skladnie .text").text(text);
-          top.frames[1].$(".petli-skladnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".petli-skladnie img").attr('src', img);
-          top.frames[2].$(".petli-skladnie .text").text(text);
-          top.frames[2].$(".petli-skladnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".petli-skladnie img").attr('src', img);
+            top.frames[1].$(".petli-skladnie .text").text(text);
+            top.frames[1].$(".petli-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".petli-skladnie img").attr('src', img);
+            top.frames[2].$(".petli-skladnie .text").text(text);
+            top.frames[2].$(".petli-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -859,17 +859,17 @@ var nfurnitura = {
         $(".napravlyayuschie-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".napravlyayuschie-skladnie img").attr('src', img);
-          top.frames[1].$(".napravlyayuschie-skladnie .text").text(text);
-          top.frames[1].$(".napravlyayuschie-skladnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".napravlyayuschie-skladnie img").attr('src', img);
-          top.frames[2].$(".napravlyayuschie-skladnie .text").text(text);
-          top.frames[2].$(".napravlyayuschie-skladnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".napravlyayuschie-skladnie img").attr('src', img);
+            top.frames[1].$(".napravlyayuschie-skladnie .text").text(text);
+            top.frames[1].$(".napravlyayuschie-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".napravlyayuschie-skladnie img").attr('src', img);
+            top.frames[2].$(".napravlyayuschie-skladnie .text").text(text);
+            top.frames[2].$(".napravlyayuschie-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -879,17 +879,17 @@ var nfurnitura = {
         $(".napravlyayuschien-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".napravlyayuschien-skladnie img").attr('src', img);
-          top.frames[1].$(".napravlyayuschien-skladnie .text").text(text);
-          top.frames[1].$(".napravlyayuschien-skladnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".napravlyayuschien-skladnie img").attr('src', img);
-          top.frames[2].$(".napravlyayuschien-skladnie .text").text(text);
-          top.frames[2].$(".napravlyayuschien-skladnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".napravlyayuschien-skladnie img").attr('src', img);
+            top.frames[1].$(".napravlyayuschien-skladnie .text").text(text);
+            top.frames[1].$(".napravlyayuschien-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".napravlyayuschien-skladnie img").attr('src', img);
+            top.frames[2].$(".napravlyayuschien-skladnie .text").text(text);
+            top.frames[2].$(".napravlyayuschien-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -899,17 +899,17 @@ var nfurnitura = {
         $(".vidKrepleniya-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".vidKrepleniya-skladnie img").attr('src', img);
-          top.frames[1].$(".vidKrepleniya-skladnie .text").text(text);
-          top.frames[1].$(".vidKrepleniya-skladnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".vidKrepleniya-skladnie img").attr('src', img);
-          top.frames[2].$(".vidKrepleniya-skladnie .text").text(text);
-          top.frames[2].$(".vidKrepleniya-skladnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".vidKrepleniya-skladnie img").attr('src', img);
+            top.frames[1].$(".vidKrepleniya-skladnie .text").text(text);
+            top.frames[1].$(".vidKrepleniya-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".vidKrepleniya-skladnie img").attr('src', img);
+            top.frames[2].$(".vidKrepleniya-skladnie .text").text(text);
+            top.frames[2].$(".vidKrepleniya-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -919,17 +919,17 @@ var nfurnitura = {
         $(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
-          top.frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
-          top.frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
-          top.frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
-          top.frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -939,17 +939,17 @@ var nfurnitura = {
         $(".schetochnyiyUplotnitel-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
-          top.frames[1].$(".schetochnyiyUplotnitel-skladnie .text").text(text);
-          top.frames[1].$(".schetochnyiyUplotnitel-skladnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
-          top.frames[2].$(".schetochnyiyUplotnitel-skladnie .text").text(text);
-          top.frames[2].$(".schetochnyiyUplotnitel-skladnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
+            top.frames[1].$(".schetochnyiyUplotnitel-skladnie .text").text(text);
+            top.frames[1].$(".schetochnyiyUplotnitel-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
+            top.frames[2].$(".schetochnyiyUplotnitel-skladnie .text").text(text);
+            top.frames[2].$(".schetochnyiyUplotnitel-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -959,17 +959,17 @@ var nfurnitura = {
         $(".rakovina-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".rakovina-skladnie img").attr('src', img);
-          top.frames[1].$(".rakovina-skladnie .text").text(text);
-          top.frames[1].$(".rakovina-skladnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".rakovina-skladnie img").attr('src', img);
-          top.frames[2].$(".rakovina-skladnie .text").text(text);
-          top.frames[2].$(".rakovina-skladnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".rakovina-skladnie img").attr('src', img);
+            top.frames[1].$(".rakovina-skladnie .text").text(text);
+            top.frames[1].$(".rakovina-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".rakovina-skladnie img").attr('src', img);
+            top.frames[2].$(".rakovina-skladnie .text").text(text);
+            top.frames[2].$(".rakovina-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -979,7 +979,7 @@ var nfurnitura = {
         $(".kreplenieRuchki-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
+        if (top._FLAG) {
             top.frames[1].$(".kreplenieRuchki-skladnie img").attr('src', img);
             top.frames[1].$(".kreplenieRuchki-skladnie .text").text(text);
             top.frames[1].$(".kreplenieRuchki-skladnie .price").text(price);
@@ -999,17 +999,17 @@ var nfurnitura = {
         $(".zamokSkladnyie-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".zamokSkladnyie-skladnie img").attr('src', img);
-          top.frames[1].$(".zamokSkladnyie-skladnie .text").text(text);
-          top.frames[1].$(".zamokSkladnyie-skladnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".zamokSkladnyie-skladnie img").attr('src', img);
-          top.frames[2].$(".zamokSkladnyie-skladnie .text").text(text);
-          top.frames[2].$(".zamokSkladnyie-skladnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".zamokSkladnyie-skladnie img").attr('src', img);
+            top.frames[1].$(".zamokSkladnyie-skladnie .text").text(text);
+            top.frames[1].$(".zamokSkladnyie-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".zamokSkladnyie-skladnie img").attr('src', img);
+            top.frames[2].$(".zamokSkladnyie-skladnie .text").text(text);
+            top.frames[2].$(".zamokSkladnyie-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1019,17 +1019,17 @@ var nfurnitura = {
         $(".nozhki-mobil .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".nozhki-mobil img").attr('src', img);
-          top.frames[1].$(".nozhki-mobil .text").text(text);
-          top.frames[1].$(".nozhki-mobil .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".nozhki-mobil img").attr('src', img);
-          top.frames[2].$(".nozhki-mobil .text").text(text);
-          top.frames[2].$(".nozhki-mobil .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".nozhki-mobil img").attr('src', img);
+            top.frames[1].$(".nozhki-mobil .text").text(text);
+            top.frames[1].$(".nozhki-mobil .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".nozhki-mobil img").attr('src', img);
+            top.frames[2].$(".nozhki-mobil .text").text(text);
+            top.frames[2].$(".nozhki-mobil .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1039,17 +1039,17 @@ var nfurnitura = {
         $(".kolesiki-mobilnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".kolesiki-mobilnie img").attr('src', img);
-          top.frames[1].$(".kolesiki-mobilnie .text").text(text);
-          top.frames[1].$(".kolesiki-mobilnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".kolesiki-mobilnie img").attr('src', img);
-          top.frames[2].$(".kolesiki-mobilnie .text").text(text);
-          top.frames[2].$(".kolesiki-mobilnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".kolesiki-mobilnie img").attr('src', img);
+            top.frames[1].$(".kolesiki-mobilnie .text").text(text);
+            top.frames[1].$(".kolesiki-mobilnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".kolesiki-mobilnie img").attr('src', img);
+            top.frames[2].$(".kolesiki-mobilnie .text").text(text);
+            top.frames[2].$(".kolesiki-mobilnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
 
         }
     },
@@ -1060,17 +1060,17 @@ var nfurnitura = {
         $(".stoyki-mobil .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".stoyki-mobil img").attr('src', img);
-          top.frames[1].$(".stoyki-mobil .text").text(text);
-          top.frames[1].$(".stoyki-mobil .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".stoyki-mobil img").attr('src', img);
-          top.frames[2].$(".stoyki-mobil .text").text(text);
-          top.frames[2].$(".stoyki-mobil .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".stoyki-mobil img").attr('src', img);
+            top.frames[1].$(".stoyki-mobil .text").text(text);
+            top.frames[1].$(".stoyki-mobil .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".stoyki-mobil img").attr('src', img);
+            top.frames[2].$(".stoyki-mobil .text").text(text);
+            top.frames[2].$(".stoyki-mobil .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1080,17 +1080,17 @@ var nfurnitura = {
         $(".tipSoedineniyaPoloten-mobil .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".tipSoedineniyaPoloten-mobil img").attr('src', img);
-          top.frames[1].$(".tipSoedineniyaPoloten-mobil .text").text(text);
-          top.frames[1].$(".tipSoedineniyaPoloten-mobil .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".tipSoedineniyaPoloten-mobil img").attr('src', img);
-          top.frames[2].$(".tipSoedineniyaPoloten-mobil .text").text(text);
-          top.frames[2].$(".tipSoedineniyaPoloten-mobil .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".tipSoedineniyaPoloten-mobil img").attr('src', img);
+            top.frames[1].$(".tipSoedineniyaPoloten-mobil .text").text(text);
+            top.frames[1].$(".tipSoedineniyaPoloten-mobil .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".tipSoedineniyaPoloten-mobil img").attr('src', img);
+            top.frames[2].$(".tipSoedineniyaPoloten-mobil .text").text(text);
+            top.frames[2].$(".tipSoedineniyaPoloten-mobil .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1100,17 +1100,17 @@ var nfurnitura = {
         $(".petli-raspashnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".petli-raspashnie img").attr('src', img);
-          top.frames[1].$(".petli-raspashnie .text").text(text);
-          top.frames[1].$(".petli-raspashnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".petli-raspashnie img").attr('src', img);
-          top.frames[2].$(".petli-raspashnie .text").text(text);
-          top.frames[2].$(".petli-raspashnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".petli-raspashnie img").attr('src', img);
+            top.frames[1].$(".petli-raspashnie .text").text(text);
+            top.frames[1].$(".petli-raspashnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".petli-raspashnie img").attr('src', img);
+            top.frames[2].$(".petli-raspashnie .text").text(text);
+            top.frames[2].$(".petli-raspashnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1120,17 +1120,17 @@ var nfurnitura = {
         $(".ruchka-raspashnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".ruchka-raspashnie img").attr('src', img);
-          top.frames[1].$(".ruchka-raspashnie .text").text(text);
-          top.frames[1].$(".ruchka-raspashnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".ruchka-raspashnie img").attr('src', img);
-          top.frames[2].$(".ruchka-raspashnie .text").text(text);
-          top.frames[2].$(".ruchka-raspashnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".ruchka-raspashnie img").attr('src', img);
+            top.frames[1].$(".ruchka-raspashnie .text").text(text);
+            top.frames[1].$(".ruchka-raspashnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".ruchka-raspashnie img").attr('src', img);
+            top.frames[2].$(".ruchka-raspashnie .text").text(text);
+            top.frames[2].$(".ruchka-raspashnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1140,17 +1140,17 @@ var nfurnitura = {
         $(".zamok-raspashnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if(top._FLAG){
-          top.frames[1].$(".zamok-raspashnie img").attr('src', img);
-          top.frames[1].$(".zamok-raspashnie .text").text(text);
-          top.frames[1].$(".zamok-raspashnie .price").text(price);
-          top.frames[1].nfurnitura.getDataFurnitura();
-          top.frames[1].nfurnitura.viewTotalFurnitura();
-          top.frames[2].$(".zamok-raspashnie img").attr('src', img);
-          top.frames[2].$(".zamok-raspashnie .text").text(text);
-          top.frames[2].$(".zamok-raspashnie .price").text(price);
-          top.frames[2].nfurnitura.getDataFurnitura();
-          top.frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".zamok-raspashnie img").attr('src', img);
+            top.frames[1].$(".zamok-raspashnie .text").text(text);
+            top.frames[1].$(".zamok-raspashnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".zamok-raspashnie img").attr('src', img);
+            top.frames[2].$(".zamok-raspashnie .text").text(text);
+            top.frames[2].$(".zamok-raspashnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
     SelectFunEnd: function (img, text, price) {
@@ -1170,27 +1170,27 @@ var nfurnitura = {
                 is.find('.price').text(fornituraPrice(price, type[0].formula));
             }
         });
-        if(top._FLAG){
-          var s = top.frames[1].$('.newfurn').find('h3');
-          s.each(function () {
-              if ($(this).text() == type[0].name) {
+        if (top._FLAG) {
+            var s = top.frames[1].$('.newfurn').find('h3');
+            s.each(function () {
+                if ($(this).text() == type[0].name) {
 
-                  var is = $(this).parent();
-                  is.find('img').attr('src', img);
-                  is.find('.text').text(text);
-                  is.find('.price').text(fornituraPrice(price, type[0].formula));
-              }
-          });
-          var s = top.frames[2].$('.newfurn').find('h3');
-          s.each(function () {
-              if ($(this).text() == type[0].name) {
+                    var is = $(this).parent();
+                    is.find('img').attr('src', img);
+                    is.find('.text').text(text);
+                    is.find('.price').text(fornituraPrice(price, type[0].formula));
+                }
+            });
+            var s = top.frames[2].$('.newfurn').find('h3');
+            s.each(function () {
+                if ($(this).text() == type[0].name) {
 
-                  var is = $(this).parent();
-                  is.find('img').attr('src', img);
-                  is.find('.text').text(text);
-                  is.find('.price').text(fornituraPrice(price, type[0].formula));
-              }
-          });
+                    var is = $(this).parent();
+                    is.find('img').attr('src', img);
+                    is.find('.text').text(text);
+                    is.find('.price').text(fornituraPrice(price, type[0].formula));
+                }
+            });
         }
     },
 
@@ -1201,8 +1201,6 @@ var nfurnitura = {
         else
             $(".aksessuaryi-block-hs").hide();
         nfurnitura.viewTotalFurnitura();
-
-
 
 
     },
@@ -1226,7 +1224,7 @@ var nfurnitura = {
             nfurnitura.filtertype();
             $('#furnitura-tab').html($('.mobilnyie-peregorodki').html());
         }
-       // nfurnitura.setStartValues();
+        // nfurnitura.setStartValues();
         functionName();
     },
 
@@ -1388,8 +1386,10 @@ var nfurnitura = {
         switch (TYPE_BAFFLE) {
             case 0:
                 var stoikiStac = parseInt($(".stoiki-stac .price").html());
-                if (isNaN(stoikiStac) || $('#stoiki-stac-select .furnituraElFlag').val() === '0')
+                if (isNaN(stoikiStac) || $('#stoiki-stac-select .furnituraElFlag').val() === '0') {
                     stoikiStac = 0;
+                }
+
                 price = stoikiStac;
                 break;
             case 1:
@@ -1525,7 +1525,7 @@ var nfurnitura = {
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
 
-        if (top._FLAG){
+        if (top._FLAG) {
             if (vl === '0') {
 
                 top.frames[1].$('#' + id + ' :not(.furnituraElFlag) *').attr('disabled', 'disabled');

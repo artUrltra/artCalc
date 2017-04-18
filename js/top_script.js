@@ -62,7 +62,7 @@ function GloblPrice_FLAG() {
 
         let array = [];
         frames[0].$('#SUPPLEMENTS .col-md-3').each(function () {
-            var flag = $(this).find('.input-sm').val() == 'Есть' ? true : false;
+            let flag = $(this).find('.input-sm').val() == 'Есть' ? true : false;
             if (flag) {
                 array.push({
                     name: $(this).find('h3').text(),
@@ -76,7 +76,7 @@ function GloblPrice_FLAG() {
         });
 
         array.forEach(function (v, index) {
-            var $additions = frames[1].$('#SUPPLEMENTS .col-md-3:eq(' + index + ')');
+            let $additions = frames[1].$('#SUPPLEMENTS .col-md-3:eq(' + index + ')');
             if (v) {
                 $additions.find('.input-sm').val('Есть');
                 frames[1].addition.SelectSupplements(v.img, v.name, v.price, v.id);
@@ -86,7 +86,7 @@ function GloblPrice_FLAG() {
             }
         });
         array.forEach(function (v, index) {
-            var $additions = frames[2].$('#SUPPLEMENTS .col-md-3:eq(' + index + ')');
+            let $additions = frames[2].$('#SUPPLEMENTS .col-md-3:eq(' + index + ')');
             if (v) {
                 $additions.find('.input-sm').val('Есть');
                 frames[2].addition.SelectSupplements(v.img, v.name, v.price, v.id);
@@ -142,6 +142,15 @@ function GloblPrice_FLAG() {
             frames[2].$('.napolnenie-el-tolschina:eq(' + i + ')').val(frames[0].$('.napolnenie-el-tolschina:eq(' + i + ')').val());
         }
         frames[2].nmaterials.ResSumm();
+
+        //Перенос селекторов фурнитуры
+        frames[0].$('.furnituraElFlag').each(function(index){
+            frames[1].$('.furnituraElFlag:eq('+index+')').val($(this).val());
+            frames[2].$('.furnituraElFlag:eq('+index+')').val($(this).val());
+        });
+
+        frames[1].nfurnitura.viewTotalFurnitura();
+        frames[2].nfurnitura.viewTotalFurnitura();
 
         state.stateSetPrice();
     }
