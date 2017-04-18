@@ -183,7 +183,7 @@ window.onload = function () {
     $("body").css("overflow", "auto");
     _FLAG = true;
     state.checkManager();
-    //document.getElementById('text_ifr').removeAttribute('title');
+
 
     top.frames[0].changeAddition();
     top.frames[0].nfurnitura.setStartValues();
@@ -193,6 +193,12 @@ window.onload = function () {
     top.frames[2].nfurnitura.setStartValues();
 };
 
+function delTiteltext() {
+    document.getElementById('text_ifr').removeAttribute('title');
+    console.log('DELETE TITLE');
+    $('body').off('mouseover','.managerBtn',delTiteltext);
+}
+$('body').on('mouseover','.managerBtn',delTiteltext);
 /**
  * события изменния селектора менеджеров
  */

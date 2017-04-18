@@ -409,12 +409,16 @@ var storage = {
             temps.forEach(function (v) {
                 $("#temp").prepend($('<option value="' + v.id + '">' + v.name + '</option>'));
             });
-            if (temps[0].text) {
-                var srt = temps[0].text;
-                tinyMCE.get('text').setContent(srt);
-                catalogs.setcat(temps[0].code);
-                $('#zag').parent().removeClass('is-empty');
-                $('#zag').val(temps[0].theme);
+            try {
+                if (temps[0].text) {
+                    var srt = temps[0].text;
+                    tinyMCE.get('text').setContent(srt);
+                    catalogs.setcat(temps[0].code);
+                    $('#zag').parent().removeClass('is-empty');
+                    $('#zag').val(temps[0].theme);
+                }
+            } catch (e) {
+                console.info(e);
             }
         });
     },

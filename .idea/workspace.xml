@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f01d9500-81db-4fc7-86ad-105665760a78" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/db/DataBaseAdmin.db3" afterPath="$PROJECT_DIR$/admin/db/DataBaseAdmin.db3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/6cf75ea1-451a-4051-bbe7-82118c4ebb5b.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/6cf75ea1-451a-4051-bbe7-82118c4ebb5b.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/Smarty/templates/calcManagers.tpl" afterPath="$PROJECT_DIR$/admin/Smarty/templates/calcManagers.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/Smarty/templates/temp.tpl" afterPath="$PROJECT_DIR$/admin/Smarty/templates/temp.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/ajax.php" afterPath="$PROJECT_DIR$/admin/ajax.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/stateSlider.js" afterPath="$PROJECT_DIR$/js/stateSlider.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/top_script.js" afterPath="$PROJECT_DIR$/js/top_script.js" />
     </list>
@@ -100,8 +93,8 @@
       <file leaf-file-name="ajax.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="726" column="101" lean-forward="false" selection-start-line="726" selection-start-column="101" selection-end-line="726" selection-end-column="101" />
+            <state relative-caret-position="282">
+              <caret line="719" column="55" lean-forward="true" selection-start-line="719" selection-start-column="55" selection-end-line="719" selection-end-column="55" />
               <folding>
                 <marker date="1492537739922" expanded="true" signature="459:1227" ph="INSERT INTO profile... " />
                 <marker date="1492537739922" expanded="true" signature="1368:1494" ph="INSERT INTO `${{$id}}`... " />
@@ -586,7 +579,7 @@
       <workItem from="1492414029939" duration="20652000" />
       <workItem from="1492458833887" duration="42000" />
       <workItem from="1492459282453" duration="3390000" />
-      <workItem from="1492520540965" duration="14391000" />
+      <workItem from="1492520540965" duration="14511000" />
     </task>
     <task id="LOCAL-00001" summary="Баг с подгрузкой">
       <created>1492372869932</created>
@@ -630,11 +623,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492528245177</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Добавлено редактирование для Шаблонов">
+      <created>1492537915111</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1492537915111</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130712000" />
+    <option name="totallyTimeSpent" value="130832000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -723,7 +723,8 @@
     <MESSAGE value="Исправлено баг с высотой фреймов , исправлен баг переключение типов конструкция -&gt; смена фурнитуры по типу конструкций поправлена синхронность робот подсчетов цен" />
     <MESSAGE value="Перенос селекторов фурнитуры" />
     <MESSAGE value="Исправел баг с midPrice" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправел баг с midPrice" />
+    <MESSAGE value="Добавлено редактирование для Шаблонов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлено редактирование для Шаблонов" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1203,8 +1204,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="726" column="101" lean-forward="false" selection-start-line="726" selection-start-column="101" selection-end-line="726" selection-end-column="101" />
+        <state relative-caret-position="282">
+          <caret line="719" column="55" lean-forward="true" selection-start-line="719" selection-start-column="55" selection-end-line="719" selection-end-column="55" />
           <folding>
             <marker date="1492537739922" expanded="true" signature="459:1227" ph="INSERT INTO profile... " />
             <marker date="1492537739922" expanded="true" signature="1368:1494" ph="INSERT INTO `${{$id}}`... " />
