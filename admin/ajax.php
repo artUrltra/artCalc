@@ -715,3 +715,14 @@ if (isset($_GET['gettemp'])) {
 if (isset($_GET['upcatalog'])) {
     $DB->query_no_var("UPDATE catalogs SET name ='{$_POST['title']}', link='{$_POST['link']}',hide='{$_POST['hide']}',\"left\"='{$_POST['show_on_left']}',\"group\"='{$_POST['is_group_catalog']}',separately='{$_POST['separate']}',description='{$_POST['description']}' WHERE id='{$_GET['upcatalog']}'");
 }
+
+if(isset($_GET['getedititem'])){
+    $sql ="SELECT * FROM temp WHERE id={$_POST['id']}";
+    $item =$DB->query($sql);
+   echo json_encode($item[0]);
+}
+
+if(isset($_GET['setedittemp'])){
+    $text = htmlspecialchars($_POST['text'], ENT_QUOTES);
+    $DB->query_no_var("UPDATE temp SET name='{$_POST['name']}', user='{$_POST['user']}', text='{$text}',code='{$_POST['code']}',theme='{$_POST['theme']}' WHERE id='{$_POST['id']}'");
+}

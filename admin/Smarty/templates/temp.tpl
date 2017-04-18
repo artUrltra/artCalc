@@ -250,7 +250,7 @@
                 <td>Тема</td>
                 <td>Код каталога</td>
                 <td>Копировать шаблон</td>
-                {*<td>Редактировать</td>*}
+                <td>Редактировать</td>
                 <td>Удалить</td>
             </tr>
             </thead>
@@ -267,11 +267,11 @@
                                     class="glyphicon glyphicon-copy"></span></button>
                     </td>
 
-                    {*<td>
+                    <td>
                         <button type="button" id="edit" onclick="predit({$item['id']})"
                                 class="btn btn-link "><span
                                     class="glyphicon glyphicon-cog"></span></button>
-                    </td>*}
+                    </td>
 
                     <td>
                         <button type="button" onclick="itemdelete({$item['id']})"
@@ -293,9 +293,14 @@
                 <form>
                     <input type="hidden" id="edit_id"/>
                     Имя: <input type="text" class="form-control" id="edit_name"/>
-                    Почта: <input type="text" class="form-control" id="edit_mail"/>
-                    Телефон: <input type="text" class="form-control" id="edit_phone"/>
-                    Пароль: <input type="text" class="form-control" id="edit_pass"/>
+                    Менеджер: <select id="edit_manager" class="form-control">
+                        <option>Менеджер</option>
+                        {foreach $managers as $item}
+                            <option>{$item['name']}</option>
+                        {/foreach}
+                    </select>
+                    Код: <input type="text" class="form-control" id="edit_code"/>
+                    Тема: <input type="text" class="form-control" id="edit_theme"/>
                     <center>
                         <textarea id="edit_text"></textarea>
                     </center>
@@ -331,7 +336,7 @@
             success: function (data) {
                 tinymce.triggerSave();
                 console.log(data);
-                 location.reload();
+                location.reload();
             },
             error: function (data) {
                 console.log(data);
@@ -343,35 +348,31 @@
         var data = {
             id: $("#edit_id").val(),
             name: $("#edit_name").val(),
-            mail: $("#edit_mail").val(),
-            phone: $("#edit_phone").val(),
-            pass: $("#edit_pass").val(),
+            user:  $('#edit_manager').val(),
+            code: $('#edit_code').val(),
+            theme:$('#edit_theme').val(),
             text: tinyMCE.get('edit_text').getContent()
         };
-        $.post('../admin/ajax.php?add=editcalcmanager', data, function (data) {
+        console.log(data);
+        $.post('../admin/ajax.php?setedittemp=1', data, function (data) {
             tinymce.triggerSave();
+            $('#myModal').modal('hide');
             location.reload();
         });
 
     }
 
     function predit(id) {
-        /*$.post("../admin/ajax.php?add=preditcalcmanager", "id=" + id, function (data) {
-         var obj = JSON.parse(data);
-         var pass = prompt('Введите пароль?', '');
-         if (obj[0].pass === pass) {
-         $('#edit_id').val(obj[0].id);
-         $('#edit_name').val(obj[0].name);
-         $('#edit_mail').val(obj[0].mail);
-         $('#edit_phone').val(obj[0].phone);
-         $('#edit_pass').val(obj[0].pass);
-         tinyMCE.get('edit_text').setContent(obj[0].text.replace(/}/g, '\"'));
-         console.log(obj[0].text.replace(/}/g, '\"'));
-         } else {
-         alert('Пароль не верный!!!');
-         $('#myModal').modal('hide');
-         }
-         });*/
+        var item = items_0.find(function (v) {
+            return v.id === id
+        });
+        tinyMCE.get('edit_text').setContent(item.text.replace(/}/g, '\"'));
+        $('#edit_name').val(item.name);
+        $('#edit_id').val(item.id);
+        $('#edit_manager').val(item.user);
+        $('#edit_code').val(item.code);
+        $('#edit_theme').val(item.theme);
+        $('#myModal').modal('show');
     }
     function itemdelete(id) {
         console.log(id);

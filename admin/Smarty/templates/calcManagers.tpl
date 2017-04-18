@@ -169,11 +169,11 @@
             <div class="col-md-6"><input type="password" class="form-control" id="pass" size="50"
                                          placeholder="Пароль"/></div>
             <div class="col-md-12">
-                <br>
+                {*<br>
                 <center>
                     <textarea id="text"></textarea>
                 </center>
-                <br>
+                <br>*}
             </div>
             <div class="col-md-6">
                 <button class="btn btn-success btn-lg btn-block" id="submit" onclick="submit()">Добавить</button>
@@ -220,9 +220,9 @@
                     Почта: <input type="text" class="form-control" id="edit_mail"/>
                     Телефон: <input type="text" class="form-control" id="edit_phone"/>
                     Пароль: <input type="text" class="form-control" id="edit_pass"/>
-                    <center>
+                    {*<center>
                         <textarea id="edit_text"></textarea>
-                    </center>
+                    </center>*}
                 </form>
             </div>
             <div class="modal-footer">
@@ -284,7 +284,7 @@
                 $('#edit_mail').val(obj[0].mail);
                 $('#edit_phone').val(obj[0].phone);
                 $('#edit_pass').val(obj[0].pass);
-                tinyMCE.get('edit_text').setContent(obj[0].text.replace(/}/g,'\"'));
+               /* tinyMCE.get('edit_text').setContent(obj[0].text.replace(/}/g,'\"'));*/
                 console.log(obj[0].text.replace(/}/g,'\"'));
             } else {
                 alert('Пароль не верный!!!');
