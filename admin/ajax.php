@@ -212,7 +212,7 @@ if (isset($_GET['add'])) {
             echo json_encode($item);
             break;
         case 'add13':
-            $DB->query_no_var("INSERT INTO SupplementsM (`id`, `name`,type,typeprice) VALUES (NULL, '{$_POST['name']}', '{$_POST['type']}', '{$_POST['typeprice']}')");
+            $DB->query_no_var("INSERT INTO SupplementsM (`id`, `name`,type,typeprice,flag) VALUES (NULL, '{$_POST['name']}', '{$_POST['type']}', '{$_POST['typeprice']}', '{$_POST['flag']}')");
             echo 'Добавлено';
             break;
         case 'add14':
@@ -524,7 +524,7 @@ if (isset($_GET['upload'])) {
             break;
         }
         case 'Hoho': {
-            $DB->query_no_var("UPDATE SupplementsM SET name='" . $_POST['name'] . "',type='" . $_POST['type'] . "',typeprice='" . $_POST['typeprice'] . "'WHERE id=" . $_POST['id']);
+            $DB->query_no_var("UPDATE SupplementsM SET name='" . $_POST['name'] . "',type='" . $_POST['type'] . "',typeprice='" . $_POST['typeprice'] . "' , flag='{$_POST['flag']}'WHERE id=" . $_POST['id']);
             echo 'Hoho';
             break;
         }

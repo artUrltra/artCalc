@@ -60,6 +60,10 @@
                     <option>{$item['name']}</option>
                 {/foreach}
             </select>
+            <select id="flag" class="form-control">
+                <option>Да</option>
+                <option>Нет</option>
+            </select>
             <div class="row">
                 <div class="col-md-4">
                     <button class="btn btn-success btn-lg btn-block" id="submit" onclick="submit()">Добавить</button>
@@ -77,6 +81,7 @@
                 <td>Название</td>
                 <td>Тип каркаса</td>
                 <td>Формула</td>
+                <td>Вкл/Выкл</td>
             </tr>
             </thead>
             <tbody>
@@ -86,6 +91,7 @@
                     <td>{$item['type']}</td>
                     <td>{$item['typeprice']}</td>
 
+                    <td>{$item['flag']}</td>
                     <td><a onclick="itemdelete({$item['id']})" class="btn btn-danger">Удалить</a></td>
                 </tr>
             {/foreach}
@@ -120,6 +126,10 @@
                         {foreach $forms as $item}
                             <option>{$item['name']}</option>
                         {/foreach}
+                    </select>
+                    <select id="edit_flag" class="form-control">
+                        <option>Да</option>
+                        <option>Нет</option>
                     </select>
                 </form>
             </div>
@@ -160,7 +170,8 @@
                 var data = {
                     name: $("#name").val(),
                     type: $("#type").val(),
-                    typeprice: $("#typeprice").val()
+                    typeprice: $("#typeprice").val(),
+                    flag:$('#flag').val()
                 };
                 console.log(data);
                 $.post('../admin/ajax.php?add=add13', data, function (data) {
@@ -187,10 +198,12 @@
                 $("#edit_name").val(data[0].name);
                 $("#edit_type").val(data[0].type);
                 $("#edit_typeprice").val(data[0].typeprice);
+                $("#edit_flag").val(data[0].flag);
+
             }
         });
         $('#edit_submit').click(function () {
-            $.post('../admin/ajax.php?upload=Hoho',{ name:$("#edit_name").val(),type:$("#edit_type").val(),typeprice:$("#edit_typeprice").val(),id:setid}, function (data) {
+            $.post('../admin/ajax.php?upload=Hoho',{ name:$("#edit_name").val(),type:$("#edit_type").val(),typeprice:$("#edit_typeprice").val(),flag:$('#edit_flag').val(),id:setid}, function (data) {
                 console.log(data);
                 $("#edit_exit").click();
                 location.reload();
