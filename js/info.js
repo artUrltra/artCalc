@@ -7,6 +7,7 @@
 var info = {
     index: 0,
     init: function () {
+        console.log('INIT');
         this.width = top.States.TopWidth;
         this.height = top.States.TopHeight;
         this.count_paint = top.States.TopCountPoloten;
@@ -19,10 +20,11 @@ var info = {
             var flag = $(this).find('.input-sm').val() == 'Есть' ? true : false;
             if (flag) {
                 array.push({
-                    name: $(this).find('h3').text(),
+                    name: $(this).find('.addition').text(),
                     img: $(this).find('img').attr('src'),
                     id: ParserIntAndNan($(this).find('#PriceSupplements').attr('data-pricesupplements')),
-                    price: ParserIntAndNan($(this).find('#PriceSupplements span').attr('data-price'))
+                    price: ParserIntAndNan($(this).find('#PriceSupplements span').attr('data-price')),
+                    sum: ParserIntAndNan($(this).find('#PriceSupplements span').text())
                 });
             } else {
                 array.push(flag);
@@ -65,10 +67,11 @@ var info = {
             var flag = $(this).find('.input-sm').val() == 'Есть' ? true : false;
             if (flag) {
                 array.push({
-                    name: $(this).find('h3').text(),
+                    name: $(this).find('.addition').text(),
                     img: $(this).find('img').attr('src'),
                     id: ParserIntAndNan($(this).find('#PriceSupplements').attr('data-pricesupplements')),
-                    price: ParserIntAndNan($(this).find('#PriceSupplements span').attr('data-price'))
+                    price: ParserIntAndNan($(this).find('#PriceSupplements span').attr('data-price')),
+                    sum: ParserIntAndNan($(this).find('#PriceSupplements span').text())
                 });
             } else {
                 array.push(flag);
@@ -146,6 +149,36 @@ var info = {
             $material.find('.materialsBlockSwith').prop("checked", v.zk);
             nmaterials.ResSumm();
         });
+    },
+    getArrayAllPaint: function () {
+        console.time('2');
+        this.setpaint();
+        let arr = this.array.map((v)=>v.array_additions);
+
+        arr = arr.map((v)=>v.filter((s)=> typeof  s === "object"));
+        let ARRAY = [];
+        arr.forEach(function (v) {
+            v.forEach(function (value) {
+                ARRAY.push(value);
+            });
+        });
+        arr = ARRAY;
+        ARRAY = [];
+
+        arr.forEach(function (v) {
+            let a = arr.filter((s)=> s.id === v.id);
+            let c = ARRAY.filter((x) => x.img === v.img);
+            if (c.length === 0) {
+                if (a.length === 1) {
+                    ARRAY.push(v);
+                } else {
+                    v.sum *= a.length;
+                    ARRAY.push(v);
+                }
+            }
+        });
+        console.timeEnd('2');
+        return ARRAY;
     },
     get: function () {
         info.setpaint();

@@ -152,6 +152,26 @@ function GloblPrice_FLAG() {
         frames[1].nfurnitura.viewTotalFurnitura();
         frames[2].nfurnitura.viewTotalFurnitura();
 
+        if(frames[0].info.array){
+            frames[0].info.setpaint();
+
+            frames[1].$('.BAFFLE_SEKECTOR_CLASS').off('click', frames[1].init_info);
+            frames[2].$('.BAFFLE_SEKECTOR_CLASS').off('click', frames[2].init_info);
+
+            frames[1].$('.BAFFLE_SEKECTOR_CLASS').val(frames[0].$('.BAFFLE_SEKECTOR_CLASS').val());
+            frames[2].$('.BAFFLE_SEKECTOR_CLASS').val(frames[0].$('.BAFFLE_SEKECTOR_CLASS').val());
+
+            frames[1].info.array =frames[0].info.array;
+            frames[2].info.array =frames[0].info.array;
+
+            frames[1].info.index =frames[0].info.index;
+            frames[2].info.index =frames[0].info.index;
+
+        }else {
+            frames[0].info.init();
+        }
+
+
         state.stateSetPrice();
     }
 }

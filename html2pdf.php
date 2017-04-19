@@ -587,7 +587,6 @@ array_push($furnituraInfo2[1], $arrF1[$i]->price*($per[0]->i/100+1) * ($per[0]->
             }
         }
     }
-
 // >>> константы и округления
     $data = array(
         'tip_zagolovok' => $typeFurnituraName,
@@ -727,7 +726,7 @@ array_push($furnituraInfo2[1], $arrF1[$i]->price*($per[0]->i/100+1) * ($per[0]->
 
         .tabletext11 {
             width: 46%;
-            font-size: 18px;
+            font-size:  100%;
             border: 1px solid #999999;
             text-align: left;
             background-color: white;
@@ -736,7 +735,7 @@ array_push($furnituraInfo2[1], $arrF1[$i]->price*($per[0]->i/100+1) * ($per[0]->
 
         .tabletext12 {
             width: 18%;
-            font-size: 18px;
+            font-size: 100%;
             border: 1px solid #999999;
             text-align: center;
             background-color: white;
@@ -744,7 +743,7 @@ array_push($furnituraInfo2[1], $arrF1[$i]->price*($per[0]->i/100+1) * ($per[0]->
 
         .tabletext13 {
             width: 18%;
-            font-size: 18px;
+            font-size:  100%;
             border: 1px solid #999999;
             text-align: center;
             background-color: #e3e3e3;
@@ -852,36 +851,33 @@ array_push($furnituraInfo2[1], $arrF1[$i]->price*($per[0]->i/100+1) * ($per[0]->
                     <tr>
                         <td class="tabletext11">Профиль</td>
                         <td class="tabletext12">
-                            <!-- TODO: Записать в вашем стили-->
                             <?= number_format($prisefull0, 0, "", " ") ?>
-                            р.
+                            р./<?=$profilInfo[0]["name"] ?>
                         </td>
                         <td class="tabletext13">
-                            <!-- TODO: Записать в вашем стили-->
                             <?= number_format($prisefull1, 0, "", " ") ?>
-                            р.
+                            р./<?=$profilInfo2[0]["name"] ?>
                         </td>
                         <td class="tabletext13">
-                            <!-- TODO: Записать в вашем стили-->
                             <?= number_format($prisefull2, 0, "", " ") ?>
-                            р.
+                            р./<?=$profilInfo3[0]["name"] ?>
                         </td>
                     </tr>
                       <?php  if ($m1 != 0 && $m2 != 0 && $m3 != 0) {?>
                     <tr>
                         <td class="tabletext11">Заполнение</td>
-                        <td class="tabletext12"><?= number_format($m1, 0, "", " ") ?> р.</td>
-                        <td class="tabletext13"><?= number_format($m2, 0, "", " ") ?> р.</td>
-                        <td class="tabletext13"><?= number_format($m3, 0, "", " ") ?> р.</td>
+                        <td class="tabletext12"><?= number_format($m1, 0, "", " ") ?> р./<?=$materialInfo1[0]['in']["name"]?></td>
+                        <td class="tabletext13"><?= number_format($m2, 0, "", " ") ?> р./<?=$materialInfo2[0]['in']["name"]?></td>
+                        <td class="tabletext13"><?= number_format($m3, 0, "", " ") ?> р./<?=$materialInfo3[0]['in']["name"]?></td>
                     </tr>
                     <?php } ?>
                     <?php
                     if ($f1 == 0 && $f2 == 0 && $f3 == 0) {
                     } else {
                         echo '<tr><td class="tabletext11">Фурнитура</td>' .
-                            '<td class="tabletext12">' . number_format($f1, 0, "", " ") . ' р.</td>' .
-                            '<td class="tabletext13">' . number_format($f2, 0, "", " ") . ' р.</td>' .
-                            '<td class="tabletext13">' . number_format($f3, 0, "", " ") . ' р.</td>' .
+                            '<td class="tabletext12">' . number_format($f1, 0, "", " ") . ' р./'.$furnituraInfo[0][0]['name'].'</td>' .
+                            '<td class="tabletext13">' . number_format($f2, 0, "", " ") . ' р./'.$furnituraInfo2[0][0]['name'].'</td>' .
+                            '<td class="tabletext13">' . number_format($f3, 0, "", " ") . ' р./'.$furnituraInfo3[0][0]['name'].'</td>' .
                             '</tr>';
                     }
                     ?>
@@ -1159,9 +1155,9 @@ array_push($furnituraInfo2[1], $arrF1[$i]->price*($per[0]->i/100+1) * ($per[0]->
                                                     }  ?>
                                                     руб</p>
                                                 <p style="margin-bottom:0px;margin-top:0px;text-align:right;font-size:18px;">
-                                                    <?php if ($profilInfo[2][$j]['count'] > 0) echo $count0*$profilInfo[2][$j]['count'] . " шт."; else echo round((nPrice($count0*$profilInfo[2][$j]['price'],$per,2)/nPrice($profilInfo[2][$j]['oneprice'],$per,1)),PHP_ROUND_HALF_UP) . " п/м."; ?>
+                                                    <?php if ($profilInfo[2][$j]['count'] > 0) echo $count0*$profilInfo[2][$j]['count'] . " шт."; else echo round((nPrice($profilInfo[2][$j]['price'],$per,2)/nPrice($profilInfo[2][$j]['oneprice'],$per,1)),PHP_ROUND_HALF_UP) . " п/м."; ?>
                                                     &nbsp;&nbsp;<span class="pdfbold"
-                                                                      style="color:#666666;font-size:18px;"><?= number_format(nPrice($count0*$profilInfo[2][$j]['price'],$per,2), 0, "", " ") ?></span>
+                                                                      style="color:#666666;font-size:18px;"><?= number_format(nPrice($profilInfo[2][$j]['price'],$per,2), 0, "", " ") ?></span>
                                                     руб
                                                 </p>
                                             </td>

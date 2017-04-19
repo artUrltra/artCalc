@@ -1,4 +1,3 @@
-
 $('.sendGet').click(SaveToPDF);
 
 function SaveToPDF() {
@@ -453,18 +452,36 @@ function SaveToPDF() {
 ////////////////////////////////////////////////////////////
     var selectedKarkas = [];
     var selectedKarkasSupp = [];
-    $("#state1").contents().find('.nsupp').each(function () {
-        if ($("#state1").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
-            var tmpArr = [];
-            tmpArr.push($(this).val());
-            tmpArr.push($("#state1").contents().find('.nsupp' + $(this).val()).val());
-            tmpArr.push($("#state1").contents().find('#textSupplements' + $(this).val()).html());
-            tmpArr.push($("#state1").contents().find('#imageSupplements' + $(this).val()).attr('src'));
-            tmpArr.push($("#state1").contents().find('#priceSupplements' + $(this).val()).html());
-            tmpArr.push($("#state1").contents().find('#CountSupplements' + $(this).val()).val());
+    if (frames[0].info.array) {
+        let arr = frames[0].info.getArrayAllPaint();
+        console.log(arr);
+        arr.forEach(function (v) {
+            let tmpArr = [];
+            tmpArr.push(v.id);
+            tmpArr.push(top.storage.TS.find((s)=>s.id===v.id).name);
+            tmpArr.push(v.name);
+            tmpArr.push(v.img);
+            tmpArr.push(v.sum);
+            tmpArr.push(undefined);
             selectedKarkasSupp.push(tmpArr);
-        }
-    });
+        })
+    } else {
+        $("#state1").contents().find('.nsupp').each(function () {
+
+
+            if ($("#state1").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
+                var tmpArr = [];
+                tmpArr.push($(this).val());
+                tmpArr.push($("#state1").contents().find('.nsupp' + $(this).val()).val());
+                tmpArr.push($("#state1").contents().find('#textSupplements' + $(this).val()).html());
+                tmpArr.push($("#state1").contents().find('#imageSupplements' + $(this).val()).attr('src'));
+                tmpArr.push($("#state1").contents().find('#priceSupplements' + $(this).val()).html());
+                tmpArr.push($("#state1").contents().find('#CountSupplements' + $(this).val()).val());
+                console.log(tmpArr);
+                selectedKarkasSupp.push(tmpArr);
+            }
+        });
+    }
     TOTAL_PAINTING = parseInt($("#state1").contents().find('#TOTAL_PAINTING_ID').val());
     if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
     selectedKarkas.push($("#state1").contents().find('#KARKAS-NAME').html());
@@ -477,18 +494,33 @@ function SaveToPDF() {
 ////////////////////////////////////////////////////////////
     var selectedKarkas2 = [];
     var selectedKarkas2Supp = [];
-    $("#state2").contents().find('.nsupp').each(function () {
-        if ($("#state2").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
-            var tmpArr = [];
-            tmpArr.push($(this).val());
-            tmpArr.push($("#state2").contents().find('.nsupp' + $(this).val()).val());
-            tmpArr.push($("#state2").contents().find('#textSupplements' + $(this).val()).html());
-            tmpArr.push($("#state2").contents().find('#imageSupplements' + $(this).val()).attr('src'));
-            tmpArr.push($("#state2").contents().find('#priceSupplements' + $(this).val()).html());
-            tmpArr.push($("#state2").contents().find('#CountSupplements' + $(this).val()).val());
+    if (frames[1].info.array) {
+        let arr = frames[1].info.getArrayAllPaint();
+        console.log(arr);
+        arr.forEach(function (v) {
+            let tmpArr = [];
+            tmpArr.push(v.id);
+            tmpArr.push(top.storage.TS.find((s)=>s.id===v.id).name);
+            tmpArr.push(v.name);
+            tmpArr.push(v.img);
+            tmpArr.push(v.sum);
+            tmpArr.push(undefined);
             selectedKarkas2Supp.push(tmpArr);
-        }
-    });
+        })
+    } else {
+        $("#state2").contents().find('.nsupp').each(function () {
+            if ($("#state2").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
+                var tmpArr = [];
+                tmpArr.push($(this).val());
+                tmpArr.push($("#state2").contents().find('.nsupp' + $(this).val()).val());
+                tmpArr.push($("#state2").contents().find('#textSupplements' + $(this).val()).html());
+                tmpArr.push($("#state2").contents().find('#imageSupplements' + $(this).val()).attr('src'));
+                tmpArr.push($("#state2").contents().find('#priceSupplements' + $(this).val()).html());
+                tmpArr.push($("#state2").contents().find('#CountSupplements' + $(this).val()).val());
+                selectedKarkas2Supp.push(tmpArr);
+            }
+        });
+    }
     TOTAL_PAINTING = parseInt($("#state2").contents().find('#TOTAL_PAINTING_ID').val());
     if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
     selectedKarkas2.push($("#state2").contents().find('#KARKAS-NAME').html());
@@ -501,6 +533,20 @@ function SaveToPDF() {
 ////////////////////////////////////////////////////////////
     var selectedKarkas3 = [];
     var selectedKarkas3Supp = [];
+    if (frames[2].info.array) {
+        let arr = frames[2].info.getArrayAllPaint();
+        console.log(arr);
+        arr.forEach(function (v) {
+            let tmpArr = [];
+            tmpArr.push(v.id);
+            tmpArr.push(top.storage.TS.find((s)=>s.id===v.id).name);
+            tmpArr.push(v.name);
+            tmpArr.push(v.img);
+            tmpArr.push(v.sum);
+            tmpArr.push(undefined);
+            selectedKarkas3Supp.push(tmpArr);
+        })
+    } else {
     $("#state3").contents().find('.nsupp').each(function () {
         if ($("#state3").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
             var tmpArr = [];
@@ -513,6 +559,7 @@ function SaveToPDF() {
             selectedKarkas3Supp.push(tmpArr);
         }
     });
+    }
     TOTAL_PAINTING = parseInt($("#state3").contents().find('#TOTAL_PAINTING_ID').val());
     if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
     selectedKarkas3.push($("#state3").contents().find('#KARKAS-NAME').html());
@@ -1512,6 +1559,6 @@ function SaveToPdfToFile() {
     };
 
     $.post('./php/longurl.php?n=' + window.id_pdf, 'url=' + JSON.stringify(url), function () {
-       $.get('./html2pdf.php?n=' + window.id_pdf);
+        $.get('./html2pdf.php?n=' + window.id_pdf);
     });
 }
