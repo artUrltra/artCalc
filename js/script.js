@@ -598,17 +598,17 @@ function procPrice(summ) {
         switch (checkState(window)){
             case 0:
             {
-                $('*[data-slider-id="1"]').find('.price span').text(Total);
+                top.$('*[data-slider-id="1"]').find('.price span').text(Total);
                 break;
             }
             case 1:
             {
-                $('*[data-slider-id="2"]').find('.price span').text(Total);
+                top.$('*[data-slider-id="2"]').find('.price span').text(Total);
                 break;
             }
             case 2:
             {
-                $('*[data-slider-id="3"]').find('.price span').text(Total);
+                top.$('*[data-slider-id="3"]').find('.price span').text(Total);
                 break;
             }
         }

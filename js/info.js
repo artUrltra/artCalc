@@ -126,7 +126,7 @@ var info = {
                 addition.SelectSupplements(v.img, v.name, v.price, v.id);
 
             } else {
-                $additions.find('.input-sm').val('Нету');
+                $additions.find('.input-sm').val('Нет');
             }
         });
         addon.set_price_res();

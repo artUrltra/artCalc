@@ -457,12 +457,13 @@ function SaveToPDF() {
         console.log(arr);
         arr.forEach(function (v) {
             let tmpArr = [];
+            let item =top.storage.TS.find((s)=>s.id===v.id);
             tmpArr.push(v.id);
-            tmpArr.push(top.storage.TS.find((s)=>s.id===v.id).name);
+            tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
             tmpArr.push(v.sum);
-            tmpArr.push(undefined);
+            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1:undefined);
             selectedKarkasSupp.push(tmpArr);
         })
     } else {
@@ -499,12 +500,13 @@ function SaveToPDF() {
         console.log(arr);
         arr.forEach(function (v) {
             let tmpArr = [];
+            let item =top.storage.TS.find((s)=>s.id===v.id);
             tmpArr.push(v.id);
-            tmpArr.push(top.storage.TS.find((s)=>s.id===v.id).name);
+            tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
             tmpArr.push(v.sum);
-            tmpArr.push(undefined);
+            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1:undefined);
             selectedKarkas2Supp.push(tmpArr);
         })
     } else {
@@ -538,12 +540,13 @@ function SaveToPDF() {
         console.log(arr);
         arr.forEach(function (v) {
             let tmpArr = [];
+            let item =top.storage.TS.find((s)=>s.id===v.id);
             tmpArr.push(v.id);
-            tmpArr.push(top.storage.TS.find((s)=>s.id===v.id).name);
+            tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
             tmpArr.push(v.sum);
-            tmpArr.push(undefined);
+            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1:undefined);
             selectedKarkas3Supp.push(tmpArr);
         })
     } else {
