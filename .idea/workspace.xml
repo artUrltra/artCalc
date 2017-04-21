@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f01d9500-81db-4fc7-86ad-105665760a78" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/db/DataBaseAdmin.db3" afterPath="$PROJECT_DIR$/admin/db/DataBaseAdmin.db3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html2pdf.php" afterPath="$PROJECT_DIR$/html2pdf.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/info.js" afterPath="$PROJECT_DIR$/js/info.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sendGet.js" afterPath="$PROJECT_DIR$/js/sendGet.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iframe.html" afterPath="$PROJECT_DIR$/iframe.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/nmaterials.js" afterPath="$PROJECT_DIR$/js/nmaterials.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -111,9 +110,11 @@
       <file leaf-file-name="nfurnitura.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/nfurnitura.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="561" column="4" lean-forward="false" selection-start-line="561" selection-start-column="4" selection-end-line="561" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="5320">
+              <caret line="268" column="36" lean-forward="false" selection-start-line="268" selection-start-column="36" selection-end-line="268" selection-end-column="36" />
+              <folding>
+                <marker date="1492699216748" expanded="true" signature="77456:77474" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,8 +122,8 @@
       <file leaf-file-name="sendGet.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/sendGet.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="462" column="32" lean-forward="true" selection-start-line="462" selection-start-column="32" selection-end-line="462" selection-end-column="32" />
+            <state relative-caret-position="9240">
+              <caret line="462" column="32" lean-forward="false" selection-start-line="462" selection-start-column="32" selection-end-line="462" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -131,8 +132,8 @@
       <file leaf-file-name="addition.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/addition.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-286">
-              <caret line="87" column="58" lean-forward="true" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="58" />
+            <state relative-caret-position="1700">
+              <caret line="87" column="58" lean-forward="false" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -141,7 +142,7 @@
       <file leaf-file-name="info.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/info.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="2520">
               <caret line="128" column="53" lean-forward="false" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="53" />
               <folding />
             </state>
@@ -151,8 +152,8 @@
       <file leaf-file-name="html2pdf.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html2pdf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="1217" column="113" lean-forward="true" selection-start-line="1217" selection-start-column="113" selection-end-line="1217" selection-end-column="113" />
+            <state relative-caret-position="24340">
+              <caret line="1217" column="113" lean-forward="false" selection-start-line="1217" selection-start-column="113" selection-end-line="1217" selection-end-column="113" />
               <folding>
                 <marker date="1492694665970" expanded="true" signature="2575:2588" ph="..." />
                 <marker date="1492694665970" expanded="true" signature="3157:3168" ph="..." />
@@ -233,11 +234,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="595" column="12" lean-forward="false" selection-start-line="595" selection-start-column="12" selection-end-line="595" selection-end-column="12" />
+            <state relative-caret-position="11200">
+              <caret line="561" column="9" lean-forward="false" selection-start-line="561" selection-start-column="9" selection-end-line="561" selection-end-column="9" />
               <folding>
                 <marker date="1492697884532" expanded="true" signature="19050:19092" ph="..." />
                 <marker date="1492697884532" expanded="true" signature="28073:28089" ph="..." />
@@ -308,6 +309,42 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="top_script.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/top_script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5380">
+              <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+              <folding>
+                <marker date="1492698772620" expanded="true" signature="10352:10415" ph="..." />
+                <marker date="1492698772620" expanded="true" signature="10533:10597" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nmaterials.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/nmaterials.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="309">
+              <caret line="320" column="0" lean-forward="true" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
+              <folding>
+                <marker date="1492764138698" expanded="true" signature="2998:3014" ph="..." />
+                <marker date="1492764138698" expanded="true" signature="10313:10355" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iframe.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iframe.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="602" column="48" lean-forward="false" selection-start-line="602" selection-start-column="39" selection-end-line="602" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -319,8 +356,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>furnituraElFlag</find>
-      <find>top.frames[2].$</find>
       <find>SelectmehanizmsinhronizaciiEnd</find>
       <find>viewTotalFurnitura</find>
       <find>setTopBlock</find>
@@ -349,6 +384,8 @@
       <find>SetTypeSupplements</find>
       <find>summaSParametrami</find>
       <find>.price</find>
+      <find>furnituraElFlag</find>
+      <find>napolnenie</find>
     </findStrings>
     <replaceStrings>
       <replace>события</replace>
@@ -365,7 +402,6 @@
         <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/admin/mail.php" />
         <option value="$PROJECT_DIR$/admin/Smarty/templates/menu.tpl" />
-        <option value="$PROJECT_DIR$/iframe.html" />
         <option value="$PROJECT_DIR$/admin/index.php" />
         <option value="$PROJECT_DIR$/admin/Smarty/templates/catalogs.tpl" />
         <option value="$PROJECT_DIR$/js/catalogs.js" />
@@ -374,12 +410,10 @@
         <option value="$PROJECT_DIR$/admin/tets2.php" />
         <option value="$PROJECT_DIR$/admin/parserZip.php" />
         <option value="$PROJECT_DIR$/admin/setArchive.php" />
-        <option value="$PROJECT_DIR$/js/nfurnitura.js" />
         <option value="$PROJECT_DIR$/js/stateSlider.js" />
         <option value="$PROJECT_DIR$/admin/Smarty/templates/calcManagers.tpl" />
         <option value="$PROJECT_DIR$/admin/Smarty/templates/temp.tpl" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/console.sql" />
-        <option value="$PROJECT_DIR$/js/top_script.js" />
         <option value="$PROJECT_DIR$/admin/ajax.php" />
         <option value="$PROJECT_DIR$/admin/Smarty/templates/managersupplements.tpl" />
         <option value="$PROJECT_DIR$/js/addition.js" />
@@ -387,6 +421,10 @@
         <option value="$PROJECT_DIR$/js/sendGet.js" />
         <option value="$PROJECT_DIR$/html2pdf.php" />
         <option value="$PROJECT_DIR$/js/script.js" />
+        <option value="$PROJECT_DIR$/js/top_script.js" />
+        <option value="$PROJECT_DIR$/js/nfurnitura.js" />
+        <option value="$PROJECT_DIR$/iframe.html" />
+        <option value="$PROJECT_DIR$/js/nmaterials.js" />
       </list>
     </option>
   </component>
@@ -646,7 +684,9 @@
       <workItem from="1492606022035" duration="15520000" />
       <workItem from="1492632495037" duration="6992000" />
       <workItem from="1492639676906" duration="155000" />
-      <workItem from="1492688653234" duration="7287000" />
+      <workItem from="1492688653234" duration="9063000" />
+      <workItem from="1492717330406" duration="3548000" />
+      <workItem from="1492757674058" duration="6753000" />
     </task>
     <task id="LOCAL-00001" summary="Баг с подгрузкой">
       <created>1492372869932</created>
@@ -718,11 +758,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492639786343</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Доработки PDF &amp; Цен в слайдерах">
+      <created>1492698058921</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1492698058921</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168786000" />
+    <option name="totallyTimeSpent" value="180863000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -736,17 +783,16 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.295764" sideWeight="0.4917647" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30181542" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32385466" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="22" y="260" width="1322" height="208" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.295764" sideWeight="0.4917647" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30181542" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27231467" sideWeight="0.5082353" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -755,6 +801,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.64296997" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -853,13 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iframe.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="1550" column="46" lean-forward="false" selection-start-line="1550" selection-start-column="46" selection-end-line="1550" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/submit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -868,14 +908,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.catalogs">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -936,14 +976,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.calcmanager">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -997,74 +1037,74 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.temp">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.decor">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.users">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.cap">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.type">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.calcmanagers">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1110,13 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/nmaterials.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3360">
-          <caret line="170" column="18" lean-forward="true" selection-start-line="163" selection-start-column="7" selection-end-line="170" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/Smarty/templates/calcManagers.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -1153,14 +1186,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.SupplementsM">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1178,41 +1211,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/top_script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="170" column="34" lean-forward="false" selection-start-line="170" selection-start-column="34" selection-end-line="170" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/addition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <caret line="87" column="58" lean-forward="true" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/nfurnitura.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="561" column="4" lean-forward="false" selection-start-line="561" selection-start-column="4" selection-end-line="561" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/sendGet.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="462" column="32" lean-forward="true" selection-start-line="462" selection-start-column="32" selection-end-line="462" selection-end-column="32" />
+        <state relative-caret-position="9240">
+          <caret line="462" column="32" lean-forward="false" selection-start-line="462" selection-start-column="32" selection-end-line="462" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html2pdf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="1217" column="113" lean-forward="true" selection-start-line="1217" selection-start-column="113" selection-end-line="1217" selection-end-column="113" />
+        <state relative-caret-position="24340">
+          <caret line="1217" column="113" lean-forward="false" selection-start-line="1217" selection-start-column="113" selection-end-line="1217" selection-end-column="113" />
           <folding>
             <marker date="1492694665970" expanded="true" signature="2575:2588" ph="..." />
             <marker date="1492694665970" expanded="true" signature="3157:3168" ph="..." />
@@ -1294,7 +1304,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/info.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="2520">
           <caret line="128" column="53" lean-forward="false" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="53" />
           <folding />
         </state>
@@ -1302,8 +1312,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="595" column="12" lean-forward="false" selection-start-line="595" selection-start-column="12" selection-end-line="595" selection-end-column="12" />
+        <state relative-caret-position="11200">
+          <caret line="561" column="9" lean-forward="false" selection-start-line="561" selection-start-column="9" selection-end-line="561" selection-end-column="9" />
           <folding>
             <marker date="1492697884532" expanded="true" signature="19050:19092" ph="..." />
             <marker date="1492697884532" expanded="true" signature="28073:28089" ph="..." />
@@ -1369,6 +1379,54 @@
             <marker date="1492697884532" expanded="true" signature="51844:51895" ph="..." />
             <marker date="1492697884532" expanded="true" signature="51951:52003" ph="..." />
             <marker date="1492697884532" expanded="true" signature="52130:52141" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/nfurnitura.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5320">
+          <caret line="268" column="36" lean-forward="false" selection-start-line="268" selection-start-column="36" selection-end-line="268" selection-end-column="36" />
+          <folding>
+            <marker date="1492699216748" expanded="true" signature="77456:77474" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/top_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5380">
+          <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+          <folding>
+            <marker date="1492698772620" expanded="true" signature="10352:10415" ph="..." />
+            <marker date="1492698772620" expanded="true" signature="10533:10597" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/addition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="87" column="58" lean-forward="false" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframe.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="602" column="48" lean-forward="false" selection-start-line="602" selection-start-column="39" selection-end-line="602" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/nmaterials.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="320" column="0" lean-forward="true" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
+          <folding>
+            <marker date="1492764138698" expanded="true" signature="2998:3014" ph="..." />
+            <marker date="1492764138698" expanded="true" signature="10313:10355" ph="..." />
           </folding>
         </state>
       </provider>

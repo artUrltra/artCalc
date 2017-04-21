@@ -198,11 +198,21 @@ var nmaterials = {
     // установка высоты материалов
     addWHElNapolnenie: function () {
         if (top.States.TopHeight !== 0) {
-            var $items = $('.napolnenie-el .tab-napolnenie-vyisota');
-            var count = $items.length;
-            var res = Math.round(top.States.TopHeight / count);
+            let $items = $('.napolnenie-el');
+            let hight = top.States.TopHeight;
+            let count = 0;
             $items.each(function () {
-                $(this).val(res);
+                if ($(this).find('#savehight').prop("checked") === true) {
+                    hight -= ParserIntAndNan($(this).find('.tab-napolnenie-vyisota').val());
+                } else {
+                    count++;
+                }
+            });
+            let res = Math.round(hight / count);
+            $items.each(function () {
+                if ($(this).find('#savehight').prop("checked") === false) {
+                    $(this).find('.tab-napolnenie-vyisota').val(res);
+                }
             });
         }
     },
@@ -295,7 +305,7 @@ function setnumber(name, id) {
 $('.add-material-block-past').on('keyup change click mouseover', '.napolnenie-el', function () {
     nmaterials.ResSumm();
 });
-$('body').on('click','#myTab',function () {
+$('body').on('click', '#myTab', function () {
     nmaterials.ResSumm();
 });
 /**
@@ -304,3 +314,11 @@ $('body').on('click','#myTab',function () {
 function filteMatirealsStart(v) {
     return v.id == top.storage.mS;
 }
+$('body').on('keyup', '.napolnenie-el input.form-control.tab-napolnenie-vyisota', function () {
+    $(this).parent().parent().parent().find('#savehight').prop("checked", true);
+    nmaterials.addWHElNapolnenie();
+});
+
+$('body').on('change', '.napolnenie-el #savehight', function () {
+    nmaterials.addWHElNapolnenie();
+});
