@@ -215,7 +215,6 @@ window.onload = function () {
 
 function delTiteltext() {
     document.getElementById('text_ifr').removeAttribute('title');
-    console.log('DELETE TITLE');
     $('body').off('mouseover','.managerBtn',delTiteltext);
 }
 $('body').on('mouseover','.managerBtn',delTiteltext);
@@ -255,7 +254,7 @@ $('body').on('change', '#temp', function () {
     $('#zag').parent().removeClass('is-empty');
     $('#zag').val(item.theme);
     catalogs.setcat(item.code);
-    tinyMCE.get('text').setContent(item.text);
+    tinyMCE.get('text').setContent(item.text.replace(/}/g, '\"'));
 });
 
 /**
@@ -319,8 +318,10 @@ function loadmail() {
             matireals += item.name + ' ';
         }
     });
-    console.log(matireals);
     var sms = tinyMCE.get('text').getContent();
+    sms = sms.replace(/#MatirealsPriceP/g, Math.round(parseInt(frames[0].$('#Pnap').text())*1.5*1.3*1.1));
+    sms = sms.replace(/#MatirealsPrice/g, frames[0].$('#Pnap').text());
+    sms = sms.replace(/#Matireals/g, matireals);
     sms = sms.replace(/#name/g, $('#namek').val());
     sms = sms.replace(/#w/g, States.TopWidth);
     sms = sms.replace(/#h/g, States.TopHeight);
@@ -328,7 +329,6 @@ function loadmail() {
     sms = sms.replace(/#pm/g, States.TopCountMovePoloten);
     sms = sms.replace(/#p/g, States.TopCountPoloten);
     sms = sms.replace(/#Profile/g, frames[0].profiles.profile_name);
-    sms = sms.replace(/#Matireals/g, matireals);
 
     var data = {
         mail: manager.mail,
@@ -345,4 +345,7 @@ function loadmail() {
             message('При отправки письма возникла ошибка!!!');
         }
     });
+}
+function savetemp() {
+    console.log('SAVING TIME');
 }

@@ -87,23 +87,23 @@ var catalogs = {
         }
     },
     setcat: function (arr) {
-        var items = arr.split(';');
-        items = items.map(function (v) {
-            return parseInt(v);
-        });
-
-        var $catalogs = $('.panel input[type="checkbox"]');
-        items.forEach(function (i) {
-            var item = storage.catalogs.find(function (v) {
-                return v.id === i;
+        if (arr !== '') {
+            var items = arr.split(';');
+            items = items.map(function (v) {
+                return parseInt(v);
             });
-            $catalogs.each(function () {
-                if($(this).parent().text() === item.name){
-                   $(this).click();
-                }
+            var $catalogs = $('.panel input[type="checkbox"]');
+            items.forEach(function (i) {
+                var item = storage.catalogs.find(function (v) {
+                    return v.id === i;
+                });
+                $catalogs.each(function () {
+                    if ($(this).parent().text() === item.name) {
+                        $(this).click();
+                    }
+                });
             });
-        });
-        console.timeEnd('1');
+        }
     }
 };
 $('body').on('change', '.togglebutton input[type="checkbox"]', function () {

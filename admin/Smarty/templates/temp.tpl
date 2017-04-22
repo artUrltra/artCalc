@@ -124,6 +124,16 @@
                             onclick: function () {
                                 editor.insertContent('&nbsp;#Matireals&nbsp;')
                             }
+                        }, {
+                            text: 'Цена материалов',
+                            onclick: function () {
+                                editor.insertContent('&nbsp;#MatirealsPrice&nbsp;')
+                            }
+                        }, {
+                            text: 'Цена материалов  с процентами',
+                            onclick: function () {
+                                editor.insertContent('&nbsp;#MatirealsPriceP&nbsp;')
+                            }
                         }]
                 });
             },
