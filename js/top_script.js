@@ -348,7 +348,7 @@ function loadmail() {
         let str_id = ParserIntAndNan(str[0].match(/\d/)[0]);
         let item = top.storage.m.find((v) => v.img === arr[str_id - 1]);
         if (item.name) {
-            item_str =item.name;
+            item_str = item.name;
         }
     }
     sms = sms.replace(/#Matireals\[\d]/g, item_str);
@@ -385,32 +385,35 @@ function savetemp() {
     let manager = storage.managers.find(function (v) {
         return v.id === id_manager
     });
+    let person = prompt("Введите название шаблона");
 
-    let data = {
-        name: 'Шаблон №' + Math.round(Math.random() * 100),
-        manager: manager.name.replace(/ /, ''),
-        theme: $('#zag').val(),
-        code: '',
-        text: tinyMCE.get('text').getContent()
-    };
-    $.ajax({
-        url: "./admin/ajax.php?add=addtemp",
-        type: "POST",
-        data: data,
-        success: function (d) {
-            tinymce.triggerSave();
-            $.ajaxSetup({async: false});
-            storage.filltemp();
-            $.ajaxSetup({async: true});
-            message(data.name + 'был сохранен');
-            let item = storage.temp.find((v) => v.name === data.name);
-            $('#temp').val(item.id).change();
-        },
-        error: function (data) {
-            console.log(data);
-            message('Произошла ошибка');
-        }
-    });
+    if (person) {
+        let data = {
+            name: person,
+            manager: manager.name.replace(/ /, ''),
+            theme: $('#zag').val(),
+            code: '',
+            text: tinyMCE.get('text').getContent()
+        };
+        $.ajax({
+            url: "./admin/ajax.php?add=addtemp",
+            type: "POST",
+            data: data,
+            success: function (d) {
+                tinymce.triggerSave();
+                $.ajaxSetup({async: false});
+                storage.filltemp();
+                $.ajaxSetup({async: true});
+                message(data.name + 'был сохранен');
+                let item = storage.temp.find((v) => v.name === data.name);
+                $('#temp').val(item.id).change();
+            },
+            error: function (data) {
+                console.log(data);
+                message('Произошла ошибка');
+            }
+        });
+    }
 }
 $('body').on('change', '.checkbox input[type="checkbox"]', function () {
     let arr = [];
