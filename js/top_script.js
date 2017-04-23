@@ -144,15 +144,15 @@ function GloblPrice_FLAG() {
         frames[2].nmaterials.ResSumm();
 
         //Перенос селекторов фурнитуры
-        frames[0].$('.furnituraElFlag').each(function(index){
-            frames[1].$('.furnituraElFlag:eq('+index+')').val($(this).val());
-            frames[2].$('.furnituraElFlag:eq('+index+')').val($(this).val());
+        frames[0].$('.furnituraElFlag').each(function (index) {
+            frames[1].$('.furnituraElFlag:eq(' + index + ')').val($(this).val());
+            frames[2].$('.furnituraElFlag:eq(' + index + ')').val($(this).val());
         });
 
         frames[1].nfurnitura.viewTotalFurnitura();
         frames[2].nfurnitura.viewTotalFurnitura();
 
-        if(frames[0].info.array){
+        if (frames[0].info.array) {
             frames[0].info.setpaint();
 
             frames[1].$('.BAFFLE_SEKECTOR_CLASS').off('click', frames[1].init_info);
@@ -161,13 +161,13 @@ function GloblPrice_FLAG() {
             frames[1].$('.BAFFLE_SEKECTOR_CLASS').val(frames[0].$('.BAFFLE_SEKECTOR_CLASS').val());
             frames[2].$('.BAFFLE_SEKECTOR_CLASS').val(frames[0].$('.BAFFLE_SEKECTOR_CLASS').val());
 
-            frames[1].info.array =frames[0].info.array;
-            frames[2].info.array =frames[0].info.array;
+            frames[1].info.array = frames[0].info.array;
+            frames[2].info.array = frames[0].info.array;
 
-            frames[1].info.index =frames[0].info.index;
-            frames[2].info.index =frames[0].info.index;
+            frames[1].info.index = frames[0].info.index;
+            frames[2].info.index = frames[0].info.index;
 
-        }else {
+        } else {
             frames[0].info.init();
         }
 
@@ -215,9 +215,9 @@ window.onload = function () {
 
 function delTiteltext() {
     document.getElementById('text_ifr').removeAttribute('title');
-    $('body').off('mouseover','.managerBtn',delTiteltext);
+    $('body').off('mouseover', '.managerBtn', delTiteltext);
 }
-$('body').on('mouseover','.managerBtn',delTiteltext);
+$('body').on('mouseover', '.managerBtn', delTiteltext);
 /**
  * события изменния селектора менеджеров
  */
@@ -262,31 +262,31 @@ $('body').on('change', '#temp', function () {
  */
 function sendMail() {
     SaveToPdfToFile();
-    let  flag =true;
-    if($('#mailk').val() ===''){
-      flag =false;
-      $('#mailk').parent().addClass('has-error');
-    }else {
-      $('#mailk').parent().removeClass('has-error');
+    let flag = true;
+    if ($('#mailk').val() === '') {
+        flag = false;
+        $('#mailk').parent().addClass('has-error');
+    } else {
+        $('#mailk').parent().removeClass('has-error');
     }
-    if($('#namek').val() ===''){
-      flag =false;
-      $('#namek').parent().addClass('has-error');
-    }else {
-      $('#namek').parent().removeClass('has-error');
+    if ($('#namek').val() === '') {
+        flag = false;
+        $('#namek').parent().addClass('has-error');
+    } else {
+        $('#namek').parent().removeClass('has-error');
     }
-    if($('#zag').val() ===''){
-      flag =false;
-      $('#zag').parent().addClass('has-error');
-    }else {
-      $('#zag').parent().removeClass('has-error');
+    if ($('#zag').val() === '') {
+        flag = false;
+        $('#zag').parent().addClass('has-error');
+    } else {
+        $('#zag').parent().removeClass('has-error');
     }
-if(flag){
-    message("Создается pdf для письма");
-    setTimeout(loadmail, 8500);
-  }else {
-    message('Заполните все поля')
-  }
+    if (flag) {
+        message("Создается pdf для письма");
+        setTimeout(loadmail, 8500);
+    } else {
+        message('Заполните все поля')
+    }
 }
 /**
  * Отправка письма клиенту и менеджеру
@@ -341,8 +341,18 @@ function loadmail() {
             matireals += item.name + ' ';
         }
     });
-    var sms = tinyMCE.get('text').getContent();
-    sms = sms.replace(/#MatirealsPriceP/g, Math.round(parseInt(frames[0].$('#Pnap').text())*1.5*1.3*1.1));
+    let sms = tinyMCE.get('text').getContent();
+    let str = sms.match(/#Matireals\[\d\]/g);
+    let item_str = '';
+    if (str) {
+        let str_id = ParserIntAndNan(str[0].match(/\d/)[0]);
+        let item = top.storage.m.find((v) => v.img === arr[str_id - 1]);
+        if (item.name) {
+            item_str =item.name;
+        }
+    }
+    sms = sms.replace(/#Matireals\[\d]/g, item_str);
+    sms = sms.replace(/#MatirealsPriceP/g, Math.round(parseInt(frames[0].$('#Pnap').text()) * 1.5 * 1.3 * 1.1));
     sms = sms.replace(/#MatirealsPrice/g, frames[0].$('#Pnap').text());
     sms = sms.replace(/#Matireals/g, matireals);
     sms = sms.replace(/#name/g, $('#namek').val());
@@ -371,52 +381,56 @@ function loadmail() {
 
 }
 function savetemp() {
-  let id_manager = parseInt($('#calcmanager').val());
-  let manager = storage.managers.find(function (v) {
-      return v.id === id_manager
-  });
+    let id_manager = parseInt($('#calcmanager').val());
+    let manager = storage.managers.find(function (v) {
+        return v.id === id_manager
+    });
 
-  let data = {
-      name:'Шаблон №'+Math.round(Math.random()*100),
-      manager: manager.name.replace(/ /,''),
-      theme: $('#zag').val(),
-      code: '',
-      text: tinyMCE.get('text').getContent()
-  };
-  $.ajax({
-      url: "./admin/ajax.php?add=addtemp",
-      type: "POST",
-      data: data,
-      success: function (d) {
-          tinymce.triggerSave();
-          $.ajaxSetup({async: false});
-          storage.filltemp();
-          $.ajaxSetup({async: true});
-          message(data.name+'был сохранен');
-          let item = storage.temp.find((v)=>v.name === data.name);
-          $('#temp').val(item.id).change();
-      },
-      error: function (data) {
-          console.log(data);
-          message('Произошла ошибка');
-      }
-  });
+    let data = {
+        name: 'Шаблон №' + Math.round(Math.random() * 100),
+        manager: manager.name.replace(/ /, ''),
+        theme: $('#zag').val(),
+        code: '',
+        text: tinyMCE.get('text').getContent()
+    };
+    $.ajax({
+        url: "./admin/ajax.php?add=addtemp",
+        type: "POST",
+        data: data,
+        success: function (d) {
+            tinymce.triggerSave();
+            $.ajaxSetup({async: false});
+            storage.filltemp();
+            $.ajaxSetup({async: true});
+            message(data.name + 'был сохранен');
+            let item = storage.temp.find((v) => v.name === data.name);
+            $('#temp').val(item.id).change();
+        },
+        error: function (data) {
+            console.log(data);
+            message('Произошла ошибка');
+        }
+    });
 }
-$('body').on('change', '.checkbox input[type="checkbox"]',function(){
-tinyMCE.get('text').buttons.catalogs.menu = [];
-  $('.checkbox  input[type="checkbox"]').each(function () {
-      if ($(this).prop('checked')) {
-          var text = $(this).parent().text();
-          var item = storage.catalogs.find(function (v) {
-              return v.name === text;
-          });
-          tinyMCE.get('text').buttons.catalogs.menu.push({
-              text: item.name,
-              onclick: function () {
-                  editor.insertContent('&nbsp;'+item.link+'&nbsp;')
-              },
-              type:"menuitem"
-          });
-      }
-  });
+$('body').on('change', '.checkbox input[type="checkbox"]', function () {
+    let arr = [];
+    $('.checkbox  input[type="checkbox"]').each(function () {
+        if ($(this).prop('checked')) {
+            var text = $(this).parent().text();
+            var item = storage.catalogs.find(function (v) {
+                return v.name === text;
+            });
+            arr.push(item);
+        }
+    });
+    let drop = $('#dropdowncatalogs');
+    drop.html('');
+    arr.forEach((v) => {
+        drop.append('<li><a href="javascript:void(0)" onclick="addLinkCatalogintext(' + v.id + ')">' + v.name + '</a></li>');
+    });
 });
+function addLinkCatalogintext(id) {
+    let item = storage.catalogs.find((v) => v.id === id);
+    if (item)
+        tinyMCE.execCommand('mceInsertContent', false, '<a href="' + item.link + '">' + item.name + '</a>');
+}

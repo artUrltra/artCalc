@@ -12,14 +12,8 @@ tinymce.init({
         'insertdatetime media table contextmenu paste code textcolor colorpicker'
     ],
     contextmenu: "link image inserttable | cell row column deletetable |My button",
-    toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image | fontselect fontsizeselect | tags catalogs | forecolor backcolor',
+    toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image | fontselect fontsizeselect | tags | forecolor backcolor',
     setup: function (editor) {
-      editor.addButton('catalogs',{
-        type: 'menubutton',
-        text: 'Каталоги',
-        icon: false,
-        menu: []
-      });
         editor.addButton('tags', {
             type: 'menubutton',
             text: 'Теги',
