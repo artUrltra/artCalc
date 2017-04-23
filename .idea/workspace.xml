@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f01d9500-81db-4fc7-86ad-105665760a78" name="Default" comment="Добавлена галочка для наполнения">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/tinymce.js" />
+    <list default="true" id="f01d9500-81db-4fc7-86ad-105665760a78" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/Smarty/templates/temp.tpl" afterPath="$PROJECT_DIR$/admin/Smarty/templates/temp.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/catalogs.js" afterPath="$PROJECT_DIR$/js/catalogs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/tinymce.js" afterPath="$PROJECT_DIR$/js/tinymce.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/top_script.js" afterPath="$PROJECT_DIR$/js/top_script.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -122,11 +119,10 @@
       <file leaf-file-name="top_script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/top_script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6920">
-              <caret line="349" column="28" lean-forward="false" selection-start-line="349" selection-start-column="28" selection-end-line="349" selection-end-column="28" />
+            <state relative-caret-position="7400">
+              <caret line="373" column="28" lean-forward="false" selection-start-line="373" selection-start-column="28" selection-end-line="373" selection-end-column="28" />
               <folding>
-                <marker date="1492854953656" expanded="true" signature="10339:10402" ph="..." />
-                <marker date="1492854953656" expanded="true" signature="10520:10584" ph="..." />
+                <marker date="1492905529000" expanded="true" signature="9578:9607" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -138,7 +134,7 @@
             <state relative-caret-position="3520">
               <caret line="176" column="60" lean-forward="false" selection-start-line="176" selection-start-column="60" selection-end-line="176" selection-end-column="60" />
               <folding>
-                <marker date="1492855032530" expanded="false" signature="6631:14823" ph="..." />
+                <element signature="n#div#16;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -147,11 +143,10 @@
       <file leaf-file-name="tinymce.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/tinymce.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="75" column="3" lean-forward="false" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+            <state relative-caret-position="260">
+              <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
               <folding>
                 <element signature="e#0#43#0" expanded="false" />
-                <element signature="e#735#2820#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -299,8 +294,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -431,7 +426,8 @@
       <workItem from="1492757674058" duration="9752000" />
       <workItem from="1492774600961" duration="1211000" />
       <workItem from="1492850618468" duration="5380000" />
-      <workItem from="1492863348824" duration="14000" />
+      <workItem from="1492863348824" duration="116000" />
+      <workItem from="1492965107176" duration="798000" />
     </task>
     <task id="LOCAL-00001" summary="Баг с подгрузкой">
       <created>1492372869932</created>
@@ -517,11 +513,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492764659586</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="&#10;исправление шаблонов">
+      <created>1492863443734</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1492863443734</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190467000" />
+    <option name="totallyTimeSpent" value="191367000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -536,10 +539,11 @@
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30484116" sideWeight="0.4917647" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30484116" sideWeight="0.4917647" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30181542" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32385466" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="22" y="260" width="1322" height="208" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -550,7 +554,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32385466" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="22" y="260" width="1322" height="208" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.64296997" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -616,7 +619,8 @@
     <MESSAGE value="Добавлен флаг Есть/Нету в Дополнения" />
     <MESSAGE value="Доработки PDF &amp; Цен в слайдерах" />
     <MESSAGE value="Добавлена галочка для наполнения" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлена галочка для наполнения" />
+    <MESSAGE value="&#10;исправление шаблонов" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;исправление шаблонов" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -654,14 +658,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.catalogs">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -708,14 +712,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.calcmanager">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -769,74 +773,74 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.temp">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.decor">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.users">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.cap">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.type">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.calcmanagers">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -904,14 +908,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/a8d73b8e/6cf75ea1-451a-4051-bbe7-82118c4ebb5b/main.SupplementsM">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1009,11 +1013,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/top_script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6920">
-          <caret line="349" column="28" lean-forward="false" selection-start-line="349" selection-start-column="28" selection-end-line="349" selection-end-column="28" />
+        <state relative-caret-position="7400">
+          <caret line="373" column="28" lean-forward="false" selection-start-line="373" selection-start-column="28" selection-end-line="373" selection-end-column="28" />
           <folding>
-            <marker date="1492854953656" expanded="true" signature="10339:10402" ph="..." />
-            <marker date="1492854953656" expanded="true" signature="10520:10584" ph="..." />
+            <marker date="1492905529000" expanded="true" signature="9578:9607" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1023,18 +1026,17 @@
         <state relative-caret-position="3520">
           <caret line="176" column="60" lean-forward="false" selection-start-line="176" selection-start-column="60" selection-end-line="176" selection-end-column="60" />
           <folding>
-            <marker date="1492855032530" expanded="false" signature="6631:14823" ph="..." />
+            <element signature="n#div#16;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/tinymce.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="75" column="3" lean-forward="false" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+        <state relative-caret-position="260">
+          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding>
             <element signature="e#0#43#0" expanded="false" />
-            <element signature="e#735#2820#0" expanded="false" />
           </folding>
         </state>
       </provider>

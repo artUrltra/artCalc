@@ -262,8 +262,31 @@ $('body').on('change', '#temp', function () {
  */
 function sendMail() {
     SaveToPdfToFile();
+    let  flag =true;
+    if($('#mailk').val() ===''){
+      flag =false;
+      $('#mailk').parent().addClass('has-error');
+    }else {
+      $('#mailk').parent().removeClass('has-error');
+    }
+    if($('#namek').val() ===''){
+      flag =false;
+      $('#namek').parent().addClass('has-error');
+    }else {
+      $('#namek').parent().removeClass('has-error');
+    }
+    if($('#zag').val() ===''){
+      flag =false;
+      $('#zag').parent().addClass('has-error');
+    }else {
+      $('#zag').parent().removeClass('has-error');
+    }
+if(flag){
     message("Создается pdf для письма");
     setTimeout(loadmail, 8500);
+  }else {
+    message('Заполните все поля')
+  }
 }
 /**
  * Отправка письма клиенту и менеджеру
@@ -345,7 +368,55 @@ function loadmail() {
             message('При отправки письма возникла ошибка!!!');
         }
     });
+
 }
 function savetemp() {
-    console.log('SAVING TIME');
+  let id_manager = parseInt($('#calcmanager').val());
+  let manager = storage.managers.find(function (v) {
+      return v.id === id_manager
+  });
+
+  let data = {
+      name:'Шаблон №'+Math.round(Math.random()*100),
+      manager: manager.name.replace(/ /,''),
+      theme: $('#zag').val(),
+      code: '',
+      text: tinyMCE.get('text').getContent()
+  };
+  $.ajax({
+      url: "./admin/ajax.php?add=addtemp",
+      type: "POST",
+      data: data,
+      success: function (d) {
+          tinymce.triggerSave();
+          $.ajaxSetup({async: false});
+          storage.filltemp();
+          $.ajaxSetup({async: true});
+          message(data.name+'был сохранен');
+          let item = storage.temp.find((v)=>v.name === data.name);
+          $('#temp').val(item.id).change();
+      },
+      error: function (data) {
+          console.log(data);
+          message('Произошла ошибка');
+      }
+  });
 }
+$('body').on('change', '.checkbox input[type="checkbox"]',function(){
+tinyMCE.get('text').buttons.catalogs.menu = [];
+  $('.checkbox  input[type="checkbox"]').each(function () {
+      if ($(this).prop('checked')) {
+          var text = $(this).parent().text();
+          var item = storage.catalogs.find(function (v) {
+              return v.name === text;
+          });
+          tinyMCE.get('text').buttons.catalogs.menu.push({
+              text: item.name,
+              onclick: function () {
+                  editor.insertContent('&nbsp;'+item.link+'&nbsp;')
+              },
+              type:"menuitem"
+          });
+      }
+  });
+});
