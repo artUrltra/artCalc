@@ -1528,7 +1528,14 @@ if (!in_array($typeFurnitura, array(0, 3, 4)) && $a) {
     </page>
 <?php } ?>
 
-<?php if (count($furnituraInfo[2]) > 0) { ?>
+<?php
+        $flagAcsesuar0 =0;
+    for($i=0;$i<count($furnituraInfo[2]);$i++) {
+    if($furnituraInfo[2][$i] !=false) {
+        $flagAcsesuar0++;
+    }
+    }
+ if ($flagAcsesuar0 > 0) { ?>
     <!-- АКСЕССУАРЫ -->
     <page backtop="10px" backbottom="10px" backleft="10px" backright="15px">
         <div style='width: 100%;max-width: 100%;height: 99%;max-height: 99%;border: 1px solid #999999;'>

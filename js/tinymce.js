@@ -2,7 +2,7 @@
  * Created by Андрей on 22.04.2017.
  */
 tinymce.init({
-    selector: 'textarea',
+    selector: '#text',
     height: 300,
     width: '100%',
     menubar: false,
