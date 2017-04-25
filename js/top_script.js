@@ -59,11 +59,13 @@ function GloblPrice_FLAG() {
         frames[0].$('#SUPPLEMENTS .col-md-3').each(function () {
             let flag = $(this).find('.input-sm').val() == 'Есть' ? true : false;
             if (flag) {
+                let count1 = $(this).find('input.width-20').val();
                 array.push({
                     name: $(this).find('h3').text(),
                     img: $(this).find('img').attr('src'),
                     id: ParserIntAndNan($(this).find('#PriceSupplements').attr('data-pricesupplements')),
-                    price: ParserIntAndNan($(this).find('#PriceSupplements span').attr('data-price'))
+                    price: ParserIntAndNan($(this).find('#PriceSupplements span').attr('data-price')),
+                    count: count1
                 });
             } else {
                 array.push(flag);
@@ -75,9 +77,12 @@ function GloblPrice_FLAG() {
             if (v) {
                 $additions.find('.input-sm').val('Есть');
                 frames[1].addition.SelectSupplements(v.img, v.name, v.price, v.id);
+                if (v.count !== undefined) {
+                    $additions.find('input.width-20').val(v.count);
+                }
 
             } else {
-                $additions.find('.input-sm').val('Нету');
+                $additions.find('.input-sm').val('Нет');
             }
         });
         array.forEach(function (v, index) {
@@ -85,9 +90,11 @@ function GloblPrice_FLAG() {
             if (v) {
                 $additions.find('.input-sm').val('Есть');
                 frames[2].addition.SelectSupplements(v.img, v.name, v.price, v.id);
-
+                if (v.count !== undefined) {
+                    $additions.find('input.width-20').val(v.count);
+                }
             } else {
-                $additions.find('.input-sm').val('Нету');
+                $additions.find('.input-sm').val('Нет');
             }
         });
 
@@ -173,7 +180,7 @@ function GloblPrice_FLAG() {
         $("#slider2").slider('value', value_slider);
         $("#slider3").slider('value', value_slider);
 
-        let height_slider = $('#slider1').find(".bg").height();
+        let height_slider = $('#slider1').find(".bg").outerHeight();
         $('#slider2').find(".bg").height(height_slider);
         $('#slider3').find(".bg").height(height_slider);
     }
@@ -214,6 +221,10 @@ window.onload = function () {
     top.frames[1].nfurnitura.setStartValues();
     top.frames[2].changeAddition();
     top.frames[2].nfurnitura.setStartValues();
+
+    top.frames[0].$('.furnituraElFlag').prop('value', 0).change();
+    top.frames[1].$('.furnituraElFlag').val(0).change();
+    top.frames[2].$('.furnituraElFlag').val(0).change();
 };
 
 function delTiteltext() {

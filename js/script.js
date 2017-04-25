@@ -1547,6 +1547,9 @@ $('#TYPE_BAFFLE_ID').change(function(){
             top.frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
             top.frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
 
+            top.frames[1].changeAddition();
+            top.frames[2].changeAddition();
+
             top.frames[1].nfurnitura.loadFurnitura();
             top.frames[1].nfurnitura.getDataFurnitura();
             top.frames[1].nfurnitura.viewTotalFurnitura();
@@ -1561,6 +1564,9 @@ $('#TYPE_BAFFLE_ID').change(function(){
             top.frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
             top.frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
 
+            top.frames[0].changeAddition();
+            top.frames[2].changeAddition();
+
             top.frames[0].nfurnitura.loadFurnitura();
             top.frames[0].nfurnitura.getDataFurnitura();
             top.frames[0].nfurnitura.viewTotalFurnitura();
@@ -1573,6 +1579,9 @@ $('#TYPE_BAFFLE_ID').change(function(){
         case 2:{
             top.frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
             top.frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
+
+            top.frames[1].changeAddition();
+            top.frames[0].changeAddition();
 
             top.frames[1].nfurnitura.loadFurnitura();
             top.frames[1].nfurnitura.getDataFurnitura();
