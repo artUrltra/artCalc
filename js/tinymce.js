@@ -69,6 +69,11 @@ tinymce.init({
                     onclick: function () {
                         editor.insertContent('&nbsp;#MatirealsPriceP&nbsp;')
                     }
+                }, {
+                    text: 'Тип конструкци',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#type&nbsp;')
+                    }
                 }]
         });
 

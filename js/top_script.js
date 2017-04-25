@@ -365,6 +365,11 @@ function loadmail() {
             item_str = item.name;
         }
     }
+    let strProfile = sms.match(/#Profile\[\d\]/g);
+    strProfile.forEach((v)=>{
+        sms =sms.replace(v,frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0])-1].profile)
+    });
+
     sms = sms.replace(/#Matireals\[\d]/g, item_str);
     sms = sms.replace(/#MatirealsPriceP/g, Math.round(parseInt(frames[0].$('#Pnap').text()) * 1.5 * 1.3 * 1.1));
     sms = sms.replace(/#MatirealsPrice/g, frames[0].$('#Pnap').text());
@@ -376,6 +381,7 @@ function loadmail() {
     sms = sms.replace(/#pm/g, States.TopCountMovePoloten);
     sms = sms.replace(/#p/g, States.TopCountPoloten);
     sms = sms.replace(/#Profile/g, frames[0].profiles.profile_name);
+    sms = sms.replace(/#type/g, getTypeKonst(frames[0].$('#TYPE_BAFFLE_ID').val()));
 
     var data = {
         mail: manager.mail,
@@ -450,4 +456,26 @@ function addLinkCatalogintext(id) {
     let item = storage.catalogs.find((v) => v.id === id);
     if (item)
         tinyMCE.execCommand('mceInsertContent', false, '<a href="' + item.link + '">' + item.name + '</a>');
+}
+/**
+ * Функциия для получения типа перегородки
+ */
+function getTypeKonst(id) {
+    switch (parseInt(id)) {
+        case 0: {
+            return 'Стационарная';
+        }
+        case 1: {
+            return 'Раздвижная перегородка';
+        }
+        case 2: {
+            return 'Складная перегородка';
+        }
+        case 3: {
+            return 'Распашная дверь';
+        }
+        case 4: {
+            return 'Мобильная перегородка';
+        }
+    }
 }
