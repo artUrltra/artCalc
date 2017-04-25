@@ -33,11 +33,6 @@ var _FLAG = true;
  */
 function GloblPrice_FLAG() {
     if (_FLAG) {
-        let type = frames[0].$('#TYPE_BAFFLE_ID').val();
-        frames[1].$('#TYPE_BAFFLE_ID').val(type);
-        frames[1].$('#TYPE_BAFFLE_ID').change();
-        frames[2].$('#TYPE_BAFFLE_ID').val(type);
-        frames[2].$('#TYPE_BAFFLE_ID').change();
         let profile = top.storage.p.find(function (v) {
             return v.name === frames[0].profiles.profile_name
         });
@@ -173,6 +168,14 @@ function GloblPrice_FLAG() {
 
 
         state.stateSetPrice();
+
+        let value_slider = $("#slider1").slider('value');
+        $("#slider2").slider('value', value_slider);
+        $("#slider3").slider('value', value_slider);
+
+        let height_slider = $('#slider1').find(".bg").height();
+        $('#slider2').find(".bg").height(height_slider);
+        $('#slider3').find(".bg").height(height_slider);
     }
 }
 
@@ -415,7 +418,7 @@ function savetemp() {
         });
     }
 }
-$('body').on('change', '.checkbox input[type="checkbox"]', function () {
+$('body').on('change', '.catalogs input[type="checkbox"]', function () {
     let arr = [];
     $('.checkbox  input[type="checkbox"]').each(function () {
         if ($(this).prop('checked')) {

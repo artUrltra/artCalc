@@ -24,7 +24,7 @@ function SaveToPDF() {
     ////////////////////////////////////////////////////////////
     var selectedMaterials1 = [], selectedMaterials2 = [], selectedMaterials3 = [], tmpA1 = [], tmpA2 = [], tmpA3 = [];
     var count00 = frames[0].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i <= count00; i++) {
+    for (var i = 0; i < count00; i++) {
         tmpA1 = [];
         if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
             var str = parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
@@ -42,7 +42,7 @@ function SaveToPDF() {
         }
     }
     var count01 = frames[1].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i <= count01; i++) {
+    for (var i = 0; i < count01; i++) {
         tmpA2 = [];
         if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
             var str = parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
@@ -60,7 +60,7 @@ function SaveToPDF() {
         }
     }
     var count02 = frames[2].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i <= count02; i++) {
+    for (var i = 0; i < count02; i++) {
         tmpA3 = [];
         if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
             var str = parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
@@ -832,7 +832,7 @@ function SaveToPdfToFile() {
 
     var selectedMaterials1 = [], selectedMaterials2 = [], selectedMaterials3 = [], tmpA1 = [], tmpA2 = [], tmpA3 = [];
     var count00 = frames[0].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i <= count00; i++) {
+    for (var i = 0; i < count00; i++) {
         tmpA1 = [];
         if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
             var str = parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
@@ -850,38 +850,38 @@ function SaveToPdfToFile() {
         }
     }
     var count01 = frames[1].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i <= count01; i++) {
+    for (var i = 0; i < count01; i++) {
         tmpA2 = [];
         if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
-            var str = parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
+            var str = frames[1].$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
             var obj = top.storage.m.filter(function (v) {
                 return v.img == str
             })[0];
             tmpA2.push(obj.name);
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
+            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
+            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
+            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
+            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
+            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
+            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
             selectedMaterials2.push(tmpA2);
         }
     }
     var count02 = frames[2].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i <= count02; i++) {
+    for (var i = 0; i < count02; i++) {
         tmpA3 = [];
         if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
-            var str = parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
+            var str = frames[2].$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
             var obj = top.storage.m.filter(function (v) {
                 return v.img == str
             })[0];
             tmpA3.push(obj.name);
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
+            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
+            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
+            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
+            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
+            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
+            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
             selectedMaterials3.push(tmpA3);
         }
     }

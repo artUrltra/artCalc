@@ -67,14 +67,22 @@ var state = {
 
 
         stateSetPrice: function () {
-            if (top.frames[0].document.readyState === "complete") {
-                $('*[data-slider-id="1"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
-            }
-            if (top.frames[1].document.readyState === "complete") {
-                $('*[data-slider-id="2"]').find('.price span').text(Math.round(frames[1].$('.summaSParametrami .price').text()));
-            }
-            if (top.frames[2].document.readyState === "complete") {
-                $('*[data-slider-id="3"]').find('.price span').text(Math.round(frames[2].$('.summaSParametrami .price').text()));
+            if (_FLAG) {
+                if (top.frames[0].document.readyState === "complete") {
+                    $('*[data-slider-id="1"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
+                    $('*[data-slider-id="2"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
+                    $('*[data-slider-id="3"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
+                }
+            } else {
+                if (top.frames[0].document.readyState === "complete") {
+                    $('*[data-slider-id="1"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
+                }
+                if (top.frames[1].document.readyState === "complete") {
+                    $('*[data-slider-id="2"]').find('.price span').text(Math.round(frames[1].$('.summaSParametrami .price').text()));
+                }
+                if (top.frames[2].document.readyState === "complete") {
+                    $('*[data-slider-id="3"]').find('.price span').text(Math.round(frames[2].$('.summaSParametrami .price').text()));
+                }
             }
         },
 

@@ -1541,4 +1541,48 @@ function checktupematerials(id) {
             break;
     }
 }
+$('#TYPE_BAFFLE_ID').change(function(){
+    switch (checkState(window)){
+        case 0 :{
+            top.frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
+            top.frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
+
+            top.frames[1].nfurnitura.loadFurnitura();
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+
+            top.frames[2].nfurnitura.loadFurnitura();
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
+
+         break;
+        }
+        case 1:{
+            top.frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
+            top.frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
+
+            top.frames[0].nfurnitura.loadFurnitura();
+            top.frames[0].nfurnitura.getDataFurnitura();
+            top.frames[0].nfurnitura.viewTotalFurnitura();
+
+            top.frames[2].nfurnitura.loadFurnitura();
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
+            break;
+        }
+        case 2:{
+            top.frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
+            top.frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
+
+            top.frames[1].nfurnitura.loadFurnitura();
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+
+            top.frames[0].nfurnitura.loadFurnitura();
+            top.frames[0].nfurnitura.getDataFurnitura();
+            top.frames[0].nfurnitura.viewTotalFurnitura();
+            break;
+        }
+    }
+});
 
