@@ -51,12 +51,13 @@ function setImages(arr) {
     $gal.html('');
     arr.forEach(function(v) {
         let urlImg = v.img.replace('./',window.location.href);
-         html += '<div class="col-md-4">'
+         html += '<div class="col-md-4 " id="delete'+v.id+'">'
                     +'<a data-fancybox="gallery" href="' + v.img + '">'
                         +'<img src="' + v.img + '" title="' + v.name + '" class="img-thumbnail img-responsive" style="max-height: 300px;height:300px;">'
-                    +'</a>'
-                    +'<a class="btn btn-raised btn-lg btn-block btn-primary" href="javascript:void(0)" onclick="setPDFimg(' + v.id  + ')"> Выбрать </a>'
-                    +'<input value="' +  urlImg + '" style=" width: 100%; margin: 0 0 25px 0; ">'
+                    +'</a><div class="row">'
+                    +'<div class="col-md-6"><a class="btn btn-raised btn-primary" href="javascript:void(0)" onclick="setPDFimg(' + v.id  + ')"> Выбрать </a></div>'
+                    +'<div class="col-md-6"><a href="javascript:void(0)" class="btn btn-raised btn-danger" onclick="deletePDFimg(' + v.id  + ')">Удалить</a></div>'
+                    +'</div><input value="' +  urlImg + '" style=" width: 100%; margin: 0 0 25px 0; ">'
                 +'</div>';
     });
     $gal.html(html);
@@ -95,3 +96,11 @@ $('#searhtags').on('keyup', function() {
         setImages(storage.images);
     }
 });
+function deletePDFimg(id) {
+    if(confirm("Вы хотите удалить картинку")){
+        $.post('./admin/ajax.php?delereimgPDF=1',{id:id},(data)=>{
+            message(data);
+            $('#delete'+id).remove();
+        });
+    }
+}

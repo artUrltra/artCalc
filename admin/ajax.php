@@ -726,3 +726,7 @@ if(isset($_GET['setedittemp'])){
     $text = htmlspecialchars($_POST['text'], ENT_QUOTES);
     $DB->query_no_var("UPDATE temp SET name='{$_POST['name']}', user='{$_POST['user']}', text='{$text}',code='{$_POST['code']}',theme='{$_POST['theme']}' WHERE id='{$_POST['id']}'");
 }
+if(isset($_GET['delereimgPDF'])){
+    $DB->query_no_var("DELETE FROM images WHERE  images.id=".$_POST['id']);
+    echo 'Картинка была удалена';
+}
