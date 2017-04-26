@@ -329,62 +329,10 @@ function loadmail() {
         });
         html += '</ol>';
     }
-    var arr = [];
 
-    if (frames[0].info.array) {
-        frames[0].info.array.forEach(function (v) {
-            v.array_filling.forEach(function (s) {
-                arr.push(s.img.substr(8));
-            });
-        });
-    } else {
-        var $material = frames[0].$('.napolnenie-el');
-        $material.each(function () {
-            arr.push($(this).find('#open-material-img').attr('src').substr(8));
-        });
-    }
-    matireals = '';
-    var l = arr.length;
-    arr.forEach(function (v, index) {
-        var item = top.storage.m.find(function (s) {
-            return s.img === v
-        });
-        if (index !== l - 1) {
-            matireals += item.name + ', ';
-        } else {
-            matireals += item.name + ' ';
-        }
-    });
     let sms = tinyMCE.get('text').getContent();
-    let Matireals = sms.match(/#Matireals\[\d\]/g);
-    if(Matireals) {
-        Matireals.forEach((p) => {
-            let str_id = ParserIntAndNan(p.match(/\d/)[0]);
-            let item = top.storage.m.find((v) => v.img === arr[str_id - 1]);
-            if (item.name) {
-                sms = sms.replace(p, item.name);
-            }
-        });
-    }
-    let strProfile = sms.match(/#Profile\[\d\]/g);
-    if(strProfile) {
-        strProfile.forEach((v) => {
-            sms = sms.replace(v, frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
-        });
-    }
-    sms = sms.replace(/#MatirealsPriceP/g, Math.round(parseInt(frames[0].$('#Pnap').text()) * 1.5 * 1.3 * 1.1));
-    sms = sms.replace(/#MatirealsPrice/g, frames[0].$('#Pnap').text());
-    sms = sms.replace(/#Matireals/g, matireals);
-    sms = sms.replace(/#name/g, $('#namek').val());
-    sms = sms.replace(/#w/g, States.TopWidth);
-    sms = sms.replace(/#h/g, States.TopHeight);
-    sms = sms.replace(/#s/g, (States.TopWidth / 1000) * (States.TopHeight / 1000));
-    sms = sms.replace(/#pm/g, States.TopCountMovePoloten);
-    sms = sms.replace(/#p/g, States.TopCountPoloten);
-    sms = sms.replace(/#Profile/g, frames[0].profiles.profile_name);
-    sms = sms.replace(/#type/g, getTypeKonst(frames[0].$('#TYPE_BAFFLE_ID').val()));
-
-    var data = {
+    sms = TagsText(sms);
+    let data = {
         mail: manager.mail,
         name: manager.name,
         mailk: $('#mailk').val(),
@@ -479,4 +427,154 @@ function getTypeKonst(id) {
             return 'Мобильная перегородка';
         }
     }
+}
+/**
+ * функция отрисовки тегов
+ * @param text
+ * @constructor
+ */
+function TagsText(text) {
+    //тег профиль с индексом и мм
+    let strProfilemm = text.match(/#Profile\[\d\]\[mm\]/g);
+    if (strProfilemm) {
+        strProfilemm.forEach((v) => {
+            let nameProfil = frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile
+            let p = storage.p.find((v) => v.name === nameProfil);
+            let profile = p.name + ' ' + p.model + 'x' + p.int + ' мм.';
+            text = text.replace(v, profile);
+        });
+    }
+
+    // тег профиль с индексом без мм
+    let strProfile = text.match(/#Profile\[\d\]/g);
+    if (strProfile) {
+        strProfile.forEach((v) => {
+            text = text.replace(v, frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
+        });
+    }
+
+
+    let _arrm = [];
+    let _arrm_mm = [];
+
+    if (frames[0].info.array) {
+        frames[0].info.array.forEach(function (v) {
+            v.array_filling.forEach((s) => {
+                let _i = storage.m.find((d) => d.img === s.img.substr(8));
+                let _c = _i.price.split(';').findIndex((_b) => _b === s.tolschina);
+                let t = _i.thickness.split(';')[_c];
+
+                let srtm_mm, srtm;
+                if (s.zk) {
+                    srtm_mm = _i.name + ' закаленное ' + t + 'мм.';
+                    srtm = _i.name + ' закаленное';
+                } else {
+                    srtm_mm = _i.name + ' ' + t + 'мм.';
+                    srtm = _i.name;
+                }
+                if (!_arrm_mm.find((_d) => _d === srtm_mm)) {
+                    _arrm_mm.push(srtm_mm);
+                }
+                if (!_arrm.find((_d) => _d === srtm)) {
+                    _arrm.push(srtm);
+                }
+            });
+        });
+    }
+    let strM = '';
+    _arrm.forEach((f) => {
+        strM += f + ' ';
+    });
+
+    let strM_mm = '';
+    _arrm_mm.forEach((f) => {
+        strM_mm += f + ' ';
+    });
+
+    // тег матереала с индексом и мм
+    let strMimm = text.match(/#Matireals\[\d\]\[mm\]/g);
+    if (strMimm) {
+        strMimm.forEach((v) => {
+            text = text.replace(v, _arrm_mm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
+        });
+    }
+
+    // тег матереала с индексом без мм
+    let strMi = text.match(/#Matireals\[\d\]/g);
+    if (strMi) {
+        strMi.forEach((v) => {
+            text = text.replace(v, _arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
+        });
+    }
+
+    text = text.replace(/#MatirealsPriceP/g, Math.round(parseInt(frames[0].$('#Pnap').text()) * 1.5 * 1.3 * 1.1));
+    text = text.replace(/#MatirealsPrice/g, frames[0].$('#Pnap').text());
+    text = text.replace(/#Matireals\[mm]/g, strM_mm);
+    text = text.replace(/#Matireals/g, strM);
+    text = text.replace(/#name/g, $('#namek').val());
+    text = text.replace(/#w/g, States.TopWidth);
+    text = text.replace(/#h/g, States.TopHeight);
+    text = text.replace(/#s/g, (States.TopWidth / 1000) * (States.TopHeight / 1000));
+    text = text.replace(/#pm/g, States.TopCountMovePoloten);
+    text = text.replace(/#p/g, States.TopCountPoloten);
+    text = text.replace(/#type/g, getTypeKonst(frames[0].$('#TYPE_BAFFLE_ID').val()));
+    text = text.replace(/#EconomPrice/g, $('*[data-slider-id="2"]').find('.price span').text());
+    text = text.replace(/#OptimalPrice/g, $('*[data-slider-id="1"]').find('.price span').text());
+    text = text.replace(/#FyllPrice/g, $('*[data-slider-id="3"]').find('.price span').text());
+
+    let detorid = parseInt(frames[0].$('#pokraskaTypeAndName').val());
+    if (detorid) {
+        let _i = storage.d.find((v) => v.id === detorid);
+        if (_i) {
+            switch (_i.parent_id) {
+                case 1:{
+                    text = text.replace(/#Dekor/g , 'RAL : '+_i.name);
+                    break;
+                }
+                case 3:{
+                    text = text.replace(/#Dekor/g, 'Декор : '+_i.name);
+                    break;
+                }
+                case 4:{
+                    text = text.replace(/#Dekor/g, 'Анодирование : '+_i.name);
+                    break;
+                }
+            }
+        }
+    }
+    //Тег профиль мм
+    if (frames[0].info.array) {
+        let _arr = [];
+        frames[0].info.array.forEach((v) => {
+            let i = _arr.find((s) => s === v.profile);
+            if (!i) {
+                _arr.push(v.profile);
+            }
+        });
+        console.log(_arr);
+        let profile = '';
+        _arr.forEach((s) => {
+            let p = storage.p.find((v) => v.name === s);
+            profile += p.name + ' ' + p.model + 'x' + p.int + ' мм.';
+        });
+
+        text = text.replace(/#Profile\[mm]/g, profile);
+    }
+    if (frames[0].info.array) {
+        let _arr = [];
+        frames[0].info.array.forEach((v) => {
+            let i = _arr.find((s) => s === v.profile);
+            if (!i) {
+                _arr.push(v.profile);
+            }
+        });
+        let profile = '';
+        _arr.forEach((s) => {
+            profile += s + '\t';
+        });
+
+        text = text.replace(/#Profile/g, profile);
+    }
+
+    return text;
 }

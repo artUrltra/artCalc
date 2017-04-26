@@ -242,7 +242,7 @@
             mail: $("#mail").val(),
             phone: $("#phone").val(),
             pass: $('#pass').val(),
-            text: tinyMCE.get('text').getContent(),
+            text: '',
         };
         $.ajax({
             url: "../admin/ajax.php?add=addcalcmanager",
@@ -265,7 +265,7 @@
             mail: $("#edit_mail").val(),
             phone: $("#edit_phone").val(),
             pass: $("#edit_pass").val(),
-            text: tinyMCE.get('edit_text').getContent()
+            text: ''
         };
         $.post('../admin/ajax.php?add=editcalcmanager', data, function (data) {
             tinymce.triggerSave();
