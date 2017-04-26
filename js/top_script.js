@@ -356,21 +356,22 @@ function loadmail() {
         }
     });
     let sms = tinyMCE.get('text').getContent();
-    let str = sms.match(/#Matireals\[\d\]/g);
-    let item_str = '';
-    if (str) {
-        let str_id = ParserIntAndNan(str[0].match(/\d/)[0]);
-        let item = top.storage.m.find((v) => v.img === arr[str_id - 1]);
-        if (item.name) {
-            item_str = item.name;
-        }
+    let Matireals = sms.match(/#Matireals\[\d\]/g);
+    if(Matireals) {
+        Matireals.forEach((p) => {
+            let str_id = ParserIntAndNan(p.match(/\d/)[0]);
+            let item = top.storage.m.find((v) => v.img === arr[str_id - 1]);
+            if (item.name) {
+                sms = sms.replace(p, item.name);
+            }
+        });
     }
     let strProfile = sms.match(/#Profile\[\d\]/g);
-    strProfile.forEach((v)=>{
-        sms =sms.replace(v,frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0])-1].profile)
-    });
-
-    sms = sms.replace(/#Matireals\[\d]/g, item_str);
+    if(strProfile) {
+        strProfile.forEach((v) => {
+            sms = sms.replace(v, frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
+        });
+    }
     sms = sms.replace(/#MatirealsPriceP/g, Math.round(parseInt(frames[0].$('#Pnap').text()) * 1.5 * 1.3 * 1.1));
     sms = sms.replace(/#MatirealsPrice/g, frames[0].$('#Pnap').text());
     sms = sms.replace(/#Matireals/g, matireals);
