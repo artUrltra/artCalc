@@ -1201,7 +1201,7 @@ var nfurnitura = {
         else
             $(".aksessuaryi-block-hs").hide();
         nfurnitura.viewTotalFurnitura();
-
+        heightIframe();
 
     },
     loadFurnitura: function () {

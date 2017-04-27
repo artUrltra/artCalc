@@ -1109,7 +1109,7 @@ ob_start();
                                 <?php if ($pmh[0]->p != 0) { ?>
                                     <tr>
                                         <td style="width:55%;text-align:left;border:1px solid #999999;">
-                                            <?= $pmh[0]->n ?> (горызонтальные перемычки)
+                                            <?= $pmh[0]->n ?> (горизонтальные перемычки)
                                         </td>
                                         <td style="width:20%;text-align:center;border:1px solid #999999;">
                                             <?= $pmH ?> м.п.
