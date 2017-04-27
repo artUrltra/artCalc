@@ -63,7 +63,22 @@
 <!--Top block-->
 <div id="diagramma" class="container">
     <div class="row wrapper next-line">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="text-align: center; margin-top: 10px;">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="shema">
+                            <span class="checkbox-material">
+                            <span class="check"></span>
+                        </span>
+                            Добавить схему</label>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
         <div id="DIAGRAMMA-DIALOG-WINDOW-BTN" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="form-group drawing"><img src="img/maket.jpg" id="ShemaKonstr"></div>
             <br>
@@ -376,7 +391,7 @@
                 <h5>Количество комплектов</h5>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <input id="NUMBER_SETS_ID" maxlength="2" type="text" class="form-control" value="1" disabled>
+                <input id="NUMBER_SETS_ID" maxlength="2" type="text" class="form-control" value="1">
             </div>
         </div>
         <div data-toggle="collapse" data-target="#setting-v-niz"
@@ -598,13 +613,13 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="form-group label-floating is-empty input-custom-block-mini">
-                    <div class="checkbox">
-                        <label>
-                            <input id="savehight" type="checkbox">
-                            <span class="checkbox-material"><span class="check"></span></span>
-                            Сохрaнять высоту
-                        </label>
-                    </div>
+                        <div class="checkbox">
+                            <label>
+                                <input id="savehight" type="checkbox">
+                                <span class="checkbox-material"><span class="check"></span></span>
+                                Сохрaнять высоту
+                            </label>
+                        </div>
                     </div>
                 </div>
             </center>

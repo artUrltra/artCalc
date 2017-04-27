@@ -180,14 +180,3 @@ var procPrice = {
     }
 };
 
-$('#NUMBER_SETS_ID').on('keyup', function () {
-    var p = parseInt($(this).attr('data-price'));
-    if (isNaN(p)) {
-        p = 0;
-    }
-    var c = parseInt($(this).val());
-    if (isNaN(c)) {
-        c = 0;
-    }
-    procPrice.pricecalculation(p * c);
-});

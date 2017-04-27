@@ -1595,3 +1595,24 @@ $('#TYPE_BAFFLE_ID').change(function(){
     }
 });
 
+$('#shema').change(function(){
+    let _flag =$(this).prop( "checked" );
+    console.log(_flag);
+    switch (checkState(window)){
+        case 0 :{
+            top.frames[1].$('#shema').prop( "checked",_flag);
+            top.frames[2].$('#shema').prop( "checked",_flag);
+            break;
+        }
+        case 1:{
+            top.frames[0].$('#shema').prop( "checked",_flag);
+            top.frames[2].$('#shema').prop( "checked",_flag);
+            break;
+        }
+        case 2:{
+            top.frames[1].$('#shema').prop( "checked",_flag);
+            top.frames[0].$('#shema').prop( "checked",_flag);
+            break;
+        }
+    }
+});

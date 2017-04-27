@@ -803,8 +803,8 @@ function SaveToPDF() {
             tel: $('#teltext').val(),
             mail: $('#mailtext').val()
         }),
+        'schema': frames[0].$('#shema').prop( "checked" )?  frames[0].$('#ShemaKonstr').attr('src'):''
     };
-
     $.post('./php/longurl.php?n=' + window.id_pdf, 'url=' + JSON.stringify(url), function () {
         window.open('./html2pdf.php?n=' + window.id_pdf, '_blank');
     });
@@ -1559,6 +1559,7 @@ function SaveToPdfToFile() {
             tel: $('#teltext').val(),
             mail: $('#mailtext').val()
         }),
+        'schema': $('#shema').prop( "checked" )?  $('#ShemaKonstr').attr('src'):''
     };
 
     $.post('./php/longurl.php?n=' + window.id_pdf, 'url=' + JSON.stringify(url), function () {
