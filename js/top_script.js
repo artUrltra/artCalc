@@ -400,6 +400,11 @@ $('body').on('change', '.catalogs input[type="checkbox"]', function () {
     arr.forEach((v) => {
         drop.append('<li><a href="javascript:void(0)" onclick="addLinkCatalogintext(' + v.id + ')">' + v.name + '</a></li>');
     });
+    if(arr.length ===0){
+        $('#dropdownMenu1').attr('disabled', 'disabled');
+    }else {
+        $('#dropdownMenu1').removeAttr('disabled');
+    }
 });
 function addLinkCatalogintext(id) {
     let item = storage.catalogs.find((v) => v.id === id);

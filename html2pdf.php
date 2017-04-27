@@ -1891,7 +1891,7 @@ if ($ff) {
                                            cellspacing="0">
                                         <tr>
                                             <td style="width:60%;text-align:left;border:1px solid #999999;">
-                                                <?= $profilInfo2[0]["name"] ?>
+                                                <?= $profilInfo2[0]["name"] ?> (каркас)
                                             </td>
                                             <td style="width:40%;text-align:center;border:1px solid #999999;">
                                                 <?= number_format(nPrice($count0 * $profilInfo2[1][0], $per, 2), 0, "", " ") ?>
@@ -1901,7 +1901,7 @@ if ($ff) {
                                         <?php if ($pmh[1]->p != 0) { ?>
                                             <tr>
                                                 <td style="width:60%;text-align:left;border:1px solid #999999;">
-                                                    <?= $pmh[1]->n ?>
+                                                    <?= $pmh[1]->n ?> (горизонтальные перемычки)
                                                 </td>
                                                 <td style="width:40%;text-align:center;border:1px solid #999999;">
                                                     <?= number_format(nPrice($count0 * $pmh[1]->p, $per, 2), 0, "", " ") ?>
@@ -1912,7 +1912,7 @@ if ($ff) {
                                         <?php if ($pmv[1]->p != 0) { ?>
                                             <tr>
                                                 <td style="width:60%;text-align:left;border:1px solid #999999;">
-                                                    <?= $pmv[1]->n ?>
+                                                    <?= $pmv[1]->n ?> (вертикальные перемычки)
                                                 </td>
                                                 <td style="width:40%;text-align:center;border:1px solid #999999;">
                                                     <?= number_format(nPrice($count0 * $pmv[1]->p, $per, 2), 0, "", " ") ?>
@@ -2251,7 +2251,7 @@ if ($ff) {
                                            cellspacing="0">
                                         <tr>
                                             <td style="width:60%;text-align:left;border:1px solid #999999;">
-                                                <?= $profilInfo3[0]["name"] ?>
+                                                <?= $profilInfo3[0]["name"] ?> (каркас)
                                             </td>
                                             <td style="width:40%;text-align:center;border:1px solid #999999;">
                                                 <?= number_format(nPrice($count0 * $profilInfo3[1][0], $per, 3), 0, "", " ") ?>
@@ -2261,7 +2261,7 @@ if ($ff) {
                                         <?php if ($pmh[2]->p != 0) { ?>
                                             <tr>
                                                 <td style="width:60%;text-align:left;border:1px solid #999999;">
-                                                    <?= $pmh[2]->n ?>
+                                                    <?= $pmh[2]->n ?> (горизонтальные перемычки)
                                                 </td>
                                                 <td style="width:40%;text-align:center;border:1px solid #999999;">
                                                     <?= number_format(nPrice($count0 * $pmh[2]->p, $per, 3), 0, "", " ") ?>
@@ -2272,7 +2272,7 @@ if ($ff) {
                                         <?php if ($pmv[2]->p != 0) { ?>
                                             <tr>
                                                 <td style="width:60%;text-align:left;border:1px solid #999999;">
-                                                    <?= $pmv[2]->n ?>
+                                                    <?= $pmv[2]->n ?> (вертикальные перемычки)
                                                 </td>
                                                 <td style="width:40%;text-align:center;border:1px solid #999999;">
                                                     <?= number_format(nPrice($count0 * $pmv[2]->p, $per, 3), 0, "", " ") ?>
