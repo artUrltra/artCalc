@@ -454,6 +454,7 @@ if (isset($_GET["selectFurnitura"])) {
                                 furnitura.benefits,
                                 furnitura.price,
                                 furnitura.formula,
+                                furnitura.manufacturer,
                                 furnituracat.cid,
                                 furnituracat.cview,
                                 furnituracat.ctype,
@@ -739,4 +740,7 @@ if(isset($_GET['setedittemp'])){
 if(isset($_GET['delereimgPDF'])){
     $DB->query_no_var("DELETE FROM images WHERE  images.id=".$_POST['id']);
     echo 'Картинка была удалена';
+}
+if(isset($_GET['getmanufacturer'])){
+echo json_encode($DB->query("SELECT * FROM manufacturer"));
 }

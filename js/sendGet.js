@@ -798,6 +798,9 @@ function SaveToPDF() {
         'arrF0': JSON.stringify(arrF0),
         'arrF1': JSON.stringify(arrF1),
         'arrF2': JSON.stringify(arrF2),
+        'Omanufacturer': frames[0].$('.manufacturer').val() ==="Производитель" ?'':frames[0].$('.manufacturer').val(),
+        'Emanufacturer': frames[1].$('.manufacturer').val() ==="Производитель" ?'':frames[1].$('.manufacturer').val(),
+        'Fmanufacturer': frames[2].$('.manufacturer').val() ==="Производитель" ?'':frames[2].$('.manufacturer').val(),
         'contacts': JSON.stringify({
             name: $('#managertext').val(),
             tel: $('#teltext').val(),
@@ -1554,6 +1557,9 @@ function SaveToPdfToFile() {
         'arrF0': JSON.stringify(arrF0),
         'arrF1': JSON.stringify(arrF1),
         'arrF2': JSON.stringify(arrF2),
+        'Omanufacturer': frames[0].$('.manufacturer').val() ==="Производитель" ?'':frames[0].$('.manufacturer').val(),
+        'Emanufacturer': frames[1].$('.manufacturer').val() ==="Производитель" ?'':frames[1].$('.manufacturer').val(),
+        'Fmanufacturer': frames[2].$('.manufacturer').val() ==="Производитель" ?'':frames[2].$('.manufacturer').val(),
         'contacts': JSON.stringify({
             name: $('#managertext').val(),
             tel: $('#teltext').val(),

@@ -526,6 +526,9 @@ function TagsText(text) {
     text = text.replace(/#EconomPrice/g, $('*[data-slider-id="2"]').find('.price span').text());
     text = text.replace(/#OptimalPrice/g, $('*[data-slider-id="1"]').find('.price span').text());
     text = text.replace(/#FyllPrice/g, $('*[data-slider-id="3"]').find('.price span').text());
+    text = text.replace(/#EconomFurn/g, frames[1].$('.manufacturer').val() ==="Производитель" ?'':frames[1].$('.manufacturer').val());
+    text = text.replace(/#OptimalFurn/g, frames[0].$('.manufacturer').val() ==="Производитель" ?'':frames[0].$('.manufacturer').val());
+    text = text.replace(/#FyllFurn/g, frames[2].$('.manufacturer').val() ==="Производитель" ?'':frames[2].$('.manufacturer').val());
 
     let detorid = parseInt(frames[0].$('#pokraskaTypeAndName').val());
     if (detorid) {

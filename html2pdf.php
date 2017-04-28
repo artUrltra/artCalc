@@ -212,6 +212,9 @@ if ($ff) {
     $arrayNamber = json_decode(sGet("arrayNamber"));
     $contacts = json_decode(sGet("contacts"));
     $schema = sGet('schema');
+    $Omanufacturer = sGet('Omanufacturer');
+    $Emanufacturer = sGet('Emanufacturer');
+    $Fmanufacturer = sGet('Fmanufacturer');
 
     $p1t = $count0 * (1 + $per[0]->i / 100) * (1 + $per[0]->p / 100) * 1.1;
     $p2t = $count0 * (1 + $per[1]->i / 100) * (1 + $per[1]->p / 100) * 1.1;
@@ -927,38 +930,10 @@ if ($ff) {
                         $srtf0 = '';
                         $srtf1 = '';
                         $srtf2 = '';
-                        $flac0 = 0;
-                        $flac01 = 0;
-                        for ($i = 0; $i < count($furnituraInfo[0]); $i++) {
-                            if ($furnituraInfo[0][$i] != false) {
-                                $flac0++;
-                            } else {
-                                $flac01 = $i;
-                            }
-                        }
-                        $flac1 = 0;
-                        $flac11 = 0;
-                        for ($i = 0; $i < count($furnituraInfo2[0]); $i++) {
-                            if ($furnituraInfo2[0][$i] != false) {
-                                $flac1++;
-
-                            } else {
-                                $flac11 = $i;
-                            }
-                        }
-                        $flac2 = 0;
-                        $flac22 = 0;
-                        for ($i = 0; $i < count($furnituraInfo3[0]); $i++) {
-                            if ($furnituraInfo3[0][$i] != false) {
-                                $flac2++;
-                            } else {
-                                $flac22 = $i;
-                            }
-                        }
-                        if ($flac0 == 1 && $flac1 == 1 && $flac2 == 1) {
-                            $srtf0 = '/' . $furnituraInfo[0][$flac01]['name'];
-                            $srtf1 = '/' . $furnituraInfo2[0][$flac11]['name'];
-                            $srtf2 = '/' . $furnituraInfo3[0][$flac22]['name'];
+                        if ($Omanufacturer != '' && $Emanufacturer != '' && $Fmanufacturer != '') {
+                            $srtf0 = '/' . $Omanufacturer;
+                            $srtf1 = '/' . $Emanufacturer;
+                            $srtf2 = '/' . $Fmanufacturer;
                         }
                         echo '<tr><td class="tabletext11">Фурнитура</td>' .
                             '<td class="tabletext12">' . number_format($f1, 0, "", " ") . ' р.' . $srtf0 . '</td>' .

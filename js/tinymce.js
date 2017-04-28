@@ -89,6 +89,21 @@ tinymce.init({
                     onclick: function () {
                         editor.insertContent('&nbsp;#FyllPrice&nbsp;')
                     }
+                }, {
+                    text: 'Экономном производител фурнитуры',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#EconomFurn&nbsp;')
+                    }
+                }, {
+                    text: 'Оптимальную производител фурнитуры',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#OptimalFurn&nbsp;')
+                    }
+                }, {
+                    text: 'Премиум производител фурнитуры',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#FyllFurn&nbsp;')
+                    }
                 }]
         });
     },

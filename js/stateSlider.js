@@ -386,8 +386,10 @@ var storage = {
     managers: [],
     catalogs: [],
     temp: [],
+    manufacturer: [],
     init: function () {
         storage.fillP();
+        storage.fillmanufacturer();
         storage.fillPS();
         storage.fillF();
         storage.fillM();
@@ -406,6 +408,11 @@ var storage = {
         storage.fillmanagers();
         storage.fillcatalogs();
         storage.filltemp();
+    },
+    fillmanufacturer: function () {
+        $.post('./admin/ajax.php?getmanufacturer=1', function (data) {
+            storage.manufacturer = JSON.parse(data);
+        });
     },
     filltemp: function () {
         $.post('./admin/ajax.php?getteml=1', function (data) {

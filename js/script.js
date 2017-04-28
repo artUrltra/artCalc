@@ -595,19 +595,16 @@ function procPrice(summ) {
         $('.summaSParametrami .price').text("0");
     } else {
         $('.summaSParametrami .price').text(Total);
-        switch (checkState(window)){
-            case 0:
-            {
+        switch (checkState(window)) {
+            case 0: {
                 top.$('*[data-slider-id="1"]').find('.price span').text(Total);
                 break;
             }
-            case 1:
-            {
+            case 1: {
                 top.$('*[data-slider-id="2"]').find('.price span').text(Total);
                 break;
             }
-            case 2:
-            {
+            case 2: {
                 top.$('*[data-slider-id="3"]').find('.price span').text(Total);
                 break;
             }
@@ -1541,9 +1538,9 @@ function checktupematerials(id) {
             break;
     }
 }
-$('#TYPE_BAFFLE_ID').change(function(){
-    switch (checkState(window)){
-        case 0 :{
+$('#TYPE_BAFFLE_ID').change(function () {
+    switch (checkState(window)) {
+        case 0 : {
             top.frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
             top.frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
 
@@ -1558,9 +1555,9 @@ $('#TYPE_BAFFLE_ID').change(function(){
             top.frames[2].nfurnitura.getDataFurnitura();
             top.frames[2].nfurnitura.viewTotalFurnitura();
 
-         break;
+            break;
         }
-        case 1:{
+        case 1: {
             top.frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
             top.frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
 
@@ -1576,7 +1573,7 @@ $('#TYPE_BAFFLE_ID').change(function(){
             top.frames[2].nfurnitura.viewTotalFurnitura();
             break;
         }
-        case 2:{
+        case 2: {
             top.frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
             top.frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
 
@@ -1595,24 +1592,131 @@ $('#TYPE_BAFFLE_ID').change(function(){
     }
 });
 
-$('#shema').change(function(){
-    let _flag =$(this).prop( "checked" );
+$('#shema').change(function () {
+    let _flag = $(this).prop("checked");
     console.log(_flag);
-    switch (checkState(window)){
-        case 0 :{
-            top.frames[1].$('#shema').prop( "checked",_flag);
-            top.frames[2].$('#shema').prop( "checked",_flag);
+    switch (checkState(window)) {
+        case 0 : {
+            top.frames[1].$('#shema').prop("checked", _flag);
+            top.frames[2].$('#shema').prop("checked", _flag);
             break;
         }
-        case 1:{
-            top.frames[0].$('#shema').prop( "checked",_flag);
-            top.frames[2].$('#shema').prop( "checked",_flag);
+        case 1: {
+            top.frames[0].$('#shema').prop("checked", _flag);
+            top.frames[2].$('#shema').prop("checked", _flag);
             break;
         }
-        case 2:{
-            top.frames[1].$('#shema').prop( "checked",_flag);
-            top.frames[0].$('#shema').prop( "checked",_flag);
+        case 2: {
+            top.frames[1].$('#shema').prop("checked", _flag);
+            top.frames[0].$('#shema').prop("checked", _flag);
             break;
         }
     }
 });
+$('body').on('change', '.manufacturer', function () {
+    let v = $(this).val();
+    let arr = top.storage.f.filter((i) => i.manufacturer === v);
+
+    if (arr.length > 0) {
+        arr.forEach((i) => {
+            if (i.cat == 1)
+                nfurnitura.SelectRazdvizhnyieMehanizmyiEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 2)
+                nfurnitura.SelectmehanizmsinhronizaciiEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 3)
+                nfurnitura.SelectnapravEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 4)
+                nfurnitura.SelectvidkreplenianapravEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 5)
+                nfurnitura.SelectpovodokEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 6)
+                nfurnitura.SelectdovodchikEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 7)
+                nfurnitura.SelectdekplankadlyaprofilyaEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 8)
+                nfurnitura.SelectschetochniiuplotnitelEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 9)
+                nfurnitura.SelectruchkaEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 10)
+                nfurnitura.SelectzamokEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 11)
+                nfurnitura.SelectmehanizmsinhronskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 12)
+                nfurnitura.SelectmehanizmrotorniiEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 13)
+                nfurnitura.SelectpetliskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 14)
+                nfurnitura.SelectnapravlyayuschieskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 15)
+                nfurnitura.SelectvidkrepleniyanapravlyayuschihskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 16)
+                nfurnitura.SelectdekplankadlyaprofilyaskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 17)
+                nfurnitura.SelectschetochniiuplotnitelskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 18)
+                nfurnitura.SelectruchkaskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 19)
+                nfurnitura.SelectkreplenieruchliskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 20)
+                nfurnitura.SelectzamokskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 21)
+                nfurnitura.SelectpetliRaspashnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 22)
+                nfurnitura.SelectruchkaRaspashnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 23)
+                nfurnitura.SelectzamokRaspashnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 24)
+                nfurnitura.SelectnozhkimobilnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 25)
+                nfurnitura.SelectkolesikimobilnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 26)
+                nfurnitura.SelectstoykimobilnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 27)
+                nfurnitura.SelecttipSoedineniyaPolotenmobilnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 28)
+                nfurnitura.SelectStoikiStacEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 29)
+                nfurnitura.SelectnapravnEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 30)
+                nfurnitura.SelectnapravlyayuschienskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 31)
+                nfurnitura.SelectmehanizmtelestopEnd("./admin/" + i.img, i.name, i.price);
+        });
+        $('#furnitura-tab h4.text').each(function () {
+            let $item = $(this);
+            let str = $item.text();
+            let i = arr.find((s) => s.name === str);
+            if (i) {
+                let $i = $item.parent().find('select');
+                $i.val(1);
+                $i.trigger('change');
+
+            }else {
+                let $i = $item.parent().find('select');
+                $i.val(0);
+                $i.trigger('change');
+            }
+        });
+    } else {
+        parent.message("Извините но у данного производителя нету фурнитуры");
+        $('#furnitura-tab h4.text').each(function () {
+            let $item = $(this).parent().find('select');
+            $item.val(0);
+            $item.trigger('change');
+        });
+    }
+
+});
+setTimeout(() => {
+    console.log('INIT manufacturer');
+    $('.manufacturer').each(function () {
+        let e = $(this);
+        if (top.storage.manufacturer.length !== 0) {
+            top.storage.manufacturer.forEach(function (i) {
+                e.append($('<option value="' + i.name + '">' + i.name + '</option>'));
+            })
+        }
+    });
+}, 7000);
+
+
