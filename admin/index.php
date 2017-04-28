@@ -136,7 +136,14 @@ function loading($page, $smarty, $DB)
         case 'temp';
             temp($smarty, $DB);
             break;
+        case 'manufacturer';
+            manufacturer($smarty,$DB);
     }
+}
+function manufacturer($smarty,$DB){
+    menu($smarty, $DB);
+    $smarty->assign('items',$DB->query('SELECT * FROM manufacturer'));
+    $smarty->display('manufacturer.tpl');
 }
 
 function temp($smarty, $DB)
@@ -597,6 +604,7 @@ function furnitura($smarty, $DB, $type)
                        furnitura.benefits,
                        furnitura.price,
                        furnitura.formula,
+                       furnitura.manufacturer,
                        furnituracat.cid,
                        furnituracat.cview,
                        furnituracat.ctype,
@@ -610,6 +618,7 @@ function furnitura($smarty, $DB, $type)
     $smarty->assign('formuls', $formuls);
     menu($smarty, $DB);
 
+    $smarty->assign('manufacture',$DB->query('SELECT * FROM manufacturer'));
     $smarty->assign('cats', $DB->query("SELECT * FROM furnituracat WHERE ctype = {$type}"));
     $smarty->assign('profils', $DB->query("SELECT id,name FROM profile"));
     $smarty->display('furnitura' . $type . '.tpl');

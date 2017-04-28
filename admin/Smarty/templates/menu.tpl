@@ -90,6 +90,7 @@
                         <li class="current"><a href="../admin/index.php?page=gallery">Галерея</a></li>
                         <li class="current"><a href="../admin/index.php?page=gallery3d">Галерея 3d</a></li>
                         <li class="current"><a href="../admin/index.php?page=temp">Шаблоны</a></li>
+                        <li class="current"><a href="../admin/index.php?page=manufacturer">Производители для Фурнитуры</a></li>
                     </ul>
                 </li>
             </ul>

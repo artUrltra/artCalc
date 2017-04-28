@@ -74,9 +74,23 @@ tinymce.init({
                     onclick: function () {
                         editor.insertContent('&nbsp;#type&nbsp;')
                     }
+                }, {
+                    text: 'Цена за экономную сборку',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#EconomPrice&nbsp;')
+                    }
+                }, {
+                    text: 'Цена за оптимальную сборку',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#OptimalPrice&nbsp;')
+                    }
+                }, {
+                    text: 'Цена за премиум сборку',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#FyllPrice&nbsp;')
+                    }
                 }]
         });
-
     },
     content_css: '//www.tinymce.com/css/codepen.min.css'
 });

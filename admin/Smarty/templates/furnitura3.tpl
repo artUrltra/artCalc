@@ -87,6 +87,12 @@
                         {/foreach}
 
                     </select></div>
+                <div class="col-md-12"><select id="proizvod" class="form-control">
+                        {foreach from=$manufacture item=$i}
+                            <option value="">Производитель</option>
+                            <option value="{$i['name']}">{$i['name']}</option>{/foreach}
+                    </select>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -131,6 +137,7 @@
                 <th>Большая картинка</th>
                 <th>Цена</th>
                 <th>Формула</th>
+                <th>Производитель</th>
                 </thead>
                 <tbody>
                 {foreach $items as $item name=items}
@@ -141,7 +148,8 @@
                         <td><img src="{$item['img']}" class="img-responsive" width="140px" height="140px"></td>
                         <td><img src="{$item['imgBig']}" class="img-responsive" width="140px" height="140px"></td>
                         <td>{$item['price']}</td>
-                            <td>{$item['formula']}</td>
+                        <td>{$item['formula']}</td>
+                        <td>{$item['manufacturer']}</td>
                         <td>
                             <button type="button" onclick="predit({$item['id']})" class="btn btn-link"
                                     data-toggle="modal" data-target="#myModal"><span
@@ -246,16 +254,25 @@
                             {/foreach}
 
                         </select>
-                        Характеристики:<br/><textarea cols="86" rows="4" id="edit_characteristics" class="form-control"></textarea><br/>
-                        Описание:<br/><textarea cols="86" rows="4" id="edit_description" class="form-control"></textarea><br/>
-                        Преимущества:<br/><textarea cols="86" rows="4" id="edit_benefits" class="form-control"></textarea><br/>
+                        Производитель:
+                        <select id="edit_proizvod" class="form-control">
+                            {foreach from=$manufacture item=$i}
+                                <option value="Не выбран">Не выбран</option>
+                                <option value="{$i['name']}">{$i['name']}</option>{/foreach}
+                        </select>
+                        Характеристики:<br/><textarea cols="86" rows="4" id="edit_characteristics"
+                                                      class="form-control"></textarea><br/>
+                        Описание:<br/><textarea cols="86" rows="4" id="edit_description"
+                                                class="form-control"></textarea><br/>
+                        Преимущества:<br/><textarea cols="86" rows="4" id="edit_benefits"
+                                                    class="form-control"></textarea><br/>
                         <div>
                 </form>
                 <div class="row">
                     <div class="col-md-6">
                         <center>
-                            <img  src="../img/material/undefined.png" width="300px" height="300px"
-                                  id="edit_img" {*class="img-responsive" alt="Responsive image"*}>
+                            <img src="../img/material/undefined.png" width="300px" height="300px"
+                                 id="edit_img" {*class="img-responsive" alt="Responsive image"*}>
                         </center>
                     </div>
                     <div class="col-md-6">
@@ -337,7 +354,8 @@
                 benefits = "&benefits=" + $('#benefits').val();
                 price = "&price=" + $('#price').val();
                 formula = "&formula=" + $('#formula').val();
-                var data = cat + name + img + imgBig + characteristics + description + benefits + price + formula + "&" + form;
+                proizvod = "&proizvod=" + $('#proizvod').val();
+                var data = cat + name + img + imgBig + characteristics + description + benefits + price + formula+proizvod + "&" + form;
                 $.post('../admin/ajax.php?add=addfurnitura', data, function (data) {
                     location.reload();
                 });
@@ -349,19 +367,20 @@
         }
     }
     function edit() {
-      /*  himg = (typeof $('.dz-filename').get(0) == 'undefined') ? $('#edit_himg').val() : 'uploads/' + $($('.dz-filename').get(0)).find('#img_name').html();
-        himgBig = (typeof $('.dz-filename').get(1) == 'undefined') ? $('#edit_himgBig').val() : 'uploads/' + $($('.dz-filename').get(1)).find('#img_name').html();*/
+        /*  himg = (typeof $('.dz-filename').get(0) == 'undefined') ? $('#edit_himg').val() : 'uploads/' + $($('.dz-filename').get(0)).find('#img_name').html();
+         himgBig = (typeof $('.dz-filename').get(1) == 'undefined') ? $('#edit_himgBig').val() : 'uploads/' + $($('.dz-filename').get(1)).find('#img_name').html();*/
         id = "&id=" + $('#edit_id').val();
         cat = "&cat=" + $('#edit_cat').val();
         name = "&name=" + $('#edit_name').val();
-        img = "&img="  + $('#edit_img').attr('src');
-        imgBig = "&imgBig="+ $('#edit_img1').attr('src');
+        img = "&img=" + $('#edit_img').attr('src');
+        imgBig = "&imgBig=" + $('#edit_img1').attr('src');
         characteristics = "&characteristics=" + $('#edit_characteristics').val();
         description = "&description=" + $('#edit_description').val();
         benefits = "&benefits=" + $('#edit_benefits').val();
         price = "&price=" + $('#edit_price').val();
         formula = "&formula=" + $('#edit_formula').val();
-        var data = id + cat + name + img + imgBig + characteristics + description + benefits + price + formula;
+        proizvod = "&proizvod=" + $('#edit_proizvod').val();
+        var data = id + cat + name + img + imgBig + characteristics + description + benefits + price + formula +proizvod;
         $.post('../admin/ajax.php?add=editfurnitura', data, function (data) {
             location.reload();
         });
@@ -372,13 +391,14 @@
             $('#edit_id').val(obj[0].id);
             $('#edit_cat').val(obj[0].cat);
             $('#edit_name').val(obj[0].name);
-            $('#edit_img').attr('src',obj[0].img);
-            $('#edit_img1').attr('src',obj[0].imgBig);
+            $('#edit_img').attr('src', obj[0].img);
+            $('#edit_img1').attr('src', obj[0].imgBig);
             $('#edit_characteristics').html(obj[0].characteristics);
             $('#edit_description').html(obj[0].description);
             $('#edit_benefits').html(obj[0].benefits);
             $('#edit_price').val(obj[0].price);
             $('#edit_formula').val(obj[0].formula);
+            $('#edit_proizvod').val(obj[0].manufacturer);
         });
     }
     function itemdelete(id) {
@@ -398,9 +418,9 @@
             modal: true,
             buttons: {
                 "Выбрать все": function () {
-                   $('#profilform input').each(function(i,elem) {
-                        $(elem).attr("checked","checked");
-                    });     
+                    $('#profilform input').each(function (i, elem) {
+                        $(elem).attr("checked", "checked");
+                    });
                 },
                 "Сохранить": function () {
                     dialog.dialog("close");

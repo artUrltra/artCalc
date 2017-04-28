@@ -116,7 +116,7 @@ if (isset($_GET['add'])) {
             break;
         case 'addfurnitura':
             $DB->query_no_var("INSERT INTO furnitura (
-                cat, name, img, imgBig, characteristics, description, benefits, price, formula
+                cat, name, img, imgBig, characteristics, description, benefits, price, formula,manufacturer
             ) VALUES (
                 '" . $_POST['cat'] . "',
                 '" . $_POST['name'] . "',
@@ -126,7 +126,8 @@ if (isset($_GET['add'])) {
                 '" . $_POST['description'] . "',
                 '" . $_POST['benefits'] . "',
                 '" . $_POST['price'] . "',
-                '" . $_POST['formula'] . "'
+                '" . $_POST['formula'] . "',
+                '" . $_POST['proizvod'] . "'
             )");
             $item = $DB->query("SELECT id FROM furnitura WHERE name LIKE '{$_POST['name']}' AND cat = {$_POST['cat']}");
             unset($_POST['cat']);
@@ -152,7 +153,8 @@ if (isset($_GET['add'])) {
                 description='" . $_POST['description'] . "',
                 benefits='" . $_POST['benefits'] . "',
                 price='" . $_POST['price'] . "',
-                formula='" . $_POST['formula'] . "'
+                formula='" . $_POST['formula'] . "',
+                manufacturer='" . $_POST['proizvod'] . "'
             WHERE `id`='" . $_POST['id'] . "'");
             break;
         case 'preditfurnitura':
@@ -231,6 +233,11 @@ if (isset($_GET['add'])) {
             echo 'Добавлено';
 
             break;
+        case addmanufacturer:{
+            $sql ="INSERT INTO manufacturer (id,name) VALUES (NULL ,'{$_POST['name']}')";
+            $DB->query_no_var($sql);
+            echo $sql;
+        }
     }
 }
 
@@ -270,6 +277,9 @@ if (isset($_GET['delete'])) {
         case 'deletefurnitura':
             $DB->query("DELETE FROM furnitura WHERE id=" . $_POST['id']);
             $DB->query("DELETE FROM furniturapro WHERE pfid=" . $_POST['id']);
+            break;
+        case 'deletemanufacture':
+            $DB->query("DELETE FROM manufacturer WHERE id=" . $_POST['id']);
             break;
         case 'deletecalcmanager':
             $DB->query("DELETE FROM calcmanagers WHERE id=" . $_POST['id']);
