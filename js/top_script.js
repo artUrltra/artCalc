@@ -315,14 +315,39 @@ function loadmail() {
     var manager = storage.managers.find(function (v) {
         return v.id === id_manager
     });
-    var catalog = [];
+    let catalog = [];
     $('.checkbox  input[type="checkbox"]').each(function () {
         if ($(this).prop('checked')) {
-            var text = $(this).parent().text();
-            var item = storage.catalogs.find(function (v) {
-                return v.name === text;
-            });
-            catalog.push({name: item.name, link: item.link});
+            let name = $(this).parent().text();
+            let items = storage.catalogs.find((s) => s.name === name);
+            if (items) {
+                if (items.parent_id === 0) {
+                    let i = storage.catalogs.filter((s) => s.parent_id === items.id);
+                    if (i) {
+                        i.forEach((b) => {
+                            catalog.push({
+                                name: b.description !== '' ? b.description : b.name,
+                                link: b.link
+                            });
+                        });
+                    }
+                } else {
+                    let i = storage.catalogs.filter((s) => s.name === name);
+                    if (i) {
+                        i.forEach((b) => {
+                            catalog.push({
+                                name: b.description !== '' ? b.description : b.name,
+                                link: b.link
+                            });
+                        });
+                    } else if (!i || i.length === 1) {
+                        catalog.push({
+                            name: items.description !== '' ? items.description : items.name,
+                            link: items.link
+                        });
+                    }
+                }
+            }
         }
     });
     var html = '';
