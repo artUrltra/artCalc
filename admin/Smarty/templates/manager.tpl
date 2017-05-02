@@ -75,4 +75,86 @@
             <div class="modal-body">
                 <form>
                     <input type="text" class="form-control" id="edit_name" placeholder="Логин"/>
-          
+                    <input type="text" class="form-control" id="edit_pass" placeholder="Пароль"/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="edit_exit" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button type="button" id="edit_submit" class="btn btn-primary">Редактировать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<script src="../admin/jquery-3.1.1.min.js"></script>
+<script>
+    function submit () {
+        var name = "name=" + $("#logan").val();
+        var price = "pass=" + $("#pass").val();
+        var sum = name + "&" + price;
+        $.ajax({
+            url: "../admin/ajax.php?add=add4",
+            type: "POST",
+            data: sum,
+            success: function (data) {
+                alert(data);
+                location.reload();
+            }
+        });
+    }
+
+    function edit(id) {
+        $.ajax({
+            type: "POST",
+            url: "../admin/ajax.php?select=4",
+            data: "id=" + id,
+            success: function (data) {
+                data = JSON.parse(data);
+                $("#edit_name").val(data[0].Name);
+                $("#edit_pass").val(data[0].Pass);
+            }
+        });
+        $('#edit_submit').click(function () {
+
+
+            $("#edit_exit").click();
+
+
+            var name = "name=" + $("#edit_name").val();
+            var pass = "pass=" + $("#edit_pass").val();
+            var sum = name + "&" + pass;
+            $.ajax({
+                url: "../admin/ajax.php?add=add4",
+                type: "POST",
+                data: sum,
+                success: function (data) {
+                    itemdelete(id);
+                    location.reload();
+                }
+            });
+        });
+    }
+    function itemdelete(id) {
+        console.log(id);
+        $.ajax({
+            type: "POST",
+            url: "../admin/ajax.php?delete=delete3",
+            data: "id=" + id
+        });
+        $('#delete' + id).remove();
+    }
+    $("#add").click(function () {
+        $('<input type="text"  class="form-control" id="logan" size="50" placeholder="Логин" />').insertAfter('#hr');
+        $('<input type="text"  class="form-control" id="pass" size="50" placeholder="Пароль" />').insertAfter('#logan');
+        $('<button class="btn btn-success btn-lg" id="submit" onclick="submit()">Добавить</button>').insertAfter('#pass');
+        $('<hr>').insertAfter('#submit');
+        $("#add").remove();
+    })
+</script>
+<script src = "../admin/assets/js/bootstrap.min.js" > </script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../admin/assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

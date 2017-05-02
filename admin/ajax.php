@@ -50,8 +50,7 @@ if (isset($_GET['add'])) {
             echo json_encode($_POST);
             break;
         case 'add4':
-            $password = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-            $DB->query("INSERT INTO `users` (`id`, `Name`, `Pass`, `hash`) VALUES (NULL, '{$_POST['name']}','{$_POST['pass']}','{$password}')");
+            $DB->query("INSERT INTO `users` (`id`, `Name`, `Pass`, `hash`) VALUES (NULL, '{$_POST['name']}','{$_POST['pass']}','')");
             echo "Добавлено";
             break;
         case 'add5':

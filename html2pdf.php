@@ -1920,8 +1920,16 @@ if ($ff) {
                                 <tr>
                                     <td style="width:30%;">
                                         <p style="text-align:center;">
-                                            <?php if ($furnituraInfo2[0][0]['img'] != "" && @fopen("admin/" . $furnituraInfo2[0][0]['img'], "r")) { ?>
-                                                <img src='admin/<?= $furnituraInfo2[0][0]['img'] ?>'
+                                            <?php
+                                            $linkimg='';
+                                            for ($i=0;$i<count($furnituraInfo2[0]);$i++){
+                                                if($furnituraInfo2[0][$i] !=FALSE){
+                                                    $linkimg=$furnituraInfo2[0][$i]['img'];
+                                                    break;
+                                                }
+                                            }
+                                            if ($linkimg != "" && @fopen("admin/" . $linkimg, "r")) { ?>
+                                                <img src='admin/<?=$linkimg ?>'
                                                      style="height:100px;">
                                             <?php } else { ?>
                                                 <img src='img/notselected.png' style="height:100px;width:100px;">
@@ -2280,8 +2288,15 @@ if ($ff) {
                                 <tr>
                                     <td style="width:30%;">
                                         <p style="text-align:center;">
-                                            <?php if ($furnituraInfo3[0][0]['img'] != "" && @fopen("admin/" . $furnituraInfo3[0][0]['img'], "r")) { ?>
-                                                <img src='admin/<?= $furnituraInfo3[0][0]['img'] ?>'
+                                            <?php  $linkimg='';
+                                            for ($i=0;$i<count($furnituraInfo3[0]);$i++){
+                                                if($furnituraInfo3[0][$i] !=FALSE){
+                                                    $linkimg=$furnituraInfo3[0][$i]['img'];
+                                                    break;
+                                                }
+                                            }
+                                            if ($linkimg != "" && @fopen("admin/" . $linkimg, "r")) { ?>
+                                                <img src='admin/<?=$linkimg ?>'
                                                      style="height:100px;width:100px;">
                                             <?php } else { ?>
                                                 <img src='img/notselected.png' style="height:100px;width:100px;">

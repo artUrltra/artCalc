@@ -183,6 +183,10 @@ function GloblPrice_FLAG() {
         let height_slider = $('#slider1').find(".bg").outerHeight();
         $('#slider2').find(".bg").height(height_slider);
         $('#slider3').find(".bg").height(height_slider);
+
+        let manufacturer = frames[0].$('.manufacturer').val();
+        frames[1].$('.manufacturer').val(manufacturer);
+        frames[2].$('.manufacturer').val(manufacturer);
     }
 }
 
@@ -400,9 +404,9 @@ $('body').on('change', '.catalogs input[type="checkbox"]', function () {
     arr.forEach((v) => {
         drop.append('<li><a href="javascript:void(0)" onclick="addLinkCatalogintext(' + v.id + ')">' + v.name + '</a></li>');
     });
-    if(arr.length ===0){
+    if (arr.length === 0) {
         $('#dropdownMenu1').attr('disabled', 'disabled');
-    }else {
+    } else {
         $('#dropdownMenu1').removeAttr('disabled');
     }
 });
@@ -526,25 +530,25 @@ function TagsText(text) {
     text = text.replace(/#EconomPrice/g, $('*[data-slider-id="2"]').find('.price span').text());
     text = text.replace(/#OptimalPrice/g, $('*[data-slider-id="1"]').find('.price span').text());
     text = text.replace(/#FyllPrice/g, $('*[data-slider-id="3"]').find('.price span').text());
-    text = text.replace(/#EconomFurn/g, frames[1].$('.manufacturer').val() ==="Производитель" ?'':frames[1].$('.manufacturer').val());
-    text = text.replace(/#OptimalFurn/g, frames[0].$('.manufacturer').val() ==="Производитель" ?'':frames[0].$('.manufacturer').val());
-    text = text.replace(/#FyllFurn/g, frames[2].$('.manufacturer').val() ==="Производитель" ?'':frames[2].$('.manufacturer').val());
+    text = text.replace(/#EconomFurn/g, frames[1].$('.manufacturer').val() === "Производитель" ? '' : frames[1].$('.manufacturer').val());
+    text = text.replace(/#OptimalFurn/g, frames[0].$('.manufacturer').val() === "Производитель" ? '' : frames[0].$('.manufacturer').val());
+    text = text.replace(/#FyllFurn/g, frames[2].$('.manufacturer').val() === "Производитель" ? '' : frames[2].$('.manufacturer').val());
 
     let detorid = parseInt(frames[0].$('#pokraskaTypeAndName').val());
     if (detorid) {
         let _i = storage.d.find((v) => v.id === detorid);
         if (_i) {
             switch (_i.parent_id) {
-                case 1:{
-                    text = text.replace(/#Dekor/g , 'RAL : '+_i.name);
+                case 1: {
+                    text = text.replace(/#Dekor/g, 'RAL : ' + _i.name);
                     break;
                 }
-                case 3:{
-                    text = text.replace(/#Dekor/g, 'Декор : '+_i.name);
+                case 3: {
+                    text = text.replace(/#Dekor/g, 'Декор : ' + _i.name);
                     break;
                 }
-                case 4:{
-                    text = text.replace(/#Dekor/g, 'Анодирование : '+_i.name);
+                case 4: {
+                    text = text.replace(/#Dekor/g, 'Анодирование : ' + _i.name);
                     break;
                 }
             }

@@ -1616,7 +1616,11 @@ $('#shema').change(function () {
 $('body').on('change', '.manufacturer', function () {
     let v = $(this).val();
     let arr = top.storage.f.filter((i) => i.manufacturer === v);
-
+    $('#furnitura-tab h4.text').each(function () {
+        let $item = $(this).parent().find('select');
+        $item.val(0);
+        $item.trigger('change');
+    });
     if (arr.length > 0) {
         arr.forEach((i) => {
             if (i.cat == 1)
