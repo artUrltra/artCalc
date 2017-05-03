@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f01d9500-81db-4fc7-86ad-105665760a78" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/catalog.js" afterPath="$PROJECT_DIR$/js/catalog.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/top_script.js" afterPath="$PROJECT_DIR$/js/top_script.js" />
     </list>
@@ -155,32 +154,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="catalog.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="catalog.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/catalog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="206" column="38" lean-forward="false" selection-start-line="206" selection-start-column="38" selection-end-line="206" selection-end-column="38" />
+            <state relative-caret-position="320">
+              <caret line="243" column="30" lean-forward="false" selection-start-line="243" selection-start-column="30" selection-end-line="243" selection-end-column="30" />
               <folding>
                 <element signature="e#503#2099#0" expanded="false" />
-                <marker date="1493843377271" expanded="true" signature="2373:2388" ph="..." />
-                <marker date="1493843377271" expanded="true" signature="3007:3022" ph="..." />
-                <marker date="1493843377271" expanded="true" signature="3226:3241" ph="..." />
-                <marker date="1493843377271" expanded="true" signature="3602:3617" ph="..." />
-                <marker date="1493843377271" expanded="true" signature="3925:3940" ph="..." />
-                <marker date="1493843377271" expanded="true" signature="4504:4519" ph="..." />
+                <marker date="1493844298430" expanded="true" signature="2373:2388" ph="..." />
+                <marker date="1493844298430" expanded="true" signature="3007:3022" ph="..." />
+                <marker date="1493844298430" expanded="true" signature="3226:3241" ph="..." />
+                <marker date="1493844298430" expanded="true" signature="3602:3617" ph="..." />
+                <marker date="1493844298430" expanded="true" signature="3925:3940" ph="..." />
+                <marker date="1493844298430" expanded="true" signature="4504:4519" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="top_script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="top_script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/top_script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="398" column="13" lean-forward="true" selection-start-line="398" selection-start-column="13" selection-end-line="398" selection-end-column="13" />
+            <state relative-caret-position="238">
+              <caret line="553" column="17" lean-forward="false" selection-start-line="553" selection-start-column="17" selection-end-line="553" selection-end-column="17" />
               <folding>
-                <marker date="1493843430512" expanded="true" signature="11489:11552" ph="..." />
-                <marker date="1493843430512" expanded="true" signature="11670:11734" ph="..." />
+                <marker date="1493843818275" expanded="true" signature="11489:11552" ph="..." />
+                <marker date="1493843818275" expanded="true" signature="11670:11734" ph="..." />
               </folding>
             </state>
           </provider>
@@ -280,8 +279,8 @@
         <option value="$PROJECT_DIR$/html2pdf.php" />
         <option value="$PROJECT_DIR$/js/catalogs.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/catalog.js" />
         <option value="$PROJECT_DIR$/js/top_script.js" />
+        <option value="$PROJECT_DIR$/js/catalog.js" />
       </list>
     </option>
   </component>
@@ -490,7 +489,7 @@
       <workItem from="1493751213407" duration="1005000" />
       <workItem from="1493752269393" duration="6354000" />
       <workItem from="1493795441809" duration="22074000" />
-      <workItem from="1493832538261" duration="10939000" />
+      <workItem from="1493832538261" duration="12305000" />
     </task>
     <task id="LOCAL-00001" summary="Баг с подгрузкой">
       <created>1492372869932</created>
@@ -702,11 +701,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493758748011</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Изменение в каталогах">
+      <created>1493843588992</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1493843588992</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="351647000" />
+    <option name="totallyTimeSpent" value="353013000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -789,7 +795,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Исправел баг с midPrice" />
     <MESSAGE value="Добавлено редактирование для Шаблонов" />
     <MESSAGE value="Исправленна проблемас шаблонами" />
     <MESSAGE value="Добавлено мульти дополнение для калькулятора и pdf и текст на в табличке pdf" />
@@ -814,7 +819,8 @@
     <MESSAGE value="Добавлен производитель в калькулятор" />
     <MESSAGE value="Доработка" />
     <MESSAGE value="Доработка каталогов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Доработка каталогов" />
+    <MESSAGE value="Изменение в каталогах" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменение в каталогах" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1184,22 +1190,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/catalog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="206" column="38" lean-forward="false" selection-start-line="206" selection-start-column="38" selection-end-line="206" selection-end-column="38" />
-          <folding>
-            <element signature="e#503#2099#0" expanded="false" />
-            <marker date="1493843377271" expanded="true" signature="2373:2388" ph="..." />
-            <marker date="1493843377271" expanded="true" signature="3007:3022" ph="..." />
-            <marker date="1493843377271" expanded="true" signature="3226:3241" ph="..." />
-            <marker date="1493843377271" expanded="true" signature="3602:3617" ph="..." />
-            <marker date="1493843377271" expanded="true" signature="3925:3940" ph="..." />
-            <marker date="1493843377271" expanded="true" signature="4504:4519" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1212,11 +1202,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/top_script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="398" column="13" lean-forward="true" selection-start-line="398" selection-start-column="13" selection-end-line="398" selection-end-column="13" />
+        <state relative-caret-position="238">
+          <caret line="553" column="17" lean-forward="false" selection-start-line="553" selection-start-column="17" selection-end-line="553" selection-end-column="17" />
           <folding>
-            <marker date="1493843430512" expanded="true" signature="11489:11552" ph="..." />
-            <marker date="1493843430512" expanded="true" signature="11670:11734" ph="..." />
+            <marker date="1493843818275" expanded="true" signature="11489:11552" ph="..." />
+            <marker date="1493843818275" expanded="true" signature="11670:11734" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/catalog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="243" column="30" lean-forward="false" selection-start-line="243" selection-start-column="30" selection-end-line="243" selection-end-column="30" />
+          <folding>
+            <element signature="e#503#2099#0" expanded="false" />
+            <marker date="1493844298430" expanded="true" signature="2373:2388" ph="..." />
+            <marker date="1493844298430" expanded="true" signature="3007:3022" ph="..." />
+            <marker date="1493844298430" expanded="true" signature="3226:3241" ph="..." />
+            <marker date="1493844298430" expanded="true" signature="3602:3617" ph="..." />
+            <marker date="1493844298430" expanded="true" signature="3925:3940" ph="..." />
+            <marker date="1493844298430" expanded="true" signature="4504:4519" ph="..." />
           </folding>
         </state>
       </provider>

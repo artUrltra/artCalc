@@ -551,6 +551,7 @@ function TagsText(text) {
         let profile = '';
         _arr.forEach((s) => {
             let p = storage.p.find((v) => v.name === s);
+            if(p)
             profile += p.name + ' ' + p.model + 'x' + p.int + ' мм.';
         });
 

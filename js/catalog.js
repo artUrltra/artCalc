@@ -179,7 +179,7 @@ function getcatalogs() {
                     });
             });
         }
-        if (l0.length > 0 && l1.length > 0) {
+        if (l0.length > 0) {
             l2 = _arr.map((s) => {
                 if (l0.concat(l1).find((_s) => _s.name === s.name)) {
                     return undefined
@@ -201,20 +201,7 @@ function getcatalogs() {
         if (l0.length === 0 && l1.length === 0) {
             l2 = _arr;
         }
-        if (l0.length > 0 && l1.length === 0 && l2.length === 0) {
-            console.log(l0);
-            l0.forEach((b) => {
-                let i = storage.catalogs.filter((s) => s.parent_id === b.id);
-                if (i)
-                    i.forEach((_i) => {
-                        arr.push({
-                            name: _i.description !== '' ? _i.description : _i.name,
-                            link: _i.link,
-                            id: _i.id
-                        });
-                    });
-            });
-        } else if (l0.length > 0 && l1.length === 0 && l2.length > 0) {
+        if (l0.length > 0 && l1.length === 0 && l2.length > 0) {
             l2.forEach((_i) => {
                 arr.push({
                     name: _i.description !== '' ? _i.description : _i.name,
@@ -238,7 +225,25 @@ function getcatalogs() {
                     id: _i.id
                 });
             });
+        } else if (l0.length > 0 && l1.length === 0 && l2.length === 0) {
+            l0.forEach((b) => {
+                let i = storage.catalogs.filter((s) => s.parent_id === b.id);
+                if (i)
+                    i.forEach((_i) => {
+                        arr.push({
+                            name: _i.description !== '' ? _i.description : _i.name,
+                            link: _i.link,
+                            id: _i.id
+                        });
+                    });
+            });
         }
     }
-    return arr;
+    let get = [];
+    arr.forEach((v) => {
+        let i = get.find((s) => s.name === v.name);
+        if (!i)
+            get.push(v);
+    });
+    return get;
 }
