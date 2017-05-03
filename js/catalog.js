@@ -42,76 +42,56 @@ var catalogs = {
                 lefthtml += '</div> </div>';
                 left.append(lefthtml);
             });
-            let centel1 = father.filter((v) => v.left === 0 && v.parent_id === 0);
-            let filter = [];
-            centel1.forEach((v) => {
-                let i = filter.find((s) => s.name === v.name);
-                if (!i) {
-                    filter.push(v);
-                }
-            });
-            filter.forEach((v) => {
+            let level1 = father.filter((v) => v.left === 0 && v.parent_id === 0 && v.separately === 0);
+            let level2 = [];
+            let level3 = [];
+            level1.forEach((v) => {
                 $('#level1').append('<div class="checkbox"><label style="font-size: 20px"><input type="checkbox">' + v.name + '</label></div>');
+                storage.catalogs.filter((s) => s.parent_id === v.id).forEach((s) => {
+                    if (!level2.find((d) => d.name === s.name))
+                        level2.push(s);
+
+                    storage.catalogs.filter((b) => b.parent_id === s.id).forEach((v) => {
+                        if (!level3.find((d) => d.name === v.name))
+                            level3.push(v);
+                    });
+                });
             });
-            let centel2 = storage.catalogs.filter((s) => s.parent_id !== 0 && s.group === 1 && s.left === 0);
-            let filter2 = [];
-            centel2.forEach((v) => {
-                let i = filter2.find((s) => s.name === v.name);
-                if (!i) {
-                    filter2.push(v);
-                }
-            });
-            filter2.forEach((v) => {
+            level2.forEach((v) => {
                 $('#level2').append('<div class="checkbox"><label style="font-size: 16px"><input type="checkbox">' + v.name + '</label></div>');
             });
-            let centel3 = storage.catalogs.filter((s) => s.parent_id > 0 && s.group === 0 && s.left === 0);
-            let ni = storage.catalogs.filter((x) => x.left === 1 && x.parent_id === 0).map((x) => x.id);
-            let filter3 = [];
-            centel3.forEach((v) => {
-                let i = filter3.find((s) => s.name === v.name);
-                if (!i) {
-                    filter3.push(v);
-                }
+            level3.forEach((v) => {
+                $('#level3').append('<div class="col-md-6"><div class="checkbox"><label style="font-size: 12px"><input type="checkbox">' + v.name + '</label></div></div>');
             });
-            filter3 = filter3.filter((s) => !ni.find((p) => p === s.parent_id));
-            console.log(filter3);
-            filter3.forEach((v) => {
-                let i = storage.catalogs.find((s) => s.id === v.parent_id);
-                if (!i) {
-                    $('#level3').append('<div class="col-md-6"><div class="checkbox"><label style="font-size: 12px"><input type="checkbox">' + v.name + '</label></div></div>');
-                } else {
-                    $('#level2').append('<div class="checkbox"><label style="font-size: 16px"><input type="checkbox">' + v.name + '</label></div>');
+            let level1_0 = storage.catalogs.filter((v) => v.left === 0 && v.parent_id === 0 && v.separately === 1);
+            level1_0.forEach((d) => {
+                let _h = '<div class="col-md-12"><hr><div class="row"><div class="col-md-4"><div class="checkbox"><label style="font-size: 20px"><input type="checkbox">' + d.name;
+                _h += '</label></div></div>';
+                _h += '<div class="col-md-4">';
+                let a = [];
+                storage.catalogs.filter((v) => v.parent_id === d.id).forEach((s) => {
+                    _h += '<div class="checkbox"><label style="font-size: 16px"><input type="checkbox">' + s.name + '</label></div>';
+                    storage.catalogs.filter((_a) => _a.parent_id === s.id).forEach((_d) => {
+                        if (!a.find((d) => d.name === _d.name))
+                            a.push(_d);
+                    });
+                });
+                _h += '</div>';
+
+                if (a.length > 0) {
+                    _h += '<div class="col-md-4"><div class="row">';
+                    a.forEach((l3) => {
+                        _h += '<div class="col-md-6"><div class="checkbox"><label style="font-size: 12px"><input type="checkbox">' + l3.name + '</label></div></div>';
+                    });
+                    _h += '</div></div>';
                 }
+
+
+                _h += '</div>';
+                $('.catalog-body').append(_h);
+
             });
 
-            /* var bodyhtml;
-             centeritems.forEach(function (v) {
-             bodyhtml = '<div class="col-md-4"><div class="panel panel-primary"><div class="panel-heading"><div class="togglebutton"><label><input type="checkbox">';
-             bodyhtml += v.name;
-             bodyhtml += '</label></div></div><div class="panel-body">';
-             var items = storage.catalogs.filter(function (s) {
-             return s.parent_id === v.id;
-             });
-             items.forEach(function (s) {
-             if (s.hide !== 1 && s.group === 0) {
-             bodyhtml += '<div class="checkbox"><label><input type="checkbox">' + s.name + '</label> </div>';
-             }
-             if (s.group === 1) {
-             bodyhtml += '<div class="panel panel-primary"><div class="panel-heading"><div class="togglebutton"><label><input type="checkbox">' + s.name + '</label></div></div><div class="panel-body">';
-             var item_3 = storage.catalogs.filter(function (f) {
-             return f.parent_id === s.id;
-             });
-             item_3.forEach(function (p) {
-             if (p.hide !== 1 && p.group !== 1) {
-             bodyhtml += '<div class="checkbox"><label><input type="checkbox">' + p.name + '</label> </div>';
-             }
-             });
-             bodyhtml += '</div></div>';
-             }
-             });
-             bodyhtml += '</div></div></div>';
-             bodycatalogs.append(bodyhtml);*/
-            /*});*/
             $.material.init();
             $('.catalogs').hide(100);
         },
@@ -160,3 +140,105 @@ $('body').on('change', '.togglebutton input[type="checkbox"]', function () {
         });
     }
 });
+function getcatalogs() {
+    let arr = [];
+    let _arr = [];
+    $('.left-bloks input[type="checkbox"]').each(function () {
+        if ($(this).prop('checked')) {
+            let name = $(this).parent().text();
+            let _i = storage.catalogs.filter((s) => s.name === name);
+            if (_i) {
+                arr.push({
+                    name: _i.description !== '' ? _i.description : _i.name,
+                    link: _i.link,
+                    id: _i.id
+                });
+            }
+        }
+    });
+    $('.catalogs-center-blocks  input[type="checkbox"]').each(function () {
+        if ($(this).prop('checked')) {
+            let name = $(this).parent().text();
+            let _i = storage.catalogs.filter((s) => s.name === name);
+            if (_i)
+                _i.forEach((i) => {
+                    _arr.push(i)
+                });
+        }
+    });
+    if (_arr.length > 0) {
+        let l0 = _arr.filter((v) => v.parent_id === 0);
+        let l1 = [];
+        let l2 = [];
+        if (l0.length > 0) {
+            l0.forEach((i) => {
+                let _i = _arr.filter((v) => v.parent_id === i.id);
+                if (_i)
+                    _i.forEach((v) => {
+                        l1.push(v);
+                    });
+            });
+        }
+        if (l0.length > 0 && l1.length > 0) {
+            l2 = _arr.map((s) => {
+                if (l0.concat(l1).find((_s) => _s.name === s.name)) {
+                    return undefined
+                } else {
+                    return s
+                }
+            }).filter((s) => s !== undefined);
+            let _l2 = [];
+            l2.forEach((v) => {
+                let _i = storage.catalogs.find((s) => s.id === v.parent_id);
+                if (_i) {
+                    if (l0.find((s) => s.id === _i.parent_id)) {
+                        _l2.push(v);
+                    }
+                }
+            });
+            l2 = _l2;
+        }
+        if (l0.length === 0 && l1.length === 0) {
+            l2 = _arr;
+        }
+        if (l0.length > 0 && l1.length === 0 && l2.length === 0) {
+            console.log(l0);
+            l0.forEach((b) => {
+                let i = storage.catalogs.filter((s) => s.parent_id === b.id);
+                if (i)
+                    i.forEach((_i) => {
+                        arr.push({
+                            name: _i.description !== '' ? _i.description : _i.name,
+                            link: _i.link,
+                            id: _i.id
+                        });
+                    });
+            });
+        } else if (l0.length > 0 && l1.length === 0 && l2.length > 0) {
+            l2.forEach((_i) => {
+                arr.push({
+                    name: _i.description !== '' ? _i.description : _i.name,
+                    link: _i.link,
+                    id: _i.id
+                });
+            });
+        } else if (l0.length === 0 && l1.length === 0 && l2.length > 0) {
+            l2.forEach((_i) => {
+                arr.push({
+                    name: _i.description !== '' ? _i.description : _i.name,
+                    link: _i.link,
+                    id: _i.id
+                });
+            });
+        } else if (l0.length > 0 && l1.length > 0 && (l2.length > 0 || l2.length === 0)) {
+            l1.forEach((_i) => {
+                arr.push({
+                    name: _i.description !== '' ? _i.description : _i.name,
+                    link: _i.link,
+                    id: _i.id
+                });
+            });
+        }
+    }
+    return arr;
+}
