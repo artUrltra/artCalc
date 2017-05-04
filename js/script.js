@@ -1715,7 +1715,7 @@ setTimeout(() => {
     console.log('INIT manufacturer');
     $('.manufacturer').each(function () {
         let e = $(this);
-        if (top.storage.manufacturer.length !== 0) {
+        if (top.storage.manufacturer && top.storage.manufacturer.length > 0) {
             top.storage.manufacturer.forEach(function (i) {
                 e.append($('<option value="' + i.name + '">' + i.name + '</option>'));
             })

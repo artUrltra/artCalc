@@ -239,11 +239,5 @@ function getcatalogs() {
             });
         }
     }
-    let get = [];
-    arr.forEach((v) => {
-        let i = get.find((s) => s.name === v.name);
-        if (!i)
-            get.push(v);
-    });
-    return get;
+    return arr;
 }

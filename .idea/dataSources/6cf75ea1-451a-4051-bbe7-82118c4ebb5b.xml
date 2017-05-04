@@ -447,7 +447,7 @@
     <column id="140" parent="17" name="manufacturer">
       <Position>11</Position>
       <DataType>TEXT|0</DataType>
-      <DefaultExpression>&quot;Не выбран&quot;</DefaultExpression>
+      <DefaultExpression>&quot;Не выбрано&quot;</DefaultExpression>
     </column>
     <key id="141" parent="17">
       <ColNames>id</ColNames>
