@@ -539,21 +539,6 @@ function procPrice(summ) {
     if (isNaN(Total)) {
         $('.summaSParametrami .price').text("0");
     } else {
-        $('.summaSParametrami .price').text(Total);
-        switch (checkState(window)) {
-            case 0: {
-                 $('*[data-slider-id="1"]').find('.price span').text(Total);
-                break;
-            }
-            case 1: {
-                 $('*[data-slider-id="2"]').find('.price span').text(Total);
-                break;
-            }
-            case 2: {
-                 $('*[data-slider-id="3"]').find('.price span').text(Total);
-                break;
-            }
-        }
     }
 
 }
@@ -716,7 +701,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
                 htmlTAB += '<li class="' + isFrends + '"><a data-toggle="tab" style="font-size: 20px;" onclick="SetKakas(' + data[i].id + ')" >' + data[i].name + '</a><div class="triangle"></div><div class="triangle-w"></div></li>';
             }
             $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html + htmlTAB + '</ul>');
-            var obj =  storage.p.filter(function (value) {
+            var obj = storage.p.filter(function (value) {
                 return value.max >= height;
             });
             var resultHtml = '';
@@ -1035,7 +1020,6 @@ function debounce(func, wait, immediate) {
 };
 
 
-
 function makeHTMLFromTemplate(htmlTemplate, templateData) {
     return htmlTemplate.replace(/%(\w+)%/gi, function (match, p1) {
         return templateData[p1];
@@ -1074,58 +1058,50 @@ function explode(delimiter, string) {
  * @author Goncharenko Andriy
  * @constructor
  */
-function aaa() {
-    let w = ParserIntAndNan($('#tab-profil-shirina').val());
-    let h = ParserIntAndNan($('#tab-profil-vyisota').val());
-    let c0 = ParserIntAndNan($("#tab-profil-peremyichki-horizontal-shtuk").val());
-    let c1 = ParserIntAndNan($("#tab-profil-v-peremyichki-shtuk").val());
-    let name = '';
-    let p0, p1 = 0;
-    name = $('#KARKAS-NAME').text();
-    if (name != 'Не выбран') {
-        var Profils =  storage.p.filter(function (value) {
-            return value.name == name;
-        });
-        p0 = ParserIntAndNan(((w - (ParserIntAndNan(Profils[0].model) * 2)) + h) * 0.002 * Number(Profils[0].price));
-
-        p0 = Math.round(p0);
-        $('#KARKAS-PRICE').text(p0);
-        profiles.profile_price = p0;
-        setDataAndText('karkas-price', p0);
+function prbloksp() {
+    let info = states.arr[states.i];
+    let w = info.wp;
+    let h = info.hp;
+    let c0, c1;
+    if (info.ph) {
+        c0 = info.ph.c;
+    } else {
+        c0 = 0;
     }
-    name = $('#HORIZONTAL-PEREMOCHKI-NAME').text();
-    if (name != 'Не выбран') {
-        var Premichka =  storage.PHW.filter(function (value) {
-            return value.name == name;
-        });
+    if (info.pw) {
+        c1 = info.pw.c;
+    } else {
+        c1 = 0;
+    }
+    let p0, p1 = 0;
+    if (info.p.n) {
+        let Profils = storage.p.find((value) => value.name == info.p.n);
+        p0 = Math.round(ParserIntAndNan(((w - (ParserIntAndNan(Profils.model) * 2)) + h) * 0.002 * Number(Profils.price)));
+        $('#KARKAS-PRICE').text(p0);
+        states.arr[states.i].p.pr = p0;
+    }
+    if (info.ph.n) {
+        let Premichka = storage.PHW.find((value) => value.name == info.ph.n);
 
-        if (c0 == 0) {
+        if (c0 === 0) {
             p0 = 0;
         } else {
-            p0 = ParserIntAndNan(((w - profiles.profile_w * 2) / 1000 * Number(Premichka[0].price)) * c0);
+            p0 = ParserIntAndNan(((w - profiles.profile_w * 2) / 1000 * Number(Premichka.price)) * c0);
         }
-        if (c1 == 0) {
+        if (c1 === 0) {
             p1 = 0;
         } else {
-            p1 = ParserIntAndNan(((h - profiles.profile_w * 2) / 1000 * Number(Premichka[0].price)) * c1) - (ParserIntAndNan(Premichka[0].width) * c1 * c0 / 1000 * Number(Premichka[0].price));
-        }
-        if (name == 'Не выбран') {
-            p0 = 0;
-        }
-        if ($('#VERTIKALNUE-PEREMOCHKI-NAME').text() == 'Не выбран') {
-            p1 = 0;
+            p1 = ParserIntAndNan(((h - profiles.profile_w * 2) / 1000 * Number(Premichka.price)) * c1) - (ParserIntAndNan(Premichka.width) * c1 * c0 / 1000 * Number(Premichka.price));
         }
         $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(p1);
         $('#HORIZONTAL-PEREMOCHKI-PRICE').text(p0);
-        setDataAndText('vertikalnue-pereochki-price', p1);
-        setDataAndText('horizontal-pereochki-price', p0);
-        profiles.profile_vertical_price = p1;
-        profiles.profile_horizontal_price = p0;
+        states.arr[states.i].pw.pr = p1;
+        states.arr[states.i].ph.pr = p0;
 
-        setPriceInProfil();
-        //PriceForKarkas();
-        globalPrice();
-        dekorRePrice();
+        let r = states.arr[states.i].pw.pr + states.arr[states.i].ph.pr + states.arr[states.i].p.pr;
+        $('.TAB-PROFIL-KARKAS-PRICE').text(r);
+        $('.TAB-PROFIL-PRICE').text(r);
+        $('.TAB-PROFIL-PRICE1').text(r * states.TopCount);
     }
 };
 /**
@@ -1162,52 +1138,52 @@ function checktupematerials(id) {
 $('#TYPE_BAFFLE_ID').change(function () {
     switch (checkState(window)) {
         case 0 : {
-             frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
-             frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
+            frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
+            frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
 
-             frames[1].changeAddition();
-             frames[2].changeAddition();
+            frames[1].changeAddition();
+            frames[2].changeAddition();
 
-             frames[1].nfurnitura.loadFurnitura();
-             frames[1].nfurnitura.getDataFurnitura();
-             frames[1].nfurnitura.viewTotalFurnitura();
+            frames[1].nfurnitura.loadFurnitura();
+            frames[1].nfurnitura.getDataFurnitura();
+            frames[1].nfurnitura.viewTotalFurnitura();
 
-             frames[2].nfurnitura.loadFurnitura();
-             frames[2].nfurnitura.getDataFurnitura();
-             frames[2].nfurnitura.viewTotalFurnitura();
+            frames[2].nfurnitura.loadFurnitura();
+            frames[2].nfurnitura.getDataFurnitura();
+            frames[2].nfurnitura.viewTotalFurnitura();
 
             break;
         }
         case 1: {
-             frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
-             frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
+            frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
+            frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
 
-             frames[0].changeAddition();
-             frames[2].changeAddition();
+            frames[0].changeAddition();
+            frames[2].changeAddition();
 
-             frames[0].nfurnitura.loadFurnitura();
-             frames[0].nfurnitura.getDataFurnitura();
-             frames[0].nfurnitura.viewTotalFurnitura();
+            frames[0].nfurnitura.loadFurnitura();
+            frames[0].nfurnitura.getDataFurnitura();
+            frames[0].nfurnitura.viewTotalFurnitura();
 
-             frames[2].nfurnitura.loadFurnitura();
-             frames[2].nfurnitura.getDataFurnitura();
-             frames[2].nfurnitura.viewTotalFurnitura();
+            frames[2].nfurnitura.loadFurnitura();
+            frames[2].nfurnitura.getDataFurnitura();
+            frames[2].nfurnitura.viewTotalFurnitura();
             break;
         }
         case 2: {
-             frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
-             frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
+            frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
+            frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
 
-             frames[1].changeAddition();
-             frames[0].changeAddition();
+            frames[1].changeAddition();
+            frames[0].changeAddition();
 
-             frames[1].nfurnitura.loadFurnitura();
-             frames[1].nfurnitura.getDataFurnitura();
-             frames[1].nfurnitura.viewTotalFurnitura();
+            frames[1].nfurnitura.loadFurnitura();
+            frames[1].nfurnitura.getDataFurnitura();
+            frames[1].nfurnitura.viewTotalFurnitura();
 
-             frames[0].nfurnitura.loadFurnitura();
-             frames[0].nfurnitura.getDataFurnitura();
-             frames[0].nfurnitura.viewTotalFurnitura();
+            frames[0].nfurnitura.loadFurnitura();
+            frames[0].nfurnitura.getDataFurnitura();
+            frames[0].nfurnitura.viewTotalFurnitura();
             break;
         }
     }
@@ -1218,25 +1194,25 @@ $('#shema').change(function () {
     console.log(_flag);
     switch (checkState(window)) {
         case 0 : {
-             frames[1].$('#shema').prop("checked", _flag);
-             frames[2].$('#shema').prop("checked", _flag);
+            frames[1].$('#shema').prop("checked", _flag);
+            frames[2].$('#shema').prop("checked", _flag);
             break;
         }
         case 1: {
-             frames[0].$('#shema').prop("checked", _flag);
-             frames[2].$('#shema').prop("checked", _flag);
+            frames[0].$('#shema').prop("checked", _flag);
+            frames[2].$('#shema').prop("checked", _flag);
             break;
         }
         case 2: {
-             frames[1].$('#shema').prop("checked", _flag);
-             frames[0].$('#shema').prop("checked", _flag);
+            frames[1].$('#shema').prop("checked", _flag);
+            frames[0].$('#shema').prop("checked", _flag);
             break;
         }
     }
 });
 $('body').on('change', '.manufacturer', function () {
     let v = $(this).val();
-    let arr =  storage.f.filter((i) => i.manufacturer === v);
+    let arr = storage.f.filter((i) => i.manufacturer === v);
     $('#furnitura-tab h4.text').each(function () {
         let $item = $(this).parent().find('select');
         $item.val(0);
@@ -1316,7 +1292,7 @@ $('body').on('change', '.manufacturer', function () {
                 $i.val(1);
                 $i.trigger('change');
 
-            }else {
+            } else {
                 let $i = $item.parent().find('select');
                 $i.val(0);
                 $i.trigger('change');
@@ -1342,5 +1318,7 @@ setTimeout(() => {
         }
     });
 }, 7000);
+
+
 
 

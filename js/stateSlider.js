@@ -353,6 +353,7 @@ let storage = {
     fillTS: function () {
         $.post('./admin/ajax.php', {getSupplementsm: 1}, function (data) {
             storage.TS = JSON.parse(data);
+            changeAddition()
         });
     },
     fillS: function () {

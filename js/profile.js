@@ -38,52 +38,51 @@ var profiles = {
             document.getElementById("KARKAS-INFO").innerHTML = this.profile_info;
             document.getElementById("KARKAS-PRICE").innerHTML = this.profile_price;
 
-            states.eco = {
-                profile: {
-                    name: Profils.name,
-                    id: Profils.id
-                }
+            states.arr[states.i].p = {
+                n: Profils.name,
+                id: Profils.id
             };
 
             let obj = storage.PaPHW.filter((value) => value.id_profil == id);
             this.set_horizontal_profile(obj[0].id_h, 0);
             this.set_vertical_profile(obj[0].id_h, 0);
-            aaa();
             addition.SetSupplements();
-            setPriceInProfil();
-            dekorRePrice();
-            nmaterials.ifEmptyMaterials();
-            globalPrice();
-            dekorRePrice();
         }
     },
     set_vertical_profile: function (id, price) {
-        var Premichka = storage.PHW.filter(function (value) {
-            return value.id == id;
-        });
-        this.profile_vertical_name = Premichka[0].name;
-        this.profile_vertical_price = ParserIntAndNan(price);
-        this.set_profile_vertical_info(Premichka[0].height, Premichka[0].paz, Premichka[0].steklo, Premichka[0].penal);
-        $('#VERTIKALNUE-PEREMOCHKI-BLOCK img').attr('src', './admin/' + Premichka[0].img);
-        $('#VERTIKALNUE-PEREMOCHKI-NAME').text(this.profile_vertical_name);
-        $('#VERTIKALNUE-PEREMOCHKI-INFO').html(this.profile_vertical_info);
-        $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(this.profile_vertical_price);
+        let Premichka = storage.PHW.find((value) => value.id == id);
+        if (Premichka) {
+            this.profile_vertical_name = Premichka.name;
+            this.profile_vertical_price = ParserIntAndNan(price);
+            this.set_profile_vertical_info(Premichka.height, Premichka.paz, Premichka.steklo, Premichka.penal);
+            $('#VERTIKALNUE-PEREMOCHKI-BLOCK img').attr('src', './admin/' + Premichka.img);
+            $('#VERTIKALNUE-PEREMOCHKI-NAME').text(this.profile_vertical_name);
+            $('#VERTIKALNUE-PEREMOCHKI-INFO').html(this.profile_vertical_info);
+            $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(this.profile_vertical_price);
 
-        setPriceInProfil();
+            states.arr[states.i].pw = {
+                n: Premichka.name,
+                id: Premichka.id,
+                pr: ParserIntAndNan(price)
+            };
+        }
     },
     set_horizontal_profile: function (id, price) {
-        var Premichka = storage.PHW.filter(function (value) {
-            return value.id == id;
-        });
-        this.profile_horizontal_name = Premichka[0].name;
-        this.profile_horizontal_price = ParserIntAndNan(price);
-        this.set_profile_horizontal_info(Premichka[0].height, Premichka[0].paz, Premichka[0].steklo, Premichka[0].penal);
-        $('#HORIZONTAL-PEREMOCHKI-BLOCK img').attr('src', './admin/' + Premichka[0].img);
-        $('#HORIZONTAL-PEREMOCHKI-NAME').text(this.profile_horizontal_name);
-        $('#HORIZONTAL-PEREMOCHKI-INFO').html(this.profile_horizontal_info);
-        $('#HORIZONTAL-PEREMOCHKI-PRICE').text(this.profile_horizontal_price);
+        let Premichka = storage.PHW.find((value) => value.id == id);
+        if (Premichka) {
+            this.profile_horizontal_name = Premichka.name;
+            this.profile_horizontal_price = ParserIntAndNan(price);
+            this.set_profile_horizontal_info(Premichka.height, Premichka.paz, Premichka.steklo, Premichka.penal);
+            $('#HORIZONTAL-PEREMOCHKI-BLOCK img').attr('src', './admin/' + Premichka.img);
+            $('#HORIZONTAL-PEREMOCHKI-NAME').text(this.profile_horizontal_name);
+            $('#HORIZONTAL-PEREMOCHKI-INFO').html(this.profile_horizontal_info);
+            $('#HORIZONTAL-PEREMOCHKI-PRICE').text(this.profile_horizontal_price);
 
-
-        setPriceInProfil();
+            states.arr[states.i].ph = {
+                n: Premichka.name,
+                id: Premichka.id,
+                pr: ParserIntAndNan(price)
+            };
+        }
     }
 };
