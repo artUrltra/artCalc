@@ -2,20 +2,6 @@
  * Created by Андрей on 16.04.2017.
  *
  */
-/**
- * Функция перевода числа из srt в int
- * @param number
- * @returns {*}
- * @constructor
- */
-function ParserIntAndNan(number) {
-    if (isNaN(parseInt(number))) {
-        return 0;
-    } else {
-        return parseInt(number);
-    }
-}
-
 window.id_pdf = new Date().getTime();
 $.material.init();
 
@@ -25,7 +11,7 @@ function message(e) {
     });
 }
 // Общий флаг для перенноса данных из стейтов
-var _FLAG = true;
+let _FLAG = false;
 
 /**
  * Функция переноса даных между стейтами
@@ -212,23 +198,8 @@ $('body').on('click', function () {
  * @type {boolean}
  */
 window.onload = function () {
-    state.stateOneHeight();
-    $(".preloade-wrapper").fadeOut(500);
-    $("body").css("overflow", "auto");
-    _FLAG = true;
+    storage.init();
     state.checkManager();
-
-
-    top.frames[0].changeAddition();
-    top.frames[0].nfurnitura.setStartValues();
-    top.frames[1].changeAddition();
-    top.frames[1].nfurnitura.setStartValues();
-    top.frames[2].changeAddition();
-    top.frames[2].nfurnitura.setStartValues();
-
-    top.frames[0].$('.furnituraElFlag').prop('value', 0).change();
-    top.frames[1].$('.furnituraElFlag').val(0).change();
-    top.frames[2].$('.furnituraElFlag').val(0).change();
 };
 
 function delTiteltext() {
@@ -551,8 +522,8 @@ function TagsText(text) {
         let profile = '';
         _arr.forEach((s) => {
             let p = storage.p.find((v) => v.name === s);
-            if(p)
-            profile += p.name + ' ' + p.model + 'x' + p.int + ' мм.';
+            if (p)
+                profile += p.name + ' ' + p.model + 'x' + p.int + ' мм.';
         });
 
         text = text.replace(/#Profile\[mm]/g, profile);

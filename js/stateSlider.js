@@ -34,59 +34,6 @@ var state = {
                 };
             });
         },
-
-
-        stateOneHeight: function () {
-            state.stateHeight('1');
-        },
-
-
-        stateHeightNow: function (e) {
-            var stateName = '#state' + e;
-            var thisStateHeight = $("#allStates " + stateName).contents().find("body").height();
-            $('#allStates > ' + stateName).height(thisStateHeight + 120);
-            state.stateSetPrice();
-        },
-
-
-        stateHeight: function (e) {
-            state.stateHeightNow(e);
-            var i = 0,
-                diff = 0,
-                d = new Date();
-            var timer = setTimeout(function () {
-                diff += new Date() - d;
-                timer = setTimeout(arguments.callee, 0);
-                if (i++ == 300) {
-                    clearTimeout(timer);
-                    state.stateHeightNow(e);
-                }
-                d = new Date();
-            }, 0);
-        },
-
-
-        stateSetPrice: function () {
-            if (_FLAG) {
-                if (top.frames[0].document.readyState === "complete") {
-                    $('*[data-slider-id="1"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
-                    $('*[data-slider-id="2"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
-                    $('*[data-slider-id="3"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
-                }
-            } else {
-                if (top.frames[0].document.readyState === "complete") {
-                    $('*[data-slider-id="1"]').find('.price span').text(Math.round(frames[0].$('.summaSParametrami .price').text()));
-                }
-                if (top.frames[1].document.readyState === "complete") {
-                    $('*[data-slider-id="2"]').find('.price span').text(Math.round(frames[1].$('.summaSParametrami .price').text()));
-                }
-                if (top.frames[2].document.readyState === "complete") {
-                    $('*[data-slider-id="3"]').find('.price span').text(Math.round(frames[2].$('.summaSParametrami .price').text()));
-                }
-            }
-        },
-
-
         middlePrice: function () {
 
             var obj = storage.pH;
@@ -101,44 +48,11 @@ var state = {
             $('#slider2').find(".bg").height(58 + '%');
             $('#slider3').find(".bg").height(58 + '%');
 
-
-            frames[0].profiles.setProfile(parseInt(storage.pS));
-            frames[0].profiles.setProfile(parseInt(storage.pS));
-            state.stateSetPrice();
         },
 
 
         setTopBlock: function () {
-            var h = parentM.s1.$('#HIGHT_SETS_ID').val();
-            var w = parentM.s1.$('#WIDTH_SETS_ID').val();
-            var t = parentM.s1.$('#TOTAL_PAINTING_ID').val();
-            var m = parentM.s1.$('#MOVABLE_PAINTING_ID').val();
-
-            parentM.s2.$('#HIGHT_SETS_ID').val(h);
-            parentM.s2.$('#WIDTH_SETS_ID').val(w);
-            parentM.s2.$('#TOTAL_PAINTING_ID').val(t);
-            parentM.s2.$('#MOVABLE_PAINTING_ID').val(m);
-
-            parentM.s3.$('#HIGHT_SETS_ID').val(h);
-            parentM.s3.$('#WIDTH_SETS_ID').val(w);
-            parentM.s3.$('#TOTAL_PAINTING_ID').val(t);
-            parentM.s3.$('#MOVABLE_PAINTING_ID').val(m);
-
-            parentM.send('changeTopBlock', 2);
-            parentM.send('changeTopBlock', 3);
-
-            parentM.s1.diagrama.rules();
-            parentM.s1.diagrama.painting();
-            parentM.s2.diagrama.rules();
-            parentM.s2.diagrama.painting();
-            parentM.s3.diagrama.rules();
-            parentM.s3.diagrama.painting();
-
-            setTimeout(function () {
-                state.middlePrice();
-            }, 5000);
-        }
-        ,
+        },
 
 
         setSlider: function (id) {
@@ -252,7 +166,6 @@ var state = {
                     $("#val").html(ui.value);
                     for (var i = 0; i < obj.length; i++) {
                         if ($('#val').html() == i && b == 'false') {
-                            parentM.send('setProfil,' + obj[i].id, state.lastSate);
                             States.Slider(obj[i].id, state.lastSate);
                             state.stateHeight(state.lastSate);
                             state.stateSetPrice();
@@ -293,77 +206,8 @@ var state = {
     }
 ;
 
-var scheduler = {
 
-
-    s1: 0,
-    s2: 0,
-    s3: 0,
-
-
-    init: function () {
-        setInterval(function () {
-            if (scheduler.s1 > 0) {
-                parentM.send('myEfficientFn', 1);
-                console.log('activity on st1');
-                scheduler.s1 = scheduler.s1 - 1;
-                if (scheduler.s1 > 3) scheduler.s1 = 3;
-            } else if (scheduler.s2 > 0) {
-                parentM.send('myEfficientFn', 2);
-                console.log('activity on st2');
-                scheduler.s2 = scheduler.s2 - 1;
-                if (scheduler.s2 > 3) scheduler.s2 = 3;
-            } else if (scheduler.s3 > 0) {
-                parentM.send('myEfficientFn', 3);
-                console.log('activity on st3');
-                scheduler.s3 = scheduler.s3 - 1;
-                if (scheduler.s3 > 3) scheduler.s3 = 3;
-            }
-        }, 3000);
-    },
-
-
-    incCounter: function () {
-        scheduler['s' + state.lastSate] = scheduler['s' + state.lastSate] + 1;
-    },
-
-
-};
-
-var parentM = {
-
-
-    s1: document.getElementById("state1").contentWindow,
-    s2: document.getElementById("state2").contentWindow,
-    s3: document.getElementById("state3").contentWindow,
-
-
-    send: function (m, s) {
-        parentM["s" + s].postMessage(m, "*");
-    },
-
-
-    get: function (m) {
-        var a = m.split(",");
-        switch (a[0]) {
-            case 'sayHello':
-                console.log('Hello, ' + a[1] + '!');
-                break;
-            case 'incCounter':
-                scheduler.incCounter();
-                break;
-            case 'middlePrice':
-                storage.fillPH(parentM.s1.$('#HIGHT_SETS_ID').val());
-                state.init('1', 'true');
-                state.middlePrice();
-                break;
-        }
-    },
-
-
-};
-
-var storage = {
+let storage = {
     p: [],
     pH: [],
     pS: '',
@@ -498,7 +342,7 @@ var storage = {
     },
     fillPS: function () {
         $.post("./admin/starprofil.php", "get=1", function (data) {
-            storage.pS = data;
+            storage.pS = ParserIntAndNan(data);
         });
     },
     fillPAS: function () {
@@ -568,14 +412,3 @@ var storage = {
         });
     },
 };
-
-$(document).ready(function () {
-
-    storage.init();
-    state.init('1');
-    state.initCalcManagers();
-    scheduler.init();
-    window.addEventListener("message", function (e) {
-        parentM.get(e.data);
-    }, false);
-});

@@ -2,9 +2,6 @@
   outline: none !important;
 }
 
-body {
-  overflow-y: hidden;
-}
 
 .modal-body {
   padding: 0 !important;
@@ -1625,5 +1622,3 @@ body .next-line {
   float: right;
 }
 
-
-/* Испраление наполнение*/

@@ -5,7 +5,7 @@
  * Дополнения
  * @type {{}}
  */
-var addition = {
+let addition = {
     SetTypeSupplements: function (id, typeprice, name) {
         switch (typeprice) {
             case 'Поштучно': {
@@ -53,11 +53,11 @@ var addition = {
     },
     SeeSupplements: function (id) {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-        var html = $('.zaglushka-torcevaya-block-modal').html();
-        var obj = top.storage.S;
-        var profils = top.storage.PAS;
-        var idK = getFromData('karkas-id');
-        for (var j = 0; j < profils.length; j++) {
+        let html = $('.zaglushka-torcevaya-block-modal').html();
+        let obj = storage.S;
+        let profils = storage.PAS;
+        let idK = getFromData('karkas-id');
+        for (let j = 0; j < profils.length; j++) {
             if (profils[j].Profil == idK) {
                 if (obj.length == 0) {
                     parent.message('Извините , но для данного профиля заглушки торцевые отсутствуют');
@@ -81,42 +81,43 @@ var addition = {
         $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
     },
     SetSupplements: function () {
-        var id = getFromData('karkas-id');
-        if (id != undefined) {
-            var obj = top.storage.S;
-            var obj1 = top.storage.PAS.filter((value) => value.Profil == id);
+        let id = states.eco.profile.id;
+        if (id) {
+            let obj = storage.S;
+            let obj1 = storage.PAS.filter((value) => value.Profil == id);
             $('.addon-block select').prop('value', 'Нет');
 
-            for (var j = 0; j < obj1.length; j++) {
-                    for (var i = 0; i < obj.length; i++) {
-                        if (obj[i].id === obj1[j].Supplements) {
-                           let item = top.storage.TS.find((v) => v.id === obj[i].patern_id);
-                            $('#textSupplements' + obj[i].patern_id).text(obj[i].name);
-                            $('#imageSupplements' + obj[i].patern_id).attr('src', './admin/' + obj[i].img);
-                            $('#priceSupplements' + obj[i].patern_id).text(obj[i].price);
-                            $('#priceSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
-                            $('#CountSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
-                            if(item) {
-                                $('#selectSupplements' + obj[i].patern_id).val(item.flag === 'Да' ? 'Есть' : 'Нет');
-                            }else {
-                                $('#selectSupplements' + obj[i].patern_id).val('Есть');
-                            }
+            for (let j = 0; j < obj1.length; j++) {
+                for (let i = 0; i < obj.length; i++) {
+                    if (obj[i].id === obj1[j].Supplements) {
+                        let item = storage.TS.find((v) => v.id === obj[i].patern_id);
+                        $('#textSupplements' + obj[i].patern_id).text(obj[i].name);
+                        $('#imageSupplements' + obj[i].patern_id).attr('src', './admin/' + obj[i].img);
+                        $('#priceSupplements' + obj[i].patern_id).text(obj[i].price);
+                        $('#priceSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
+                        $('#CountSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
+                        if (item) {
+                            $('#selectSupplements' + obj[i].patern_id).val(item.flag === 'Да' ? 'Есть' : 'Нет');
+                        } else {
+                            $('#selectSupplements' + obj[i].patern_id).val('Есть');
                         }
+                        break;
                     }
+                }
             }
         }
     },
     UpdateAddition: function () {
-        top.States.AdditionName($('.addition'));
+        States.AdditionName($('.addition'));
     }
-}
+};
 function changeAddition() {
-    var type = parseInt($('#TYPE_BAFFLE_ID').val());
-    var obj = top.storage.TS;
+    let type = parseInt($('#TYPE_BAFFLE_ID').val());
+    let obj = storage.TS;
     $('#SUPPLEMENTS').html('');
     switch (type) {
         case 0: {
-            for (var i = 0; i < obj.length; i++) {
+            for (let i = 0; i < obj.length; i++) {
                 if (obj[i].type == 'Стационарная') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }
@@ -124,7 +125,7 @@ function changeAddition() {
             break;
         }
         case 1: {
-            for (var i = 0; i < obj.length; i++) {
+            for (let i = 0; i < obj.length; i++) {
                 if (obj[i].type == 'Раздвижная перегородка') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }
@@ -132,7 +133,7 @@ function changeAddition() {
             break;
         }
         case 2: {
-            for (var i = 0; i < obj.length; i++) {
+            for (let i = 0; i < obj.length; i++) {
                 if (obj[i].type == 'Складная перегородка') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }
@@ -140,7 +141,7 @@ function changeAddition() {
             break;
         }
         case 3: {
-            for (var i = 0; i < obj.length; i++) {
+            for (let i = 0; i < obj.length; i++) {
                 if (obj[i].type == 'Распашная дверь') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }
@@ -148,7 +149,7 @@ function changeAddition() {
             break;
         }
         case 4: {
-            for (var i = 0; i < obj.length; i++) {
+            for (let i = 0; i < obj.length; i++) {
                 if (obj[i].type === 'Мобильная перегородка') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }

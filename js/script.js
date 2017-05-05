@@ -24,16 +24,8 @@ function checkTheErrorNumber(e) {
 function checkTopBlock() {
     return $('#TOTAL_PAINTING_ID').val() > 0 && $('#HIGHT_SETS_ID').val() > 0 && $('#WIDTH_SETS_ID').val() > 0 ? 1 : 0;
 }
-// Проверка на заполненность верхнего блока. end
-// =============================================== //
-
-// ==================================================================================================================== //
-////////////////////////////////////////////////////////////////////////////////////////////// Прочие функции
-// ============================= //
-
 // ДОПОЛНЕНИЯ //
-
-var addon = {
+let addon = {
 
     start: function () {
         addon.set_price_res();
@@ -76,37 +68,13 @@ var addon = {
                     break;
                 }
                 case '3': {
-                    // if (Pln != 0 && PWn != 0) {
-                    //     $(this).text(Math.round((Pl + Pw) * (PWn + Pln) / Pw * ParserIntAndNan($(this).attr('data-price'))));
-                    // }
-                    // if (PWn == 0 && Pln != 0) {
-                    //     $(this).text(Math.round((Pl + Pw) * (Pln) / Pw * ParserIntAndNan($(this).attr('data-price'))));
-                    // }
-                    // if (Pln == 0 && PWn != 0) {
-                    //     $(this).text(Math.round((Pl + Pw) * (PWn) / Pw * ParserIntAndNan($(this).attr('data-price'))));
-                    // }
-                    // if (Pln == 0 && PWn == 0) {
-                    //     $(this).text(Math.round((Pl + Pw) / Pw * ParserIntAndNan($(this).attr('data-price'))));
-                    // }
-
                     check = 'checkboxSupplements' + str.replace(/\D+/g, "");
-
-
                     $(this).text(Math.round(((Pl + Pw) * 2 + ((Pl * Pln) + (Pw * PWn)) * 2) * parseInt($(this).attr('data-price'))));
-
                     break;
                 }
                 case '4': {
                     check = 'checkboxSupplements' + str.replace(/\D+/g, "");
-
-
                     $(this).text(Math.round(((Pl + Pw) * 2 + ((Pl * Pln) + (Pw * PWn)) * 2) * parseInt($(this).attr('data-price'))));
-                    // let height = ParserIntAndNan($('#tab-profil-vyisota').val());
-                    // let width = ParserIntAndNan($('#tab-profil-shirina').val());
-                    // let jamperH = ParserIntAndNan($('#tab-profil-v-peremyichki-shtuk').val());
-                    // let jamperW = ParserIntAndNan($('#tab-profil-peremyichki-horizontal-shtuk').val());
-                    // let price = Math.round((parseInt($(this).attr('data-price'))));
-                    // $(this).text(((height + width) * 2 / 1000 + (jamperH + jamperW) * 2 / 1000) * price);
                     break;
                 }
                 case '5': {
@@ -158,22 +126,6 @@ var addon = {
     }
 };
 
-$(".addon-block").keypress(function () {
-
-    var i = 0,
-        diff = 0,
-        d = new Date();
-    var timer = setTimeout(function () {
-        diff += new Date() - d;
-        timer = setTimeout(arguments.callee, 0);
-        if (i++ == 500) {
-            clearTimeout(timer);
-            addon.start();
-        }
-        d = new Date();
-    }, 0);
-});
-
 // ============================= //
 // Выбор изображения после диалога //
 function setImg(number, total_painting, movable_painting) {
@@ -204,9 +156,6 @@ function SET_BAFFLE_SEKECTOR() {
         }
     }
 }
-// ============================= //
-// Событие смены селектов полотен
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ТАБ ПРОФИЛЬ - Выбор декора для профиля //
 function addDecor(id) {
     $("#pokraskaTypeAndName").val(id);
@@ -520,10 +469,6 @@ function showDekorProfil() {
 $('#btn-dekor-profil').click(showDekorProfil);
 $('#img-dekor-profil').click(showDekorProfil);
 
-/*function PriceForKarkas() {
- var sum = karkasPrice + horizontalPerPrice + vertikalnuePerPrice;
-
- }*/
 // БЛОК ЦЕНА //
 $('body').on('click', function () {
     globalPrice();
@@ -597,15 +542,15 @@ function procPrice(summ) {
         $('.summaSParametrami .price').text(Total);
         switch (checkState(window)) {
             case 0: {
-                top.$('*[data-slider-id="1"]').find('.price span').text(Total);
+                 $('*[data-slider-id="1"]').find('.price span').text(Total);
                 break;
             }
             case 1: {
-                top.$('*[data-slider-id="2"]').find('.price span').text(Total);
+                 $('*[data-slider-id="2"]').find('.price span').text(Total);
                 break;
             }
             case 2: {
-                top.$('*[data-slider-id="3"]').find('.price span').text(Total);
+                 $('*[data-slider-id="3"]').find('.price span').text(Total);
                 break;
             }
         }
@@ -658,22 +603,18 @@ function TableForInfo() {
     html = html + '</table>';
     $(".TableForInfo").append(html);
 }
-// ============================= //
-// ==================================================================================================================== //
+// ============================= // //
 function calcNow() {
     addition.UpdateAddition();
     if (checkTopBlock() == 0) return;
 
     // глобальная ширина и высота //
     diagrama.rules();
-    $('#AREA_ID').text((($('#HIGHT_SETS_ID').val() * $('#WIDTH_SETS_ID').val() / 1000000)).toFixed(1));
-    //PriceForKarkas();
-    // ============================= //
 
     // ТАБ ПРОФИЛЬ площ //
-    var area = $("#tab-profil-vyisota").val() * $("#tab-profil-shirina").val() / 1000000;
+    let area = $("#tab-profil-vyisota").val() * $("#tab-profil-shirina").val() / 1000000;
     $('.TAB-PROFIL-AREA').text(area.toFixed(1));
-    setDataAndText('area', area.toFixed(1));
+    $('#AREA_ID').text(area.toFixed(1));
     // ============================= //
 
     // ТАБ ПРОФИЛЬ - группа //
@@ -755,73 +696,6 @@ $("#NUMBER_OF_DUPLICATOR_ID").change(function () {
 });
 
 
-function SetKakas(id) {
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    var width = parseInt($('#tab-profil-shirina').val());
-    var height = parseInt($('#tab-profil-vyisota').val());
-    var n = parseInt($("#TOTAL_PAINTING_ID").val());
-    var TYPE_BAFFLE_ID = parseInt($("#TYPE_BAFFLE_ID").val());
-    if (TYPE_BAFFLE_ID != 3) {
-        setDataAndText('karkas-tsvet-uplotnitelya', '');
-        setDataAndText('karkas-tsvet-zaglushki', '');
-        setDataAndText('karkas-tsvet-zaglushki-tortsevoy', '');
-        setDataAndText('karkas-vid-krepleniya', '');
-        var html = ' <div class="tabbable tabs-left">' +
-            '<ul class="nav nav-tabs">';
-        var htmlTAB = '';
-        $.post('./admin/ajax.php', "data=1", function (data) {
-            var data = JSON.parse(data);
-            for (var i = 0; i < data.length; i++) {
-                var isFrends = '';
-                if (data[i].id == id)
-                    isFrends = 'active';
-                htmlTAB += '<li class="' + isFrends + '"><a data-toggle="tab" style="font-size: 20px;" onclick="SetKakas(' + data[i].id + ')" >' + data[i].name + '</a><div class="triangle"></div><div class="triangle-w"></div></li>';
-            }
-            $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html + htmlTAB + '</ul>');
-            var data = 'h=' + height + "&id=" + id;
-            $.post("./admin/ajax.php", data, function (data) {
-                var obj = JSON.parse(data);
-                for (var i = 0; i < obj.length; i++) {
-                    var p = ((width + height) * 0.002 * Number(obj[i].price)) * n;
-                    p = Math.round(p);
-                    var resultHtml = '<div id="ProfilTabDB" class="col-md-3 profil-select" style="display: inline-block;vertical-align: top;border: solid 1px black;height: 435px;" ng-controller="ngAppDemoController">' +
-                        '<center> ' +
-                        '<br> ' +
-                        '<img src="./admin/' + obj[i].img + '" id="img-modal-Statusx1" class="selectKarkasImg" onclick="load3D(\'Statusx1\')"> ' +
-                        '<div id="el-loader-Statusx1"></div>' +
-                        '<div id="div-for-3d-Statusx1" class="js-div-for-3d"></div>' +
-                        '<h4>' + obj[i].name + '</h4>' +
-                        '<div style="height: 140px;width: 180px;">' +
-                        '<div style="height: 30px;">' +
-                        '<p style="display: inline-block;float: left;font-weight: 300;">Высота:</p>' +
-                        '<p style="display: inline-block;float: right;font-weight: 300;">до ' + obj[i].height + '  м</p>' +
-                        '</div>' +
-                        '<div style="height: 30px;">' +
-                        '<p style="display: inline-block;float: left;font-weight: 300;">Паз:</p>' +
-                        '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].paz + '  мм</p>' +
-                        '</div>' +
-                        '<div style="height: 30px;">' +
-                        '<p style="display: inline-block;float: left;font-weight: 300;">Cтекло:</p>' +
-                        '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].steklo + '  мм</p>' +
-                        '</div>' +
-                        '<div style="height: 30px;">' +
-                        '<p style="display: inline-block;float: left;font-weight: 300;">Глухие панели:</p> ' +
-                        '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].penal + '  мм</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '<h4 style="color: red;" >Цена:' + p + ' </h4>' +
-                        '<button type="button" class="btn btn-raised btn-default" onclick="profiles.setProfile(' + obj[i].id + ');" data-dismiss="modal">Выбрать </button> ' +
-                        '</center></div>';
-                    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
-                }
-
-            });
-        });
-        $(".js-div-for-3d").html("");
-        $(".js-div-for-3d").hide();
-        $("img.selectKarkasImg").show();
-    }
-}
 $('#BTN-KARKAS-SELECTOR').click(function () {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
     var width = parseInt($('#tab-profil-shirina').val());
@@ -829,11 +703,6 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
     var n = parseInt($("#TOTAL_PAINTING_ID").val());
     var TYPE_BAFFLE_ID = parseInt($("#TYPE_BAFFLE_ID").val());
     if (!isNaN(width) && !isNaN(height)) {
-        setDataAndText('karkas-tsvet-uplotnitelya', '');
-        setDataAndText('karkas-tsvet-zaglushki', '');
-        setDataAndText('karkas-tsvet-zaglushki-tortsevoy', '');
-        setDataAndText('karkas-vid-krepleniya', '');
-
         $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
         var html = ' <div class="tabbable tabs-left">' +
             '<ul class="nav nav-tabs">';
@@ -847,7 +716,7 @@ $('#BTN-KARKAS-SELECTOR').click(function () {
                 htmlTAB += '<li class="' + isFrends + '"><a data-toggle="tab" style="font-size: 20px;" onclick="SetKakas(' + data[i].id + ')" >' + data[i].name + '</a><div class="triangle"></div><div class="triangle-w"></div></li>';
             }
             $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html + htmlTAB + '</ul>');
-            var obj = top.storage.p.filter(function (value) {
+            var obj =  storage.p.filter(function (value) {
                 return value.max >= height;
             });
             var resultHtml = '';
@@ -1021,29 +890,7 @@ $("#myTab a").click(function (e) {
     e.preventDefault();
     $(this).tab('show');
 });
-////////////////////////////////////////////////////////////////////////////////////////////// Инпуты и слеекты //
-$("#tab-profil-v-peremyichki-shtuk").bind('input', function () {
-    setDataAndText('vertikalnue-pereochki-count', $(this).val());
-    var perName = getFromData('vertikalnue-pereochki-name');
-    $('.TAB-PROFIL-PRICE').text(parseInt(getFromData('karkas-price')) + parseInt(getFromData('vertikalnue-pereochki-price')) + parseInt(getFromData('horizontal-pereochki-price')));
-    $('.TAB-PROFIL-PRICE1').text(parseInt($('.TAB-PROFIL-PRICE').text()) * parseInt($('#TOTAL_PAINTING_ID').val()));
-    paintingInDiadramma();
-});
-$("#tab-profil-peremyichki-horizontal-shtuk").bind('input', function () {
-    setDataAndText('horizontal-pereochki-count', $(this).val());
-    var perName = getFromData('horizontal-pereochki-name');
-    $('.TAB-PROFIL-PRICE').text(parseInt(getFromData('karkas-price')) + parseInt(getFromData('vertikalnue-pereochki-price')) + parseInt(getFromData('horizontal-pereochki-price')));
-    $('.TAB-PROFIL-PRICE1').text(parseInt($('.TAB-PROFIL-PRICE').text()) * parseInt($('#TOTAL_PAINTING_ID').val()));
-    paintingInDiadramma();
-});
-$('#HIGHT_SETS_ID').change(function () {
-    top.storage.fillPH($('#HIGHT_SETS_ID').val());
-    top.state.init('1', 'true');
-    childM.send('middlePrice');
-});
-$("#HIGHT_SETS_ID, #WIDTH_SETS_ID, #TOTAL_PAINTING_ID, #MOVABLE_PAINTING_ID, #NUMBER_SETS_ID").bind('input', function () {
-    calcNow();
-});
+
 $("#TYPE_BAFFLE_ID").change(function () {
     var TYPE_BAFFLE = parseInt($(this).val());
     if (TYPE_BAFFLE == 2) {
@@ -1077,10 +924,7 @@ $("#TYPE_BAFFLE_ID").change(function () {
         $(".raspashnie-addons").hide();
         $(".obichnie-addons").show();
     }
-    // viewAddonTotal();
 });
-// Добавление поля
-// Инпуты и слеекты //////////////////////////////////////////////////////////////////////////////////////////////
 // Добавить в скирип //////////////////////////////////////////////////////////////////////////////////////////////
 $('.proizvaodstvoIn input').on('keyup', function () {
     var value = $(this).val();
@@ -1190,96 +1034,6 @@ function debounce(func, wait, immediate) {
     };
 };
 
-var Reflex = {
-
-
-    can_start: false,
-    g_height: 0,
-    g_width: 0,
-    g_panting: 0,
-    g_m_panting: 0,
-
-
-    start: function () {
-        Reflex.events();
-    },
-
-
-    events: function () {
-        $('#HIGHT_SETS_ID, #WIDTH_SETS_ID, #TOTAL_PAINTING_ID').on('keypress', function (e) {
-            Reflex.can_start_checking();
-        });
-    },
-
-
-    can_start_checking: function () {
-        var height = $('#HIGHT_SETS_ID').val();
-        var width = $('#WIDTH_SETS_ID').val();
-        var panting = $('#TOTAL_PAINTING_ID').val();
-        if (height == '' || width == '' || panting == '')
-            Reflex.can_start = false;
-        else {
-            Reflex.can_start = true;
-            window.onkeydown = Reflex.list();
-            window.input = Reflex.list();
-            window.onresize = Reflex.list();
-            window.onclick = Reflex.list();
-        }
-    },
-    globalArea: function () {
-        $('#AREA_ID').text(($('#HIGHT_SETS_ID').val() * $('#WIDTH_SETS_ID').val() / 1000000).toFixed(1));
-    },
-    list: function () {
-        var myEfficientFn = debounce(function () {
-            if (checkTopBlock() == 0) return;
-            Reflex.globalArea();
-            nfurnitura.getDataFurnitura();
-            nfurnitura.viewTotalFurnitura();
-            globalPrice();
-            TableForInfo();
-            heightIframe();
-            calcNow();
-        }, 500);
-        if (Reflex.can_start == true)
-            myEfficientFn();
-    }
-
-
-};
-
-var myEfficientFn = debounce(function () {
-    if (checkTopBlock() == 0) return;
-    Reflex.globalArea();
-    nfurnitura.getDataFurnitura();
-    nfurnitura.viewTotalFurnitura();
-    globalPrice();
-    TableForInfo();
-    heightIframe();
-    calcNow();
-}, 500);
-
-var ReflexHWT = {
-
-    start: function () {
-        ReflexHWT.event();
-    },
-
-    event: function () {
-        $('#HIGHT_SETS_ID, #WIDTH_SETS_ID, #TOTAL_PAINTING_ID, #MOVABLE_PAINTING_ID').on('keydown', function (e) {
-            myVar = setTimeout(function () {
-                if ($('#HIGHT_SETS_ID').val() != '' && $('#WIDTH_SETS_ID').val() != '' && $('#TOTAL_PAINTING_ID').val() != '') {
-                    parent.state.setTopBlock();
-                }
-                clearTimeout(myVar);
-            }, 1)
-        });
-    }
-
-};
-
-$(document).ready(function () {
-    ReflexHWT.start();
-});
 
 
 function makeHTMLFromTemplate(htmlTemplate, templateData) {
@@ -1313,117 +1067,23 @@ function explode(delimiter, string) {
     }
     return string.toString().split(delimiter.toString());
 }
-// Устновка высоты в фрейме
-function heightIframe() {
-    var stateCount = window.parent.$(".possibleState").length;
-    var stateSelected = parent.state.lastSate;
-    var explode = function () {
-        var setNewHeight = $('body').height();
-        window.parent.$("#state" + stateSelected).height(setNewHeight)
-    };
-    setTimeout(explode, 500);
-};
-// Устновка высоты в фрейме//
-// w_modal
-var w_modal = {
-    start: function () {
-        w_modal.event();
-    },
-    event: function () {
-        $('#DIAGRAMMA-DIALOG-WINDOW').on('shown.bs.modal', function () {
-            $("#DIAGRAMMA-DIALOG-WINDOW").css('margin-top', $(window.parent.document).scrollTop());
-            window.top.$("body").css({
-                overflow: 'hidden',
-                height: '100%'
-            });
-            $(".modal-body").animate({
-                scrollTop: 0
-            }, 0);
-        });
-        $('#DIAGRAMMA-DIALOG-WINDOW').on('hide.bs.modal', function () {
-            window.top.$("body").css({
-                overflow: 'auto',
-                height: 'auto'
-            });
-        });
-    }
-};
 
-window.onkeydown = function () {
-    childM.send('incCounter');
-};
-window.oninput = function () {
-    childM.send('incCounter');
-};
-window.onresize = function () {
-    childM.send('incCounter');
-};
-window.onclick = function () {
-    childM.send('incCounter');
-};
-
-$(document).ready(function () {
-    w_modal.start();
-});
-
-var childM = {
-    send: function (m) {
-        top.postMessage(m, '*');
-    },
-    get: function (m) {
-        var a = m.split(",");
-        switch (a[0]) {
-            case 'sayHello':
-                console.log('Hello, ' + a[1] + '!');
-                break;
-            case 'myEfficientFn':
-                myEfficientFn();
-                break;
-            case 'setProfil':
-                profiles.setProfile(a[1]);
-                break;
-            case 'changeTopBlock':
-                $('#HIGHT_SETS_ID').trigger('keypress');
-                $('#WIDTH_SETS_ID').trigger('keypress');
-                $('#TOTAL_PAINTING_ID').trigger('keypress');
-                $('#MOVABLE_PAINTING_ID').trigger('keypress');
-                break;
-            case 'changeTypeBaffleId':
-                $('#TYPE_BAFFLE_ID').val(a[1]).change();
-                break;
-            case 'resetFurnituraFlag':
-                $('.furnituraElFlag').val(0).change();
-                break;
-        }
-    },
-};
-window.addEventListener("message", function (e) {
-    childM.get(e.data);
-}, false);
 /**
  *Функция подсчета цен для Профилей , Перемичек
  *
  * @author Goncharenko Andriy
  * @constructor
  */
-$('#HIGHT_SETS_ID, #WIDTH_SETS_ID, #TOTAL_PAINTING_ID,#tab-profil-peremyichki-horizontal-shtuk,#tab-profil-v-peremyichki-shtuk,#dvounoy-uplotnitel').on('keyup', function () {
-    aaa();
-});
 function aaa() {
-    top.States.TopWidth = ParserIntAndNan($('#WIDTH_SETS_ID').val());
-    top.States.TopHeight = ParserIntAndNan($('#HIGHT_SETS_ID').val());
-    top.States.TopCountPoloten = ParserIntAndNan($('#TOTAL_PAINTING_ID').val());
-    top.States.TopCountMovePoloten = ParserIntAndNan($('#MOVABLE_PAINTING_ID').val());
-    var w = ParserIntAndNan($('#tab-profil-shirina').val());
-    var h = ParserIntAndNan($('#tab-profil-vyisota').val());
-    var n = ParserIntAndNan($("#TOTAL_PAINTING_ID").val());
-    var c0 = ParserIntAndNan($("#tab-profil-peremyichki-horizontal-shtuk").val());
-    var c1 = ParserIntAndNan($("#tab-profil-v-peremyichki-shtuk").val());
-    var name = '';
-    var p0, p1 = 0;
+    let w = ParserIntAndNan($('#tab-profil-shirina').val());
+    let h = ParserIntAndNan($('#tab-profil-vyisota').val());
+    let c0 = ParserIntAndNan($("#tab-profil-peremyichki-horizontal-shtuk").val());
+    let c1 = ParserIntAndNan($("#tab-profil-v-peremyichki-shtuk").val());
+    let name = '';
+    let p0, p1 = 0;
     name = $('#KARKAS-NAME').text();
     if (name != 'Не выбран') {
-        var Profils = top.storage.p.filter(function (value) {
+        var Profils =  storage.p.filter(function (value) {
             return value.name == name;
         });
         p0 = ParserIntAndNan(((w - (ParserIntAndNan(Profils[0].model) * 2)) + h) * 0.002 * Number(Profils[0].price));
@@ -1435,7 +1095,7 @@ function aaa() {
     }
     name = $('#HORIZONTAL-PEREMOCHKI-NAME').text();
     if (name != 'Не выбран') {
-        var Premichka = top.storage.PHW.filter(function (value) {
+        var Premichka =  storage.PHW.filter(function (value) {
             return value.name == name;
         });
 
@@ -1479,45 +1139,6 @@ function ParserIntAndNan(number) {
         return parseInt(number);
     }
 }
-/**
- * Функкия загзуки 3d
- * @author Goncharenko Andiy
- */
-$(document).on({
-    click: function () {
-        updateImgAndModal();
-        if ($(this).attr('data-x3d') === 'null') {
-            parent.message('Извините , но 3d модель отсутствует');
-        } else {
-            $(this).html('<x3d width="200px" height="113px"><scene><inline url="./admin/3d/' + $(this).attr('data-x3d') + '"></inline></scene></x3d>');
-            x3dom.reload();
-            $(this).attr('data-flag', 1);
-        }
-    }
-}, '.loadx3d');
-function updateImgAndModal() {
-    $('.loadx3d[data-flag="1"]').each(function () {
-        $(this).html('<img src="./admin/' + $(this).attr('data-src') + '" id="img-modal-Statusx1" class="selectKarkasImg"></div>');
-    });
-}
-/**
- Функциия проверки вкакой стейте работает скрит выдает номер стейта
- */
-
-function checkState(state) {
-    switch (state) {
-        case top.window.frames[0]:
-            return 0;
-            break;
-        case top.window.frames[1]:
-            return 1;
-            break;
-        case top.window.frames[2]:
-            return 2;
-            break;
-
-    }
-}
 
 function checktupematerials(id) {
     switch (id) {
@@ -1541,52 +1162,52 @@ function checktupematerials(id) {
 $('#TYPE_BAFFLE_ID').change(function () {
     switch (checkState(window)) {
         case 0 : {
-            top.frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
-            top.frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
+             frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
+             frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
 
-            top.frames[1].changeAddition();
-            top.frames[2].changeAddition();
+             frames[1].changeAddition();
+             frames[2].changeAddition();
 
-            top.frames[1].nfurnitura.loadFurnitura();
-            top.frames[1].nfurnitura.getDataFurnitura();
-            top.frames[1].nfurnitura.viewTotalFurnitura();
+             frames[1].nfurnitura.loadFurnitura();
+             frames[1].nfurnitura.getDataFurnitura();
+             frames[1].nfurnitura.viewTotalFurnitura();
 
-            top.frames[2].nfurnitura.loadFurnitura();
-            top.frames[2].nfurnitura.getDataFurnitura();
-            top.frames[2].nfurnitura.viewTotalFurnitura();
+             frames[2].nfurnitura.loadFurnitura();
+             frames[2].nfurnitura.getDataFurnitura();
+             frames[2].nfurnitura.viewTotalFurnitura();
 
             break;
         }
         case 1: {
-            top.frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
-            top.frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
+             frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
+             frames[2].$('#TYPE_BAFFLE_ID').val($(this).val());
 
-            top.frames[0].changeAddition();
-            top.frames[2].changeAddition();
+             frames[0].changeAddition();
+             frames[2].changeAddition();
 
-            top.frames[0].nfurnitura.loadFurnitura();
-            top.frames[0].nfurnitura.getDataFurnitura();
-            top.frames[0].nfurnitura.viewTotalFurnitura();
+             frames[0].nfurnitura.loadFurnitura();
+             frames[0].nfurnitura.getDataFurnitura();
+             frames[0].nfurnitura.viewTotalFurnitura();
 
-            top.frames[2].nfurnitura.loadFurnitura();
-            top.frames[2].nfurnitura.getDataFurnitura();
-            top.frames[2].nfurnitura.viewTotalFurnitura();
+             frames[2].nfurnitura.loadFurnitura();
+             frames[2].nfurnitura.getDataFurnitura();
+             frames[2].nfurnitura.viewTotalFurnitura();
             break;
         }
         case 2: {
-            top.frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
-            top.frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
+             frames[1].$('#TYPE_BAFFLE_ID').val($(this).val());
+             frames[0].$('#TYPE_BAFFLE_ID').val($(this).val());
 
-            top.frames[1].changeAddition();
-            top.frames[0].changeAddition();
+             frames[1].changeAddition();
+             frames[0].changeAddition();
 
-            top.frames[1].nfurnitura.loadFurnitura();
-            top.frames[1].nfurnitura.getDataFurnitura();
-            top.frames[1].nfurnitura.viewTotalFurnitura();
+             frames[1].nfurnitura.loadFurnitura();
+             frames[1].nfurnitura.getDataFurnitura();
+             frames[1].nfurnitura.viewTotalFurnitura();
 
-            top.frames[0].nfurnitura.loadFurnitura();
-            top.frames[0].nfurnitura.getDataFurnitura();
-            top.frames[0].nfurnitura.viewTotalFurnitura();
+             frames[0].nfurnitura.loadFurnitura();
+             frames[0].nfurnitura.getDataFurnitura();
+             frames[0].nfurnitura.viewTotalFurnitura();
             break;
         }
     }
@@ -1597,25 +1218,25 @@ $('#shema').change(function () {
     console.log(_flag);
     switch (checkState(window)) {
         case 0 : {
-            top.frames[1].$('#shema').prop("checked", _flag);
-            top.frames[2].$('#shema').prop("checked", _flag);
+             frames[1].$('#shema').prop("checked", _flag);
+             frames[2].$('#shema').prop("checked", _flag);
             break;
         }
         case 1: {
-            top.frames[0].$('#shema').prop("checked", _flag);
-            top.frames[2].$('#shema').prop("checked", _flag);
+             frames[0].$('#shema').prop("checked", _flag);
+             frames[2].$('#shema').prop("checked", _flag);
             break;
         }
         case 2: {
-            top.frames[1].$('#shema').prop("checked", _flag);
-            top.frames[0].$('#shema').prop("checked", _flag);
+             frames[1].$('#shema').prop("checked", _flag);
+             frames[0].$('#shema').prop("checked", _flag);
             break;
         }
     }
 });
 $('body').on('change', '.manufacturer', function () {
     let v = $(this).val();
-    let arr = top.storage.f.filter((i) => i.manufacturer === v);
+    let arr =  storage.f.filter((i) => i.manufacturer === v);
     $('#furnitura-tab h4.text').each(function () {
         let $item = $(this).parent().find('select');
         $item.val(0);
@@ -1712,11 +1333,10 @@ $('body').on('change', '.manufacturer', function () {
 
 });
 setTimeout(() => {
-    console.log('INIT manufacturer');
     $('.manufacturer').each(function () {
         let e = $(this);
-        if (top.storage.manufacturer && top.storage.manufacturer.length > 0) {
-            top.storage.manufacturer.forEach(function (i) {
+        if (storage.manufacturer && storage.manufacturer.length > 0) {
+            storage.manufacturer.forEach(function (i) {
                 e.append($('<option value="' + i.name + '">' + i.name + '</option>'));
             })
         }

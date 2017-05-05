@@ -25,7 +25,6 @@ var nmaterials = {
         $('.napolnenie-el:last').find('.napolnenie-el-tolschina').val($item.find('.napolnenie-el-tolschina').val());
         nmaterials.addWElNapolnenieToFive();
         nmaterials.addWHElNapolnenie();
-        heightIframe();
         nmaterials.ResSumm();
         globalPrice();
     },
@@ -35,7 +34,6 @@ var nmaterials = {
         $(t).parent().parent().parent().parent('.napolnenie-el').remove();
         nmaterials.addWElNapolnenieToFive();
         nmaterials.addWHElNapolnenie();
-        heightIframe();
         nmaterials.ResSumm();
         globalPrice();
     },
@@ -44,7 +42,7 @@ var nmaterials = {
     materialV: function (type, material) {
         $('.tab-content-materials').remove();
         setTimeout(function () {
-            var obj = parent.storage.fillMT(type);
+            var obj = storage.fillMT(type);
             var item = "";
             if (obj.length > 0) {
                 for (var i = 0; i < obj.length; i++) {
@@ -64,7 +62,7 @@ var nmaterials = {
 
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
         var style, text = "",
-            obj = parent.storage.mC;
+            obj = storage.mC;
         for (var i = 0; i < obj.length; i++) {
             if (i === 0) style = "class='active'";
             else style = "class=''";
@@ -81,7 +79,7 @@ var nmaterials = {
 
     // добавление нового материала
     addMaterials: function (id, matireal) {
-        var obj = top.storage.m.filter(function (v) {
+        var obj = storage.m.filter(function (v) {
             return v.id == id
         })[0];
         var $material;
@@ -96,7 +94,7 @@ var nmaterials = {
         } else {
             $material.find('.zakalkaStekla').show();
         }
-        var doubleFillingK = top.storage.p.filter(function (value) {
+        var doubleFillingK = storage.p.filter(function (value) {
             return value.name == profiles.profile_name;
         })[0].doubleFilling;
 
@@ -116,7 +114,7 @@ var nmaterials = {
         }
         else $material.find('.dvoinoeZapolnenieCheckbox').hide();
         if (obj.type == '2') {
-            top.storage.ExpMatireals.forEach(function (i) {
+            storage.ExpMatireals.forEach(function (i) {
                 if (i.arr_p.indexOf(obj.id.toString()) >= 0) {
                     var $block = $material.find('.photo1');
                     $block.css('display', 'block');
@@ -126,11 +124,6 @@ var nmaterials = {
         } else {
             $material.find('.photo1').css('display', 'none');
         }
-        top.States.PushMarerials({
-            name: obj.name,
-            id: obj.id,
-            type: obj.type
-        }, nmaterials.i, checkState(window));
         nmaterials.ResSumm();
         nfurnitura.loadFurnitura();
     },
@@ -138,8 +131,8 @@ var nmaterials = {
     // реакция на нажатие кнопки добавление нового материала
     addMaterialBtn: function () {
         if (profiles.profile_name != "") {
-            var obj = top.storage.m.filter(filteMatirealsStart)[0];
-            var paz = top.storage.p.filter(function (value) {
+            var obj = storage.m.filter(filteMatirealsStart)[0];
+            var paz = storage.p.filter(function (value) {
                 return value.name == profiles.profile_name;
             })[0].paz;
             if (obj.thickness !== '' && obj.thickness !== 0) {
@@ -152,29 +145,25 @@ var nmaterials = {
                     }
                 if (canAdd) {
                     $(".add-material-block-past").append('<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 napolnenie-el">' + $(".napolnenie-el-set").html() + '</div>');
-                    nmaterials.addMaterials(parent.storage.mS, 'last');
+                    nmaterials.addMaterials(storage.mS, 'last');
                     nmaterials.addWElNapolnenieToFive();
                     nmaterials.addWHElNapolnenie();
                 }
-            } else parent.message("Толщина стандартного материала не подходит к толщине выбраного профиля");
-        } else parent.message("Выберите профиль!");
+            } else message("Толщина стандартного материала не подходит к толщине выбраного профиля");
+        } else message("Выберите профиль!");
     },
     // пересчет цены материалов
     ResSumm: function () {
-        var $material = $('.napolnenie-el');
-        var sum = 0;
-        var TopS = 0
+        let $material = $('.napolnenie-el'), sum = 0, TopS = 0;
         $material.each(function () {
-            var str = $(this).find('#open-material-img').attr('src').substr(8);
-            var obj = top.storage.m.filter(function (v) {
-                return v.img == str
-            })[0];
-            var vyisota = ParserIntAndNan($(this).find('.tab-napolnenie-vyisota').val());
-            var shirina = ParserIntAndNan($(this).find('.tab-napolnenie-shirina').val());
-            var count = ParserIntAndNan($(this).find('.tab-napolnenie-kollichestvo').val());
-            var S = (vyisota * 0.001) * (shirina * 0.001) * count;
+            let str = $(this).find('#open-material-img').attr('src').substr(8);
+            let obj = storage.m.find((v) => v.img == str);
+            let vyisota = ParserIntAndNan($(this).find('.tab-napolnenie-vyisota').val());
+            let shirina = ParserIntAndNan($(this).find('.tab-napolnenie-shirina').val());
+            let count = ParserIntAndNan($(this).find('.tab-napolnenie-kollichestvo').val());
+            let S = (vyisota * 0.001) * (shirina * 0.001) * count;
             TopS += S;
-            var price = ParserIntAndNan($(this).find('.napolnenie-el-tolschina').val());
+            let price = ParserIntAndNan($(this).find('.napolnenie-el-tolschina').val());
             if ($(this).find('.materialsBlockSwith').prop("checked")) {
                 price += ParserIntAndNan(explode(";", obj.zakalka)[explode(";", obj.price).indexOf(price.toString())]);
             }
@@ -182,24 +171,23 @@ var nmaterials = {
                 price *= 2
             }
 
-            var res = Math.round(price * S);
+            let res = Math.round(price * S);
             sum += res;
-
 
             $(this).find('.tab-napolnenie-ploschad').text(S.toFixed(2));
             $(this).find('.tab-napolnenie-price').text(res);
         });
-        $('#Pnap').text(sum * top.States.TopCountPoloten);
-        $('#Snap').text((TopS * top.States.TopCountPoloten).toFixed(2));
+        $('#Pnap').text(sum * states.TopCount);
+        $('#Snap').text((TopS * states.TopCount).toFixed(2));
         globalPrice();
     },
 
 
     // установка высоты материалов
     addWHElNapolnenie: function () {
-        if (top.States.TopHeight !== 0) {
+        if (states.TopHeight !== 0) {
             let $items = $('.napolnenie-el');
-            let hight = top.States.TopHeight;
+            let hight = states.TopHeight;
             let count = 0;
             $items.each(function () {
                 if ($(this).find('#savehight').prop("checked") === true) {
@@ -220,9 +208,9 @@ var nmaterials = {
 
     // выставление у всех материалов одинаковой ширины
     addWElNapolnenieToFive: function () {
-        if (top.States.TopWidth !== 0) {
+        if (states.TopWidth !== 0) {
             $('.napolnenie-el .tab-napolnenie-shirina').each(function () {
-                $(this).val(ParserIntAndNan(top.States.TopWidth / top.States.TopCountPoloten));
+                $(this).val(ParserIntAndNan(states.TopWidth / states.TopCount));
             });
         } else setTimeout(nmaterials.addWElNapolnenieToFive, 5000);
     },
@@ -246,7 +234,7 @@ function bPhoto(id) {
     var item_id = String(getFromData('material-' + id + '-id'));
     var $modal = $('#DIAGRAMMA-DIALOG-WINDOW');
     var $bodym = $('#DIAGRAMMA-DIALOG-WINDOW .modal-body');
-    var array = top.storage.ExpMatireals.filter(function (v) {
+    var array = storage.ExpMatireals.filter(function (v) {
         if (v.arr_p.indexOf(item_id) >= 0)
             return v;
     });
@@ -292,7 +280,7 @@ function bPhoto(id) {
 }
 function setnumber(name, id) {
     $('#DIAGRAMMA-DIALOG-WINDOW').modal('hide');
-    var arr = top.storage.ExpMatireals.filter(function (value) {
+    var arr = storage.ExpMatireals.filter(function (value) {
         return value.name == name;
     })[0];
     var h = ParserIntAndNan($('*[data-material-el-id="' + id + '"]').find('.tab-napolnenie-vyisota').val());
@@ -312,7 +300,7 @@ $('body').on('click', '#myTab', function () {
  * Функция филтрует материалы по id стартового матиреала
  */
 function filteMatirealsStart(v) {
-    return v.id == top.storage.mS;
+    return v.id == storage.mS;
 }
 $('body').on('keyup', '.napolnenie-el input.form-control.tab-napolnenie-vyisota', function () {
     $(this).parent().parent().parent().find('#savehight').prop("checked", true);
