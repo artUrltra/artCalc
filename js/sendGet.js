@@ -38,6 +38,7 @@ function SaveToPDF() {
             tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
             tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
             tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
+            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
             selectedMaterials1.push(tmpA1);
         }
     }
@@ -56,6 +57,7 @@ function SaveToPDF() {
             tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
             tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
             tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
+            tmpA2.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
             selectedMaterials2.push(tmpA2);
         }
     }
@@ -74,6 +76,7 @@ function SaveToPDF() {
             tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
             tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
             tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
+            tmpA3.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
             selectedMaterials3.push(tmpA3);
         }
     }
@@ -457,13 +460,13 @@ function SaveToPDF() {
         console.log(arr);
         arr.forEach(function (v) {
             let tmpArr = [];
-            let item =top.storage.TS.find((s)=>s.id===v.id);
+            let item = top.storage.TS.find((s) => s.id === v.id);
             tmpArr.push(v.id);
             tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
             tmpArr.push(v.sum);
-            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1:undefined);
+            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkasSupp.push(tmpArr);
         })
     } else {
@@ -500,13 +503,13 @@ function SaveToPDF() {
         console.log(arr);
         arr.forEach(function (v) {
             let tmpArr = [];
-            let item =top.storage.TS.find((s)=>s.id===v.id);
+            let item = top.storage.TS.find((s) => s.id === v.id);
             tmpArr.push(v.id);
             tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
             tmpArr.push(v.sum);
-            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1:undefined);
+            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas2Supp.push(tmpArr);
         })
     } else {
@@ -540,28 +543,28 @@ function SaveToPDF() {
         console.log(arr);
         arr.forEach(function (v) {
             let tmpArr = [];
-            let item =top.storage.TS.find((s)=>s.id===v.id);
+            let item = top.storage.TS.find((s) => s.id === v.id);
             tmpArr.push(v.id);
             tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
             tmpArr.push(v.sum);
-            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1:undefined);
+            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas3Supp.push(tmpArr);
         })
     } else {
-    $("#state3").contents().find('.nsupp').each(function () {
-        if ($("#state3").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
-            var tmpArr = [];
-            tmpArr.push($(this).val());
-            tmpArr.push($("#state3").contents().find('.nsupp' + $(this).val()).val());
-            tmpArr.push($("#state3").contents().find('#textSupplements' + $(this).val()).html());
-            tmpArr.push($("#state3").contents().find('#imageSupplements' + $(this).val()).attr('src'));
-            tmpArr.push($("#state3").contents().find('#priceSupplements' + $(this).val()).html());
-            tmpArr.push($("#state3").contents().find('#CountSupplements' + $(this).val()).val());
-            selectedKarkas3Supp.push(tmpArr);
-        }
-    });
+        $("#state3").contents().find('.nsupp').each(function () {
+            if ($("#state3").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
+                var tmpArr = [];
+                tmpArr.push($(this).val());
+                tmpArr.push($("#state3").contents().find('.nsupp' + $(this).val()).val());
+                tmpArr.push($("#state3").contents().find('#textSupplements' + $(this).val()).html());
+                tmpArr.push($("#state3").contents().find('#imageSupplements' + $(this).val()).attr('src'));
+                tmpArr.push($("#state3").contents().find('#priceSupplements' + $(this).val()).html());
+                tmpArr.push($("#state3").contents().find('#CountSupplements' + $(this).val()).val());
+                selectedKarkas3Supp.push(tmpArr);
+            }
+        });
     }
     TOTAL_PAINTING = parseInt($("#state3").contents().find('#TOTAL_PAINTING_ID').val());
     if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
@@ -798,15 +801,15 @@ function SaveToPDF() {
         'arrF0': JSON.stringify(arrF0),
         'arrF1': JSON.stringify(arrF1),
         'arrF2': JSON.stringify(arrF2),
-        'Omanufacturer': frames[0].$('.manufacturer').val() ==="Производитель" ?'':frames[0].$('.manufacturer').val(),
-        'Emanufacturer': frames[1].$('.manufacturer').val() ==="Производитель" ?'':frames[1].$('.manufacturer').val(),
-        'Fmanufacturer': frames[2].$('.manufacturer').val() ==="Производитель" ?'':frames[2].$('.manufacturer').val(),
+        'Omanufacturer': frames[0].$('.manufacturer').val() === "Производитель" ? '' : frames[0].$('.manufacturer').val(),
+        'Emanufacturer': frames[1].$('.manufacturer').val() === "Производитель" ? '' : frames[1].$('.manufacturer').val(),
+        'Fmanufacturer': frames[2].$('.manufacturer').val() === "Производитель" ? '' : frames[2].$('.manufacturer').val(),
         'contacts': JSON.stringify({
             name: $('#managertext').val(),
             tel: $('#teltext').val(),
             mail: $('#mailtext').val()
         }),
-        'schema': frames[0].$('#shema').prop( "checked" )?  frames[0].$('#ShemaKonstr').attr('src'):''
+        'schema': frames[0].$('#shema').prop("checked") ? frames[0].$('#ShemaKonstr').attr('src') : ''
     };
     $.post('./php/longurl.php?n=' + window.id_pdf, 'url=' + JSON.stringify(url), function () {
         window.open('./html2pdf.php?n=' + window.id_pdf, '_blank');
@@ -849,6 +852,7 @@ function SaveToPdfToFile() {
             tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
             tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
             tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
+            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
             selectedMaterials1.push(tmpA1);
         }
     }
@@ -867,6 +871,7 @@ function SaveToPdfToFile() {
             tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
             tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
             tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
+            tmpA2.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
             selectedMaterials2.push(tmpA2);
         }
     }
@@ -885,6 +890,7 @@ function SaveToPdfToFile() {
             tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
             tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
             tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
+            tmpA3.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
             selectedMaterials3.push(tmpA3);
         }
     }
@@ -1557,15 +1563,15 @@ function SaveToPdfToFile() {
         'arrF0': JSON.stringify(arrF0),
         'arrF1': JSON.stringify(arrF1),
         'arrF2': JSON.stringify(arrF2),
-        'Omanufacturer': frames[0].$('.manufacturer').val() ==="Производитель" ?'':frames[0].$('.manufacturer').val(),
-        'Emanufacturer': frames[1].$('.manufacturer').val() ==="Производитель" ?'':frames[1].$('.manufacturer').val(),
-        'Fmanufacturer': frames[2].$('.manufacturer').val() ==="Производитель" ?'':frames[2].$('.manufacturer').val(),
+        'Omanufacturer': frames[0].$('.manufacturer').val() === "Производитель" ? '' : frames[0].$('.manufacturer').val(),
+        'Emanufacturer': frames[1].$('.manufacturer').val() === "Производитель" ? '' : frames[1].$('.manufacturer').val(),
+        'Fmanufacturer': frames[2].$('.manufacturer').val() === "Производитель" ? '' : frames[2].$('.manufacturer').val(),
         'contacts': JSON.stringify({
             name: $('#managertext').val(),
             tel: $('#teltext').val(),
             mail: $('#mailtext').val()
         }),
-        'schema': frames[0].$('#shema').prop( "checked" )?  frames[0].$('#ShemaKonstr').attr('src'):''
+        'schema': frames[0].$('#shema').prop("checked") ? frames[0].$('#ShemaKonstr').attr('src') : ''
     };
 
     $.post('./php/longurl.php?n=' + window.id_pdf, 'url=' + JSON.stringify(url), function () {

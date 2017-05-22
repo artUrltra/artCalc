@@ -185,13 +185,13 @@ var info = {
         return JSON.stringify(this);
     }
 };
-/*function init_info() {
+function init_info() {
     info.init();
     $('.BAFFLE_SEKECTOR_CLASS').off('click', init_info);
-}*/
-/*$('.BAFFLE_SEKECTOR_CLASS').on('click', init_info);
+}
+$('.BAFFLE_SEKECTOR_CLASS').on('click', init_info);
 $('.BAFFLE_SEKECTOR_CLASS').on('change', function () {
     info.setpaint();
     info.index = parseInt($(this).val()) - 1;
     info.fillpaint();
-});*/
+});

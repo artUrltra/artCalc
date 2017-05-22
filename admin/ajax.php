@@ -232,10 +232,16 @@ if (isset($_GET['add'])) {
             echo 'Добавлено';
 
             break;
-        case addmanufacturer:{
-            $sql ="INSERT INTO manufacturer (id,name) VALUES (NULL ,'{$_POST['name']}')";
+        case addmanufacturer: {
+            $sql = "INSERT INTO manufacturer (id,name) VALUES (NULL ,'{$_POST['name']}')";
             $DB->query_no_var($sql);
             echo $sql;
+            break;
+        }
+        case 'expmat': {
+            $DB->query_no_var("INSERT INTO expmat (name, cat, price, img) VALUES ('{$_POST['n']}',{$_POST['c']},{$_POST['p']},'{$_POST['i']}');");
+            echo 'Добавлено';
+            break;
         }
     }
 }
@@ -301,6 +307,9 @@ if (isset($_GET['delete'])) {
             break;
         case 'deltemp':
             $DB->query_no_var("DELETE FROM temp WHERE temp.`id` = {$_POST['id']}");
+            break;
+        case 'delexp':
+            $DB->query_no_var("DELETE FROM expmat WHERE expmat.`id` = {$_POST['id']}");
             break;
     }
 }
@@ -658,10 +667,7 @@ if (isset($_GET['expmd'])) {
     $DB->query_no_var("DELETE FROM expmatireals WHERE id={$_POST['id']}");
 }
 if (isset($_GET['getexpm'])) {
-    $items = $DB->query("SELECT * FROM expmatireals");
-    foreach ($items as &$item) {
-        $item['arr_p'] = unserialize($item['arr_p']);
-    }
+    $items = $DB->query("SELECT * FROM expmat");
     echo json_encode($items);
 }
 
@@ -726,20 +732,26 @@ if (isset($_GET['upcatalog'])) {
     $DB->query_no_var("UPDATE catalogs SET name ='{$_POST['title']}', link='{$_POST['link']}',hide='{$_POST['hide']}',\"left\"='{$_POST['show_on_left']}',\"group\"='{$_POST['is_group_catalog']}',separately='{$_POST['separate']}',description='{$_POST['description']}' WHERE id='{$_GET['upcatalog']}'");
 }
 
-if(isset($_GET['getedititem'])){
-    $sql ="SELECT * FROM temp WHERE id={$_POST['id']}";
-    $item =$DB->query($sql);
-   echo json_encode($item[0]);
+if (isset($_GET['getedititem'])) {
+    $sql = "SELECT * FROM temp WHERE id={$_POST['id']}";
+    $item = $DB->query($sql);
+    echo json_encode($item[0]);
 }
 
-if(isset($_GET['setedittemp'])){
+if (isset($_GET['setedittemp'])) {
     $text = htmlspecialchars($_POST['text'], ENT_QUOTES);
     $DB->query_no_var("UPDATE temp SET name='{$_POST['name']}', user='{$_POST['user']}', text='{$text}',code='{$_POST['code']}',theme='{$_POST['theme']}' WHERE id='{$_POST['id']}'");
 }
-if(isset($_GET['delereimgPDF'])){
-    $DB->query_no_var("DELETE FROM images WHERE  images.id=".$_POST['id']);
+if (isset($_GET['delereimgPDF'])) {
+    $DB->query_no_var("DELETE FROM images WHERE  images.id=" . $_POST['id']);
     echo 'Картинка была удалена';
 }
-if(isset($_GET['getmanufacturer'])){
-echo json_encode($DB->query("SELECT * FROM manufacturer"));
+if (isset($_GET['getmanufacturer'])) {
+    echo json_encode($DB->query("SELECT * FROM manufacturer"));
+}
+if (isset($_GET['extmid'])) {
+    echo json_encode($DB->query("SELECT * FROM expmat WHERE id=" . $_POST['i'])[0]);
+}
+if (isset($_GET['editexpmat'])) {
+    $DB->query_no_var(" UPDATE expmat SET name ='{$_POST['n']}',img='{$_POST['i']}',price={$_POST['p']} WHERE id={$_POST['d']}");
 }

@@ -50,14 +50,34 @@ tinymce.init({
                         editor.insertContent('&nbsp;#pm&nbsp;')
                     }
                 }, {
-                    text: 'Имя профиля',
+                    text: 'Оптимальный Профиль',
                     onclick: function () {
                         editor.insertContent('&nbsp;#Profile&nbsp;')
                     }
                 }, {
-                    text: 'Матереалы',
+                    text: 'Эконом Профиль',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#EconomProfile&nbsp;')
+                    }
+                }, {
+                    text: 'Премиум Профиль',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#PremiumProfile&nbsp;')
+                    }
+                }, {
+                    text: 'Оптимальный Матереалы',
                     onclick: function () {
                         editor.insertContent('&nbsp;#Matireals&nbsp;')
+                    }
+                }, {
+                    text: 'Эконом Матереалы',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#EconomMatireals&nbsp;')
+                    }
+                }, {
+                    text: 'Премиум Матереалы',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#PremiumMatireals&nbsp;')
                     }
                 }, {
                     text: 'Цена материалов',

@@ -5,7 +5,7 @@
  * Дополнения
  * @type {{}}
  */
-let addition = {
+var addition = {
     SetTypeSupplements: function (id, typeprice, name) {
         switch (typeprice) {
             case 'Поштучно': {
@@ -49,14 +49,15 @@ let addition = {
         $('#priceSupplements' + id).text(price);
         $('#priceSupplements' + id).attr('data-price', price);
         $('#CountSupplements' + id).attr('data-price', price);
+        addition.UpdateAddition();
     },
     SeeSupplements: function (id) {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-        let html = $('.zaglushka-torcevaya-block-modal').html();
-        let obj = storage.S;
-        let profils = storage.PAS;
-        let idK = getFromData('karkas-id');
-        for (let j = 0; j < profils.length; j++) {
+        var html = $('.zaglushka-torcevaya-block-modal').html();
+        var obj = top.storage.S;
+        var profils = top.storage.PAS;
+        var idK = getFromData('karkas-id');
+        for (var j = 0; j < profils.length; j++) {
             if (profils[j].Profil == idK) {
                 if (obj.length == 0) {
                     parent.message('Извините , но для данного профиля заглушки торцевые отсутствуют');
@@ -80,42 +81,42 @@ let addition = {
         $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
     },
     SetSupplements: function () {
-        if (states.arr) {
-            let id = states.arr[states.i].p.id;
-            if (id) {
-                let obj = storage.S;
-                let obj1 = storage.PAS.filter((value) => value.Profil == id);
-                $('.addon-block select').prop('value', 'Нет');
+        var id = getFromData('karkas-id');
+        if (id != undefined) {
+            var obj = top.storage.S;
+            var obj1 = top.storage.PAS.filter((value) => value.Profil == id);
+            $('.addon-block select').prop('value', 'Нет');
 
-                for (let j = 0; j < obj1.length; j++) {
-                    for (let i = 0; i < obj.length; i++) {
+            for (var j = 0; j < obj1.length; j++) {
+                    for (var i = 0; i < obj.length; i++) {
                         if (obj[i].id === obj1[j].Supplements) {
-                            let item = storage.TS.find((v) => v.id === obj[i].patern_id);
+                           let item = top.storage.TS.find((v) => v.id === obj[i].patern_id);
                             $('#textSupplements' + obj[i].patern_id).text(obj[i].name);
                             $('#imageSupplements' + obj[i].patern_id).attr('src', './admin/' + obj[i].img);
                             $('#priceSupplements' + obj[i].patern_id).text(obj[i].price);
                             $('#priceSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
                             $('#CountSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
-                            if (item) {
+                            if(item) {
                                 $('#selectSupplements' + obj[i].patern_id).val(item.flag === 'Да' ? 'Есть' : 'Нет');
-                            } else {
+                            }else {
                                 $('#selectSupplements' + obj[i].patern_id).val('Есть');
                             }
-                            break;
                         }
                     }
-                }
             }
         }
     },
-};
+    UpdateAddition: function () {
+        top.States.AdditionName($('.addition'));
+    }
+}
 function changeAddition() {
-    let type = parseInt($('#TYPE_BAFFLE_ID').val());
-    let obj = storage.TS;
+    var type = parseInt($('#TYPE_BAFFLE_ID').val());
+    var obj = top.storage.TS;
     $('#SUPPLEMENTS').html('');
     switch (type) {
         case 0: {
-            for (let i = 0; i < obj.length; i++) {
+            for (var i = 0; i < obj.length; i++) {
                 if (obj[i].type == 'Стационарная') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }
@@ -123,7 +124,7 @@ function changeAddition() {
             break;
         }
         case 1: {
-            for (let i = 0; i < obj.length; i++) {
+            for (var i = 0; i < obj.length; i++) {
                 if (obj[i].type == 'Раздвижная перегородка') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }
@@ -131,7 +132,7 @@ function changeAddition() {
             break;
         }
         case 2: {
-            for (let i = 0; i < obj.length; i++) {
+            for (var i = 0; i < obj.length; i++) {
                 if (obj[i].type == 'Складная перегородка') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }
@@ -139,7 +140,7 @@ function changeAddition() {
             break;
         }
         case 3: {
-            for (let i = 0; i < obj.length; i++) {
+            for (var i = 0; i < obj.length; i++) {
                 if (obj[i].type == 'Распашная дверь') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }
@@ -147,7 +148,7 @@ function changeAddition() {
             break;
         }
         case 4: {
-            for (let i = 0; i < obj.length; i++) {
+            for (var i = 0; i < obj.length; i++) {
                 if (obj[i].type === 'Мобильная перегородка') {
                     addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
                 }

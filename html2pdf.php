@@ -233,13 +233,13 @@ if ($ff) {
     $p2 = ($sum[1]->p * $count0) + $procent1 + $sum[1]->a + $sum[1]->d;
     $p3 = ($sum[2]->p * $count0) + $procent2 + $sum[2]->a + $sum[2]->d;
 
-    $f1 = $sum[0]->f * (1 + $per[0]->i / 100) * (1 + $per[0]->p / 100) * 1.1;;
-    $f2 = $sum[1]->f * (1 + $per[1]->i / 100) * (1 + $per[1]->p / 100) * 1.1;;
-    $f3 = $sum[2]->f * (1 + $per[2]->i / 100) * (1 + $per[2]->p / 100) * 1.1;;
+    $f1 = $sum[0]->f * (1 + $per[0]->i / 100) * (1 + $per[0]->p / 100) * 1.1;
+    $f2 = $sum[1]->f * (1 + $per[1]->i / 100) * (1 + $per[1]->p / 100) * 1.1;
+    $f3 = $sum[2]->f * (1 + $per[2]->i / 100) * (1 + $per[2]->p / 100) * 1.1;
 
-    $mo1 = ($sum[0]->o * $per[0]->m / 100 * $per[0]->p / 100 < 3000) ? 3000 : $sum[0]->o * $per[0]->m / 100 * $per[0]->p / 100;
-    $mo2 = ($sum[1]->o * $per[1]->m / 100 * $per[1]->p / 100 < 3000) ? 3000 : $sum[1]->o * $per[1]->m / 100 * $per[1]->p / 100;
-    $mo3 = ($sum[2]->o * $per[2]->m / 100 * $per[2]->p / 100 < 3000) ? 3000 : $sum[2]->o * $per[2]->m / 100 * $per[2]->p / 100;
+    $mo1 = $per[0]->m !== '0' ? ($sum[0]->o * $per[0]->m / 100 * $per[0]->p / 100 < 3000) ? 3000 : $sum[0]->o * $per[0]->m / 100 * $per[0]->p / 100 : 0;
+    $mo2 = $per[1]->m !== '0' ? ($sum[1]->o * $per[1]->m / 100 * $per[1]->p / 100 < 3000) ? 3000 : $sum[1]->o * $per[1]->m / 100 * $per[1]->p / 100 : 0;
+    $mo3 = $per[2]->m !== '0' ? ($sum[2]->o * $per[2]->m / 100 * $per[2]->p / 100 < 3000) ? 3000 : $sum[2]->o * $per[2]->m / 100 * $per[2]->p / 100 : 0;
 
     $do1 = $rub[0]->d;
     $do2 = $rub[1]->d;
@@ -507,6 +507,7 @@ if ($ff) {
             $materialInfo1[$i]['sh'] = $selectedMaterials1[$i][4];
             $materialInfo1[$i]['to'] = $selectedMaterials1[$i][5];
             $materialInfo1[$i]['ko'] = $selectedMaterials1[$i][6];
+            $materialInfo1[$i]['zk'] = $selectedMaterials1[$i][7];
         }
     }
     if (eGet("selectedMaterials2")) {
@@ -824,8 +825,8 @@ if ($ff) {
                                 $img_size = getimagesize($fotoInfo[0]);
                                 if ($img_size[0] > $img_size[1]) {
                                     ?>
-                                        <img src="<?= $fotoInfo[0] ?>"
-                                             style=" width: 100%; height: 260px;">
+                                    <img src="<?= $fotoInfo[0] ?>"
+                                         style=" width: 100%; height: 260px;">
                                 <?php } elseif ($img_size[0] < $img_size[1]) {
                                     ?>
                                     <img src="<?= $fotoInfo[0] ?>"
@@ -842,8 +843,8 @@ if ($ff) {
                                          style=" width: 100%; height: 260px;">
                                 <?php } elseif ($img_size[0] < $img_size[1]) {
                                     ?>
-                                        <img src="<?= $fotoInfo[1] ?>"
-                                             style="width: 50%; height: 260px;">
+                                    <img src="<?= $fotoInfo[1] ?>"
+                                         style="width: 50%; height: 260px;">
                                 <?php }
                             } ?>
                         </td>
@@ -907,11 +908,10 @@ if ($ff) {
                         $srtz0 = '';
                         $srtz1 = '';
                         $srtz2 = '';
-
                         if (count($materialInfo1) == 1 && count($materialInfo2) == 1 && count($materialInfo3) == 1) {
-                            $srtz0 = '/' . $materialInfo1[0]['in']["name"];
-                            $srtz1 = '/' . $materialInfo2[0]['in']["name"];
-                            $srtz2 = '/' . $materialInfo3[0]['in']["name"];
+                            $srtz0 = '/' . $materialInfo1[0]['in']["name"] . ' (' . $materialInfo1[0]['to'] . ' мм)';
+                            $srtz1 = '/' . $materialInfo2[0]['in']["name"] . ' (' . $materialInfo2[0]['to'] . ' мм)';
+                            $srtz2 = '/' . $materialInfo3[0]['in']["name"] . ' (' . $materialInfo3[0]['to'] . ' мм)';
                         }
                         ?>
                         <tr>
@@ -1646,7 +1646,7 @@ if ($ff) {
                                 Ширина, мм: <?= $materialInfo1[$i]['sh'] ?><br/>
                                 Высота, мм: <?= $materialInfo1[$i]['vy'] ?><br/>
                                 Площадь, м: <?= $materialInfo1[$i]['pl'] ?><br/>
-                                И т.д.<br/>
+                                <?= $materialInfo1[$i]['zk'] ? 'Закаленное' : 'И т.д.' ?><br/>
                                 <br/>
                                 Цена, м/кв.: <?php
 
@@ -1921,15 +1921,15 @@ if ($ff) {
                                     <td style="width:30%;">
                                         <p style="text-align:center;">
                                             <?php
-                                            $linkimg='';
-                                            for ($i=0;$i<count($furnituraInfo2[0]);$i++){
-                                                if($furnituraInfo2[0][$i] !=FALSE){
-                                                    $linkimg=$furnituraInfo2[0][$i]['img'];
+                                            $linkimg = '';
+                                            for ($i = 0; $i < count($furnituraInfo2[0]); $i++) {
+                                                if ($furnituraInfo2[0][$i] != FALSE) {
+                                                    $linkimg = $furnituraInfo2[0][$i]['img'];
                                                     break;
                                                 }
                                             }
                                             if ($linkimg != "" && @fopen("admin/" . $linkimg, "r")) { ?>
-                                                <img src='admin/<?=$linkimg ?>'
+                                                <img src='admin/<?= $linkimg ?>'
                                                      style="height:100px;">
                                             <?php } else { ?>
                                                 <img src='img/notselected.png' style="height:100px;width:100px;">
@@ -2288,15 +2288,15 @@ if ($ff) {
                                 <tr>
                                     <td style="width:30%;">
                                         <p style="text-align:center;">
-                                            <?php  $linkimg='';
-                                            for ($i=0;$i<count($furnituraInfo3[0]);$i++){
-                                                if($furnituraInfo3[0][$i] !=FALSE){
-                                                    $linkimg=$furnituraInfo3[0][$i]['img'];
+                                            <?php $linkimg = '';
+                                            for ($i = 0; $i < count($furnituraInfo3[0]); $i++) {
+                                                if ($furnituraInfo3[0][$i] != FALSE) {
+                                                    $linkimg = $furnituraInfo3[0][$i]['img'];
                                                     break;
                                                 }
                                             }
                                             if ($linkimg != "" && @fopen("admin/" . $linkimg, "r")) { ?>
-                                                <img src='admin/<?=$linkimg ?>'
+                                                <img src='admin/<?= $linkimg ?>'
                                                      style="height:100px;width:100px;">
                                             <?php } else { ?>
                                                 <img src='img/notselected.png' style="height:100px;width:100px;">

@@ -146,13 +146,14 @@ function getcatalogs() {
     $('.left-bloks input[type="checkbox"]').each(function () {
         if ($(this).prop('checked')) {
             let name = $(this).parent().text();
-            let _i = storage.catalogs.filter((s) => s.name === name);
+            let _i = storage.catalogs.filter((s) => s.name === name)[0];
             if (_i) {
-                arr.push({
-                    name: _i.description !== '' ? _i.description : _i.name,
-                    link: _i.link,
-                    id: _i.id
-                });
+                if (_i.link !== '')
+                    arr.push({
+                        name: _i.description !== '' ? _i.description : _i.name,
+                        link: _i.link,
+                        id: _i.id
+                    });
             }
         }
     });
@@ -203,38 +204,42 @@ function getcatalogs() {
         }
         if (l0.length > 0 && l1.length === 0 && l2.length > 0) {
             l2.forEach((_i) => {
-                arr.push({
-                    name: _i.description !== '' ? _i.description : _i.name,
-                    link: _i.link,
-                    id: _i.id
-                });
+                if (_i.link !== '')
+                    arr.push({
+                        name: _i.description !== '' ? _i.description : _i.name,
+                        link: _i.link,
+                        id: _i.id
+                    });
             });
         } else if (l0.length === 0 && l1.length === 0 && l2.length > 0) {
             l2.forEach((_i) => {
-                arr.push({
-                    name: _i.description !== '' ? _i.description : _i.name,
-                    link: _i.link,
-                    id: _i.id
-                });
+                if (_i.link !== '')
+                    arr.push({
+                        name: _i.description !== '' ? _i.description : _i.name,
+                        link: _i.link,
+                        id: _i.id
+                    });
             });
         } else if (l0.length > 0 && l1.length > 0 && (l2.length > 0 || l2.length === 0)) {
             l1.forEach((_i) => {
-                arr.push({
-                    name: _i.description !== '' ? _i.description : _i.name,
-                    link: _i.link,
-                    id: _i.id
-                });
+                if (_i.link !== '')
+                    arr.push({
+                        name: _i.description !== '' ? _i.description : _i.name,
+                        link: _i.link,
+                        id: _i.id
+                    });
             });
         } else if (l0.length > 0 && l1.length === 0 && l2.length === 0) {
             l0.forEach((b) => {
                 let i = storage.catalogs.filter((s) => s.parent_id === b.id);
                 if (i)
                     i.forEach((_i) => {
-                        arr.push({
-                            name: _i.description !== '' ? _i.description : _i.name,
-                            link: _i.link,
-                            id: _i.id
-                        });
+                        if (_i.link !== '')
+                            arr.push({
+                                name: _i.description !== '' ? _i.description : _i.name,
+                                link: _i.link,
+                                id: _i.id
+                            });
                     });
             });
         }

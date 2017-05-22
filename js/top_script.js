@@ -2,6 +2,20 @@
  * Created by Андрей on 16.04.2017.
  *
  */
+/**
+ * Функция перевода числа из srt в int
+ * @param number
+ * @returns {*}
+ * @constructor
+ */
+function ParserIntAndNan(number) {
+    if (isNaN(parseInt(number))) {
+        return 0;
+    } else {
+        return parseInt(number);
+    }
+}
+
 window.id_pdf = new Date().getTime();
 $.material.init();
 
@@ -11,7 +25,7 @@ function message(e) {
     });
 }
 // Общий флаг для перенноса данных из стейтов
-let _FLAG = false;
+var _FLAG = true;
 
 /**
  * Функция переноса даных между стейтами
@@ -132,11 +146,25 @@ function GloblPrice_FLAG() {
         frames[2].nmaterials.ResSumm();
 
         //Перенос селекторов фурнитуры
-        frames[0].$('.furnituraElFlag').each(function (index) {
-            frames[1].$('.furnituraElFlag:eq(' + index + ')').val($(this).val());
-            frames[2].$('.furnituraElFlag:eq(' + index + ')').val($(this).val());
-        });
+        $("#state1").contents().find('.furnituraElFlag').each(function (index) {
+            if ($(this).val() === '1') {
+                let $i = $("#state2").contents().find('.furnituraElFlag:eq(' + index + ')');
+                $i.val($(this).val());
+                $i.parent().find('*').removeAttr('disabled');
+                $i.parent().find('.addonImg').css('pointer-events', '');
+                $i.parent().find('*').css('opacity', '1');
 
+                let $o = $("#state3").contents().find('.furnituraElFlag:eq(' + index + ')');
+                $o.val($(this).val());
+                $o.parent().find('*').removeAttr('disabled');
+                $o.parent().find('.addonImg').css('pointer-events', '');
+                $o.parent().find('*').css('opacity', '1');
+            }
+        });
+        if (frames[0].$(".aksessuaryi-block-swith input").prop("checked")) {
+            frames[1].$(".aksessuaryi-block-swith input").prop("checked", true);
+            frames[2].$(".aksessuaryi-block-swith input").prop("checked", true);
+        }
         frames[1].nfurnitura.viewTotalFurnitura();
         frames[2].nfurnitura.viewTotalFurnitura();
 
@@ -149,8 +177,9 @@ function GloblPrice_FLAG() {
             frames[1].$('.BAFFLE_SEKECTOR_CLASS').val(frames[0].$('.BAFFLE_SEKECTOR_CLASS').val());
             frames[2].$('.BAFFLE_SEKECTOR_CLASS').val(frames[0].$('.BAFFLE_SEKECTOR_CLASS').val());
 
-            frames[1].info.array = frames[0].info.array;
-            frames[2].info.array = frames[0].info.array;
+
+            frames[1].info.array = FastClone.cloneArray(frames[0].info.array);
+            frames[2].info.array = FastClone.cloneArray(frames[0].info.array);
 
             frames[1].info.index = frames[0].info.index;
             frames[2].info.index = frames[0].info.index;
@@ -173,6 +202,8 @@ function GloblPrice_FLAG() {
         let manufacturer = frames[0].$('.manufacturer').val();
         frames[1].$('.manufacturer').val(manufacturer);
         frames[2].$('.manufacturer').val(manufacturer);
+
+
     }
 }
 
@@ -181,7 +212,6 @@ function GloblPrice_FLAG() {
  */
 $("body").on('mouseover', '.container', GloblPrice_FLAG);
 $('.slider-container').click(function () {
-    console.log('click');
     _FLAG = false;
     $("body").off('mouseover', '.container', GloblPrice_FLAG);
 
@@ -198,8 +228,16 @@ $('body').on('click', function () {
  * @type {boolean}
  */
 window.onload = function () {
-    storage.init();
+    state.stateOneHeight();
+    $(".preloade-wrapper").fadeOut(500);
+    $("body").css("overflow", "auto");
+    _FLAG = true;
     state.checkManager();
+
+
+    top.frames[0].changeAddition();
+    top.frames[1].changeAddition();
+    top.frames[2].changeAddition();
 };
 
 function delTiteltext() {
@@ -235,8 +273,8 @@ $('#calcmanager').change(function () {
  * события изменния селектора шаблонов
  */
 $('body').on('change', '#temp', function () {
-    var id = parseInt($(this).val());
-    var item = storage.temp.find(function (v) {
+    let id = parseInt($(this).val());
+    let item = storage.temp.find(function (v) {
         return v.id === id;
     });
     $('.panel input[type="checkbox"]').prop("checked", false);
@@ -398,6 +436,9 @@ function getTypeKonst(id) {
  * @constructor
  */
 function TagsText(text) {
+    frames[1].info.setpaint();
+    frames[2].info.setpaint();
+    frames[0].info.setpaint();
     //тег профиль с индексом и мм
     let strProfilemm = text.match(/#Profile\[\d\]\[mm\]/g);
     if (strProfilemm) {
@@ -414,6 +455,42 @@ function TagsText(text) {
     if (strProfile) {
         strProfile.forEach((v) => {
             text = text.replace(v, frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
+        });
+    }
+    //тег профиль с индексом и мм
+    let strEconomProfilemm = text.match(/#EconomProfile\[\d\]\[mm\]/g);
+    if (strEconomProfilemm) {
+        strEconomProfilemm.forEach((v) => {
+            let nameProfil = frames[1].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile
+            let p = storage.p.find((v) => v.name === nameProfil);
+            let profile = p.name + ' ' + p.model + 'x' + p.int + ' мм.';
+            text = text.replace(v, profile);
+        });
+    }
+
+    // тег профиль с индексом без мм
+    let strEconomProfile = text.match(/#EconomProfile\[\d\]/g);
+    if (strEconomProfile) {
+        strEconomProfile.forEach((v) => {
+            text = text.replace(v, frames[1].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
+        });
+    }
+    //тег профиль с индексом и мм
+    let strPremiumProfilemm = text.match(/#PremiumProfile\[\d\]\[mm\]/g);
+    if (strPremiumProfilemm) {
+        strPremiumProfilemm.forEach((v) => {
+            let nameProfil = frames[2].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile
+            let p = storage.p.find((v) => v.name === nameProfil);
+            let profile = p.name + ' ' + p.model + 'x' + p.int + ' мм.';
+            text = text.replace(v, profile);
+        });
+    }
+
+    // тег профиль с индексом без мм
+    let strPremiumProfile = text.match(/#PremiumProfile\[\d\]/g);
+    if (strPremiumProfile) {
+        strPremiumProfile.forEach((v) => {
+            text = text.replace(v, frames[2].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
         });
     }
 
@@ -454,6 +531,78 @@ function TagsText(text) {
     _arrm_mm.forEach((f) => {
         strM_mm += f + ' ';
     });
+    let e_arrm = [];
+    let e_arrm_mm = [];
+
+    if (frames[1].info.array) {
+        frames[1].info.array.forEach(function (v) {
+            v.array_filling.forEach((s) => {
+                let _i = storage.m.find((d) => d.img === s.img.substr(8));
+                let _c = _i.price.split(';').findIndex((_b) => _b === s.tolschina);
+                let t = _i.thickness.split(';')[_c];
+
+                let srtm_mm, srtm;
+                if (s.zk) {
+                    srtm_mm = _i.name + ' закаленное ' + t + 'мм.';
+                    srtm = _i.name + ' закаленное';
+                } else {
+                    srtm_mm = _i.name + ' ' + t + 'мм.';
+                    srtm = _i.name;
+                }
+                if (!e_arrm_mm.find((_d) => _d === srtm_mm)) {
+                    e_arrm_mm.push(srtm_mm);
+                }
+                if (!e_arrm.find((_d) => _d === srtm)) {
+                    e_arrm.push(srtm);
+                }
+            });
+        });
+    }
+    let e_strM = '';
+    e_arrm.forEach((f) => {
+        e_strM += f + ' ';
+    });
+
+    let e_strM_mm = '';
+    e_arrm_mm.forEach((f) => {
+        e_strM_mm += f + ' ';
+    });
+    let p_arrm = [];
+    let p_arrm_mm = [];
+
+    if (frames[2].info.array) {
+        frames[2].info.array.forEach(function (v) {
+            v.array_filling.forEach((s) => {
+                let _i = storage.m.find((d) => d.img === s.img.substr(8));
+                let _c = _i.price.split(';').findIndex((_b) => _b === s.tolschina);
+                let t = _i.thickness.split(';')[_c];
+
+                let srtm_mm, srtm;
+                if (s.zk) {
+                    srtm_mm = _i.name + ' закаленное ' + t + 'мм.';
+                    srtm = _i.name + ' закаленное';
+                } else {
+                    srtm_mm = _i.name + ' ' + t + 'мм.';
+                    srtm = _i.name;
+                }
+                if (!p_arrm_mm.find((_d) => _d === srtm_mm)) {
+                    p_arrm_mm.push(srtm_mm);
+                }
+                if (!p_arrm.find((_d) => _d === srtm)) {
+                    p_arrm.push(srtm);
+                }
+            });
+        });
+    }
+    let p_strM = '';
+    e_arrm.forEach((f) => {
+        p_strM += f + ' ';
+    });
+
+    let p_strM_mm = '';
+    e_arrm_mm.forEach((f) => {
+        p_strM_mm += f + ' ';
+    });
 
     // тег матереала с индексом и мм
     let strMimm = text.match(/#Matireals\[\d\]\[mm\]/g);
@@ -470,11 +619,45 @@ function TagsText(text) {
             text = text.replace(v, _arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
     }
+    // тег матереала с индексом и мм
+    strMimm = text.match(/#EconomMatireals\[\d\]\[mm\]/g);
+    if (strMimm) {
+        strMimm.forEach((v) => {
+            text = text.replace(v, e_arrm_mm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
+        });
+    }
+
+    // тег матереала с индексом без мм
+    strMi = text.match(/#EconomMatireals\[\d\]/g);
+    if (strMi) {
+        strMi.forEach((v) => {
+            text = text.replace(v, e_arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1] ? e_arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1] : ' ');
+        });
+    }
+    // тег матереала с индексом и мм
+    strMimm = text.match(/#PremiumMatireals\[\d\]\[mm\]/g);
+    if (strMimm) {
+        strMimm.forEach((v) => {
+            text = text.replace(v, p_arrm_mm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
+        });
+    }
+
+    // тег матереала с индексом без мм
+    strMi = text.match(/#PremiumMatireals\[\d\]/g);
+    if (strMi) {
+        strMi.forEach((v) => {
+            text = text.replace(v, p_arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
+        });
+    }
 
     text = text.replace(/#MatirealsPriceP/g, Math.round(parseInt(frames[0].$('#Pnap').text()) * 1.5 * 1.3 * 1.1));
     text = text.replace(/#MatirealsPrice/g, frames[0].$('#Pnap').text());
     text = text.replace(/#Matireals\[mm]/g, strM_mm);
     text = text.replace(/#Matireals/g, strM);
+    text = text.replace(/#EconomMatireals\[mm]/g, e_strM_mm);
+    text = text.replace(/#EconomMatireals/g, e_strM);
+    text = text.replace(/#PremiumMatireals\[mm]/g, p_strM_mm);
+    text = text.replace(/#PremiumMatireals/g, p_strM);
     text = text.replace(/#name/g, $('#namek').val());
     text = text.replace(/#w/g, States.TopWidth);
     text = text.replace(/#h/g, States.TopHeight);
@@ -509,6 +692,76 @@ function TagsText(text) {
             }
         }
     }
+
+    //Тег профиль мм
+    if (frames[1].info.array) {
+        let _arr = [];
+        frames[1].info.array.forEach((v) => {
+            let i = _arr.find((s) => s === v.profile);
+            if (!i) {
+                _arr.push(v.profile);
+            }
+        });
+        console.log(_arr);
+        let profile = '';
+        _arr.forEach((s) => {
+            let p = storage.p.find((v) => v.name === s);
+            if (p)
+                profile += p.name + ' ' + p.model + 'x' + p.int + ' мм.';
+        });
+
+        text = text.replace(/#EconomProfile\[mm]/g, profile);
+    }
+    if (frames[1].info.array) {
+        let _arr = [];
+        frames[1].info.array.forEach((v) => {
+            let i = _arr.find((s) => s === v.profile);
+            if (!i) {
+                _arr.push(v.profile);
+            }
+        });
+        let profile = '';
+        _arr.forEach((s) => {
+            profile += s + '\t';
+        });
+
+        text = text.replace(/#EconomProfile/g, profile);
+    }
+    //Тег профиль мм
+    if (frames[2].info.array) {
+        let _arr = [];
+        frames[2].info.array.forEach((v) => {
+            let i = _arr.find((s) => s === v.profile);
+            if (!i) {
+                _arr.push(v.profile);
+            }
+        });
+        console.log(_arr);
+        let profile = '';
+        _arr.forEach((s) => {
+            let p = storage.p.find((v) => v.name === s);
+            if (p)
+                profile += p.name + ' ' + p.model + 'x' + p.int + ' мм.';
+        });
+
+        text = text.replace(/#PremiumProfile\[mm]/g, profile);
+    }
+    if (frames[2].info.array) {
+        let _arr = [];
+        frames[2].info.array.forEach((v) => {
+            let i = _arr.find((s) => s === v.profile);
+            if (!i) {
+                _arr.push(v.profile);
+            }
+        });
+        let profile = '';
+        _arr.forEach((s) => {
+            profile += s + '\t';
+        });
+
+        text = text.replace(/#PremiumProfile/g, profile);
+    }
+
     //Тег профиль мм
     if (frames[0].info.array) {
         let _arr = [];
@@ -544,6 +797,9 @@ function TagsText(text) {
         text = text.replace(/#Profile/g, profile);
     }
 
+
     return text;
 }
-
+$('#orderNumber').on('keyup', function () {
+    $('#zag').val('Коммерческое предложение №' + $(this).val());
+});

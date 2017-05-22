@@ -137,12 +137,14 @@ function loading($page, $smarty, $DB)
             temp($smarty, $DB);
             break;
         case 'manufacturer';
-            manufacturer($smarty,$DB);
+            manufacturer($smarty, $DB);
     }
 }
-function manufacturer($smarty,$DB){
+
+function manufacturer($smarty, $DB)
+{
     menu($smarty, $DB);
-    $smarty->assign('items',$DB->query('SELECT * FROM manufacturer'));
+    $smarty->assign('items', $DB->query('SELECT * FROM manufacturer'));
     $smarty->display('manufacturer.tpl');
 }
 
@@ -163,9 +165,9 @@ function Catalogs($smarty, $DB)
 
     $sql = 'SELECT * FROM catalogs WHERE parent_id =' . $id;
     $items = $DB->query($sql);
-    $item = $DB->query('SELECT * FROM catalogs WHERE id ='.$id);
+    $item = $DB->query('SELECT * FROM catalogs WHERE id =' . $id);
     $smarty->assign('items', $items);
-    $smarty->assign('item',$item[0]);
+    $smarty->assign('item', $item[0]);
 
     $smarty->display('catalogs.tpl');
 }
@@ -175,20 +177,11 @@ function ExpMatireals($smarty, $DB)
     menu($smarty, $DB);
     $type = isset($_GET['type']) ? $_GET['type'] : null;
     if ($type == null) exit();
-    switch ($type) {
-        case '1':
-            echo "1";
-            break;
-        case '2':
-            echo "2";
-            break;
-        case '3':
-            echo "3";
-            break;
-        default:
-            exit();
-            break;
-    }
+
+    $items = $DB->query("SELECT * FROM expmat WHERE cat = {$type}");
+    $smarty->assign('items', $items);
+    $smarty->assign('type', $type);
+    $smarty->display('expmat.tpl');
 }
 
 function editfurn($smarty, $DB)
@@ -618,7 +611,7 @@ function furnitura($smarty, $DB, $type)
     $smarty->assign('formuls', $formuls);
     menu($smarty, $DB);
 
-    $smarty->assign('manufacture',$DB->query('SELECT * FROM manufacturer'));
+    $smarty->assign('manufacture', $DB->query('SELECT * FROM manufacturer'));
     $smarty->assign('cats', $DB->query("SELECT * FROM furnituracat WHERE ctype = {$type}"));
     $smarty->assign('profils', $DB->query("SELECT id,name FROM profile"));
     $smarty->display('furnitura' . $type . '.tpl');

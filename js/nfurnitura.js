@@ -15,7 +15,6 @@ var nfurnitura = {
     events: function () {
         $("#TYPE_BAFFLE_ID").change(function () {
             nfurnitura.loadFurnitura();
-            nfurnitura.getDataFurnitura();
             nfurnitura.viewTotalFurnitura();
         });
         $("#furnitura-tab").on('click', '#stoiki-stac-select .addonImg', function () {
@@ -199,71 +198,100 @@ var nfurnitura = {
     },
 
     setStartValues: function () {
-        var obj = parent.storage.f;
-        for (var i = 0; i < obj.length; i++) {
-            if (obj[i].cat == 1)
-                nfurnitura.SelectRazdvizhnyieMehanizmyiEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 2)
-                nfurnitura.SelectmehanizmsinhronizaciiEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 3)
-                nfurnitura.SelectnapravEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 4)
-                nfurnitura.SelectvidkreplenianapravEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 5)
-                nfurnitura.SelectpovodokEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 6)
-                nfurnitura.SelectdovodchikEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 7)
-                nfurnitura.SelectdekplankadlyaprofilyaEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 8)
-                nfurnitura.SelectschetochniiuplotnitelEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 9)
-                nfurnitura.SelectruchkaEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 10)
-                nfurnitura.SelectzamokEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 11)
-                nfurnitura.SelectmehanizmsinhronskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 12)
-                nfurnitura.SelectmehanizmrotorniiEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 13)
-                nfurnitura.SelectpetliskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 14)
-                nfurnitura.SelectnapravlyayuschieskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 15)
-                nfurnitura.SelectvidkrepleniyanapravlyayuschihskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 16)
-                nfurnitura.SelectdekplankadlyaprofilyaskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 17)
-                nfurnitura.SelectschetochniiuplotnitelskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 18)
-                nfurnitura.SelectruchkaskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 19)
-                nfurnitura.SelectkreplenieruchliskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 20)
-                nfurnitura.SelectzamokskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 21)
-                nfurnitura.SelectpetliRaspashnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 22)
-                nfurnitura.SelectruchkaRaspashnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 23)
-                nfurnitura.SelectzamokRaspashnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 24)
-                nfurnitura.SelectnozhkimobilnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 25)
-                nfurnitura.SelectkolesikimobilnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 26)
-                nfurnitura.SelectstoykimobilnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 27)
-                nfurnitura.SelecttipSoedineniyaPolotenmobilnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 28)
-                nfurnitura.SelectStoikiStacEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 29)
-                nfurnitura.SelectnapravnEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 30)
-                nfurnitura.SelectnapravlyayuschienskladnieEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-            if (obj[i].cat == 31)
-                nfurnitura.SelectmehanizmtelestopEnd("./admin/" + obj[i].img, obj[i].name, obj[i].price);
-        }
+        let item;
+        item = top.storage.f.find((v) => v.cat === 1);
+        if (item)
+            nfurnitura.SelectRazdvizhnyieMehanizmyiEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 2);
+        if (item)
+            nfurnitura.SelectmehanizmsinhronizaciiEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 3);
+        if (item)
+            nfurnitura.SelectnapravEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 4);
+        if (item)
+            nfurnitura.SelectvidkreplenianapravEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 5);
+        if (item)
+            nfurnitura.SelectpovodokEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 6);
+        if (item)
+            nfurnitura.SelectdovodchikEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 7);
+        if (item)
+            nfurnitura.SelectdekplankadlyaprofilyaEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 8);
+        if (item)
+            nfurnitura.SelectschetochniiuplotnitelEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 9);
+        if (item)
+            nfurnitura.SelectruchkaEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 10);
+        if (item)
+            nfurnitura.SelectzamokEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 11);
+        if (item)
+            nfurnitura.SelectmehanizmsinhronskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 12);
+        if (item)
+            nfurnitura.SelectmehanizmrotorniiEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 13);
+        if (item)
+            nfurnitura.SelectpetliskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 14);
+        if (item)
+            nfurnitura.SelectnapravlyayuschieskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 15);
+        if (item)
+            nfurnitura.SelectvidkrepleniyanapravlyayuschihskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 16);
+        if (item)
+            nfurnitura.SelectdekplankadlyaprofilyaskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 17);
+        if (item)
+            nfurnitura.SelectschetochniiuplotnitelskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 18);
+        if (item)
+            nfurnitura.SelectruchkaskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 19);
+        if (item)
+            nfurnitura.SelectkreplenieruchliskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 20);
+        if (item)
+            nfurnitura.SelectzamokskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 21);
+        if (item)
+            nfurnitura.SelectpetliRaspashnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 22);
+        if (item)
+            nfurnitura.SelectruchkaRaspashnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 23);
+        if (item)
+            nfurnitura.SelectzamokRaspashnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 24);
+        if (item)
+            nfurnitura.SelectnozhkimobilnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 25);
+        if (item)
+            nfurnitura.SelectkolesikimobilnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 26);
+        if (item)
+            nfurnitura.SelectstoykimobilnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 27);
+        if (item)
+            nfurnitura.SelecttipSoedineniyaPolotenmobilnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 28);
+        if (item)
+            nfurnitura.SelectStoikiStacEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 29);
+        if (item)
+            nfurnitura.SelectnapravnEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 30);
+        if (item)
+            nfurnitura.SelectnapravlyayuschienskladnieEnd("./admin/" + item.img, item.name, item.price);
+        item = top.storage.f.find((v) => v.cat === 31);
+        if (item)
+            nfurnitura.SelectmehanizmtelestopEnd("./admin/" + item.img, item.name, item.price);
     },
 
     openModalStac: function (type) {
@@ -525,17 +553,17 @@ var nfurnitura = {
         $(".stoiki-stac .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".stoiki-stac img").attr('src', img);
-            frames[1].$(".stoiki-stac .text").text(text);
-            frames[1].$(".stoiki-stac .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".stoiki-stac img").attr('src', img);
-            frames[2].$(".stoiki-stac .text").text(text);
-            frames[2].$(".stoiki-stac .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".stoiki-stac img").attr('src', img);
+            top.frames[1].$(".stoiki-stac .text").text(text);
+            top.frames[1].$(".stoiki-stac .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".stoiki-stac img").attr('src', img);
+            top.frames[2].$(".stoiki-stac .text").text(text);
+            top.frames[2].$(".stoiki-stac .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -545,17 +573,17 @@ var nfurnitura = {
         $(".razdvizhnyie-mehanizmyi .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".razdvizhnyie-mehanizmyi img").attr('src', img);
-            frames[1].$(".razdvizhnyie-mehanizmyi .text").text(text);
-            frames[1].$(".razdvizhnyie-mehanizmyi .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".razdvizhnyie-mehanizmyi img").attr('src', img);
-            frames[2].$(".razdvizhnyie-mehanizmyi .text").text(text);
-            frames[2].$(".razdvizhnyie-mehanizmyi .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".razdvizhnyie-mehanizmyi img").attr('src', img);
+            top.frames[1].$(".razdvizhnyie-mehanizmyi .text").text(text);
+            top.frames[1].$(".razdvizhnyie-mehanizmyi .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".razdvizhnyie-mehanizmyi img").attr('src', img);
+            top.frames[2].$(".razdvizhnyie-mehanizmyi .text").text(text);
+            top.frames[2].$(".razdvizhnyie-mehanizmyi .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -565,17 +593,17 @@ var nfurnitura = {
         $(".mehanizm-sinhronizatsii .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".mehanizm-sinhronizatsii img").attr('src', img);
-            frames[1].$(".mehanizm-sinhronizatsii .text").text(text);
-            frames[1].$(".mehanizm-sinhronizatsii .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".mehanizm-sinhronizatsii img").attr('src', img);
-            frames[2].$(".mehanizm-sinhronizatsii .text").text(text);
-            frames[2].$(".mehanizm-sinhronizatsii .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".mehanizm-sinhronizatsii img").attr('src', img);
+            top.frames[1].$(".mehanizm-sinhronizatsii .text").text(text);
+            top.frames[1].$(".mehanizm-sinhronizatsii .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".mehanizm-sinhronizatsii img").attr('src', img);
+            top.frames[2].$(".mehanizm-sinhronizatsii .text").text(text);
+            top.frames[2].$(".mehanizm-sinhronizatsii .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
     SelectmehanizmtelestopEnd: function (img, text, price) {
@@ -584,17 +612,17 @@ var nfurnitura = {
         $(".mehanizm-teleskop .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".mehanizm-teleskop img").attr('src', img);
-            frames[1].$(".mehanizm-teleskop .text").text(text);
-            frames[1].$(".mehanizm-teleskop .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".mehanizm-teleskop img").attr('src', img);
-            frames[2].$(".mehanizm-teleskop .text").text(text);
-            frames[2].$(".mehanizm-teleskop .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".mehanizm-teleskop img").attr('src', img);
+            top.frames[1].$(".mehanizm-teleskop .text").text(text);
+            top.frames[1].$(".mehanizm-teleskop .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".mehanizm-teleskop img").attr('src', img);
+            top.frames[2].$(".mehanizm-teleskop .text").text(text);
+            top.frames[2].$(".mehanizm-teleskop .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -604,17 +632,17 @@ var nfurnitura = {
         $(".napravlyayuschie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".napravlyayuschie img").attr('src', img);
-            frames[1].$(".napravlyayuschie .text").text(text);
-            frames[1].$(".napravlyayuschie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".napravlyayuschie img").attr('src', img);
-            frames[2].$(".napravlyayuschie .text").text(text);
-            frames[2].$(".napravlyayuschie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".napravlyayuschie img").attr('src', img);
+            top.frames[1].$(".napravlyayuschie .text").text(text);
+            top.frames[1].$(".napravlyayuschie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".napravlyayuschie img").attr('src', img);
+            top.frames[2].$(".napravlyayuschie .text").text(text);
+            top.frames[2].$(".napravlyayuschie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -624,17 +652,17 @@ var nfurnitura = {
         $(".napravlyayuschien .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".napravlyayuschien img").attr('src', img);
-            frames[1].$(".napravlyayuschien .text").text(text);
-            frames[1].$(".napravlyayuschien .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".napravlyayuschien img").attr('src', img);
-            frames[2].$(".napravlyayuschien .text").text(text);
-            frames[2].$(".napravlyayuschien .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".napravlyayuschien img").attr('src', img);
+            top.frames[1].$(".napravlyayuschien .text").text(text);
+            top.frames[1].$(".napravlyayuschien .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".napravlyayuschien img").attr('src', img);
+            top.frames[2].$(".napravlyayuschien .text").text(text);
+            top.frames[2].$(".napravlyayuschien .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -644,17 +672,17 @@ var nfurnitura = {
         $(".vidKrepleniyaNapravlyayuschey .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
-            frames[1].$(".vidKrepleniyaNapravlyayuschey .text").text(text);
-            frames[1].$(".vidKrepleniyaNapravlyayuschey .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
-            frames[2].$(".vidKrepleniyaNapravlyayuschey .text").text(text);
-            frames[2].$(".vidKrepleniyaNapravlyayuschey .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
+            top.frames[1].$(".vidKrepleniyaNapravlyayuschey .text").text(text);
+            top.frames[1].$(".vidKrepleniyaNapravlyayuschey .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".vidKrepleniyaNapravlyayuschey img").attr('src', img);
+            top.frames[2].$(".vidKrepleniyaNapravlyayuschey .text").text(text);
+            top.frames[2].$(".vidKrepleniyaNapravlyayuschey .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -664,17 +692,17 @@ var nfurnitura = {
         $(".povodok .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".povodok img").attr('src', img);
-            frames[1].$(".povodok .text").text(text);
-            frames[1].$(".povodok .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".povodok img").attr('src', img);
-            frames[2].$(".povodok .text").text(text);
-            frames[2].$(".povodok .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".povodok img").attr('src', img);
+            top.frames[1].$(".povodok .text").text(text);
+            top.frames[1].$(".povodok .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".povodok img").attr('src', img);
+            top.frames[2].$(".povodok .text").text(text);
+            top.frames[2].$(".povodok .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -688,45 +716,48 @@ var nfurnitura = {
         $(".dekorativnayaPlankaDlyaProfilya .price").text(0);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".dovodchik img").attr('src', img);
-            frames[1].$(".dovodchik .text").text(text);
-            frames[1].$(".dovodchik .price").text(price);
-            frames[1].setDataAndText("furnitura-dovodchik", text);
-            frames[1].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', "img/furnityra/0.png");
-            frames[1].$(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
-            frames[1].$(".dekorativnayaPlankaDlyaProfilya .price").text(0);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".dovodchik img").attr('src', img);
-            frames[2].$(".dovodchik .text").text(text);
-            frames[2].$(".dovodchik .price").text(price);
-            frames[2].setDataAndText("furnitura-dovodchik", text);
-            frames[2].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', "img/furnityra/0.png");
-            frames[2].$(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
-            frames[2].$(".dekorativnayaPlankaDlyaProfilya .price").text(0);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".dovodchik img").attr('src', img);
+            top.frames[1].$(".dovodchik .text").text(text);
+            top.frames[1].$(".dovodchik .price").text(price);
+            top.frames[1].setDataAndText("furnitura-dovodchik", text);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', "img/furnityra/0.png");
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .price").text(0);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".dovodchik img").attr('src', img);
+            top.frames[2].$(".dovodchik .text").text(text);
+            top.frames[2].$(".dovodchik .price").text(price);
+            top.frames[2].setDataAndText("furnitura-dovodchik", text);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', "img/furnityra/0.png");
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .text").text("Не выбрано");
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .price").text(0);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
     SelectdekplankadlyaprofilyaEnd: function (img, text, price) {
         $(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
         $(".dekorativnayaPlankaDlyaProfilya .text").text(text);
+        if ($('.dekorativnayaPlankaDlyaProfilya input').prop("checked")) {
+            price *= 2;
+        }
         $(".dekorativnayaPlankaDlyaProfilya .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
-            frames[1].$(".dekorativnayaPlankaDlyaProfilya .text").text(text);
-            frames[1].$(".dekorativnayaPlankaDlyaProfilya .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
-            frames[2].$(".dekorativnayaPlankaDlyaProfilya .text").text(text);
-            frames[2].$(".dekorativnayaPlankaDlyaProfilya .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .text").text(text);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya img").attr('src', img);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .text").text(text);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -736,17 +767,17 @@ var nfurnitura = {
         $(".schetochnyiyUplotnitel .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".schetochnyiyUplotnitel img").attr('src', img);
-            frames[1].$(".schetochnyiyUplotnitel .text").text(text);
-            frames[1].$(".schetochnyiyUplotnitel .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".schetochnyiyUplotnitel img").attr('src', img);
-            frames[2].$(".schetochnyiyUplotnitel .text").text(text);
-            frames[2].$(".schetochnyiyUplotnitel .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".schetochnyiyUplotnitel img").attr('src', img);
+            top.frames[1].$(".schetochnyiyUplotnitel .text").text(text);
+            top.frames[1].$(".schetochnyiyUplotnitel .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".schetochnyiyUplotnitel img").attr('src', img);
+            top.frames[2].$(".schetochnyiyUplotnitel .text").text(text);
+            top.frames[2].$(".schetochnyiyUplotnitel .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -756,17 +787,17 @@ var nfurnitura = {
         $(".rakovina .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".rakovina img").attr('src', img);
-            frames[1].$(".rakovina .text").text(text);
-            frames[1].$(".rakovina .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".rakovina img").attr('src', img);
-            frames[2].$(".rakovina .text").text(text);
-            frames[2].$(".rakovina .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".rakovina img").attr('src', img);
+            top.frames[1].$(".rakovina .text").text(text);
+            top.frames[1].$(".rakovina .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".rakovina img").attr('src', img);
+            top.frames[2].$(".rakovina .text").text(text);
+            top.frames[2].$(".rakovina .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -776,17 +807,17 @@ var nfurnitura = {
         $(".zamok .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".zamok img").attr('src', img);
-            frames[1].$(".zamok .text").text(text);
-            frames[1].$(".zamok .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".zamok img").attr('src', img);
-            frames[2].$(".zamok .text").text(text);
-            frames[2].$(".zamok .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".zamok img").attr('src', img);
+            top.frames[1].$(".zamok .text").text(text);
+            top.frames[1].$(".zamok .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".zamok img").attr('src', img);
+            top.frames[2].$(".zamok .text").text(text);
+            top.frames[2].$(".zamok .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -797,19 +828,19 @@ var nfurnitura = {
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
         setDataAndText("furnitura-skladnoi-mehanizm", text);
-        if (_FLAG) {
-            frames[1].$(".setSkladnyieMehanizmyi img").attr('src', img);
-            frames[1].$(".setSkladnyieMehanizmyi .text").text(text);
-            frames[1].$(".setSkladnyieMehanizmyi .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[1].setDataAndText("furnitura-skladnoi-mehanizm", text);
-            frames[2].$(".setSkladnyieMehanizmyi img").attr('src', img);
-            frames[2].$(".setSkladnyieMehanizmyi .text").text(text);
-            frames[2].$(".setSkladnyieMehanizmyi .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
-            frames[2].setDataAndText("furnitura-skladnoi-mehanizm", text);
+        if (top._FLAG) {
+            top.frames[1].$(".setSkladnyieMehanizmyi img").attr('src', img);
+            top.frames[1].$(".setSkladnyieMehanizmyi .text").text(text);
+            top.frames[1].$(".setSkladnyieMehanizmyi .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[1].setDataAndText("furnitura-skladnoi-mehanizm", text);
+            top.frames[2].$(".setSkladnyieMehanizmyi img").attr('src', img);
+            top.frames[2].$(".setSkladnyieMehanizmyi .text").text(text);
+            top.frames[2].$(".setSkladnyieMehanizmyi .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
+            top.frames[2].setDataAndText("furnitura-skladnoi-mehanizm", text);
         }
     },
 
@@ -819,17 +850,17 @@ var nfurnitura = {
         $(".mehanizm-rotornii .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".mehanizm-rotornii img").attr('src', img);
-            frames[1].$(".mehanizm-rotornii .text").text(text);
-            frames[1].$(".mehanizm-rotornii .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".mehanizm-rotornii img").attr('src', img);
-            frames[2].$(".mehanizm-rotornii .text").text(text);
-            frames[2].$(".mehanizm-rotornii .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".mehanizm-rotornii img").attr('src', img);
+            top.frames[1].$(".mehanizm-rotornii .text").text(text);
+            top.frames[1].$(".mehanizm-rotornii .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".mehanizm-rotornii img").attr('src', img);
+            top.frames[2].$(".mehanizm-rotornii .text").text(text);
+            top.frames[2].$(".mehanizm-rotornii .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -839,17 +870,17 @@ var nfurnitura = {
         $(".petli-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".petli-skladnie img").attr('src', img);
-            frames[1].$(".petli-skladnie .text").text(text);
-            frames[1].$(".petli-skladnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".petli-skladnie img").attr('src', img);
-            frames[2].$(".petli-skladnie .text").text(text);
-            frames[2].$(".petli-skladnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".petli-skladnie img").attr('src', img);
+            top.frames[1].$(".petli-skladnie .text").text(text);
+            top.frames[1].$(".petli-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".petli-skladnie img").attr('src', img);
+            top.frames[2].$(".petli-skladnie .text").text(text);
+            top.frames[2].$(".petli-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -859,17 +890,17 @@ var nfurnitura = {
         $(".napravlyayuschie-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".napravlyayuschie-skladnie img").attr('src', img);
-            frames[1].$(".napravlyayuschie-skladnie .text").text(text);
-            frames[1].$(".napravlyayuschie-skladnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".napravlyayuschie-skladnie img").attr('src', img);
-            frames[2].$(".napravlyayuschie-skladnie .text").text(text);
-            frames[2].$(".napravlyayuschie-skladnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".napravlyayuschie-skladnie img").attr('src', img);
+            top.frames[1].$(".napravlyayuschie-skladnie .text").text(text);
+            top.frames[1].$(".napravlyayuschie-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".napravlyayuschie-skladnie img").attr('src', img);
+            top.frames[2].$(".napravlyayuschie-skladnie .text").text(text);
+            top.frames[2].$(".napravlyayuschie-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -879,57 +910,61 @@ var nfurnitura = {
         $(".napravlyayuschien-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".napravlyayuschien-skladnie img").attr('src', img);
-            frames[1].$(".napravlyayuschien-skladnie .text").text(text);
-            frames[1].$(".napravlyayuschien-skladnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".napravlyayuschien-skladnie img").attr('src', img);
-            frames[2].$(".napravlyayuschien-skladnie .text").text(text);
-            frames[2].$(".napravlyayuschien-skladnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".napravlyayuschien-skladnie img").attr('src', img);
+            top.frames[1].$(".napravlyayuschien-skladnie .text").text(text);
+            top.frames[1].$(".napravlyayuschien-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".napravlyayuschien-skladnie img").attr('src', img);
+            top.frames[2].$(".napravlyayuschien-skladnie .text").text(text);
+            top.frames[2].$(".napravlyayuschien-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
     SelectvidkrepleniyanapravlyayuschihskladnieEnd: function (img, text, price) {
         $(".vidKrepleniya-skladnie img").attr('src', img);
         $(".vidKrepleniya-skladnie .text").text(text);
+
         $(".vidKrepleniya-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".vidKrepleniya-skladnie img").attr('src', img);
-            frames[1].$(".vidKrepleniya-skladnie .text").text(text);
-            frames[1].$(".vidKrepleniya-skladnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".vidKrepleniya-skladnie img").attr('src', img);
-            frames[2].$(".vidKrepleniya-skladnie .text").text(text);
-            frames[2].$(".vidKrepleniya-skladnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".vidKrepleniya-skladnie img").attr('src', img);
+            top.frames[1].$(".vidKrepleniya-skladnie .text").text(text);
+            top.frames[1].$(".vidKrepleniya-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".vidKrepleniya-skladnie img").attr('src', img);
+            top.frames[2].$(".vidKrepleniya-skladnie .text").text(text);
+            top.frames[2].$(".vidKrepleniya-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
     SelectdekplankadlyaprofilyaskladnieEnd: function (img, text, price) {
         $(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
         $(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
+        if ($('.dekorativnayaPlankaDlyaProfilya-skladnie input').prop("checked")) {
+            price *= 2;
+        }
         $(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
-            frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
-            frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
-            frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
-            frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
+            top.frames[1].$(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie img").attr('src', img);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie .text").text(text);
+            top.frames[2].$(".dekorativnayaPlankaDlyaProfilya-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -939,17 +974,17 @@ var nfurnitura = {
         $(".schetochnyiyUplotnitel-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
-            frames[1].$(".schetochnyiyUplotnitel-skladnie .text").text(text);
-            frames[1].$(".schetochnyiyUplotnitel-skladnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
-            frames[2].$(".schetochnyiyUplotnitel-skladnie .text").text(text);
-            frames[2].$(".schetochnyiyUplotnitel-skladnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
+            top.frames[1].$(".schetochnyiyUplotnitel-skladnie .text").text(text);
+            top.frames[1].$(".schetochnyiyUplotnitel-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".schetochnyiyUplotnitel-skladnie img").attr('src', img);
+            top.frames[2].$(".schetochnyiyUplotnitel-skladnie .text").text(text);
+            top.frames[2].$(".schetochnyiyUplotnitel-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -959,17 +994,17 @@ var nfurnitura = {
         $(".rakovina-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".rakovina-skladnie img").attr('src', img);
-            frames[1].$(".rakovina-skladnie .text").text(text);
-            frames[1].$(".rakovina-skladnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".rakovina-skladnie img").attr('src', img);
-            frames[2].$(".rakovina-skladnie .text").text(text);
-            frames[2].$(".rakovina-skladnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".rakovina-skladnie img").attr('src', img);
+            top.frames[1].$(".rakovina-skladnie .text").text(text);
+            top.frames[1].$(".rakovina-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".rakovina-skladnie img").attr('src', img);
+            top.frames[2].$(".rakovina-skladnie .text").text(text);
+            top.frames[2].$(".rakovina-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -979,17 +1014,17 @@ var nfurnitura = {
         $(".kreplenieRuchki-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".kreplenieRuchki-skladnie img").attr('src', img);
-            frames[1].$(".kreplenieRuchki-skladnie .text").text(text);
-            frames[1].$(".kreplenieRuchki-skladnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".kreplenieRuchki-skladnie img").attr('src', img);
-            frames[2].$(".kreplenieRuchki-skladnie .text").text(text);
-            frames[2].$(".kreplenieRuchki-skladnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".kreplenieRuchki-skladnie img").attr('src', img);
+            top.frames[1].$(".kreplenieRuchki-skladnie .text").text(text);
+            top.frames[1].$(".kreplenieRuchki-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".kreplenieRuchki-skladnie img").attr('src', img);
+            top.frames[2].$(".kreplenieRuchki-skladnie .text").text(text);
+            top.frames[2].$(".kreplenieRuchki-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -999,17 +1034,17 @@ var nfurnitura = {
         $(".zamokSkladnyie-skladnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".zamokSkladnyie-skladnie img").attr('src', img);
-            frames[1].$(".zamokSkladnyie-skladnie .text").text(text);
-            frames[1].$(".zamokSkladnyie-skladnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".zamokSkladnyie-skladnie img").attr('src', img);
-            frames[2].$(".zamokSkladnyie-skladnie .text").text(text);
-            frames[2].$(".zamokSkladnyie-skladnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".zamokSkladnyie-skladnie img").attr('src', img);
+            top.frames[1].$(".zamokSkladnyie-skladnie .text").text(text);
+            top.frames[1].$(".zamokSkladnyie-skladnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".zamokSkladnyie-skladnie img").attr('src', img);
+            top.frames[2].$(".zamokSkladnyie-skladnie .text").text(text);
+            top.frames[2].$(".zamokSkladnyie-skladnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1019,17 +1054,17 @@ var nfurnitura = {
         $(".nozhki-mobil .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".nozhki-mobil img").attr('src', img);
-            frames[1].$(".nozhki-mobil .text").text(text);
-            frames[1].$(".nozhki-mobil .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".nozhki-mobil img").attr('src', img);
-            frames[2].$(".nozhki-mobil .text").text(text);
-            frames[2].$(".nozhki-mobil .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".nozhki-mobil img").attr('src', img);
+            top.frames[1].$(".nozhki-mobil .text").text(text);
+            top.frames[1].$(".nozhki-mobil .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".nozhki-mobil img").attr('src', img);
+            top.frames[2].$(".nozhki-mobil .text").text(text);
+            top.frames[2].$(".nozhki-mobil .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1039,17 +1074,17 @@ var nfurnitura = {
         $(".kolesiki-mobilnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".kolesiki-mobilnie img").attr('src', img);
-            frames[1].$(".kolesiki-mobilnie .text").text(text);
-            frames[1].$(".kolesiki-mobilnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".kolesiki-mobilnie img").attr('src', img);
-            frames[2].$(".kolesiki-mobilnie .text").text(text);
-            frames[2].$(".kolesiki-mobilnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".kolesiki-mobilnie img").attr('src', img);
+            top.frames[1].$(".kolesiki-mobilnie .text").text(text);
+            top.frames[1].$(".kolesiki-mobilnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".kolesiki-mobilnie img").attr('src', img);
+            top.frames[2].$(".kolesiki-mobilnie .text").text(text);
+            top.frames[2].$(".kolesiki-mobilnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
 
         }
     },
@@ -1060,17 +1095,17 @@ var nfurnitura = {
         $(".stoyki-mobil .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".stoyki-mobil img").attr('src', img);
-            frames[1].$(".stoyki-mobil .text").text(text);
-            frames[1].$(".stoyki-mobil .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".stoyki-mobil img").attr('src', img);
-            frames[2].$(".stoyki-mobil .text").text(text);
-            frames[2].$(".stoyki-mobil .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".stoyki-mobil img").attr('src', img);
+            top.frames[1].$(".stoyki-mobil .text").text(text);
+            top.frames[1].$(".stoyki-mobil .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".stoyki-mobil img").attr('src', img);
+            top.frames[2].$(".stoyki-mobil .text").text(text);
+            top.frames[2].$(".stoyki-mobil .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1080,17 +1115,17 @@ var nfurnitura = {
         $(".tipSoedineniyaPoloten-mobil .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".tipSoedineniyaPoloten-mobil img").attr('src', img);
-            frames[1].$(".tipSoedineniyaPoloten-mobil .text").text(text);
-            frames[1].$(".tipSoedineniyaPoloten-mobil .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".tipSoedineniyaPoloten-mobil img").attr('src', img);
-            frames[2].$(".tipSoedineniyaPoloten-mobil .text").text(text);
-            frames[2].$(".tipSoedineniyaPoloten-mobil .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".tipSoedineniyaPoloten-mobil img").attr('src', img);
+            top.frames[1].$(".tipSoedineniyaPoloten-mobil .text").text(text);
+            top.frames[1].$(".tipSoedineniyaPoloten-mobil .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".tipSoedineniyaPoloten-mobil img").attr('src', img);
+            top.frames[2].$(".tipSoedineniyaPoloten-mobil .text").text(text);
+            top.frames[2].$(".tipSoedineniyaPoloten-mobil .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1100,17 +1135,17 @@ var nfurnitura = {
         $(".petli-raspashnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".petli-raspashnie img").attr('src', img);
-            frames[1].$(".petli-raspashnie .text").text(text);
-            frames[1].$(".petli-raspashnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".petli-raspashnie img").attr('src', img);
-            frames[2].$(".petli-raspashnie .text").text(text);
-            frames[2].$(".petli-raspashnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".petli-raspashnie img").attr('src', img);
+            top.frames[1].$(".petli-raspashnie .text").text(text);
+            top.frames[1].$(".petli-raspashnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".petli-raspashnie img").attr('src', img);
+            top.frames[2].$(".petli-raspashnie .text").text(text);
+            top.frames[2].$(".petli-raspashnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1120,17 +1155,17 @@ var nfurnitura = {
         $(".ruchka-raspashnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".ruchka-raspashnie img").attr('src', img);
-            frames[1].$(".ruchka-raspashnie .text").text(text);
-            frames[1].$(".ruchka-raspashnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".ruchka-raspashnie img").attr('src', img);
-            frames[2].$(".ruchka-raspashnie .text").text(text);
-            frames[2].$(".ruchka-raspashnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".ruchka-raspashnie img").attr('src', img);
+            top.frames[1].$(".ruchka-raspashnie .text").text(text);
+            top.frames[1].$(".ruchka-raspashnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".ruchka-raspashnie img").attr('src', img);
+            top.frames[2].$(".ruchka-raspashnie .text").text(text);
+            top.frames[2].$(".ruchka-raspashnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
 
@@ -1140,24 +1175,24 @@ var nfurnitura = {
         $(".zamok-raspashnie .price").text(price);
         nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-        if (_FLAG) {
-            frames[1].$(".zamok-raspashnie img").attr('src', img);
-            frames[1].$(".zamok-raspashnie .text").text(text);
-            frames[1].$(".zamok-raspashnie .price").text(price);
-            frames[1].nfurnitura.getDataFurnitura();
-            frames[1].nfurnitura.viewTotalFurnitura();
-            frames[2].$(".zamok-raspashnie img").attr('src', img);
-            frames[2].$(".zamok-raspashnie .text").text(text);
-            frames[2].$(".zamok-raspashnie .price").text(price);
-            frames[2].nfurnitura.getDataFurnitura();
-            frames[2].nfurnitura.viewTotalFurnitura();
+        if (top._FLAG) {
+            top.frames[1].$(".zamok-raspashnie img").attr('src', img);
+            top.frames[1].$(".zamok-raspashnie .text").text(text);
+            top.frames[1].$(".zamok-raspashnie .price").text(price);
+            top.frames[1].nfurnitura.getDataFurnitura();
+            top.frames[1].nfurnitura.viewTotalFurnitura();
+            top.frames[2].$(".zamok-raspashnie img").attr('src', img);
+            top.frames[2].$(".zamok-raspashnie .text").text(text);
+            top.frames[2].$(".zamok-raspashnie .price").text(price);
+            top.frames[2].nfurnitura.getDataFurnitura();
+            top.frames[2].nfurnitura.viewTotalFurnitura();
         }
     },
     SelectFunEnd: function (img, text, price) {
-        var item = storage.ItemFurn.filter(function (index, value) {
+        var item = top.storage.ItemFurn.filter(function (index, value) {
             return index.other.Название == text;
         });
-        var type = storage.Furn.filter(function (value) {
+        var type = top.storage.Furn.filter(function (value) {
             return value.id == item[0].parent_id;
         });
         var s = $('.newfurn').find('h3');
@@ -1170,8 +1205,8 @@ var nfurnitura = {
                 is.find('.price').text(fornituraPrice(price, type[0].formula));
             }
         });
-        if (_FLAG) {
-            var s = frames[1].$('.newfurn').find('h3');
+        if (top._FLAG) {
+            var s = top.frames[1].$('.newfurn').find('h3');
             s.each(function () {
                 if ($(this).text() == type[0].name) {
 
@@ -1181,7 +1216,7 @@ var nfurnitura = {
                     is.find('.price').text(fornituraPrice(price, type[0].formula));
                 }
             });
-            var s = frames[2].$('.newfurn').find('h3');
+            var s = top.frames[2].$('.newfurn').find('h3');
             s.each(function () {
                 if ($(this).text() == type[0].name) {
 
@@ -1195,359 +1230,67 @@ var nfurnitura = {
     },
 
     aksessuaryiBlockSwith: function () {
-        if ($(".aksessuaryi-block-swith input").prop("checked"))
-            $(".aksessuaryi-block-hs").show();
-
-        else
-            $(".aksessuaryi-block-hs").hide();
+        if ($(".aksessuaryi-block-swith input").prop("checked")) {
+            top.frames[0].$(".aksessuaryi-block-hs").show();
+            top.frames[1].$(".aksessuaryi-block-hs").show();
+            top.frames[2].$(".aksessuaryi-block-hs").show();
+        }
+        else{
+            top.frames[0].$(".aksessuaryi-block-hs").hide();
+            top.frames[1].$(".aksessuaryi-block-hs").hide();
+            top.frames[2].$(".aksessuaryi-block-hs").hide();
+        }
         nfurnitura.viewTotalFurnitura();
+        heightIframe();
 
     },
     loadFurnitura: function () {
         $('#furnitura-tab').html("");
-        var type = $('#TYPE_BAFFLE_ID').val();
+        let type = $('#TYPE_BAFFLE_ID').val();
         if (type === '0') {
-            //$('#furnitura-tab').html($('.furnitura-net').html());
-            nfurnitura.filtertype();
             $('#furnitura-tab').html($('.furnitura-stac').html());
         } else if (type == 1) {
-            nfurnitura.filtertype();
             $('#furnitura-tab').html($('.furnitura-razdvizhnyie').html());
         } else if (type == 2) {
-            nfurnitura.filtertype();
             $('#furnitura-tab').html($('.skladnaya-peregorodka').html());
         } else if (type == 3) {
-            nfurnitura.filtertype();
             $('#furnitura-tab').html($('.raspashnie-dveri').html());
         } else if (type == 4) {
-            nfurnitura.filtertype();
             $('#furnitura-tab').html($('.mobilnyie-peregorodki').html());
         }
-        // nfurnitura.setStartValues();
+        nfurnitura.filtertype();
+        nfurnitura.setStartValues();
         functionName();
     },
 
     getDataFurnitura: function () {
-        var type = parseInt($('#TYPE_BAFFLE_ID').val());
-        var Count = parseInt($("#TOTAL_PAINTING_ID").val());
-        var width = parseInt($("#WIDTH_SETS_ID").val());
-        var karkasName = getFromData("karkas-name");
-        var double = (width > 3000)
-            ? 2
-            : 1;
-        var height = parseInt($("#HIGHT_SETS_ID").val());
-
-        function mass(arr) {
-            for (var i = 0; i < arr.length; i++) {
-                var obj = parent.storage.fillFN(arr[i][1], $("." + arr[i][0] + " .text").html());
-                $("." + arr[i][0] + " .price").text(arr[i][2] * fornituraPrice(obj.price, obj.formula));
-            }
-        }
-
-        if (type === '0') {
-            mass([
-                [
-                    'stoiki-stac',
-                    28,
-                    parseInt($("#stoiki-stac-count").val())
-                ]
-            ]);
-        }
-        if (type == 1) {
-            mass([
-                [
-                    'razdvizhnyie-mehanizmyi', 1, 1
-                ],
-                [
-                    'mehanizm-sinhronizatsii', 2, 1
-                ],
-                [
-                    'napravlyayuschie', 3, 1
-                ],
-                [
-                    'napravlyayuschien', 29, 1
-                ],
-                [
-                    'vidKrepleniyaNapravlyayuschey', 4, 1
-                ],
-                ['povodok', 5, 1]
-            ]);
-            if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-                mass([
-                    [
-                        'dovodchik', 6, 1
-                    ],
-                    [
-                        'dekorativnayaPlankaDlyaProfilya', 7, 1
-                    ],
-                    [
-                        'schetochnyiyUplotnitel', 8, 1
-                    ],
-                    [
-                        'rakovina',
-                        9,
-                        parseInt($("#ruchka-select-count").val())
-                    ],
-                    [
-                        'zamok',
-                        10,
-                        parseInt($("#zamok-select-count").val())
-                    ]
-                ]);
-            }
-        }
-        if (type == 2) {
-            mass([
-                [
-                    'setSkladnyieMehanizmyi', 11, 1
-                ],
-                [
-                    'mehanizm-rotornii', 12, 1
-                ],
-                [
-                    'petli-skladnie', 13, 1
-                ],
-                [
-                    'napravlyayuschie-skladnie', 14, 1
-                ],
-                [
-                    'napravlyayuschien-skladnie', 30, 1
-                ],
-                ['vidKrepleniya-skladnie', 15, 1]
-            ]);
-            if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-                mass([
-                    [
-                        'dekorativnayaPlankaDlyaProfilya-skladnie', 16, 1
-                    ],
-                    [
-                        'schetochnyiyUplotnitel-skladnie', 17, 1
-                    ],
-                    [
-                        'rakovina-skladnie',
-                        18,
-                        parseInt($("#ruchka-skladnie-count").val())
-                    ],
-                    [
-                        'kreplenieRuchki-skladnie',
-                        19,
-                        parseInt($("#kreplenie-ruchli-skladnie-count").val())
-                    ],
-                    [
-                        'zamokSkladnyie-skladnie',
-                        20,
-                        parseInt($("#zamok-skladnie-count").val())
-                    ]
-                ]);
-            }
-        }
-        if (type == 3) {
-            mass([
-                [
-                    'petli-raspashnie',
-                    21,
-                    parseInt($("#petli-raspashnie-count").val())
-                ],
-                [
-                    'ruchka-raspashnie',
-                    22,
-                    parseInt($("#ruchka-raspashnie-count").val())
-                ],
-                [
-                    'zamok-raspashnie',
-                    23,
-                    parseInt($("#zamok-raspashnie-count").val())
-                ]
-            ]);
-        }
-        if (type == 4) {
-            mass([
-                [
-                    'nozhki-mobil', 24, 1
-                ],
-                [
-                    'kolesiki-mobilnie', 25, 1
-                ],
-                [
-                    'stoyki-mobil',
-                    26,
-                    parseInt($("#stoyki-mobilnie-count").val())
-                ],
-                ['tipSoedineniyaPoloten-mobil', 27, 1]
-            ]);
-        }
     },
 
     viewTotalFurnitura: function () {
-        var TYPE_BAFFLE = parseInt($("#TYPE_BAFFLE_ID").val());
-        var checked = $('.aksessuaryi-block-swith input').prop("checked");
-        var price = 0;
-        switch (TYPE_BAFFLE) {
-            case 0:
-                var stoikiStac = parseInt($(".stoiki-stac .price").html());
-                if (isNaN(stoikiStac) || $('#stoiki-stac-select .furnituraElFlag').val() === '0') {
-                    stoikiStac = 0;
-                }
-
-                price = stoikiStac;
-                break;
-            case 1:
-                var razdvizhnyieMehanizmyi = parseInt($(".razdvizhnyie-mehanizmyi .price").html());
-                if (isNaN(razdvizhnyieMehanizmyi) || $('#razdvizhnyie-mehanizmyi-select .furnituraElFlag').val() === '0')
-                    razdvizhnyieMehanizmyi = 0;
-                var mehanizmSinhronizatsii = parseInt($(".mehanizm-sinhronizatsii .price").html());
-                if (isNaN(mehanizmSinhronizatsii) || $('#mehanizm-sinhronizacii-select .furnituraElFlag').val() === '0')
-                    mehanizmSinhronizatsii = 0;
-                var napravlyayuschie = parseInt($(".napravlyayuschie .price").html());
-                if (isNaN(napravlyayuschie) || $('#naprav-select .furnituraElFlag').val() === '0')
-                    napravlyayuschie = 0;
-                var napravlyayuschien = parseInt($(".napravlyayuschien .price").html());
-                if (isNaN(napravlyayuschien) || $('#napravn-select .furnituraElFlag').val() === '0')
-                    napravlyayuschien = 0;
-                var vidKrepleniyaNapravlyayuschey = parseInt($(".vidKrepleniyaNapravlyayuschey .price").html());
-                if (isNaN(vidKrepleniyaNapravlyayuschey) || $('#vid-kreplenia-naprav-select .furnituraElFlag').val() === '0')
-                    vidKrepleniyaNapravlyayuschey = 0;
-                var povodok = parseInt($(".povodok .price").html());
-                if (isNaN(povodok) || $('#povodok-select .furnituraElFlag').val() === '0')
-                    povodok = 0;
-                price = razdvizhnyieMehanizmyi + mehanizmSinhronizatsii + napravlyayuschie + napravlyayuschien + vidKrepleniyaNapravlyayuschey + povodok;
-                if (checked) {
-                    var dovodchik = parseInt($(".dovodchik .price").html());
-                    if (isNaN(dovodchik) || $('#dovodchik-select .furnituraElFlag').val() === '0')
-                        dovodchik = 0;
-                    var dekorativnayaPlankaDlyaProfilya = parseInt($(".dekorativnayaPlankaDlyaProfilya .price").html());
-                    if (isNaN(dekorativnayaPlankaDlyaProfilya) || $('#dek-planka-dlya-profilya-select .furnituraElFlag').val() === '0')
-                        dekorativnayaPlankaDlyaProfilya = 0;
-                    var schetochnyiyUplotnitel = parseInt($(".schetochnyiyUplotnitel .price").html());
-                    if (isNaN(schetochnyiyUplotnitel) || $('#schetochnii-uplotnitel-select .furnituraElFlag').val() === '0')
-                        schetochnyiyUplotnitel = 0;
-                    var rakovina = parseInt($(".rakovina .price").html());
-                    if (isNaN(rakovina) || $('#ruchka-select .furnituraElFlag').val() === '0')
-                        rakovina = 0;
-                    var zamok = parseInt($(".zamok .price").html());
-                    if (isNaN(zamok) || $('#zamok-select .furnituraElFlag').val() === '0')
-                        zamok = 0;
-                    var teleskop = parseInt($(".mehanizm-teleskop .price").html());
-                    if (isNaN(teleskop) || $('#mehanizm-teleskop-select .furnituraElFlag').val() === '0')
-                        teleskop = 0;
-                    price = price + dovodchik + dekorativnayaPlankaDlyaProfilya + schetochnyiyUplotnitel + rakovina + zamok + teleskop;
-                }
-                break;
-            case 2:
-                var setSkladnyieMehanizmyi = parseInt($(".setSkladnyieMehanizmyi .price").html());
-                if (isNaN(setSkladnyieMehanizmyi) || $('#mehanizm-sinhron-skladnie .furnituraElFlag').val() === '0')
-                    setSkladnyieMehanizmyi = 0;
-                var mehanizmRotornii = parseInt($(".mehanizm-rotornii .price").html());
-                if (isNaN(mehanizmRotornii) || $('#mehanizm-rotornii .furnituraElFlag').val() === '0')
-                    mehanizmRotornii = 0;
-                var petliSkladnie = parseInt($(".petli-skladnie .price").html());
-                if (isNaN(petliSkladnie) || $('#petli-skladnie .furnituraElFlag').val() === '0')
-                    petliSkladnie = 0;
-                var napravlyayuschieSkladnie = parseInt($(".napravlyayuschie-skladnie .price").html());
-                if (isNaN(napravlyayuschieSkladnie) || $('#napravlyayuschie-skladnie .furnituraElFlag').val() === '0')
-                    napravlyayuschieSkladnie = 0;
-                var napravlyayuschienSkladnie = parseInt($(".napravlyayuschien-skladnie .price").html());
-                if (isNaN(napravlyayuschienSkladnie) || $('#napravlyayuschien-skladnie .furnituraElFlag').val() === '0')
-                    napravlyayuschienSkladnie = 0;
-                var vidKrepleniyaSkladnie = parseInt($(".vidKrepleniya-skladnie .price").html());
-                if (isNaN(vidKrepleniyaSkladnie) || $('#vid-krepleniya-napravlyayuschih-skladnie .furnituraElFlag').val() === '0')
-                    vidKrepleniyaSkladnie = 0;
-                price = setSkladnyieMehanizmyi + mehanizmRotornii + petliSkladnie + napravlyayuschieSkladnie + napravlyayuschienSkladnie + vidKrepleniyaSkladnie;
-                if (checked) {
-                    var dekorativnayaPlankaDlyaProfilyaSkladnie = parseInt($(".dekorativnayaPlankaDlyaProfilya-skladnie .price").html());
-                    if (isNaN(dekorativnayaPlankaDlyaProfilyaSkladnie) || $('#dek-planka-dlya-profilya-skladnie .furnituraElFlag').val() === '0')
-                        dekorativnayaPlankaDlyaProfilyaSkladnie = 0;
-                    var schetochnyiyUplotnitelSkladnie = parseInt($(".schetochnyiyUplotnitel-skladnie .price").html());
-                    if (isNaN(schetochnyiyUplotnitelSkladnie) || $('#schetochnii-uplotnitel-skladnie .furnituraElFlag').val() === '0')
-                        schetochnyiyUplotnitelSkladnie = 0;
-                    var rakovinaSkladnie = parseInt($(".rakovina-skladnie .price").html());
-                    if (isNaN(rakovinaSkladnie) || $('#ruchka-skladnie .furnituraElFlag').val() === '0')
-                        rakovinaSkladnie = 0;
-                    var kreplenieRuchkiSkladnie = parseInt($(".kreplenieRuchki-skladnie .price").html());
-                    if (isNaN(kreplenieRuchkiSkladnie) || $('#kreplenie-ruchli-skladnie .furnituraElFlag').val() === '0')
-                        kreplenieRuchkiSkladnie = 0;
-                    var zamokSkladnyieSkladnie = parseInt($(".zamokSkladnyie-skladnie .price").html());
-                    if (isNaN(zamokSkladnyieSkladnie) || $('#zamok-skladnie .furnituraElFlag').val() === '0')
-                        zamokSkladnyieSkladnie = 0;
-                    price = price + dekorativnayaPlankaDlyaProfilyaSkladnie + schetochnyiyUplotnitelSkladnie + rakovinaSkladnie + kreplenieRuchkiSkladnie + zamokSkladnyieSkladnie;
-                }
-                break;
-            case 3:
-                var petliRaspashnie = parseInt($(".petli-raspashnie .price").html());
-                if (isNaN(petliRaspashnie) || $('#petli-raspashnie .furnituraElFlag').val() === '0')
-                    petliRaspashnie = 0;
-                var ruchkaRaspashnie = parseInt($(".ruchka-raspashnie .price").html());
-                if (isNaN(ruchkaRaspashnie) || $('#ruchka-raspashnie .furnituraElFlag').val() === '0')
-                    ruchkaRaspashnie = 0;
-                var zamokRaspashnie = parseInt($(".zamok-raspashnie .price").html());
-                if (isNaN(zamokRaspashnie) || $('#zamok-raspashnie .furnituraElFlag').val() === '0')
-                    zamokRaspashnie = 0;
-                price = petliRaspashnie + ruchkaRaspashnie + zamokRaspashnie;
-                break;
-            case 4:
-                var nozhkiMobil = parseInt($(".nozhki-mobil .price").html());
-                if (isNaN(nozhkiMobil) || $('#nozhki-mobilnie .furnituraElFlag').val() === '0')
-                    nozhkiMobil = 0;
-                var kolesikiMobilnie = parseInt($(".kolesiki-mobilnie .price").html());
-                if (isNaN(kolesikiMobilnie) || $('#kolesiki-mobilnie .furnituraElFlag').val() === '0')
-                    kolesikiMobilnie = 0;
-                var stoykiMobil = parseInt($(".stoyki-mobil .price").html());
-                if (isNaN(stoykiMobil) || $('#stoyki-mobilnie .furnituraElFlag').val() === '0')
-                    stoykiMobil = 0;
-                var tipSoedineniyaPolotenMobil = parseInt($(".tipSoedineniyaPoloten-mobil .price").html());
-                if (isNaN(tipSoedineniyaPolotenMobil) || $('#tipSoedineniyaPoloten-mobilnie .furnituraElFlag').val() === '0')
-                    tipSoedineniyaPolotenMobil = 0;
-                price = nozhkiMobil + kolesikiMobilnie + stoykiMobil + tipSoedineniyaPolotenMobil;
-                break;
-        }
-        var s = $('.newfurn');
-        var sum = 0;
-        s.each(function () {
-            sum += ParserIntAndNan($(this).find('.price').text());
+        let p = 0;
+        $('#furnitura-tab .furnituraElFlag').each(function () {
+            if ($(this).val() === '1')
+                p += ParserIntAndNan($(this).parent().find('.price').text());
         });
-        $(".furnitura-price .price").text(Math.round(price + sum));
+        $('.newfurn').each(function () {
+            p += ParserIntAndNan($(this).find('.price').text());
+        });
+        $(".furnitura-price .price").text(Math.round(p));
     },
 
     furnituraElToggle: function (id, vl) {
-        if (id) {
-            if (vl === '0') {
+        if (vl === '0') {
+            $('#' + id + ' :not(.furnituraElFlag) *').attr('disabled', 'disabled');
+            $('#' + id + ' .addonImg').css('pointer-events', 'none');
+            $('#' + id + ' *').css('opacity', '0.25');
+            $('#' + id + ' .furnituraElFlag').css('opacity', '1');
+        } else {
+            $('#' + id + ' *').removeAttr('disabled');
+            $('#' + id + ' .addonImg').css('pointer-events', '');
+            $('#' + id + ' *').css('opacity', '1');
 
-                $('#' + id + ' :not(.furnituraElFlag) *').attr('disabled', 'disabled');
-                $('#' + id + ' .addonImg').css('pointer-events', 'none');
-                $('#' + id + ' *').css('opacity', '0.25');
-                $('#' + id + ' .furnituraElFlag').css('opacity', '1');
-            } else {
-                $('#' + id + ' *').removeAttr('disabled');
-                $('#' + id + ' .addonImg').css('pointer-events', '');
-                $('#' + id + ' *').css('opacity', '1');
-
-            }
         }
-        nfurnitura.getDataFurnitura();
         nfurnitura.viewTotalFurnitura();
-
-        if (_FLAG) {
-            if (vl === '0') {
-
-                frames[1].$('#' + id + ' :not(.furnituraElFlag) *').attr('disabled', 'disabled');
-                frames[1].$('#' + id + ' .addonImg').css('pointer-events', 'none');
-                frames[1].$('#' + id + ' *').css('opacity', '0.25');
-                frames[1].$('#' + id + ' .furnituraElFlag').css('opacity', '1');
-                frames[2].$('#' + id + ' :not(.furnituraElFlag) *').attr('disabled', 'disabled');
-                frames[2].$('#' + id + ' .addonImg').css('pointer-events', 'none');
-                frames[2].$('#' + id + ' *').css('opacity', '0.25');
-                frames[2].$('#' + id + ' .furnituraElFlag').css('opacity', '1');
-            } else {
-                frames[1].$('#' + id + ' *').removeAttr('disabled');
-                frames[1].$('#' + id + ' .addonImg').css('pointer-events', '');
-                frames[1].$('#' + id + ' *').css('opacity', '1');
-                frames[1].$('#' + id + ' .furnituraElFlag').val(1);
-                frames[2].$('#' + id + ' *').removeAttr('disabled');
-                frames[2].$('#' + id + ' .addonImg').css('pointer-events', '');
-                frames[2].$('#' + id + ' *').css('opacity', '1');
-                frames[2].$('#' + id + ' .furnituraElFlag').val(1);
-            }
-        }
     },
     pushFurnitura: function (link, text, id, flag, flag1) {
         var html;
@@ -1565,77 +1308,75 @@ var nfurnitura = {
     },
     filtertype: function () {
         $('.newfurn').remove();
-        let type = parseInt($('#TYPE_BAFFLE_ID').val());
-        if (storage) {
-            let obj = storage.Furn;
-            switch (type) {
-                case 0: {
-                    obj.forEach(function (value) {
-                        value['type'].forEach(function (v) {
+        var type = parseInt($('#TYPE_BAFFLE_ID').val());
+        var obj = top.storage.Furn;
+        switch (type) {
+            case 0: {
+                obj.forEach(function (value) {
+                    value['type'].forEach(function (v) {
 
-                            if ('Стационарная' == v) {
-                                nfurnitura.pushFurnitura('furnitura-stac', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
-                                nfurnitura.setitem(value.id);
-                            }
+                        if ('Стационарная' == v) {
+                            nfurnitura.pushFurnitura('furnitura-stac', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
+                            nfurnitura.setitem(value.id);
+                        }
 
-                        });
                     });
-                    break;
-                }
-                case 1: {
-                    obj.forEach(function (value) {
-                        value['type'].forEach(function (v) {
-                            if ('Раздвижная перегородка' == v) {
-                                nfurnitura.pushFurnitura('furnitura-razdvizhnyie', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
-                                nfurnitura.setitem(value.id);
-                            }
-                        });
+                });
+                break;
+            }
+            case 1: {
+                obj.forEach(function (value) {
+                    value['type'].forEach(function (v) {
+                        if ('Раздвижная перегородка' == v) {
+                            nfurnitura.pushFurnitura('furnitura-razdvizhnyie', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
+                            nfurnitura.setitem(value.id);
+                        }
                     });
-                    break;
-                }
-                case 2: {
-                    obj.forEach(function (value) {
-                        value['type'].forEach(function (v) {
-                            if ('Складная перегородка' == v) {
-                                nfurnitura.pushFurnitura('skladnaya-peregorodka', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
-                                nfurnitura.setitem(value.id);
-                            }
-                        });
+                });
+                break;
+            }
+            case 2: {
+                obj.forEach(function (value) {
+                    value['type'].forEach(function (v) {
+                        if ('Складная перегородка' == v) {
+                            nfurnitura.pushFurnitura('skladnaya-peregorodka', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
+                            nfurnitura.setitem(value.id);
+                        }
                     });
-                    break;
-                }
-                case 3: {
-                    obj.forEach(function (value) {
-                        value['type'].forEach(function (v) {
-                            if ('Распашная дверь' == v) {
-                                nfurnitura.pushFurnitura('raspashnie-dveri', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
-                                nfurnitura.setitem(value.id);
-                            }
-                        });
+                });
+                break;
+            }
+            case 3: {
+                obj.forEach(function (value) {
+                    value['type'].forEach(function (v) {
+                        if ('Распашная дверь' == v) {
+                            nfurnitura.pushFurnitura('raspashnie-dveri', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
+                            nfurnitura.setitem(value.id);
+                        }
                     });
-                    break;
-                }
-                case 4: {
-                    obj.forEach(function (value) {
-                        value['type'].forEach(function (v) {
-                            if ('Мобильная перегородка' == v) {
-                                nfurnitura.pushFurnitura('mobilnyie-peregorodki', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
-                                nfurnitura.setitem(value.id);
-                            }
-                        });
+                });
+                break;
+            }
+            case 4: {
+                obj.forEach(function (value) {
+                    value['type'].forEach(function (v) {
+                        if ('Мобильная перегородка' == v) {
+                            nfurnitura.pushFurnitura('mobilnyie-peregorodki', value.name, value.id, value.accessory == 1, value.option.indexOf("Количество"));
+                            nfurnitura.setitem(value.id);
+                        }
                     });
-                    break;
-                }
+                });
+                break;
             }
         }
     },
     modalfurn: function (id) {
         $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
         var html = $('.obshee-modal').html();
-        var type = storage.Furn.filter(function (value) {
+        var type = top.storage.Furn.filter(function (value) {
             return value.id == id;
         });
-        var obj = storage.ItemFurn.filter(function (value) {
+        var obj = top.storage.ItemFurn.filter(function (value) {
             return value.parent_id == id;
         });
         obj.forEach(function (v) {
@@ -1680,10 +1421,10 @@ var nfurnitura = {
         }
     },
     setitem: function (id) {
-        var type = storage.Furn.filter(function (value) {
+        var type = top.storage.Furn.filter(function (value) {
             return value.id == id;
         });
-        var item = storage.ItemFurn.filter(function (value) {
+        var item = top.storage.ItemFurn.filter(function (value) {
             return value.parent_id == id;
         });
         for (var i = 0; i < item.length; i++) {
@@ -1746,10 +1487,10 @@ var nfurnitura = {
                 var v = $(this).find('.text').text();
 
                 var typestr = $(this).find('h3').text();
-                var type = storage.Furn.filter(function (value) {
+                var type = top.storage.Furn.filter(function (value) {
                     return value.name == typestr;
                 });
-                storage.ItemFurn.forEach(function (item) {
+                top.storage.ItemFurn.forEach(function (item) {
                     if (v == item.other.Название) {
                         p.text(fornituraPrice(item.other.Цена
                             ? item.other.Цена * (c == 0
@@ -1786,28 +1527,28 @@ $(document).ready(function () {
  * @see {@link https://drive.google.com/file/d/0B07aYSnGHQe9UXpLREFuMTJXZ2s/view}
  */
 function fornituraPrice(price, index) {
-    var Price = ParserIntAndNan(price);
-    var Width = ParserIntAndNan($('#WIDTH_SETS_ID').val());
-    var Hight = ParserIntAndNan($('#HIGHT_SETS_ID').val());
-    var Count = ParserIntAndNan($('#TOTAL_PAINTING_ID').val());
-    var CountProfilH = ParserIntAndNan($('#tab-profil-peremyichki-horizontal-shtuk').val());
-    var CountProfilW = ParserIntAndNan($('#tab-profil-v-peremyichki-shtuk').val());
-    var CountMobilityPaintings = ParserIntAndNan($('#MOVABLE_PAINTING_ID').val());
-    var WidthPainting = Width / Count;
+    let Price = ParserIntAndNan(price);
+    let Width = ParserIntAndNan($('#WIDTH_SETS_ID').val());
+    let Hight = ParserIntAndNan($('#HIGHT_SETS_ID').val());
+    let Count = ParserIntAndNan($('#TOTAL_PAINTING_ID').val());
+    let CountProfilH = ParserIntAndNan($('#tab-profil-peremyichki-horizontal-shtuk').val());
+    let CountProfilW = ParserIntAndNan($('#tab-profil-v-peremyichki-shtuk').val());
+    let CountMobilityPaintings = ParserIntAndNan($('#MOVABLE_PAINTING_ID').val());
+    let WidthPainting = Width / Count;
     if (isNaN(WidthPainting)) {
         WidthPainting = 0;
     }
-    var WidthDesign = WidthPainting * CountMobilityPaintings;
+    let WidthDesign = WidthPainting * CountMobilityPaintings;
     if (isNaN(WidthDesign)) {
         WidthDesign = 0;
     }
-    var LengthGguide = (WidthPainting * 2) * 1.5;
+    let LengthGguide = (WidthPainting * 2) * 1.5;
     if (isNaN(LengthGguide)) {
         LengthGguide = 0;
     }
-    for (var i = 0; i < storage.Fo.length; i++) {
-        if (Object.is(storage.Fo[i].name, index)) {
-            var price = eval(storage.Fo[i].formula);
+    for (let i = 0; i < top.storage.Fo.length; i++) {
+        if (Object.is(top.storage.Fo[i].name, index)) {
+            let price = eval(top.storage.Fo[i].formula);
             if (isNaN(price)) {
                 price = 0;
             }
@@ -1827,48 +1568,69 @@ $(document).on({
 }, '.newfurn input');
 
 function functionName() {
-    return 0;
-    let s = $('.newfurn');
-    switch (checkState(window)) {
-        case 0:
-            s.each(function (value) {
-                var typestr = $(this).find('h3').text();
-                var type = storage.Furn.filter(function (value) {
-                    return value.name == typestr;
-                });
-                for (i = 0; i < States.OptimalState.ArrayMaterials.length; i++) {
-                    if (type[0].materials.indexOf(checktupematerials(ParserIntAndNan(States.OptimalState.ArrayMaterials[i].type))) == -1) {
-                        $(this).remove();
-                    }
-                }
-            });
-            break;
-        case 1:
-            s.each(function (value) {
-                var typestr = $(this).find('h3').text();
-                var type = storage.Furn.filter(function (value) {
-                    return value.name == typestr;
-                });
-                for (i = 0; i < States.EconomyState.ArrayMaterials.length; i++) {
-                    if (type[0].materials.indexOf(checktupematerials(ParserIntAndNan(States.EconomyState.ArrayMaterials[i].type))) == -1) {
-                        $(this).remove();
-                    }
-                }
-            });
-            break;
-        case 2:
-            s.each(function (value) {
-                var typestr = $(this).find('h3').text();
-                var type = storage.Furn.filter(function (value) {
-                    return value.name == typestr;
-                });
-                for (i = 0; i < States.PremiumState.ArrayMaterials.length; i++) {
-                    if (type[0].materials.indexOf(checktupematerials(ParserIntAndNan(States.PremiumState.ArrayMaterials[i].type))) == -1) {
-                        $(this).remove();
-                    }
-                }
-            });
-            break;
+    /*var s = $('.newfurn');
+     switch (checkState(window)) {
+     case 0:
+     s.each(function (value) {
+     var typestr = $(this).find('h3').text();
+     var type = top.storage.Furn.filter(function (value) {
+     return value.name == typestr;
+     });
+     for (i = 0; i < top.States.OptimalState.ArrayMaterials.length; i++) {
+     if (type[0].materials.indexOf(checktupematerials(ParserIntAndNan(top.States.OptimalState.ArrayMaterials[i].type))) == -1) {
+     $(this).remove();
+     }
+     }
+     });
+     break;
+     case 1:
+     s.each(function (value) {
+     var typestr = $(this).find('h3').text();
+     var type = top.storage.Furn.filter(function (value) {
+     return value.name == typestr;
+     });
+     for (i = 0; i < top.States.EconomyState.ArrayMaterials.length; i++) {
+     if (type[0].materials.indexOf(checktupematerials(ParserIntAndNan(top.States.EconomyState.ArrayMaterials[i].type))) == -1) {
+     $(this).remove();
+     }
+     }
+     });
+     break;
+     case 2:
+     s.each(function (value) {
+     var typestr = $(this).find('h3').text();
+     var type = top.storage.Furn.filter(function (value) {
+     return value.name == typestr;
+     });
+     for (i = 0; i < top.States.PremiumState.ArrayMaterials.length; i++) {
+     if (type[0].materials.indexOf(checktupematerials(ParserIntAndNan(top.States.PremiumState.ArrayMaterials[i].type))) == -1) {
+     $(this).remove();
+     }
+     }
+     });
+     break;
 
-    }
+     }*/
 }
+$('body').on('change', '.dekorativnayaPlankaDlyaProfilya input', function () {
+    let $p = $('.dekorativnayaPlankaDlyaProfilya .price');
+    if ($(this).prop("checked")) {
+        let s = ParserIntAndNan($p.html());
+        $p.html(s * 2);
+    } else {
+        let s = ParserIntAndNan($p.html());
+        $p.html(s / 2);
+    }
+    nfurnitura.viewTotalFurnitura();
+});
+$('body').on('change', '.dekorativnayaPlankaDlyaProfilya-skladnie input', function () {
+    let $p = $('.dekorativnayaPlankaDlyaProfilya-skladnie .price');
+    if ($(this).prop("checked")) {
+        let s = ParserIntAndNan($p.html());
+        $p.html(s * 2);
+    } else {
+        let s = ParserIntAndNan($p.html());
+        $p.html(s / 2);
+    }
+    nfurnitura.viewTotalFurnitura();
+});
