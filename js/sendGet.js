@@ -1,395 +1,376 @@
 $('.sendGet').click(SaveToPDF);
 
 function SaveToPDF() {
-    function checkF(arg, s) {
-        return (parentM["s" + s].$("#" + arg + " .furnituraElFlag").val() == 1) ? parentM["s" + s].$("#" + arg + " h4.text").html() : "";
-    }
+    save.set();
 
     function checkFN(arg, s) {
-        return parentM["s" + s].$("#" + arg + " h4.text").html();
+        return $("#" + arg + " h4.text").html();
     }
 
-    var TOTAL_PAINTING = parseInt($("#state1").contents().find('#TOTAL_PAINTING_ID').val());
-    if ($("#state1").contents().find('#TOTAL_PAINTING_ID').val() === '') TOTAL_PAINTING = 1;
-    var furnituraSelect = $("#state1").contents().find("#TYPE_BAFFLE_ID").val();
-    var Allheight = $("#state1").contents().find('#HIGHT_SETS_ID').val();
-    var Allwidth = $("#state1").contents().find('#WIDTH_SETS_ID').val();
-    var count = TOTAL_PAINTING;
-    var count1 = $("#state1").contents().find('#MOVABLE_PAINTING_ID').val();
-    var countW = $("#state1").contents().find('#tab-profil-v-peremyichki-shtuk').val();
-    var countH = $("#state1").contents().find('#tab-profil-peremyichki-horizontal-shtuk').val();
+    function checkF(arg, s) {
+        return $("#" + arg + " .furnituraElFlag").val() === 1 ? $("#" + arg + " h4.text").html() : "";
+    }
+
+    let furnituraSelect = info.type;
+    let Allheight = info.height;
+    let Allwidth = info.width;
+    let count = info.count;
+    let count1 = info.countMove;
+    let countW = info.countProfileWidth;
+    let countH = info.countProfileHeight;
 
     ////////////////////////////////////////////////////////////
     // выборка материалов
     ////////////////////////////////////////////////////////////
-    var selectedMaterials1 = [], selectedMaterials2 = [], selectedMaterials3 = [], tmpA1 = [], tmpA2 = [], tmpA3 = [];
-    var count00 = frames[0].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i < count00; i++) {
+    let selectedMaterials1 = [], selectedMaterials2 = [], selectedMaterials3 = [], tmpA1 = [], tmpA2 = [], tmpA3 = [];
+    save.optimal.m.forEach(v => {
         tmpA1 = [];
-        if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
-            var str = parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
-            var obj = top.storage.m.filter(function (v) {
-                return v.img == str
-            })[0];
-            tmpA1.push(obj.name);
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
-            selectedMaterials1.push(tmpA1);
-        }
-    }
-    var count01 = frames[1].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i < count01; i++) {
+        let str = v.img.substr(8);
+        let obj = storage.m.find(v => v.img === str);
+        tmpA1.push(obj.name);
+        tmpA1.push(v.price);
+        tmpA1.push(v.ploschad);
+        tmpA1.push(v.vyisota);
+        tmpA1.push(v.shirina);
+        tmpA1.push(v.tolschina);
+        tmpA1.push(v.kollichestvo);
+        tmpA1.push(v.zk);
+        selectedMaterials1.push(tmpA1);
+    });
+    save.econom.m.forEach(v => {
         tmpA2 = [];
-        if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
-            var str = parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
-            var obj = top.storage.m.filter(function (v) {
-                return v.img == str
-            })[0];
-            tmpA2.push(obj.name);
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
-            tmpA2.push(parentM.s2.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
-            tmpA2.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
-            selectedMaterials2.push(tmpA2);
-        }
-    }
-    var count02 = frames[2].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i < count02; i++) {
+        let str = v.img.substr(8);
+        let obj = storage.m.find(v => v.img === str);
+        tmpA1.push(obj.name);
+        tmpA1.push(v.price);
+        tmpA1.push(v.ploschad);
+        tmpA1.push(v.vyisota);
+        tmpA1.push(v.shirina);
+        tmpA1.push(v.tolschina);
+        tmpA1.push(v.kollichestvo);
+        tmpA1.push(v.zk);
+        selectedMaterials2.push(tmpA1);
+    });
+    save.premium.m.forEach(v => {
         tmpA3 = [];
-        if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
-            var str = parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
-            var obj = top.storage.m.filter(function (v) {
-                return v.img == str
-            })[0];
-            tmpA3.push(obj.name);
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
-            tmpA3.push(parentM.s3.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
-            tmpA3.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
-            selectedMaterials3.push(tmpA3);
-        }
-    }
+        let str = v.img.substr(8);
+        let obj = storage.m.find(v => v.img === str);
+        tmpA1.push(obj.name);
+        tmpA1.push(v.price);
+        tmpA1.push(v.ploschad);
+        tmpA1.push(v.vyisota);
+        tmpA1.push(v.shirina);
+        tmpA1.push(v.tolschina);
+        tmpA1.push(v.kollichestvo);
+        tmpA1.push(v.zk);
+        selectedMaterials3.push(tmpA1);
+    });
 
 
-    var fotoNames = [];
+    let fotoNames = [];
     fotoNames.push(window.imagesPDF[0]);
     fotoNames.push(window.imagesPDF[1]);
+
 
 ////////////////////////////////////////////////////////////
 // выборка фурнитуры 1
 ////////////////////////////////////////////////////////////
-    var selectedFurnitura = [];
-    var sf0 = [];
-    var sf1 = [];
-    var sf2 = [];
-    var sf3 = [];
-    if (furnituraSelect == 1) {
-        sf0[0] = checkF("razdvizhnyie-mehanizmyi-select", 1);
-        sf0[1] = checkF("mehanizm-sinhronizacii-select", 1);
-        sf0[2] = checkF("naprav-select", 1);
-        sf0[3] = checkF("napravn-select", 1);
-        sf0[4] = checkF("vid-kreplenia-naprav-select", 1);
-        sf0[5] = checkF("povodok-select", 1);
-        sf0[6] = checkF("mehanizm-teleskop-select", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .razdvizhnyie-mehanizmyi .price').html());
-        sf1[1] = parseInt($("#state1").contents().find('.tab-content .mehanizm-sinhronizatsii .price').html());
-        sf1[2] = parseInt($("#state1").contents().find('.tab-content .napravlyayuschie .price').html());
-        sf1[3] = parseInt($("#state1").contents().find('.tab-content .napravlyayuschien .price').html());
-        sf1[4] = parseInt($("#state1").contents().find('.tab-content .vidKrepleniyaNapravlyayuschey .price').html());
-        sf1[5] = parseInt($("#state1").contents().find('.tab-content .povodok .price').html());
-        sf1[6] = parseInt($("#state1").contents().find('.tab-content .mehanizm-teleskop .price').html());
+    let selectedFurnitura = [];
+    let sf0 = [];
+    let sf1 = [];
+    let sf2 = [];
+    let sf3 = [];
+    if (furnituraSelect === 1) {
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf0[4] = save.econom.f[4] ? save.econom.f[4].name : '';
+        sf0[5] = save.econom.f[5] ? save.econom.f[5].name : '';
+        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf1[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
+        sf1[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
-        if ($("#state1").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf2[0] = checkF("dovodchik-select", 1);
-            sf2[1] = checkF("dek-planka-dlya-profilya-select", 1);
-            sf2[2] = checkF("schetochnii-uplotnitel-select", 1);
-            sf2[3] = checkF("ruchka-select", 1);
-            sf2[4] = checkF("zamok-select", 1);
-            sf3[0] = parseInt($("#state1").contents().find('.tab-content .dovodchik .price').html());
-            sf3[1] = parseInt($("#state1").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya .price').html());
-            sf3[2] = parseInt($("#state1").contents().find('.tab-content .schetochnyiyUplotnitel .price').html());
-            sf3[3] = parseInt($("#state1").contents().find('.tab-content .rakovina .price').html());
-            sf3[4] = parseInt($("#state1").contents().find('.tab-content .zamok .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf2[0] = save.econom.f[6] ? save.econom.f[6].name : '';
+            sf2[1] = save.econom.f[7] ? save.econom.f[7].name : '';
+            sf2[2] = save.econom.f[8] ? save.econom.f[8].name : '';
+            sf2[3] = save.econom.f[9] ? save.econom.f[9].name : '';
+            sf2[4] = save.econom.f[10] ? save.econom.f[10].name : '';
+            sf3[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
+            sf3[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
+            sf3[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
+            sf3[3] = save.econom.f[9] ? save.econom.f[9].price : 0;
+            sf3[4] = save.econom.f[10] ? save.econom.f[10].price : 0;
             selectedFurnitura.push(sf2);
             selectedFurnitura.push(sf3);
         }
     } else if (furnituraSelect == 2) {
-
-        sf0[0] = checkF("mehanizm-sinhron-skladnie", 1);
-        sf0[1] = checkF("mehanizm-rotornii", 1);
-        sf0[2] = checkF("petli-skladnie", 1);
-        sf0[3] = checkF("napravlyayuschie-skladnie", 1);
-        sf0[4] = checkF("vid-krepleniya-napravlyayuschih-skladnie", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .setSkladnyieMehanizmyi .price').html());
-        sf1[1] = parseInt($("#state1").contents().find('.tab-content .mehanizm-rotornii .price').html());
-        sf1[2] = parseInt($("#state1").contents().find('.tab-content .petli-skladnie .price').html());
-        sf1[3] = parseInt($("#state1").contents().find('.tab-content .napravlyayuschie-skladnie .price').html());
-        sf1[4] = parseInt($("#state1").contents().find('#vid-krepleniya-napravlyayuschih-skladnie .price').html());
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf0[4] = save.econom.f[4] ? save.econom.f[4].name : '';
+        sf0[5] = save.econom.f[5] ? save.econom.f[5].name : '';
+        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf1[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
+        sf1[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
-        if ($("#state1").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf2[0] = checkF("dek-planka-dlya-profilya-skladnie", 1);
-            sf2[1] = checkF("ruchka-skladnie", 1);
-            sf2[2] = checkF("zamok-skladnie", 1);
-            sf2[3] = checkF("schetochnii-uplotnitel-skladnie", 1);
-            sf2[4] = checkF("kreplenie-ruchli-skladnie", 1);
-            sf3[0] = parseInt($("#state1").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya-skladnie .price').html());
-            sf3[1] = parseInt($("#state1").contents().find('.tab-content .rakovina-skladnie .price').html());
-            sf3[2] = parseInt($("#state1").contents().find('.tab-content .zamokSkladnyie-skladnie .price').html());
-            sf3[3] = parseInt($("#state1").contents().find('.tab-content .schetochnyiyUplotnitel-skladnie .price').html());
-            sf3[4] = parseInt($("#state1").contents().find('.tab-content .kreplenieRuchki-skladnie .price').html());
-            console.log(sf3);
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf2[0] = save.econom.f[6] ? save.econom.f[6].name : '';
+            sf2[1] = save.econom.f[7] ? save.econom.f[7].name : '';
+            sf2[2] = save.econom.f[8] ? save.econom.f[8].name : '';
+            sf3[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
+            sf3[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
+            sf3[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
             selectedFurnitura.push(sf2);
             selectedFurnitura.push(sf3);
         }
     } else if (furnituraSelect == 3) {
-        sf0[0] = checkF("petli-raspashnie", 1);
-        sf0[1] = checkF("ruchka-raspashnie", 1);
-        sf0[2] = checkF("zamok-raspashnie", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .petli-raspashnie .price').html());
-        sf1[1] = parseInt($("#state1").contents().find('.tab-content .ruchka-raspashnie .price').html());
-        sf1[2] = parseInt($("#state1").contents().find('.tab-content .zamok-raspashnie .price').html());
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     } else if (furnituraSelect == 4) {
-        sf0[0] = checkF("nozhki-mobilnie", 1);
-        sf0[1] = checkF("kolesiki-mobilnie", 1);
-        sf0[2] = checkF("stoyki-mobilnie", 1);
-        sf0[3] = checkF("tipSoedineniyaPoloten-mobilnie", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .nozhki-mobil .price').html());
-        sf1[1] = parseInt($("#state1").contents().find('.tab-content .kolesiki-mobilnie .price').html());
-        sf1[2] = parseInt($("#state1").contents().find('.tab-content .stoyki-mobil .price').html());
-        sf1[3] = parseInt($("#state1").contents().find('.tab-content .tipSoedineniyaPoloten-mobil .price').html());
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
-    } else if (furnituraSelect === '0') {
-        sf0[0] = checkF("stoiki-stac-select", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .stoiki-stac .price').html());
+    } else if (furnituraSelect === 0) {
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     }
 ////////////////////////////////////////////////////////////
 // выборка фурнитуры 2
 ////////////////////////////////////////////////////////////
-    var selectedFurnitura2 = [];
-    var sf20 = [];
-    var sf21 = [];
-    var sf22 = [];
-    var sf23 = [];
-    if (furnituraSelect == 1) {
-        sf20[0] = checkF("razdvizhnyie-mehanizmyi-select", 2);
-        sf20[1] = checkF("mehanizm-sinhronizacii-select", 2);
-        sf20[2] = checkF("naprav-select", 2);
-        sf20[3] = checkF("napravn-select", 2);
-        sf20[4] = checkF("vid-kreplenia-naprav-select", 2);
-        sf20[5] = checkF("povodok-select", 2);
-        sf20[6] = checkF("mehanizm-teleskop-select", 1);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .razdvizhnyie-mehanizmyi .price').html());
-        sf21[1] = parseInt($("#state2").contents().find('.tab-content .mehanizm-sinhronizatsii .price').html());
-        sf21[2] = parseInt($("#state2").contents().find('.tab-content .napravlyayuschie .price').html());
-        sf21[3] = parseInt($("#state2").contents().find('.tab-content .napravlyayuschien .price').html());
-        sf21[4] = parseInt($("#state2").contents().find('.tab-content .vidKrepleniyaNapravlyayuschey .price').html());
-        sf21[5] = parseInt($("#state2").contents().find('.tab-content .povodok .price').html());
+    let selectedFurnitura2 = [];
+    let sf20 = [];
+    let sf21 = [];
+    let sf22 = [];
+    let sf23 = [];
+    if (furnituraSelect === 1) {
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf20[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf20[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf20[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf20[4] = save.econom.f[4] ? save.econom.f[4].name : '';
+        sf20[5] = save.econom.f[5] ? save.econom.f[5].name : '';
+        sf21[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf21[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf21[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf21[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
+        sf21[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
-        if ($("#state2").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf22[0] = checkF("dovodchik-select", 2);
-            sf22[1] = checkF("dek-planka-dlya-profilya-select", 2);
-            sf22[2] = checkF("schetochnii-uplotnitel-select", 2);
-            sf22[3] = checkF("ruchka-select", 2);
-            sf22[4] = checkF("zamok-select", 2);
-            sf23[0] = parseInt($("#state2").contents().find('.tab-content .dovodchik .price').html());
-            sf23[1] = parseInt($("#state2").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya .price').html());
-            sf23[2] = parseInt($("#state2").contents().find('.tab-content .schetochnyiyUplotnitel .price').html());
-            sf23[3] = parseInt($("#state2").contents().find('.tab-content .rakovina .price').html());
-            sf23[4] = parseInt($("#state2").contents().find('.tab-content .zamok .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf22[0] = save.econom.f[6] ? save.econom.f[6].name : '';
+            sf22[1] = save.econom.f[7] ? save.econom.f[7].name : '';
+            sf22[2] = save.econom.f[8] ? save.econom.f[8].name : '';
+            sf22[3] = save.econom.f[9] ? save.econom.f[9].name : '';
+            sf22[4] = save.econom.f[10] ? save.econom.f[10].name : '';
+            sf23[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
+            sf23[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
+            sf23[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
+            sf23[3] = save.econom.f[9] ? save.econom.f[9].price : 0;
+            sf23[4] = save.econom.f[10] ? save.econom.f[10].price : 0;
             selectedFurnitura2.push(sf22);
             selectedFurnitura2.push(sf23);
         }
     } else if (furnituraSelect == 2) {
-        sf20[0] = checkF("mehanizm-sinhron-skladnie", 2);
-        sf20[1] = checkF("mehanizm-rotornii", 2);
-        sf20[2] = checkF("petli-skladnie", 2);
-        sf20[3] = checkF("napravlyayuschie-skladnie", 2);
-        sf20[4] = checkF("napravlyayuschien-skladnie", 2);
-        sf20[5] = checkF("vid-krepleniya-napravlyayuschih-skladnie", 2);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .setSkladnyieMehanizmyi .price').html());
-        sf21[1] = parseInt($("#state2").contents().find('.tab-content .mehanizm-rotornii .price').html());
-        sf21[2] = parseInt($("#state2").contents().find('.tab-content .petli-skladnie .price').html());
-        sf21[3] = parseInt($("#state2").contents().find('.tab-content .napravlyayuschie-skladnie .price').html());
-        sf21[4] = parseInt($("#state2").contents().find('.tab-content .napravlyayuschien-skladnie .price').html());
-        sf21[5] = parseInt($("#state2").contents().find('.tab-content .vidKrepleniya-skladnie .price').html());
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf20[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf20[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf20[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf20[4] = save.econom.f[4] ? save.econom.f[4].name : '';
+        sf20[5] = save.econom.f[5] ? save.econom.f[5].name : '';
+        sf21[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf21[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf21[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf21[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
+        sf21[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
-        if ($("#state2").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf22[0] = checkF("dek-planka-dlya-profilya-skladnie", 2);
-            sf22[1] = checkF("ruchka-skladnie", 2);
-            sf22[2] = checkF("zamok-skladnie", 2);
-            sf23[0] = parseInt($("#state2").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya-skladnie .price').html());
-            sf23[1] = parseInt($("#state2").contents().find('.tab-content .rakovina-skladnie .price').html());
-            sf23[2] = parseInt($("#state2").contents().find('.tab-content .zamokSkladnyie-skladnie .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf22[0] = save.econom.f[6] ? save.econom.f[6].name : '';
+            sf22[1] = save.econom.f[7] ? save.econom.f[7].name : '';
+            sf22[2] = save.econom.f[8] ? save.econom.f[8].name : '';
+            sf23[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
+            sf23[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
+            sf23[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
             selectedFurnitura2.push(sf22);
             selectedFurnitura2.push(sf23);
         }
     } else if (furnituraSelect == 3) {
-        sf20[0] = checkF("petli-raspashnie", 2);
-        sf20[1] = checkF("ruchka-raspashnie", 2);
-        sf20[2] = checkF("zamok-raspashnie", 2);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .petli-raspashnie .price').html());
-        sf21[1] = parseInt($("#state2").contents().find('.tab-content .ruchka-raspashnie .price').html());
-        sf21[2] = parseInt($("#state2").contents().find('.tab-content .zamok-raspashnie .price').html());
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf20[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf20[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf21[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf21[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
     } else if (furnituraSelect == 4) {
-        sf20[0] = checkF("nozhki-mobilnie", 2);
-        sf20[1] = checkF("kolesiki-mobilnie", 2);
-        sf20[2] = checkF("stoyki-mobilnie", 2);
-        sf20[3] = checkF("tipSoedineniyaPoloten-mobilnie", 2);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .nozhki-mobil .price').html());
-        sf21[1] = parseInt($("#state2").contents().find('.tab-content .kolesiki-mobilnie .price').html());
-        sf21[2] = parseInt($("#state2").contents().find('.tab-content .stoyki-mobil .price').html());
-        sf21[3] = parseInt($("#state2").contents().find('.tab-content .tipSoedineniyaPoloten-mobil .price').html());
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf20[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf20[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf20[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf21[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf21[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf21[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
-    } else if (furnituraSelect === '0') {
-        sf20[0] = checkF("stoiki-stac-select", 2);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .stoiki-stac .price').html());
+    } else if (furnituraSelect === 0) {
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
     }
+
 ////////////////////////////////////////////////////////////
 // выборка фурнитуры 3
 ////////////////////////////////////////////////////////////
-    var selectedFurnitura3 = [];
-    var sf30 = [];
-    var sf31 = [];
-    var sf32 = [];
-    var sf33 = [];
-    if (furnituraSelect == 1) {
-        sf30[0] = checkF("razdvizhnyie-mehanizmyi-select", 3);
-        sf30[1] = checkF("mehanizm-sinhronizacii-select", 3);
-        sf30[2] = checkF("naprav-select", 3);
-        sf30[3] = checkF("napravn-select", 3);
-        sf30[4] = checkF("vid-kreplenia-naprav-select", 3);
-        sf30[5] = checkF("povodok-select", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .razdvizhnyie-mehanizmyi .price').html());
-        sf31[1] = parseInt($("#state3").contents().find('.tab-content .mehanizm-sinhronizatsii .price').html());
-        sf31[2] = parseInt($("#state3").contents().find('.tab-content .napravlyayuschie .price').html());
-        sf31[3] = parseInt($("#state3").contents().find('.tab-content .napravlyayuschien .price').html());
-        sf31[4] = parseInt($("#state3").contents().find('.tab-content .vidKrepleniyaNapravlyayuschey .price').html());
-        sf31[5] = parseInt($("#state3").contents().find('.tab-content .povodok .price').html());
+    let selectedFurnitura3 = [];
+    let sf30 = [];
+    let sf31 = [];
+    let sf32 = [];
+    let sf33 = [];
+    if (furnituraSelect === 1) {
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf30[1] = save.premium.f[1] ? save.premium.f[1].name : '';
+        sf30[2] = save.premium.f[2] ? save.premium.f[2].name : '';
+        sf30[3] = save.premium.f[3] ? save.premium.f[3].name : '';
+        sf30[4] = save.premium.f[4] ? save.premium.f[4].name : '';
+        sf30[5] = save.premium.f[5] ? save.premium.f[5].name : '';
+        sf31[0] = save.premium.f[0] ? save.premium.f[0].price : 0;
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
+        sf31[2] = save.premium.f[2] ? save.premium.f[2].price : 0;
+        sf31[3] = save.premium.f[3] ? save.premium.f[3].price : 0;
+        sf31[4] = save.premium.f[4] ? save.premium.f[4].price : 0;
+        sf31[5] = save.premium.f[5] ? save.premium.f[5].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
-        if ($("#state3").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf32[0] = checkF("dovodchik-select", 3);
-            sf32[1] = checkF("dek-planka-dlya-profilya-select", 3);
-            sf32[2] = checkF("schetochnii-uplotnitel-select", 3);
-            sf32[3] = checkF("ruchka-select", 3);
-            sf32[4] = checkF("zamok-select", 3);
-            sf33[0] = parseInt($("#state3").contents().find('.tab-content .dovodchik .price').html());
-            sf33[1] = parseInt($("#state3").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya .price').html());
-            sf33[2] = parseInt($("#state3").contents().find('.tab-content .schetochnyiyUplotnitel .price').html());
-            sf33[3] = parseInt($("#state3").contents().find('.tab-content .rakovina .price').html());
-            sf33[4] = parseInt($("#state3").contents().find('.tab-content .zamok .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf32[0] = save.premium.f[6] ? save.premium.f[6].name : '';
+            sf32[1] = save.premium.f[7] ? save.premium.f[7].name : '';
+            sf32[2] = save.premium.f[8] ? save.premium.f[8].name : '';
+            sf32[3] = save.premium.f[9] ? save.premium.f[9].name : '';
+            sf32[4] = save.premium.f[10] ? save.premium.f[10].name : '';
+            sf33[0] = save.premium.f[6] ? save.premium.f[6].price : 0;
+            sf33[1] = save.premium.f[7] ? save.premium.f[7].price : 0;
+            sf33[2] = save.premium.f[8] ? save.premium.f[8].price : 0;
+            sf33[3] = save.premium.f[9] ? save.premium.f[9].price : 0;
+            sf33[4] = save.premium.f[10] ? save.premium.f[10].price : 0;
             selectedFurnitura3.push(sf32);
             selectedFurnitura3.push(sf33);
         }
     } else if (furnituraSelect == 2) {
-        sf30[0] = checkF("mehanizm-sinhron-skladnie", 3);
-        sf30[1] = checkF("mehanizm-rotornii", 3);
-        sf30[2] = checkF("petli-skladnie", 3);
-        sf30[3] = checkF("napravlyayuschie-skladnie", 3);
-        sf30[4] = checkF("napravlyayuschien-skladnie", 3);
-        sf30[5] = checkF("vid-krepleniya-napravlyayuschih-skladnie", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .setSkladnyieMehanizmyi .price').html());
-        sf31[1] = parseInt($("#state3").contents().find('.tab-content .mehanizm-rotornii .price').html());
-        sf31[2] = parseInt($("#state3").contents().find('.tab-content .petli-skladnie .price').html());
-        sf31[3] = parseInt($("#state3").contents().find('.tab-content .napravlyayuschie-skladnie .price').html());
-        sf31[4] = parseInt($("#state3").contents().find('.tab-content .napravlyayuschien-skladnie .price').html());
-        sf31[5] = parseInt($("#state3").contents().find('.tab-content .vidKrepleniya-skladnie .price').html());
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf30[1] = save.premium.f[1] ? save.premium.f[1].name : '';
+        sf30[2] = save.premium.f[2] ? save.premium.f[2].name : '';
+        sf30[3] = save.premium.f[3] ? save.premium.f[3].name : '';
+        sf30[4] = save.premium.f[4] ? save.premium.f[4].name : '';
+        sf30[5] = save.premium.f[5] ? save.premium.f[5].name : '';
+        sf31[0] = save.premium.f[0] ? save.premium.f[0].price : 0;
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
+        sf31[2] = save.premium.f[2] ? save.premium.f[2].price : 0;
+        sf31[3] = save.premium.f[3] ? save.premium.f[3].price : 0;
+        sf31[4] = save.premium.f[4] ? save.premium.f[4].price : 0;
+        sf31[5] = save.premium.f[5] ? save.premium.f[5].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
-        if ($("#state3").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf32[0] = checkF("dek-planka-dlya-profilya-skladnie", 3);
-            sf32[1] = checkF("ruchka-skladnie", 3);
-            sf32[2] = checkF("zamok-skladnie", 3);
-            sf33[0] = parseInt($("#state3").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya-skladnie .price').html());
-            sf33[1] = parseInt($("#state3").contents().find('.tab-content .rakovina-skladnie .price').html());
-            sf33[2] = parseInt($("#state3").contents().find('.tab-content .zamokSkladnyie-skladnie .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf32[0] = save.premium.f[6] ? save.premium.f[6].name : '';
+            sf32[1] = save.premium.f[7] ? save.premium.f[7].name : '';
+            sf32[2] = save.premium.f[8] ? save.premium.f[8].name : '';
+            sf33[0] = save.premium.f[6] ? save.premium.f[6].price : 0;
+            sf33[1] = save.premium.f[7] ? save.premium.f[7].price : 0;
+            sf33[2] = save.premium.f[8] ? save.premium.f[8].price : 0;
             selectedFurnitura3.push(sf32);
             selectedFurnitura3.push(sf33);
         }
     } else if (furnituraSelect == 3) {
-        sf30[0] = checkF("petli-raspashnie", 3);
-        sf30[1] = checkF("ruchka-raspashnie", 3);
-        sf30[2] = checkF("zamok-raspashnie", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .petli-raspashnie .price').html());
-        sf31[1] = parseInt($("#state3").contents().find('.tab-content .ruchka-raspashnie .price').html());
-        sf31[2] = parseInt($("#state3").contents().find('.tab-content .zamok-raspashnie .price').html());
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf30[1] = save.premium.f[1] ? save.premium.f[1].name : '';
+        sf30[2] = save.premium.f[2] ? save.premium.f[2].name : '';
+        sf31[0] = save.premium.f[0] ? save.premium.f[0].price : 0;
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
+        sf31[2] = save.premium.f[2] ? save.premium.f[2].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
     } else if (furnituraSelect == 4) {
-        sf30[0] = checkF("nozhki-mobilnie", 3);
-        sf30[1] = checkF("kolesiki-mobilnie", 3);
-        sf30[2] = checkF("stoyki-mobilnie", 3);
-        sf30[3] = checkF("tipSoedineniyaPoloten-mobilnie", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .nozhki-mobil .price').html());
-        sf31[1] = parseInt($("#state3").contents().find('.tab-content .kolesiki-mobilnie .price').html());
-        sf31[2] = parseInt($("#state3").contents().find('.tab-content .stoyki-mobil .price').html());
-        sf31[3] = parseInt($("#state3").contents().find('.tab-content .tipSoedineniyaPoloten-mobil .price').html());
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf30[1] = save.premium.f[1] ? save.premium.f[1].name : '';
+        sf30[2] = save.premium.f[2] ? save.premium.f[2].name : '';
+        sf30[3] = save.premium.f[3] ? save.premium.f[3].name : '';
+        sf31[0] = save.premium.f[0] ? save.premium.f[0].price : 0;
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
+        sf31[2] = save.premium.f[2] ? save.premium.f[2].price : 0;
+        sf31[3] = save.premium.f[3] ? save.premium.f[3].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
-    } else if (furnituraSelect === '0') {
-        sf30[0] = checkF("stoiki-stac-select", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .stoiki-stac .price').html());
+    } else if (furnituraSelect === 0) {
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
     }
 
+
 ////////////////////////////////////////////////////////////
 // выборка альтернативной комплектации
 ////////////////////////////////////////////////////////////
-    var i, altFi = [], altFa = [], altPi = [], altPa = [], altMi = [], altMa = [], altSi = [], altSa = [];
+    let i, altFi = [], altFa = [], altPi = [], altPa = [], altMi = [], altMa = [], altSi = [], altSa = [];
     for (i = storage.m.length - 1; i >= 0; i--) {
-        if (storage.m[i]['img'] != parentM.s1.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
-            storage.m[i]['img'] != parentM.s2.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
-            storage.m[i]['img'] != parentM.s3.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src')) {
+        if (storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
+            storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
+            storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src')) {
             altMi.push(storage.m[i]['id']);
             break;
         }
     }
     for (i = 0; i < storage.m.length; i++) {
-        if (storage.m[i]['img'] != parentM.s1.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
-            storage.m[i]['img'] != parentM.s2.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
-            storage.m[i]['img'] != parentM.s3.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src')) {
+        if (storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
+            storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
+            storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src')) {
             altMa.push(storage.m[i]['id']);
             break;
         }
     }
     for (i = 0; i < storage.p.length; i++) {
-        if (storage.p[i]['name'] != parentM.s1.$('#KARKAS-NAME').html() &&
-            storage.p[i]['name'] != parentM.s2.$('#KARKAS-NAME').html() &&
-            storage.p[i]['name'] != parentM.s3.$('#KARKAS-NAME').html()) {
+        if (storage.p[i]['name'] != $('#KARKAS-NAME').html() &&
+            storage.p[i]['name'] != $('#KARKAS-NAME').html() &&
+            storage.p[i]['name'] != $('#KARKAS-NAME').html()) {
             altPi.push(storage.p[i]['id']);
             break;
         }
     }
     for (i = storage.p.length - 1; i >= 0; i--) {
-        if (storage.p[i]['name'] != parentM.s1.$('#KARKAS-NAME').html() &&
-            storage.p[i]['name'] != parentM.s2.$('#KARKAS-NAME').html() &&
-            storage.p[i]['name'] != parentM.s3.$('#KARKAS-NAME').html()) {
+        if (storage.p[i]['name'] != $('#KARKAS-NAME').html() &&
+            storage.p[i]['name'] != $('#KARKAS-NAME').html() &&
+            storage.p[i]['name'] != $('#KARKAS-NAME').html()) {
             altPa.push(storage.p[i]['id']);
             break;
         }
@@ -453,14 +434,12 @@ function SaveToPDF() {
 ////////////////////////////////////////////////////////////
 // выборка каркаса 1
 ////////////////////////////////////////////////////////////
-    var selectedKarkas = [];
-    var selectedKarkasSupp = [];
-    if (frames[0].info.array) {
-        let arr = frames[0].info.getArrayAllPaint();
-        console.log(arr);
-        arr.forEach(function (v) {
+    let selectedKarkas = [];
+    let selectedKarkasSupp = [];
+    save.optimal.a.forEach(function (v) {
+        if (v) {
             let tmpArr = [];
-            let item = top.storage.TS.find((s) => s.id === v.id);
+            let item = storage.TS.find((s) => s.id === v.id);
             tmpArr.push(v.id);
             tmpArr.push(item.name);
             tmpArr.push(v.name);
@@ -468,42 +447,23 @@ function SaveToPDF() {
             tmpArr.push(v.sum);
             tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkasSupp.push(tmpArr);
-        })
-    } else {
-        $("#state1").contents().find('.nsupp').each(function () {
+        }
+    });
 
-
-            if ($("#state1").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
-                var tmpArr = [];
-                tmpArr.push($(this).val());
-                tmpArr.push($("#state1").contents().find('.nsupp' + $(this).val()).val());
-                tmpArr.push($("#state1").contents().find('#textSupplements' + $(this).val()).html());
-                tmpArr.push($("#state1").contents().find('#imageSupplements' + $(this).val()).attr('src'));
-                tmpArr.push($("#state1").contents().find('#priceSupplements' + $(this).val()).html());
-                tmpArr.push($("#state1").contents().find('#CountSupplements' + $(this).val()).val());
-                console.log(tmpArr);
-                selectedKarkasSupp.push(tmpArr);
-            }
-        });
-    }
-    TOTAL_PAINTING = parseInt($("#state1").contents().find('#TOTAL_PAINTING_ID').val());
-    if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
-    selectedKarkas.push($("#state1").contents().find('#KARKAS-NAME').html());
-    selectedKarkas.push($("#state1").contents().find('#KARKAS-PRICE').html());
-    selectedKarkas.push(((parseInt($("#state1").contents().find('#HIGHT_SETS_ID').val())) / 1000).toFixed(1));
+    selectedKarkas.push(save.optimal.p.n);
+    selectedKarkas.push(save.optimal.p.p);
+    selectedKarkas.push((info.height / 1000).toFixed(1));
     selectedKarkas.push(selectedKarkasSupp);
-    selectedKarkas.push($("#state1").contents().find('.TAB-PROFIL-KARKAS-PRICE').html());
+    selectedKarkas.push(save.optimal.p.p + save.optimal.pH.p + save.optimal.pW.p);
 ////////////////////////////////////////////////////////////
 // выборка каркаса 2
 ////////////////////////////////////////////////////////////
-    var selectedKarkas2 = [];
-    var selectedKarkas2Supp = [];
-    if (frames[1].info.array) {
-        let arr = frames[1].info.getArrayAllPaint();
-        console.log(arr);
-        arr.forEach(function (v) {
+    let selectedKarkas2 = [];
+    let selectedKarkas2Supp = [];
+    save.econom.a.forEach(function (v) {
+        if (v) {
             let tmpArr = [];
-            let item = top.storage.TS.find((s) => s.id === v.id);
+            let item = storage.TS.find((s) => s.id === v.id);
             tmpArr.push(v.id);
             tmpArr.push(item.name);
             tmpArr.push(v.name);
@@ -511,39 +471,24 @@ function SaveToPDF() {
             tmpArr.push(v.sum);
             tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas2Supp.push(tmpArr);
-        })
-    } else {
-        $("#state2").contents().find('.nsupp').each(function () {
-            if ($("#state2").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
-                var tmpArr = [];
-                tmpArr.push($(this).val());
-                tmpArr.push($("#state2").contents().find('.nsupp' + $(this).val()).val());
-                tmpArr.push($("#state2").contents().find('#textSupplements' + $(this).val()).html());
-                tmpArr.push($("#state2").contents().find('#imageSupplements' + $(this).val()).attr('src'));
-                tmpArr.push($("#state2").contents().find('#priceSupplements' + $(this).val()).html());
-                tmpArr.push($("#state2").contents().find('#CountSupplements' + $(this).val()).val());
-                selectedKarkas2Supp.push(tmpArr);
-            }
-        });
-    }
-    TOTAL_PAINTING = parseInt($("#state2").contents().find('#TOTAL_PAINTING_ID').val());
-    if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
-    selectedKarkas2.push($("#state2").contents().find('#KARKAS-NAME').html());
-    selectedKarkas2.push($("#state2").contents().find('#KARKAS-PRICE').html());
-    selectedKarkas2.push(((parseInt($("#state2").contents().find('#HIGHT_SETS_ID').val()) * parseInt($("#state2").contents().find('#WIDTH_SETS_ID').val())) / 1000000).toFixed(1));
+        }
+    });
+
+    selectedKarkas2.push(save.econom.p.n);
+    selectedKarkas2.push(save.econom.p.p);
+    selectedKarkas2.push((info.height / 1000).toFixed(1));
     selectedKarkas2.push(selectedKarkas2Supp);
-    selectedKarkas2.push($("#state2").contents().find('.TAB-PROFIL-KARKAS-PRICE').html());
+    selectedKarkas2.push(save.econom.p.p + save.econom.pH.p + save.econom.pW.p);
+
 ////////////////////////////////////////////////////////////
 // выборка каркаса 3
 ////////////////////////////////////////////////////////////
-    var selectedKarkas3 = [];
-    var selectedKarkas3Supp = [];
-    if (frames[2].info.array) {
-        let arr = frames[2].info.getArrayAllPaint();
-        console.log(arr);
-        arr.forEach(function (v) {
+    let selectedKarkas3 = [];
+    let selectedKarkas3Supp = [];
+    save.premium.a.forEach(function (v) {
+        if (v) {
             let tmpArr = [];
-            let item = top.storage.TS.find((s) => s.id === v.id);
+            let item = storage.TS.find((s) => s.id === v.id);
             tmpArr.push(v.id);
             tmpArr.push(item.name);
             tmpArr.push(v.name);
@@ -551,49 +496,35 @@ function SaveToPDF() {
             tmpArr.push(v.sum);
             tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas3Supp.push(tmpArr);
-        })
-    } else {
-        $("#state3").contents().find('.nsupp').each(function () {
-            if ($("#state3").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
-                var tmpArr = [];
-                tmpArr.push($(this).val());
-                tmpArr.push($("#state3").contents().find('.nsupp' + $(this).val()).val());
-                tmpArr.push($("#state3").contents().find('#textSupplements' + $(this).val()).html());
-                tmpArr.push($("#state3").contents().find('#imageSupplements' + $(this).val()).attr('src'));
-                tmpArr.push($("#state3").contents().find('#priceSupplements' + $(this).val()).html());
-                tmpArr.push($("#state3").contents().find('#CountSupplements' + $(this).val()).val());
-                selectedKarkas3Supp.push(tmpArr);
-            }
-        });
-    }
-    TOTAL_PAINTING = parseInt($("#state3").contents().find('#TOTAL_PAINTING_ID').val());
-    if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
-    selectedKarkas3.push($("#state3").contents().find('#KARKAS-NAME').html());
-    selectedKarkas3.push($("#state3").contents().find('#KARKAS-PRICE').html());
-    selectedKarkas3.push(((parseInt($("#state3").contents().find('#HIGHT_SETS_ID').val()) * parseInt($("#state3").contents().find('#WIDTH_SETS_ID').val())) / 1000000).toFixed(1));
+        }
+    });
+
+    selectedKarkas3.push(save.premium.p.n);
+    selectedKarkas3.push(save.premium.p.p);
+    selectedKarkas3.push((info.height / 1000).toFixed(1));
     selectedKarkas3.push(selectedKarkas3Supp);
-    selectedKarkas3.push($("#state3").contents().find('.TAB-PROFIL-KARKAS-PRICE').html());
+    selectedKarkas3.push(save.premium.p.p + save.premium.pH.p + save.premium.pW.p);
 
 ////////////////////////////////////////////////////////////
 // выборка перемычек
 ////////////////////////////////////////////////////////////
-    var pmh = [], pmh1 = {}, pmh2 = {}, pmh3 = {};
-    pmh1['n'] = parentM.s1.$('#HORIZONTAL-PEREMOCHKI-NAME').html();
-    pmh1['p'] = parentM.s1.$('#HORIZONTAL-PEREMOCHKI-PRICE').html();
-    pmh2['n'] = parentM.s2.$('#HORIZONTAL-PEREMOCHKI-NAME').html();
-    pmh2['p'] = parentM.s2.$('#HORIZONTAL-PEREMOCHKI-PRICE').html();
-    pmh3['n'] = parentM.s3.$('#HORIZONTAL-PEREMOCHKI-NAME').html();
-    pmh3['p'] = parentM.s3.$('#HORIZONTAL-PEREMOCHKI-PRICE').html();
+    let pmh = [], pmh1 = {}, pmh2 = {}, pmh3 = {};
+    pmh1['n'] = save.optimal.pW.n;
+    pmh1['p'] = save.optimal.pW.p;
+    pmh2['n'] = save.optimal.pW.n;
+    pmh2['p'] = save.optimal.pW.p;
+    pmh3['n'] = save.optimal.pW.n;
+    pmh3['p'] = save.optimal.pW.p;
     pmh.push(pmh1);
     pmh.push(pmh2);
     pmh.push(pmh3);
-    var pmv = [], pmv1 = {}, pmv2 = {}, pmv3 = {};
-    pmv1['n'] = parentM.s1.$('#VERTIKALNUE-PEREMOCHKI-NAME').html();
-    pmv1['p'] = parentM.s1.$('#VERTIKALNUE-PEREMOCHKI-PRICE').html();
-    pmv2['n'] = parentM.s2.$('#VERTIKALNUE-PEREMOCHKI-NAME').html();
-    pmv2['p'] = parentM.s2.$('#VERTIKALNUE-PEREMOCHKI-PRICE').html();
-    pmv3['n'] = parentM.s3.$('#VERTIKALNUE-PEREMOCHKI-NAME').html();
-    pmv3['p'] = parentM.s3.$('#VERTIKALNUE-PEREMOCHKI-PRICE').html();
+    let pmv = [], pmv1 = {}, pmv2 = {}, pmv3 = {};
+    pmv1['n'] = save.optimal.pH.n;
+    pmv1['p'] = save.optimal.pH.p;
+    pmv2['n'] = save.econom.pH.n;
+    pmv2['p'] = save.econom.pH.p;
+    pmv3['n'] = save.premium.pH.n;
+    pmv3['p'] = save.premium.pH.p;
     pmv.push(pmv1);
     pmv.push(pmv2);
     pmv.push(pmv3);
@@ -601,161 +532,100 @@ function SaveToPDF() {
 ////////////////////////////////////////////////////////////
 // выборка декора
 ////////////////////////////////////////////////////////////
-    var selectedDecor = [];
-    selectedDecor.push($("#state1").contents().find('#pokraskaTypeAndName').val());
-    selectedDecor.push($("#state1").contents().find('.TAB-POKRASKA-PRICE').html());
-    var selectedDecor2 = [];
-    selectedDecor2.push($("#state2").contents().find('#pokraskaTypeAndName').val());
-    selectedDecor2.push($("#state2").contents().find('.TAB-POKRASKA-PRICE').html());
-    var selectedDecor3 = [];
-    selectedDecor3.push($("#state3").contents().find('#pokraskaTypeAndName').val());
-    selectedDecor3.push($("#state3").contents().find('.TAB-POKRASKA-PRICE').html());
+    let selectedDecor = [];
+    selectedDecor.push(save.optimal.d.i);
+    selectedDecor.push(save.optimal.d.p);
+    let selectedDecor2 = [];
+    selectedDecor2.push(save.econom.d.i);
+    selectedDecor2.push(save.econom.d.p);
+    let selectedDecor3 = [];
+    selectedDecor3.push(save.premium.d.i);
+    selectedDecor3.push(save.premium.d.p);
 
-    var rub = [], rub1 = {}, rub2 = {}, rub3 = {};
-    rub1['i'] = parentM.s1.$('.proizvaodstvoTo input').val();
-    rub1['m'] = parentM.s1.$('.montazhTo input').val();
-    rub1['d'] = parentM.s1.$('.dostavkaTo input').val();
-    rub1['s'] = parentM.s1.$('.srochnostTo input').val();
-    rub1['p'] = parentM.s1.$('.nashProtsentTo input').val();
-    rub1['z'] = parentM.s1.$('.nashZamerTo input').val();
-    rub2['i'] = parentM.s2.$('.proizvaodstvoTo input').val();
-    rub2['m'] = parentM.s2.$('.montazhTo input').val();
-    rub2['d'] = parentM.s2.$('.dostavkaTo input').val();
-    rub2['s'] = parentM.s2.$('.srochnostTo input').val();
-    rub2['p'] = parentM.s2.$('.nashProtsentTo input').val();
-    rub2['z'] = parentM.s2.$('.nashZamerTo input').val();
-    rub3['i'] = parentM.s3.$('.proizvaodstvoTo input').val();
-    rub3['m'] = parentM.s3.$('.montazhTo input').val();
-    rub3['d'] = parentM.s3.$('.dostavkaTo input').val();
-    rub3['s'] = parentM.s3.$('.srochnostTo input').val();
-    rub3['p'] = parentM.s3.$('.nashProtsentTo input').val();
-    rub3['z'] = parentM.s3.$('.nashZamerTo input').val();
+    let rub = [], rub1 = {}, rub2 = {}, rub3 = {};
+    rub1['i'] = $('.proizvaodstvoTo input').val();
+    rub1['m'] = $('.montazhTo input').val();
+    rub1['d'] = $('.dostavkaTo input').val();
+    rub1['s'] = $('.srochnostTo input').val();
+    rub1['p'] = $('.nashProtsentTo input').val();
+    rub1['z'] = $('.nashZamerTo input').val();
+    rub2['i'] = $('.proizvaodstvoTo input').val();
+    rub2['m'] = $('.montazhTo input').val();
+    rub2['d'] = $('.dostavkaTo input').val();
+    rub2['s'] = $('.srochnostTo input').val();
+    rub2['p'] = $('.nashProtsentTo input').val();
+    rub2['z'] = $('.nashZamerTo input').val();
+    rub3['i'] = $('.proizvaodstvoTo input').val();
+    rub3['m'] = $('.montazhTo input').val();
+    rub3['d'] = $('.dostavkaTo input').val();
+    rub3['s'] = $('.srochnostTo input').val();
+    rub3['p'] = $('.nashProtsentTo input').val();
+    rub3['z'] = $('.nashZamerTo input').val();
     rub.push(rub1);
     rub.push(rub2);
     rub.push(rub3);
 
-    var per = [], per1 = {}, per2 = {}, per3 = {};
-    per1['i'] = parentM.s1.$('.proizvaodstvoIn input').val();
-    per1['m'] = parentM.s1.$('.montazhIn input').val();
-    per1['d'] = parentM.s1.$('.dostavkaIn input').val();
-    per1['s'] = parentM.s1.$('.srochnostIn input').val();
-    per1['p'] = parentM.s1.$('.nashProtsentIn input').val();
-    per1['z'] = parentM.s1.$('.nashZamerIn input').val();
-    per2['i'] = parentM.s2.$('.proizvaodstvoIn input').val();
-    per2['m'] = parentM.s2.$('.montazhIn input').val();
-    per2['d'] = parentM.s2.$('.dostavkaIn input').val();
-    per2['s'] = parentM.s2.$('.srochnostIn input').val();
-    per2['p'] = parentM.s2.$('.nashProtsentIn input').val();
-    per2['z'] = parentM.s2.$('.nashZamerIn input').val();
-    per3['i'] = parentM.s3.$('.proizvaodstvoIn input').val();
-    per3['m'] = parentM.s3.$('.montazhIn input').val();
-    per3['d'] = parentM.s3.$('.dostavkaIn input').val();
-    per3['s'] = parentM.s3.$('.srochnostIn input').val();
-    per3['p'] = parentM.s3.$('.nashProtsentIn input').val();
-    per3['z'] = parentM.s3.$('.nashZamer input').val();
+    let per = [], per1 = {}, per2 = {}, per3 = {};
+    per1['i'] = $('.proizvaodstvoIn input').val();
+    per1['m'] = $('.montazhIn input').val();
+    per1['d'] = $('.dostavkaIn input').val();
+    per1['s'] = $('.srochnostIn input').val();
+    per1['p'] = $('.nashProtsentIn input').val();
+    per1['z'] = $('.nashZamerIn input').val();
+    per2['i'] = $('.proizvaodstvoIn input').val();
+    per2['m'] = $('.montazhIn input').val();
+    per2['d'] = $('.dostavkaIn input').val();
+    per2['s'] = $('.srochnostIn input').val();
+    per2['p'] = $('.nashProtsentIn input').val();
+    per2['z'] = $('.nashZamerIn input').val();
+    per3['i'] = $('.proizvaodstvoIn input').val();
+    per3['m'] = $('.montazhIn input').val();
+    per3['d'] = $('.dostavkaIn input').val();
+    per3['s'] = $('.srochnostIn input').val();
+    per3['p'] = $('.nashProtsentIn input').val();
+    per3['z'] = $('.nashZamer input').val();
     per.push(per1);
     per.push(per2);
     per.push(per3);
 
-    var sum = [], sum1 = {}, sum2 = {}, sum3 = {};
-    sum1['p'] = parentM.s1.$('.TAB-PROFIL-PRICE').html();
-    sum1['a'] = parentM.s1.$('.price-res1').html();
-    sum1['d'] = parentM.s1.$('.TAB-POKRASKA-PRICE').html();
-    sum1['m'] = parentM.s1.$('#Pnap').html();
-    sum1['f'] = parentM.s1.$('.furnitura-price .price').html();
-    sum1['i'] = parentM.s1.$('.summaSParametrami .price').html();
-    sum1['o'] = parentM.s1.$('.summaBezParametrov .price').html();
-    sum2['p'] = parentM.s2.$('.TAB-PROFIL-PRICE').html();
-    sum2['a'] = parentM.s2.$('.price-res1').html();
-    sum2['d'] = parentM.s2.$('.TAB-POKRASKA-PRICE').html();
-    sum2['m'] = parentM.s2.$('#Pnap').html();
-    sum2['f'] = parentM.s2.$('.furnitura-price .price').html();
-    sum2['i'] = parentM.s2.$('.summaSParametrami .price').html();
-    sum2['o'] = parentM.s2.$('.summaBezParametrov .price').html();
-    sum3['p'] = parentM.s3.$('.TAB-PROFIL-PRICE').html();
-    sum3['a'] = parentM.s3.$('.price-res1').html();
-    sum3['d'] = parentM.s3.$('.TAB-POKRASKA-PRICE').html();
-    sum3['m'] = parentM.s3.$('#Pnap').html();
-    sum3['f'] = parentM.s3.$('.furnitura-price .price').html();
-    sum3['i'] = parentM.s3.$('.summaSParametrami .price').html();
-    sum3['o'] = parentM.s3.$('.summaBezParametrov .price').html();
+    let sum = [], sum1 = {}, sum2 = {}, sum3 = {};
+    sum1['p'] = save.optimal.profilRes;
+    sum1['a'] = save.optimal.adRes * info.count;
+    sum1['d'] = save.optimal.decorRes * info.count;
+    sum1['m'] = save.optimal.marirealRes * info.count;
+    sum1['f'] = save.optimal.furnituraResPrice;
+    sum1['i'] = save.optimal.resPricesBez;
+    sum1['o'] = save.optimal.bezParam;
+
+    sum2['p'] = save.econom.profilRes;
+    sum2['a'] = save.econom.adRes * info.count;
+    sum2['d'] = save.econom.decorRes * info.count;
+    sum2['m'] = save.econom.marirealRes * info.count;
+    sum2['f'] = save.econom.furnituraResPrice;
+    sum2['i'] = save.econom.resPricesBez;
+    sum2['o'] = save.econom.bezParam;
+
+
+    sum3['p'] = save.premium.profilRes;
+    sum3['a'] = save.premium.adRes * info.count;
+    sum3['d'] = save.premium.decorRes * info.count;
+    sum3['m'] = save.premium.marirealRes * info.count;
+    sum3['f'] = save.premium.furnituraResPrice;
+    sum3['i'] = save.premium.resPricesBez;
+    sum3['o'] = save.premium.bezParam;
     sum.push(sum1);
     sum.push(sum2);
     sum.push(sum3);
 
-    var setsNumber = parseInt($("#state1").contents().find('#NUMBER_SETS_ID').val());
-    var orderNumber = $('#orderNumber').val();
-    var calcmanager = $('#calcmanager').val();
-
-// фурнитура ручка
-    var AksessuaryRuchkaKollichestvo1, AksessuaryRuchkaKollichestvo2, AksessuaryRuchkaKollichestvo3;
-    if ($("#state1").contents().find("#ruchka-select .red").attr("disabled") == undefined)
-        AksessuaryRuchkaKollichestvo1 = $("#state1").contents().find("#ruchka-select-count").val();
-    else
-        AksessuaryRuchkaKollichestvo1 = 0;
-    if ($("#state2").contents().find("#ruchka-select .red").attr("disabled") == undefined)
-        AksessuaryRuchkaKollichestvo2 = $("#state2").contents().find("#ruchka-select-count").val();
-    else
-        AksessuaryRuchkaKollichestvo2 = 0;
-    if ($("#state3").contents().find("#ruchka-select .red").attr("disabled") == undefined)
-        AksessuaryRuchkaKollichestvo3 = $("#state3").contents().find("#ruchka-select-count").val();
-    else
-        AksessuaryRuchkaKollichestvo3 = 0;
-// фурнитура ручка
-//Универсальная фурнитура
-    var arayN0 = []
-    for (i = 1; i <= 6; i++)
-        arayN0.push($("#state1").contents().find('*[data-material-el-id="' + i + '"]').find('#namber').text());
-
-    var arayN1 = []
-    for (i = 1; i <= 6; i++)
-        arayN1.push($("#state2").contents().find('*[data-material-el-id="' + i + '"]').find('#namber').text());
-
-    var arayN2 = []
-    for (i = 1; i <= 6; i++)
-        arayN2.push($("#state3").contents().find('*[data-material-el-id="' + i + '"]').find('#namber').text());
-
-    var arrayNamber = [arayN0, arayN1, arayN2];
-
-    var arrayFurn0 = $("#state1").contents().find(".newfurn");
-    var arrayFurn1 = $("#state2").contents().find(".newfurn");
-    var arrayFurn2 = $("#state3").contents().find(".newfurn");
-
-    var arrF0 = [];
-    var arrF1 = [];
-    var arrF2 = [];
-
-    for (var i = 0; i < arrayFurn0.length / 2; i++) {
-        var obj = {
-            type: $(arrayFurn0[i]).find('h3').text(),
-            name: $(arrayFurn0[i]).find('.text').text(),
-            price: $(arrayFurn0[i]).find('.price').text()
-        }
-        arrF0.push(obj);
-    }
-    for (var i = 0; i < arrayFurn1.length / 2; i++) {
-        var obj = {
-            type: $(arrayFurn1[i]).find('h3').text(),
-            name: $(arrayFurn1[i]).find('.text').text(),
-            price: $(arrayFurn1[i]).find('.price').text()
-        }
-        arrF1.push(obj);
-    }
-    for (var i = 0; i < arrayFurn2.length / 2; i++) {
-        var obj = {
-            type: $(arrayFurn2[i]).find('h3').text(),
-            name: $(arrayFurn2[i]).find('.text').text(),
-            price: $(arrayFurn2[i]).find('.price').text()
-        }
-        arrF2.push(obj);
-    }
+    let setsNumber = parseInt($('#NUMBER_SETS_ID').val());
+    let orderNumber = $('#orderNumber').val();
+    let calcmanager = $('#calcmanager').val();
 
 
 ////////////////////////////////////////////////////////////
 // формирование url
 ////////////////////////////////////////////////////////////
-    var url = {
-        'arrayNamber': JSON.stringify(arrayNamber),
+    let url = {
         'furnitura-select': furnituraSelect,
         'Allheight': Allheight,
         'Allwidth': Allwidth,
@@ -763,12 +633,9 @@ function SaveToPDF() {
         'count1': count1,
         'countW': countW,
         'countH': countH,
-        'priceFull1': $('*[data-slider-id="1"] .price span').html(),
-        'priceFull2': $('*[data-slider-id="2"] .price span').html(),
-        'priceFull3': $('*[data-slider-id="3"] .price span').html(),
-        'AksessuaryRuchkaKollichestvo1': AksessuaryRuchkaKollichestvo1,
-        'AksessuaryRuchkaKollichestvo2': AksessuaryRuchkaKollichestvo2,
-        'AksessuaryRuchkaKollichestvo3': AksessuaryRuchkaKollichestvo3,
+        'priceFull1': ParserIntAndNan($('.slider-container:eq(1) .price').html()),
+        'priceFull2': ParserIntAndNan($('.slider-container:eq(0) .price').html()),
+        'priceFull3': ParserIntAndNan($('.slider-container:eq(2) .price').html()),
         'selectedMaterials1': JSON.stringify(selectedMaterials1),
         'selectedMaterials2': JSON.stringify(selectedMaterials2),
         'selectedMaterials3': JSON.stringify(selectedMaterials3),
@@ -798,411 +665,394 @@ function SaveToPDF() {
         'altSa': JSON.stringify(altSa),
         'altMi': JSON.stringify(altMi),
         'altMa': JSON.stringify(altMa),
-        'arrF0': JSON.stringify(arrF0),
-        'arrF1': JSON.stringify(arrF1),
-        'arrF2': JSON.stringify(arrF2),
-        'Omanufacturer': frames[0].$('.manufacturer').val() === "Производитель" ? '' : frames[0].$('.manufacturer').val(),
-        'Emanufacturer': frames[1].$('.manufacturer').val() === "Производитель" ? '' : frames[1].$('.manufacturer').val(),
-        'Fmanufacturer': frames[2].$('.manufacturer').val() === "Производитель" ? '' : frames[2].$('.manufacturer').val(),
+        'Omanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
+        'Emanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
+        'Fmanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
         'contacts': JSON.stringify({
             name: $('#managertext').val(),
             tel: $('#teltext').val(),
             mail: $('#mailtext').val()
         }),
-        'schema': frames[0].$('#shema').prop("checked") ? frames[0].$('#ShemaKonstr').attr('src') : ''
+        'schema': $('#shema').prop("checked") ? $('#ShemaKonstr').attr('src') : ''
     };
+
     $.post('./php/longurl.php?n=' + window.id_pdf, 'url=' + JSON.stringify(url), function () {
         window.open('./html2pdf.php?n=' + window.id_pdf, '_blank');
     });
 }
 
 
-function SaveToPdfToFile() {
-    function checkF(arg, s) {
-        return (parentM["s" + s].$("#" + arg + " .furnituraElFlag").val() == 1) ? parentM["s" + s].$("#" + arg + " h4.text").html() : "";
-    }
+function SaveToPDFtoFile() {
+    save.set();
 
     function checkFN(arg, s) {
-        return parentM["s" + s].$("#" + arg + " h4.text").html();
+        return $("#" + arg + " h4.text").html();
     }
 
-    var TOTAL_PAINTING = parseInt($("#state1").contents().find('#TOTAL_PAINTING_ID').val());
-    if ($("#state1").contents().find('#TOTAL_PAINTING_ID').val() === '') TOTAL_PAINTING = 1;
-    var furnituraSelect = $("#state1").contents().find("#TYPE_BAFFLE_ID").val();
-    var Allheight = $("#state1").contents().find('#HIGHT_SETS_ID').val();
-    var Allwidth = $("#state1").contents().find('#WIDTH_SETS_ID').val();
-    var count = TOTAL_PAINTING;
-    var count1 = $("#state1").contents().find('#MOVABLE_PAINTING_ID').val();
-    var countW = $("#state1").contents().find('#tab-profil-v-peremyichki-shtuk').val();
-    var countH = $("#state1").contents().find('#tab-profil-peremyichki-horizontal-shtuk').val();
+    function checkF(arg, s) {
+        return $("#" + arg + " .furnituraElFlag").val() === 1 ? $("#" + arg + " h4.text").html() : "";
+    }
 
-    var selectedMaterials1 = [], selectedMaterials2 = [], selectedMaterials3 = [], tmpA1 = [], tmpA2 = [], tmpA3 = [];
-    var count00 = frames[0].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i < count00; i++) {
+    let furnituraSelect = info.type;
+    let Allheight = info.height;
+    let Allwidth = info.width;
+    let count = info.count;
+    let count1 = info.countMove;
+    let countW = info.countProfileWidth;
+    let countH = info.countProfileHeight;
+
+    ////////////////////////////////////////////////////////////
+    // выборка материалов
+    ////////////////////////////////////////////////////////////
+    let selectedMaterials1 = [], selectedMaterials2 = [], selectedMaterials3 = [], tmpA1 = [], tmpA2 = [], tmpA3 = [];
+    save.optimal.m.forEach(v => {
         tmpA1 = [];
-        if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
-            var str = parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
-            var obj = top.storage.m.filter(function (v) {
-                return v.img == str
-            })[0];
-            tmpA1.push(obj.name);
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
-            tmpA1.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
-            selectedMaterials1.push(tmpA1);
-        }
-    }
-    var count01 = frames[1].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i < count01; i++) {
+        let str = v.img.substr(8);
+        let obj = storage.m.find(v => v.img === str);
+        tmpA1.push(obj.name);
+        tmpA1.push(v.price);
+        tmpA1.push(v.ploschad);
+        tmpA1.push(v.vyisota);
+        tmpA1.push(v.shirina);
+        tmpA1.push(v.tolschina);
+        tmpA1.push(v.kollichestvo);
+        tmpA1.push(v.zk);
+        selectedMaterials1.push(tmpA1);
+    });
+    save.econom.m.forEach(v => {
         tmpA2 = [];
-        if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
-            var str = frames[1].$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
-            var obj = top.storage.m.filter(function (v) {
-                return v.img == str
-            })[0];
-            tmpA2.push(obj.name);
-            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
-            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
-            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
-            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
-            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
-            tmpA2.push(frames[1].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
-            tmpA2.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
-            selectedMaterials2.push(tmpA2);
-        }
-    }
-    var count02 = frames[2].$('.napolnenie-el .napolnenie-el-tolschina').length;
-    for (var i = 0; i < count02; i++) {
+        let str = v.img.substr(8);
+        let obj = storage.m.find(v => v.img === str);
+        tmpA1.push(obj.name);
+        tmpA1.push(v.price);
+        tmpA1.push(v.ploschad);
+        tmpA1.push(v.vyisota);
+        tmpA1.push(v.shirina);
+        tmpA1.push(v.tolschina);
+        tmpA1.push(v.kollichestvo);
+        tmpA1.push(v.zk);
+        selectedMaterials2.push(tmpA1);
+    });
+    save.premium.m.forEach(v => {
         tmpA3 = [];
-        if (parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src') != undefined) {
-            var str = frames[2].$('.napolnenie-el:eq(' + i + ')').find('#open-material-img').attr('src').toString().substr(8);
-            var obj = top.storage.m.filter(function (v) {
-                return v.img == str
-            })[0];
-            tmpA3.push(obj.name);
-            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-price').html());
-            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-ploschad').html());
-            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-vyisota').val());
-            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-shirina').val());
-            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.napolnenie-el-tolschina option:selected').text().split(' ')[0]);
-            tmpA3.push(frames[2].$('.napolnenie-el:eq(' + i + ')').find('.tab-napolnenie-kollichestvo').val());
-            tmpA3.push(parentM.s1.$('.napolnenie-el:eq(' + i + ')').find('.zakalkaStekla input').prop("checked"));
-            selectedMaterials3.push(tmpA3);
-        }
-    }
+        let str = v.img.substr(8);
+        let obj = storage.m.find(v => v.img === str);
+        tmpA1.push(obj.name);
+        tmpA1.push(v.price);
+        tmpA1.push(v.ploschad);
+        tmpA1.push(v.vyisota);
+        tmpA1.push(v.shirina);
+        tmpA1.push(v.tolschina);
+        tmpA1.push(v.kollichestvo);
+        tmpA1.push(v.zk);
+        selectedMaterials3.push(tmpA1);
+    });
 
-    var fotoNames = [];
+
+    let fotoNames = [];
     fotoNames.push(window.imagesPDF[0]);
     fotoNames.push(window.imagesPDF[1]);
 
-    ////////////////////////////////////////////////////////////
-    // выборка фурнитуры 1
-    ////////////////////////////////////////////////////////////
-    var selectedFurnitura = [];
-    var sf0 = [];
-    var sf1 = [];
-    var sf2 = [];
-    var sf3 = [];
-    if (furnituraSelect == 1) {
-        sf0[0] = checkF("razdvizhnyie-mehanizmyi-select", 1);
-        sf0[1] = checkF("mehanizm-sinhronizacii-select", 1);
-        sf0[2] = checkF("naprav-select", 1);
-        sf0[3] = checkF("napravn-select", 1);
-        sf0[4] = checkF("vid-kreplenia-naprav-select", 1);
-        sf0[5] = checkF("povodok-select", 1);
-        sf0[6] = checkF("mehanizm-teleskop-select", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .razdvizhnyie-mehanizmyi .price').html());
-        sf1[1] = parseInt($("#state1").contents().find('.tab-content .mehanizm-sinhronizatsii .price').html());
-        sf1[2] = parseInt($("#state1").contents().find('.tab-content .napravlyayuschie .price').html());
-        sf1[3] = parseInt($("#state1").contents().find('.tab-content .napravlyayuschien .price').html());
-        sf1[4] = parseInt($("#state1").contents().find('.tab-content .vidKrepleniyaNapravlyayuschey .price').html());
-        sf1[5] = parseInt($("#state1").contents().find('.tab-content .povodok .price').html());
-        sf1[6] = parseInt($("#state1").contents().find('.tab-content .mehanizm-teleskop .price').html());
+
+////////////////////////////////////////////////////////////
+// выборка фурнитуры 1
+////////////////////////////////////////////////////////////
+    let selectedFurnitura = [];
+    let sf0 = [];
+    let sf1 = [];
+    let sf2 = [];
+    let sf3 = [];
+    if (furnituraSelect === 1) {
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf0[4] = save.econom.f[4] ? save.econom.f[4].name : '';
+        sf0[5] = save.econom.f[5] ? save.econom.f[5].name : '';
+        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf1[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
+        sf1[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
-        if ($("#state1").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf2[0] = checkF("dovodchik-select", 1);
-            sf2[1] = checkF("dek-planka-dlya-profilya-select", 1);
-            sf2[2] = checkF("schetochnii-uplotnitel-select", 1);
-            sf2[3] = checkF("ruchka-select", 1);
-            sf2[4] = checkF("zamok-select", 1);
-            sf3[0] = parseInt($("#state1").contents().find('.tab-content .dovodchik .price').html());
-            sf3[1] = parseInt($("#state1").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya .price').html());
-            sf3[2] = parseInt($("#state1").contents().find('.tab-content .schetochnyiyUplotnitel .price').html());
-            sf3[3] = parseInt($("#state1").contents().find('.tab-content .rakovina .price').html());
-            sf3[4] = parseInt($("#state1").contents().find('.tab-content .zamok .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf2[0] = save.econom.f[6] ? save.econom.f[6].name : '';
+            sf2[1] = save.econom.f[7] ? save.econom.f[7].name : '';
+            sf2[2] = save.econom.f[8] ? save.econom.f[8].name : '';
+            sf2[3] = save.econom.f[9] ? save.econom.f[9].name : '';
+            sf2[4] = save.econom.f[10] ? save.econom.f[10].name : '';
+            sf3[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
+            sf3[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
+            sf3[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
+            sf3[3] = save.econom.f[9] ? save.econom.f[9].price : 0;
+            sf3[4] = save.econom.f[10] ? save.econom.f[10].price : 0;
             selectedFurnitura.push(sf2);
             selectedFurnitura.push(sf3);
         }
     } else if (furnituraSelect == 2) {
-
-        sf0[0] = checkF("mehanizm-sinhron-skladnie", 1);
-        sf0[1] = checkF("mehanizm-rotornii", 1);
-        sf0[2] = checkF("petli-skladnie", 1);
-        sf0[3] = checkF("napravlyayuschie-skladnie", 1);
-        sf0[4] = checkF("vid-krepleniya-napravlyayuschih-skladnie", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .setSkladnyieMehanizmyi .price').html());
-        sf1[1] = parseInt($("#state1").contents().find('.tab-content .mehanizm-rotornii .price').html());
-        sf1[2] = parseInt($("#state1").contents().find('.tab-content .petli-skladnie .price').html());
-        sf1[3] = parseInt($("#state1").contents().find('.tab-content .napravlyayuschie-skladnie .price').html());
-        sf1[4] = parseInt($("#state1").contents().find('#vid-krepleniya-napravlyayuschih-skladnie .price').html());
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf0[4] = save.econom.f[4] ? save.econom.f[4].name : '';
+        sf0[5] = save.econom.f[5] ? save.econom.f[5].name : '';
+        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf1[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
+        sf1[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
-        if ($("#state1").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf2[0] = checkF("dek-planka-dlya-profilya-skladnie", 1);
-            sf2[1] = checkF("ruchka-skladnie", 1);
-            sf2[2] = checkF("zamok-skladnie", 1);
-            sf2[3] = checkF("schetochnii-uplotnitel-skladnie", 1);
-            sf2[4] = checkF("kreplenie-ruchli-skladnie", 1);
-            sf3[0] = parseInt($("#state1").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya-skladnie .price').html());
-            sf3[1] = parseInt($("#state1").contents().find('.tab-content .rakovina-skladnie .price').html());
-            sf3[2] = parseInt($("#state1").contents().find('.tab-content .zamokSkladnyie-skladnie .price').html());
-            sf3[3] = parseInt($("#state1").contents().find('.tab-content .schetochnyiyUplotnitel-skladnie .price').html());
-            sf3[4] = parseInt($("#state1").contents().find('.tab-content .kreplenieRuchki-skladnie .price').html());
-            console.log(sf3);
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf2[0] = save.econom.f[6] ? save.econom.f[6].name : '';
+            sf2[1] = save.econom.f[7] ? save.econom.f[7].name : '';
+            sf2[2] = save.econom.f[8] ? save.econom.f[8].name : '';
+            sf3[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
+            sf3[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
+            sf3[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
             selectedFurnitura.push(sf2);
             selectedFurnitura.push(sf3);
         }
     } else if (furnituraSelect == 3) {
-        sf0[0] = checkF("petli-raspashnie", 1);
-        sf0[1] = checkF("ruchka-raspashnie", 1);
-        sf0[2] = checkF("zamok-raspashnie", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .petli-raspashnie .price').html());
-        sf1[1] = parseInt($("#state1").contents().find('.tab-content .ruchka-raspashnie .price').html());
-        sf1[2] = parseInt($("#state1").contents().find('.tab-content .zamok-raspashnie .price').html());
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     } else if (furnituraSelect == 4) {
-        sf0[0] = checkF("nozhki-mobilnie", 1);
-        sf0[1] = checkF("kolesiki-mobilnie", 1);
-        sf0[2] = checkF("stoyki-mobilnie", 1);
-        sf0[3] = checkF("tipSoedineniyaPoloten-mobilnie", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .nozhki-mobil .price').html());
-        sf1[1] = parseInt($("#state1").contents().find('.tab-content .kolesiki-mobilnie .price').html());
-        sf1[2] = parseInt($("#state1").contents().find('.tab-content .stoyki-mobil .price').html());
-        sf1[3] = parseInt($("#state1").contents().find('.tab-content .tipSoedineniyaPoloten-mobil .price').html());
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
-    } else if (furnituraSelect === '0') {
-        sf0[0] = checkF("stoiki-stac-select", 1);
-        sf1[0] = parseInt($("#state1").contents().find('.tab-content .stoiki-stac .price').html());
+    } else if (furnituraSelect === 0) {
+        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     }
-    ////////////////////////////////////////////////////////////
-    // выборка фурнитуры 2
-    ////////////////////////////////////////////////////////////
-    var selectedFurnitura2 = [];
-    var sf20 = [];
-    var sf21 = [];
-    var sf22 = [];
-    var sf23 = [];
-    if (furnituraSelect == 1) {
-        sf20[0] = checkF("razdvizhnyie-mehanizmyi-select", 2);
-        sf20[1] = checkF("mehanizm-sinhronizacii-select", 2);
-        sf20[2] = checkF("naprav-select", 2);
-        sf20[3] = checkF("napravn-select", 2);
-        sf20[4] = checkF("vid-kreplenia-naprav-select", 2);
-        sf20[5] = checkF("povodok-select", 2);
-        sf20[6] = checkF("mehanizm-teleskop-select", 1);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .razdvizhnyie-mehanizmyi .price').html());
-        sf21[1] = parseInt($("#state2").contents().find('.tab-content .mehanizm-sinhronizatsii .price').html());
-        sf21[2] = parseInt($("#state2").contents().find('.tab-content .napravlyayuschie .price').html());
-        sf21[3] = parseInt($("#state2").contents().find('.tab-content .napravlyayuschien .price').html());
-        sf21[4] = parseInt($("#state2").contents().find('.tab-content .vidKrepleniyaNapravlyayuschey .price').html());
-        sf21[5] = parseInt($("#state2").contents().find('.tab-content .povodok .price').html());
+////////////////////////////////////////////////////////////
+// выборка фурнитуры 2
+////////////////////////////////////////////////////////////
+    let selectedFurnitura2 = [];
+    let sf20 = [];
+    let sf21 = [];
+    let sf22 = [];
+    let sf23 = [];
+    if (furnituraSelect === 1) {
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf20[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf20[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf20[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf20[4] = save.econom.f[4] ? save.econom.f[4].name : '';
+        sf20[5] = save.econom.f[5] ? save.econom.f[5].name : '';
+        sf21[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf21[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf21[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf21[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
+        sf21[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
-        if ($("#state2").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf22[0] = checkF("dovodchik-select", 2);
-            sf22[1] = checkF("dek-planka-dlya-profilya-select", 2);
-            sf22[2] = checkF("schetochnii-uplotnitel-select", 2);
-            sf22[3] = checkF("ruchka-select", 2);
-            sf22[4] = checkF("zamok-select", 2);
-            sf23[0] = parseInt($("#state2").contents().find('.tab-content .dovodchik .price').html());
-            sf23[1] = parseInt($("#state2").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya .price').html());
-            sf23[2] = parseInt($("#state2").contents().find('.tab-content .schetochnyiyUplotnitel .price').html());
-            sf23[3] = parseInt($("#state2").contents().find('.tab-content .rakovina .price').html());
-            sf23[4] = parseInt($("#state2").contents().find('.tab-content .zamok .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf22[0] = save.econom.f[6] ? save.econom.f[6].name : '';
+            sf22[1] = save.econom.f[7] ? save.econom.f[7].name : '';
+            sf22[2] = save.econom.f[8] ? save.econom.f[8].name : '';
+            sf22[3] = save.econom.f[9] ? save.econom.f[9].name : '';
+            sf22[4] = save.econom.f[10] ? save.econom.f[10].name : '';
+            sf23[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
+            sf23[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
+            sf23[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
+            sf23[3] = save.econom.f[9] ? save.econom.f[9].price : 0;
+            sf23[4] = save.econom.f[10] ? save.econom.f[10].price : 0;
             selectedFurnitura2.push(sf22);
             selectedFurnitura2.push(sf23);
         }
     } else if (furnituraSelect == 2) {
-        sf20[0] = checkF("mehanizm-sinhron-skladnie", 2);
-        sf20[1] = checkF("mehanizm-rotornii", 2);
-        sf20[2] = checkF("petli-skladnie", 2);
-        sf20[3] = checkF("napravlyayuschie-skladnie", 2);
-        sf20[4] = checkF("napravlyayuschien-skladnie", 2);
-        sf20[5] = checkF("vid-krepleniya-napravlyayuschih-skladnie", 2);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .setSkladnyieMehanizmyi .price').html());
-        sf21[1] = parseInt($("#state2").contents().find('.tab-content .mehanizm-rotornii .price').html());
-        sf21[2] = parseInt($("#state2").contents().find('.tab-content .petli-skladnie .price').html());
-        sf21[3] = parseInt($("#state2").contents().find('.tab-content .napravlyayuschie-skladnie .price').html());
-        sf21[4] = parseInt($("#state2").contents().find('.tab-content .napravlyayuschien-skladnie .price').html());
-        sf21[5] = parseInt($("#state2").contents().find('.tab-content .vidKrepleniya-skladnie .price').html());
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf20[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf20[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf20[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf20[4] = save.econom.f[4] ? save.econom.f[4].name : '';
+        sf20[5] = save.econom.f[5] ? save.econom.f[5].name : '';
+        sf21[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf21[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf21[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf21[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
+        sf21[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
-        if ($("#state2").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf22[0] = checkF("dek-planka-dlya-profilya-skladnie", 2);
-            sf22[1] = checkF("ruchka-skladnie", 2);
-            sf22[2] = checkF("zamok-skladnie", 2);
-            sf23[0] = parseInt($("#state2").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya-skladnie .price').html());
-            sf23[1] = parseInt($("#state2").contents().find('.tab-content .rakovina-skladnie .price').html());
-            sf23[2] = parseInt($("#state2").contents().find('.tab-content .zamokSkladnyie-skladnie .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf22[0] = save.econom.f[6] ? save.econom.f[6].name : '';
+            sf22[1] = save.econom.f[7] ? save.econom.f[7].name : '';
+            sf22[2] = save.econom.f[8] ? save.econom.f[8].name : '';
+            sf23[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
+            sf23[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
+            sf23[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
             selectedFurnitura2.push(sf22);
             selectedFurnitura2.push(sf23);
         }
     } else if (furnituraSelect == 3) {
-        sf20[0] = checkF("petli-raspashnie", 2);
-        sf20[1] = checkF("ruchka-raspashnie", 2);
-        sf20[2] = checkF("zamok-raspashnie", 2);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .petli-raspashnie .price').html());
-        sf21[1] = parseInt($("#state2").contents().find('.tab-content .ruchka-raspashnie .price').html());
-        sf21[2] = parseInt($("#state2").contents().find('.tab-content .zamok-raspashnie .price').html());
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf20[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf20[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf21[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf21[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
     } else if (furnituraSelect == 4) {
-        sf20[0] = checkF("nozhki-mobilnie", 2);
-        sf20[1] = checkF("kolesiki-mobilnie", 2);
-        sf20[2] = checkF("stoyki-mobilnie", 2);
-        sf20[3] = checkF("tipSoedineniyaPoloten-mobilnie", 2);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .nozhki-mobil .price').html());
-        sf21[1] = parseInt($("#state2").contents().find('.tab-content .kolesiki-mobilnie .price').html());
-        sf21[2] = parseInt($("#state2").contents().find('.tab-content .stoyki-mobil .price').html());
-        sf21[3] = parseInt($("#state2").contents().find('.tab-content .tipSoedineniyaPoloten-mobil .price').html());
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf20[1] = save.econom.f[1] ? save.econom.f[1].name : '';
+        sf20[2] = save.econom.f[2] ? save.econom.f[2].name : '';
+        sf20[3] = save.econom.f[3] ? save.econom.f[3].name : '';
+        sf21[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf21[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf21[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
-    } else if (furnituraSelect === '0') {
-        sf20[0] = checkF("stoiki-stac-select", 2);
-        sf21[0] = parseInt($("#state2").contents().find('.tab-content .stoiki-stac .price').html());
+    } else if (furnituraSelect === 0) {
+        sf20[0] = save.econom.f[0] ? save.econom.f[0].name : '';
+        sf21[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
         selectedFurnitura2.push(sf20);
         selectedFurnitura2.push(sf21);
     }
-    ////////////////////////////////////////////////////////////
-    // выборка фурнитуры 3
-    ////////////////////////////////////////////////////////////
-    var selectedFurnitura3 = [];
-    var sf30 = [];
-    var sf31 = [];
-    var sf32 = [];
-    var sf33 = [];
-    if (furnituraSelect == 1) {
-        sf30[0] = checkF("razdvizhnyie-mehanizmyi-select", 3);
-        sf30[1] = checkF("mehanizm-sinhronizacii-select", 3);
-        sf30[2] = checkF("naprav-select", 3);
-        sf30[3] = checkF("napravn-select", 3);
-        sf30[4] = checkF("vid-kreplenia-naprav-select", 3);
-        sf30[5] = checkF("povodok-select", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .razdvizhnyie-mehanizmyi .price').html());
-        sf31[1] = parseInt($("#state3").contents().find('.tab-content .mehanizm-sinhronizatsii .price').html());
-        sf31[2] = parseInt($("#state3").contents().find('.tab-content .napravlyayuschie .price').html());
-        sf31[3] = parseInt($("#state3").contents().find('.tab-content .napravlyayuschien .price').html());
-        sf31[4] = parseInt($("#state3").contents().find('.tab-content .vidKrepleniyaNapravlyayuschey .price').html());
-        sf31[5] = parseInt($("#state3").contents().find('.tab-content .povodok .price').html());
+
+////////////////////////////////////////////////////////////
+// выборка фурнитуры 3
+////////////////////////////////////////////////////////////
+    let selectedFurnitura3 = [];
+    let sf30 = [];
+    let sf31 = [];
+    let sf32 = [];
+    let sf33 = [];
+    if (furnituraSelect === 1) {
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf30[1] = save.premium.f[1] ? save.premium.f[1].name : '';
+        sf30[2] = save.premium.f[2] ? save.premium.f[2].name : '';
+        sf30[3] = save.premium.f[3] ? save.premium.f[3].name : '';
+        sf30[4] = save.premium.f[4] ? save.premium.f[4].name : '';
+        sf30[5] = save.premium.f[5] ? save.premium.f[5].name : '';
+        sf31[0] = save.premium.f[0] ? save.premium.f[0].price : 0;
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
+        sf31[2] = save.premium.f[2] ? save.premium.f[2].price : 0;
+        sf31[3] = save.premium.f[3] ? save.premium.f[3].price : 0;
+        sf31[4] = save.premium.f[4] ? save.premium.f[4].price : 0;
+        sf31[5] = save.premium.f[5] ? save.premium.f[5].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
-        if ($("#state3").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf32[0] = checkF("dovodchik-select", 3);
-            sf32[1] = checkF("dek-planka-dlya-profilya-select", 3);
-            sf32[2] = checkF("schetochnii-uplotnitel-select", 3);
-            sf32[3] = checkF("ruchka-select", 3);
-            sf32[4] = checkF("zamok-select", 3);
-            sf33[0] = parseInt($("#state3").contents().find('.tab-content .dovodchik .price').html());
-            sf33[1] = parseInt($("#state3").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya .price').html());
-            sf33[2] = parseInt($("#state3").contents().find('.tab-content .schetochnyiyUplotnitel .price').html());
-            sf33[3] = parseInt($("#state3").contents().find('.tab-content .rakovina .price').html());
-            sf33[4] = parseInt($("#state3").contents().find('.tab-content .zamok .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf32[0] = save.premium.f[6] ? save.premium.f[6].name : '';
+            sf32[1] = save.premium.f[7] ? save.premium.f[7].name : '';
+            sf32[2] = save.premium.f[8] ? save.premium.f[8].name : '';
+            sf32[3] = save.premium.f[9] ? save.premium.f[9].name : '';
+            sf32[4] = save.premium.f[10] ? save.premium.f[10].name : '';
+            sf33[0] = save.premium.f[6] ? save.premium.f[6].price : 0;
+            sf33[1] = save.premium.f[7] ? save.premium.f[7].price : 0;
+            sf33[2] = save.premium.f[8] ? save.premium.f[8].price : 0;
+            sf33[3] = save.premium.f[9] ? save.premium.f[9].price : 0;
+            sf33[4] = save.premium.f[10] ? save.premium.f[10].price : 0;
             selectedFurnitura3.push(sf32);
             selectedFurnitura3.push(sf33);
         }
     } else if (furnituraSelect == 2) {
-        sf30[0] = checkF("mehanizm-sinhron-skladnie", 3);
-        sf30[1] = checkF("mehanizm-rotornii", 3);
-        sf30[2] = checkF("petli-skladnie", 3);
-        sf30[3] = checkF("napravlyayuschie-skladnie", 3);
-        sf30[4] = checkF("napravlyayuschien-skladnie", 3);
-        sf30[5] = checkF("vid-krepleniya-napravlyayuschih-skladnie", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .setSkladnyieMehanizmyi .price').html());
-        sf31[1] = parseInt($("#state3").contents().find('.tab-content .mehanizm-rotornii .price').html());
-        sf31[2] = parseInt($("#state3").contents().find('.tab-content .petli-skladnie .price').html());
-        sf31[3] = parseInt($("#state3").contents().find('.tab-content .napravlyayuschie-skladnie .price').html());
-        sf31[4] = parseInt($("#state3").contents().find('.tab-content .napravlyayuschien-skladnie .price').html());
-        sf31[5] = parseInt($("#state3").contents().find('.tab-content .vidKrepleniya-skladnie .price').html());
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf30[1] = save.premium.f[1] ? save.premium.f[1].name : '';
+        sf30[2] = save.premium.f[2] ? save.premium.f[2].name : '';
+        sf30[3] = save.premium.f[3] ? save.premium.f[3].name : '';
+        sf30[4] = save.premium.f[4] ? save.premium.f[4].name : '';
+        sf30[5] = save.premium.f[5] ? save.premium.f[5].name : '';
+        sf31[0] = save.premium.f[0] ? save.premium.f[0].price : 0;
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
+        sf31[2] = save.premium.f[2] ? save.premium.f[2].price : 0;
+        sf31[3] = save.premium.f[3] ? save.premium.f[3].price : 0;
+        sf31[4] = save.premium.f[4] ? save.premium.f[4].price : 0;
+        sf31[5] = save.premium.f[5] ? save.premium.f[5].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
-        if ($("#state3").contents().find('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf32[0] = checkF("dek-planka-dlya-profilya-skladnie", 3);
-            sf32[1] = checkF("ruchka-skladnie", 3);
-            sf32[2] = checkF("zamok-skladnie", 3);
-            sf33[0] = parseInt($("#state3").contents().find('.tab-content .dekorativnayaPlankaDlyaProfilya-skladnie .price').html());
-            sf33[1] = parseInt($("#state3").contents().find('.tab-content .rakovina-skladnie .price').html());
-            sf33[2] = parseInt($("#state3").contents().find('.tab-content .zamokSkladnyie-skladnie .price').html());
+        if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
+            sf32[0] = save.premium.f[6] ? save.premium.f[6].name : '';
+            sf32[1] = save.premium.f[7] ? save.premium.f[7].name : '';
+            sf32[2] = save.premium.f[8] ? save.premium.f[8].name : '';
+            sf33[0] = save.premium.f[6] ? save.premium.f[6].price : 0;
+            sf33[1] = save.premium.f[7] ? save.premium.f[7].price : 0;
+            sf33[2] = save.premium.f[8] ? save.premium.f[8].price : 0;
             selectedFurnitura3.push(sf32);
             selectedFurnitura3.push(sf33);
         }
     } else if (furnituraSelect == 3) {
-        sf30[0] = checkF("petli-raspashnie", 3);
-        sf30[1] = checkF("ruchka-raspashnie", 3);
-        sf30[2] = checkF("zamok-raspashnie", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .petli-raspashnie .price').html());
-        sf31[1] = parseInt($("#state3").contents().find('.tab-content .ruchka-raspashnie .price').html());
-        sf31[2] = parseInt($("#state3").contents().find('.tab-content .zamok-raspashnie .price').html());
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf30[1] = save.premium.f[1] ? save.premium.f[1].name : '';
+        sf30[2] = save.premium.f[2] ? save.premium.f[2].name : '';
+        sf31[0] = save.premium.f[0] ? save.premium.f[0].price : 0;
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
+        sf31[2] = save.premium.f[2] ? save.premium.f[2].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
     } else if (furnituraSelect == 4) {
-        sf30[0] = checkF("nozhki-mobilnie", 3);
-        sf30[1] = checkF("kolesiki-mobilnie", 3);
-        sf30[2] = checkF("stoyki-mobilnie", 3);
-        sf30[3] = checkF("tipSoedineniyaPoloten-mobilnie", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .nozhki-mobil .price').html());
-        sf31[1] = parseInt($("#state3").contents().find('.tab-content .kolesiki-mobilnie .price').html());
-        sf31[2] = parseInt($("#state3").contents().find('.tab-content .stoyki-mobil .price').html());
-        sf31[3] = parseInt($("#state3").contents().find('.tab-content .tipSoedineniyaPoloten-mobil .price').html());
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf30[1] = save.premium.f[1] ? save.premium.f[1].name : '';
+        sf30[2] = save.premium.f[2] ? save.premium.f[2].name : '';
+        sf30[3] = save.premium.f[3] ? save.premium.f[3].name : '';
+        sf31[0] = save.premium.f[0] ? save.premium.f[0].price : 0;
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
+        sf31[2] = save.premium.f[2] ? save.premium.f[2].price : 0;
+        sf31[3] = save.premium.f[3] ? save.premium.f[3].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
-    } else if (furnituraSelect === '0') {
-        sf30[0] = checkF("stoiki-stac-select", 3);
-        sf31[0] = parseInt($("#state3").contents().find('.tab-content .stoiki-stac .price').html());
+    } else if (furnituraSelect === 0) {
+        sf30[0] = save.premium.f[0] ? save.premium.f[0].name : '';
+        sf31[1] = save.premium.f[1] ? save.premium.f[1].price : 0;
         selectedFurnitura3.push(sf30);
         selectedFurnitura3.push(sf31);
     }
 
-    ////////////////////////////////////////////////////////////
-    // выборка альтернативной комплектации
-    ////////////////////////////////////////////////////////////
-    var i, altFi = [], altFa = [], altPi = [], altPa = [], altMi = [], altMa = [], altSi = [], altSa = [];
+
+////////////////////////////////////////////////////////////
+// выборка альтернативной комплектации
+////////////////////////////////////////////////////////////
+    let i, altFi = [], altFa = [], altPi = [], altPa = [], altMi = [], altMa = [], altSi = [], altSa = [];
     for (i = storage.m.length - 1; i >= 0; i--) {
-        if (storage.m[i]['img'] != parentM.s1.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
-            storage.m[i]['img'] != parentM.s2.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
-            storage.m[i]['img'] != parentM.s3.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src')) {
+        if (storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
+            storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
+            storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src')) {
             altMi.push(storage.m[i]['id']);
             break;
         }
     }
     for (i = 0; i < storage.m.length; i++) {
-        if (storage.m[i]['img'] != parentM.s1.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
-            storage.m[i]['img'] != parentM.s2.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
-            storage.m[i]['img'] != parentM.s3.$('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src')) {
+        if (storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
+            storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src') &&
+            storage.m[i]['img'] != $('.napolnenie-el[data-material-el-id=1]').find('#open-material-img').attr('src')) {
             altMa.push(storage.m[i]['id']);
             break;
         }
     }
     for (i = 0; i < storage.p.length; i++) {
-        if (storage.p[i]['name'] != parentM.s1.$('#KARKAS-NAME').html() &&
-            storage.p[i]['name'] != parentM.s2.$('#KARKAS-NAME').html() &&
-            storage.p[i]['name'] != parentM.s3.$('#KARKAS-NAME').html()) {
+        if (storage.p[i]['name'] != $('#KARKAS-NAME').html() &&
+            storage.p[i]['name'] != $('#KARKAS-NAME').html() &&
+            storage.p[i]['name'] != $('#KARKAS-NAME').html()) {
             altPi.push(storage.p[i]['id']);
             break;
         }
     }
     for (i = storage.p.length - 1; i >= 0; i--) {
-        if (storage.p[i]['name'] != parentM.s1.$('#KARKAS-NAME').html() &&
-            storage.p[i]['name'] != parentM.s2.$('#KARKAS-NAME').html() &&
-            storage.p[i]['name'] != parentM.s3.$('#KARKAS-NAME').html()) {
+        if (storage.p[i]['name'] != $('#KARKAS-NAME').html() &&
+            storage.p[i]['name'] != $('#KARKAS-NAME').html() &&
+            storage.p[i]['name'] != $('#KARKAS-NAME').html()) {
             altPa.push(storage.p[i]['id']);
             break;
         }
@@ -1263,261 +1113,201 @@ function SaveToPdfToFile() {
         altF(27, "tipSoedineniyaPoloten-mobilnie");
     }
 
-    ////////////////////////////////////////////////////////////
-    // выборка каркаса 1
-    ////////////////////////////////////////////////////////////
-    var selectedKarkas = [];
-    var selectedKarkasSupp = [];
-    $("#state1").contents().find('.nsupp').each(function () {
-        if ($("#state1").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
-            var tmpArr = [];
-            tmpArr.push($(this).val());
-            tmpArr.push($("#state1").contents().find('.nsupp' + $(this).val()).val());
-            tmpArr.push($("#state1").contents().find('#textSupplements' + $(this).val()).html());
-            tmpArr.push($("#state1").contents().find('#imageSupplements' + $(this).val()).attr('src'));
-            tmpArr.push($("#state1").contents().find('#priceSupplements' + $(this).val()).html());
-            tmpArr.push($("#state1").contents().find('#CountSupplements' + $(this).val()).val());
+////////////////////////////////////////////////////////////
+// выборка каркаса 1
+////////////////////////////////////////////////////////////
+    let selectedKarkas = [];
+    let selectedKarkasSupp = [];
+    save.optimal.a.forEach(function (v) {
+        if (v) {
+            let tmpArr = [];
+            let item = storage.TS.find((s) => s.id === v.id);
+            tmpArr.push(v.id);
+            tmpArr.push(item.name);
+            tmpArr.push(v.name);
+            tmpArr.push(v.img);
+            tmpArr.push(v.sum);
+            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkasSupp.push(tmpArr);
         }
     });
-    TOTAL_PAINTING = parseInt($("#state1").contents().find('#TOTAL_PAINTING_ID').val());
-    if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
-    selectedKarkas.push($("#state1").contents().find('#KARKAS-NAME').html());
-    selectedKarkas.push($("#state1").contents().find('#KARKAS-PRICE').html());
-    selectedKarkas.push(((parseInt($("#state1").contents().find('#HIGHT_SETS_ID').val())) / 1000).toFixed(1));
+
+    selectedKarkas.push(save.optimal.p.n);
+    selectedKarkas.push(save.optimal.p.p);
+    selectedKarkas.push((info.height / 1000).toFixed(1));
     selectedKarkas.push(selectedKarkasSupp);
-    selectedKarkas.push($("#state1").contents().find('.TAB-PROFIL-KARKAS-PRICE').html());
-    ////////////////////////////////////////////////////////////
-    // выборка каркаса 2
-    ////////////////////////////////////////////////////////////
-    var selectedKarkas2 = [];
-    var selectedKarkas2Supp = [];
-    $("#state2").contents().find('.nsupp').each(function () {
-        if ($("#state2").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
-            var tmpArr = [];
-            tmpArr.push($(this).val());
-            tmpArr.push($("#state2").contents().find('.nsupp' + $(this).val()).val());
-            tmpArr.push($("#state2").contents().find('#textSupplements' + $(this).val()).html());
-            tmpArr.push($("#state2").contents().find('#imageSupplements' + $(this).val()).attr('src'));
-            tmpArr.push($("#state2").contents().find('#priceSupplements' + $(this).val()).html());
-            tmpArr.push($("#state2").contents().find('#CountSupplements' + $(this).val()).val());
+    selectedKarkas.push(save.optimal.p.p + save.optimal.pH.p + save.optimal.pW.p);
+////////////////////////////////////////////////////////////
+// выборка каркаса 2
+////////////////////////////////////////////////////////////
+    let selectedKarkas2 = [];
+    let selectedKarkas2Supp = [];
+    save.econom.a.forEach(function (v) {
+        if (v) {
+            let tmpArr = [];
+            let item = storage.TS.find((s) => s.id === v.id);
+            tmpArr.push(v.id);
+            tmpArr.push(item.name);
+            tmpArr.push(v.name);
+            tmpArr.push(v.img);
+            tmpArr.push(v.sum);
+            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas2Supp.push(tmpArr);
         }
     });
-    TOTAL_PAINTING = parseInt($("#state2").contents().find('#TOTAL_PAINTING_ID').val());
-    if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
-    selectedKarkas2.push($("#state2").contents().find('#KARKAS-NAME').html());
-    selectedKarkas2.push($("#state2").contents().find('#KARKAS-PRICE').html());
-    selectedKarkas2.push(((parseInt($("#state2").contents().find('#HIGHT_SETS_ID').val()) * parseInt($("#state2").contents().find('#WIDTH_SETS_ID').val())) / 1000000).toFixed(1));
+
+    selectedKarkas2.push(save.econom.p.n);
+    selectedKarkas2.push(save.econom.p.p);
+    selectedKarkas2.push((info.height / 1000).toFixed(1));
     selectedKarkas2.push(selectedKarkas2Supp);
-    selectedKarkas2.push($("#state2").contents().find('.TAB-PROFIL-KARKAS-PRICE').html());
-    ////////////////////////////////////////////////////////////
-    // выборка каркаса 3
-    ////////////////////////////////////////////////////////////
-    var selectedKarkas3 = [];
-    var selectedKarkas3Supp = [];
-    $("#state3").contents().find('.nsupp').each(function () {
-        if ($("#state3").contents().find('#selectSupplements' + $(this).val()).val() == 'Есть') {
-            var tmpArr = [];
-            tmpArr.push($(this).val());
-            tmpArr.push($("#state3").contents().find('.nsupp' + $(this).val()).val());
-            tmpArr.push($("#state3").contents().find('#textSupplements' + $(this).val()).html());
-            tmpArr.push($("#state3").contents().find('#imageSupplements' + $(this).val()).attr('src'));
-            tmpArr.push($("#state3").contents().find('#priceSupplements' + $(this).val()).html());
-            tmpArr.push($("#state3").contents().find('#CountSupplements' + $(this).val()).val());
+    selectedKarkas2.push(save.econom.p.p + save.econom.pH.p + save.econom.pW.p);
+
+////////////////////////////////////////////////////////////
+// выборка каркаса 3
+////////////////////////////////////////////////////////////
+    let selectedKarkas3 = [];
+    let selectedKarkas3Supp = [];
+    save.premium.a.forEach(function (v) {
+        if (v) {
+            let tmpArr = [];
+            let item = storage.TS.find((s) => s.id === v.id);
+            tmpArr.push(v.id);
+            tmpArr.push(item.name);
+            tmpArr.push(v.name);
+            tmpArr.push(v.img);
+            tmpArr.push(v.sum);
+            tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas3Supp.push(tmpArr);
         }
     });
-    TOTAL_PAINTING = parseInt($("#state3").contents().find('#TOTAL_PAINTING_ID').val());
-    if (isNaN(TOTAL_PAINTING)) TOTAL_PAINTING = 0;
-    selectedKarkas3.push($("#state3").contents().find('#KARKAS-NAME').html());
-    selectedKarkas3.push($("#state3").contents().find('#KARKAS-PRICE').html());
-    selectedKarkas3.push(((parseInt($("#state3").contents().find('#HIGHT_SETS_ID').val()) * parseInt($("#state3").contents().find('#WIDTH_SETS_ID').val())) / 1000000).toFixed(1));
-    selectedKarkas3.push(selectedKarkas3Supp);
-    selectedKarkas3.push($("#state3").contents().find('.TAB-PROFIL-KARKAS-PRICE').html());
 
-    ////////////////////////////////////////////////////////////
-    // выборка перемычек
-    ////////////////////////////////////////////////////////////
-    var pmh = [], pmh1 = {}, pmh2 = {}, pmh3 = {};
-    pmh1['n'] = parentM.s1.$('#HORIZONTAL-PEREMOCHKI-NAME').html();
-    pmh1['p'] = parentM.s1.$('#HORIZONTAL-PEREMOCHKI-PRICE').html();
-    pmh2['n'] = parentM.s2.$('#HORIZONTAL-PEREMOCHKI-NAME').html();
-    pmh2['p'] = parentM.s2.$('#HORIZONTAL-PEREMOCHKI-PRICE').html();
-    pmh3['n'] = parentM.s3.$('#HORIZONTAL-PEREMOCHKI-NAME').html();
-    pmh3['p'] = parentM.s3.$('#HORIZONTAL-PEREMOCHKI-PRICE').html();
+    selectedKarkas3.push(save.premium.p.n);
+    selectedKarkas3.push(save.premium.p.p);
+    selectedKarkas3.push((info.height / 1000).toFixed(1));
+    selectedKarkas3.push(selectedKarkas3Supp);
+    selectedKarkas3.push(save.premium.p.p + save.premium.pH.p + save.premium.pW.p);
+
+////////////////////////////////////////////////////////////
+// выборка перемычек
+////////////////////////////////////////////////////////////
+    let pmh = [], pmh1 = {}, pmh2 = {}, pmh3 = {};
+    pmh1['n'] = save.optimal.pW.n;
+    pmh1['p'] = save.optimal.pW.p;
+    pmh2['n'] = save.optimal.pW.n;
+    pmh2['p'] = save.optimal.pW.p;
+    pmh3['n'] = save.optimal.pW.n;
+    pmh3['p'] = save.optimal.pW.p;
     pmh.push(pmh1);
     pmh.push(pmh2);
     pmh.push(pmh3);
-    var pmv = [], pmv1 = {}, pmv2 = {}, pmv3 = {};
-    pmv1['n'] = parentM.s1.$('#VERTIKALNUE-PEREMOCHKI-NAME').html();
-    pmv1['p'] = parentM.s1.$('#VERTIKALNUE-PEREMOCHKI-PRICE').html();
-    pmv2['n'] = parentM.s2.$('#VERTIKALNUE-PEREMOCHKI-NAME').html();
-    pmv2['p'] = parentM.s2.$('#VERTIKALNUE-PEREMOCHKI-PRICE').html();
-    pmv3['n'] = parentM.s3.$('#VERTIKALNUE-PEREMOCHKI-NAME').html();
-    pmv3['p'] = parentM.s3.$('#VERTIKALNUE-PEREMOCHKI-PRICE').html();
+    let pmv = [], pmv1 = {}, pmv2 = {}, pmv3 = {};
+    pmv1['n'] = save.optimal.pH.n;
+    pmv1['p'] = save.optimal.pH.p;
+    pmv2['n'] = save.econom.pH.n;
+    pmv2['p'] = save.econom.pH.p;
+    pmv3['n'] = save.premium.pH.n;
+    pmv3['p'] = save.premium.pH.p;
     pmv.push(pmv1);
     pmv.push(pmv2);
     pmv.push(pmv3);
 
-    ////////////////////////////////////////////////////////////
-    // выборка декора
-    ////////////////////////////////////////////////////////////
-    var selectedDecor = [];
-    selectedDecor.push($("#state1").contents().find('#pokraskaTypeAndName').val());
-    selectedDecor.push($("#state1").contents().find('.TAB-POKRASKA-PRICE').html());
-    var selectedDecor2 = [];
-    selectedDecor2.push($("#state2").contents().find('#pokraskaTypeAndName').val());
-    selectedDecor2.push($("#state2").contents().find('.TAB-POKRASKA-PRICE').html());
-    var selectedDecor3 = [];
-    selectedDecor3.push($("#state3").contents().find('#pokraskaTypeAndName').val());
-    selectedDecor3.push($("#state3").contents().find('.TAB-POKRASKA-PRICE').html());
+////////////////////////////////////////////////////////////
+// выборка декора
+////////////////////////////////////////////////////////////
+    let selectedDecor = [];
+    selectedDecor.push(save.optimal.d.i);
+    selectedDecor.push(save.optimal.d.p);
+    let selectedDecor2 = [];
+    selectedDecor2.push(save.econom.d.i);
+    selectedDecor2.push(save.econom.d.p);
+    let selectedDecor3 = [];
+    selectedDecor3.push(save.premium.d.i);
+    selectedDecor3.push(save.premium.d.p);
 
-    var rub = [], rub1 = {}, rub2 = {}, rub3 = {};
-    rub1['i'] = parentM.s1.$('.proizvaodstvoTo input').val();
-    rub1['m'] = parentM.s1.$('.montazhTo input').val();
-    rub1['d'] = parentM.s1.$('.dostavkaTo input').val();
-    rub1['s'] = parentM.s1.$('.srochnostTo input').val();
-    rub1['p'] = parentM.s1.$('.nashProtsentTo input').val();
-    rub1['z'] = parentM.s1.$('.nashZamerTo input').val();
-    rub2['i'] = parentM.s2.$('.proizvaodstvoTo input').val();
-    rub2['m'] = parentM.s2.$('.montazhTo input').val();
-    rub2['d'] = parentM.s2.$('.dostavkaTo input').val();
-    rub2['s'] = parentM.s2.$('.srochnostTo input').val();
-    rub2['p'] = parentM.s2.$('.nashProtsentTo input').val();
-    rub2['z'] = parentM.s2.$('.nashZamerTo input').val();
-    rub3['i'] = parentM.s3.$('.proizvaodstvoTo input').val();
-    rub3['m'] = parentM.s3.$('.montazhTo input').val();
-    rub3['d'] = parentM.s3.$('.dostavkaTo input').val();
-    rub3['s'] = parentM.s3.$('.srochnostTo input').val();
-    rub3['p'] = parentM.s3.$('.nashProtsentTo input').val();
-    rub3['z'] = parentM.s3.$('.nashZamerTo input').val();
+    let rub = [], rub1 = {}, rub2 = {}, rub3 = {};
+    rub1['i'] = $('.proizvaodstvoTo input').val();
+    rub1['m'] = $('.montazhTo input').val();
+    rub1['d'] = $('.dostavkaTo input').val();
+    rub1['s'] = $('.srochnostTo input').val();
+    rub1['p'] = $('.nashProtsentTo input').val();
+    rub1['z'] = $('.nashZamerTo input').val();
+    rub2['i'] = $('.proizvaodstvoTo input').val();
+    rub2['m'] = $('.montazhTo input').val();
+    rub2['d'] = $('.dostavkaTo input').val();
+    rub2['s'] = $('.srochnostTo input').val();
+    rub2['p'] = $('.nashProtsentTo input').val();
+    rub2['z'] = $('.nashZamerTo input').val();
+    rub3['i'] = $('.proizvaodstvoTo input').val();
+    rub3['m'] = $('.montazhTo input').val();
+    rub3['d'] = $('.dostavkaTo input').val();
+    rub3['s'] = $('.srochnostTo input').val();
+    rub3['p'] = $('.nashProtsentTo input').val();
+    rub3['z'] = $('.nashZamerTo input').val();
     rub.push(rub1);
     rub.push(rub2);
     rub.push(rub3);
 
-    var per = [], per1 = {}, per2 = {}, per3 = {};
-    per1['i'] = parentM.s1.$('.proizvaodstvoIn input').val();
-    per1['m'] = parentM.s1.$('.montazhIn input').val();
-    per1['d'] = parentM.s1.$('.dostavkaIn input').val();
-    per1['s'] = parentM.s1.$('.srochnostIn input').val();
-    per1['p'] = parentM.s1.$('.nashProtsentIn input').val();
-    per1['z'] = parentM.s1.$('.nashZamerIn input').val();
-    per2['i'] = parentM.s2.$('.proizvaodstvoIn input').val();
-    per2['m'] = parentM.s2.$('.montazhIn input').val();
-    per2['d'] = parentM.s2.$('.dostavkaIn input').val();
-    per2['s'] = parentM.s2.$('.srochnostIn input').val();
-    per2['p'] = parentM.s2.$('.nashProtsentIn input').val();
-    per2['z'] = parentM.s2.$('.nashZamerIn input').val();
-    per3['i'] = parentM.s3.$('.proizvaodstvoIn input').val();
-    per3['m'] = parentM.s3.$('.montazhIn input').val();
-    per3['d'] = parentM.s3.$('.dostavkaIn input').val();
-    per3['s'] = parentM.s3.$('.srochnostIn input').val();
-    per3['p'] = parentM.s3.$('.nashProtsentIn input').val();
-    per3['z'] = parentM.s3.$('.nashZamer input').val();
+    let per = [], per1 = {}, per2 = {}, per3 = {};
+    per1['i'] = $('.proizvaodstvoIn input').val();
+    per1['m'] = $('.montazhIn input').val();
+    per1['d'] = $('.dostavkaIn input').val();
+    per1['s'] = $('.srochnostIn input').val();
+    per1['p'] = $('.nashProtsentIn input').val();
+    per1['z'] = $('.nashZamerIn input').val();
+    per2['i'] = $('.proizvaodstvoIn input').val();
+    per2['m'] = $('.montazhIn input').val();
+    per2['d'] = $('.dostavkaIn input').val();
+    per2['s'] = $('.srochnostIn input').val();
+    per2['p'] = $('.nashProtsentIn input').val();
+    per2['z'] = $('.nashZamerIn input').val();
+    per3['i'] = $('.proizvaodstvoIn input').val();
+    per3['m'] = $('.montazhIn input').val();
+    per3['d'] = $('.dostavkaIn input').val();
+    per3['s'] = $('.srochnostIn input').val();
+    per3['p'] = $('.nashProtsentIn input').val();
+    per3['z'] = $('.nashZamer input').val();
     per.push(per1);
     per.push(per2);
     per.push(per3);
 
-    var sum = [], sum1 = {}, sum2 = {}, sum3 = {};
-    sum1['p'] = parentM.s1.$('.TAB-PROFIL-PRICE').html();
-    sum1['a'] = parentM.s1.$('.price-res1').html();
-    sum1['d'] = parentM.s1.$('.TAB-POKRASKA-PRICE').html();
-    sum1['m'] = parentM.s1.$('#Pnap').html();
-    sum1['f'] = parentM.s1.$('.furnitura-price .price').html();
-    sum1['i'] = parentM.s1.$('.summaSParametrami .price').html();
-    sum1['o'] = parentM.s1.$('.summaBezParametrov .price').html();
-    sum2['p'] = parentM.s2.$('.TAB-PROFIL-PRICE').html();
-    sum2['a'] = parentM.s2.$('.price-res1').html();
-    sum2['d'] = parentM.s2.$('.TAB-POKRASKA-PRICE').html();
-    sum2['m'] = parentM.s2.$('#Pnap').html();
-    sum2['f'] = parentM.s2.$('.furnitura-price .price').html();
-    sum2['i'] = parentM.s2.$('.summaSParametrami .price').html();
-    sum2['o'] = parentM.s2.$('.summaBezParametrov .price').html();
-    sum3['p'] = parentM.s3.$('.TAB-PROFIL-PRICE').html();
-    sum3['a'] = parentM.s3.$('.price-res1').html();
-    sum3['d'] = parentM.s3.$('.TAB-POKRASKA-PRICE').html();
-    sum3['m'] = parentM.s3.$('#Pnap').html();
-    sum3['f'] = parentM.s3.$('.furnitura-price .price').html();
-    sum3['i'] = parentM.s3.$('.summaSParametrami .price').html();
-    sum3['o'] = parentM.s3.$('.summaBezParametrov .price').html();
+    let sum = [], sum1 = {}, sum2 = {}, sum3 = {};
+    sum1['p'] = save.optimal.profilRes;
+    sum1['a'] = save.optimal.adRes * info.count;
+    sum1['d'] = save.optimal.decorRes * info.count;
+    sum1['m'] = save.optimal.marirealRes * info.count;
+    sum1['f'] = save.optimal.furnituraResPrice;
+    sum1['i'] = save.optimal.resPricesBez;
+    sum1['o'] = save.optimal.bezParam;
+
+    sum2['p'] = save.econom.profilRes;
+    sum2['a'] = save.econom.adRes * info.count;
+    sum2['d'] = save.econom.decorRes * info.count;
+    sum2['m'] = save.econom.marirealRes * info.count;
+    sum2['f'] = save.econom.furnituraResPrice;
+    sum2['i'] = save.econom.resPricesBez;
+    sum2['o'] = save.econom.bezParam;
+
+
+    sum3['p'] = save.premium.profilRes;
+    sum3['a'] = save.premium.adRes * info.count;
+    sum3['d'] = save.premium.decorRes * info.count;
+    sum3['m'] = save.premium.marirealRes * info.count;
+    sum3['f'] = save.premium.furnituraResPrice;
+    sum3['i'] = save.premium.resPricesBez;
+    sum3['o'] = save.premium.bezParam;
     sum.push(sum1);
     sum.push(sum2);
     sum.push(sum3);
 
-    var setsNumber = parseInt($("#state1").contents().find('#NUMBER_SETS_ID').val());
-    var orderNumber = $('#orderNumber').val();
-    var calcmanager = $('#calcmanager').val();
-
-    // фурнитура ручка
-    var AksessuaryRuchkaKollichestvo1, AksessuaryRuchkaKollichestvo2, AksessuaryRuchkaKollichestvo3;
-    if ($("#state1").contents().find("#ruchka-select .red").attr("disabled") == undefined)
-        AksessuaryRuchkaKollichestvo1 = $("#state1").contents().find("#ruchka-select-count").val();
-    else
-        AksessuaryRuchkaKollichestvo1 = 0;
-    if ($("#state2").contents().find("#ruchka-select .red").attr("disabled") == undefined)
-        AksessuaryRuchkaKollichestvo2 = $("#state2").contents().find("#ruchka-select-count").val();
-    else
-        AksessuaryRuchkaKollichestvo2 = 0;
-    if ($("#state3").contents().find("#ruchka-select .red").attr("disabled") == undefined)
-        AksessuaryRuchkaKollichestvo3 = $("#state3").contents().find("#ruchka-select-count").val();
-    else
-        AksessuaryRuchkaKollichestvo3 = 0;
-    // фурнитура ручка
-    //Универсальная фурнитура
-    var arayN0 = []
-    for (i = 1; i <= 6; i++)
-        arayN0.push($("#state1").contents().find('*[data-material-el-id="' + i + '"]').find('#namber').text());
-
-    var arayN1 = []
-    for (i = 1; i <= 6; i++)
-        arayN1.push($("#state2").contents().find('*[data-material-el-id="' + i + '"]').find('#namber').text());
-
-    var arayN2 = []
-    for (i = 1; i <= 6; i++)
-        arayN2.push($("#state3").contents().find('*[data-material-el-id="' + i + '"]').find('#namber').text());
-
-    var arrayNamber = [arayN0, arayN1, arayN2];
-
-    var arrayFurn0 = $("#state1").contents().find(".newfurn");
-    var arrayFurn1 = $("#state2").contents().find(".newfurn");
-    var arrayFurn2 = $("#state3").contents().find(".newfurn");
-
-    var arrF0 = [];
-    var arrF1 = [];
-    var arrF2 = [];
-
-    for (var i = 0; i < arrayFurn0.length / 2; i++) {
-        var obj = {
-            type: $(arrayFurn0[i]).find('h3').text(),
-            name: $(arrayFurn0[i]).find('.text').text(),
-            price: $(arrayFurn0[i]).find('.price').text()
-        }
-        arrF0.push(obj);
-    }
-    for (var i = 0; i < arrayFurn1.length / 2; i++) {
-        var obj = {
-            type: $(arrayFurn1[i]).find('h3').text(),
-            name: $(arrayFurn1[i]).find('.text').text(),
-            price: $(arrayFurn1[i]).find('.price').text()
-        }
-        arrF1.push(obj);
-    }
-    for (var i = 0; i < arrayFurn2.length / 2; i++) {
-        var obj = {
-            type: $(arrayFurn2[i]).find('h3').text(),
-            name: $(arrayFurn2[i]).find('.text').text(),
-            price: $(arrayFurn2[i]).find('.price').text()
-        }
-        arrF2.push(obj);
-    }
+    let setsNumber = parseInt($('#NUMBER_SETS_ID').val());
+    let orderNumber = $('#orderNumber').val();
+    let calcmanager = $('#calcmanager').val();
 
 
-    ////////////////////////////////////////////////////////////
-    // формирование url
-    ////////////////////////////////////////////////////////////
-    var url = {
-        'arrayNamber': JSON.stringify(arrayNamber),
+////////////////////////////////////////////////////////////
+// формирование url
+////////////////////////////////////////////////////////////
+    let url = {
         'furnitura-select': furnituraSelect,
         'Allheight': Allheight,
         'Allwidth': Allwidth,
@@ -1525,12 +1315,9 @@ function SaveToPdfToFile() {
         'count1': count1,
         'countW': countW,
         'countH': countH,
-        'priceFull1': $('*[data-slider-id="1"] .price span').html(),
-        'priceFull2': $('*[data-slider-id="2"] .price span').html(),
-        'priceFull3': $('*[data-slider-id="3"] .price span').html(),
-        'AksessuaryRuchkaKollichestvo1': AksessuaryRuchkaKollichestvo1,
-        'AksessuaryRuchkaKollichestvo2': AksessuaryRuchkaKollichestvo2,
-        'AksessuaryRuchkaKollichestvo3': AksessuaryRuchkaKollichestvo3,
+        'priceFull1': ParserIntAndNan($('.slider-container:eq(1) .price').html()),
+        'priceFull2': ParserIntAndNan($('.slider-container:eq(0) .price').html()),
+        'priceFull3': ParserIntAndNan($('.slider-container:eq(2) .price').html()),
         'selectedMaterials1': JSON.stringify(selectedMaterials1),
         'selectedMaterials2': JSON.stringify(selectedMaterials2),
         'selectedMaterials3': JSON.stringify(selectedMaterials3),
@@ -1560,21 +1347,18 @@ function SaveToPdfToFile() {
         'altSa': JSON.stringify(altSa),
         'altMi': JSON.stringify(altMi),
         'altMa': JSON.stringify(altMa),
-        'arrF0': JSON.stringify(arrF0),
-        'arrF1': JSON.stringify(arrF1),
-        'arrF2': JSON.stringify(arrF2),
-        'Omanufacturer': frames[0].$('.manufacturer').val() === "Производитель" ? '' : frames[0].$('.manufacturer').val(),
-        'Emanufacturer': frames[1].$('.manufacturer').val() === "Производитель" ? '' : frames[1].$('.manufacturer').val(),
-        'Fmanufacturer': frames[2].$('.manufacturer').val() === "Производитель" ? '' : frames[2].$('.manufacturer').val(),
+        'Omanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
+        'Emanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
+        'Fmanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
         'contacts': JSON.stringify({
             name: $('#managertext').val(),
             tel: $('#teltext').val(),
             mail: $('#mailtext').val()
         }),
-        'schema': frames[0].$('#shema').prop("checked") ? frames[0].$('#ShemaKonstr').attr('src') : ''
+        'schema': $('#shema').prop("checked") ? $('#ShemaKonstr').attr('src') : ''
     };
 
     $.post('./php/longurl.php?n=' + window.id_pdf, 'url=' + JSON.stringify(url), function () {
-        $.get('./html2pdf.php?n=' + window.id_pdf);
+
     });
 }

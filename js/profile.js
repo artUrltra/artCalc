@@ -3,19 +3,9 @@
  * Created by Андрей on 14.11.2016.
 
  */
-var profiles = {
-    profile_name: '',
-    profile_price: 0,
-    profile_info: '',
-    profile_w: 0,
-    profile_horizontal_name: '',
-    profile_horizontal_price: 0,
-    profile_horizontal_info: '',
-    profile_vertical_name: '',
-    profile_vertical_price: 0,
-    profile_vertical_info: '',
+let profiles = {
     set_profile_info: function (height, paz, steklo, penal) {
-        this.profile_info = '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до ' + height + ' м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">' + paz + ' мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">' + steklo + ' мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right" id="penal">до ' + penal + ' мм;</p></div>';
+        return '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до ' + height + ' м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">' + paz + ' мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">' + steklo + ' мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right" id="penal">до ' + penal + ' мм;</p></div>';
     },
     set_profile_horizontal_info: function (height, paz, steklo, penal) {
         this.profile_horizontal_info = '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до ' + height + ' м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">' + paz + ' мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">' + steklo + ' мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right" id="penal">до ' + penal + ' мм;</p></div>';
@@ -24,36 +14,25 @@ var profiles = {
         this.profile_vertical_info = '<div class="height-30"><p class="profil-text-left">Высота:</p><p class="profil-text-right">до ' + height + ' м</p></div><div class="height-30"><p class="profil-text-left">Паз:</p><p class="profil-text-right">' + paz + ' мм</p></div><div class="height-30"><p class="profil-text-left">Cтекло:</p><p class="profil-text-right">' + steklo + ' мм</p></div><div class="height-30"><p class="profil-text-left">Глухие панели</p><p class="profil-text-right" id="penal">до ' + penal + ' мм;</p></div>';
     },
     setProfile: function (id) {
-        var width = ParserIntAndNan($('#tab-profil-shirina').val());
-        var height = ParserIntAndNan($('#tab-profil-vyisota').val());
+        let width = ParserIntAndNan($('#tab-profil-shirina').val());
+        let height = ParserIntAndNan($('#tab-profil-vyisota').val());
         top.States.WidthProfil = ParserIntAndNan($('#tab-profil-shirina').val());
         top.States.HeightProfil = ParserIntAndNan($('#tab-profil-vyisota').val());
-        $.post('./admin/vuborka.php?select', {id: id});
-        var Profils = top.storage.p.filter(function (value) {
+
+        let Profils = top.storage.p.filter(function (value) {
             return value.id == id;
         });
         this.profile_name = Profils[0].name;
         this.profile_price = ParserIntAndNan((((width - (ParserIntAndNan(Profils[0].model) * 2)) + height) * 0.002 * Profils[0].price));
-        this.set_profile_info(Profils[0].height, Profils[0].paz, Profils[0].steklo, Profils[0].penal);
-        var decorPrice = ParserIntAndNan(getFromData('decor-price'));
-        this.profile_w =ParserIntAndNan(Profils[0].model);
+
+        this.profile_w = ParserIntAndNan(Profils[0].model);
         document.getElementById("KARKAS-IMG").src = './admin/' + Profils[0].img;
         document.getElementById("KARKAS-NAME").innerHTML = this.profile_name;
-        document.getElementById("KARKAS-INFO").innerHTML = this.profile_info;
+        document.getElementById("KARKAS-INFO").innerHTML =  this.set_profile_info(Profils[0].height, Profils[0].paz, Profils[0].steklo, Profils[0].penal);
         document.getElementById("KARKAS-PRICE").innerHTML = this.profile_price;
 
-        setDataAndText('karkas-paz', Profils[0].paz);
-        setDataAndText('karkas-steklo', Profils[0].steklo);
-        setDataAndText('karkas-doubleFilling', Profils[0].doubleFilling);
-        setDataAndText('karkas-thicknessSteklo', Profils[0].thicknessSteklo);
-        setDataAndText('karkas-thicknessMaterials', Profils[0].thicknessMaterials);
-        setDataAndText('karkas-img', './admin/' + Profils[0].img);
-        setDataAndText('karkas-id', Profils[0].id);
-        setDataAndText('karkas-name', this.profile_name);
-        setDataAndText('karkas-price', this.profile_price);
-        setDataAndText('karkas-full-price', parseInt((parseFloat(decorPrice) + this.profile_price)));
 
-        var obj = top.storage.PaPHW.filter(function (value) {
+        let obj = top.storage.PaPHW.filter(function (value) {
             return value.id_profil == id;
         });
         this.set_horizontal_profile(obj[0].id_h, 0);

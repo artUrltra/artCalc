@@ -88,75 +88,57 @@ var addition = {
             $('.addon-block select').prop('value', 'Нет');
 
             for (var j = 0; j < obj1.length; j++) {
-                    for (var i = 0; i < obj.length; i++) {
-                        if (obj[i].id === obj1[j].Supplements) {
-                           let item = top.storage.TS.find((v) => v.id === obj[i].patern_id);
-                            $('#textSupplements' + obj[i].patern_id).text(obj[i].name);
-                            $('#imageSupplements' + obj[i].patern_id).attr('src', './admin/' + obj[i].img);
-                            $('#priceSupplements' + obj[i].patern_id).text(obj[i].price);
-                            $('#priceSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
-                            $('#CountSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
-                            if(item) {
-                                $('#selectSupplements' + obj[i].patern_id).val(item.flag === 'Да' ? 'Есть' : 'Нет');
-                            }else {
-                                $('#selectSupplements' + obj[i].patern_id).val('Есть');
-                            }
+                for (var i = 0; i < obj.length; i++) {
+                    if (obj[i].id === obj1[j].Supplements) {
+                        let item = top.storage.TS.find((v) => v.id === obj[i].patern_id);
+                        $('#textSupplements' + obj[i].patern_id).text(obj[i].name);
+                        $('#imageSupplements' + obj[i].patern_id).attr('src', './admin/' + obj[i].img);
+                        $('#priceSupplements' + obj[i].patern_id).text(obj[i].price);
+                        $('#priceSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
+                        $('#CountSupplements' + obj[i].patern_id).attr('data-price', obj[i].price);
+                        if (item) {
+                            $('#selectSupplements' + obj[i].patern_id).val(item.flag === 'Да' ? 'Есть' : 'Нет');
+                        } else {
+                            $('#selectSupplements' + obj[i].patern_id).val('Есть');
                         }
                     }
+                }
             }
         }
     },
     UpdateAddition: function () {
         top.States.AdditionName($('.addition'));
+    },
+    changeAddition() {
+        let type = parseInt($('#TYPE_BAFFLE_ID').val());
+        let obj;
+        $('#SUPPLEMENTS').html('');
+        switch (type) {
+            case 0: {
+                obj = storage.TS.filter(v => v.type === 'Стационарная');
+                break;
+            }
+            case 1: {
+                obj = storage.TS.filter(v => v.type === 'Раздвижная перегородка');
+                break;
+            }
+            case 2: {
+                obj = storage.TS.filter(v => v.type === 'Складная перегородка');
+                break;
+            }
+            case 3: {
+                obj = storage.TS.filter(v => v.type === 'Распашная дверь');
+                break;
+            }
+            case 4: {
+                obj = storage.TS.filter(v => v.type === 'Мобильная перегородка');
+                break;
+            }
+        }
+        obj.forEach(v => {
+            addition.SetTypeSupplements(v.id, v.typeprice, v.name);
+        });
+        this.SetSupplements();
     }
-}
-function changeAddition() {
-    var type = parseInt($('#TYPE_BAFFLE_ID').val());
-    var obj = top.storage.TS;
-    $('#SUPPLEMENTS').html('');
-    switch (type) {
-        case 0: {
-            for (var i = 0; i < obj.length; i++) {
-                if (obj[i].type == 'Стационарная') {
-                    addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
-                }
-            }
-            break;
-        }
-        case 1: {
-            for (var i = 0; i < obj.length; i++) {
-                if (obj[i].type == 'Раздвижная перегородка') {
-                    addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
-                }
-            }
-            break;
-        }
-        case 2: {
-            for (var i = 0; i < obj.length; i++) {
-                if (obj[i].type == 'Складная перегородка') {
-                    addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
-                }
-            }
-            break;
-        }
-        case 3: {
-            for (var i = 0; i < obj.length; i++) {
-                if (obj[i].type == 'Распашная дверь') {
-                    addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
-                }
-            }
-            break;
-        }
-        case 4: {
-            for (var i = 0; i < obj.length; i++) {
-                if (obj[i].type === 'Мобильная перегородка') {
-                    addition.SetTypeSupplements(obj[i].id, obj[i].typeprice, obj[i].name);
-                }
-            }
-            break;
-        }
-    }
-    addition.SetSupplements();
-    nfurnitura.filtertype();
-}
-$('#TYPE_BAFFLE_ID').on('change', changeAddition);
+};
+$('#TYPE_BAFFLE_ID').on('change', addition.changeAddition);

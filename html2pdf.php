@@ -269,10 +269,11 @@ if ($ff) {
 // >>> выборка данных по загруженным картинкам
     if (eGet("fotoNames")) {
         $fotoNames = json_decode(sGET("fotoNames"));
-        //d($fotoNames);
         $fotoInfo = array();
-        array_push($fotoInfo, $fotoNames[0]);
-        array_push($fotoInfo, $fotoNames[1]);
+        array_push($fotoInfo, $fotoNames[0]
+        );
+        array_push($fotoInfo, $fotoNames[1]
+        );
     }
 
 // >>> выборка данных по каркасам
@@ -373,6 +374,7 @@ if ($ff) {
             }
         }
     }
+
     if (eGet("selectedFurnitura2")) {
         $furnituraEl2 = json_decode(sGET("selectedFurnitura2"));
         $furnituraInfo2 = array();
@@ -389,7 +391,6 @@ if ($ff) {
             array_push($furnituraInfo2[3], $furnituraEl2[3][$i] * ($per[1]->i / 100 + 1) * ($per[1]->p / 100 + 1) * 1.1);
         }
     }
-
 // Новая фурнитура
     for ($i = 0; $i < count($arrF1); $i++) {
         if ($arrF1[$i]->price == 0) {
@@ -607,9 +608,9 @@ if ($ff) {
         'vv' => round($height, 1),
         'shir' => round($width, 1),
         'ploshad' => round($area, 1),
-        'summa1' => round($sum[0]->withparam, 1),
-        'summa2' => round($sum[1]->withparam, 1),
-        'summa3' => round($sum[2]->withparam, 1),
+        'summa1' => round($sum[0]->i, 1),
+        'summa2' => round($sum[1]->i, 1),
+        'summa3' => round($sum[2]->i, 1),
         'srok_izgotovlenia' => "20",
         'poriadok_oplati' => "70%",
         'garantia' => "1",
@@ -816,12 +817,13 @@ if ($ff) {
             </table>
             <br/>
             <?php
-            if ($fotoInfo[1] != NULL) {
+            if ($fotoInfo[1] != '') {
+
                 ?>
                 <table align="center" style="width:100%;color:#666666;text-align:center;">
                     <tr>
                         <td style=" width: 50%">
-                            <?php if ($fotoInfo[0] != "" && @fopen($fotoInfo[0], "r")) {
+                            <?php if ($fotoInfo[0] != "") {
                                 $img_size = getimagesize($fotoInfo[0]);
                                 if ($img_size[0] > $img_size[1]) {
                                     ?>
@@ -1229,12 +1231,15 @@ if ($ff) {
     <?php
 //Флаг
     $a = !in_array($typeFurnitura, array(0, 3, 4)) && $furnituraInfo[0][0]["name"];
+
     $b = false;
     for ($i = 0; $i < count($furnituraInfo[0]); $i++) {
         if ($furnituraInfo[0][$i]['name']) $b = true;
     }
     $c = in_array($typeFurnitura, array(0, 3, 4)) && $b;
+
     if ($a || $c) {
+
         ?>
         <!-- ФУРНИТУРА МЕХАНИЗМЫ 1 -->
         <page backtop="10px" backbottom="10px" backleft="10px" backright="15px">
@@ -1260,7 +1265,8 @@ if ($ff) {
                     <?php } ?>
                 <?php } ?>
                 <br/>
-                <?php if (!in_array($typeFurnitura, array(0, 3, 4))) { ?>
+                <?php
+                if (!in_array($typeFurnitura, array(0, 3, 4))) { ?>
                     <?php if ($furnituraInfo[0][0]["name"]) { ?>
                         <table style="width: 100%;">
                             <tr>
@@ -1394,6 +1400,7 @@ if ($ff) {
         if ($furnituraInfo[0][$i]['name']) $a = true;
     }
     if (!in_array($typeFurnitura, array(0, 3, 4)) && $a) {
+
         ?>
         <!-- ФУРНИТУРА МЕХАНИЗМЫ 2 ЭЛЕМЕНТЫ -->
         <page backtop="10px" backbottom="10px" backleft="10px" backright="15px">
@@ -1529,7 +1536,8 @@ if ($ff) {
             $flagAcsesuar0++;
         }
     }
-    if ($flagAcsesuar0 > 0) { ?>
+    if ($flagAcsesuar0 > 0) {
+        ?>
         <!-- АКСЕССУАРЫ -->
         <page backtop="10px" backbottom="10px" backleft="10px" backright="15px">
             <div style='width: 100%;max-width: 100%;height: 99%;max-height: 99%;border: 1px solid #999999;'>
@@ -1623,7 +1631,8 @@ if ($ff) {
             <p class="pdfpageh1" style="padding-top:-50px;font-size:26px;margin-top:0px;margin-bottom:0px;">Заполнение
                 №1</p>
             <table style="width:100%;">
-                <?php for ($i = 0; $i < count($materialInfo1); $i++) { ?>
+                <?php for ($i = 0; $i < count($materialInfo1); $i++) {
+                    ?>
                     <tr>
                         <td style='width: 50%;'>
                             <p style="text-align:center;">
@@ -1755,7 +1764,8 @@ if ($ff) {
                         Цена,<br/>в т.ч НДС<br/>руб
                     </td>
                 </tr>
-                <?php for ($i = 1; $i < 2; $i++) { ?>
+                <?php for ($i = 1; $i < 2; $i++) {
+                    ?>
                     <tr <?php if ($i > 1 && $i % 2 == 0) echo "style=\"background-color: #e5e5e5;\""; ?>>
                         <td style='width:10%;text-align:center;color:black;vertical-align:middle;'><?= $i ?>.</td>
                         <!--Заметка    -->
@@ -1764,7 +1774,7 @@ if ($ff) {
                         <td style='width:10%;text-align:center;color:black;vertical-align:middle;'>до 15 м<sup>2</sup>
                         </td>
                         <td style='width:15%;text-align:center;color:black;vertical-align:middle;'><img
-                                    src="<?= $decorInfo[0][3]["img"] != "" && @fopen("admin/" . $decorInfo[0]["img"], "r") ? "admin/" . $decorInfo[0]["img"] : "img/notselected.png" ?>"
+                                    src="<?= "admin/" . $decorInfo[0]["img"] ?>"
                                     style="width: 100%;"></td>
                         <td style='width:25%;text-align:center;color:black;vertical-align:middle;'><?= isset($decorInfo[1]) ? number_format(nPrice($decorInfo[1], $per, 1), 0, "", " ") : "noDB" ?></td>
                     </tr>

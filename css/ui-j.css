@@ -779,7 +779,12 @@ button.ui-button::-moz-focus-inner {
 	width: 100%;
 }
 .ui-slider-vertical .ui-slider-range-min {
+	background: #bf5454;
+	width: 12px;
+	position: absolute;
 	bottom: 0;
+	border-radius: 4px;
+	margin-left: -5px;
 }
 .ui-slider-vertical .ui-slider-range-max {
 	top: 0;

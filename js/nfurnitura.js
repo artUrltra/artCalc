@@ -1235,7 +1235,7 @@ var nfurnitura = {
             top.frames[1].$(".aksessuaryi-block-hs").show();
             top.frames[2].$(".aksessuaryi-block-hs").show();
         }
-        else{
+        else {
             top.frames[0].$(".aksessuaryi-block-hs").hide();
             top.frames[1].$(".aksessuaryi-block-hs").hide();
             top.frames[2].$(".aksessuaryi-block-hs").hide();
@@ -1260,7 +1260,6 @@ var nfurnitura = {
         }
         nfurnitura.filtertype();
         nfurnitura.setStartValues();
-        functionName();
     },
 
     getDataFurnitura: function () {
@@ -1566,52 +1565,6 @@ $(document).on({
         nfurnitura.fullprice();
     }
 }, '.newfurn input');
-
-function functionName() {
-    /*var s = $('.newfurn');
-     switch (checkState(window)) {
-     case 0:
-     s.each(function (value) {
-     var typestr = $(this).find('h3').text();
-     var type = top.storage.Furn.filter(function (value) {
-     return value.name == typestr;
-     });
-     for (i = 0; i < top.States.OptimalState.ArrayMaterials.length; i++) {
-     if (type[0].materials.indexOf(checktupematerials(ParserIntAndNan(top.States.OptimalState.ArrayMaterials[i].type))) == -1) {
-     $(this).remove();
-     }
-     }
-     });
-     break;
-     case 1:
-     s.each(function (value) {
-     var typestr = $(this).find('h3').text();
-     var type = top.storage.Furn.filter(function (value) {
-     return value.name == typestr;
-     });
-     for (i = 0; i < top.States.EconomyState.ArrayMaterials.length; i++) {
-     if (type[0].materials.indexOf(checktupematerials(ParserIntAndNan(top.States.EconomyState.ArrayMaterials[i].type))) == -1) {
-     $(this).remove();
-     }
-     }
-     });
-     break;
-     case 2:
-     s.each(function (value) {
-     var typestr = $(this).find('h3').text();
-     var type = top.storage.Furn.filter(function (value) {
-     return value.name == typestr;
-     });
-     for (i = 0; i < top.States.PremiumState.ArrayMaterials.length; i++) {
-     if (type[0].materials.indexOf(checktupematerials(ParserIntAndNan(top.States.PremiumState.ArrayMaterials[i].type))) == -1) {
-     $(this).remove();
-     }
-     }
-     });
-     break;
-
-     }*/
-}
 $('body').on('change', '.dekorativnayaPlankaDlyaProfilya input', function () {
     let $p = $('.dekorativnayaPlankaDlyaProfilya .price');
     if ($(this).prop("checked")) {

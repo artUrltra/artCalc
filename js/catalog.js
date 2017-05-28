@@ -91,13 +91,12 @@ var catalogs = {
                 $('.catalog-body').append(_h);
 
             });
-
-            $.material.init();
             $('.catalogs').hide(100);
         },
         hide_show: function () {
             if (this.flag) {
                 $('.catalogs').show(100);
+
                 catalogs.flag = false;
             } else {
                 $('.catalogs').hide(100);

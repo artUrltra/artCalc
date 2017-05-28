@@ -43,118 +43,7 @@ var addon = {
     // МЕТОДЫ
     // Цена
     set_price_res: function () {
-        var addon_price_res = 0;
-        $('#PriceSupplements span').filter(function () {
-            var Pl, Pw, str, check, Pln, PWn, P;
 
-            str = $(this).attr('id');
-            Pl = ParserIntAndNan($('#tab-profil-vyisota').val()) * 0.001;
-            Pw = ParserIntAndNan($('#tab-profil-shirina').val()) * 0.001;
-            Pln = ParserIntAndNan($('#tab-profil-v-peremyichki-shtuk').val());
-            PWn = ParserIntAndNan($('#tab-profil-peremyichki-horizontal-shtuk').val());
-            switch ($(this).attr('data-type')) {
-                case '1': {
-                    check = 'CountSupplements' + str.replace(/\D+/g, "");
-                    $(this).text(ParserIntAndNan($(this).attr('data-price')) * ParserIntAndNan($('#' + check).val()));
-                    break;
-                }
-                case '6': {
-
-                    check = 'CountSupplements' + str.replace(/\D+/g, "");
-                    check1 = 'checkboxSupplements' + str.replace(/\D+/g, "");
-                    if ($('#' + check1).prop("checked")) {
-                        $('#' + check).attr('disabled', 'disabled');
-                        $('#' + check).val(4 + (Pln) * 2 + (PWn) * 2 + (Pln) * (PWn) * 2);
-                    } else {
-                        $('#' + check).removeAttr('disabled');
-                    }
-                    $(this).text(ParserIntAndNan($(this).attr('data-price')) * ParserIntAndNan($('#' + check).val()));
-                    break;
-                }
-                case '2': {
-                    $(this).text(Math.round(ParserIntAndNan($(this).attr('data-price')) * (2 * (Pl + Pw))));
-                    break;
-                }
-                case '3': {
-                    // if (Pln != 0 && PWn != 0) {
-                    //     $(this).text(Math.round((Pl + Pw) * (PWn + Pln) / Pw * ParserIntAndNan($(this).attr('data-price'))));
-                    // }
-                    // if (PWn == 0 && Pln != 0) {
-                    //     $(this).text(Math.round((Pl + Pw) * (Pln) / Pw * ParserIntAndNan($(this).attr('data-price'))));
-                    // }
-                    // if (Pln == 0 && PWn != 0) {
-                    //     $(this).text(Math.round((Pl + Pw) * (PWn) / Pw * ParserIntAndNan($(this).attr('data-price'))));
-                    // }
-                    // if (Pln == 0 && PWn == 0) {
-                    //     $(this).text(Math.round((Pl + Pw) / Pw * ParserIntAndNan($(this).attr('data-price'))));
-                    // }
-
-                    check = 'checkboxSupplements' + str.replace(/\D+/g, "");
-
-
-                    $(this).text(Math.round(((Pl + Pw) * 2 + ((Pl * Pln) + (Pw * PWn)) * 2) * parseInt($(this).attr('data-price'))));
-
-                    break;
-                }
-                case '4': {
-                    check = 'checkboxSupplements' + str.replace(/\D+/g, "");
-
-
-                    $(this).text(Math.round(((Pl + Pw) * 2 + ((Pl * Pln) + (Pw * PWn)) * 2) * parseInt($(this).attr('data-price'))));
-                    // let height = ParserIntAndNan($('#tab-profil-vyisota').val());
-                    // let width = ParserIntAndNan($('#tab-profil-shirina').val());
-                    // let jamperH = ParserIntAndNan($('#tab-profil-v-peremyichki-shtuk').val());
-                    // let jamperW = ParserIntAndNan($('#tab-profil-peremyichki-horizontal-shtuk').val());
-                    // let price = Math.round((parseInt($(this).attr('data-price'))));
-                    // $(this).text(((height + width) * 2 / 1000 + (jamperH + jamperW) * 2 / 1000) * price);
-                    break;
-                }
-                case '5': {
-                    P = 4 + (Pln * 2) + (PWn * 2) + (PWn * Pln);
-                    $(this).text(P * ParserIntAndNan($(this).attr('data-price')));
-                    break;
-                }
-                default : {
-                    $(this).text(fornituraPrice(ParserIntAndNan($(this).attr('data-price')), $(this).attr('data-type')));
-                    break;
-                }
-            }
-        });
-        $('#PriceSupplements span').filter(function () {
-            switch ($('#selectSupplements' + $(this).attr('id').replace(/\D+/g, "")).val()) {
-                case 'Есть': {
-                    $('#buttonSupplements' + $(this).attr('id').replace(/\D+/g, "")).removeAttr('disabled');
-                    $('#CountSupplements' + $(this).attr('id').replace(/\D+/g, "")).removeAttr('disabled');
-                    $('#CountSupplements' + $(this).attr('id').replace(/\D+/g, "")).css('opacity', '1');
-                    $('#checkboxSupplements' + $(this).attr('id').replace(/\D+/g, "")).removeAttr('disabled');
-                    $('#checkboxSupplements' + $(this).attr('id').replace(/\D+/g, "")).css('opacity', '1');
-                    $('#imageSupplements' + $(this).attr('id').replace(/\D+/g, "")).css('opacity', '1');
-                    $('#textSupplements' + $(this).attr('id').replace(/\D+/g, "")).css('opacity', '1');
-                    $('[data-pricesupplements="' + $(this).attr('id').replace(/\D+/g, "") + '"]').css('opacity', '1');
-                    $('[data-typeSupplements="' + $(this).attr('id').replace(/\D+/g, "") + '"]').css('opacity', '1');
-                    break;
-                }
-                case 'Нет': {
-                    $('#buttonSupplements' + $(this).attr('id').replace(/\D+/g, "")).attr('disabled', 'disabled');
-                    $('#imageSupplements' + $(this).attr('id').replace(/\D+/g, "")).css('opacity', '0.25');
-                    $('#textSupplements' + $(this).attr('id').replace(/\D+/g, "")).css('opacity', '0.25');
-                    $('#CountSupplements' + $(this).attr('id').replace(/\D+/g, "")).attr('disabled', 'disabled');
-                    $('#CountSupplements' + $(this).attr('id').replace(/\D+/g, "")).css('opacity', '0.25');
-                    $('#checkboxSupplements' + $(this).attr('id').replace(/\D+/g, "")).attr('disabled', 'disabled');
-                    $('#checkboxSupplements' + $(this).attr('id').replace(/\D+/g, "")).css('opacity', '0.25');
-                    $('[data-pricesupplements="' + $(this).attr('id').replace(/\D+/g, "") + '"]').css('opacity', '0.25');
-                    $('[data-typeSupplements="' + $(this).attr('id').replace(/\D+/g, "") + '"]').css('opacity', '0.25');
-                    $(this).text('0');
-                    break;
-                }
-            }
-        });
-        $('#PriceSupplements span').text(function (index, text) {
-            addon_price_res += ParserIntAndNan(text);
-            return text;
-        });
-        $(".addon-block .price-res").html(ParserIntAndNan(addon_price_res));
-        $(".addon-block .price-res1").html(ParserIntAndNan(addon_price_res) * ParserIntAndNan($('#TOTAL_PAINTING_ID').val()));
     }
 };
 
@@ -722,7 +611,7 @@ $("#DIAGRAMMA-DIALOG-WINDOW-BTN").click(function () {
     $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
     var TYPE_BAFFLE = parseInt($("#TYPE_BAFFLE_ID").val());
     if (TYPE_BAFFLE == 0) {
-        parent.message("Для стационарной перегородки схем не существует!");
+        message("Для стационарной перегородки схем не существует!");
     } else {
         if (TYPE_BAFFLE == 1 || TYPE_BAFFLE == 2 || TYPE_BAFFLE == 4) {
             $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
@@ -828,125 +717,11 @@ function SetKakas(id) {
     }
 }
 $('#BTN-KARKAS-SELECTOR').click(function () {
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    var width = parseInt($('#tab-profil-shirina').val());
-    var height = parseInt($('#tab-profil-vyisota').val());
-    var n = parseInt($("#TOTAL_PAINTING_ID").val());
-    var TYPE_BAFFLE_ID = parseInt($("#TYPE_BAFFLE_ID").val());
-    if (!isNaN(width) && !isNaN(height)) {
-        setDataAndText('karkas-tsvet-uplotnitelya', '');
-        setDataAndText('karkas-tsvet-zaglushki', '');
-        setDataAndText('karkas-tsvet-zaglushki-tortsevoy', '');
-        setDataAndText('karkas-vid-krepleniya', '');
 
-        $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-        var html = ' <div class="tabbable tabs-left">' +
-            '<ul class="nav nav-tabs">';
-        var htmlTAB = '';
-        $.post('./admin/ajax.php', "data=1", function (data) {
-            var data = JSON.parse(data);
-            for (var i = 0; i < data.length; i++) {
-                var isFrends = '';
-                if (i == 0)
-                    isFrends = 'active';
-                htmlTAB += '<li class="' + isFrends + '"><a data-toggle="tab" style="font-size: 20px;" onclick="SetKakas(' + data[i].id + ')" >' + data[i].name + '</a><div class="triangle"></div><div class="triangle-w"></div></li>';
-            }
-            $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html + htmlTAB + '</ul>');
-            var obj = top.storage.p.filter(function (value) {
-                return value.max >= height;
-            });
-            var resultHtml = '';
-            for (var i = 0; i < obj.length; i++) {
-                var p = ((width + height) * 0.002 * obj[i].price);
-                p = Math.round(p);
-                resultHtml += '<div id="ProfilTabDB" class="col-md-3 profil-select" style="display: inline-block;vertical-align: top;border: solid 1px black;height: 435px;" ng-controller="ngAppDemoController">' +
-                    '<center> ' +
-                    '<br> ' +
-                    '<div class="loadx3d" data-src="' + obj[i].img + '" data-flag="0" data-x3d="' + obj[i].x3d + '"><img src="./admin/' + obj[i].img + '" id="img-modal-Statusx1" class="selectKarkasImg"></div> ' +
-                    '<div id="el-loader-Statusx1"></div>' +
-                    '<div id="div-for-3d-Statusx1" class="js-div-for-3d"></div>' +
-                    '<h4>' + obj[i].name + '</h4>' +
-                    '<div style="height: 140px;width: 180px;">' +
-                    '<div style="height: 30px;">' +
-                    '<p style="display: inline-block;float: left;font-weight: 300;">Высота:</p>' +
-                    '<p style="display: inline-block;float: right;font-weight: 300;">до ' + obj[i].height + '  м</p>' +
-                    '</div>' +
-                    '<div style="height: 30px;">' +
-                    '<p style="display: inline-block;float: left;font-weight: 300;">Паз:</p>' +
-                    '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].paz + '  мм</p>' +
-                    '</div>' +
-                    '<div style="height: 30px;">' +
-                    '<p style="display: inline-block;float: left;font-weight: 300;">Cтекло:</p>' +
-                    '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].steklo + '  мм</p>' +
-                    '</div>' +
-                    '<div style="height: 30px;">' +
-                    '<p style="display: inline-block;float: left;font-weight: 300;">Глухие панели:</p> ' +
-                    '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].penal + '  мм</p>' +
-                    '</div>' +
-                    '</div>' +
-                    '<h4 style="color: red;" >Цена:' + p + ' </h4>' +
-                    '<button type="button" class="btn btn-raised btn-default" onclick="profiles.setProfile(' + obj[i].id + ');window.parent.state.setSlider(' + obj[i].id + ');" data-dismiss="modal">Выбрать </button> ' +
-                    '</center></div>';
-            }
-            $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
-        });
-    } else {
-        parent.message("Укажите количество полотен,ширину и высоту!");
-    }
 });
 // выбор вертикальных перемычек #BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR
 $('#BTN-VERTIKALNUE-PEREMOCHKI-SELECTOR').click(function () {
-    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
-    var width = parseInt(getFromData('width'));
-    var height = parseInt(getFromData('height'));
-    var countPer = parseInt($('#tab-profil-v-peremyichki-shtuk').val());
-    var countPer1 = parseInt($('#tab-profil-peremyichki-horizontal-shtuk').val());
-    var data = "select=1";
-    $.post("./admin/vuborka.php?select", data, function (data) {
-        var obj = JSON.parse(data);
-        if (obj.length == 0) {
-            parent.message('Извините , но для данного профиля вертикальные перемычки отсутствуют');
-        } else {
-            for (var i = 0; i < obj.length; i++) {
-                var p = (((height - profiles.profile_w * 2) / 1000 * Number(obj[i].price)) * countPer) - (ParserIntAndNan(obj[i].width) * countPer * countPer1 / 1000 * Number(obj[i].price));
-                if (isNaN(p)) {
-                    p = 0;
-                }
-                p = Math.round(p);
-                var resultHtml = '<div class="col-md-3 profil-select" style="display: inline-block;vertical-align: top;border: solid 1px black;height: 435px;" ng-controller="ngAppDemoController">' +
-                    '<center> ' +
-                    '<br> ' +
-                    '<img src="./admin/' + obj[i].img + '" id="img-modal-Statusx1" class="selectKarkasImg" onclick="load3D(\'Statusx1\')"> ' +
-                    '<div id="el-loader-Statusx1"></div>' +
-                    '<div id="div-for-3d-Statusx1" class="js-div-for-3d"></div>' +
-                    '<h4>' + obj[i].name + '</h4>' +
-                    '<div style="height: 140px;width: 180px;">' +
-                    '<div style="height: 30px;">' +
-                    '<p style="display: inline-block;float: left;font-weight: 300;">Высота:</p>' +
-                    '<p style="display: inline-block;float: right;font-weight: 300;">до ' + obj[i].height + ' м</p>' +
-                    '</div>' +
-                    '<div style="height: 30px;">' +
-                    '<p style="display: inline-block;float: left;font-weight: 300;">Паз:</p>' +
-                    '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].paz + ' мм</p>' +
-                    '</div>' +
-                    '<div style="height: 30px;">' +
-                    '<p style="display: inline-block;float: left;font-weight: 300;">Cтекло:</p>' +
-                    '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].steklo + ' мм</p>' +
-                    '</div>' +
-                    '<div style="height: 30px;">' +
-                    '<p style="display: inline-block;float: left;font-weight: 300;">Глухие панели:</p> ' +
-                    '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].penal + ' мм</p>' +
-                    '</div>' +
-                    '</div>' +
-                    '<h4 style="color: red;" >Цена:' + p + ' </h4>' +
-                    '<button type="button" class="btn btn-raised btn-default" onclick="profiles.set_vertical_profile(' + obj[i].id + ',' + p + ');" data-dismiss="modal">Выбрать </button> ' +
-                    '</center></div>';
-                $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
-            }
 
-            $("#DIAGRAMMA-DIALOG-WINDOW").modal('toggle');
-        }
-    });
 });
 // выбор горизонтальных перемычек #BTN-HORIZONTAL-PEREMOCHKI-SELECTOR
 $('#BTN-HORIZONTAL-PEREMOCHKI-SELECTOR').click(function () {

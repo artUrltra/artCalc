@@ -70,10 +70,7 @@ function setPDFimg(id) {
     $.snackbar({
         content: "Изображения добавлено в PDF"
     });
-    window.imagesPDF.push(storage.images.filter(function(v) {
-
-        return v.id == id;
-    })[0]['img']);
+    window.imagesPDF.push(storage.images.find(v=> v.id === id).img);
 }
 $('#searhname').on('keyup', function() {
     var name = $(this).val();

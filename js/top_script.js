@@ -8,214 +8,6 @@
  * @returns {*}
  * @constructor
  */
-function ParserIntAndNan(number) {
-    if (isNaN(parseInt(number))) {
-        return 0;
-    } else {
-        return parseInt(number);
-    }
-}
-
-window.id_pdf = new Date().getTime();
-$.material.init();
-
-function message(e) {
-    $.snackbar({
-        content: e
-    });
-}
-// Общий флаг для перенноса данных из стейтов
-var _FLAG = true;
-
-/**
- * Функция переноса даных между стейтами
- * @constructor
- */
-function GloblPrice_FLAG() {
-    if (_FLAG) {
-        let profile = top.storage.p.find(function (v) {
-            return v.name === frames[0].profiles.profile_name
-        });
-        if (profile) {
-            frames[1].profiles.setProfile(profile.id);
-            frames[2].profiles.setProfile(profile.id);
-        }
-        let profile_h = top.storage.PHW.find(function (v) {
-            return v.name === frames[0].profiles.profile_horizontal_name
-        });
-        if (profile_h) {
-            frames[1].profiles.set_horizontal_profile(profile_h.id);
-            frames[2].profiles.set_horizontal_profile(profile_h.id);
-        }
-        let profile_w = top.storage.PHW.find(function (v) {
-            return v.name === frames[0].profiles.profile_vertical_name
-        });
-        if (profile_w) {
-            frames[1].profiles.set_vertical_profile(profile_w.id);
-            frames[2].profiles.set_vertical_profile(profile_w.id);
-        }
-
-        let array = [];
-        frames[0].$('#SUPPLEMENTS .col-md-3').each(function () {
-            let flag = $(this).find('.input-sm').val() == 'Есть' ? true : false;
-            if (flag) {
-                let count1 = $(this).find('input.width-20').val();
-                array.push({
-                    name: $(this).find('h3').text(),
-                    img: $(this).find('img').attr('src'),
-                    id: ParserIntAndNan($(this).find('#PriceSupplements').attr('data-pricesupplements')),
-                    price: ParserIntAndNan($(this).find('#PriceSupplements span').attr('data-price')),
-                    count: count1
-                });
-            } else {
-                array.push(flag);
-            }
-        });
-
-        array.forEach(function (v, index) {
-            let $additions = frames[1].$('#SUPPLEMENTS .col-md-3:eq(' + index + ')');
-            if (v) {
-                $additions.find('.input-sm').val('Есть');
-                frames[1].addition.SelectSupplements(v.img, v.name, v.price, v.id);
-                if (v.count !== undefined) {
-                    $additions.find('input.width-20').val(v.count);
-                }
-
-            } else {
-                $additions.find('.input-sm').val('Нет');
-            }
-        });
-        array.forEach(function (v, index) {
-            let $additions = frames[2].$('#SUPPLEMENTS .col-md-3:eq(' + index + ')');
-            if (v) {
-                $additions.find('.input-sm').val('Есть');
-                frames[2].addition.SelectSupplements(v.img, v.name, v.price, v.id);
-                if (v.count !== undefined) {
-                    $additions.find('input.width-20').val(v.count);
-                }
-            } else {
-                $additions.find('.input-sm').val('Нет');
-            }
-        });
-
-
-        frames[1].$('#tab-profil-peremyichki-horizontal-shtuk').val(frames[0].$('#tab-profil-peremyichki-horizontal-shtuk').val());
-        frames[1].$('#tab-profil-v-peremyichki-shtuk').val(frames[0].$('#tab-profil-v-peremyichki-shtuk').val());
-        frames[1].aaa();
-
-        frames[1].addDecor(parseInt(frames[0].$('#pokraskaTypeAndName').val()), 0);
-        frames[1].addDecor(parseInt(frames[0].$('#pokraskaTypeAndName').val()), 0);
-        frames[1].addDecor(parseInt(frames[0].$('#pokraskaTypeAndName').val()), 0);
-
-        frames[1].$('#l-11').val(frames[0].$('#l-11').val());
-        frames[1].$('#l-21').val(frames[0].$('#l-21').val());
-        frames[1].$('#l-41').val(frames[0].$('#l-41').val());
-        frames[1].$('#l-51').val(frames[0].$('#l-51').val());
-        frames[1].$('#l-32').val(frames[0].$('#l-32').val());
-        frames[1].$('#l-51').val(frames[0].$('#l-51').val());
-        frames[1].$('.nashZamerTo #l-52').val(frames[0].$('.nashZamerTo #l-52').val());
-
-        frames[1].$(".add-material-block-past").html('');
-        frames[1].$(".add-material-block-past").append(frames[0].$('.napolnenie-el').clone());
-        var count = frames[0].$('.napolnenie-el .napolnenie-el-tolschina').length;
-        for (var i = 0; i < count; i++) {
-            frames[1].$('.napolnenie-el-tolschina:eq(' + i + ')').val(frames[0].$('.napolnenie-el-tolschina:eq(' + i + ')').val());
-        }
-        frames[1].nmaterials.ResSumm();
-
-        frames[2].$('#tab-profil-peremyichki-horizontal-shtuk').val(frames[0].$('#tab-profil-peremyichki-horizontal-shtuk').val());
-        frames[2].$('#tab-profil-v-peremyichki-shtuk').val(frames[0].$('#tab-profil-v-peremyichki-shtuk').val());
-        frames[2].aaa();
-
-        frames[2].addDecor(parseInt(frames[0].$('#pokraskaTypeAndName').val()), 0);
-        frames[2].addDecor(parseInt(frames[0].$('#pokraskaTypeAndName').val()), 0);
-        frames[2].addDecor(parseInt(frames[0].$('#pokraskaTypeAndName').val()), 0);
-
-        frames[2].$('#l-11').val(frames[0].$('#l-11').val());
-        frames[2].$('#l-21').val(frames[0].$('#l-21').val());
-        frames[2].$('#l-41').val(frames[0].$('#l-41').val());
-        frames[2].$('#l-51').val(frames[0].$('#l-51').val());
-        frames[2].$('#l-32').val(frames[0].$('#l-32').val());
-        frames[2].$('#l-51').val(frames[0].$('#l-51').val());
-        frames[2].$('.nashZamerTo #l-52').val(frames[0].$('.nashZamerTo #l-52').val());
-        frames[2].$(".add-material-block-past").html('');
-        frames[2].$(".add-material-block-past").append(frames[0].$('.napolnenie-el').clone());
-        for (var i = 0; i < count; i++) {
-            frames[2].$('.napolnenie-el-tolschina:eq(' + i + ')').val(frames[0].$('.napolnenie-el-tolschina:eq(' + i + ')').val());
-        }
-        frames[2].nmaterials.ResSumm();
-
-        //Перенос селекторов фурнитуры
-        $("#state1").contents().find('.furnituraElFlag').each(function (index) {
-            if ($(this).val() === '1') {
-                let $i = $("#state2").contents().find('.furnituraElFlag:eq(' + index + ')');
-                $i.val($(this).val());
-                $i.parent().find('*').removeAttr('disabled');
-                $i.parent().find('.addonImg').css('pointer-events', '');
-                $i.parent().find('*').css('opacity', '1');
-
-                let $o = $("#state3").contents().find('.furnituraElFlag:eq(' + index + ')');
-                $o.val($(this).val());
-                $o.parent().find('*').removeAttr('disabled');
-                $o.parent().find('.addonImg').css('pointer-events', '');
-                $o.parent().find('*').css('opacity', '1');
-            }
-        });
-        if (frames[0].$(".aksessuaryi-block-swith input").prop("checked")) {
-            frames[1].$(".aksessuaryi-block-swith input").prop("checked", true);
-            frames[2].$(".aksessuaryi-block-swith input").prop("checked", true);
-        }
-        frames[1].nfurnitura.viewTotalFurnitura();
-        frames[2].nfurnitura.viewTotalFurnitura();
-
-        if (frames[0].info.array) {
-            frames[0].info.setpaint();
-
-            frames[1].$('.BAFFLE_SEKECTOR_CLASS').off('click', frames[1].init_info);
-            frames[2].$('.BAFFLE_SEKECTOR_CLASS').off('click', frames[2].init_info);
-
-            frames[1].$('.BAFFLE_SEKECTOR_CLASS').val(frames[0].$('.BAFFLE_SEKECTOR_CLASS').val());
-            frames[2].$('.BAFFLE_SEKECTOR_CLASS').val(frames[0].$('.BAFFLE_SEKECTOR_CLASS').val());
-
-
-            frames[1].info.array = FastClone.cloneArray(frames[0].info.array);
-            frames[2].info.array = FastClone.cloneArray(frames[0].info.array);
-
-            frames[1].info.index = frames[0].info.index;
-            frames[2].info.index = frames[0].info.index;
-
-        } else {
-            frames[0].info.init();
-        }
-
-
-        state.stateSetPrice();
-
-        let value_slider = $("#slider1").slider('value');
-        $("#slider2").slider('value', value_slider);
-        $("#slider3").slider('value', value_slider);
-
-        let height_slider = $('#slider1').find(".bg").outerHeight();
-        $('#slider2').find(".bg").height(height_slider);
-        $('#slider3').find(".bg").height(height_slider);
-
-        let manufacturer = frames[0].$('.manufacturer').val();
-        frames[1].$('.manufacturer').val(manufacturer);
-        frames[2].$('.manufacturer').val(manufacturer);
-
-
-    }
-}
-
-/**
- * События переноса данных
- */
-$("body").on('mouseover', '.container', GloblPrice_FLAG);
-$('.slider-container').click(function () {
-    _FLAG = false;
-    $("body").off('mouseover', '.container', GloblPrice_FLAG);
-
-});
 
 /**
  * События включения про крутки
@@ -223,22 +15,7 @@ $('.slider-container').click(function () {
 $('body').on('click', function () {
     $(this).css('overflow', 'auto');
 });
-/**
- *   Блок проверки загрузки каждого стейта отдельно и установки первичных настроек
- * @type {boolean}
- */
-window.onload = function () {
-    state.stateOneHeight();
-    $(".preloade-wrapper").fadeOut(500);
-    $("body").css("overflow", "auto");
-    _FLAG = true;
-    state.checkManager();
 
-
-    top.frames[0].changeAddition();
-    top.frames[1].changeAddition();
-    top.frames[2].changeAddition();
-};
 
 function delTiteltext() {
     document.getElementById('text_ifr').removeAttribute('title');
@@ -288,7 +65,7 @@ $('body').on('change', '#temp', function () {
  * Создание pdf письма
  */
 function sendMail() {
-    SaveToPdfToFile();
+    SaveToPDFtoFile();
     let flag = true;
     if ($('#mailk').val() === '') {
         flag = false;
@@ -436,12 +213,9 @@ function getTypeKonst(id) {
  * @constructor
  */
 function TagsText(text) {
-    frames[1].info.setpaint();
-    frames[2].info.setpaint();
-    frames[0].info.setpaint();
     //тег профиль с индексом и мм
     let strProfilemm = text.match(/#Profile\[\d\]\[mm\]/g);
-    if (strProfilemm) {
+    if (false) {
         strProfilemm.forEach((v) => {
             let nameProfil = frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile
             let p = storage.p.find((v) => v.name === nameProfil);
@@ -452,14 +226,14 @@ function TagsText(text) {
 
     // тег профиль с индексом без мм
     let strProfile = text.match(/#Profile\[\d\]/g);
-    if (strProfile) {
+    if (false) {
         strProfile.forEach((v) => {
             text = text.replace(v, frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
         });
     }
     //тег профиль с индексом и мм
     let strEconomProfilemm = text.match(/#EconomProfile\[\d\]\[mm\]/g);
-    if (strEconomProfilemm) {
+    if (false) {
         strEconomProfilemm.forEach((v) => {
             let nameProfil = frames[1].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile
             let p = storage.p.find((v) => v.name === nameProfil);
@@ -470,14 +244,14 @@ function TagsText(text) {
 
     // тег профиль с индексом без мм
     let strEconomProfile = text.match(/#EconomProfile\[\d\]/g);
-    if (strEconomProfile) {
+    if (false) {
         strEconomProfile.forEach((v) => {
             text = text.replace(v, frames[1].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
         });
     }
     //тег профиль с индексом и мм
     let strPremiumProfilemm = text.match(/#PremiumProfile\[\d\]\[mm\]/g);
-    if (strPremiumProfilemm) {
+    if (false) {
         strPremiumProfilemm.forEach((v) => {
             let nameProfil = frames[2].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile
             let p = storage.p.find((v) => v.name === nameProfil);
@@ -488,7 +262,7 @@ function TagsText(text) {
 
     // тег профиль с индексом без мм
     let strPremiumProfile = text.match(/#PremiumProfile\[\d\]/g);
-    if (strPremiumProfile) {
+    if (false) {
         strPremiumProfile.forEach((v) => {
             text = text.replace(v, frames[2].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
         });
@@ -498,7 +272,7 @@ function TagsText(text) {
     let _arrm = [];
     let _arrm_mm = [];
 
-    if (frames[0].info.array) {
+    if (false) {
         frames[0].info.array.forEach(function (v) {
             v.array_filling.forEach((s) => {
                 let _i = storage.m.find((d) => d.img === s.img.substr(8));
@@ -534,7 +308,7 @@ function TagsText(text) {
     let e_arrm = [];
     let e_arrm_mm = [];
 
-    if (frames[1].info.array) {
+    if (false) {
         frames[1].info.array.forEach(function (v) {
             v.array_filling.forEach((s) => {
                 let _i = storage.m.find((d) => d.img === s.img.substr(8));
@@ -570,7 +344,7 @@ function TagsText(text) {
     let p_arrm = [];
     let p_arrm_mm = [];
 
-    if (frames[2].info.array) {
+    if (false) {
         frames[2].info.array.forEach(function (v) {
             v.array_filling.forEach((s) => {
                 let _i = storage.m.find((d) => d.img === s.img.substr(8));
@@ -606,7 +380,7 @@ function TagsText(text) {
 
     // тег матереала с индексом и мм
     let strMimm = text.match(/#Matireals\[\d\]\[mm\]/g);
-    if (strMimm) {
+    if (false) {
         strMimm.forEach((v) => {
             text = text.replace(v, _arrm_mm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
@@ -614,14 +388,14 @@ function TagsText(text) {
 
     // тег матереала с индексом без мм
     let strMi = text.match(/#Matireals\[\d\]/g);
-    if (strMi) {
+    if (false) {
         strMi.forEach((v) => {
             text = text.replace(v, _arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
     }
     // тег матереала с индексом и мм
     strMimm = text.match(/#EconomMatireals\[\d\]\[mm\]/g);
-    if (strMimm) {
+    if (false) {
         strMimm.forEach((v) => {
             text = text.replace(v, e_arrm_mm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
@@ -629,14 +403,14 @@ function TagsText(text) {
 
     // тег матереала с индексом без мм
     strMi = text.match(/#EconomMatireals\[\d\]/g);
-    if (strMi) {
+    if (false) {
         strMi.forEach((v) => {
             text = text.replace(v, e_arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1] ? e_arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1] : ' ');
         });
     }
     // тег матереала с индексом и мм
     strMimm = text.match(/#PremiumMatireals\[\d\]\[mm\]/g);
-    if (strMimm) {
+    if (false) {
         strMimm.forEach((v) => {
             text = text.replace(v, p_arrm_mm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
@@ -644,14 +418,14 @@ function TagsText(text) {
 
     // тег матереала с индексом без мм
     strMi = text.match(/#PremiumMatireals\[\d\]/g);
-    if (strMi) {
+    if (false) {
         strMi.forEach((v) => {
             text = text.replace(v, p_arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
     }
 
-    text = text.replace(/#MatirealsPriceP/g, Math.round(parseInt(frames[0].$('#Pnap').text()) * 1.5 * 1.3 * 1.1));
-    text = text.replace(/#MatirealsPrice/g, frames[0].$('#Pnap').text());
+    text = text.replace(/#MatirealsPriceP/g, Math.round(parseInt($('#Pnap').text()) * 1.5 * 1.3 * 1.1));
+    text = text.replace(/#MatirealsPrice/g, $('#Pnap').text());
     text = text.replace(/#Matireals\[mm]/g, strM_mm);
     text = text.replace(/#Matireals/g, strM);
     text = text.replace(/#EconomMatireals\[mm]/g, e_strM_mm);
@@ -659,20 +433,20 @@ function TagsText(text) {
     text = text.replace(/#PremiumMatireals\[mm]/g, p_strM_mm);
     text = text.replace(/#PremiumMatireals/g, p_strM);
     text = text.replace(/#name/g, $('#namek').val());
-    text = text.replace(/#w/g, States.TopWidth);
-    text = text.replace(/#h/g, States.TopHeight);
-    text = text.replace(/#s/g, (States.TopWidth / 1000) * (States.TopHeight / 1000));
-    text = text.replace(/#pm/g, States.TopCountMovePoloten);
-    text = text.replace(/#p/g, States.TopCountPoloten);
-    text = text.replace(/#type/g, getTypeKonst(frames[0].$('#TYPE_BAFFLE_ID').val()));
+    text = text.replace(/#w/g, info.width);
+    text = text.replace(/#h/g, info.height);
+    text = text.replace(/#s/g, (info.width / 1000) * (info.height / 1000));
+    text = text.replace(/#pm/g, info.count);
+    text = text.replace(/#p/g, info.countMove);
+    text = text.replace(/#type/g, $('#TYPE_BAFFLE_ID').val());
     text = text.replace(/#EconomPrice/g, $('*[data-slider-id="2"]').find('.price span').text());
     text = text.replace(/#OptimalPrice/g, $('*[data-slider-id="1"]').find('.price span').text());
     text = text.replace(/#FyllPrice/g, $('*[data-slider-id="3"]').find('.price span').text());
-    text = text.replace(/#EconomFurn/g, frames[1].$('.manufacturer').val() === "Производитель" ? '' : frames[1].$('.manufacturer').val());
-    text = text.replace(/#OptimalFurn/g, frames[0].$('.manufacturer').val() === "Производитель" ? '' : frames[0].$('.manufacturer').val());
-    text = text.replace(/#FyllFurn/g, frames[2].$('.manufacturer').val() === "Производитель" ? '' : frames[2].$('.manufacturer').val());
+    text = text.replace(/#EconomFurn/g, frames[1].$('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
+    text = text.replace(/#OptimalFurn/g, frames[0].$('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
+    text = text.replace(/#FyllFurn/g, frames[2].$('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
 
-    let detorid = parseInt(frames[0].$('#pokraskaTypeAndName').val());
+    let detorid = parseInt($('#pokraskaTypeAndName').val());
     if (detorid) {
         let _i = storage.d.find((v) => v.id === detorid);
         if (_i) {
@@ -694,7 +468,7 @@ function TagsText(text) {
     }
 
     //Тег профиль мм
-    if (frames[1].info.array) {
+    if (false) {
         let _arr = [];
         frames[1].info.array.forEach((v) => {
             let i = _arr.find((s) => s === v.profile);
@@ -712,7 +486,7 @@ function TagsText(text) {
 
         text = text.replace(/#EconomProfile\[mm]/g, profile);
     }
-    if (frames[1].info.array) {
+    if (false) {
         let _arr = [];
         frames[1].info.array.forEach((v) => {
             let i = _arr.find((s) => s === v.profile);
@@ -728,7 +502,7 @@ function TagsText(text) {
         text = text.replace(/#EconomProfile/g, profile);
     }
     //Тег профиль мм
-    if (frames[2].info.array) {
+    if (false) {
         let _arr = [];
         frames[2].info.array.forEach((v) => {
             let i = _arr.find((s) => s === v.profile);
@@ -746,7 +520,7 @@ function TagsText(text) {
 
         text = text.replace(/#PremiumProfile\[mm]/g, profile);
     }
-    if (frames[2].info.array) {
+    if (false) {
         let _arr = [];
         frames[2].info.array.forEach((v) => {
             let i = _arr.find((s) => s === v.profile);
@@ -763,7 +537,7 @@ function TagsText(text) {
     }
 
     //Тег профиль мм
-    if (frames[0].info.array) {
+    if (false) {
         let _arr = [];
         frames[0].info.array.forEach((v) => {
             let i = _arr.find((s) => s === v.profile);
@@ -781,7 +555,7 @@ function TagsText(text) {
 
         text = text.replace(/#Profile\[mm]/g, profile);
     }
-    if (frames[0].info.array) {
+    if (false) {
         let _arr = [];
         frames[0].info.array.forEach((v) => {
             let i = _arr.find((s) => s === v.profile);

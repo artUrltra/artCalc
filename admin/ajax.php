@@ -755,3 +755,6 @@ if (isset($_GET['extmid'])) {
 if (isset($_GET['editexpmat'])) {
     $DB->query_no_var(" UPDATE expmat SET name ='{$_POST['n']}',img='{$_POST['i']}',price={$_POST['p']} WHERE id={$_POST['d']}");
 }
+if (isset($_GET['profil_h'])) {
+    echo json_encode($DB->query('SELECT *FROM profil_h'));
+}
