@@ -124,6 +124,11 @@ tinymce.init({
                     onclick: function () {
                         editor.insertContent('&nbsp;#FyllFurn&nbsp;')
                     }
+                }, {
+                    text: 'Номер КП',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#CP&nbsp;')
+                    }
                 }]
         });
     },

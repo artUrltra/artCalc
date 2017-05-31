@@ -63,6 +63,7 @@ let save = {
                     vyisota: $(this).find('.tab-napolnenie-vyisota').val(),
                     shirina: $(this).find('.tab-napolnenie-shirina').val(),
                     tolschina: ParserIntAndNan($(this).find('.napolnenie-el-tolschina [value=' + $(this).find('.napolnenie-el-tolschina').val() + ']').text()),
+                    tolschina1: $(this).find('.napolnenie-el-tolschina').val(),
                     kollichestvo: $(this).find('.tab-napolnenie-kollichestvo').val(),
                     img: $(this).find('#open-material-img').attr('src'),
                     ploschad: $(this).find('.tab-napolnenie-ploschad').text(),
@@ -236,7 +237,7 @@ let save = {
                 $material = $('.napolnenie-el:eq(' + index + ')');
                 $material.find('.tab-napolnenie-vyisota').val(v.vyisota);
                 $material.find('.tab-napolnenie-shirina').val(v.shirina);
-                $material.find('.napolnenie-el-tolschina').val(v.tolschina);
+                $material.find('.napolnenie-el-tolschina').val(v.tolschina1);
                 $material.find('.tab-napolnenie-kollichestvo').val(v.kollichestvo);
                 $material.find('.tab-napolnenie-ploschad').text(v.ploschad);
                 $material.find('.tab-napolnenie-price').text(v.price);

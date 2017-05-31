@@ -18,11 +18,7 @@ var nfurnitura = {
             nfurnitura.viewTotalFurnitura();
         });
         $("#furnitura-tab").on('click', '#stoiki-stac-select .addonImg', function () {
-            if (!isNaN(parseInt($("#TOTAL_PAINTING_ID").val()))) {
                 nfurnitura.openModalStac("StoikiStac");
-            } else {
-                parent.message("Укажите количество полотен!");
-            }
         });
         $("#furnitura-tab").on('click', '#razdvizhnyie-mehanizmyi-select .addonImg', function () {
             if (!isNaN(parseInt($("#TOTAL_PAINTING_ID").val()))) {
@@ -32,18 +28,10 @@ var nfurnitura = {
             }
         });
         $("#furnitura-tab").on('click', '#mehanizm-sinhronizacii-select .addonImg', function () {
-            if (getFromData("furnitura-razdvizh-mehanizm") !== "" || !isNaN(getFromData("furnitura-razdvizh-mehanizm"))) {
                 nfurnitura.openModalRadvizh("mehanizmsinhronizacii");
-            } else {
-                parent.message("Выберите раздвижной механизм!");
-            }
         });
         $("#furnitura-tab").on('click', '#mehanizm-teleskop-select .addonImg', function () {
-            if (getFromData("furnitura-razdvizh-mehanizm") !== "" || !isNaN(getFromData("furnitura-razdvizh-mehanizm"))) {
                 nfurnitura.openModalRadvizh("telestop");
-            } else {
-                parent.message("Выберите раздвижной механизм!");
-            }
         });
         $("#furnitura-tab").on('click', '#naprav-select .addonImg', function () {
             nfurnitura.openModalRadvizh("naprav");
@@ -84,32 +72,16 @@ var nfurnitura = {
             nfurnitura.openModalSkladnie("mehanizmrotornii");
         });
         $("#furnitura-tab").on('click', '#petli-skladnie .addonImg', function () {
-            if (getFromData("furnitura-skladnoi-mehanizm") !== "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
-                nfurnitura.openModalSkladnie("petliskladnie");
-            } else {
-                parent.message("Выберите синхронный механизм!");
-            }
+            nfurnitura.openModalSkladnie("petliskladnie");
         });
         $("#furnitura-tab").on('click', '#napravlyayuschie-skladnie .addonImg', function () {
-            if (getFromData("furnitura-skladnoi-mehanizm") !== "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
-                nfurnitura.openModalSkladnie("napravlyayuschieskladnie");
-            } else {
-                parent.message("Выберите синхронный механизм!");
-            }
+            nfurnitura.openModalSkladnie("napravlyayuschieskladnie");
         });
         $("#furnitura-tab").on('click', '#napravlyayuschien-skladnie .addonImg', function () {
-            if (getFromData("furnitura-skladnoi-mehanizm") !== "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
                 nfurnitura.openModalSkladnie("napravlyayuschienskladnie");
-            } else {
-                parent.message("Выберите синхронный механизм!");
-            }
         });
         $("#furnitura-tab").on('click', '#vid-krepleniya-napravlyayuschih-skladnie .addonImg', function () {
-            if (getFromData("furnitura-skladnoi-mehanizm") !== "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
                 nfurnitura.openModalSkladnie("vidkrepleniyanapravlyayuschihskladnie");
-            } else {
-                parent.message("Выберите синхронный механизм!");
-            }
         });
         $("#furnitura-tab").on('click', '#dek-planka-dlya-profilya-skladnie .addonImg', function () {
             nfurnitura.openModalSkladnie("dekplankadlyaprofilyaskladnie");

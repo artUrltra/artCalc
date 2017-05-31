@@ -215,28 +215,25 @@ function getTypeKonst(id) {
 function TagsText(text) {
     //тег профиль с индексом и мм
     let strProfilemm = text.match(/#Profile\[\d\]\[mm\]/g);
-    if (false) {
+    if (strProfilemm) {
         strProfilemm.forEach((v) => {
-            let nameProfil = frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile
-            let p = storage.p.find((v) => v.name === nameProfil);
+            let p = storage.p.find((v) => v.id === save.optimal.p.i);
             let profile = p.name + ' ' + p.model + 'x' + p.int + ' мм.';
             text = text.replace(v, profile);
         });
     }
-
     // тег профиль с индексом без мм
     let strProfile = text.match(/#Profile\[\d\]/g);
-    if (false) {
+    if (strProfile) {
         strProfile.forEach((v) => {
-            text = text.replace(v, frames[0].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
+            text = text.replace(v, save.optimal.p.n)
         });
     }
     //тег профиль с индексом и мм
     let strEconomProfilemm = text.match(/#EconomProfile\[\d\]\[mm\]/g);
-    if (false) {
+    if (strEconomProfilemm) {
         strEconomProfilemm.forEach((v) => {
-            let nameProfil = frames[1].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile
-            let p = storage.p.find((v) => v.name === nameProfil);
+            let p = storage.p.find((v) => v.id === save.econom.p.i);
             let profile = p.name + ' ' + p.model + 'x' + p.int + ' мм.';
             text = text.replace(v, profile);
         });
@@ -244,17 +241,16 @@ function TagsText(text) {
 
     // тег профиль с индексом без мм
     let strEconomProfile = text.match(/#EconomProfile\[\d\]/g);
-    if (false) {
+    if (strEconomProfile) {
         strEconomProfile.forEach((v) => {
-            text = text.replace(v, frames[1].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
+            text = text.replace(v, save.econom.p.n)
         });
     }
     //тег профиль с индексом и мм
     let strPremiumProfilemm = text.match(/#PremiumProfile\[\d\]\[mm\]/g);
-    if (false) {
+    if (strPremiumProfilemm) {
         strPremiumProfilemm.forEach((v) => {
-            let nameProfil = frames[2].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile
-            let p = storage.p.find((v) => v.name === nameProfil);
+            let p = storage.p.find((v) => v.id === save.premium.p.i);
             let profile = p.name + ' ' + p.model + 'x' + p.int + ' мм.';
             text = text.replace(v, profile);
         });
@@ -262,9 +258,9 @@ function TagsText(text) {
 
     // тег профиль с индексом без мм
     let strPremiumProfile = text.match(/#PremiumProfile\[\d\]/g);
-    if (false) {
+    if (strPremiumProfile) {
         strPremiumProfile.forEach((v) => {
-            text = text.replace(v, frames[2].info.array[ParserIntAndNan(v.match(/\d/)[0]) - 1].profile)
+            text = text.replace(v, save.premium.p.n);
         });
     }
 
@@ -272,29 +268,28 @@ function TagsText(text) {
     let _arrm = [];
     let _arrm_mm = [];
 
-    if (false) {
-        frames[0].info.array.forEach(function (v) {
-            v.array_filling.forEach((s) => {
-                let _i = storage.m.find((d) => d.img === s.img.substr(8));
-                let _c = _i.price.split(';').findIndex((_b) => _b === s.tolschina);
-                let t = _i.thickness.split(';')[_c];
+    if (save.optimal.m) {
+        save.optimal.m.forEach(function (s) {
+            let _i = storage.m.find((d) => d.img === s.img.substr(8));
+            let _c = _i.price.split(';').findIndex((_b) => _b === s.tolschina);
+            let t = _i.thickness.split(';')[_c];
 
-                let srtm_mm, srtm;
-                if (s.zk) {
-                    srtm_mm = _i.name + ' закаленное ' + t + 'мм.';
-                    srtm = _i.name + ' закаленное';
-                } else {
-                    srtm_mm = _i.name + ' ' + t + 'мм.';
-                    srtm = _i.name;
-                }
-                if (!_arrm_mm.find((_d) => _d === srtm_mm)) {
-                    _arrm_mm.push(srtm_mm);
-                }
-                if (!_arrm.find((_d) => _d === srtm)) {
-                    _arrm.push(srtm);
-                }
-            });
+            let srtm_mm, srtm;
+            if (s.zk) {
+                srtm_mm = _i.name + ' закаленное ' + t + 'мм.';
+                srtm = _i.name + ' закаленное';
+            } else {
+                srtm_mm = _i.name + ' ' + t + 'мм.';
+                srtm = _i.name;
+            }
+            if (!_arrm_mm.find((_d) => _d === srtm_mm)) {
+                _arrm_mm.push(srtm_mm);
+            }
+            if (!_arrm.find((_d) => _d === srtm)) {
+                _arrm.push(srtm);
+            }
         });
+
     }
     let strM = '';
     _arrm.forEach((f) => {
@@ -308,28 +303,26 @@ function TagsText(text) {
     let e_arrm = [];
     let e_arrm_mm = [];
 
-    if (false) {
-        frames[1].info.array.forEach(function (v) {
-            v.array_filling.forEach((s) => {
-                let _i = storage.m.find((d) => d.img === s.img.substr(8));
-                let _c = _i.price.split(';').findIndex((_b) => _b === s.tolschina);
-                let t = _i.thickness.split(';')[_c];
+    if (save.econom.m) {
+        save.econom.m.forEach(function (s) {
+            let _i = storage.m.find((d) => d.img === s.img.substr(8));
+            let _c = _i.price.split(';').findIndex((_b) => _b === s.tolschina);
+            let t = _i.thickness.split(';')[_c];
 
-                let srtm_mm, srtm;
-                if (s.zk) {
-                    srtm_mm = _i.name + ' закаленное ' + t + 'мм.';
-                    srtm = _i.name + ' закаленное';
-                } else {
-                    srtm_mm = _i.name + ' ' + t + 'мм.';
-                    srtm = _i.name;
-                }
-                if (!e_arrm_mm.find((_d) => _d === srtm_mm)) {
-                    e_arrm_mm.push(srtm_mm);
-                }
-                if (!e_arrm.find((_d) => _d === srtm)) {
-                    e_arrm.push(srtm);
-                }
-            });
+            let srtm_mm, srtm;
+            if (s.zk) {
+                srtm_mm = _i.name + ' закаленное ' + t + 'мм.';
+                srtm = _i.name + ' закаленное';
+            } else {
+                srtm_mm = _i.name + ' ' + t + 'мм.';
+                srtm = _i.name;
+            }
+            if (!e_arrm_mm.find((_d) => _d === srtm_mm)) {
+                e_arrm_mm.push(srtm_mm);
+            }
+            if (!e_arrm.find((_d) => _d === srtm)) {
+                e_arrm.push(srtm);
+            }
         });
     }
     let e_strM = '';
@@ -344,28 +337,26 @@ function TagsText(text) {
     let p_arrm = [];
     let p_arrm_mm = [];
 
-    if (false) {
-        frames[2].info.array.forEach(function (v) {
-            v.array_filling.forEach((s) => {
-                let _i = storage.m.find((d) => d.img === s.img.substr(8));
-                let _c = _i.price.split(';').findIndex((_b) => _b === s.tolschina);
-                let t = _i.thickness.split(';')[_c];
+    if (save.premium.m) {
+        save.premium.m.forEach(function (s) {
+            let _i = storage.m.find((d) => d.img === s.img.substr(8));
+            let _c = _i.price.split(';').findIndex((_b) => _b === s.tolschina);
+            let t = _i.thickness.split(';')[_c];
 
-                let srtm_mm, srtm;
-                if (s.zk) {
-                    srtm_mm = _i.name + ' закаленное ' + t + 'мм.';
-                    srtm = _i.name + ' закаленное';
-                } else {
-                    srtm_mm = _i.name + ' ' + t + 'мм.';
-                    srtm = _i.name;
-                }
-                if (!p_arrm_mm.find((_d) => _d === srtm_mm)) {
-                    p_arrm_mm.push(srtm_mm);
-                }
-                if (!p_arrm.find((_d) => _d === srtm)) {
-                    p_arrm.push(srtm);
-                }
-            });
+            let srtm_mm, srtm;
+            if (s.zk) {
+                srtm_mm = _i.name + ' закаленное ' + t + 'мм.';
+                srtm = _i.name + ' закаленное';
+            } else {
+                srtm_mm = _i.name + ' ' + t + 'мм.';
+                srtm = _i.name;
+            }
+            if (!p_arrm_mm.find((_d) => _d === srtm_mm)) {
+                p_arrm_mm.push(srtm_mm);
+            }
+            if (!p_arrm.find((_d) => _d === srtm)) {
+                p_arrm.push(srtm);
+            }
         });
     }
     let p_strM = '';
@@ -378,47 +369,47 @@ function TagsText(text) {
         p_strM_mm += f + ' ';
     });
 
-    // тег матереала с индексом и мм
+// тег матереала с индексом и мм
     let strMimm = text.match(/#Matireals\[\d\]\[mm\]/g);
-    if (false) {
+    if (strMimm) {
         strMimm.forEach((v) => {
             text = text.replace(v, _arrm_mm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
     }
 
-    // тег матереала с индексом без мм
+// тег матереала с индексом без мм
     let strMi = text.match(/#Matireals\[\d\]/g);
-    if (false) {
+    if (strMi) {
         strMi.forEach((v) => {
             text = text.replace(v, _arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
     }
-    // тег матереала с индексом и мм
+// тег матереала с индексом и мм
     strMimm = text.match(/#EconomMatireals\[\d\]\[mm\]/g);
-    if (false) {
+    if (strMimm) {
         strMimm.forEach((v) => {
             text = text.replace(v, e_arrm_mm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
     }
 
-    // тег матереала с индексом без мм
+// тег матереала с индексом без мм
     strMi = text.match(/#EconomMatireals\[\d\]/g);
-    if (false) {
+    if (strMi) {
         strMi.forEach((v) => {
             text = text.replace(v, e_arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1] ? e_arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1] : ' ');
         });
     }
-    // тег матереала с индексом и мм
+// тег матереала с индексом и мм
     strMimm = text.match(/#PremiumMatireals\[\d\]\[mm\]/g);
-    if (false) {
+    if (strMimm) {
         strMimm.forEach((v) => {
             text = text.replace(v, p_arrm_mm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
     }
 
-    // тег матереала с индексом без мм
+// тег матереала с индексом без мм
     strMi = text.match(/#PremiumMatireals\[\d\]/g);
-    if (false) {
+    if (strMi) {
         strMi.forEach((v) => {
             text = text.replace(v, p_arrm[ParserIntAndNan(v.match(/\d/)[0]) - 1]);
         });
@@ -439,12 +430,13 @@ function TagsText(text) {
     text = text.replace(/#pm/g, info.count);
     text = text.replace(/#p/g, info.countMove);
     text = text.replace(/#type/g, $('#TYPE_BAFFLE_ID').val());
-    text = text.replace(/#EconomPrice/g, $('*[data-slider-id="2"]').find('.price span').text());
-    text = text.replace(/#OptimalPrice/g, $('*[data-slider-id="1"]').find('.price span').text());
-    text = text.replace(/#FyllPrice/g, $('*[data-slider-id="3"]').find('.price span').text());
-    text = text.replace(/#EconomFurn/g, frames[1].$('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
-    text = text.replace(/#OptimalFurn/g, frames[0].$('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
-    text = text.replace(/#FyllFurn/g, frames[2].$('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
+    text = text.replace(/#EconomPrice/g, ParserIntAndNan($('.slider-container .price:eq(0)').text()));
+    text = text.replace(/#OptimalPrice/g, ParserIntAndNan($('.slider-container .price:eq(1)').text()));
+    text = text.replace(/#FyllPrice/g, ParserIntAndNan($('.slider-container .price:eq(2)').text()));
+    text = text.replace(/#EconomFurn/g, $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
+    text = text.replace(/#OptimalFurn/g, $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
+    text = text.replace(/#FyllFurn/g, $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
+    text = text.replace(/#CP/g, $('#orderNumber').val() ? $('#orderNumber').val() : '');
 
     let detorid = parseInt($('#pokraskaTypeAndName').val());
     if (detorid) {
@@ -467,111 +459,34 @@ function TagsText(text) {
         }
     }
 
-    //Тег профиль мм
-    if (false) {
-        let _arr = [];
-        frames[1].info.array.forEach((v) => {
-            let i = _arr.find((s) => s === v.profile);
-            if (!i) {
-                _arr.push(v.profile);
-            }
-        });
-        console.log(_arr);
-        let profile = '';
-        _arr.forEach((s) => {
-            let p = storage.p.find((v) => v.name === s);
-            if (p)
-                profile += p.name + ' ' + p.model + 'x' + p.int + ' мм.';
-        });
-
-        text = text.replace(/#EconomProfile\[mm]/g, profile);
+//Тег профиль мм
+    if (save.econom.p) {
+        let p = storage.p.find((v) => v.name === save.econom.p.n);
+        if (p)
+            text = text.replace(/#EconomProfile\[mm]/g, p.name + ' ' + p.model + 'x' + p.int + ' мм.');
     }
-    if (false) {
-        let _arr = [];
-        frames[1].info.array.forEach((v) => {
-            let i = _arr.find((s) => s === v.profile);
-            if (!i) {
-                _arr.push(v.profile);
-            }
-        });
-        let profile = '';
-        _arr.forEach((s) => {
-            profile += s + '\t';
-        });
-
-        text = text.replace(/#EconomProfile/g, profile);
+    if (save.econom.p) {
+        text = text.replace(/#EconomProfile/g, save.econom.p.name);
     }
-    //Тег профиль мм
-    if (false) {
-        let _arr = [];
-        frames[2].info.array.forEach((v) => {
-            let i = _arr.find((s) => s === v.profile);
-            if (!i) {
-                _arr.push(v.profile);
-            }
-        });
-        console.log(_arr);
-        let profile = '';
-        _arr.forEach((s) => {
-            let p = storage.p.find((v) => v.name === s);
-            if (p)
-                profile += p.name + ' ' + p.model + 'x' + p.int + ' мм.';
-        });
-
-        text = text.replace(/#PremiumProfile\[mm]/g, profile);
+//Тег профиль мм
+    if (save.premium.p) {
+        let p = storage.p.find((v) => v.name === save.premium.p.n);
+        if (p)
+            text = text.replace(/#PremiumProfile\[mm]/g, p.name + ' ' + p.model + 'x' + p.int + ' мм.');
     }
-    if (false) {
-        let _arr = [];
-        frames[2].info.array.forEach((v) => {
-            let i = _arr.find((s) => s === v.profile);
-            if (!i) {
-                _arr.push(v.profile);
-            }
-        });
-        let profile = '';
-        _arr.forEach((s) => {
-            profile += s + '\t';
-        });
-
-        text = text.replace(/#PremiumProfile/g, profile);
+    if (save.premium.p) {
+        text = text.replace(/#PremiumProfile/g, save.premium.p.n);
     }
 
-    //Тег профиль мм
-    if (false) {
-        let _arr = [];
-        frames[0].info.array.forEach((v) => {
-            let i = _arr.find((s) => s === v.profile);
-            if (!i) {
-                _arr.push(v.profile);
-            }
-        });
-        console.log(_arr);
-        let profile = '';
-        _arr.forEach((s) => {
-            let p = storage.p.find((v) => v.name === s);
-            if (p)
-                profile += p.name + ' ' + p.model + 'x' + p.int + ' мм.';
-        });
-
-        text = text.replace(/#Profile\[mm]/g, profile);
+//Тег профиль мм
+    if (save.optimal.p) {
+        let p = storage.p.find((v) => v.name === save.optimal.p.n);
+        if (p)
+            text = text.replace(/#Profile\[mm]/g, p.name + ' ' + p.model + 'x' + p.int + ' мм.');
     }
-    if (false) {
-        let _arr = [];
-        frames[0].info.array.forEach((v) => {
-            let i = _arr.find((s) => s === v.profile);
-            if (!i) {
-                _arr.push(v.profile);
-            }
-        });
-        let profile = '';
-        _arr.forEach((s) => {
-            profile += s + '\t';
-        });
-
-        text = text.replace(/#Profile/g, profile);
+    if (save.optimal.p) {
+        text = text.replace(/#Profile/g, save.optimal.p.n);
     }
-
-
     return text;
 }
 $('#orderNumber').on('keyup', function () {

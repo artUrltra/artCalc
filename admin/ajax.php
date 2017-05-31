@@ -208,9 +208,8 @@ if (isset($_GET['add'])) {
             $DB->query_no_var("UPDATE `categorymaterials` SET `name` = '{$_POST['name']}' WHERE `categorymaterials`.`id` = {$_POST['id']}");
             break;
         case 'add12':
-            $DB->query_no_var("INSERT INTO formula (`id`, `name`,formula) VALUES (NULL, '{$_POST['name']}', '{$_POST['formula']}')");
-            $item = $DB->query("SELECT * FROM formula WHERE `name` = '{$_POST['name']}'");
-            echo json_encode($item);
+            $DB->query_no_var("INSERT INTO formula (`id`, `name`,formula,type) VALUES (NULL, '{$_POST['name']}', '{$_POST['formula']}', '{$_POST['type']}')");
+            var_dump($_POST);
             break;
         case 'add13':
             $DB->query_no_var("INSERT INTO SupplementsM (`id`, `name`,type,typeprice,flag) VALUES (NULL, '{$_POST['name']}', '{$_POST['type']}', '{$_POST['typeprice']}', '{$_POST['flag']}')");
@@ -232,7 +231,7 @@ if (isset($_GET['add'])) {
             echo 'Добавлено';
 
             break;
-        case addmanufacturer: {
+        case 'addmanufacturer': {
             $sql = "INSERT INTO manufacturer (id,name) VALUES (NULL ,'{$_POST['name']}')";
             $DB->query_no_var($sql);
             echo $sql;

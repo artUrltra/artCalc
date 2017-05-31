@@ -95,8 +95,8 @@ var catalogs = {
         },
         hide_show: function () {
             if (this.flag) {
+                $.material.init();
                 $('.catalogs').show(100);
-
                 catalogs.flag = false;
             } else {
                 $('.catalogs').hide(100);

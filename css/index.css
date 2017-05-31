@@ -1590,4 +1590,6 @@ body .next-line {
     float: right;
 }
 
-/* Испраление наполнение*/
+label > span:nth-child(3) {
+    display: none !important;
+}

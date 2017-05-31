@@ -21,45 +21,47 @@
 </head>
 <body>
 <!--Top block-->
-<div class="container top-block top-block-s1 bc-000141">
-    <div class="col-xs-7 col-sm-3 col-md-3 col-lg-3">
-        <select id="TYPE_BAFFLE_ID" class="vi-textColor-darkGray">
-            <option value="0">Стационарная</option>
-            <option value="1">Раздвижная перегородка</option>
-            <option value="2">Складная перегородка</option>
-            <option value="3">Распашная дверь</option>
-            <option value="4">Мобильная перегородка</option>
-        </select>
+<div id="hederBlock" style="position: relative !important;z-index: 1000; top: 0px">
+    <div class="container top-block top-block-s1 bc-000141">
+        <div class="col-xs-7 col-sm-3 col-md-3 col-lg-3">
+            <select id="TYPE_BAFFLE_ID" class="vi-textColor-darkGray">
+                <option value="0">Стационарная</option>
+                <option value="1">Раздвижная перегородка</option>
+                <option value="2">Складная перегородка</option>
+                <option value="3">Распашная дверь</option>
+                <option value="4">Мобильная перегородка</option>
+            </select>
+        </div>
+        <div class="col-xs-offset-0 col-sm-offset-7 col-md-offset-8 col-lg-offset-8 col-xs-5 col-sm-2 col-md-1 col-lg-1 text-right">
+            <h3><span id="AREA_ID">0</span>кв/м</h3>
+        </div>
     </div>
-    <div class="col-xs-offset-0 col-sm-offset-7 col-md-offset-8 col-lg-offset-8 col-xs-5 col-sm-2 col-md-1 col-lg-1 text-right">
-        <h3><span id="AREA_ID">0</span>кв/м</h3>
-    </div>
-</div>
-<div class="container top-block top-block-s2 bc-b6b6b6">
-    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 border-right polovinchtaya-stvorka display-none">
-        <h3>Половинчатая створка</h3>
-        <input type="text" size="1" disabled="disabled" id="POLOVINCHATAYA_KOL">
-        <h3 class="visible-lg">шт.</h3>
-    </div>
-    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 border-right text-center">
-        <h3>Высота:</h3>
-        <input id="HIGHT_SETS_ID" type="text" maxlength="4" size="4">
-        <h3 class="visible-lg">.мм</h3>
-    </div>
-    <div class="col-xs-12 col-sm-2 col-md-2 col-md-2 border-right text-center">
-        <h3>Ширина:</h3>
-        <input id="WIDTH_SETS_ID" type="text" maxlength="4" size="4">
-        <h3 class="visible-lg">.мм</h3>
-    </div>
-    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 border-right text-center">
-        <h3>Всего <span class="visible-lg">полотен</span>:</h3>
-        <input id="TOTAL_PAINTING_ID" type="text" maxlength="1" size="1">
-        <h3 class="visible-lg">шт.</h3>
-    </div>
-    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 border-right text-center">
-        <h3>Подвижныx:</h3>
-        <input id="MOVABLE_PAINTING_ID" type="text" maxlength="1" size="1">
-        <h3 class="visible-lg">шт.</h3>
+    <div class="container top-block top-block-s2 bc-b6b6b6">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 border-right polovinchtaya-stvorka display-none">
+            <h3>Половинчатая створка</h3>
+            <input type="text" size="1" disabled="disabled" id="POLOVINCHATAYA_KOL">
+            <h3 class="visible-lg">шт.</h3>
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 border-right text-center">
+            <h3>Высота:</h3>
+            <input id="HIGHT_SETS_ID" type="text" maxlength="4" size="4">
+            <h3 class="visible-lg">.мм</h3>
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-md-2 border-right text-center">
+            <h3>Ширина:</h3>
+            <input id="WIDTH_SETS_ID" type="text" maxlength="4" size="4">
+            <h3 class="visible-lg">.мм</h3>
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 border-right text-center">
+            <h3>Всего <span class="visible-lg">полотен</span>:</h3>
+            <input id="TOTAL_PAINTING_ID" type="text" maxlength="1" size="1">
+            <h3 class="visible-lg">шт.</h3>
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 border-right text-center">
+            <h3>Подвижныx:</h3>
+            <input id="MOVABLE_PAINTING_ID" type="text" maxlength="1" size="1">
+            <h3 class="visible-lg">шт.</h3>
+        </div>
     </div>
 </div>
 <!--Top block-->
@@ -124,7 +126,7 @@
             <li style="margin-bottom: -1px;" class="color555 active"><a href="#profil-tab">Профиль<i
                     aria-hidden="true" class="fa fa-arrow-right"></i></a></li>
             <li style="margin-bottom: -1px;" class="color555"><a href="#napolnenie-tab">Наполнение<i
-                    aria-hidden="true" class="fa fa-arrow-right"></i></a></li>
+                    aria-hidden="true" class ="fa fa-arrow-right"></i></a></li>
             <li id="top-furnitura-tab" style="margin-bottom: -1px;" class="color555"><a
                     href="#furnitura-tab">Фурнитура</a></li>
         </ul>

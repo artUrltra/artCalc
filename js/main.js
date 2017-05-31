@@ -290,7 +290,8 @@ let profiles = {
         let items = storage.profil_h.filter(v => v.id_profil === info.profileId).map(v => storage.PHW.find(s => s.id === v.id_h));
         let prof = storage.p.find(v => v.id === info.profileId);
         items.forEach(i => {
-            let p = Math.round((info.paintWidth - prof.model * 2) / 1000 * i.price * info.countProfileHeight);
+            let p = Math.round((info.paintHeight - prof.model * 2) / 1000 * i.price * info.countProfileWidth - i.width * info.countProfileWidth * info.countProfileHeight / 1000 * i.price);
+
             let resultHtml = '<div class="col-md-3 profil-select" style="display: inline-block;vertical-align: top;border: solid 1px black;height: 435px;" ng-controller="ngAppDemoController">' +
                 '<center> ' +
                 '<br> ' +
@@ -327,7 +328,7 @@ let profiles = {
         let items = storage.profil_h.filter(v => v.id_profil === info.profileId).map(v => storage.PHW.find(s => s.id === v.id_h));
         let prof = storage.p.find(v => v.id === info.profileId);
         items.forEach(i => {
-            let p = Math.round((info.paintHeight - prof.model * 2) / 1000 * i.price * info.countProfileWidth - i.width * info.countProfileWidth * info.countProfileHeight / 1000 * i.price);
+            let p = Math.round((info.paintWidth - prof.model * 2) / 1000 * i.price * info.countProfileHeight);
             let resultHtml = '<div class="col-md-3 profil-select" style="display: inline-block;vertical-align: top;border: solid 1px black;height: 435px;" ng-controller="ngAppDemoController">' +
                 '<center> ' +
                 '<br> ' +
@@ -642,7 +643,7 @@ let info = {
         }
     },
     footerRes(){
-        this.resPriceBez = ((this.priceResProf + this.additionResPrice + this.decorPrice+this.materialsResPrice) * this.count + this.furnituraResPrice) * info.kits;
+        this.resPriceBez = ((this.priceResProf + this.additionResPrice + this.materialsResPrice) * this.count + this.furnituraResPrice + this.decorPrice) * this.kits;
         $('.summaBezParametrov .price').text(this.resPriceBez);
         this.footerResFull();
     },
@@ -703,15 +704,15 @@ let info = {
         }
 
         let ph = storage.PHW.find(v => v.id === info.profileHeightId);
-        if (ph && this.countProfileHeight > 0) {
-            this.priceProfileHeight = Math.round((this.paintWidth - p.model * 2) / 1000 * ph.price * this.countProfileHeight);
-            $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(this.priceProfileHeight);
+        if (ph && this.countProfileWidth > -1) {
+            this.priceProfileHeight = Math.round((this.paintWidth - p.model * 2) / 1000 * ph.price * this.countProfileWidth);
+            $('#HORIZONTAL-PEREMOCHKI-PRICE').text(this.priceProfileHeight);
         }
 
         let pw = storage.PHW.find(v => v.id === info.profileWidthId);
-        if (pw && this.countProfileWidth > 0) {
-            this.priceProfileWidth = Math.round((this.paintHeight - p.model * 2) / 1000 * pw.price * this.countProfileWidth - pw.width * this.countProfileWidth * this.countProfileHeight / 1000 * pw.price);
-            $('#HORIZONTAL-PEREMOCHKI-PRICE').text(this.priceProfileWidth);
+        if (pw && this.countProfileHeight > -1) {
+            this.priceProfileWidth = Math.round((this.paintHeight - p.model * 2) / 1000 * pw.price * this.countProfileHeight - pw.width * this.countProfileWidth * this.countProfileHeight / 1000 * pw.price);
+            $('#VERTIKALNUE-PEREMOCHKI-PRICE').text(this.priceProfileWidth);
         }
 
         this.priceResProf = this.priceProfile + this.priceProfileHeight + this.priceProfileWidth;
@@ -1264,25 +1265,13 @@ let nfurnitura = {
             }
         });
         $("#furnitura-tab").on('click', '#razdvizhnyie-mehanizmyi-select .addonImg', function () {
-            if (!isNaN(parseInt($("#TOTAL_PAINTING_ID").val()))) {
-                nfurnitura.openModalRadvizh("RazdvizhnyieMehanizmyi");
-            } else {
-                message("Укажите количество полотен!");
-            }
+            nfurnitura.openModalRadvizh("RazdvizhnyieMehanizmyi");
         });
         $("#furnitura-tab").on('click', '#mehanizm-sinhronizacii-select .addonImg', function () {
-            if (getFromData("furnitura-razdvizh-mehanizm") !== "" || !isNaN(getFromData("furnitura-razdvizh-mehanizm"))) {
-                nfurnitura.openModalRadvizh("mehanizmsinhronizacii");
-            } else {
-                message("Выберите раздвижной механизм!");
-            }
+            nfurnitura.openModalRadvizh("mehanizmsinhronizacii");
         });
         $("#furnitura-tab").on('click', '#mehanizm-teleskop-select .addonImg', function () {
-            if (getFromData("furnitura-razdvizh-mehanizm") !== "" || !isNaN(getFromData("furnitura-razdvizh-mehanizm"))) {
-                nfurnitura.openModalRadvizh("telestop");
-            } else {
-                message("Выберите раздвижной механизм!");
-            }
+            nfurnitura.openModalRadvizh("telestop");
         });
         $("#furnitura-tab").on('click', '#naprav-select .addonImg', function () {
             nfurnitura.openModalRadvizh("naprav");
@@ -1306,12 +1295,7 @@ let nfurnitura = {
             nfurnitura.openModalRadvizh("schetochniiuplotnitel");
         });
         $("#furnitura-tab").on('click', '#ruchka-select .addonImg', function () {
-            let karkasName = getFromData("karkas-name");
-            if (karkasName == "Optima" || karkasName == "Optimax2" || karkasName == "Standart") {
-                nfurnitura.openModalRadvizh("ruchka");
-            } else {
-                message("Ручки для выбраных профилей нет!");
-            }
+            nfurnitura.openModalRadvizh("ruchka");
         });
         $("#furnitura-tab").on('click', '#zamok-select .addonImg', function () {
             nfurnitura.openModalRadvizh("zamok");
@@ -1323,32 +1307,16 @@ let nfurnitura = {
             nfurnitura.openModalSkladnie("mehanizmrotornii");
         });
         $("#furnitura-tab").on('click', '#petli-skladnie .addonImg', function () {
-            if (getFromData("furnitura-skladnoi-mehanizm") !== "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
-                nfurnitura.openModalSkladnie("petliskladnie");
-            } else {
-                message("Выберите синхронный механизм!");
-            }
+            nfurnitura.openModalSkladnie("petliskladnie");
         });
         $("#furnitura-tab").on('click', '#napravlyayuschie-skladnie .addonImg', function () {
-            if (getFromData("furnitura-skladnoi-mehanizm") !== "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
-                nfurnitura.openModalSkladnie("napravlyayuschieskladnie");
-            } else {
-                message("Выберите синхронный механизм!");
-            }
+            nfurnitura.openModalSkladnie("napravlyayuschieskladnie");
         });
         $("#furnitura-tab").on('click', '#napravlyayuschien-skladnie .addonImg', function () {
-            if (getFromData("furnitura-skladnoi-mehanizm") !== "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
-                nfurnitura.openModalSkladnie("napravlyayuschienskladnie");
-            } else {
-                message("Выберите синхронный механизм!");
-            }
+            nfurnitura.openModalSkladnie("napravlyayuschienskladnie");
         });
         $("#furnitura-tab").on('click', '#vid-krepleniya-napravlyayuschih-skladnie .addonImg', function () {
-            if (getFromData("furnitura-skladnoi-mehanizm") !== "" || !isNaN(getFromData("furnitura-skladnoi-mehanizm"))) {
-                nfurnitura.openModalSkladnie("vidkrepleniyanapravlyayuschihskladnie");
-            } else {
-                message("Выберите синхронный механизм!");
-            }
+            nfurnitura.openModalSkladnie("vidkrepleniyanapravlyayuschihskladnie");
         });
         $("#furnitura-tab").on('click', '#dek-planka-dlya-profilya-skladnie .addonImg', function () {
             nfurnitura.openModalSkladnie("dekplankadlyaprofilyaskladnie");
@@ -2495,13 +2463,30 @@ $('body').on('change', '.napolnenie-el #savehight', function () {
 $('.add-material-block-past').on('keyup change click mouseover', '.napolnenie-el', function () {
     nmaterials.ResSumm();
 });
+$('#furnitura-tab').on('keyup change', 'input:text', function () {
+    let $sum = $(this).parent().parent().parent().parent().find('.price');
+    console.log($(this).data('count'));
+    if ($(this).val() !== '' && $(this).val() !== '0') {
+        if ($(this).data('count')) {
+            let res = (ParserIntAndNan($sum.text()) / ParserIntAndNan($(this).data('count')) ) * ParserIntAndNan($(this).val());
+            console.log('1)' + res + ' ' + $sum.text() + ' ' + $(this).val());
+            $sum.text(res);
+        } else {
+            console.log('2');
+            $sum.text(ParserIntAndNan($sum.text()) * ParserIntAndNan($(this).val()));
+        }
+        $(this).data('count', $(this).val());
+    }
 
+});
 function delTiteltext() {
     document.getElementById('text_ifr').removeAttribute('title');
     $('body').off('mouseover', '.managerBtn', delTiteltext);
 }
 $('body').on('mouseover', '.managerBtn', delTiteltext);
-
+$(document).on("scroll", function () {
+    $('#hederBlock').css('top', window.pageYOffset);
+});
 $(document).ready(function () {
     storage.init();
     nmaterials.start();

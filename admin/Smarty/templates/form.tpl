@@ -50,6 +50,10 @@
                 </button>
             </div>
         </div>
+        <select id="flag" class="form-control">
+            <option>Поштучно</option>
+            <option>Погонные метры</option>
+        </select>
         <hr>
         <div class="input-group">
             <input type="text" class="form-control" id="form" placeholder="">
@@ -63,12 +67,14 @@
                 <thead>
                 <th>Название</th>
                 <th>Формула</th>
+                <th>Тип</th>
                 </thead>
                 <tbody>
-                {foreach $items as $item name=items}
+                {foreach $items as $item}
                     <tr id="{$item['id']}">
                         <td>{$item['name']}</td>
                         <td>{$item['formula']}</td>
+                        <td>{$item['type']}</td>
                         <td>
                             <button type="button" onclick="delete1({$item['id']})" class="btn btn-link "><span
                                         class="glyphicon glyphicon-remove"></span></button>
@@ -182,8 +188,8 @@
                 }
             }).autocomplete("instance")._renderItem = function (ul, item) {
                 return $("<li>")
-                        .append("<div>" + item.label + "<br>" + item.desc + "</div>")
-                        .appendTo(ul);
+                    .append("<div>" + item.label + "<br>" + item.desc + "</div>")
+                    .appendTo(ul);
             };
         });
 
@@ -259,43 +265,40 @@
         }
         ;
         $('#save_submit').on('click', function () {
-                    var index = 0;
-                    if ($("#save_name").val() == '') {
-                        $("#save_name").css("border-color", '#ff0000');
-                        index = 1;
-                    } else {
-                        $("#save_name").css("border-color", '#ccc');
+                var index = 0;
+                if ($("#save_name").val() == '') {
+                    $("#save_name").css("border-color", '#ff0000');
+                    index = 1;
+                } else {
+                    $("#save_name").css("border-color", '#ccc');
+                }
+                if ($("#save_formula").val() == '') {
+                    $("#save_formula").css("border-color", '#ff0000');
+                    index = 1;
+                } else {
+                    $("#save_formula").css("border-color", '#ccc');
+                }
+                switch (index) {
+                    case 0: {
+                        var data = {
+                            name: $("#save_name").val(),
+                            formula: $("#save_formula").val(),
+                            type: $("#flag").val()
+                        };
+                        $.post("../admin/ajax.php?add=add12", data, function (data) {
+                            location.reload();
+                        });
+                        $('#save_exit').click();
+                        $('#save_name').val('');
+                        $('#save_formula').val('');
+                        $('#str').val('');
+                        break;
                     }
-                    if ($("#save_formula").val() == '') {
-                        $("#save_formula").css("border-color", '#ff0000');
-                        index = 1;
-                    } else {
-                        $("#save_formula").css("border-color", '#ccc');
-                    }
-                    switch (index) {
-                        case 0: {
-                            $.post("../admin/ajax.php?add=add12", {
-                                name: $("#save_name").val(),
-                                formula: $("#save_formula").val()
-                            }, function (data) {
-                                var data = JSON.parse(data);
-                                $('tbody').append(" <tr id='" + data[0].id + "'>" +
-                                        "<td>" + data[0].name + "</td>" +
-                                        "<td>" + data[0].formula + "</td>" +
-                                        "<td><button type='button' onclick='delete1(" + data[0].id + ")' class='btn btn-link'><span class='glyphicon glyphicon-remove'></span></button></td>" +
-                                        "</tr>");
-                            });
-                            $('#save_exit').click();
-                            $('#save_name').val('');
-                            $('#save_formula').val('');
-                            $('#str').val('');
-                            break;
-                        }
-                        case 1: {
-                            alert('Пожалуйста заполните все поля');
-                        }
+                    case 1: {
+                        alert('Пожалуйста заполните все поля');
                     }
                 }
+            }
         );
 
     </script>

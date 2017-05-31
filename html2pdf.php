@@ -345,13 +345,13 @@ if ($ff) {
         $furnituraInfo[2] = array();
         $furnituraInfo[3] = array();
         for ($i = 0; $i < count($furnituraEl[0]); $i++) {
-            array_push($furnituraInfo[0], $dbl->query("SELECT * FROM furnitura INNER JOIN furnituracat WHERE furnitura.name LIKE '" . $furnituraEl[0][$i] . "' AND furnitura.cat = furnituracat.cid")->fetchArray(SQLITE3_ASSOC));
+            array_push($furnituraInfo[0], $dbl->query("SELECT * FROM furnitura INNER JOIN furnituracat ,formula WHERE furnitura.name LIKE '" . $furnituraEl[0][$i] . "' AND furnitura.cat = furnituracat.cid AND furnitura.formula = formula.name")->fetchArray(SQLITE3_ASSOC));
             array_push($furnituraInfo[1], $furnituraEl[1][$i] * ($per[0]->i / 100 + 1) * ($per[0]->p / 100 + 1) * 1.1);
         }
 
 
         for ($i = 0; $i < count($furnituraEl[2]); $i++) {
-            array_push($furnituraInfo[2], $dbl->query("SELECT * FROM furnitura INNER JOIN furnituracat WHERE furnitura.name LIKE '" . $furnituraEl[2][$i] . "' AND furnitura.cat = furnituracat.cid")->fetchArray(SQLITE3_ASSOC));
+            array_push($furnituraInfo[2], $dbl->query("SELECT * FROM furnitura INNER JOIN furnituracat,formula  WHERE furnitura.name LIKE '" . $furnituraEl[2][$i] . "' AND furnitura.cat = furnituracat.cid  AND furnitura.formula = formula.name")->fetchArray(SQLITE3_ASSOC));
             array_push($furnituraInfo[3], $furnituraEl[3][$i] * ($per[0]->i / 100 + 1) * ($per[0]->p / 100 + 1) * 1.1);
         }
         for ($i = 0; $i < count($arrF0); $i++) {
@@ -1464,7 +1464,7 @@ if ($ff) {
                             <?php
                             $count_array = 0;
                             for ($i = 2; $i < count($furnituraInfo[0]); $i++) {
-                                if ($i == 6) {
+                                if ($i === 6) {
                                 } else {
 
                                     if ($furnituraInfo[0][$i]["name"]) {
@@ -1484,10 +1484,18 @@ if ($ff) {
                                                                     style="height:50px;width:50px;"></p>
                                                         <p style="font-size:12px;margin-top:0px;margin-bottom:0px;text-align:center;"><?= $furnituraInfo[0][$i]["nameThree"] ?></p>
                                                         <p style="font-size:12px;margin-top:0px;margin-bottom:0px;text-align:center;"><?= $furnituraInfo[0][$i]["name"] ?></p>
+                                                        <?php
+                                                        $_FFF;
+                                                        if ($furnituraInfo[0][$i]["type"] === 'Поштучно') {
+                                                            $_FFF = true;
+                                                        } else if ($furnituraInfo[0][$i]["type"] === 'Погонные метры') {
+                                                            $_FFF = false;
+                                                        }
+                                                        ?>
                                                         <p class="pdfbold"
                                                            style="font-size:12px;margin-top:0px;margin-bottom:0px;text-align:center;">
-                                                            Цена за
-                                                            ед. <?= $furnituraInfo[1][$i] / ($furnituraInfo[1][$i] / nPrice($furnituraInfo[0][$i]['price'], $per, 1) / 2) ?>
+                                                            Цена за <?= $_FFF ? 'ед.' : 'п/м.' ?>
+                                                            <?= nPrice($furnituraInfo[0][$i]['price'], $per, 1) ?>
                                                             руб</p>
                                                     </td>
 
@@ -1495,10 +1503,10 @@ if ($ff) {
                                             </table>
                                             <div
                                                     style="width:99%;height:35px;background-color:#e5e5e5;text-align:right;vertical-align:middle;margin:auto;">
-                                                <span style="font-size:18px;"><?= round($furnituraInfo[1][$i] / nPrice($furnituraInfo[0][$i]['price'], $per, 1)) / 2 ?>
-                                                    шт. </span><span
+                                                <span style="font-size:18px;"><?= round($furnituraInfo[1][$i] / nPrice($furnituraInfo[0][$i]['price'], $per, 1)) ?>
+                                                    <?= $_FFF ? 'шт.' : 'п/м.' ?> </span><span
                                                         class="pdfbold"
-                                                        style="font-size:18px;color:#666666;"><?= number_format($furnituraInfo[1][$i], 0, "", " ") ?></span><span
+                                                        style="font-size:18px;color:#666666;"> <?= number_format($furnituraInfo[1][$i], 0, "", " ") ?></span><span
                                                         style="font-size:16px;color:#666666;"> руб</span>&nbsp;&nbsp;&nbsp;&nbsp;<br/>
                                             </div>
                                         </td>
@@ -1565,11 +1573,13 @@ if ($ff) {
                                 $count_array = 0;
 
                                 for ($i = 0; $i < count($furnituraInfo[2]); $i++) {
-
-                                    ?>
-                                    <?php if ($furnituraInfo[2][$i]["name"]) {
+                                    if ($furnituraInfo[2][$i]["name"]) {
                                         $count_array++;
-
+                                        if ($furnituraInfo[2][$i]["type"] === 'Поштучно') {
+                                            $_FFF = true;
+                                        } else if ($furnituraInfo[2][$i]["type"] === 'Погонные метры') {
+                                            $_FFF = false;
+                                        }
                                         ?>
                                         <td style="width:50%;background-color:white;border:2px solid #999999;">
                                             <table style="width:100%;">
@@ -1577,19 +1587,17 @@ if ($ff) {
                                                     <td style="width:30%;">
                                                         <p style="text-align: center;"><img
                                                                     src="<?= $furnituraInfo[2][$i]["img"] != "" && @fopen("admin/" . $furnituraInfo[2][$i]["img"], "r") ? "admin/" . $furnituraInfo[2][$i]["img"] : "img/notselected.png" ?>"
-                                                                    style="height:70px;width:70px;"></p>
-                                                    </td>
                                                     <td style="width:70%;">
                                                         <p style="text-align:left;margin-top:0px;margin-bottom:0px;vertical-align:middle;margin:auto;font-size:16px;"><?= $furnituraInfo[2][$i]["cname"] ?></p>
                                                         <p style="text-align:left;margin-top:0px;margin-bottom:0px;vertical-align:middle;margin:auto;font-size:16px;"><?= $furnituraInfo[2][$i]["name"] ?></p>
                                                         <p style="text-align:right;padding-right:15px;margin-bottom:0px;margin-top:0px;">
                                                             <span
-                                                                    class="pdfbold">Цена за ед. <?= nPrice($furnituraInfo[2][$i]["price"], $per, 1) ?>
+                                                                    class="pdfbold">Цена за <?= $_FFF ? 'ед.' : 'п/м.' ?> <?= nPrice($furnituraInfo[2][$i]["price"], $per, 1) ?>
                                                                 руб</span></p>
                                                         <p style="text-align:right;padding-right:15px;margin-bottom:0px;margin-top:0px;">
                                                             <span style="font-size:18px;"><?php
                                                                 echo round($furnituraInfo[3][$i] / nPrice($furnituraInfo[2][$i]["price"], $per, 1));
-                                                                ?> шт. </span><span
+                                                                ?> <?= $_FFF ? 'шт.' : 'п/м.' ?> </span><span
                                                                     class="pdfbold"
                                                                     style="font-size:18px;color:#666666;"><?= number_format($furnituraInfo[3][$i], 0, "", " ") ?></span><span
                                                                     style="font-size:16px;color:#666666;"> руб</span>
@@ -1655,7 +1663,8 @@ if ($ff) {
                                 Ширина, мм: <?= $materialInfo1[$i]['sh'] ?><br/>
                                 Высота, мм: <?= $materialInfo1[$i]['vy'] ?><br/>
                                 Площадь, м: <?= $materialInfo1[$i]['pl'] ?><br/>
-                                <?= $materialInfo1[$i]['zk'] ? 'Закаленное' : 'И т.д.' ?><br/>
+                                Количество: <?= $materialInfo1[$i]['ko'] * $count0 ?> шт.<br/>
+                                <?= $materialInfo1[$i]['zk'] ? 'Закаленное' : '' ?><br/>
                                 <br/>
                                 Цена, м/кв.: <?php
 
@@ -1663,7 +1672,6 @@ if ($ff) {
                                 if (count($arr) == 1) {
                                     echo nPrice($materialInfo1[$i]['in']['price'], $per, 1);
                                 } else {
-
                                     $arr1 = explode(";", $materialInfo1[$i]['in']['price']);
                                     foreach ($arr as $value) {
                                         if ($materialInfo1[$i]['to'] == $value) {
@@ -1678,7 +1686,6 @@ if ($ff) {
                     </tr>
                     <?php
                     if ($arrayNamber[0][$i] != "Номер ") {
-
                         $itemN0 = $dbl->query("SELECT  expmatireals.name,expmatireals.img,expmatireals.price FROM expmatireals WHERE name Like '{$arrayNamber[0][$i]}'")->fetchArray(SQLITE3_ASSOC);
 
                         if ($itemN0 != false) {
@@ -1703,7 +1710,6 @@ if ($ff) {
                                         Ширина, мм: <?= $materialInfo1[$i]['sh'] ?><br/>
                                         Высота, мм: <?= $materialInfo1[$i]['vy'] ?><br/>
                                         Площадь, м: <?= $materialInfo1[$i]['pl'] ?><br/>
-                                        И т.д.<br/>
                                         <br/>
                                         Цена, м/кв.: <?php
                                         echo nPrice($materialInfo1[$i]['pl'] * $itemN0['price'], $per, 1);
