@@ -131,6 +131,13 @@ let storage = {
     fillmanufacturer: function () {
         $.post('./admin/ajax.php?getmanufacturer=1', function (data) {
             storage.manufacturer = JSON.parse(data);
+            $('.manufacturer').each(function () {
+                let e = $(this);
+                e.html('');
+                storage.manufacturer.forEach(function (i) {
+                    e.append($('<option value="' + i.name + '">' + i.name + '</option>'));
+                });
+            });
         });
     },
     filltemp: function () {
@@ -205,6 +212,7 @@ let storage = {
     fillP: function () {
         $.post('./admin/ajax.php?getProfilesByPriceSort', '', function (data) {
             storage.p = JSON.parse(data);
+            storage.pSort = storage.p.sort((a, b) => a.price - b.price).map(v => v.id);
             slader.init();
         });
     },
@@ -252,6 +260,7 @@ let storage = {
     fillM: function () {
         $.post("./admin/ajax.php?getAllMaterials", "", function (data) {
             storage.m = JSON.parse(data);
+            nmaterials.sort();
         });
     },
     fillMC: function () {
@@ -425,9 +434,10 @@ let profiles = {
         info.profileId = p.id;
 
         let obj = storage.PaPHW.find(v => v.id_profil === id);
-        this.set_horizontal_profile(obj.id_h, 0);
-        this.set_vertical_profile(obj.id_h, 0);
-
+        if (obj) {
+            this.set_horizontal_profile(obj.id_h, 0);
+            this.set_vertical_profile(obj.id_h, 0);
+        }
         addition.SetSupplements();
         info.priceTop();
 
@@ -732,13 +742,20 @@ let nmaterials = {
 
     index: 0,
     flag: true,
+    sort(){
+        this.sortArray = [];
+        let _str = s => ParserIntAndNan(s.substring(0, s.indexOf(';') !== -1 ? s.indexOf(';') : s.length));
+        storage.mC.forEach(i => {
+            this.sortArray.push(storage.m.filter(_i => _i.type === i.id.toString()).sort((_a, _b) => _str(_a.price) - _str(_b.price)).map(_i => _i.id));
+        });
+    },
 
     // инициализация
-    start: function () {
+    start() {
         nmaterials.events();
     },
     // события
-    events: function () {
+    events() {
         $(".add-material-block-past").on('click', '#open-material-btn', nmaterials.selectMaterialOnClick);
         $(".add-material-block-past").on('click', '#open-material-img', nmaterials.selectMaterialOnClick);
         $('.add-material-btn').click(nmaterials.addMaterialBtn);
@@ -1697,7 +1714,7 @@ let nfurnitura = {
     },
 
     openModalRaspashnie: function (type) {
-        let karkasName = getFromData("karkas-name");
+        let karkasName;
         let Count = parseInt($("#TOTAL_PAINTING_ID").val());
         let width = parseInt($("#WIDTH_SETS_ID").val());
         let height = parseInt($("#HIGHT_SETS_ID").val());
@@ -2325,11 +2342,8 @@ let nfurnitura = {
             }
         });
         nfurnitura.viewTotalFurnitura();
-    },
-    init: function () {
     }
 };
-
 $('.furnituraElFlag').change(function () {
     nfurnitura.fullprice();
 });
@@ -2360,31 +2374,60 @@ $('body').on('change', '.dekorativnayaPlankaDlyaProfilya-skladnie input', functi
     }
     nfurnitura.viewTotalFurnitura();
 });
-
-
 let slader = {
     init(){
-        let c = storage.p.length - 1;
+        let c = storage.pSort.length;
+        console.log('INIT');
         let setings = {
-            orientation: "vertical",
-            range: "min",
-            min: 0,
-            max: c,
-            value: Math.round(storage.p.length / 2),
-            slide: function (event, ui) {
-                profiles.setProfile(storage.p[ui.value].id);
-                if (save.flag) {
-                    let v = {value: ui.value};
-                    $('#slider2').slider(v);
-                    $('#slider3').slider(v);
+                orientation: "vertical",
+                range: "min",
+                min: 0,
+                max: c - 1,
+                value: c / 2,
+                step: 1,
+                slide: function (event, ui) {
+                    let p = _c => Math.round(ui.value / (c / _c));
+
+                    if (storage.pSort[ui.value])
+                        profiles.setProfile(storage.pSort[ui.value])
+
+                    let _m = [];
+
+                    $('.napolnenie-el img').each(function () {
+                        let _s = $(this).attr('src').substr(8);
+                        _m.push(ParserIntAndNan(storage.m.find(_i => _i.img === _s).type));
+                    });
+
+                    _m.forEach((_t, i) => {
+                        if (nmaterials.sortArray[_t - 1]) {
+                            let _i = nmaterials.sortArray[_t - 1];
+                            if (_i[p(_i.length)])
+                                nmaterials.addMaterials(_i[p(_i.length)], i);
+                        }
+                    });
+                    $('#furnitura-tab .col-md-15').each(function () {
+                        if ($(this).find('select').val() === '1') {
+                            let i = $(this).find('h3').text();
+                            let is = storage.f.filter(_i => _i.cname === i).sort((a, b) => a.price - b.price);
+                            if (is[p(is.length)]) {
+                                i = is[p(is.length)];
+                                $(this).find('img').attr('src', 'admin/'+i.img);
+                                $(this).find('.price').text(fornituraPrice(i.price,i.formula));
+                                $(this).find('h4:eq(0)').text(i.name);
+                            }
+                        }
+                    });
+                    if (ui.value === 0)
+                        $('#addon-v-niz select').prop('value', 'Нет').trigger('change')
                 }
             }
-        };
+        ;
         $('#slider1').slider(setings);
         $('#slider2').slider(setings);
         $('#slider3').slider(setings);
     },
-    swap(){
+    swap()
+    {
         $('.slider-container').removeClass('slider-container-active');
         save.init();
         $(this).addClass('slider-container-active');
@@ -2418,10 +2461,12 @@ $('#TYPE_BAFFLE_ID').on('change', function () {
 $('#tab-profil-peremyichki-horizontal-shtuk').on('change keyup', function () {
     info.countProfileWidth = ParserIntAndNan($(this).val());
     info.priceTop();
+    addition.priceAddition();
 });
 $('#tab-profil-v-peremyichki-shtuk').on('change keyup', function () {
     info.countProfileHeight = ParserIntAndNan($(this).val());
     info.priceTop();
+    addition.priceAddition();
 });
 $('#setting-v-niz input').on('change keyup', info.footerResFull);
 $('#NUMBER_SETS_ID').on('change keyup', function () {
@@ -2463,21 +2508,17 @@ $('body').on('change', '.napolnenie-el #savehight', function () {
 $('.add-material-block-past').on('keyup change click mouseover', '.napolnenie-el', function () {
     nmaterials.ResSumm();
 });
-$('#furnitura-tab').on('keyup change', 'input:text', function () {
+$('#furnitura-tab').on('keyup change', 'input:text:gt(0)', function () {
     let $sum = $(this).parent().parent().parent().parent().find('.price');
-    console.log($(this).data('count'));
     if ($(this).val() !== '' && $(this).val() !== '0') {
         if ($(this).data('count')) {
             let res = (ParserIntAndNan($sum.text()) / ParserIntAndNan($(this).data('count')) ) * ParserIntAndNan($(this).val());
-            console.log('1)' + res + ' ' + $sum.text() + ' ' + $(this).val());
             $sum.text(res);
         } else {
-            console.log('2');
             $sum.text(ParserIntAndNan($sum.text()) * ParserIntAndNan($(this).val()));
         }
         $(this).data('count', $(this).val());
     }
-
 });
 function delTiteltext() {
     document.getElementById('text_ifr').removeAttribute('title');
@@ -2487,10 +2528,174 @@ $('body').on('mouseover', '.managerBtn', delTiteltext);
 $(document).on("scroll", function () {
     $('#hederBlock').css('top', window.pageYOffset);
 });
+$('body').on('input', '.facture', function () {
+    let v = $(this).val();
+    let arr = storage.f.filter((i) => i.manufacturer === v);
+    $('#furnitura-tab select').val(0);
+    $('#furnitura-tab select').trigger('change');
+    if (arr.length > 0) {
+        arr.forEach((i) => {
+            if (i.cat == 1)
+                nfurnitura.SelectRazdvizhnyieMehanizmyiEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 2)
+                nfurnitura.SelectmehanizmsinhronizaciiEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 3)
+                nfurnitura.SelectnapravEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 4)
+                nfurnitura.SelectvidkreplenianapravEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 5)
+                nfurnitura.SelectpovodokEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 6)
+                nfurnitura.SelectdovodchikEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 7)
+                nfurnitura.SelectdekplankadlyaprofilyaEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 8)
+                nfurnitura.SelectschetochniiuplotnitelEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 9)
+                nfurnitura.SelectruchkaEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 10)
+                nfurnitura.SelectzamokEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 11)
+                nfurnitura.SelectmehanizmsinhronskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 12)
+                nfurnitura.SelectmehanizmrotorniiEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 13)
+                nfurnitura.SelectpetliskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 14)
+                nfurnitura.SelectnapravlyayuschieskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 15)
+                nfurnitura.SelectvidkrepleniyanapravlyayuschihskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 16)
+                nfurnitura.SelectdekplankadlyaprofilyaskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 17)
+                nfurnitura.SelectschetochniiuplotnitelskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 18)
+                nfurnitura.SelectruchkaskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 19)
+                nfurnitura.SelectkreplenieruchliskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 20)
+                nfurnitura.SelectzamokskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 21)
+                nfurnitura.SelectpetliRaspashnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 22)
+                nfurnitura.SelectruchkaRaspashnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 23)
+                nfurnitura.SelectzamokRaspashnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 24)
+                nfurnitura.SelectnozhkimobilnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 25)
+                nfurnitura.SelectkolesikimobilnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 26)
+                nfurnitura.SelectstoykimobilnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 27)
+                nfurnitura.SelecttipSoedineniyaPolotenmobilnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 28)
+                nfurnitura.SelectStoikiStacEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 29)
+                nfurnitura.SelectnapravnEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 30)
+                nfurnitura.SelectnapravlyayuschienskladnieEnd("./admin/" + i.img, i.name, i.price);
+            if (i.cat == 31)
+                nfurnitura.SelectmehanizmtelestopEnd("./admin/" + i.img, i.name, i.price);
+        });
+        $('#furnitura-tab h4.text').each(function () {
+            let $item = $(this);
+            let str = $item.text();
+            let i = arr.find((s) => s.name === str);
+            if (i) {
+                let $i = $item.parent().find('select');
+                $i.val(1);
+                $i.trigger('change');
+            }
+        });
+    }
+});
+
+$('body').on('keyup', '.facture', function () {
+    if (event.type === 'keyup') {
+        if (event.keyCode === 13) {
+            let _a = [];
+            $('#furnitura-tab h4.text').each(function () {
+                if ($(this).parent().find('select').val() === '1') {
+                    _a.push($(this).text());
+                }
+            });
+            let data = {
+                n: $(this).val(),
+                a: _a
+            };
+            $.post('./admin/ajax.php?fillmanufacturer=1', data, function (data) {
+                storage.fillF();
+                storage.fillmanufacturer();
+            });
+            message('Производитель добавлен');
+        }
+    }
+});
+
+function SetKakas(id) {
+    $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').html("");
+    let width = info.paintWidth;
+    let height = info.height;
+    let html = ' <div class="tabbable tabs-left">' +
+        '<ul class="nav nav-tabs">';
+    let htmlTAB = '';
+    $.post('./admin/ajax.php', "data=1", function (data) {
+        data = JSON.parse(data);
+        for (let i = 0; i < data.length; i++) {
+            let isFrends = '';
+            if (data[i].id == id)
+                isFrends = 'active';
+            htmlTAB += '<li class="' + isFrends + '"><a data-toggle="tab" style="font-size: 20px;" onclick="SetKakas(' + data[i].id + ')" >' + data[i].name + '</a><div class="triangle"></div><div class="triangle-w"></div></li>';
+        }
+        $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(html + htmlTAB + '</ul>');
+        data = 'h=' + height + "&id=" + id;
+        $.post("./admin/ajax.php", data, function (data) {
+            let obj = JSON.parse(data);
+            for (let i = 0; i < obj.length; i++) {
+                let p = Math.round((info.paintHeight - (obj[i].model * 2) + info.paintHeight) * 0.002 * obj[i].price);
+                p = Math.round(p);
+                let resultHtml = '<div id="ProfilTabDB" class="col-md-3 profil-select" style="display: inline-block;vertical-align: top;border: solid 1px black;height: 435px;" ng-controller="ngAppDemoController">' +
+                    '<center> ' +
+                    '<br> ' +
+                    '<img src="./admin/' + obj[i].img + '" id="img-modal-Statusx1" class="selectKarkasImg"> ' +
+                    '<h4>' + obj[i].name + '</h4>' +
+                    '<div style="height: 140px;width: 180px;">' +
+                    '<div style="height: 30px;">' +
+                    '<p style="display: inline-block;float: left;font-weight: 300;">Высота:</p>' +
+                    '<p style="display: inline-block;float: right;font-weight: 300;">до ' + obj[i].height + '  м</p>' +
+                    '</div>' +
+                    '<div style="height: 30px;">' +
+                    '<p style="display: inline-block;float: left;font-weight: 300;">Паз:</p>' +
+                    '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].paz + '  мм</p>' +
+                    '</div>' +
+                    '<div style="height: 30px;">' +
+                    '<p style="display: inline-block;float: left;font-weight: 300;">Cтекло:</p>' +
+                    '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].steklo + '  мм</p>' +
+                    '</div>' +
+                    '<div style="height: 30px;">' +
+                    '<p style="display: inline-block;float: left;font-weight: 300;">Глухие панели:</p> ' +
+                    '<p style="display: inline-block;float: right;font-weight: 300;">' + obj[i].penal + '  мм</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '<h4 style="color: red;" >Цена:' + p + ' </h4>' +
+                    '<button type="button" class="btn btn-raised btn-default" onclick="profiles.setProfile(' + obj[i].id + ');" data-dismiss="modal">Выбрать </button> ' +
+                    '</center></div>';
+                $('#DIAGRAMMA-DIALOG-WINDOW .modal-body').append(resultHtml);
+            }
+
+        });
+    });
+    $("img.selectKarkasImg").show();
+}
+$('.add-material-block-past').on('mouseover', '.napolnenie-el', function () {
+    $('.add-material-block-past .photo1 button').each(function (i) {
+        $(this).attr('onclick', 'bPhoto(' + i + ')');
+    });
+});
 $(document).ready(function () {
     storage.init();
     nmaterials.start();
     nfurnitura.start();
     window.id_pdf = new Date().getTime();
-
 });

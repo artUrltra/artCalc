@@ -429,6 +429,7 @@ if ($ff) {
             array_push($furnituraInfo3[3], $furnituraEl3[3][$i] * ($per[2]->i / 100 + 1) * ($per[2]->p / 100 + 1) * 1.1);
         }
     }
+
 // Новая фурнитура
     for ($i = 0; $i < count($arrF2); $i++) {
         if ($arrF2[$i]->price == 0) {
@@ -731,25 +732,33 @@ if ($ff) {
 
         .pdfboldred {
             color: darkred;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .pdfboldgray {
             color: gray;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .tabletext11 {
-            width: 46%;
+            width: 20%;
             font-size: 100%;
             border: 1px solid #999999;
             text-align: left;
             background-color: white;
-            padding-left: 15px;
+            padding-left: 5;
         }
 
         .tabletext12 {
-            width: 18%;
+            width: 26%;
+            font-size: 100%;
+            border: 1px solid #999999;
+            text-align: center;
+            background-color: white;
+        }
+
+        .tablebig {
+            width: 54%;
             font-size: 100%;
             border: 1px solid #999999;
             text-align: center;
@@ -757,11 +766,11 @@ if ($ff) {
         }
 
         .tabletext13 {
-            width: 18%;
+            width: 26%;
             font-size: 100%;
             border: 1px solid #999999;
             text-align: center;
-            background-color: #e3e3e3;
+            background-color: white;
         }
 
         .pdfpageh1 {
@@ -778,6 +787,42 @@ if ($ff) {
             color: black;
             text-align: justify;
             margin-top: 4px;
+        }
+
+        .leftBloks {
+            width: 20%;
+            text-align: center;
+        }
+
+        .topBloks {
+            width: 26%;
+        }
+
+        .cl {
+            width: 17%;
+        }
+
+        .cr {
+            width: 9%
+
+        }
+
+        #table td {
+            margin: 0;
+            color: #7e7c7e;
+            text-align: center;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #999999;
+        }
+
+        #table {
+            vertical-align: middle;
+            margin: auto;
+            border: 1px solid #999999;
+            border-collapse: collapse;
+            font-size: 14px;
         }
     </style>
 
@@ -880,147 +925,129 @@ if ($ff) {
             <br/>
             <div>
                 <p style="text-align:center;color:#000000;font-size:32px;margin-bottom:10px;">Варианты комплектации</p>
-                <table
-                        style="width:99%;vertical-align:middle;margin:auto;border:1px solid #999999;border-collapse:collapse;font-size:14px;">
+                <table id="table" style="border-spacing: 0px; width: 100%;">
                     <tr>
-                        <td class="pdfbold"
-                            style="width:46%;border:1px solid #999999;text-align:center;color:#4e4f86;font-size:18px;">
-                            Варианты комплектации
+                        <td class="leftBloks" style="text-align:left;color:#4e4f86;font-size:18px;">Варианты <br>
+                            комплектации
                         </td>
-                        <td class="tabletext12" style="color:#000140;">Оптимальный</td>
-                        <td class="tabletext13" style="color:#6763b1;">Эконом</td>
-                        <td class="tabletext13" style="color:#6763b1;">Премиум</td>
+                        <td class="topBloks" style="color:#000140;" colspan="2">Оптимальный</td>
+                        <td class="topBloks" style="color:#6763b1;" colspan="2">Эконом</td>
+                        <td class="topBloks" style="color:#6763b1;" colspan="2">Премиум</td>
                     </tr>
                     <tr>
-                        <td class="tabletext11">Профиль</td>
-                        <td class="tabletext12">
-                            <?= number_format($prisefull0, 0, "", " ") ?>
-                            р./<?= $profilInfo[0]["name"] ?>
-                        </td>
-                        <td class="tabletext13">
-                            <?= number_format($prisefull1, 0, "", " ") ?>
-                            р./<?= $profilInfo2[0]["name"] ?>
-                        </td>
-                        <td class="tabletext13">
-                            <?= number_format($prisefull2, 0, "", " ") ?>
-                            р./<?= $profilInfo3[0]["name"] ?>
-                        </td>
+                        <td class="leftBloks">Профиль</td>
+                        <td class="cl"><?= $profilInfo[0]["name"] ?></td>
+                        <td class="cr"><?= number_format($prisefull0, 0, "", " ") ?>р.</td>
+                        <td class="cl"><?= $profilInfo2[0]["name"] ?></td>
+                        <td class="cr"><?= number_format($prisefull1, 0, "", " ") ?>р.</td>
+                        <td class="cl"><?= $profilInfo3[0]["name"] ?></td>
+                        <td class="cr"><?= number_format($prisefull2, 0, "", " ") ?>р.</td>
                     </tr>
                     <?php if ($m1 != 0 && $m2 != 0 && $m3 != 0) {
                         $srtz0 = '';
                         $srtz1 = '';
                         $srtz2 = '';
                         if (count($materialInfo1) == 1 && count($materialInfo2) == 1 && count($materialInfo3) == 1) {
-                            $srtz0 = '/' . $materialInfo1[0]['in']["name"] . ' (' . $materialInfo1[0]['to'] . ' мм)';
-                            $srtz1 = '/' . $materialInfo2[0]['in']["name"] . ' (' . $materialInfo2[0]['to'] . ' мм)';
-                            $srtz2 = '/' . $materialInfo3[0]['in']["name"] . ' (' . $materialInfo3[0]['to'] . ' мм)';
+                            $srtz0 = $materialInfo1[0]['in']["name"] . ' (' . $materialInfo1[0]['to'] . ' мм)';
+                            $srtz1 = $materialInfo2[0]['in']["name"] . ' (' . $materialInfo2[0]['to'] . ' мм)';
+                            $srtz2 = $materialInfo3[0]['in']["name"] . ' (' . $materialInfo3[0]['to'] . ' мм)';
                         }
                         ?>
+
                         <tr>
-                            <td class="tabletext11">Заполнение</td>
-                            <td class="tabletext12"><?= number_format($m1, 0, "", " ") ?>
-                                р.<?= $srtz0 ?></td>
-                            <td class="tabletext13"><?= number_format($m2, 0, "", " ") ?>
-                                р.<?= $srtz1 ?></td>
-                            <td class="tabletext13"><?= number_format($m3, 0, "", " ") ?>
-                                р.<?= $srtz2 ?></td>
+                            <td class="leftBloks">Заполнение</td>
+                            <td class="cl"><?= $srtz0 ?></td>
+                            <td class="cr"><?= number_format($m1, 0, "", " ") ?>р.</td>
+                            <td class="cl"><?= $srtz1 ?></td>
+                            <td class="cr"><?= number_format($m2, 0, "", " ") ?>р.</td>
+                            <td class="cl"><?= $srtz2 ?></td>
+                            <td class="cr"><?= number_format($m3, 0, "", " ") ?>р.</td>
                         </tr>
                     <?php } ?>
                     <?php
-                    if ($f1 == 0 && $f2 == 0 && $f3 == 0) {
+                    if (sGet("furnitura-select") === 1) {
+                        if ($furnituraInfo[0][0] || $furnituraInfo2[0][0] || $furnituraInfo3[0][0]) {
+                            ?>
+                            <tr>
+                                <td class="leftBloks">Привод</td>
+                                <td class="cl"><?= $furnituraInfo[0][0] ? $furnituraInfo[0][0]['name'] : '-' ?></td>
+                                <td class="cr"><?= $furnituraInfo[1][0] ? number_format($furnituraInfo[1][0], 0, "", " ") . 'р.' : '-' ?></td>
+                                <td class="cl"><?= $furnituraInfo2[0][0] ? $furnituraInfo2[0][0]['name'] : '-' ?></td>
+                                <td class="cr"><?= $furnituraInfo2[1][0] ? number_format($furnituraInfo2[1][0], 0, "", " ") . 'р.' : '-' ?></td>
+                                <td class="cl"><?= $furnituraInfo3[0][0] ? $furnituraInfo3[0][0]['name'] : '-' ?></td>
+                                <td class="cr"><?= $furnituraInfo3[1][0] ? number_format($furnituraInfo3[1][0], 0, "", " ") . 'р.' : '-' ?></td>
+                            </tr>
+                        <?php }
+                    } ?>
+                    <?php if ($f1 == 0 && $f2 == 0 && $f3 == 0) {
                     } else {
-                        $srtf0 = '';
-                        $srtf1 = '';
-                        $srtf2 = '';
-                        if ($Omanufacturer != '' && $Emanufacturer != '' && $Fmanufacturer != '') {
-                            $srtf0 = '/' . $Omanufacturer;
-                            $srtf1 = '/' . $Emanufacturer;
-                            $srtf2 = '/' . $Fmanufacturer;
-                        }
-                        echo '<tr><td class="tabletext11">Фурнитура</td>' .
-                            '<td class="tabletext12">' . number_format($f1, 0, "", " ") . ' р.' . $srtf0 . '</td>' .
-                            '<td class="tabletext13">' . number_format($f2, 0, "", " ") . ' р.' . $srtf1 . '</td>' .
-                            '<td class="tabletext13">' . number_format($f3, 0, "", " ") . ' р.' . $srtf2 . '</td>' .
-                            '</tr>';
-                    }
-                    ?>
+                        $srtf0 = $Omanufacturer != '' ? $Omanufacturer : '-';
+                        $srtf1 = $Emanufacturer != '' ? $Emanufacturer : '-';
+                        $srtf2 = $Fmanufacturer != '' ? $Fmanufacturer : '-';
+                        ?>
+                        <tr>
+                            <td class="leftBloks">Фурнитура</td>
+                            <td class="cl"><?= $srtf0 ?></td>
+                            <td class="cr"><?= number_format($f1 - $furnituraInfo[1][0], 0, "", " ") ?>р.</td>
+                            <td class="cl"><?= $srtf1 ?></td>
+                            <td class="cr"><?= number_format($f2 - $furnituraInfo2[1][0], 0, "", " ") ?>р.</td>
+                            <td class="cl"><?= $srtf2 ?></td>
+                            <td class="cr"><?= number_format($f3 - $furnituraInfo3[1][0], 0, "", " ") ?>р.</td>
+                        </tr>
+                    <?php } ?>
                     <?php
-                    if ($mo1 == 0 && $mo2 == 0 && $mo3 == 0) {
+                    if ($mo1 == 0) {
                     } else { ?>
                         <tr>
                             <td class="tabletext11">Монтаж</td>
-                            <td class="tabletext12"><?= number_format($mo1, 0, "", " ") ?> р.</td>
-                            <td class="tabletext13"><?= number_format($mo2, 0, "", " ") ?> р.</td>
-                            <td class="tabletext13"><?= number_format($mo3, 0, "", " ") ?> р.</td>
+                            <td colspan="6"><?= number_format($mo1, 0, "", " ") ?> р.</td>
                         </tr>
                     <?php } ?>
-                    <?php if ($do1 != 0 && $do2 != 0 && $do3 != 0) { ?>
+                    <?php if ($do1 != 0) { ?>
                         <tr>
-                            <td class="tabletext11">Доставка</td>
-                            <td class="tabletext12"><?= number_format($do1, 0, "", " ") ?> р.</td>
-                            <td class="tabletext13"><?= number_format($do2, 0, "", " ") ?> р.</td>
-                            <td class="tabletext13"><?= number_format($do3, 0, "", " ") ?> р.</td>
+                            <td class="leftBloks">Доставка</td>
+                            <td colspan="6"><?= number_format($do1, 0, "", " ") ?> р.</td>
                         </tr>
                     <?php } ?>
-                    <?php if ($za1 != 0 && $za2 != 0 && $za3 != 0) { ?>
+                    <?php if ($za1 != 0) { ?>
                         <tr>
-                            <td class="tabletext11">Замер</td>
-                            <td class="tabletext12"><?= number_format($za1, 0, "", " ") ?> р.</td>
-                            <td class="tabletext13"><?= number_format($za2, 0, "", " ") ?> р.</td>
-                            <td class="tabletext13"><?= number_format($za3, 0, "", " ") ?> р.</td>
+                            <td class="leftBloks">Замер</td>
+                            <td colspan="6"><?= number_format($za1, 0, "", " ") ?> р.</td>
                         </tr>
                     <?php } ?>
-                    <?php if ($sr1 != 0 && $sr2 != 0 && $sr3 != 0) { ?>
+                    <?php if ($sr1 != 0) { ?>
                         <tr>
-                            <td class="tabletext11">Срочность</td>
-                            <td class="tabletext12"><?= number_format($sr1, 0, "", " ") ?> р.</td>
-                            <td class="tabletext13"><?= number_format($sr2, 0, "", " ") ?> р.</td>
-                            <td class="tabletext13"><?= number_format($sr3, 0, "", " ") ?> р.</td>
+                            <td class="leftBloks">Срочность</td>
+                            <td colspan="6"><?= number_format($sr1, 0, "", " ") ?> р.</td>
                         </tr>
                     <?php } ?>
                     <tr>
-                        <td class="tabletext11">
-                            <span class="pdfbold pdfboldred">Итого за 1 комплект:</span>
+                        <td class="leftBloks">
+                            <span class="pdfbold pdfboldred">Итого</span>
                             <p class="pdfitalic pdflinkitalic"
                                style="text-align:right;text-decoration:none;margin-top:5px;">Детально
                                 на&nbsp;&nbsp;&nbsp;</p>
                         </td>
-                        <td class="tabletext12">
+                        <td colspan="2">
                             <span class="pdfbold pdfboldred">
                                 <?= number_format(round($priceFull1 / $setsNumber, 0), 0, "", " ") ?>
                                 р.
                             </span>
                             <p class="pdfitalic pdflinkitalic" style="margin-top:5px;">Стр. 2</p>
                         </td>
-                        <td class="tabletext13">
+                        <td colspan="2">
                             <span class="pdfbold pdfboldgray">
                                 <?= number_format(round($priceFull2 / $setsNumber, 0), 0, "", " ") ?>
                                 р.</span>
-                            <p class="pdfitalic pdflinkitalic" style="margin-top:5px;">Стр. 3</p>
+                            <p class="pdfitalic pdflinkitalic" style="margin-top:5px;">Стр. 7</p>
                         </td>
-                        <td class="tabletext13">
+                        <td colspan="2">
                             <span class="pdfbold pdfboldgray">
                                 <?= number_format(round($priceFull3 / $setsNumber, 0), 0, "", " ") ?>
                                 р.</span>
-                            <p class="pdfitalic pdflinkitalic" style="margin-top:5px;">Стр. 4</p>
+                            <p class="pdfitalic pdflinkitalic" style="margin-top:5px;">Стр. 8</p>
                         </td>
                     </tr>
-                    <?php if ($setsNumber > 1) : ?>
-                        <tr>
-                            <td class="tabletext11"><span
-                                        class="pdfbold pdfboldred">Итого за <?= $setsNumber ?> <?= $setsNumber < 5 ? "комплектa" : "комплектов" ?>
-                                    :</span></td>
-                            <td class="tabletext12"><span
-                                        class="pdfbold pdfboldred"><?= number_format(round($priceFull1, 0), 0, "", " ") ?>
-                                    р.</span></td>
-                            <td class="tabletext13"><span class="pdfbold pdfboldgray"
-                                                          style="color:gray;font-size:16px;"><?= number_format(round($priceFull2, 0), 0, "", " ") ?>
-                                    р.</span></td>
-                            <td class="tabletext13"><span class="pdfbold pdfboldgray"
-                                                          style="color:gray;font-size:16px;"><?= number_format(round($priceFull3, 0), 0, "", " ") ?>
-                                    р.</span></td>
-                        </tr>
-                    <?php endif; ?>
                 </table>
                 <p class="pdfitalic pdflinkitalic" style="font-size:20px;margin-bottom:5px;">Альтернативные предложения
                     на стр. <?= $altPage ?></p>
@@ -1147,8 +1174,15 @@ if ($ff) {
                         <tr>
                             <td style='width:50%;'>
                                 <span style="color:black;text-align:left;font-size:18px;">Характеристики</span><br/>
-                                <span style="color:black;"
-                                      class="pdfitalic"><?= !empty($profilInfo[0]['characteristics']) ? fList($profilInfo[0]['characteristics']) : "noDB" ?></span>
+                                <span style="color:black;" class="pdfitalic"><br/>- Страна производства: Россия<br>
+                                    - Сечение: <?= $profilInfo[0]['model'] && $profilInfo[0]['int'] ? $profilInfo[0]['model'] . 'х' . $profilInfo[0]['int'] . ' мм.' : 'noDB' ?>
+                                    <br>
+                                    - Ширина паза: <?= $profilInfo[0]['paz'] ? $profilInfo[0]['paz'] . ' мм.' : 'noDB' ?>
+                                    <br>
+                                    - Макс. высота: <?= $profilInfo[0]['max'] ? $profilInfo[0]['max'] . ' мм.' : 'noDB' ?>
+                                    <br>
+                                    - Цвет: <?= $decorInfo[0]['name'] ? $decorInfo[0]['name'] : 'noDB' ?><br>
+                                </span>
                             </td>
                             <td style='width:50%;'>
                                 <span style="color:black;text-align:left;font-size:18px;">Описание</span><br/>
@@ -1587,6 +1621,8 @@ if ($ff) {
                                                     <td style="width:30%;">
                                                         <p style="text-align: center;"><img
                                                                     src="<?= $furnituraInfo[2][$i]["img"] != "" && @fopen("admin/" . $furnituraInfo[2][$i]["img"], "r") ? "admin/" . $furnituraInfo[2][$i]["img"] : "img/notselected.png" ?>"
+                                                                    style="height:70px;width:70px;"></p>
+                                                    </td>
                                                     <td style="width:70%;">
                                                         <p style="text-align:left;margin-top:0px;margin-bottom:0px;vertical-align:middle;margin:auto;font-size:16px;"><?= $furnituraInfo[2][$i]["cname"] ?></p>
                                                         <p style="text-align:left;margin-top:0px;margin-bottom:0px;vertical-align:middle;margin:auto;font-size:16px;"><?= $furnituraInfo[2][$i]["name"] ?></p>
@@ -1869,7 +1905,7 @@ if ($ff) {
                                     <p style="text-align:center;">
                                         <?php if ($profilInfo2[0]['img'] != "" && @fopen("admin/" . $profilInfo2[0]['img'], "r")) { ?>
                                             <img src='admin/<?= $profilInfo2[0]['img'] ?>'
-                                                 style="height:100px;width:100px;">
+                                                 style="height:100px;width:100px; background-color: white;">
                                         <?php } else { ?>
                                             <img src='img/notselected.png' style="height:100px;width:100px;">
                                         <?php } ?>
@@ -2008,7 +2044,7 @@ if ($ff) {
                                     </td>
                                     <td style="width:69%;">
                                         <p style="color:#666666;text-align:left;font-size:21px;margin-top:0px;margin-bottom:0px;">
-                                            Заполенение</p>
+                                            Заполнение</p>
                                         <table style="width:100%;border:1px solid #999999;border-collapse:collapse;"
                                                cellspacing="0">
                                             <?php $mp2 = 0;
@@ -2608,7 +2644,8 @@ if ($ff) {
                                 <td style="width:50%;">
                                     <p style="text-align:center;">
                                         <?php if ($altPi[0]['img'] != "" && @fopen("admin/" . $altPi[0]['img'], "r")) { ?>
-                                            <img src='admin/<?= $altPi[0]['img'] ?>' style="height:100px;width:100px;">
+                                            <img src='admin/<?= $altPi[0]['img'] ?>'
+                                                 style="height:100px;width:100px; color: white;">
                                         <?php } else { ?>
                                             <img src='img/notselected.png' style="height:100px;width:100px;">
                                         <?php } ?>

@@ -746,7 +746,9 @@ if (isset($_GET['delereimgPDF'])) {
     echo 'Картинка была удалена';
 }
 if (isset($_GET['getmanufacturer'])) {
-    echo json_encode($DB->query("SELECT * FROM manufacturer"));
+    echo json_encode($DB->query("SELECT *
+FROM manufacturer
+GROUP BY name"));
 }
 if (isset($_GET['extmid'])) {
     echo json_encode($DB->query("SELECT * FROM expmat WHERE id=" . $_POST['i'])[0]);
@@ -756,4 +758,13 @@ if (isset($_GET['editexpmat'])) {
 }
 if (isset($_GET['profil_h'])) {
     echo json_encode($DB->query('SELECT *FROM profil_h'));
+}
+if (isset($_GET['fillmanufacturer'])) {
+
+    $DB->query_no_var("INSERT INTO manufacturer (id,name) VALUES (NULL ,'{$_POST['n']}');");
+    foreach ($_POST['a'] as $a) {
+        $DB->query_no_var("UPDATE furnitura SET manufacturer ='{$_POST['n']}' WHERE name LIKE '{$a}';");
+    }
+
+    echo 'GOOD';
 }

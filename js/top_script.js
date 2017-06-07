@@ -65,7 +65,7 @@ $('body').on('change', '#temp', function () {
  * Создание pdf письма
  */
 function sendMail() {
-    SaveToPDFtoFile();
+
     let flag = true;
     if ($('#mailk').val() === '') {
         flag = false;
@@ -86,8 +86,7 @@ function sendMail() {
         $('#zag').parent().removeClass('has-error');
     }
     if (flag) {
-        message("Создается pdf для письма");
-        setTimeout(loadmail, 8500);
+        SaveToPDFtoFile();
     } else {
         message('Заполните все поля')
     }
@@ -429,13 +428,13 @@ function TagsText(text) {
     text = text.replace(/#s/g, (info.width / 1000) * (info.height / 1000));
     text = text.replace(/#pm/g, info.count);
     text = text.replace(/#p/g, info.countMove);
-    text = text.replace(/#type/g, $('#TYPE_BAFFLE_ID').val());
+    text = text.replace(/#type/g, $('#TYPE_BAFFLE_ID').find('option:eq('+$('#TYPE_BAFFLE_ID').val()+')').text());
     text = text.replace(/#EconomPrice/g, ParserIntAndNan($('.slider-container .price:eq(0)').text()));
     text = text.replace(/#OptimalPrice/g, ParserIntAndNan($('.slider-container .price:eq(1)').text()));
     text = text.replace(/#FyllPrice/g, ParserIntAndNan($('.slider-container .price:eq(2)').text()));
-    text = text.replace(/#EconomFurn/g, $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
-    text = text.replace(/#OptimalFurn/g, $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
-    text = text.replace(/#FyllFurn/g, $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val());
+    text = text.replace(/#EconomFurn/g,  save.econom.fm);
+    text = text.replace(/#OptimalFurn/g,  save.optimal.fm);
+    text = text.replace(/#FyllFurn/g,  save.premium.fm);
     text = text.replace(/#CP/g, $('#orderNumber').val() ? $('#orderNumber').val() : '');
 
     let detorid = parseInt($('#pokraskaTypeAndName').val());
@@ -477,7 +476,6 @@ function TagsText(text) {
     if (save.premium.p) {
         text = text.replace(/#PremiumProfile/g, save.premium.p.n);
     }
-
 //Тег профиль мм
     if (save.optimal.p) {
         let p = storage.p.find((v) => v.name === save.optimal.p.n);

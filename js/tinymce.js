@@ -129,7 +129,13 @@ tinymce.init({
                     onclick: function () {
                         editor.insertContent('&nbsp;#CP&nbsp;')
                     }
-                }]
+                }, {
+                    text: 'Цвет',
+                    onclick: function () {
+                        editor.insertContent('&nbsp;#Dekor&nbsp;')
+                    }
+                }
+                ]
         });
     },
     content_css: '//www.tinymce.com/css/codepen.min.css'

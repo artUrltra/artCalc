@@ -126,7 +126,7 @@
             <li style="margin-bottom: -1px;" class="color555 active"><a href="#profil-tab">Профиль<i
                     aria-hidden="true" class="fa fa-arrow-right"></i></a></li>
             <li style="margin-bottom: -1px;" class="color555"><a href="#napolnenie-tab">Наполнение<i
-                    aria-hidden="true" class ="fa fa-arrow-right"></i></a></li>
+                    aria-hidden="true" class="fa fa-arrow-right"></i></a></li>
             <li id="top-furnitura-tab" style="margin-bottom: -1px;" class="color555"><a
                     href="#furnitura-tab">Фурнитура</a></li>
         </ul>
@@ -1056,9 +1056,14 @@
     </div>
     <div class="furnitura-stac">
         <div class="row">
-            <div class="col-md-12"><select class="form-control manufacturer">
-                <option>Производитель</option>
-            </select></div>
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <input class="form-control facture" list="browsers">
+
+                    <datalist id="browsers" class="manufacturer">
+                    </datalist>
+                </div>
+            </div>
         </div>
         <div id="stoiki-stac-select" class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center stoiki-stac">
             <select class="form-control input-sm furnituraElFlag"
@@ -1101,9 +1106,14 @@
     </div>
     <div class="furnitura-razdvizhnyie">
         <div class="row">
-            <div class="col-md-12"><select class="form-control manufacturer">
-                <option>Производитель</option>
-            </select></div>
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <input class="form-control facture" list="browsers">
+
+                    <datalist id="browsers" class="manufacturer">
+                    </datalist>
+                </div>
+            </div>
         </div>
         <div id="razdvizhnyie-mehanizmyi-select"
              class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center razdvizhnyie-mehanizmyi">
@@ -1281,9 +1291,14 @@
     </div>
     <div class="skladnaya-peregorodka">
         <div class="row">
-            <div class="col-md-12"><select class="form-control manufacturer">
-                <option>Производитель</option>
-            </select></div>
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <input class="form-control facture" list="browsers">
+
+                    <datalist id="browsers" class="manufacturer">
+                    </datalist>
+                </div>
+            </div>
         </div>
         <div id="mehanizm-sinhron-skladnie"
              class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center setSkladnyieMehanizmyi">
@@ -1453,84 +1468,92 @@
     </div>
     <div class="mobilnyie-peregorodki">
         <div class="row">
-            <div class="col-md-12"><select class="form-control manufacturer">
-                <option>Производитель</option>
-            </select></div>
-        </div>
-        <div id="nozhki-mobilnie" class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center nozhki-mobil">
-            <select class="form-control input-sm furnituraElFlag"
-                    onchange="nfurnitura.furnituraElToggle(this.parentElement.id,this.value);">
-                <option value="1">Есть</option>
-                <option value="0" selected>Нет</option>
-            </select>
-            <h3 class="height-50">Ножки</h3><img src="img/1px.png" class="addonImg">
-            <h4 class="text">Не выбрано</h4>
-            <h4>Цена:<span class="price red">26</span></h4>
-        </div>
-        <div id="kolesiki-mobilnie" class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center kolesiki-mobilnie">
-            <select class="form-control input-sm furnituraElFlag"
-                    onchange="nfurnitura.furnituraElToggle(this.parentElement.id,this.value);">
-                <option value="1">Есть</option>
-                <option value="0" selected>Нет</option>
-            </select>
-            <h3 class="height-50">Колесики</h3><img src="img/1px.png" class="addonImg">
-            <h4 class="text">Не выбрано</h4>
-            <h4>Цена:<span class="price red">700</span></h4>
-        </div>
-        <div id="stoyki-mobilnie" class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center stoyki-mobil">
-            <select class="form-control input-sm furnituraElFlag"
-                    onchange="nfurnitura.furnituraElToggle(this.parentElement.id,this.value);">
-                <option value="1">Есть</option>
-                <option value="0" selected>Нет</option>
-            </select>
-            <h3 class="height-50">Стойки</h3><img src="img/1px.png" class="addonImg">
-            <h4 class="text">Не выбрано</h4>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <center>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <h5 style="text-align: right;">Кол-во</h5>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <input id="stoyki-mobilnie-count" size="2" maxlength="2" type="text" value="1"
-                               class="form-control furnitura-count">
-                    </div>
-                </center>
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <input class="form-control facture" list="browsers">
+                    <datalist id="browsers" class="manufacturer">
+                    </datalist>
+                </div>
             </div>
-            <h4>Цена:<span class="price red">0</span></h4>
-        </div>
-        <div id="tipSoedineniyaPoloten-mobilnie"
-             class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center tipSoedineniyaPoloten-mobil">
-            <select class="form-control input-sm furnituraElFlag"
-                    onchange="nfurnitura.furnituraElToggle(this.parentElement.id,this.value);">
-                <option value="1">Есть</option>
-                <option value="0" selected>Нет</option>
-            </select>
-            <h3 class="height-50">Тип соединения полотен</h3><img src="img/1px.png" class="addonImg">
-            <h4 class="text">Не выбрано</h4>
-            <h4>Цена:<span class="price red">0</span></h4>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="flagfurn" style="display: none;">
-            <div class="checkbox aksessuaryi-block-swith">
-                <center>
-                    <label>
-                        <input type="checkbox" onchange="nfurnitura.aksessuaryiBlockSwith()"><span
-                            class="checkbox-material"><span
-                            class="check"></span></span> Аксессуары
-                    </label>
-                </center>
+            <div id="nozhki-mobilnie" class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center nozhki-mobil">
+                <select class="form-control input-sm furnituraElFlag"
+                        onchange="nfurnitura.furnituraElToggle(this.parentElement.id,this.value);">
+                    <option value="1">Есть</option>
+                    <option value="0" selected>Нет</option>
+                </select>
+                <h3 class="height-50">Ножки</h3><img src="img/1px.png" class="addonImg">
+                <h4 class="text">Не выбрано</h4>
+                <h4>Цена:<span class="price red">26</span></h4>
             </div>
+            <div id="kolesiki-mobilnie" class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center kolesiki-mobilnie">
+                <select class="form-control input-sm furnituraElFlag"
+                        onchange="nfurnitura.furnituraElToggle(this.parentElement.id,this.value);">
+                    <option value="1">Есть</option>
+                    <option value="0" selected>Нет</option>
+                </select>
+                <h3 class="height-50">Колесики</h3><img src="img/1px.png" class="addonImg">
+                <h4 class="text">Не выбрано</h4>
+                <h4>Цена:<span class="price red">700</span></h4>
+            </div>
+            <div id="stoyki-mobilnie" class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center stoyki-mobil">
+                <select class="form-control input-sm furnituraElFlag"
+                        onchange="nfurnitura.furnituraElToggle(this.parentElement.id,this.value);">
+                    <option value="1">Есть</option>
+                    <option value="0" selected>Нет</option>
+                </select>
+                <h3 class="height-50">Стойки</h3><img src="img/1px.png" class="addonImg">
+                <h4 class="text">Не выбрано</h4>
 
-        </div>
-        <span style="display: none;" class="aksessuaryi-block-hs"></span>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 furnitura-price text-right">
-            <h3>Сумма:<span class="price"></span></h3>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <center>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <h5 style="text-align: right;">Кол-во</h5>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <input id="stoyki-mobilnie-count" size="2" maxlength="2" type="text" value="1"
+                                   class="form-control furnitura-count">
+                        </div>
+                    </center>
+                </div>
+                <h4>Цена:<span class="price red">0</span></h4>
+            </div>
+            <div id="tipSoedineniyaPoloten-mobilnie"
+                 class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center tipSoedineniyaPoloten-mobil">
+                <select class="form-control input-sm furnituraElFlag"
+                        onchange="nfurnitura.furnituraElToggle(this.parentElement.id,this.value);">
+                    <option value="1">Есть</option>
+                    <option value="0" selected>Нет</option>
+                </select>
+                <h3 class="height-50">Тип соединения полотен</h3><img src="img/1px.png" class="addonImg">
+                <h4 class="text">Не выбрано</h4>
+                <h4>Цена:<span class="price red">0</span></h4>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="flagfurn" style="display: none;">
+                <div class="checkbox aksessuaryi-block-swith">
+                    <center>
+                        <label>
+                            <input type="checkbox" onchange="nfurnitura.aksessuaryiBlockSwith()"><span
+                                class="checkbox-material"><span
+                                class="check"></span></span> Аксессуары
+                        </label>
+                    </center>
+                </div>
+
+            </div>
+            <span style="display: none;" class="aksessuaryi-block-hs"></span>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 furnitura-price text-right">
+                <h3>Сумма:<span class="price"></span></h3>
+            </div>
         </div>
     </div>
     <div class="raspashnie-dveri">
         <div class="row">
-            <div class="col-md-12"><select class="form-control manufacturer">
-                <option>Производитель</option>
-            </select></div>
+            <div class="col-md-12">
+                <input class="form-control facture" list="browsers">
+
+                <datalist id="browsers" class="manufacturer">
+                </datalist>
+            </div>
         </div>
         <div id="petli-raspashnie" class="col-xs-15 col-sm-15 col-md-15 col-lg-15 text-center petli-raspashnie">
             <select class="form-control input-sm furnituraElFlag"
@@ -1613,8 +1636,10 @@
         </div>
     </div>
 </div>
+</div>
 <br>
-<div style="background-color: #EEEEEE">
+
+<div style="background-color: white;width: 100%">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -1751,7 +1776,8 @@
     <div class="col-md-4 managerBtn">
         <h3></h3>
         <div class="dropdown">
-            <button class="btn btn-raised btn-success btn-lg btn-block dropdown-toggle" type="button" id="dropdownMenu1"
+            <button class="btn btn-raised btn-success btn-lg btn-block dropdown-toggle" type="button"
+                    id="dropdownMenu1"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" disabled>
                 Выбранные каталоги
                 <span class="caret"></span>
@@ -1767,7 +1793,8 @@
     </div>
     <div class="col-md-4 managerBtn">
         <div class="form-group">
-            <button type="button" class="btn btn-raised btn-info btn-lg btn-block" onclick="savetemp()">Сохранить шаблон
+            <button type="button" class="btn btn-raised btn-info btn-lg btn-block" onclick="savetemp()">Сохранить
+                шаблон
             </button>
         </div>
     </div>
@@ -1876,8 +1903,6 @@
         </div>
     </div>
 </div>
-
-
 <script type="text/javascript" src="admin/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="admin/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>

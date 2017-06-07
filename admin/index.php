@@ -144,7 +144,9 @@ function loading($page, $smarty, $DB)
 function manufacturer($smarty, $DB)
 {
     menu($smarty, $DB);
-    $smarty->assign('items', $DB->query('SELECT * FROM manufacturer'));
+    $smarty->assign('items', $DB->query('SELECT *
+FROM manufacturer
+GROUP BY name'));
     $smarty->display('manufacturer.tpl');
 }
 

@@ -1,6 +1,7 @@
 $('.sendGet').click(SaveToPDF);
 
 function SaveToPDF() {
+    save.init();
     save.set();
 
     function checkFN(arg, s) {
@@ -81,82 +82,82 @@ function SaveToPDF() {
     let sf2 = [];
     let sf3 = [];
     if (furnituraSelect === 1) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
-        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
-        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
-        sf0[4] = save.econom.f[4] ? save.econom.f[4].name : '';
-        sf0[5] = save.econom.f[5] ? save.econom.f[5].name : '';
-        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
-        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
-        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
-        sf1[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
-        sf1[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf0[1] = save.optimal.f[1] ? save.optimal.f[1].name : '';
+        sf0[2] = save.optimal.f[2] ? save.optimal.f[2].name : '';
+        sf0[3] = save.optimal.f[3] ? save.optimal.f[3].name : '';
+        sf0[4] = save.optimal.f[4] ? save.optimal.f[4].name : '';
+        sf0[5] = save.optimal.f[5] ? save.optimal.f[5].name : '';
+        sf1[0] = save.optimal.f[0] ? save.optimal.f[0].price : 0;
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
+        sf1[2] = save.optimal.f[2] ? save.optimal.f[2].price : 0;
+        sf1[3] = save.optimal.f[3] ? save.optimal.f[3].price : 0;
+        sf1[4] = save.optimal.f[4] ? save.optimal.f[4].price : 0;
+        sf1[5] = save.optimal.f[5] ? save.optimal.f[5].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
         if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf2[0] = save.econom.f[6] ? save.econom.f[6].name : '';
-            sf2[1] = save.econom.f[7] ? save.econom.f[7].name : '';
-            sf2[2] = save.econom.f[8] ? save.econom.f[8].name : '';
-            sf2[3] = save.econom.f[9] ? save.econom.f[9].name : '';
-            sf2[4] = save.econom.f[10] ? save.econom.f[10].name : '';
-            sf3[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
-            sf3[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
-            sf3[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
-            sf3[3] = save.econom.f[9] ? save.econom.f[9].price : 0;
-            sf3[4] = save.econom.f[10] ? save.econom.f[10].price : 0;
+            sf2[0] = save.optimal.f[6] ? save.optimal.f[6].name : '';
+            sf2[1] = save.optimal.f[7] ? save.optimal.f[7].name : '';
+            sf2[2] = save.optimal.f[8] ? save.optimal.f[8].name : '';
+            sf2[3] = save.optimal.f[9] ? save.optimal.f[9].name : '';
+            sf2[4] = save.optimal.f[10] ? save.optimal.f[10].name : '';
+            sf3[0] = save.optimal.f[6] ? save.optimal.f[6].price : 0;
+            sf3[1] = save.optimal.f[7] ? save.optimal.f[7].price : 0;
+            sf3[2] = save.optimal.f[8] ? save.optimal.f[8].price : 0;
+            sf3[3] = save.optimal.f[9] ? save.optimal.f[9].price : 0;
+            sf3[4] = save.optimal.f[10] ? save.optimal.f[10].price : 0;
             selectedFurnitura.push(sf2);
             selectedFurnitura.push(sf3);
         }
     } else if (furnituraSelect == 2) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
-        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
-        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
-        sf0[4] = save.econom.f[4] ? save.econom.f[4].name : '';
-        sf0[5] = save.econom.f[5] ? save.econom.f[5].name : '';
-        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
-        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
-        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
-        sf1[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
-        sf1[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf0[1] = save.optimal.f[1] ? save.optimal.f[1].name : '';
+        sf0[2] = save.optimal.f[2] ? save.optimal.f[2].name : '';
+        sf0[3] = save.optimal.f[3] ? save.optimal.f[3].name : '';
+        sf0[4] = save.optimal.f[4] ? save.optimal.f[4].name : '';
+        sf0[5] = save.optimal.f[5] ? save.optimal.f[5].name : '';
+        sf1[0] = save.optimal.f[0] ? save.optimal.f[0].price : 0;
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
+        sf1[2] = save.optimal.f[2] ? save.optimal.f[2].price : 0;
+        sf1[3] = save.optimal.f[3] ? save.optimal.f[3].price : 0;
+        sf1[4] = save.optimal.f[4] ? save.optimal.f[4].price : 0;
+        sf1[5] = save.optimal.f[5] ? save.optimal.f[5].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
         if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf2[0] = save.econom.f[6] ? save.econom.f[6].name : '';
-            sf2[1] = save.econom.f[7] ? save.econom.f[7].name : '';
-            sf2[2] = save.econom.f[8] ? save.econom.f[8].name : '';
-            sf3[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
-            sf3[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
-            sf3[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
+            sf2[0] = save.optimal.f[6] ? save.optimal.f[6].name : '';
+            sf2[1] = save.optimal.f[7] ? save.optimal.f[7].name : '';
+            sf2[2] = save.optimal.f[8] ? save.optimal.f[8].name : '';
+            sf3[0] = save.optimal.f[6] ? save.optimal.f[6].price : 0;
+            sf3[1] = save.optimal.f[7] ? save.optimal.f[7].price : 0;
+            sf3[2] = save.optimal.f[8] ? save.optimal.f[8].price : 0;
             selectedFurnitura.push(sf2);
             selectedFurnitura.push(sf3);
         }
     } else if (furnituraSelect == 3) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
-        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
-        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
-        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf0[1] = save.optimal.f[1] ? save.optimal.f[1].name : '';
+        sf0[2] = save.optimal.f[2] ? save.optimal.f[2].name : '';
+        sf1[0] = save.optimal.f[0] ? save.optimal.f[0].price : 0;
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
+        sf1[2] = save.optimal.f[2] ? save.optimal.f[2].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     } else if (furnituraSelect == 4) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
-        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
-        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
-        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
-        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
-        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf0[1] = save.optimal.f[1] ? save.optimal.f[1].name : '';
+        sf0[2] = save.optimal.f[2] ? save.optimal.f[2].name : '';
+        sf0[3] = save.optimal.f[3] ? save.optimal.f[3].name : '';
+        sf1[0] = save.optimal.f[0] ? save.optimal.f[0].price : 0;
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
+        sf1[2] = save.optimal.f[2] ? save.optimal.f[2].price : 0;
+        sf1[3] = save.optimal.f[3] ? save.optimal.f[3].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     } else if (furnituraSelect === 0) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     }
@@ -444,7 +445,7 @@ function SaveToPDF() {
             tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
-            tmpArr.push(v.sum);
+            tmpArr.push(v.sum * info.count);
             tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkasSupp.push(tmpArr);
         }
@@ -468,7 +469,7 @@ function SaveToPDF() {
             tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
-            tmpArr.push(v.sum);
+            tmpArr.push(v.sum * info.count);
             tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas2Supp.push(tmpArr);
         }
@@ -493,7 +494,7 @@ function SaveToPDF() {
             tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
-            tmpArr.push(v.sum);
+            tmpArr.push(v.sum * info.count);
             tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas3Supp.push(tmpArr);
         }
@@ -591,7 +592,7 @@ function SaveToPDF() {
     let sum = [], sum1 = {}, sum2 = {}, sum3 = {};
     sum1['p'] = save.optimal.profilRes;
     sum1['a'] = save.optimal.adRes * info.count;
-    sum1['d'] = save.optimal.decorRes * info.count;
+    sum1['d'] = save.optimal.decorRes;
     sum1['m'] = save.optimal.marirealRes * info.count;
     sum1['f'] = save.optimal.furnituraResPrice;
     sum1['i'] = save.optimal.resPricesBez;
@@ -599,7 +600,7 @@ function SaveToPDF() {
 
     sum2['p'] = save.econom.profilRes;
     sum2['a'] = save.econom.adRes * info.count;
-    sum2['d'] = save.econom.decorRes * info.count;
+    sum2['d'] = save.econom.decorRes;
     sum2['m'] = save.econom.marirealRes * info.count;
     sum2['f'] = save.econom.furnituraResPrice;
     sum2['i'] = save.econom.resPricesBez;
@@ -608,7 +609,7 @@ function SaveToPDF() {
 
     sum3['p'] = save.premium.profilRes;
     sum3['a'] = save.premium.adRes * info.count;
-    sum3['d'] = save.premium.decorRes * info.count;
+    sum3['d'] = save.premium.decorRes;
     sum3['m'] = save.premium.marirealRes * info.count;
     sum3['f'] = save.premium.furnituraResPrice;
     sum3['i'] = save.premium.resPricesBez;
@@ -665,9 +666,9 @@ function SaveToPDF() {
         'altSa': JSON.stringify(altSa),
         'altMi': JSON.stringify(altMi),
         'altMa': JSON.stringify(altMa),
-        'Omanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
-        'Emanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
-        'Fmanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
+        'Omanufacturer': save.optimal.fm,
+        'Emanufacturer': save.econom.fm,
+        'Fmanufacturer': save.premium.fm,
         'contacts': JSON.stringify({
             name: $('#managertext').val(),
             tel: $('#teltext').val(),
@@ -683,6 +684,7 @@ function SaveToPDF() {
 
 
 function SaveToPDFtoFile() {
+    save.init();
     save.set();
 
     function checkFN(arg, s) {
@@ -763,82 +765,82 @@ function SaveToPDFtoFile() {
     let sf2 = [];
     let sf3 = [];
     if (furnituraSelect === 1) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
-        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
-        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
-        sf0[4] = save.econom.f[4] ? save.econom.f[4].name : '';
-        sf0[5] = save.econom.f[5] ? save.econom.f[5].name : '';
-        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
-        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
-        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
-        sf1[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
-        sf1[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf0[1] = save.optimal.f[1] ? save.optimal.f[1].name : '';
+        sf0[2] = save.optimal.f[2] ? save.optimal.f[2].name : '';
+        sf0[3] = save.optimal.f[3] ? save.optimal.f[3].name : '';
+        sf0[4] = save.optimal.f[4] ? save.optimal.f[4].name : '';
+        sf0[5] = save.optimal.f[5] ? save.optimal.f[5].name : '';
+        sf1[0] = save.optimal.f[0] ? save.optimal.f[0].price : 0;
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
+        sf1[2] = save.optimal.f[2] ? save.optimal.f[2].price : 0;
+        sf1[3] = save.optimal.f[3] ? save.optimal.f[3].price : 0;
+        sf1[4] = save.optimal.f[4] ? save.optimal.f[4].price : 0;
+        sf1[5] = save.optimal.f[5] ? save.optimal.f[5].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
         if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf2[0] = save.econom.f[6] ? save.econom.f[6].name : '';
-            sf2[1] = save.econom.f[7] ? save.econom.f[7].name : '';
-            sf2[2] = save.econom.f[8] ? save.econom.f[8].name : '';
-            sf2[3] = save.econom.f[9] ? save.econom.f[9].name : '';
-            sf2[4] = save.econom.f[10] ? save.econom.f[10].name : '';
-            sf3[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
-            sf3[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
-            sf3[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
-            sf3[3] = save.econom.f[9] ? save.econom.f[9].price : 0;
-            sf3[4] = save.econom.f[10] ? save.econom.f[10].price : 0;
+            sf2[0] = save.optimal.f[6] ? save.optimal.f[6].name : '';
+            sf2[1] = save.optimal.f[7] ? save.optimal.f[7].name : '';
+            sf2[2] = save.optimal.f[8] ? save.optimal.f[8].name : '';
+            sf2[3] = save.optimal.f[9] ? save.optimal.f[9].name : '';
+            sf2[4] = save.optimal.f[10] ? save.optimal.f[10].name : '';
+            sf3[0] = save.optimal.f[6] ? save.optimal.f[6].price : 0;
+            sf3[1] = save.optimal.f[7] ? save.optimal.f[7].price : 0;
+            sf3[2] = save.optimal.f[8] ? save.optimal.f[8].price : 0;
+            sf3[3] = save.optimal.f[9] ? save.optimal.f[9].price : 0;
+            sf3[4] = save.optimal.f[10] ? save.optimal.f[10].price : 0;
             selectedFurnitura.push(sf2);
             selectedFurnitura.push(sf3);
         }
     } else if (furnituraSelect == 2) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
-        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
-        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
-        sf0[4] = save.econom.f[4] ? save.econom.f[4].name : '';
-        sf0[5] = save.econom.f[5] ? save.econom.f[5].name : '';
-        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
-        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
-        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
-        sf1[4] = save.econom.f[4] ? save.econom.f[4].price : 0;
-        sf1[5] = save.econom.f[5] ? save.econom.f[5].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf0[1] = save.optimal.f[1] ? save.optimal.f[1].name : '';
+        sf0[2] = save.optimal.f[2] ? save.optimal.f[2].name : '';
+        sf0[3] = save.optimal.f[3] ? save.optimal.f[3].name : '';
+        sf0[4] = save.optimal.f[4] ? save.optimal.f[4].name : '';
+        sf0[5] = save.optimal.f[5] ? save.optimal.f[5].name : '';
+        sf1[0] = save.optimal.f[0] ? save.optimal.f[0].price : 0;
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
+        sf1[2] = save.optimal.f[2] ? save.optimal.f[2].price : 0;
+        sf1[3] = save.optimal.f[3] ? save.optimal.f[3].price : 0;
+        sf1[4] = save.optimal.f[4] ? save.optimal.f[4].price : 0;
+        sf1[5] = save.optimal.f[5] ? save.optimal.f[5].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
         if ($('#furnitura-tab .aksessuaryi-block-swith input').prop('checked') === true) {
-            sf2[0] = save.econom.f[6] ? save.econom.f[6].name : '';
-            sf2[1] = save.econom.f[7] ? save.econom.f[7].name : '';
-            sf2[2] = save.econom.f[8] ? save.econom.f[8].name : '';
-            sf3[0] = save.econom.f[6] ? save.econom.f[6].price : 0;
-            sf3[1] = save.econom.f[7] ? save.econom.f[7].price : 0;
-            sf3[2] = save.econom.f[8] ? save.econom.f[8].price : 0;
+            sf2[0] = save.optimal.f[6] ? save.optimal.f[6].name : '';
+            sf2[1] = save.optimal.f[7] ? save.optimal.f[7].name : '';
+            sf2[2] = save.optimal.f[8] ? save.optimal.f[8].name : '';
+            sf3[0] = save.optimal.f[6] ? save.optimal.f[6].price : 0;
+            sf3[1] = save.optimal.f[7] ? save.optimal.f[7].price : 0;
+            sf3[2] = save.optimal.f[8] ? save.optimal.f[8].price : 0;
             selectedFurnitura.push(sf2);
             selectedFurnitura.push(sf3);
         }
     } else if (furnituraSelect == 3) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
-        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
-        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
-        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf0[1] = save.optimal.f[1] ? save.optimal.f[1].name : '';
+        sf0[2] = save.optimal.f[2] ? save.optimal.f[2].name : '';
+        sf1[0] = save.optimal.f[0] ? save.optimal.f[0].price : 0;
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
+        sf1[2] = save.optimal.f[2] ? save.optimal.f[2].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     } else if (furnituraSelect == 4) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf0[1] = save.econom.f[1] ? save.econom.f[1].name : '';
-        sf0[2] = save.econom.f[2] ? save.econom.f[2].name : '';
-        sf0[3] = save.econom.f[3] ? save.econom.f[3].name : '';
-        sf1[0] = save.econom.f[0] ? save.econom.f[0].price : 0;
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
-        sf1[2] = save.econom.f[2] ? save.econom.f[2].price : 0;
-        sf1[3] = save.econom.f[3] ? save.econom.f[3].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf0[1] = save.optimal.f[1] ? save.optimal.f[1].name : '';
+        sf0[2] = save.optimal.f[2] ? save.optimal.f[2].name : '';
+        sf0[3] = save.optimal.f[3] ? save.optimal.f[3].name : '';
+        sf1[0] = save.optimal.f[0] ? save.optimal.f[0].price : 0;
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
+        sf1[2] = save.optimal.f[2] ? save.optimal.f[2].price : 0;
+        sf1[3] = save.optimal.f[3] ? save.optimal.f[3].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     } else if (furnituraSelect === 0) {
-        sf0[0] = save.econom.f[0] ? save.econom.f[0].name : '';
-        sf1[1] = save.econom.f[1] ? save.econom.f[1].price : 0;
+        sf0[0] = save.optimal.f[0] ? save.optimal.f[0].name : '';
+        sf1[1] = save.optimal.f[1] ? save.optimal.f[1].price : 0;
         selectedFurnitura.push(sf0);
         selectedFurnitura.push(sf1);
     }
@@ -1126,7 +1128,7 @@ function SaveToPDFtoFile() {
             tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
-            tmpArr.push(v.sum);
+            tmpArr.push(v.sum * info.count);
             tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkasSupp.push(tmpArr);
         }
@@ -1150,7 +1152,7 @@ function SaveToPDFtoFile() {
             tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
-            tmpArr.push(v.sum);
+            tmpArr.push(v.sum * info.count);
             tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas2Supp.push(tmpArr);
         }
@@ -1175,7 +1177,7 @@ function SaveToPDFtoFile() {
             tmpArr.push(item.name);
             tmpArr.push(v.name);
             tmpArr.push(v.img);
-            tmpArr.push(v.sum);
+            tmpArr.push(v.sum * info.count);
             tmpArr.push(item.typeprice === 'Поштучно' || item.typeprice === 'Поштучно c автоматическим подсчетом' ? 1 : undefined);
             selectedKarkas3Supp.push(tmpArr);
         }
@@ -1273,7 +1275,7 @@ function SaveToPDFtoFile() {
     let sum = [], sum1 = {}, sum2 = {}, sum3 = {};
     sum1['p'] = save.optimal.profilRes;
     sum1['a'] = save.optimal.adRes * info.count;
-    sum1['d'] = save.optimal.decorRes * info.count;
+    sum1['d'] = save.optimal.decorRes;
     sum1['m'] = save.optimal.marirealRes * info.count;
     sum1['f'] = save.optimal.furnituraResPrice;
     sum1['i'] = save.optimal.resPricesBez;
@@ -1281,7 +1283,7 @@ function SaveToPDFtoFile() {
 
     sum2['p'] = save.econom.profilRes;
     sum2['a'] = save.econom.adRes * info.count;
-    sum2['d'] = save.econom.decorRes * info.count;
+    sum2['d'] = save.econom.decorRes;
     sum2['m'] = save.econom.marirealRes * info.count;
     sum2['f'] = save.econom.furnituraResPrice;
     sum2['i'] = save.econom.resPricesBez;
@@ -1290,7 +1292,7 @@ function SaveToPDFtoFile() {
 
     sum3['p'] = save.premium.profilRes;
     sum3['a'] = save.premium.adRes * info.count;
-    sum3['d'] = save.premium.decorRes * info.count;
+    sum3['d'] = save.premium.decorRes;
     sum3['m'] = save.premium.marirealRes * info.count;
     sum3['f'] = save.premium.furnituraResPrice;
     sum3['i'] = save.premium.resPricesBez;
@@ -1347,9 +1349,9 @@ function SaveToPDFtoFile() {
         'altSa': JSON.stringify(altSa),
         'altMi': JSON.stringify(altMi),
         'altMa': JSON.stringify(altMa),
-        'Omanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
-        'Emanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
-        'Fmanufacturer': $('.manufacturer').val() === "Производитель" ? '' : $('.manufacturer').val(),
+        'Omanufacturer': save.optimal.fm,
+        'Emanufacturer': save.econom.fm,
+        'Fmanufacturer': save.premium.fm,
         'contacts': JSON.stringify({
             name: $('#managertext').val(),
             tel: $('#teltext').val(),
@@ -1359,6 +1361,13 @@ function SaveToPDFtoFile() {
     };
 
     $.post('./php/longurl.php?n=' + window.id_pdf, 'url=' + JSON.stringify(url), function () {
-
+        message("Создается pdf для письма");
+        let _p = $.get('./html2pdf.php?n=' + window.id_pdf);
+        _p.done(() => {
+            loadmail();
+        });
+        _p.fail(() => {
+            message('Произошла ошибка');
+        })
     });
 }
